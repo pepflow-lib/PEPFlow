@@ -7,6 +7,7 @@ on:
     branches:
       - main
       - master
+      - docs
 
 # Grant GITHUB_TOKEN the permissions required to deploy to GitHub Pages
 permissions:
@@ -44,7 +45,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build/html
+          path: build
 
   deploy:
     needs: build
