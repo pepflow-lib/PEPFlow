@@ -1,0 +1,78 @@
+/* Light mode title color */
+html[data-theme="light"] .navbar-brand .title {
+    color: rgb(107, 68, 151) !important; /* your purple */
+    font-weight: 500 !important; /* bold */
+}
+
+/* Dark mode title color */
+html[data-theme="dark"] .navbar-brand .title {
+    color: rgb(200, 170, 230) !important; /* lighter lavender */
+    font-weight: 500 !important; /* bold */
+}
+
+/* Control spacing between logo and title */
+.navbar-brand {
+    display: inline-flex;  /* ensure flex layout */
+    align-items: center;
+    gap: 0.1rem;          /* space between logo and title */
+}
+
+.brand-color {
+    color: #6B4497;
+    font-weight: bold;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .brand-color{
+    color: #CAAEE6;
+    font-weight: bold;
+}
+
+.code-color {
+    color: #6B4497;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .code-color{
+    color: #CAAEE6;
+}
+
+/* Keep prev/next links and titles, hide the "Previous"/"Next" labels */
+.prev-next-area .prev-next-subtitle { 
+    display: none !important;        /* common class in recent PyData versions */
+}
+
+/* Fallback: if your version uses a generic first line inside the info block */
+.prev-next-area .prev-next-info > :first-child {
+    display: none !important;        /* hides the label line only, keeps the title */
+}
+
+/* Optional: tighten spacing after removing the label */
+.prev-next-area .prev-next-title {
+    margin: 0;
+}
+
+.admonition.pepflow-dropdown {
+  /* background-color: #f9f5ff;   light purple tint */
+  border: 2px solid #6B4497;   /* your brand purple */
+  border-radius: 6px;
+}
+
+/* Style the title bar of the toggle list */
+.admonition.pepflow-dropdown .admonition-title {
+  background-color: #6B4497;
+  color: white;
+  font-weight: bold;
+}
+
+/* Change the color of the toggle icon */
+.admonition.pepflow-dropdown .admonition-title::after {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.admonition.pepflow-dropdown .admonition-title code {
+  color: white;         /* your brand purple */
+  background: transparent;/* remove gray background */
+  font-family: var(--font-family-monospace); /* keep code look */
+}
