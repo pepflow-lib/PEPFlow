@@ -5,7 +5,7 @@
 </h1>
 
 
-[![CI](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml)
+[![CI](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Pypi](https://img.shields.io/pypi/v/pepflow.svg?logo=python&logoColor=white&label=PyPI&color=fcbc2c)](https://pypi.org/project/pepflow/)
 </div>
