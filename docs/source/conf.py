@@ -43,7 +43,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/BichengYing/PEPFlow",
+            "url": "https://github.com/pepflow-lib/PEPFlow",
             "icon": "fab fa-github",
             "type": "fontawesome",
         },
