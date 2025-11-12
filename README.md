@@ -75,7 +75,7 @@ The argument `--serve-only` is optional for hosting the website locally.
 
 ## Pre-Release Notice
 
-This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation on previous work. Credit and context are provided in our workshop paper submitted in August 2025, which will soon be released on OpenReview. See this original paragraph in the following screenshot:
+This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation of previous work. Credit and context are provided in our workshop paper submitted in August 2025, which will soon be released on OpenReview. See this original paragraph in the following screenshot:
 
 ![screenshot](docs/assets/screenshot.png)
 
