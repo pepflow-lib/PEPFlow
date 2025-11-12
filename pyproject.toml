@@ -1,0 +1,49 @@
+[project]
+name = "pepflow"
+version = "0.1.7"
+description = "PEPFlow: A framework for Performance Estimation Problem (PEP) Workflow"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "attrs>=25.3.0",
+    "cvxpy>=1.7.1",
+    "dash>=3.2.0",
+    "dash-bootstrap-components>=2.0.3",
+    "ipykernel>=7.1.0",
+    "isort>=6.0.1",
+    "matplotlib>=3.9.4",
+    "natsort>=8.4.0",
+    "numpy>=2.0.2",
+    "pandas>=2.3.1",
+    "plotly>=6.3.0",
+    "pytest>=8.4.1",
+    "ruff>=0.12.4",
+    "sympy>=1.14.0",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.format]
+# Enable reformatting of code snippets in docstrings.
+docstring-code-format = true
+docstring-code-line-length = 80
+exclude = ["generated"]
+
+[tool.isort]
+ensure_newline_before_comments=true
+
+[tool.ty.src]
+exclude = [""]
+
+[tool.ty.rules]
+invalid-argument-type = "ignore"
+unsupported-operator = "ignore"
+
+[tool.pydocstringformatter]
+write = true
+strip-whitespaces = true
+split-summary-body = true
+linewrap-full-docstring = true
+max-summary-lines = 2
+max-line-length=88
