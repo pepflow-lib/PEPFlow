@@ -5,7 +5,8 @@ name: Deploy Documentation
 on: 
   push:
     branches:
-      - master  
+      - main
+      - master
 
 # Grant GITHUB_TOKEN the permissions required to deploy to GitHub Pages
 permissions:
@@ -36,12 +37,14 @@ jobs:
           pip install -r docs/requirements.txt
 
       - name: Build Sphinx documentation
-        run: sphinx-build -b html docs/source build
+        run: |
+          sphinx-build -b html docs/source build
+          touch build/.nojekyll
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: build/html
 
   deploy:
     needs: build
