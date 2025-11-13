@@ -59,7 +59,7 @@ Welcome to <span class="brand-color">PEPFlow</span>!
 
 - direct access to key mathematical objects for deriving and verifying analytical proofs.
 
-<span class="brand-color">PEPFlow</span> is under active development. Stay tuned!
+<span class="brand-color">PEPFlow</span>, as well as this website, is under active development. Stay tuned!
 
 ```{toctree}
 :hidden:
