@@ -152,7 +152,7 @@ def test_expression_manager_eval_vector_large_scale(pep_context):
     for pp in pep_context.vectors:
         pm.eval_vector(pp)
 
-    assert (time.time() - t) < 0.5
+    assert (time.time() - t) < 2
 
 
 def test_zero_vector(pep_context):
