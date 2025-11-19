@@ -27,3 +27,10 @@
 .. autoclass:: pepflow.SmoothConvexFunction
     :members:
 ```
+
+## Smooth and Strongly Convex
+
+```{eval-rst} 
+.. autoclass:: pepflow.SmoothStronglyConvexFunction
+    :members:
+```
