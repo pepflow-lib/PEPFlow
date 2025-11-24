@@ -640,6 +640,9 @@ class ConvexFunction(Function):
         Args:
             x_0 (:class:`Vector`): The initial point.
             stepsize (int | float): The stepsize.
+
+        Returns:
+            x (:class:`Vector`): The output of applying the proximal operator on the initial point.
         """
 
         x_tag = f"prox_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
@@ -664,6 +667,79 @@ class ConvexFunction(Function):
             name=utils.triplet_tag(x, func_val, grad),
         )
         self.add_triplet_to_func(new_triplet)
+        return x
+
+    def bregman_proximal_step(
+        self, x_0: vt.Vector, stepsize: numbers.Number, h: Function
+    ) -> vt.Vector:
+        """Perform a Bregman proximal step.
+
+        Define the Bregman proximal operator as
+
+        .. math:: \\text{prox}^{h}_{\\gamma f}(x_0) := \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} D_h(x, x_0) \\right\\}.
+
+        This function performs a Bregman proximal step with respect to some
+        :class:`Function` :math:`f` on the :class:`Vector` :math:`x_0`
+        with stepsize :math:`\\gamma` where :class:`Function` :math:`h` is
+        the kernel function that generates the Bregman distance:
+
+        .. math:: D_h (x, x_0) := h(x) - h(x_0) - \\langle \\nabla h(x_0), x - x_0 \\rangle.
+
+        Note that the kernel function :math:`h` should be differentiable.
+
+        The optimality conditions of the optimization problem presented above gives:
+
+        .. math:: \\nabla h(x) = \\nabla h(x_0) - \\gamma \\widetilde{\\nabla} f(x) \\text{ where } \\widetilde{\\nabla} f(x)\\in\\partial f(x).
+
+        Args:
+            x_0 (:class:`Vector`): The initial point.
+            stepsize (int | float): The stepsize.
+            h (:class:`Function`): The kernel function.
+
+        Returns:
+            x (:class:`Vector`): The output of applying the Bregman proximal operator on the initial point.
+        """
+
+        x_tag = (
+            f"prox^{h.__repr__()}_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
+        )
+        x = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=x_tag),
+        )
+        grad = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({x_tag})")
+            ),
+        )
+        func_val = sc.Scalar(
+            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({x_tag})")
+        )
+
+        grad_h = h.grad(x_0) - stepsize * grad
+        grad_h.math_expr.expr_str = utils.grad_tag(f"{h.__repr__()}({x_tag})")
+        func_val_h = sc.Scalar(
+            is_basis=True, math_expr=me.MathExpr(expr_str=f"{h.__repr__()}({x_tag})")
+        )
+
+        new_triplet = Triplet(
+            x,
+            func_val,
+            grad,
+            self,
+            name=utils.triplet_tag(x, func_val, grad),
+        )
+        self.add_triplet_to_func(new_triplet)
+
+        new_triplet_h = Triplet(
+            x,
+            func_val_h,
+            grad_h,
+            h,
+            name=utils.triplet_tag(x, func_val_h, grad_h),
+        )
+        h.add_triplet_to_func(new_triplet_h)
         return x
 
 
@@ -776,6 +852,79 @@ class SmoothConvexFunction(Function):
             )
         coef = sp.S(1) / sp.S(2 * self.L) if sympy_mode else 1 / (2 * self.L)
         return f2 - f1 + g2 * (x1 - x2) + coef * (g1 - g2) ** 2
+
+    def bregman_proximal_step(
+        self, x_0: vt.Vector, stepsize: numbers.Number, h: Function
+    ) -> vt.Vector:
+        """Perform a Bregman proximal step.
+
+        Define the Bregman proximal operator as
+
+        .. math:: \\text{prox}^{h}_{\\gamma f}(x_0) := \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} D_h(x, x_0) \\right\\}.
+
+        This function performs a Bregman proximal step with respect to some
+        :class:`Function` :math:`f` on the :class:`Vector` :math:`x_0`
+        with stepsize :math:`\\gamma` where :class:`Function` :math:`h` is
+        the kernel function that generates the Bregman distance:
+
+        .. math:: D_h (x, x_0) := h(x) - h(x_0) - \\langle \\nabla h(x_0), x - x_0 \\rangle.
+
+        Note that the kernel function :math:`h` should be differentiable.
+
+        The optimality conditions of the optimization problem presented above gives:
+
+        .. math:: \\nabla h(x) = \\nabla h(x_0) - \\gamma \\widetilde{\\nabla} f(x) \\text{ where } \\widetilde{\\nabla} f(x)\\in\\partial f(x).
+
+        Args:
+            x_0 (:class:`Vector`): The initial point.
+            stepsize (int | float): The stepsize.
+            h (:class:`Function`): The kernel function.
+
+        Returns:
+            x (:class:`Vector`): The output of applying the Bregman proximal operator on the initial point.
+        """
+
+        x_tag = (
+            f"prox^{h.__repr__()}_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
+        )
+        x = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=x_tag),
+        )
+        grad = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({x_tag})")
+            ),
+        )
+        func_val = sc.Scalar(
+            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({x_tag})")
+        )
+
+        grad_h = h.grad(x_0) - stepsize * grad
+        grad_h.math_expr.expr_str = utils.grad_tag(f"{h.__repr__()}({x_tag})")
+        func_val_h = sc.Scalar(
+            is_basis=True, math_expr=me.MathExpr(expr_str=f"{h.__repr__()}({x_tag})")
+        )
+
+        new_triplet = Triplet(
+            x,
+            func_val,
+            grad,
+            self,
+            name=utils.triplet_tag(x, func_val, grad),
+        )
+        self.add_triplet_to_func(new_triplet)
+
+        new_triplet_h = Triplet(
+            x,
+            func_val_h,
+            grad_h,
+            h,
+            name=utils.triplet_tag(x, func_val_h, grad_h),
+        )
+        h.add_triplet_to_func(new_triplet_h)
+        return x
 
 
 @attrs.mutable(kw_only=True, repr=False)
