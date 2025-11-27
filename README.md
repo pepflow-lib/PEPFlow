@@ -52,7 +52,7 @@ In windows, use `.venv\Scripts\activate` instead.
 
 ### Lint & Testing
 
-We use `ruff` to do the format and lint and `isort` to do the import ordering.
+We use `ruff` to do the formatting and linting and `isort` to do the import ordering.
 
 ```bash
 ruff format;
