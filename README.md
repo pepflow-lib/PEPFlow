@@ -4,12 +4,12 @@
   PEPFlow: Performance <br />  Estimation Problem Workflow
 </h1>
 
-
 [![CI](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/pepflow-lib/pepflow/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Pypi](https://img.shields.io/pypi/v/pepflow.svg?logo=python&logoColor=white&label=PyPI&color=fcbc2c)](https://pypi.org/project/pepflow/)
-</div>
+[![Documentation](https://github.com/pepflow-lib/pepflow/actions/workflows/deploy-docs.yml/badge.svg?branch=main)](https://pepflow-lib.github.io/PEPFlow/)
 
+</div>
 
 <span style="color:#6B4497; font-weight:bold">PEPFlow</span> builds on the Performance Estimation Problem (PEP) framework, a powerful approach for analyzing the convergence of optimization algorithms. PEP formulates performance guarantees of an algorithm into tractable optimization problems and helps provide analytical proofs of convergence. <span style="color:#6B4497; font-weight:bold">PEPFlow</span> streamlines the entire PEP workflow:
 
@@ -27,10 +27,22 @@
 - Interactive dashboard to numerically verify dual variable values of Dual PEPs;
 - Direct access to key mathematical objects for deriving and verifying analytical proofs in symbols.
 
+## Example and Tutorials
+
+Please visit our [document website](https://pepflow-lib.github.io/PEPFlow/tutorial.html) to explore more features in PEPFlow
+
+- [QuickStart](https://pepflow-lib.github.io/PEPFlow/quickstart.html)
+- [Tutorials](https://pepflow-lib.github.io/PEPFlow/tutorial.html)
+- [Encyclopedia](https://pepflow-lib.github.io/PEPFlow/encyclopedia.html)
+  - [Gradient Descent Example](https://pepflow-lib.github.io/PEPFlow/examples/gd_example.html)
+  - [Accelerated Gradient Method Example](https://pepflow-lib.github.io/PEPFlow/examples/agm_example.html)
+  - [Proximal Gradient Method Example](https://pepflow-lib.github.io/PEPFlow/examples/pgm_example.html)
+  - [Douglas–Rachford Splitting Method Example](https://pepflow-lib.github.io/PEPFlow/examples/drs_example.html)
+  - and more
 
 ## Development Guide
 
-We use `uv` to manage the packages and python environments. To start 
+We use `uv` to manage the packages and python environments. To start
 
 ```bash
 uv sync; source .venv/bin/activate;
@@ -39,7 +51,8 @@ uv sync; source .venv/bin/activate;
 In windows, use `.venv\Scripts\activate` instead.
 
 ### Lint & Testing
-We use `ruff` to do the format and lint and `isort` to do the import ordering.
+
+We use `ruff` to do the formatting and linting and `isort` to do the import ordering.
 
 ```bash
 ruff format;
@@ -53,32 +66,34 @@ We use `pytest` framework to do the test. To run all unit tests, run the followi
 pytest -s -vv pepflow
 ```
 
-We have a convenient script to above
+We have a convenient scripts to do the above
+
 ```bash
 scripts/check.sh [format|lint|typecheck|test]
 ```
+
 See the script for the options.
 
 ### Build doc website
 
 Install the required library (one-time) and `pandoc` in order to build ipynb.
+
 ```bash
 uv pip install -r docs/requirements.txt
 ```
 
 To build the website, run
+
 ```bash
 scripts/build_doc.sh [--serve-only]
 ```
-The argument `--serve-only` is optional for hosting the website locally.
 
+The argument `--serve-only` is optional for hosting the website locally.
 
 ## Pre-Release Notice
 
-This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation of previous work. Credit and context are provided in our workshop paper submitted in August 2025, which will soon be released on OpenReview. See this original paragraph in the following screenshot:
+This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation of previous work. Credit and context are provided in our workshop paper submitted in August 2025, which is available on [OpenReview](https://openreview.net/forum?id=tJqsZZBmmB). See this original paragraph in the following screenshot:
 
 ![screenshot](docs/assets/screenshot.png)
 
 While we have complied with the citation request, we find the ungrounded accusation of plagiarism directed at a pre-alpha release to be unwarranted and not in the spirit of open, collaborative research.
-
-
