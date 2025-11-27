@@ -66,7 +66,7 @@ We use `pytest` framework to do the test. To run all unit tests, run the followi
 pytest -s -vv pepflow
 ```
 
-We have a convenient script to above
+We have a convenient scripts to do the above
 
 ```bash
 scripts/check.sh [format|lint|typecheck|test]
@@ -92,7 +92,7 @@ The argument `--serve-only` is optional for hosting the website locally.
 
 ## Pre-Release Notice
 
-This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation of previous work. Credit and context are provided in our workshop paper submitted in August 2025, which is available in [OpenReview](https://openreview.net/forum?id=tJqsZZBmmB). See this original paragraph in the following screenshot:
+This library is still in the pre-alpha phase. We are releasing the code early due to ongoing disputes. On November 11, an email was sent to the PEPFlow team as well as a group of researchers, accusing plagiarism and stating no citation of previous work. Credit and context are provided in our workshop paper submitted in August 2025, which is available on [OpenReview](https://openreview.net/forum?id=tJqsZZBmmB). See this original paragraph in the following screenshot:
 
 ![screenshot](docs/assets/screenshot.png)
 
