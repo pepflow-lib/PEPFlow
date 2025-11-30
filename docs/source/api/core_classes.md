@@ -24,14 +24,6 @@
 ```
 
 ```{eval-rst}  
-.. autofunction:: pepflow.declare_func
-```
-
-```{eval-rst}  
-.. autofunction:: pepflow.declare_oper
-```
-
-```{eval-rst}  
 .. autofunction:: pepflow.get_func_or_oper_by_tag
 ```
 

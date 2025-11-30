@@ -43,8 +43,6 @@ from .pep_context import get_current_context as get_current_context
 from .pep_context import set_current_context as set_current_context
 
 # Function and Operator Registry
-from .registry import declare_func as declare_func
-from .registry import declare_oper as declare_oper
 from .registry import get_func_or_oper_by_tag as get_func_or_oper_by_tag
 
 # Function, Operator, Vector, Scalar, Parameter
