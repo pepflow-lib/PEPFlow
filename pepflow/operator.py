@@ -19,6 +19,8 @@
 
 from __future__ import annotations
 
+import itertools
+import numbers
 import uuid
 from functools import cached_property
 from typing import TYPE_CHECKING
@@ -55,6 +57,9 @@ class Duplet:
     oper: Operator
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
+    def expand(self) -> tuple[vt.Vector, vt.Vector]:
+        return self.point, self.output
 
 
 @attrs.frozen
@@ -509,7 +514,7 @@ class LinearOperator(Operator):
     def __hash__(self):
         return super().__hash__()
 
-    def add_tag(self, tag: str) -> None:
+    def add_tag(self, tag: str) -> LinearOperator:
         """Add a new tag for this :class:`Operator` object.
 
         Args:
@@ -517,6 +522,7 @@ class LinearOperator(Operator):
         """
         self.tags.append(tag)
         self.T.tags.append(f"{tag}.T")
+        return self
 
     def equality_interpolability_constraints(
         self, duplet_i, duplet_j
@@ -550,7 +556,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self]) > 0:
             X = [d.point for d in pep_context.oper_to_duplets[self]]
             Y = [d.output for d in pep_context.oper_to_duplets[self]]
-            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(
+            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(  # ty: ignore
                 Y, Y
             )
 
@@ -567,7 +573,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self.T]) > 0:
             U = [d.point for d in pep_context.oper_to_duplets[self.T]]
             V = [d.output for d in pep_context.oper_to_duplets[self.T]]
-            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(
+            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(  # ty: ignore
                 V, V
             )
 
@@ -589,3 +595,119 @@ class LinearOperator(Operator):
         return LinearOperatorTranspose(is_basis=True, tags=[f"{self.tag}.T"])
 
     # TODO: How should we make interpolate_ineq()? There are two PSD constraints and a set of equality constraints.
+
+
+@attrs.mutable(kw_only=True)
+class MonotoneOperator(Operator):
+    """
+    The :class:`MonotoneOperator` class represents a monotone operator.
+
+    The :class:`MonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`MonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> ctx = pf.PEPContext("example").set_as_current()
+        >>> pep_builder = pf.PEPBuilder()
+        >>> A = pep_builder.declare_oper(pf.MonotoneOperator)
+    """
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> MonotoneOperator:
+        """Add a new tag for this :class:`MonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def inequality_interpolability_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            (duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).ge(
+            0,
+            name=f"{self.tag}:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+        scal_constraint = []
+        for i, j in itertools.combinations(pep_context.oper_to_duplets[self], 2):
+            scal_constraint.append(self.inequality_interpolability_constraints(i, j))
+        cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint)
+
+        return cd
+
+    def interp_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+    ) -> sc.Scalar:
+        """Generate the interpolation inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The interpolation inequality between two points :math:`p_1, p_2` for a
+        monotone operator :math:`A` is
+
+        .. math:: \\langle \\nabla A(p_1) - A(p_2), p_1 - p_2 \\rangle >= 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+        return (x1 - x2) * (u1 - u2)
+
+    def resolvent_step(self, x_0: vt.Vector, stepsize: numbers.Number) -> vt.Vector:
+        """Perform a resolvent step.
+
+        Define the resolvent operator as
+
+        .. math:: \\J_{\\gamma A} := (A+\\gamma A)^{-1}.
+
+        This function performs a resolvent step with respect to some
+        :class:`MonotoneOperator` :math:`A` on the :class:`Vector` :math:`x_0`
+        with stepsize :math:`\\gamma`:
+
+        Args:
+            x_0 (:class:`Vector`): The initial point.
+            stepsize (int | float | Parameter): The stepsize.
+        """
+        x_tag = f"J_{{{stepsize}*{self.tag}}}({x_0.tag})"
+        Ax = vt.Vector(is_basis=True)
+        Ax.add_tag(f"{self.tag}({x_tag})")
+        x = x_0 - stepsize * Ax
+        x.add_tag(f"{x_tag}")
+        new_duplet = Duplet(
+            x,
+            Ax,
+            self,
+            name=f"{x.tag}_{Ax.tag}",
+        )
+        self.add_duplet_to_oper(new_duplet)
+        return x

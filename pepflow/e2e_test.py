@@ -576,3 +576,45 @@ def test_dys_e2e():
         # Erase the last tag and triplet that are redundant for the next N
         p_avg.tags.pop(-1)
         dys.func_to_triplets[g].pop(-1)
+
+
+def test_appm_e2e():
+    appm = pc.PEPContext("appm").set_as_current()
+    pep_builder = pep.PEPBuilder(appm)
+
+    alpha = 1
+    A = reg.declare_oper(operator.MonotoneOperator, "A")
+
+    N_range = 10
+
+    beta = [pm.Parameter(f"beta_{i}") for i in range(N_range + 1)]
+
+    x_0 = pep_builder.add_init_point("x_0")
+    y = x_0
+
+    x_star = A.set_zero_point("x_star")
+    pep_builder.add_initial_constraint(
+        ((x_0 - x_star) ** 2).le(1, name="initial_condition")
+    )
+
+    for N in range(N_range):
+        x_next = A.resolvent_step(y, alpha).add_tag(f"x_{N + 1}")
+        y_next = ((1 - beta[N]) * (2 * x_next - y) + beta[N] * x_0).add_tag(
+            f"y_{N + 1}"
+        )
+
+        y = y_next
+
+        pep_builder.set_performance_metric(A(x_next) ** 2)
+
+        result = pep_builder.solve_primal(
+            resolve_parameters={f"beta_{i}": 1 / (i + 2) for i in range(N + 1)}
+        )
+
+        expected_opt_value_N = 1 / (alpha**2 * (N + 1) ** 2)
+        assert math.isclose(result.opt_value, expected_opt_value_N, rel_tol=1e-2)
+
+        dual_result = pep_builder.solve_dual(
+            resolve_parameters={f"beta_{i}": 1 / (i + 2) for i in range(N + 1)}
+        )
+        assert math.isclose(dual_result.opt_value, expected_opt_value_N, rel_tol=1e-2)

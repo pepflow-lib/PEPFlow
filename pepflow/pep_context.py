@@ -292,6 +292,27 @@ class PEPContext:
                     return t
         raise ValueError(f"Cannot find the triplet associated with {point_or_tag}")
 
+    def get_duplet_by_point_tag(
+        self, point_or_tag: Vector | str, op: Operator
+    ) -> Duplet:
+        """Returns a duplet of the given point or its tag in the operator."""
+        from pepflow.vector import Vector
+
+        if op not in self.oper_to_duplets:
+            raise ValueError(
+                f"Cannot find the duplets associated with {op=} in the context."
+            )
+        duplets = self.oper_to_duplets[op]
+        if isinstance(point_or_tag, Vector):
+            for t in duplets:
+                if t.point == point_or_tag:
+                    return t
+        else:
+            for t in duplets:
+                if point_or_tag in t.point.tags:
+                    return t
+        raise ValueError(f"Cannot find the duplet associated with {point_or_tag}")
+
     def clear(self) -> None:
         """Reset this :class:`PEPContext` object."""
         self.vectors.clear()
