@@ -173,3 +173,14 @@ def test_zero_vector(pep_context):
         np.array([sp.S(0), sp.S(0)]),
         strict=True,
     )
+
+
+def test_equals_random_sample(pep_context):
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+
+    p2 = p1 * pm1 - pm2 * p1
+    p3 = (pm1 - pm2) * p1
+
+    assert p2.equals_random_sample(p3)
