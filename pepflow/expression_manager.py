@@ -104,7 +104,7 @@ class ExpressionManager:
         """
         if sympy_mode and isinstance(vector, float):
             raise ValueError(
-                f"Encounter a floating number {vector} when evaludate a vector in sympy_mode."
+                f"Encounter a floating number {vector} when evaluating a vector in sympy_mode."
                 " In order to use the sympy mode, please convert every floating number into"
                 " sympy.Rational value. For example, convert 1/2 into sympy.S(1)/2."
             )
@@ -115,7 +115,7 @@ class ExpressionManager:
             return vector.get_value(self.resolve_parameters)
         if not isinstance(vector, vt.Vector):
             raise ValueError(
-                f"Encounter unknown type of vector to evaludated with: {type(vector)=}"
+                f"Encounter unknown type of vector to evaluate with: {type(vector)=}"
             )
 
         if vector.is_basis:

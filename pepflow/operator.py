@@ -650,7 +650,14 @@ class MonotoneOperator(Operator):
         if pep_context is None:
             raise RuntimeError("Did you forget to create a context?")
         scal_constraint = []
-        for i, j in itertools.combinations(pep_context.oper_to_duplets[self], 2):
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., <A x_1 - A x_0, x_1 - x_0> >= 0
+        # is the same as <A x_0 - A x_1, x_0 - x_1> >= 0.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+        for i, j in itertools.combinations(ordered_duplets, 2):
             scal_constraint.append(self.inequality_interpolability_constraints(i, j))
         cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint)
 
