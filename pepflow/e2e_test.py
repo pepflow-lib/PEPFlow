@@ -27,7 +27,6 @@ from pepflow import function, operator
 from pepflow import parameter as pm
 from pepflow import pep
 from pepflow import pep_context as pc
-from pepflow import registry as reg
 from pepflow import vector
 from pepflow.constraint import ScalarConstraint
 
@@ -38,7 +37,7 @@ def test_gd_e2e():
     eta = 1
     N = 9
 
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=1)
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
     x = pep_builder.add_init_point("x_0")
     x_star = f.set_stationary_point("x_star")
     pep_builder.add_initial_constraint(
@@ -68,7 +67,9 @@ def test_gd_diff_stepsize_e2e():
     eta = 1 / pm.Parameter(name="L")
     N = 4
 
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=pm.Parameter(name="L"))
+    f = function.SmoothConvexFunction(
+        is_basis=True, tags=["f"], L=pm.Parameter(name="L")
+    )
     x = pep_builder.add_init_point("x_0")
     x_star = f.set_stationary_point("x_star")
     pep_builder.add_initial_constraint(
@@ -96,8 +97,8 @@ def test_pgm_e2e():
     eta = 1
     N = 1
 
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=1)
-    g = reg.declare_func(function.ConvexFunction, "g")
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
+    g = function.ConvexFunction(is_basis=True, tags=["g"])
 
     h = f + g
 
@@ -132,7 +133,7 @@ def test_ogm_e2e():
     pep_builder = pep.PEPBuilder(ogm)
 
     L = 1
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=1)
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
 
     N_range = 10
 
@@ -185,7 +186,7 @@ def test_ogm_g_e2e():
     pep_builder = pep.PEPBuilder(ogm_g)
 
     L = 1
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=1)
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
 
     N_range = 10
 
@@ -249,7 +250,7 @@ def test_agm_e2e():
     pep_builder = pep.PEPBuilder(agm)
 
     L = 1
-    f = reg.declare_func(function.SmoothConvexFunction, "f", L=1)
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
 
     N_range = 10
 
@@ -314,11 +315,11 @@ def test_pdhg_e2e():
     N_range = 2
 
     # Declare two convex functions.
-    f = reg.declare_func(function.ConvexFunction, "f")
-    g = reg.declare_func(function.ConvexFunction, "g")
+    f = function.ConvexFunction(is_basis=True, tags=["f"])
+    g = function.ConvexFunction(is_basis=True, tags=["g"])
 
     # Declare a linear operator.
-    A = reg.declare_oper(operator.LinearOperator, "A", M=1)
+    A = operator.LinearOperator(is_basis=True, tags=["A"], M=1)
 
     # Declare the initial points.
     x_0 = pep_builder.add_init_point("x_0")
@@ -404,8 +405,8 @@ def test_drs_e2e():
     N_range = 2
 
     # Declare two convex functions.
-    f = reg.declare_func(function.ConvexFunction, "f")
-    g = reg.declare_func(function.ConvexFunction, "g")
+    f = function.ConvexFunction(is_basis=True, tags=["f"])
+    g = function.ConvexFunction(is_basis=True, tags=["g"])
 
     # Declare the initial points.
     x_0 = pep_builder.add_init_point("x_0")
@@ -492,9 +493,9 @@ def test_dys_e2e():
     N_range = 2
 
     # Declare two convex functions.
-    f = reg.declare_func(function.ConvexFunction, "f")
-    g = reg.declare_func(function.ConvexFunction, "g")
-    h = reg.declare_func(function.SmoothConvexFunction, "h", L=L)
+    f = function.ConvexFunction(is_basis=True, tags=["f"])
+    g = function.ConvexFunction(is_basis=True, tags=["g"])
+    h = function.SmoothConvexFunction(is_basis=True, tags=["h"], L=1)
 
     # Declare the initial points.
     x_0 = pep_builder.add_init_point("x_0")
