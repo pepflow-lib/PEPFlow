@@ -52,6 +52,7 @@ from .function import ConvexFunction as ConvexFunction
 from .function import Triplet as Triplet
 from .operator import Operator as Operator
 from .operator import LinearOperator as LinearOperator
+from .operator import MonotoneOperator as MonotoneOperator
 from .operator import Duplet as Duplet
 from .parameter import Parameter as Parameter
 from .scalar import EvaluatedScalar as EvaluatedScalar
