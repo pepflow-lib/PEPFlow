@@ -23,7 +23,7 @@ import pytest
 
 from pepflow import pep_context as pc
 from pepflow import registry as reg
-from pepflow.function import SmoothConvexFunction
+from pepflow.function import ConvexFunction, SmoothConvexFunction
 from pepflow.operator import Operator
 from pepflow.scalar import Scalar
 from pepflow.vector import Vector
@@ -212,8 +212,8 @@ def test_order_of_point_oper(pep_context: pc.PEPContext):
 
 
 def test_get_func_or_oper_by_tag(pep_context: pc.PEPContext) -> None:
-    f = reg.declare_func(SmoothConvexFunction, "f", L=1)
-    g = reg.declare_func(SmoothConvexFunction, "g", L=1)
+    f = ConvexFunction(is_basis=True, tags=["f"])
+    g = ConvexFunction(is_basis=True, tags=["g"])
     A = Operator(
         is_basis=True,
         tags=["A"],
