@@ -22,9 +22,12 @@ from typing import Iterator
 import numpy as np
 import pytest
 
+from pepflow import expression_manager as exm
+from pepflow import operator as op
 from pepflow import pep as pep
 from pepflow import pep_context as pc
 from pepflow import registry as reg
+from pepflow import scalar as sc
 from pepflow import solver as ps
 from pepflow import vector as pp
 
@@ -42,7 +45,7 @@ def pep_context() -> Iterator[pc.PEPContext]:
 
 def test_cvx_solver_case1(pep_context: pc.PEPContext):
     p1 = pp.Vector(is_basis=True, tags=["p1"])
-    s1 = pp.Scalar(is_basis=True, tags=["s1"])
+    s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -(1 + p1 * p1)
     constraints = [(p1 * p1).gt(1, name="x^2 >= 1"), s1.gt(0, name="s1 > 0")]
 
@@ -57,13 +60,16 @@ def test_cvx_solver_case1(pep_context: pc.PEPContext):
     result = problem.solve()
     assert abs(-result - 2) < 1e-6
 
-    assert np.isclose(solver.dual_var_manager.dual_value("x^2 >= 1"), 1)
+    dual_value_1 = solver.dual_var_manager.dual_value("x^2 >= 1")
+    assert dual_value_1 is not None
+    assert np.isclose(dual_value_1, 1)
+
     assert solver.dual_var_manager.dual_value("s1 > 0") == 0
 
 
 def test_cvx_solver_case2(pep_context: pc.PEPContext):
     p1 = pp.Vector(is_basis=True, tags=["p1"])
-    s1 = pp.Scalar(is_basis=True, tags=["s1"])
+    s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -p1 * p1 + 2
     constraints = [(p1 * p1).lt(1, name="x^2 <= 1"), s1.gt(0, name="s1 > 0")]
 
@@ -78,13 +84,13 @@ def test_cvx_solver_case2(pep_context: pc.PEPContext):
     result = problem.solve()
     assert abs(-result + 2) < 1e-6
 
-    assert np.isclose(solver.dual_var_manager.dual_value("x^2 <= 1"), 0)
+    assert solver.dual_var_manager.dual_value("x^2 <= 1") == 0
     assert solver.dual_var_manager.dual_value("s1 > 0") == 0
 
 
 def test_cvx_dual_solver_case1(pep_context: pc.PEPContext):
     p1 = pp.Vector(is_basis=True, tags=["p1"])
-    s1 = pp.Scalar(is_basis=True, tags=["s1"])
+    s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -(1 + p1 * p1)
     constraints = [(p1 * p1).gt(1, name="x^2 >= 1"), s1.gt(0, name="s1 > 0")]
 
@@ -97,13 +103,19 @@ def test_cvx_dual_solver_case1(pep_context: pc.PEPContext):
     result = problem.solve()
     assert abs(-result - 2) < 1e-6
 
-    assert np.isclose(dual_solver.dual_var_manager.dual_value("x^2 >= 1"), 1)
-    assert np.isclose(dual_solver.dual_var_manager.dual_value("s1 > 0"), 0)
+    dual_value_1 = dual_solver.dual_var_manager.dual_value("x^2 >= 1")
+    dual_value_2 = dual_solver.dual_var_manager.dual_value("s1 > 0")
+
+    assert dual_value_1 is not None
+    assert np.isclose(dual_value_1, 1)
+
+    assert dual_value_2 is not None
+    assert np.isclose(dual_value_2, 0)
 
 
 def test_cvx_dual_solver_case2(pep_context: pc.PEPContext):
     p1 = pp.Vector(is_basis=True, tags=["p1"])
-    s1 = pp.Scalar(is_basis=True, tags=["s1"])
+    s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -p1 * p1 + 2
     constraints = [(p1 * p1).lt(1, name="x^2 <= 1"), s1.gt(0, name="s1 > 0")]
 
@@ -118,5 +130,73 @@ def test_cvx_dual_solver_case2(pep_context: pc.PEPContext):
     result = problem.solve()
     assert abs(-result + 2) < 1e-6
 
-    assert np.isclose(dual_solver.dual_var_manager.dual_value("x^2 <= 1"), 0, atol=1e-7)
-    assert np.isclose(dual_solver.dual_var_manager.dual_value("s1 > 0"), 0, atol=1e-7)
+    dual_value_1 = dual_solver.dual_var_manager.dual_value("x^2 <= 1")
+    assert dual_value_1 is not None
+    assert np.isclose(dual_value_1, 0, atol=1e-7)
+
+    dual_value_2 = dual_solver.dual_var_manager.dual_value("s1 > 0")
+    assert dual_value_2 is not None
+    assert np.isclose(dual_value_2, 0, atol=1e-7)
+
+
+def test_zero_basis_scalars(pep_context: pc.PEPContext):
+    p1 = pp.Vector(is_basis=True, tags=["p1"])
+
+    A = op.LinearOperator(is_basis=True, tags=["A"], M=1)
+
+    obj = A(p1) * A(p1)
+
+    constraints = []
+
+    # Since we only defined a vector, _num_basis_scalars is zero
+    em = exm.ExpressionManager(pep_context)
+    assert np.isclose(em._num_basis_scalars, 0)
+
+    solver = ps.CVXPrimalSolver(
+        perf_metric=-obj,
+        constraints=constraints,
+        context=pep_context,
+    )
+
+    problem = solver.build_problem()
+    result = problem.solve()
+    assert abs(result) < 1e-6
+
+    dual_solver = ps.CVXDualSolver(
+        perf_metric=-obj,
+        constraints=constraints,
+        context=pep_context,
+    )
+
+    problem = dual_solver.build_problem()
+    result = problem.solve()
+    assert abs(result) < 1e-6
+
+
+def test_zero_basis_vectors(pep_context: pc.PEPContext):
+    s1 = sc.Scalar(is_basis=True, tags=["s1"])
+    constraints = [s1.lt(1, name="s1 <= 1"), s1.gt(-1, name="s1 >= -1")]
+
+    # Since we only defined a scalar, _num_basis_vectors is zero
+    em = exm.ExpressionManager(pep_context)
+    assert np.isclose(em._num_basis_vectors, 0)
+
+    solver = ps.CVXPrimalSolver(
+        perf_metric=s1,
+        constraints=constraints,
+        context=pep_context,
+    )
+
+    problem = solver.build_problem()
+    result = problem.solve()
+    assert abs(result - 1) < 1e-6
+
+    dual_solver = ps.CVXDualSolver(
+        perf_metric=s1,
+        constraints=constraints,
+        context=pep_context,
+    )
+
+    problem = dual_solver.build_problem()
+    result = problem.solve()
+    assert abs(result - 1) < 1e-6

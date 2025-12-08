@@ -37,13 +37,17 @@ warnings.filterwarnings(
 
 
 def evaled_scalar_to_cvx_express(
-    eval_scalar: sc.EvaluatedScalar, vec_var: cvxpy.Variable, matrix_var: cvxpy.Variable
+    eval_scalar: sc.EvaluatedScalar,
+    vec_var: cvxpy.Variable | np.ndarray,
+    matrix_var: cvxpy.Variable | np.ndarray,
 ) -> cvxpy.Expression:
-    return (
-        vec_var @ eval_scalar.func_coords
-        + cvxpy.trace(matrix_var @ eval_scalar.inner_prod_coords)
-        + eval_scalar.offset
-    )
+    if isinstance(
+        matrix_var, np.ndarray
+    ):  # Exception handling for the case where inner_prod_coords is zero-dimensional
+        cvx_inner = 0
+    else:
+        cvx_inner = cvxpy.trace(matrix_var @ eval_scalar.inner_prod_coords)
+    return vec_var @ eval_scalar.func_coords + cvx_inner + eval_scalar.offset
 
 
 class PrimalPEPDualVarManager:
@@ -164,10 +168,16 @@ class CVXPrimalSolver:
         self, resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None
     ) -> cvxpy.Problem:
         em = exm.ExpressionManager(self.context, resolve_parameters=resolve_parameters)
-        f_var = cvxpy.Variable(em._num_basis_scalars)
-        g_var = cvxpy.Variable(
-            (em._num_basis_vectors, em._num_basis_vectors), symmetric=True
-        )
+        if em._num_basis_scalars == 0:
+            f_var = np.zeros(0)
+        else:
+            f_var = cvxpy.Variable(em._num_basis_scalars)
+        if em._num_basis_vectors == 0:
+            g_var = np.zeros((0, 0))
+        else:
+            g_var = cvxpy.Variable(
+                (em._num_basis_vectors, em._num_basis_vectors), symmetric=True
+            )
 
         # Evaluate all points and scalars in advance to store it in cache.
         for vector in self.context.vectors:
@@ -176,7 +186,8 @@ class CVXPrimalSolver:
             em.eval_scalar(scalar)
 
         self.dual_var_manager.clear()
-        self.dual_var_manager.add_constraint(constants.PSD_CONSTRAINT, g_var >> 0)
+        if em._num_basis_vectors > 0:
+            self.dual_var_manager.add_constraint(constants.PSD_CONSTRAINT, g_var >> 0)
         for c in self.constraints:
             if isinstance(c, ctr.ScalarConstraint):
                 exp = evaled_scalar_to_cvx_express(
@@ -274,8 +285,9 @@ class CVXDualSolver:
         lambd_constraints = []
         em = exm.ExpressionManager(self.context, resolve_parameters=resolve_parameters)
         # The one corresponding to G >= 0
-        S = cvxpy.Variable((em._num_basis_vectors, em._num_basis_vectors), PSD=True)
-        self.dual_var_manager.add_variable(constants.PSD_CONSTRAINT, S)
+        if em._num_basis_vectors > 0:
+            S = cvxpy.Variable((em._num_basis_vectors, em._num_basis_vectors), PSD=True)
+            self.dual_var_manager.add_variable(constants.PSD_CONSTRAINT, S)
         evaled_perf_metric_scalar = em.eval_scalar(self.perf_metric)
 
         extra_constraints = []
@@ -302,8 +314,10 @@ class CVXDualSolver:
                     raise RuntimeError(
                         f"Unknown comparator in constraint {c.name}: get {c.cmp=}"
                     )
-                G_coef_mat += sign * lambd * evaled_scalar.inner_prod_coords
-                F_coef_vec += sign * lambd * evaled_scalar.func_coords
+                if em._num_basis_vectors > 0:
+                    G_coef_mat += sign * lambd * evaled_scalar.inner_prod_coords
+                if em._num_basis_scalars > 0:
+                    F_coef_vec += sign * lambd * evaled_scalar.func_coords
                 obj += sign * lambd * evaled_scalar.offset
 
                 # We can add extra constraints to directly manipulate the dual variables in dual PEP.
@@ -366,8 +380,10 @@ class CVXDualSolver:
                     raise RuntimeError(
                         f"Unknown comparator in constraint {c.name}: get {c.cmp=}"
                     )
-                G_coef_mat_PSD += sign * cvxpy.bmat(c_G_mat)
-                F_coef_vec_PSD += sign * cvxpy.hstack(c_F_mat)
+                if em._num_basis_vectors > 0:
+                    G_coef_mat_PSD += sign * cvxpy.bmat(c_G_mat)
+                if em._num_basis_scalars > 0:
+                    F_coef_vec_PSD += sign * cvxpy.hstack(c_F_mat)
                 obj += sign * c_offset
 
                 # We can add extra constraints to directly manipulate the dual variables in dual PEP.
@@ -384,16 +400,18 @@ class CVXDualSolver:
                             f"get {cmp=}"
                         )
 
-        dual_constraints.append(
-            F_coef_vec + F_coef_vec_PSD + evaled_perf_metric_scalar.func_coords == 0
-        )
-        dual_constraints.append(
-            S
-            + evaled_perf_metric_scalar.inner_prod_coords
-            + G_coef_mat
-            + G_coef_mat_PSD
-            == 0
-        )
+        if em._num_basis_scalars > 0:
+            dual_constraints.append(
+                F_coef_vec + F_coef_vec_PSD + evaled_perf_metric_scalar.func_coords == 0
+            )
+        if em._num_basis_vectors > 0:
+            dual_constraints.append(
+                S
+                + evaled_perf_metric_scalar.inner_prod_coords
+                + G_coef_mat
+                + G_coef_mat_PSD
+                == 0
+            )
 
         return cvxpy.Problem(
             cvxpy.Minimize(obj),
