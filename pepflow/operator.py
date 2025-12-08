@@ -509,7 +509,7 @@ class LinearOperator(Operator):
     def __hash__(self):
         return super().__hash__()
 
-    def add_tag(self, tag: str) -> None:
+    def add_tag(self, tag: str) -> Operator:
         """Add a new tag for this :class:`Operator` object.
 
         Args:
@@ -517,6 +517,7 @@ class LinearOperator(Operator):
         """
         self.tags.append(tag)
         self.T.tags.append(f"{tag}.T")
+        return self
 
     def equality_interpolability_constraints(
         self, duplet_i, duplet_j
@@ -550,7 +551,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self]) > 0:
             X = [d.point for d in pep_context.oper_to_duplets[self]]
             Y = [d.output for d in pep_context.oper_to_duplets[self]]
-            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(
+            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(  # ty: ignore
                 Y, Y
             )
 
@@ -567,7 +568,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self.T]) > 0:
             U = [d.point for d in pep_context.oper_to_duplets[self.T]]
             V = [d.output for d in pep_context.oper_to_duplets[self.T]]
-            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(
+            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(  # ty: ignore
                 V, V
             )
 
