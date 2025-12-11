@@ -209,7 +209,7 @@ class Function:
         """When implemented, structure the types of constraints as a list of related
         scalar constraints or individual PSDConstraints."""
         raise NotImplementedError(
-            "This method should be implemented in the children class."
+            "This method should be implemented in the children of :class:`Function`."
         )
 
     def get_interpolation_constraints(
