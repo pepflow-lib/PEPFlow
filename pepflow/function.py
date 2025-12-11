@@ -515,6 +515,71 @@ class Function:
             return NotImplemented
         return self.uid == other.uid
 
+    def prox(
+        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> vt.Vector:
+        """Apply the proximal operator on the input :math:`x`.
+
+        Define the proximal operator as
+
+        .. math:: \\text{prox}_{\\gamma f}(x) := \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\}.
+
+        This function returns the output :class:`Vector` :math:`u` found from
+        applying the proximal operator with respect to some :class:`Function` :math:`f`
+        on the input :class:`Vector` :math:`x` with stepsize :math:`\\gamma`. Consider
+        the following equivalence relationship:
+
+        .. math::
+            :nowrap:
+
+            \\begin{eqnarray}
+                \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\} \\Longleftrightarrow x - u \\in \\gamma \\partial f(u) \\Longleftrightarrow u & = & x - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
+            \\end{eqnarray}
+
+        Args:
+            x (:class:`Vector`): The input point.
+            stepsize (numbers.Number | :class:`Parameter`): The stepsize.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the proximal operator applied on `x`.
+
+        Note:
+            For children of :class:`Function` for which the proximal operator is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = f"prox_{{{stepsize}*{self.__repr__()}}}({x.__repr__()})"
+        grad = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
+            ),
+        )
+        func_val = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+
+        u = x - stepsize * grad
+        u.math_expr.expr_str = u_expr
+
+        if tag:
+            u.add_tag(tag)
+            grad.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
+            func_val.add_tag(f"{self.__repr__()}({tag})")
+
+        new_triplet = Triplet(
+            u,
+            func_val,
+            grad,
+            self,
+            name=utils.triplet_tag(u, func_val, grad),
+        )
+        self.add_triplet_to_func(new_triplet)
+        return u
+
 
 @attrs.mutable(kw_only=True)
 class ConvexFunction(Function):
@@ -614,57 +679,6 @@ class ConvexFunction(Function):
         x1, f1, _ = pep_context.get_triplet_by_point_tag(p1, func=self).expand()
         x2, f2, g2 = pep_context.get_triplet_by_point_tag(p2, func=self).expand()
         return f2 - f1 + g2 * (x1 - x2)
-
-    def proximal_step(self, x_0: vt.Vector, stepsize: numbers.Number) -> vt.Vector:
-        """Perform a proximal step. 
-        
-        Define the proximal operator as
-    
-        .. math:: \\text{prox}_{\\gamma f}(x_0) := \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} \\|x - x_0\\|^2 \\right\\}.
-
-        This function performs a proximal step with respect to some
-        :class:`Function` :math:`f` on the :class:`Vector` :math:`x_0`
-        with stepsize :math:`\\gamma`:
-
-        .. math::
-            :nowrap:
-
-            \\begin{eqnarray}
-                x := \\text{prox}_{\\gamma f}(x_0) & := & \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} \\|x - x_0\\|^2 \\right\\}, \\\\
-                & \\Updownarrow & \\\\
-                0 & = & \\gamma \\partial f(x) + x - x_0,\\\\
-                & \\Updownarrow & \\\\
-                x & = & x_0 - \\gamma \\widetilde{\\nabla} f(x) \\text{ where } \\widetilde{\\nabla} f(x)\\in\\partial f(x).
-            \\end{eqnarray}
-
-        Args:
-            x_0 (:class:`Vector`): The initial point.
-            stepsize (int | float): The stepsize.
-        """
-
-        x_tag = f"prox_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
-        grad = vt.Vector(
-            is_basis=True,
-            math_expr=me.MathExpr(
-                expr_str=utils.grad_tag(f"{self.__repr__()}({x_tag})")
-            ),
-        )
-        func_val = sc.Scalar(
-            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({x_tag})")
-        )
-
-        x = x_0 - stepsize * grad
-        x.math_expr.expr_str = x_tag
-
-        new_triplet = Triplet(
-            x,
-            func_val,
-            grad,
-            self,
-            name=utils.triplet_tag(x, func_val, grad),
-        )
-        self.add_triplet_to_func(new_triplet)
-        return x
 
 
 @attrs.mutable(kw_only=True, repr=False)

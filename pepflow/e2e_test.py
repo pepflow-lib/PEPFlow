@@ -112,8 +112,7 @@ def test_pgm_e2e():
     for i in range(N):
         y = x - eta * f.grad(x)
         y.add_tag(f"y_{i + 1}")
-        x = g.proximal_step(y, eta)
-        x.add_tag(f"x_{i + 1}")
+        x = g.prox(y, eta, tag=f"x_{i + 1}")
 
     # To achieve the sweep, we can just update the performance_metric.
     for i in range(1, N + 1):
@@ -353,11 +352,10 @@ def test_pdhg_e2e():
     for i in range(N_range):
         x_old = x
 
-        x = f.proximal_step(x - alpha * A.T(u), alpha)
-        x.add_tag(f"x_{i + 1}")
+        x = f.prox(x - alpha * A.T(u), alpha, tag=f"x_{i + 1}")
 
         t = u + 1 / alpha * (2 * A(x) - A(x_old))
-        p = g.proximal_step(alpha * t, alpha)
+        p = g.prox(alpha * t, alpha, tag=f"p_{i + 1}")
         u = t - 1 / alpha * p
         u.add_tag(f"u_{i + 1}")
 
@@ -440,11 +438,10 @@ def test_drs_e2e():
     for i in range(N_range):
         x_old = x
 
-        x = f.proximal_step(x - alpha * u, alpha)
-        x.add_tag(f"x_{i + 1}")
+        x = f.prox(x - alpha * u, alpha, tag=f"x_{i + 1}")
 
         t = u + 1 / alpha * (2 * x - x_old)
-        p = g.proximal_step(alpha * t, alpha)
+        p = g.prox(alpha * t, alpha, tag=f"p_{i + 1}")
         u = t - 1 / alpha * p
         u.add_tag(f"u_{i + 1}")
 
@@ -534,11 +531,11 @@ def test_dys_e2e():
         u_old = u
 
         t = u + 1 / alpha * x
-        p = g.proximal_step(alpha * t, alpha).add_tag(f"p_{i + 1}")
+        p = g.prox(alpha * t, alpha, tag=f"p_{i + 1}")
         u = (t - 1 / alpha * p).add_tag(f"u_{i + 1}")
-        x = f.proximal_step(
-            x - alpha * (2 * u - u_old) - alpha * h.grad(p), alpha
-        ).add_tag(f"x_{i + 1}")
+        x = f.prox(
+            x - alpha * (2 * u - u_old) - alpha * h.grad(p), alpha, tag=f"x_{i + 1}"
+        )
 
         x_sum = x_sum + x
         u_sum = u_sum + u
