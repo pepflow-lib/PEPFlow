@@ -26,4 +26,5 @@
 ```{eval-rst} 
 .. autoclass:: pepflow.SmoothConvexFunction
     :members:
+    :show-inheritance:
 ```
