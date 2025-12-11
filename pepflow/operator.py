@@ -19,6 +19,8 @@
 
 from __future__ import annotations
 
+import itertools
+import numbers
 import uuid
 from functools import cached_property
 from typing import TYPE_CHECKING
@@ -55,6 +57,9 @@ class Duplet:
     oper: Operator
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
+    def expand(self) -> tuple[vt.Vector, vt.Vector]:
+        return self.point, self.output
 
 
 @attrs.frozen
@@ -192,7 +197,7 @@ class Operator:
         """When implemented, structure the types of constraints as a list of related
         scalar constraints or individual PSDConstraints."""
         raise NotImplementedError(
-            "This method should be implemented in the children class."
+            "This method should be implemented in the children of :class:`Operator`."
         )
 
     def get_interpolation_constraints(
@@ -465,6 +470,54 @@ class Operator:
             return NotImplemented
         return self.uid == other.uid
 
+    def resolvent(
+        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> vt.Vector:
+        """Apply the resolvent of this operator on the input :math:`x`.
+
+        Define the resolvent operator as
+
+        .. math:: J_{\\gamma A} := (I+\\gamma A)^{-1},
+
+        where :math:`I` is the identity operator.
+
+        This function returns the output :class:`Vector` :math:`u` found from
+        applying the resolvent of this :class:`Operator` :math:`A` on the input
+        :class:`Vector` :math:`x` with stepsize :math:`\\gamma`.
+
+        Args:
+            x (:class:`Vector`): The input point.
+            stepsize (numbers.Number | :class:`Parameter`): The stepsize.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the resolvent applied on `x`.
+
+        Note:
+            For children of :class:`Operator` for which the resolvent is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+        u_expr = f"J_{{{stepsize}*{self.tag}}}({x.tag})"
+        Au = vt.Vector(
+            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.tag}({u_expr})")
+        )
+        u = x - stepsize * Au
+        u.math_expr.expr_str = u_expr
+
+        if tag:
+            u.add_tag(tag)
+            Au.add_tag(utils.grad_tag(f"{self.tag}({tag})"))
+
+        new_duplet = Duplet(
+            u,
+            Au,
+            self,
+            name=f"{u.tag}_{Au.tag}",
+        )
+        self.add_duplet_to_oper(new_duplet)
+        return u
+
 
 @attrs.mutable(kw_only=True)
 class LinearOperatorTranspose(Operator):
@@ -482,6 +535,17 @@ class LinearOperatorTranspose(Operator):
 
     def __hash__(self):
         return super().__hash__()
+
+    def resolvent(
+        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> vt.Vector:
+        """
+        Note:
+            The resolvent is not implemented for :class:`LinearOperatorTranspose`.
+        """
+        raise NotImplementedError(
+            "The resolvent is not implemented for the transpose of linear operators."
+        )
 
 
 @attrs.mutable(kw_only=True)
@@ -590,3 +654,108 @@ class LinearOperator(Operator):
         return LinearOperatorTranspose(is_basis=True, tags=[f"{self.tag}.T"])
 
     # TODO: How should we make interpolate_ineq()? There are two PSD constraints and a set of equality constraints.
+
+    def resolvent(
+        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> vt.Vector:
+        """
+        Note:
+            The resolvent is not implemented for :class:`LinearOperator`.
+        """
+        raise NotImplementedError(
+            "The resolvent is not implemented for linear operators."
+        )
+
+
+@attrs.mutable(kw_only=True)
+class MonotoneOperator(Operator):
+    """
+    The :class:`MonotoneOperator` class represents a monotone operator.
+
+    The :class:`MonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`MonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> ctx = pf.PEPContext("example").set_as_current()
+        >>> pep_builder = pf.PEPBuilder()
+        >>> A = pf.MonotoneOperator(is_basis=True, tags=["A"])
+    """
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> MonotoneOperator:
+        """Add a new tag for this :class:`MonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def inequality_interpolability_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            -(duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).le(
+            0,
+            name=f"{self.tag}:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+        scal_constraint = []
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., -<A x_1 - A x_0, x_1 - x_0> <= 0
+        # is the same as -<A x_0 - A x_1, x_0 - x_1> <= 0.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint.append(self.inequality_interpolability_constraints(i, j))
+        cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint)
+
+        return cd
+
+    def interp_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+    ) -> sc.Scalar:
+        """Generate the interpolation inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The interpolation inequality between two points :math:`p_1, p_2` for a
+        monotone operator :math:`A` is
+
+        .. math:: - \\langle A(p_1) - A(p_2), p_1 - p_2 \\rangle \\leq 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+        return -(x1 - x2) * (u1 - u2)

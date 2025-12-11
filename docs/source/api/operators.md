@@ -21,3 +21,10 @@
     :show-inheritance:
 ```
 
+## Monotone Operator
+
+```{eval-rst} 
+.. autoclass:: pepflow.MonotoneOperator
+    :members:
+    :show-inheritance:
+```
