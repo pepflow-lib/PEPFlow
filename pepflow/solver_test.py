@@ -22,6 +22,7 @@ from typing import Iterator
 import numpy as np
 import pytest
 
+from pepflow import constraint as ct
 from pepflow import expression_manager as exm
 from pepflow import operator as op
 from pepflow import pep as pep
@@ -29,7 +30,8 @@ from pepflow import pep_context as pc
 from pepflow import registry as reg
 from pepflow import scalar as sc
 from pepflow import solver as ps
-from pepflow import vector as pp
+from pepflow import utils
+from pepflow import vector as vt
 
 
 @pytest.fixture
@@ -44,7 +46,7 @@ def pep_context() -> Iterator[pc.PEPContext]:
 
 
 def test_cvx_solver_case1(pep_context: pc.PEPContext):
-    p1 = pp.Vector(is_basis=True, tags=["p1"])
+    p1 = vt.Vector(is_basis=True, tags=["p1"])
     s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -(1 + p1 * p1)
     constraints = [(p1 * p1).gt(1, name="x^2 >= 1"), s1.gt(0, name="s1 > 0")]
@@ -68,7 +70,7 @@ def test_cvx_solver_case1(pep_context: pc.PEPContext):
 
 
 def test_cvx_solver_case2(pep_context: pc.PEPContext):
-    p1 = pp.Vector(is_basis=True, tags=["p1"])
+    p1 = vt.Vector(is_basis=True, tags=["p1"])
     s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -p1 * p1 + 2
     constraints = [(p1 * p1).lt(1, name="x^2 <= 1"), s1.gt(0, name="s1 > 0")]
@@ -89,7 +91,7 @@ def test_cvx_solver_case2(pep_context: pc.PEPContext):
 
 
 def test_cvx_dual_solver_case1(pep_context: pc.PEPContext):
-    p1 = pp.Vector(is_basis=True, tags=["p1"])
+    p1 = vt.Vector(is_basis=True, tags=["p1"])
     s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -(1 + p1 * p1)
     constraints = [(p1 * p1).gt(1, name="x^2 >= 1"), s1.gt(0, name="s1 > 0")]
@@ -114,7 +116,7 @@ def test_cvx_dual_solver_case1(pep_context: pc.PEPContext):
 
 
 def test_cvx_dual_solver_case2(pep_context: pc.PEPContext):
-    p1 = pp.Vector(is_basis=True, tags=["p1"])
+    p1 = vt.Vector(is_basis=True, tags=["p1"])
     s1 = sc.Scalar(is_basis=True, tags=["s1"])
     s2 = -p1 * p1 + 2
     constraints = [(p1 * p1).lt(1, name="x^2 <= 1"), s1.gt(0, name="s1 > 0")]
@@ -140,13 +142,15 @@ def test_cvx_dual_solver_case2(pep_context: pc.PEPContext):
 
 
 def test_zero_basis_scalars(pep_context: pc.PEPContext):
-    p1 = pp.Vector(is_basis=True, tags=["p1"])
+    p1 = vt.Vector(is_basis=True, tags=["p1"])
 
     A = op.LinearOperator(is_basis=True, tags=["A"], M=1)
 
+    B = p1 * np.full(shape=(5, 5), fill_value=vt.Vector.zero())
+
     obj = A(p1) * A(p1)
 
-    constraints = []
+    constraints = [ct.PSDConstraint(B, 0, utils.Comparator.EQ, "PSDConstraint")]
 
     # Since we only defined a vector, _num_basis_scalars is zero
     em = exm.ExpressionManager(pep_context)
@@ -175,7 +179,14 @@ def test_zero_basis_scalars(pep_context: pc.PEPContext):
 
 def test_zero_basis_vectors(pep_context: pc.PEPContext):
     s1 = sc.Scalar(is_basis=True, tags=["s1"])
-    constraints = [s1.lt(1, name="s1 <= 1"), s1.gt(-1, name="s1 >= -1")]
+
+    B = np.full(shape=(5, 5), fill_value=sc.Scalar.zero())
+
+    constraints = [
+        s1.lt(1, name="s1 <= 1"),
+        s1.gt(-1, name="s1 >= -1"),
+        ct.PSDConstraint(B, 0, utils.Comparator.EQ, "PSDConstraint"),
+    ]
 
     # Since we only defined a scalar, _num_basis_vectors is zero
     em = exm.ExpressionManager(pep_context)

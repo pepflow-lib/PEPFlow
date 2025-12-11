@@ -41,9 +41,10 @@ def evaled_scalar_to_cvx_express(
     vec_var: cvxpy.Variable | np.ndarray,
     matrix_var: cvxpy.Variable | np.ndarray,
 ) -> cvxpy.Expression:
-    if isinstance(
-        matrix_var, np.ndarray
-    ):  # Exception handling for the case where inner_prod_coords is zero-dimensional
+    # Matrix multiplication between two np.zeros(0) returns np.float(64).
+    # Matrix multiplication between two np.zeros((0,0)) returns np.zeros(0).
+    # Exception handling for the case where inner_prod_coords is zero-dimensional
+    if isinstance(matrix_var, np.ndarray):
         cvx_inner = 0
     else:
         cvx_inner = cvxpy.trace(matrix_var @ eval_scalar.inner_prod_coords)
@@ -284,7 +285,7 @@ class CVXDualSolver:
         dual_constraints = []
         lambd_constraints = []
         em = exm.ExpressionManager(self.context, resolve_parameters=resolve_parameters)
-        # The one corresponding to G >= 0
+        # The dual variable corresponding to G >= 0
         if em._num_basis_vectors > 0:
             S = cvxpy.Variable((em._num_basis_vectors, em._num_basis_vectors), PSD=True)
             self.dual_var_manager.add_variable(constants.PSD_CONSTRAINT, S)
