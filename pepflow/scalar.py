@@ -66,17 +66,17 @@ class EvaluatedScalar:
     representation as a unit vector. The concrete representations of
     linear combinations of abstract basis :class:`Scalar` objects
     are linear combinations of the unit vectors. This information is
-    stored in the `vector` attribute.
+    stored in the `func_coords` attribute.
 
     Abstract :class:`Scalar` objects can be formed through taking the
     inner product of two abstract :class:`Vector` objects. The
     concrete representation of an abstract :class:`Scalar` object formed
     this way is the outer product of the concrete representations of the
     two abstract :class:`Vector` objects, i.e., a matrix. This information
-    is stored in the `matrix` attribute.
+    is stored in the `inner_prod_coords` attribute.
 
     Abstract :class:`Scalar` objects can be added or subtracted with
-    numeric data types. This information is stored in the `constant`
+    numeric data types. This information is stored in the `offset`
     attribute.
 
     :class:`EvaluatedScalar` objects can be constructed as linear combinations
@@ -85,11 +85,12 @@ class EvaluatedScalar:
     can form a new :class:`EvaluatedScalar` object: `a*u+b*v`.
 
     Attributes:
-        vector (np.ndarray): The vector component of the concrete
+        func_coords (np.ndarray): The vector component of the concrete
             representation of the abstract :class:`Scalar`.
-        matrix (np.ndarray): The matrix component of the concrete
-            representation of the abstract :class:`Scalar`.
-        constant (float): The constant component of the concrete
+        inner_prod_coords (np.ndarray): The matrix component of the concrete
+            representation of the abstract :class:`Scalar`. An alias is
+            `matrix`.
+        offset (float): The constant component of the concrete
             representation of the abstract :class:`Scalar`.
     """
 
@@ -99,7 +100,7 @@ class EvaluatedScalar:
 
     @property
     def matrix(self) -> np.ndarray:
-        # A short alias for inner_prod_coords.
+        """A short alias for inner_prod_coords."""
         return self.inner_prod_coords
 
     @classmethod
@@ -214,7 +215,7 @@ class EvaluatedScalar:
 class Scalar:
     """
     A :class:`Scalar` object represents linear combination of functions values,
-    inner products of, and constant scalar values.
+    inner products of :class:`Point` objects, and constant scalar values.
 
     :class:`Scalar` objects can be constructed as linear combinations of
     other :class:`Scalar` objects. Let `a` and `b` be some numeric data type.
@@ -226,13 +227,19 @@ class Scalar:
             combination of other scalars. False otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Vector` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
 
     Example:
         >>> import pepflow as pf
         >>> ctx = pf.PEPContext("cts").set_as_current()
         >>> s1 = pf.Scalar(is_basis=True, tags=["s1"])
+
+    Note:
+        Basis :class:`Scalar` objects should be defined using the constructor
+        as shown in the example but composite :class:`Scalar` objects should
+        be created using operations on :class:`Scalar` objects.
     """
 
     # If true, the scalar is the basis for the evaluations of F
@@ -268,7 +275,12 @@ class Scalar:
 
     @staticmethod
     def zero() -> Scalar:
-        """A function that returns :class:`Scalar` object that corresponds to zero."""
+        """A static method that returns a :class:`Scalar` object that
+        corresponds to zero.
+
+        Returns:
+            :class:`Scalar`: A zero :class:`Scalar` object.
+        """
         return Scalar(
             is_basis=False,
             eval_expression=ZeroScalar(),
@@ -425,80 +437,80 @@ class Scalar:
 
     def le(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` <= `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` <= `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.LE, name=name)
 
     def lt(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` < `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` < `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.LE, name=name)
 
     def ge(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` >= `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` >= `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.GE, name=name)
 
     def gt(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` > `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` > `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.GE, name=name)
 
     def eq(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` = `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` = `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.EQ, name=name)
@@ -520,8 +532,12 @@ class Scalar:
             ctx (:class:`PEPContext` | None): The :class:`PEPContext` object
                 we consider. `None` if we consider the current global
                 :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             :class:`EvaluatedScalar`: The concrete representation of
@@ -558,14 +574,18 @@ class Scalar:
             ctx (:class:`PEPContext`): The :class:`PEPContext` object
                 whose basis :class:`Vector` and :class:`Scalar` objects we
                 consider. `None` if we consider the current global
-                `PEPContext` object.
+                :class:`PEPContext` object.
             greedy_square (bool): If `greedy_square` is true, the function will
                 try to return :math:`\\|a-b\\|^2` whenever possible. If not,
                 the function will return
                 :math:`\\|a\\|^2 - 2 * \\langle a, b \\rangle + \\|b\\|^2` instead.
                 `True` by default.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of this :class:`Scalar` object in terms of

@@ -8,6 +8,8 @@
     :exclude-members: composition, uid
 ```
 
+## Duplet
+
 ```{eval-rst}  
 .. autoclass:: pepflow.Duplet
     :members:

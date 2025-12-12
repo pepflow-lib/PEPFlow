@@ -40,7 +40,9 @@ if TYPE_CHECKING:
     from pepflow.function import Function
     from pepflow.operator import Operator
     from pepflow.pep import PEPBuilder
+    from pepflow.pep_context import PEPContext
     from pepflow.pep_result import PEPResult
+    from pepflow.utils import NUMERICAL_TYPE
 
 
 plotly.io.renderers.default = "colab+vscode"
@@ -120,8 +122,8 @@ def get_plot_data_from_func_or_oper_result_and_builder(
 
 def launch_primal_interactive(
     pep_builder: PEPBuilder,
-    context: pc.PEPContext,
-    resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+    context: PEPContext,
+    resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
     port: int = 8050,
     jupyter_mode: str | None = "external",
 ):
@@ -132,8 +134,8 @@ def launch_primal_interactive(
             associated Primal PEP problem we consider.
         context (:class:`PEPContext`): The :class:`PEPContext` object associated
             with the Primal PEP problem.
-        resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-            maps the name of parameters to the numerical values.
+        resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A dictionary
+            that maps the name of parameters to the numerical values.
         port (int): The port where we host the Primal PEP Interactive Dashboard.
         jupyter_mode (str | None): A string to specify how to launch the PEP
             Interactive Dashboard. Default is "external". Other options are

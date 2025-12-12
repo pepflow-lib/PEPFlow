@@ -145,11 +145,11 @@ def pprint_labeled_matrix(
     pairs to values. Optionally, the printed values can be formatted to a given precision.
 
     Args:
-        mat (np.ndarray | types.FunctionType | pep_result.MatrixWithNames): A matrix,
+        mat (np.ndarray | types.FunctionType | :class:`MatrixWithNames`): A matrix,
             a function that returns matrix values given row and column labels,
             or a `MatrixWithNames` object.
         row_labels (list[str] | None): List of strings to use as row labels. When `None`,
-            the function works only mat is a `MatrixWithNames` object
+            the function works only mat is a :class:`MatrixWithNames` object
         column_labels (list[str] | None): List of strings to use as column labels. When `None`,
             the function works only for square matrices with equal row and column labels.
         precision (int): Number of decimal places to display for each value. Defaults to `3`.

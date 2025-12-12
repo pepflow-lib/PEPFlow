@@ -63,7 +63,7 @@ class EvaluatedVector:
     representation as a unit vector. The concrete representations of
     linear combinations of abstract basis :class:`Vector` objects are
     linear combinations of the unit vectors. This information is stored
-    in the `vector` attribute.
+    in the `coords` attribute.
 
     :class:`EvaluatedVector` objects can be constructed as linear combinations
     of other :class:`EvaluatedVector` objects. Let `a` and `b` be some numeric
@@ -71,7 +71,7 @@ class EvaluatedVector:
     can form a new :class:`EvaluatedVector` object: `a*x+b*y`.
 
     Attributes:
-        vector (np.ndarray): The concrete representation of an
+        coords (np.ndarray): The concrete representation of an
             abstract :class:`Vector`.
     """
 
@@ -130,7 +130,7 @@ class EvaluatedVector:
 @attrs.frozen
 class Vector:
     """
-    A :class:`Vector` object represents an element of a pre-Hilbert space.
+    A :class:`Vector` object represents an element of a vector space.
 
     Examples include a point or a gradient.
 
@@ -148,13 +148,19 @@ class Vector:
             combination of other vectors. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Vector` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
 
     Example:
         >>> import pepflow as pf
         >>> ctx = pf.PEPContext("ctx").set_as_current()
         >>> x_0 = pf.Vector(is_basis=True).add_tag("x_0")
+
+    Note:
+        Basis :class:`Vector` objects should be defined using the constructor
+        as shown in the example but composite :class:`Vector` objects should
+        be created using operations on :class:`Vector` objects.
     """
 
     # If true, the vector is the basis for the evaluations of G
@@ -190,6 +196,12 @@ class Vector:
 
     @staticmethod
     def zero() -> Vector:
+        """A static method that returns a :class:`Vector` object that
+        corresponds to zero.
+
+        Returns:
+            :class:`Vector`: A zero :class:`Vector` object.
+        """
         return Vector(
             is_basis=False,
             eval_expression=ZeroVector(),
@@ -377,6 +389,13 @@ class Vector:
             ctx (:class:`PEPContext` | None): The :class:`PEPContext` object
                 we consider. `None` if we consider the current global
                 :class:`PEPContext` object.
+            resolve_parameters (dict[str, :data:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical
+                values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             :class:`EvaluatedVector`: The concrete representation of
@@ -410,8 +429,12 @@ class Vector:
             ctx (:class:`PEPContext`): The :class:`PEPContext` object
                 whose basis :class:`Vector` objects we consider. `None` if
                 we consider the current global :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of this :class:`Vector` object in terms of
