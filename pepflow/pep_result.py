@@ -122,7 +122,7 @@ class PEPResult:
         that the Primal PEP decision variable :math:`G` is PSD.
 
         Returns:
-            MatrixWithNames: The PSD dual variable matrix associated with the
+            :class:`MatrixWithNames`: The PSD dual variable matrix associated with the
             constraint that the Primal PEP decision variable :math:`G` is PSD.
         """
         # Note the raw matrix is defined based on the order of basis scalars in the context.
@@ -173,7 +173,7 @@ class PEPResult:
                 constraints' dual variables we want to retrieve.
 
         Returns:
-            dict[str, MatrixWithNames]: A dictionary that maps the names of the
+            dict[str, :class:`MatrixWithNames`]: A dictionary that maps the names of the
             scalar constraints to their corresponding dual variable matrices
             stored in a :class:`MatrixWithNames`.
         """

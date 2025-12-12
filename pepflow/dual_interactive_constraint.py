@@ -35,6 +35,7 @@ if TYPE_CHECKING:
     from pepflow.pep import PEPBuilder
     from pepflow.pep_context import PEPContext
     from pepflow.pep_result import PEPResult
+    from pepflow.utils import NUMERICAL_TYPE
 
 
 plotly.io.renderers.default = "colab+vscode"
@@ -127,7 +128,7 @@ def launch_dual_interactive(
     pep_builder: PEPBuilder,
     context: PEPContext,
     port: int = 9050,
-    resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+    resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
 ):
     """Launch the Dual PEP Interactive Dashboard.
 
@@ -136,8 +137,8 @@ def launch_dual_interactive(
             associated Dual PEP problem we consider.
         context (:class:`PEPContext`): The :class:`PEPContext` object associated
             with the Dual PEP problem.
-        resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-            maps the name of parameters to the numerical values.
+        resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A dictionary
+            that maps the name of parameters to the numerical values.
         port (int): The port where we host the Dual PEP Interactive Dashboard.
 
     Example:

@@ -31,7 +31,8 @@ from pepflow import vector as vt
 from pepflow.constraint import Constraint, PSDConstraint, ScalarConstraint
 
 if TYPE_CHECKING:
-    pass
+    from pepflow.pep_context import PEPContext
+    from pepflow.utils import NUMERICAL_TYPE
 
 
 class PEPBuilder:
@@ -40,8 +41,8 @@ class PEPBuilder:
     Attributes:
         ctx (:class:`PEPContext`): The :class:`PEPContext` associated
             with this :class:`PEPBuilder` object.
-        init_conditions (list[:class:`Constraint`]): A list of all the initial
-            conditions associated with this PEP.
+        init_conditions (list[:class:`PSDConstraint` | :class:`ScalarConstraint`]): A
+            list of all the initial conditions associated with this PEP.
         performance_metric (:class:`Scalar`): The performance metric for this
             PEP.
         relaxed_constraints (list[str]): A list of names of the constraints
@@ -66,7 +67,7 @@ class PEPBuilder:
 
     def __init__(self, pep_context: pc.PEPContext):
         self.ctx: pc.PEPContext = pep_context
-        self.init_conditions: list[Constraint] = []
+        self.init_conditions: list[PSDConstraint | ScalarConstraint] = []
         self.performance_metric: sc.Scalar | None = None
 
         # Contain the name for the constraints that should be removed.
@@ -90,12 +91,13 @@ class PEPBuilder:
         point.add_tag(tag)
         return point
 
-    def add_initial_constraint(self, constraint):
+    def add_initial_constraint(self, constraint: PSDConstraint | ScalarConstraint):
         """
         Add an initial condition.
 
         Args:
-            constraint (:class:`Constraint`): A :class:`Constraint` object that
+            constraint (:class:`PSDConstraint` | :class:`ScalarConstraint`): A
+                :class:`PSDConstraint` or :class:`ScalarConstraint` object that
                 represents the desired initial condition.
 
         Example:
@@ -157,15 +159,15 @@ class PEPBuilder:
 
     def solve(
         self,
-        context: pc.PEPContext | None = None,
-        resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+        context: PEPContext | None = None,
+        resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
     ):
         return self.solve_primal(context, resolve_parameters=resolve_parameters)
 
     def solve_primal(
         self,
-        context: pc.PEPContext | None = None,
-        resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+        context: PEPContext | None = None,
+        resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
     ):
         """
         Solve the Primal PEP associated with this :class:`PEPBuilder` object
@@ -176,8 +178,9 @@ class PEPBuilder:
                 to solve the Primal PEP associated with this
                 :class:`PEPBuilder` object. `None` if we consider the current
                 global :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :data:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical
+                values.
 
         Returns:
             :class:`PEPResult`: A :class:`PEPResult` object that contains the
@@ -231,8 +234,8 @@ class PEPBuilder:
 
     def solve_dual(
         self,
-        context: pc.PEPContext | None = None,
-        resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+        context: PEPContext | None = None,
+        resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
     ):
         """
         Solve the Dual PEP associated with this :class:`PEPBuilder` object
@@ -243,8 +246,8 @@ class PEPBuilder:
                 to solve the Dual PEP associated with this :class:`PEPBuilder`
                 object. `None` if we consider the current global
                 :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :data:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
 
         Returns:
             :class:`PEPResult`: A :class:`PEPResult` object that

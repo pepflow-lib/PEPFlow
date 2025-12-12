@@ -37,7 +37,10 @@ from pepflow import utils
 from pepflow import vector as vt
 
 if TYPE_CHECKING:
+    from pepflow.math_expression import MathExpr
     from pepflow.parameter import Parameter
+    from pepflow.utils import NUMERICAL_TYPE
+    from pepflow.vector import Vector
 
 
 @attrs.frozen
@@ -52,13 +55,17 @@ class Duplet:
         name (str): The unique name of the :class:`Duplet` object.
     """
 
-    point: vt.Vector
-    output: vt.Vector
+    point: Vector
+    output: Vector
     oper: Operator
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
 
     def expand(self) -> tuple[vt.Vector, vt.Vector]:
+        """
+        Return the `point` and `output` member variables of a :class:`Duplet`
+        as a tuple.
+        """
         return self.point, self.output
 
 
@@ -125,8 +132,9 @@ class Operator:
             combination of other operators. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Operator` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
     """
 
     is_basis: bool
@@ -137,7 +145,7 @@ class Operator:
     tags: list[str] = attrs.field(factory=list)
 
     # Mathematical expression
-    math_expr: me.MathExpr = attrs.field(factory=me.MathExpr)
+    math_expr: MathExpr = attrs.field(factory=me.MathExpr)
 
     # Generate an automatic id
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
@@ -195,9 +203,9 @@ class Operator:
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
         """When implemented, structure the types of constraints as a list of related
-        scalar constraints or individual PSDConstraints."""
+        :class:`ScalarConstraint` or individual :class:`PSDConstraint` objects."""
         raise NotImplementedError(
-            "This method should be implemented in the children of :class:`Operator`."
+            "This method should be implemented in the children of Operator."
         )
 
     def get_interpolation_constraints(
@@ -471,8 +479,8 @@ class Operator:
         return self.uid == other.uid
 
     def resolvent(
-        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
-    ) -> vt.Vector:
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
         """Apply the resolvent of this operator on the input :math:`x`.
 
         Define the resolvent operator as
@@ -537,8 +545,8 @@ class LinearOperatorTranspose(Operator):
         return super().__hash__()
 
     def resolvent(
-        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
-    ) -> vt.Vector:
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
         """
         Note:
             The resolvent is not implemented for :class:`LinearOperatorTranspose`.
@@ -561,9 +569,17 @@ class LinearOperator(Operator):
     Example:
         >>> import pepflow as pf
         >>> A = pf.LinearOperator(is_basis=True, tags=["A"], M=1)
+
+    We can access the transpose of a :class:`LinearOperator` object as
+    follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.LinearOperator(is_basis=True, tags=["A"], M=1)
+        >>> A.T
     """
 
-    M: utils.NUMERICAL_TYPE | Parameter
+    M: NUMERICAL_TYPE | Parameter
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
@@ -601,6 +617,14 @@ class LinearOperator(Operator):
     def get_interpolation_constraints_by_group(
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions.
+
+        References:
+            N. Bousselmi, J. M. Hendrickx, and F. Glineur, Interpolation Conditions
+            for Linear Operators and Applications to Performance Estimation Problems,
+            SIAM Journal on Optimization, 34 (2024), pp. 3033–3063.
+        """
         cd = pc.ConstraintData(func_or_oper=self)
         if pep_context is None:
             pep_context = pc.get_current_context()
@@ -656,8 +680,8 @@ class LinearOperator(Operator):
     # TODO: How should we make interpolate_ineq()? There are two PSD constraints and a set of equality constraints.
 
     def resolvent(
-        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
-    ) -> vt.Vector:
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
         """
         Note:
             The resolvent is not implemented for :class:`LinearOperator`.
@@ -714,6 +738,8 @@ class MonotoneOperator(Operator):
     def get_interpolation_constraints_by_group(
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions."""
         cd = pc.ConstraintData(func_or_oper=self)
         if pep_context is None:
             pep_context = pc.get_current_context()
@@ -746,6 +772,14 @@ class MonotoneOperator(Operator):
         monotone operator :math:`A` is
 
         .. math:: - \\langle A(p_1) - A(p_2), p_1 - p_2 \\rangle \\leq 0.
+
+        References:
+            H. H. Bauschke and P. L. Combettes, Convex Analysis and Monotone Operator Theory
+            in Hilbert Spaces, 2017.
+
+            E. K. Ryu, A. B. Taylor, C. Bergeling, and P. Giselsson, Operator splitting
+            performance estimation: Tight contraction factors and optimal parameter selection,
+            SIAM Journal on Optimization, 30 (2020), pp. 2251–2271.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.

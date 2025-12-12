@@ -16,9 +16,11 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+from __future__ import annotations
 
 import functools
 import math
+from typing import TYPE_CHECKING
 
 import numpy as np
 import sympy as sp
@@ -28,6 +30,9 @@ from pepflow import pep_context as pc
 from pepflow import scalar as sc
 from pepflow import utils
 from pepflow import vector as vt
+
+if TYPE_CHECKING:
+    from pepflow.utils import NUMERICAL_TYPE
 
 
 class ExpressionManager:
@@ -39,14 +44,14 @@ class ExpressionManager:
         context (:class:`PEPContext`): The :class:`PEPContext` object which
             manages the abstract :class:`Vector` and :class:`Scalar` objects
             of interest.
-        resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-            maps the name of parameters to the numerical values.
+        resolve_parameters (dict[str, :data:`NUMERICAL_TYPE`] | `None`): A
+            dictionary that maps the name of parameters to the numerical values.
     """
 
     def __init__(
         self,
         pep_context: pc.PEPContext,
-        resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
+        resolve_parameters: dict[str, NUMERICAL_TYPE] | None = None,
     ):
         self.context = pep_context
         self._basis_vectors = []
@@ -87,25 +92,38 @@ class ExpressionManager:
         self, vector: vt.Vector | pm.Parameter | float | int, sympy_mode: bool = False
     ):
         """
-        Return the concrete representation of the :class:`Vector`, `float`, or `int`.
+        Return the concrete representation of the :class:`Vector`, :class:`Parameter`,
+        `float`, or `int`.
 
         Concrete representations of :class:`Vector` objects are
         :class:`EvaluatedVector` objects. Concrete representations of `float` or `int`
-        arguments are themselves.
+        arguments are themselves. If a :class:`Parameter` object is passed in, the
+        function will return the corresponding value stored in `resolve_parameters`.
 
         Args:
-            vector (:class:`Vector`, float, int): The abstract :class:`Vector`,
-                `float`, or `int` object whose concrete representation we want
-                to find.
-
+            vector (:class:`Vector`, :class:`Parameter`, float, int): The abstract
+                :class:`Vector`, :class:`Parameter`, `float`, or `int` object whose
+                concrete representation we want to find.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
         Returns:
             :class:`EvaluatedVector` | float | int: The concrete representation of
             the `vector` argument.
+
+        Example:
+            >>> import pepflow as pf
+            >>> import numpy as np
+            >>> ctx = pf.PEPContext("ctx").set_as_current()
+            >>> f = pf.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
+            >>> x_0 = pf.Vector(is_basis=True, tags=["x_0"])
+            >>> pm.eval_vector(x_0).coords == np.array([1])
         """
         if sympy_mode and isinstance(vector, float):
             raise ValueError(
-                f"Encounter a floating number {vector} when evaludate a vector in sympy_mode."
-                " In order to use the sympy mode, please convert every floating number into"
+                f"Encountered a floating number {vector} when evaluating a vector in sympy_mode."
+                " In order to use sympy mode, please convert every floating number into a"
                 " sympy.Rational value. For example, convert 1/2 into sympy.S(1)/2."
             )
 
@@ -115,7 +133,7 @@ class ExpressionManager:
             return vector.get_value(self.resolve_parameters)
         if not isinstance(vector, vt.Vector):
             raise ValueError(
-                f"Encounter unknown type of vector to evaludated with: {type(vector)=}"
+                f"Encountered unknown type of vector to evaluate with: {type(vector)=}"
             )
 
         if vector.is_basis:
@@ -157,16 +175,22 @@ class ExpressionManager:
         self, scalar: sc.Scalar | pm.Parameter | float | int, sympy_mode: bool = False
     ):
         """
-        Return the concrete representation of the :class:`Scalar`, `float`, or `int`.
+        Return the concrete representation of the :class:`Scalar`, :class:`Parameter`,
+        `float`, or `int`.
 
         Concrete representations of :class:`Scalar` objects are
         :class:`EvaluatedScalar` objects. Concrete representations of `float` or `int`
-        arguments are themselves.
+        arguments are themselves. If a :class:`Parameter` object is passed in, the
+        function will return the corresponding value stored in `resolve_parameters`.
 
         Args:
-            scalar (:class:`Vector`, float, int): The abstract :class:`Scalar`,
-                `float`, or `int` object whose concrete representation we want
-                to find.
+            scalar (:class:`Scalar`, :class:`Parameter`, float, int): The abstract
+                :class:`Scalar`, :class:`Parameter`, `float`, or `int` object whose
+                concrete representation we want to find.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             :class:`EvaluatedScalar` | float | int: The concrete representation of
@@ -185,8 +209,8 @@ class ExpressionManager:
         """
         if sympy_mode and isinstance(scalar, float):
             raise ValueError(
-                f"Encounter a floating number {scalar} when evaludate a scalar in sympy_mode."
-                " In order to use the sympy mode, please convert every floating number into"
+                f"Encountered a floating number {scalar} when evaluating a scalar in sympy_mode."
+                " In order to use sympy mode, please convert every floating number into a"
                 " sympy.Rational value. For example, convert 1/2 into sympy.S(1)/2."
             )
 
@@ -278,6 +302,10 @@ class ExpressionManager:
         Args:
             vector (:class:`Vector`): The :class:`Vector` object which we want
                 to express in terms of the basis :class:`Vector` objects.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of `vector` in terms of the basis
@@ -347,6 +375,10 @@ class ExpressionManager:
                 the function will return
                 :math:`\\|a\\|^2 - 2 * \\langle a, b \\rangle + \\|b\\|^2` instead.
                 `True` by default.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of `scalar` in terms of the basis :class:`Vector`
@@ -385,10 +417,6 @@ class ExpressionManager:
             str: The representation of `evaluated_scalar` in terms of
             the basis :class:`Vector` and :class:`Scalar` objects of the
             :class:`PEPContext` associated with this :class:`ExpressionManager`.
-
-        Example:
-            >>> L = pf.Parameter("L")
-            >>> pm = pf.ExpressionManager(ctx, resolve_parameters={"L": sp.S(1)})
         """
         repr_str = ""
         if not math.isclose(evaluated_scalar.offset, 0, abs_tol=1e-5):

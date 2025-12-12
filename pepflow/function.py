@@ -36,7 +36,11 @@ from pepflow import utils
 from pepflow import vector as vt
 
 if TYPE_CHECKING:
+    from pepflow.math_expression import MathExpr
     from pepflow.parameter import Parameter
+    from pepflow.scalar import Scalar
+    from pepflow.utils import NUMERICAL_TYPE
+    from pepflow.vector import Vector
 
 
 @attrs.frozen
@@ -56,14 +60,18 @@ class Triplet:
         name (str): The unique name of the :class:`Triplet` object.
     """
 
-    point: vt.Vector
-    func_val: sc.Scalar
-    grad: vt.Vector
+    point: Vector
+    func_val: Scalar
+    grad: Vector
     func: Function
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
 
     def expand(self) -> tuple[vt.Vector, sc.Scalar, vt.Vector]:
+        """
+        Return the `point`, `func_value`, and `grad` member variables of a
+        :class:`Triplet` as a tuple.
+        """
         return self.point, self.func_val, self.grad
 
 
@@ -130,8 +138,9 @@ class Function:
             combination of other functions. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Function` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
     """
 
     is_basis: bool
@@ -142,7 +151,7 @@ class Function:
     tags: list[str] = attrs.field(factory=list)
 
     # Mathematical expression
-    math_expr: me.MathExpr = attrs.field(factory=me.MathExpr)
+    math_expr: MathExpr = attrs.field(factory=me.MathExpr)
 
     # Generate an automatic id
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
@@ -207,9 +216,9 @@ class Function:
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
         """When implemented, structure the types of constraints as a list of related
-        scalar constraints or individual PSDConstraints."""
+        :class:`ScalarConstraint` or individual :class:`PSDConstraint` objects."""
         raise NotImplementedError(
-            "This method should be implemented in the children of :class:`Function`."
+            "This method should be implemented in the children of Function."
         )
 
     def get_interpolation_constraints(
@@ -516,8 +525,8 @@ class Function:
         return self.uid == other.uid
 
     def prox(
-        self, x: vt.Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
-    ) -> vt.Vector:
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
         """Apply the proximal operator on the input :math:`x`.
 
         Define the proximal operator as
@@ -656,7 +665,14 @@ class ConvexFunction(Function):
         The interpolation inequality between two points :math:`p_1, p_2` for a
         CCP function :math:`f` is
 
-        .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle.
+        .. math:: f(p_2) - f(p_1) + \\langle \\widetilde{\\nabla} f(p_2), p_1 - p_2 \\rangle,
+
+        where :math:`\\widetilde{\\nabla} f(p_2) \\in\\partial f(p_2)`.
+
+        References:
+            A. B. Taylor, J. M. Hendrickx, and F. Glineur. Smooth strongly convex interpolation
+            and exact worst-case performance of first-order methods. Mathematical Programming,
+            161(1-2):307–345, 2017.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
@@ -696,7 +712,7 @@ class SmoothConvexFunction(Function):
         >>> f = pf.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
     """
 
-    L: utils.NUMERICAL_TYPE | Parameter
+    L: NUMERICAL_TYPE | Parameter
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
@@ -732,6 +748,8 @@ class SmoothConvexFunction(Function):
     def get_interpolation_constraints_by_group(
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the function's
+        groups of interpolation conditions."""
         cd = pc.ConstraintData(func_or_oper=self)
         if pep_context is None:
             pep_context = pc.get_current_context()
@@ -762,6 +780,11 @@ class SmoothConvexFunction(Function):
         smooth, convex function :math:`f` is
 
         .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle + \\tfrac{1}{2} \\lVert \\nabla f(p_1) - \\nabla f(p_2) \\rVert^2.
+
+        References:
+            A. B. Taylor, J. M. Hendrickx, and F. Glineur. Smooth strongly convex
+            interpolation and exact worst-case performance of first-order methods.
+            Mathematical Programming, 161(1-2):307–345, 2017.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.

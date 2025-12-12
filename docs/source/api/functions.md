@@ -8,6 +8,8 @@
     :exclude-members: composition, uid
 ```
 
+## Triplet
+
 ```{eval-rst}  
 .. autoclass:: pepflow.Triplet
     :members:

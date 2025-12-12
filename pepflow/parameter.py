@@ -67,6 +67,11 @@ class Parameter:
         >>> pm = pf.Parameter(name="param")
         >>> v2 = pm * v
         >>> v2.eval(resolve_parameters={"param": 2})
+
+    Note:
+        Basis :class:`Parameter` objects should be defined using the constructor
+        as shown in the example but composite :class:`Parameter` objects should
+        be created using operations on :class:`Parameter` objects.
     """
 
     # If name is None, it is a composite parameter.

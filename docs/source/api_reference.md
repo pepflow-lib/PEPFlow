@@ -9,4 +9,5 @@ api/functions
 api/operators
 api/interactive_dashboard
 api/utils
+api/custom_types
 ```

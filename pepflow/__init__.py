@@ -41,6 +41,7 @@ from .pep import PEPBuilder as PEPBuilder
 from .pep_context import PEPContext as PEPContext
 from .pep_context import get_current_context as get_current_context
 from .pep_context import set_current_context as set_current_context
+from .pep_context import ConstraintData as ConstraintData
 
 # Function and Operator Registry
 from .registry import get_func_or_oper_by_tag as get_func_or_oper_by_tag
@@ -69,6 +70,9 @@ from .solver import DualPEPDualVarManager as DualPEPDualVarManager
 # Others
 from .utils import SOP as SOP
 from .utils import SOP_self as SOP_self
+from .utils import NUMERICAL_TYPE as NUMERICAL_TYPE
+from .utils import PEPType as PEPType
+from .utils import Comparator as Comparator
 from .ipython_utils import pprint_str as pprint_str
 from .ipython_utils import pprint_matrix as pprint_matrix
 from .ipython_utils import pprint_labeled_vector as pprint_labeled_vector

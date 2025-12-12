@@ -36,7 +36,7 @@ def get_func_or_oper_by_tag(tag: str):
     the provided `tag`.
 
     Args:
-        tag (str): The `tag` of the :class:`Function` or :class:`Object` object
+        tag (str): The `tag` of the :class:`Function` or :class:`Operator` object
             we want to retrieve.
 
     Returns:

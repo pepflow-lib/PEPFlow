@@ -23,6 +23,8 @@
 .. autofunction:: pepflow.set_current_context
 ```
 
+## Registry Functions
+
 ```{eval-rst}  
 .. autofunction:: pepflow.get_func_or_oper_by_tag
 ```

@@ -56,9 +56,10 @@ class PrimalPEPDualVarManager:
     A class to access the dual variables associated with the constraints
     of the Primal PEP.
 
-    Should not be instantiated directly. Automatically
-    generated as a member variable of the :class:`PEPResult` object
-    returned when calling :py:func:`pepflow.PEPBuilder.solve_primal`.
+    Note:
+        Should not be instantiated directly. Automatically
+        generated as a member variable of the :class:`PEPResult` object
+        returned when calling :py:func:`pepflow.PEPBuilder.solve_primal`.
     """
 
     # It is used in the primal PEP to get the dual variables.
@@ -80,16 +81,18 @@ class PrimalPEPDualVarManager:
 
     def dual_value(self, name: str) -> float | None:
         """
-        Given the name of a :class:`Constraint` object representing a constraint in
-        Primal PEP, return the value of its corresponding dual variable.
+        Given the name of a :class:`PSDConstraint` or :class:`ScalarConstraint`
+        object, return the value of its corresponding dual variable.
 
         Args:
-            name (str): The name of the :class:`Constraint` object whose
-                associated dual variable we want to retrieve.
+            name (str): The name of the :class:`PSDConstraint` or
+                :class:`ScalarConstraint` object whose associated dual
+                variable we want to retrieve.
 
         Returns:
             float: The value of the dual variable corresponding to the
-            :class:`Constraint` object associated with the `name` argument.
+            :class:`PSDConstraint` or :class:`ScalarConstraint` object
+            associated with the `name` argument.
         """
         if name not in self.named_constraints:
             return None  # Is this good choice?
@@ -104,10 +107,11 @@ class DualPEPDualVarManager:
     A class to access the dual variables associated with the constraints
     of Primal PEP after solving Dual PEP.
 
-    Should not be instantiated
-    directly. Automatically generated as a member variable of the
-    :class:`PEPResult` object returned when calling
-    :py:func:`pepflow.PEPBuilder.solve_dual`.
+    Note:
+        Should not be instantiated
+        directly. Automatically generated as a member variable of the
+        :class:`PEPResult` object returned when calling
+        :py:func:`pepflow.PEPBuilder.solve_dual`.
     """
 
     # It is used in the dual PEP to get the dual variables.
@@ -134,16 +138,18 @@ class DualPEPDualVarManager:
 
     def dual_value(self, name: str) -> float | None:
         """
-        Given the name of a :class:`Constraint` object representing a constraint in the
-        Primal PEP, return the value of its corresponding dual variable.
+        Given the name of a :class:`PSDConstraint` or :class:`ScalarConstraint`
+        object, return the value of its corresponding dual variable.
 
         Args:
-            name (str): The name of the :class:`Constraint` object whose
-                corresponding dual variable we want to retrieve.
+            name (str): The name of the :class:`PSDConstraint` or
+                :class:`ScalarConstraint` object whose corresponding dual
+                variable we want to retrieve.
 
         Returns:
             float: The value of the dual variable corresponding to the
-            :class:`Constraint` object associated with the `name` argument.
+            :class:`PSDConstraint` or :class:`ScalarConstraint` object
+            associated with the `name` argument.
         """
         if name not in self.named_variables:
             return None  # Is this good choice?

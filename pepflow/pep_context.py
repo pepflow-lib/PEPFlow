@@ -31,6 +31,7 @@ from pepflow import constraint as ct
 from pepflow import utils
 
 if TYPE_CHECKING:
+    from pepflow.constraint import PSDConstraint, ScalarConstraint
     from pepflow.function import Function, Triplet
     from pepflow.operator import Duplet, Operator
     from pepflow.pep_result import PEPResult
@@ -56,7 +57,7 @@ class ConstraintData:
     :class:`PSDConstraint` object.
 
     Attributes:
-        func_or_oper (:class:`Function` | :class:`Operator): The associated
+        func_or_oper (:class:`Function` | :class:`Operator`): The associated
             :class:`Function` or :class:`Operator`.
         sc_dict (dict[str, list[:class:`ScalarConstraint`]]): A dictionary in which
             the keys are the name of the groups of :class:`ScalarConstraint` objects and
@@ -67,8 +68,8 @@ class ConstraintData:
     """
 
     func_or_oper: Function | Operator
-    sc_dict: dict[str, list[ct.ScalarConstraint]] = attrs.field(factory=dict)
-    psd_dict: dict[str, ct.PSDConstraint] = attrs.field(factory=dict)
+    sc_dict: dict[str, list[ScalarConstraint]] = attrs.field(factory=dict)
+    psd_dict: dict[str, PSDConstraint] = attrs.field(factory=dict)
 
     def add_sc_constraint(
         self, constraint_type: str, scal_constraint: list[ct.ScalarConstraint]

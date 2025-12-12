@@ -22,7 +22,7 @@ from __future__ import annotations
 import enum
 import math
 import numbers
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, TypeAlias
 
 import numpy as np
 import pandas as pd
@@ -36,7 +36,7 @@ if TYPE_CHECKING:
     from pepflow.vector import Vector
 
 
-NUMERICAL_TYPE = numbers.Number | sp.Number
+NUMERICAL_TYPE: TypeAlias = numbers.Number | sp.Number
 
 
 def SOP(v, w, sympy_mode: bool = False) -> np.ndarray:
@@ -50,6 +50,14 @@ def SOP_self(v, sympy_mode: bool = False) -> np.ndarray:
 
 
 class PEPType(enum.Enum):
+    """
+    An enum to representing either Primal or Dual PEP.
+
+    Attributes:
+        PRIMAL: Represents Primal PEP.
+        DUAL: Represents Dual PEP.
+    """
+
     PRIMAL = "primal"
     DUAL = "dual"
 
@@ -63,6 +71,17 @@ class Op(enum.Enum):
 
 
 class Comparator(enum.Enum):
+    """
+    An enum to representing comparators of relations.
+
+    Attributes:
+        GE: Greater than or equal.
+        LE: Less than or equal.
+        EQ: Equal to.
+        PEQ: Preceq.
+        SEQ: Succeq.
+    """
+
     GE = "GE"
     LE = "LE"
     EQ = "EQ"
