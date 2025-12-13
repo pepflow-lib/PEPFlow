@@ -17,6 +17,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
+import collections
 from typing import Iterator
 
 import numpy as np
@@ -186,3 +187,71 @@ def test_zero_scalar(pep_context):
         np.array([[sp.S(0), sp.S(0)], [sp.S(0), sp.S(0)]]),
         strict=True,
     )
+
+
+def make_rep(funcs=None, inners=None, offset=0):
+    return scalar.ScalarByBasisRepresentation(
+        func_coeffs=collections.defaultdict(int, funcs or {}),
+        inner_prod_coeffs=collections.defaultdict(int, inners or {}),
+        offset=offset,
+    )
+
+
+def test_scalar_by_basis_operations(pep_context):
+    f1 = scalar.Scalar(is_basis=True, tags=["f1"])
+    f2 = scalar.Scalar(is_basis=True, tags=["f2"])
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
+
+    a = make_rep(funcs={f1: 2}, inners={(v1, v2): 3}, offset=1)
+    b = make_rep(funcs={f1: 5, f2: 4}, inners={(v1, v2): 4}, offset=2)
+
+    c = a + b
+    assert c.func_coeffs[f1] == 7
+    assert c.func_coeffs[f2] == 4
+    assert c.inner_prod_coeffs[(v1, v2)] == 7
+    assert c.offset == 3
+
+    c = a - b
+    assert c.func_coeffs[f1] == -3
+    assert c.func_coeffs.get(f2, 0) == -4
+    assert c.inner_prod_coeffs[(v1, v2)] == -1
+    assert c.offset == -1
+
+    d = a * 3
+    assert d.func_coeffs[f1] == 6
+    assert d.inner_prod_coeffs[(v1, v2)] == 9
+    assert d.offset == 3
+
+    c = 2 * a
+    assert c.func_coeffs[f1] == 4
+    assert c.inner_prod_coeffs[(v1, v2)] == 6
+    assert c.offset == 2
+
+    d = a / 2
+    assert d.func_coeffs[f1] == 1
+    assert d.inner_prod_coeffs[(v1, v2)] == 1.5
+    assert d.offset == 0.5
+
+    e = -a
+    assert e.func_coeffs[f1] == -2
+    assert e.inner_prod_coeffs[(v1, v2)] == -3
+    assert e.offset == -1
+
+
+def test_scalar_by_basis_with_parameter_coeffs(pep_context):
+    f1 = scalar.Scalar(is_basis=True, tags=["f1"])
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
+    pm = parameter.Parameter(name="pm")
+    a = make_rep(funcs={f1: 2}, inners={(v1, v2): 3}, offset=4)
+
+    b = a * pm
+    assert b.func_coeffs[f1] == 2 * pm
+    assert b.inner_prod_coeffs[(v1, v2)] == 3 * pm
+    assert b.offset == 4 * pm
+
+    d = a / pm
+    assert isinstance(d.func_coeffs[f1], parameter.Parameter)
+    assert isinstance(d.inner_prod_coeffs[(v1, v2)], parameter.Parameter)
+    assert isinstance(d.offset, parameter.Parameter)
