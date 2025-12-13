@@ -18,6 +18,7 @@
 # under the License.
 
 import time
+from collections import defaultdict
 from typing import Iterator
 
 import numpy as np
@@ -172,4 +173,28 @@ def test_zero_vector(pep_context):
         pm.eval_vector(p0, sympy_mode=True).coords,
         np.array([sp.S(0), sp.S(0)]),
         strict=True,
+    )
+
+
+def test_simplify_vector_basic(pep_context):
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    p2 = vector.Vector(is_basis=True, tags=["p2"])
+    p3 = vector.Vector(is_basis=True, tags=["p3"])
+
+    p = 5 * (p1 + p2) - p1 + p3
+    assert p.simplify().eval_expression == vector.VectorByBasisRepresentation(
+        coeffs=defaultdict(int, {p1: 4, p2: 5, p3: 1})
+    )
+
+
+def test_simplify_vector_with_param(pep_context):
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    p2 = vector.Vector(is_basis=True, tags=["p2"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+    p = pm1 * (p1 + pm2 * p2) + 5 * p1
+    # TODO: we need to simplify the parameter expression.
+    # The following 1* is necessary to make the test pass for now.
+    assert p.simplify().eval_expression == vector.VectorByBasisRepresentation(
+        coeffs=defaultdict(int, {p1: 1 * pm1 + 5, p2: 1 * pm2 * pm1})
     )

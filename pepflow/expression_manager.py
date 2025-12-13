@@ -245,6 +245,7 @@ class ExpressionManager:
                 num_basis_vectors=self._num_basis_vectors,
                 sympy_mode=sympy_mode,
             )
+        # TODO: Handle the case: isinstance(scalar.eval_expression, sc.VectorByBasisRepresentation).
 
         op = scalar.eval_expression.op
         # The special inner product usage.
