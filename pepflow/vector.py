@@ -47,8 +47,8 @@ def is_numerical_or_evaluated_vector(val: Any) -> bool:
 @attrs.frozen
 class VectorRepresentation:
     op: utils.Op
-    left_vector: Vector | float
-    right_vector: Vector | float
+    left_vector: Vector | utils.NUMERICAL_TYPE | Parameter
+    right_vector: Vector | utils.NUMERICAL_TYPE | Parameter
 
 
 @attrs.frozen
@@ -471,9 +471,12 @@ class Vector:
             mathematical expression.
         """
 
-        def _simplify(vector_or_float: Vector | float) -> Vector | float:
+        def _simplify(
+            vector_or_float: Vector | utils.NUMERICAL_TYPE | Parameter,
+        ) -> VectorByBasisRepresentation | utils.NUMERICAL_TYPE | Parameter:
             if isinstance(vector_or_float, Vector):
-                return vector_or_float.simplify().eval_expression
+                # We know after simplification, the eval_expression is always VectorByBasisRepresentation.
+                return vector_or_float.simplify().eval_expression  # type: ignore
             else:
                 return vector_or_float
 
@@ -494,6 +497,7 @@ class Vector:
             elif isinstance(self.eval_expression, VectorByBasisRepresentation):
                 eval_expression = self.eval_expression
             else:
+                assert isinstance(self.eval_expression, VectorRepresentation)
                 left_eval_exression = _simplify(self.eval_expression.left_vector)
                 right_eval_exression = _simplify(self.eval_expression.right_vector)
                 if self.eval_expression.op == utils.Op.ADD:
