@@ -209,4 +209,4 @@ def test_parameter_comparison(pep_context: pc.PEPContext):
     pp3 = (pm2 + 2) * pm1
 
     assert pp1 == pp2
-    assert pp1 != pp3
+    assert not pp1 == pp3

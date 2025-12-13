@@ -33,15 +33,6 @@ class ParameterRepresentation:
     left_param: utils.NUMERICAL_TYPE | Parameter
     right_param: utils.NUMERICAL_TYPE | Parameter
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, ParameterRepresentation):
-            return False
-        return (
-            self.op == other.op
-            and self.left_param == other.left_param
-            and self.right_param == other.right_param
-        )
-
 
 def eval_parameter(
     param: Parameter | utils.NUMERICAL_TYPE,
@@ -261,11 +252,4 @@ class Parameter:
             eval_expression=ParameterRepresentation(
                 op=utils.Op.POW, left_param=other, right_param=self
             ),
-        )
-
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Parameter):
-            return False
-        return (self.name == other.name) and (
-            self.eval_expression == other.eval_expression
         )
