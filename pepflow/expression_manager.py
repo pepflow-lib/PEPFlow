@@ -158,7 +158,7 @@ class ExpressionManager:
                 array = array * sp.S(0)
             for basis_vector, coef in vector.eval_expression.coeffs.items():
                 index = self.get_index_of_basis_vector(basis_vector)
-                array[index] += coef
+                array[index] += self.eval_vector(coef)  # we may need to resolve coef.
             return vt.EvaluatedVector(coords=array)
 
         op = vector.eval_expression.op
