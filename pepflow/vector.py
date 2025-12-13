@@ -478,6 +478,9 @@ class Vector:
                 return vector_or_float
 
         if self.is_basis:
+            # VectorByBasisRepresentation and the original basis vector are representating the
+            # the same basis vector. However, we do not wanna introduce another basis vector in the context.
+            # So we have to keep this is_basis = False but the eval_expression should be the same.
             is_basis = False
             eval_expression = VectorByBasisRepresentation(
                 coeffs=defaultdict(int, {self: 1})
