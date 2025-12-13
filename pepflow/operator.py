@@ -497,7 +497,7 @@ class Operator:
             x (:class:`Vector`): The input point.
             stepsize (numbers.Number | :class:`Parameter`): The stepsize.
             tag (str | None): By default set to `None`. Pass a tag to add
-                to the output of the proximal operator applied the input point.
+                to the output of the resolvent applied the input point.
 
         Returns:
             :class:`Vector`: The output of the resolvent applied on `x`.
@@ -506,22 +506,25 @@ class Operator:
             For children of :class:`Operator` for which the resolvent is
             not defined, overwrite the function to raise `NotImplemented`.
         """
-        u_expr = f"J_{{{stepsize}*{self.tag}}}({x.tag})"
+
+        u_expr = f"J_{{{stepsize}*{self.__repr__()}}}({x.__repr__()})"
         Au = vt.Vector(
-            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.tag}({u_expr})")
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
         )
+
         u = x - stepsize * Au
         u.math_expr.expr_str = u_expr
 
         if tag:
             u.add_tag(tag)
-            Au.add_tag(utils.grad_tag(f"{self.tag}({tag})"))
+            Au.add_tag(f"{self.__repr__()}({tag})")
 
         new_duplet = Duplet(
             u,
             Au,
             self,
-            name=f"{u.tag}_{Au.tag}",
+            name=f"{u.__repr__()}_{Au.__repr__()}",
         )
         self.add_duplet_to_oper(new_duplet)
         return u
