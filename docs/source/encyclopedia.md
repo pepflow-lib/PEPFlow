@@ -129,7 +129,7 @@ As <span class="brand-color">PEPFlow</span> continues to grow, we plan to expand
 
 ## Monotone inclusion
 
-__More to come__...
+- [Accelerated Proximal Point Method (APPM)](examples/appm_example.ipynb)
 
 ## Looking ahead
 
