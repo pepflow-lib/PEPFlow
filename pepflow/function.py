@@ -538,12 +538,7 @@ class Function:
         on the input :class:`Vector` :math:`x` with stepsize :math:`\\gamma`. Consider
         the following equivalence relationship:
 
-        .. math::
-            :nowrap:
-
-            \\begin{eqnarray}
-                \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\} \\Longleftrightarrow x - u \\in \\gamma \\partial f(u) \\Longleftrightarrow u & = & x - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
-            \\end{eqnarray}
+        .. math:: \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\} \\Longleftrightarrow x - u \\in \\gamma \\partial f(u) \\Longleftrightarrow u = x - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
 
         Args:
             x (:class:`Vector`): The input point.
@@ -560,31 +555,31 @@ class Function:
         """
 
         u_expr = f"prox_{{{stepsize}*{self.__repr__()}}}({x.__repr__()})"
-        grad = vt.Vector(
+        func_val_u = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+        grad_u = vt.Vector(
             is_basis=True,
             math_expr=me.MathExpr(
                 expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
             ),
         )
-        func_val = sc.Scalar(
-            is_basis=True,
-            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
-        )
 
-        u = x - stepsize * grad
+        u = x - stepsize * grad_u
         u.math_expr.expr_str = u_expr
 
         if tag:
             u.add_tag(tag)
-            grad.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
-            func_val.add_tag(f"{self.__repr__()}({tag})")
+            func_val_u.add_tag(f"{self.__repr__()}({tag})")
+            grad_u.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
 
         new_triplet = Triplet(
             u,
-            func_val,
-            grad,
+            func_val_u,
+            grad_u,
             self,
-            name=utils.triplet_tag(u, func_val, grad),
+            name=utils.triplet_tag(u, func_val_u, grad_u),
         )
         self.add_triplet_to_func(new_triplet)
         return u
