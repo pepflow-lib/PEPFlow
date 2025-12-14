@@ -194,3 +194,19 @@ def test_parameter_power(pep_context: pc.PEPContext):
     pp7 = sp.sqrt(2) ** pm1
     assert str(pp7) == "(sqrt(2))**{pm1}"
     assert pp7.get_value({"pm1": 2}) == 2
+
+
+def test_parameter_comparison(pep_context: pc.PEPContext):
+    pm1 = Parameter("pm1")
+    pm2 = Parameter("pm2")
+    pm3 = Parameter("pm1")  # same name as pm1 so we treat them as equal
+
+    assert pm1 == pm3
+    assert pm1 != pm2
+
+    pp1 = (pm1 + 2) * pm2
+    pp2 = (pm1 + 2) * pm2
+    pp3 = (pm2 + 2) * pm1
+
+    assert pp1 == pp2
+    assert not pp1 == pp3

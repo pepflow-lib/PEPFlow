@@ -151,6 +151,15 @@ class ExpressionManager:
             return vt.EvaluatedVector.zero(
                 num_basis_vectors=self._num_basis_vectors, sympy_mode=sympy_mode
             )
+        # TODO: add test for this
+        if isinstance(vector.eval_expression, vt.VectorByBasisRepresentation):
+            array = np.zeros(self._num_basis_vectors)
+            if sympy_mode:
+                array = array * sp.S(0)
+            for basis_vector, coef in vector.eval_expression.coeffs.items():
+                index = self.get_index_of_basis_vector(basis_vector)
+                array[index] += self.eval_vector(coef)  # we may need to resolve coef.
+            return vt.EvaluatedVector(coords=array)
 
         op = vector.eval_expression.op
         left_evaled_vector = self.eval_vector(
