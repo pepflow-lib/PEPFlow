@@ -253,3 +253,17 @@ class Parameter:
                 op=utils.Op.POW, left_param=other, right_param=self
             ),
         )
+
+    def get_names(self) -> set[Parameter]:
+        """A function that collects all `name`s in a :class:`Parameter` object."""
+        names = set()
+        if self.eval_expression is None:
+            names.add(self.name)
+        else:
+            left_param = self.eval_expression.left_param
+            right_param = self.eval_expression.right_param
+            if isinstance(left_param, Parameter):
+                names.update(left_param.get_names())
+            if isinstance(right_param, Parameter):
+                names.update(right_param.get_names())
+        return names
