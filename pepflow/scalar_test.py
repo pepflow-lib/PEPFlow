@@ -18,6 +18,7 @@
 # under the License.
 
 import collections
+from collections import defaultdict
 from typing import Iterator
 
 import numpy as np
@@ -255,3 +256,26 @@ def test_scalar_by_basis_with_parameter_coeffs(pep_context):
     assert isinstance(d.func_coeffs[f1], parameter.Parameter)
     assert isinstance(d.inner_prod_coeffs[(v1, v2)], parameter.Parameter)
     assert isinstance(d.offset, parameter.Parameter)
+
+
+def test_simplify_scalar_basic(pep_context):
+    s1 = scalar.Scalar(is_basis=True, tags=["s1"])
+    s2 = scalar.Scalar(is_basis=True, tags=["s2"])
+    s3 = scalar.Scalar(is_basis=True, tags=["s3"])
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    p2 = vector.Vector(is_basis=True, tags=["p2"])
+    p3 = vector.Vector(is_basis=True, tags=["p3"])
+
+    s = 5 * (s1 + s2) - s1 + s3
+    assert s.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
+        func_coeffs=defaultdict(int, {s1: 4, s2: 5, s3: 1}),
+        inner_prod_coeffs=defaultdict(int, {}),
+        offset=0,
+    )
+
+    ip = p1 * p2 + 4 * p1 * p3 + 2 * p2 * p1 + 3 * p3 * p1
+    assert ip.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
+        func_coeffs=defaultdict(int, {}),
+        inner_prod_coeffs=defaultdict(int, {(p1, p2): 3, (p1, p3): 7}),
+        offset=0,
+    )

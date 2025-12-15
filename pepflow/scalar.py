@@ -67,6 +67,28 @@ class ScalarByBasisRepresentation:
     )
     offset: Any = 0
 
+    def __repr__(self) -> str:
+        terms = []
+        for key, val in self.func_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            terms.append(f"{coeff_str}*{repr(key)}")
+        for key, val in self.inner_prod_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            vec0_repr, vec1_repr = repr(key[0]), repr(key[1])
+            if vec0_repr != vec1_repr:
+                terms.append(f"{coeff_str}*⟨{vec0_repr},{vec1_repr}⟩")
+            else:
+                terms.append(f"{coeff_str}*|{vec0_repr}|^2")
+        return " + ".join(terms) if terms else "0"
+
     def __add__(
         self, other: ScalarByBasisRepresentation
     ) -> ScalarByBasisRepresentation:
@@ -551,6 +573,99 @@ class Scalar:
         if not isinstance(other, Scalar):
             return NotImplemented
         return self.uid == other.uid
+
+    def simplify(self, tag: str | None = None) -> Scalar:
+        """
+        Simplify the mathematical expression of this :class:`Scalar` object.
+
+        Returns:
+            :class:`Scalar`: A new :class:`Scalar` object with the simplified
+            mathematical expression.
+        """
+        from pepflow.vector import Vector, VectorByBasisRepresentation
+
+        def _simplify(
+            scalar_or_float: Scalar | utils.NUMERICAL_TYPE | Parameter,
+        ) -> ScalarByBasisRepresentation | utils.NUMERICAL_TYPE | Parameter:
+            if isinstance(scalar_or_float, Scalar):
+                # We know after simplification, the eval_expression is always ScalarByBasisRepresentation.
+                return scalar_or_float.simplify().eval_expression  # type: ignore
+            else:
+                return scalar_or_float
+
+        if self.is_basis:
+            # ScalarByBasisRepresentation and the original basis vector are representating the
+            # the same basis vector. However, we do not wanna introduce another basis vector in the context.
+            # So we have to keep this is_basis = False but the eval_expression should be the same.
+            is_basis = False
+            eval_expression = ScalarByBasisRepresentation(
+                func_coeffs=defaultdict(int, {self: 1}),
+                inner_prod_coeffs=defaultdict(int, {}),
+                offset=0,
+            )
+        elif (
+            isinstance(self.eval_expression, ScalarRepresentation)
+            and self.eval_expression.op == utils.Op.MUL
+            and isinstance(self.eval_expression.left_scalar, Vector)
+            and isinstance(self.eval_expression.right_scalar, Vector)
+        ):
+            # TODO. It would be better to implement this logic in VectorByBasisRepresentation.__mul__ and erase this case
+            left_eval_exression = (
+                self.eval_expression.left_scalar.simplify().eval_expression
+            )
+            right_eval_exression = (
+                self.eval_expression.right_scalar.simplify().eval_expression
+            )
+            is_basis = False
+            assert isinstance(left_eval_exression, VectorByBasisRepresentation)
+            assert isinstance(right_eval_exression, VectorByBasisRepresentation)
+            new_inner_prod_coeffs = defaultdict(int)
+            # <a*x, b*y + c*z> = a*b*<x,y> + a*c*<x,z>
+            for vec_l, coeff_l in left_eval_exression.coeffs.items():
+                str_l = str(vec_l)
+                for vec_r, coeff_r in right_eval_exression.coeffs.items():
+                    key = (vec_l, vec_r) if str_l < str(vec_r) else (vec_r, vec_l)
+                    new_inner_prod_coeffs[key] += coeff_l * coeff_r
+            eval_expression = ScalarByBasisRepresentation(
+                func_coeffs=defaultdict(int, {}),
+                inner_prod_coeffs=new_inner_prod_coeffs,
+                offset=0,
+            )
+        else:
+            is_basis = False
+            if isinstance(self.eval_expression, ZeroScalar):
+                eval_expression = ScalarByBasisRepresentation(
+                    func_coeffs=defaultdict(int, {}),
+                    inner_prod_coeffs=defaultdict(int, {}),
+                    offset=0,
+                )
+            elif isinstance(self.eval_expression, ScalarByBasisRepresentation):
+                eval_expression = self.eval_expression
+            else:
+                assert isinstance(self.eval_expression, ScalarRepresentation)
+                left_eval_exression = _simplify(self.eval_expression.left_scalar)
+                right_eval_exression = _simplify(self.eval_expression.right_scalar)
+                if self.eval_expression.op == utils.Op.ADD:
+                    eval_expression = left_eval_exression + right_eval_exression
+                elif self.eval_expression.op == utils.Op.SUB:
+                    eval_expression = left_eval_exression - right_eval_exression
+                elif self.eval_expression.op == utils.Op.MUL:
+                    eval_expression = left_eval_exression * right_eval_exression
+                elif self.eval_expression.op == utils.Op.DIV:
+                    eval_expression = left_eval_exression / right_eval_exression
+                else:
+                    raise NotImplementedError(
+                        "Division is not supported in simplification yet."
+                    )
+
+        return Scalar(
+            is_basis=is_basis,
+            eval_expression=eval_expression,
+            tags=[tag] if tag is not None else [],
+            math_expr=me.MathExpr(
+                expr_str=str(eval_expression)
+            ),  # TODO: Fix this to use simplified_expr
+        )
 
     def le(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """

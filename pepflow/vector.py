@@ -517,8 +517,8 @@ class Vector:
             is_basis=is_basis,
             eval_expression=eval_expression,
             tags=[tag] if tag is not None else [],
-            math_expr=str(
-                eval_expression
+            math_expr=me.MathExpr(
+                expr_str=str(eval_expression)
             ),  # TODO(Jaewook): Fix this to use simplified_expr
         )
 
