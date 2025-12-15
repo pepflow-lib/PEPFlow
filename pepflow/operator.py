@@ -530,7 +530,7 @@ class Operator:
         return u
 
 
-@attrs.mutable(kw_only=True)
+@attrs.mutable(kw_only=True, repr=False)
 class LinearOperatorTranspose(Operator):
     """
     The :class:`LinearOperatorTranspose` class represents the transpose of a
@@ -559,7 +559,7 @@ class LinearOperatorTranspose(Operator):
         )
 
 
-@attrs.mutable(kw_only=True)
+@attrs.mutable(kw_only=True, repr=False)
 class LinearOperator(Operator):
     """
     The :class:`LinearOperator` class represents a bounded, linear operator.
@@ -694,7 +694,7 @@ class LinearOperator(Operator):
         )
 
 
-@attrs.mutable(kw_only=True)
+@attrs.mutable(kw_only=True, repr=False)
 class MonotoneOperator(Operator):
     """
     The :class:`MonotoneOperator` class represents a monotone operator.
@@ -705,16 +705,11 @@ class MonotoneOperator(Operator):
 
     Example:
         >>> import pepflow as pf
-        >>> ctx = pf.PEPContext("example").set_as_current()
-        >>> pep_builder = pf.PEPBuilder()
         >>> A = pf.MonotoneOperator(is_basis=True, tags=["A"])
     """
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
-
-    def __repr__(self):
-        return super().__repr__()
 
     def __hash__(self):
         return super().__hash__()
