@@ -585,7 +585,7 @@ class Function:
         return u
 
 
-@attrs.mutable(kw_only=True)
+@attrs.mutable(kw_only=True, repr=False)
 class ConvexFunction(Function):
     """
     The :class:`ConvexFunction` class represents a closed, convex, and proper (CCP)
@@ -598,7 +598,7 @@ class ConvexFunction(Function):
 
     Example:
         >>> import pepflow as pf
-        >>> f = pf.ConvexFunction(is_basis=True, tags=["f"], L=1)
+        >>> f = pf.ConvexFunction(is_basis=True, tags=["f"])
     """
 
     def __attrs_post_init__(self):
@@ -606,9 +606,6 @@ class ConvexFunction(Function):
 
     def __hash__(self):
         return super().__hash__()
-
-    def __repr__(self):
-        return super().__repr__()
 
     def convex_interpolability_constraints(
         self, triplet_i: Triplet, triplet_j: Triplet
@@ -716,9 +713,6 @@ class SmoothConvexFunction(Function):
 
     def __hash__(self):
         return super().__hash__()
-
-    def __repr__(self):
-        return super().__repr__()
 
     def smooth_convex_interpolability_constraints(
         self, triplet_i, triplet_j
