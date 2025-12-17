@@ -585,7 +585,7 @@ class Function:
         return u
 
 
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class ConvexFunction(Function):
     """
     The :class:`ConvexFunction` class represents a closed, convex, and proper (CCP)
@@ -689,7 +689,7 @@ class ConvexFunction(Function):
         return f2 - f1 + g2 * (x1 - x2)
 
 
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class SmoothConvexFunction(Function):
     """
     The :class:`SmoothConvexFunction` class represents a smooth, convex function.
