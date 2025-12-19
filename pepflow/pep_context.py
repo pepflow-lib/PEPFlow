@@ -110,7 +110,7 @@ class ConstraintData:
                     )
                     for constraint in sc
                 ],
-                columns=["constraint_name", "col_point", "row_point"],
+                columns=["constraint_name", "row_point", "col_point"],
             )
             order_col = natsort.natsorted(df["col_point"].unique())
             order_row = natsort.natsorted(df["row_point"].unique())
