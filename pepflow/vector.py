@@ -102,6 +102,14 @@ class VectorByBasisRepresentation:
                 new_coeffs[vec] = -coeff
         return VectorByBasisRepresentation(coeffs=new_coeffs)
 
+    def __neg__(
+        self,
+    ) -> VectorByBasisRepresentation:
+        new_coeffs = defaultdict(int)
+        for vec, coeff in self.coeffs.items():
+            new_coeffs[vec] = -coeff
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
     def __mul__(
         self, scalar: utils.NUMERICAL_TYPE | Parameter
     ) -> VectorByBasisRepresentation:
@@ -498,19 +506,19 @@ class Vector:
                 eval_expression = self.eval_expression
             else:
                 assert isinstance(self.eval_expression, VectorRepresentation)
-                left_eval_exression = _simplify(self.eval_expression.left_vector)
-                right_eval_exression = _simplify(self.eval_expression.right_vector)
+                left_eval_expression = _simplify(self.eval_expression.left_vector)
+                right_eval_expression = _simplify(self.eval_expression.right_vector)
                 if self.eval_expression.op == utils.Op.ADD:
-                    eval_expression = left_eval_exression + right_eval_exression
+                    eval_expression = left_eval_expression + right_eval_expression
                 elif self.eval_expression.op == utils.Op.SUB:
-                    eval_expression = left_eval_exression - right_eval_exression
+                    eval_expression = left_eval_expression - right_eval_expression
                 elif self.eval_expression.op == utils.Op.MUL:
-                    eval_expression = left_eval_exression * right_eval_exression
+                    eval_expression = left_eval_expression * right_eval_expression
                 elif self.eval_expression.op == utils.Op.DIV:
-                    eval_expression = left_eval_exression / right_eval_exression
+                    eval_expression = left_eval_expression / right_eval_expression
                 else:
                     raise NotImplementedError(
-                        "Division is not supported in simplification yet."
+                        "Only add,sub,mul,div are supported for Vector simplification."
                     )
 
         return Vector(
