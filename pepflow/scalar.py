@@ -34,7 +34,7 @@ from pepflow import utils
 
 if TYPE_CHECKING:
     from pepflow.parameter import Parameter
-    from pepflow.vector import Vector
+    from pepflow.vector import Vector, VectorByBasisRepresentation
 
 
 def is_numerical_or_scalar(val: Any) -> bool:
@@ -582,13 +582,19 @@ class Scalar:
             :class:`Scalar`: A new :class:`Scalar` object with the simplified
             mathematical expression.
         """
-        from pepflow.vector import Vector, VectorByBasisRepresentation
+        from pepflow.vector import Vector
 
         def _simplify(
-            scalar_or_float: Scalar | utils.NUMERICAL_TYPE | Parameter,
-        ) -> ScalarByBasisRepresentation | utils.NUMERICAL_TYPE | Parameter:
-            if isinstance(scalar_or_float, Scalar):
-                # We know after simplification, the eval_expression is always ScalarByBasisRepresentation.
+            scalar_or_float: Scalar | utils.NUMERICAL_TYPE | Parameter | Vector,
+        ) -> (
+            ScalarByBasisRepresentation
+            | utils.NUMERICAL_TYPE
+            | Parameter
+            | VectorByBasisRepresentation
+        ):
+            if isinstance(scalar_or_float, (Scalar, Vector)):
+                # We know after simplification, the eval_expression is always
+                # ScalarByBasisRepresentation or VectorByBasisRepresentation.
                 return scalar_or_float.simplify().eval_expression  # type: ignore
             else:
                 return scalar_or_float
@@ -601,34 +607,6 @@ class Scalar:
             eval_expression = ScalarByBasisRepresentation(
                 func_coeffs=defaultdict(int, {self: 1}),
                 inner_prod_coeffs=defaultdict(int, {}),
-                offset=0,
-            )
-        elif (
-            isinstance(self.eval_expression, ScalarRepresentation)
-            and self.eval_expression.op == utils.Op.MUL
-            and isinstance(self.eval_expression.left_scalar, Vector)
-            and isinstance(self.eval_expression.right_scalar, Vector)
-        ):
-            # TODO. It would be better to implement this logic in VectorByBasisRepresentation.__mul__ and erase this case
-            left_eval_exression = (
-                self.eval_expression.left_scalar.simplify().eval_expression
-            )
-            right_eval_exression = (
-                self.eval_expression.right_scalar.simplify().eval_expression
-            )
-            is_basis = False
-            assert isinstance(left_eval_exression, VectorByBasisRepresentation)
-            assert isinstance(right_eval_exression, VectorByBasisRepresentation)
-            new_inner_prod_coeffs = defaultdict(int)
-            # <a*x, b*y + c*z> = a*b*<x,y> + a*c*<x,z>
-            for vec_l, coeff_l in left_eval_exression.coeffs.items():
-                str_l = str(vec_l)
-                for vec_r, coeff_r in right_eval_exression.coeffs.items():
-                    key = (vec_l, vec_r) if str_l < str(vec_r) else (vec_r, vec_l)
-                    new_inner_prod_coeffs[key] += coeff_l * coeff_r
-            eval_expression = ScalarByBasisRepresentation(
-                func_coeffs=defaultdict(int, {}),
-                inner_prod_coeffs=new_inner_prod_coeffs,
                 offset=0,
             )
         else:
@@ -655,7 +633,7 @@ class Scalar:
                     eval_expression = left_eval_exression / right_eval_exression
                 else:
                     raise NotImplementedError(
-                        "Division is not supported in simplification yet."
+                        "Only add,sub,mul,div are supported for Vector simplification."
                     )
 
         return Scalar(
