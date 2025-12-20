@@ -254,7 +254,6 @@ def get_pivot_table_of_dual_value(
         )
         .fillna(0.0)
         .rename_axis("", axis=0)
-        .T
     )
     if num_decs is not None:
         pivot_table = pivot_table.round(num_decs)

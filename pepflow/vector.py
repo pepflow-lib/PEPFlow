@@ -35,6 +35,9 @@ from pepflow.scalar import Scalar, ScalarRepresentation
 if TYPE_CHECKING:
     from pepflow.parameter import Parameter
 
+if TYPE_CHECKING:
+    from pepflow.parameter import Parameter
+
 
 def is_numerical_or_vector(val: Any) -> bool:
     return utils.is_numerical_or_parameter(val) or isinstance(val, Vector)
@@ -47,92 +50,8 @@ def is_numerical_or_evaluated_vector(val: Any) -> bool:
 @attrs.frozen
 class VectorRepresentation:
     op: utils.Op
-    left_vector: Vector | utils.NUMERICAL_TYPE | Parameter
-    right_vector: Vector | utils.NUMERICAL_TYPE | Parameter
-
-
-@attrs.frozen
-class VectorByBasisRepresentation:
-    """A representation of a Vector as a linear combination of basis Vectors."""
-
-    # coeffs can be numerical or parameter type.
-    coeffs: defaultdict[Vector, Any] = attrs.field(factory=lambda: defaultdict(int))
-
-    def __repr__(self) -> str:
-        # TODO: Improve representation for parameters and Scalar types.
-        terms = []
-        for vec, coeff in self.coeffs.items():
-            if utils.is_numerical_or_parameter(coeff):
-                coeff_str = utils.numerical_str(coeff)
-            else:
-                coeff_str = repr(coeff)
-            terms.append(f"{coeff_str}*{repr(vec)}")
-        return " + ".join(terms) if terms else "0"
-
-    def __add__(
-        self, other: VectorByBasisRepresentation
-    ) -> VectorByBasisRepresentation:
-        if not isinstance(other, VectorByBasisRepresentation):
-            return NotImplemented
-
-        new_coeffs = self.coeffs.copy()
-        for vec, coeff in other.coeffs.items():
-            if vec in new_coeffs:
-                new_coeffs[vec] += coeff
-            else:
-                new_coeffs[vec] = coeff
-        return VectorByBasisRepresentation(coeffs=new_coeffs)
-
-    def __radd__(
-        self, other: VectorByBasisRepresentation
-    ) -> VectorByBasisRepresentation:
-        return self.__add__(other)
-
-    def __sub__(
-        self, other: VectorByBasisRepresentation
-    ) -> VectorByBasisRepresentation:
-        if not isinstance(other, VectorByBasisRepresentation):
-            return NotImplemented
-
-        new_coeffs = self.coeffs.copy()
-        for vec, coeff in other.coeffs.items():
-            if vec in new_coeffs:
-                new_coeffs[vec] -= coeff
-            else:
-                new_coeffs[vec] = -coeff
-        return VectorByBasisRepresentation(coeffs=new_coeffs)
-
-    def __mul__(
-        self, scalar: utils.NUMERICAL_TYPE | Parameter
-    ) -> VectorByBasisRepresentation:
-        if not utils.is_numerical_or_parameter(scalar):
-            return NotImplemented
-
-        new_coeffs = defaultdict(int)
-        for vec, coeff in self.coeffs.items():
-            new_coeffs[vec] = coeff * scalar
-        return VectorByBasisRepresentation(coeffs=new_coeffs)
-
-    def __rmul__(
-        self, scalar: utils.NUMERICAL_TYPE | Parameter
-    ) -> VectorByBasisRepresentation:
-        return self.__mul__(scalar)
-
-    def __truediv__(
-        self, scalar: utils.NUMERICAL_TYPE | Parameter
-    ) -> VectorByBasisRepresentation:
-        if not utils.is_numerical_or_parameter(scalar):
-            return NotImplemented
-
-        new_coeffs = defaultdict(int)
-        for vec, coeff in self.coeffs.items():
-            new_coeffs[vec] = coeff / scalar
-        return VectorByBasisRepresentation(coeffs=new_coeffs)
-
-    def __eq__(self, other: Any) -> bool:
-        if not isinstance(other, VectorByBasisRepresentation):
-            return False
-        return self.coeffs == other.coeffs
+    left_vector: Vector | float
+    right_vector: Vector | float
 
 
 @attrs.frozen
@@ -256,7 +175,9 @@ class Vector:
 
     # The representation of vector used for evaluation.
     eval_expression: (
-        VectorRepresentation | VectorByBasisRepresentation | ZeroVector | None
+        (
+        VectorRepresentation | VectorByBasisRepresentation | VectorByBasisRepresentation | ZeroVector | None
+    )
     ) = None
 
     # Human tagged value for the Vector
@@ -519,6 +440,66 @@ class Vector:
             tags=[tag] if tag is not None else [],
             math_expr=me.MathExpr(
                 expr_str=str(eval_expression)
+            ),  # TODO(Jaewook): Fix this to use simplified_expr
+        )
+
+    def simplify(self, tag: str | None = None) -> Vector:
+        """
+        Simplify the mathematical expression of this :class:`Vector` object.
+
+        Returns:
+            :class:`Vector`: A new :class:`Vector` object with the simplified
+            mathematical expression.
+        """
+
+        def _simplify(
+            vector_or_float: Vector | utils.NUMERICAL_TYPE | Parameter,
+        ) -> VectorByBasisRepresentation | utils.NUMERICAL_TYPE | Parameter:
+            if isinstance(vector_or_float, Vector):
+                # We know after simplification, the eval_expression is always VectorByBasisRepresentation.
+                return vector_or_float.simplify().eval_expression  # type: ignore
+            else:
+                return vector_or_float
+
+        if self.is_basis:
+            # VectorByBasisRepresentation and the original basis vector are representating the
+            # the same basis vector. However, we do not wanna introduce another basis vector in the context.
+            # So we have to keep this is_basis = False but the eval_expression should be the same.
+            is_basis = False
+            eval_expression = VectorByBasisRepresentation(
+                coeffs=defaultdict(int, {self: 1})
+            )
+        else:
+            is_basis = False
+            if isinstance(self.eval_expression, ZeroVector):
+                eval_expression = VectorByBasisRepresentation(
+                    coeffs=defaultdict(int, {})
+                )
+            elif isinstance(self.eval_expression, VectorByBasisRepresentation):
+                eval_expression = self.eval_expression
+            else:
+                assert isinstance(self.eval_expression, VectorRepresentation)
+                left_eval_expression = _simplify(self.eval_expression.left_vector)
+                right_eval_expression = _simplify(self.eval_expression.right_vector)
+                if self.eval_expression.op == utils.Op.ADD:
+                    eval_expression = left_eval_expression + right_eval_expression
+                elif self.eval_expression.op == utils.Op.SUB:
+                    eval_expression = left_eval_expression - right_eval_expression
+                elif self.eval_expression.op == utils.Op.MUL:
+                    eval_expression = left_eval_expression * right_eval_expression
+                elif self.eval_expression.op == utils.Op.DIV:
+                    eval_expression = left_eval_expression / right_eval_expression
+                else:
+                    raise NotImplementedError(
+                        "Only add,sub,mul,div are supported for Vector simplification."
+                    )
+
+        return Vector(
+            is_basis=is_basis,
+            eval_expression=eval_expression,
+            tags=[tag] if tag is not None else [],
+            math_expr=str(
+                eval_expression
             ),  # TODO(Jaewook): Fix this to use simplified_expr
         )
 
