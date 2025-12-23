@@ -385,7 +385,9 @@ class Scalar:
     is_basis: bool
 
     # The representation of scalar used for evaluation.
-    eval_expression: ScalarRepresentation | ZeroScalar | None = None
+    eval_expression: (
+        ScalarRepresentation | ScalarByBasisRepresentation | ZeroScalar | None
+    ) = None
 
     # Human tagged value for the scalar
     tags: list[str] = attrs.field(factory=list)

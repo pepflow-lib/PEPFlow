@@ -248,6 +248,28 @@ class ExpressionManager:
             )
         assert scalar.eval_expression is not None  # To make typecheck happy
 
+        if isinstance(scalar.eval_expression, sc.ScalarByBasisRepresentation):
+            array = np.zeros(self._num_basis_vectors)
+            if sympy_mode:
+                array = array * sp.S(0)
+            matrix = np.zeros((self._num_basis_vectors, self._num_basis_vectors))
+            if sympy_mode:
+                matrix = matrix * sp.S(0)
+            for key, coef in scalar.eval_expression.func_coeffs.items():
+                index = self.get_index_of_basis_scalar(key)
+                array[index] += self.eval_scalar(coef)  # we may need to resolve coef.
+            for key, coef in scalar.eval_expression.inner_prod_coeffs.items():
+                matrix += self.eval_scalar(coef) * utils.SOP(
+                    self.eval_vector(key[0], sympy_mode=sympy_mode).coords,
+                    self.eval_vector(key[1], sympy_mode=sympy_mode).coords,
+                    sympy_mode=sympy_mode,
+                )
+            return sc.EvaluatedScalar(
+                func_coords=array,
+                inner_prod_coords=matrix,
+                offset=scalar.eval_expression.offset,
+            )
+
         if isinstance(scalar.eval_expression, sc.ZeroScalar):
             return sc.EvaluatedScalar.zero(
                 num_basis_scalars=self._num_basis_scalars,
