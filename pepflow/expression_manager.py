@@ -145,8 +145,6 @@ class ExpressionManager:
             return vt.EvaluatedVector(coords=array)
         assert vector.eval_expression is not None  # To make typecheck happy
 
-        assert vector.eval_expression is not None  # To make typecheck happy
-
         if isinstance(vector.eval_expression, vt.ZeroVector):
             return vt.EvaluatedVector.zero(
                 num_basis_vectors=self._num_basis_vectors, sympy_mode=sympy_mode
@@ -257,7 +255,7 @@ class ExpressionManager:
                 matrix = matrix * sp.S(0)
             for key, coef in scalar.eval_expression.func_coeffs.items():
                 index = self.get_index_of_basis_scalar(key)
-                array[index] += self.eval_scalar(coef)  # we may need to resolve coef.
+                array[index] += self.eval_scalar(coef)
             for key, coef in scalar.eval_expression.inner_prod_coeffs.items():
                 matrix += self.eval_scalar(coef) * utils.SOP(
                     self.eval_vector(key[0], sympy_mode=sympy_mode).coords,

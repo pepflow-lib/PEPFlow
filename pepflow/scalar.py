@@ -89,6 +89,7 @@ class ScalarByBasisRepresentation:
                 terms.append(f"{coeff_str}*|{vec0_repr}|^2")
         return " + ".join(terms) if terms else "0"
 
+    # TODO: Support other types for `other` and add case distinction
     def __add__(
         self, other: ScalarByBasisRepresentation
     ) -> ScalarByBasisRepresentation:
@@ -115,6 +116,7 @@ class ScalarByBasisRepresentation:
     ) -> ScalarByBasisRepresentation:
         return self.__add__(other)
 
+    # TODO: Support other types for `other` and add case distinction
     def __sub__(
         self, other: ScalarByBasisRepresentation
     ) -> ScalarByBasisRepresentation:
@@ -135,6 +137,8 @@ class ScalarByBasisRepresentation:
             inner_prod_coeffs=new_inner_prod_coeffs,
             offset=new_offset,
         )
+
+    # TODO: add __rsub__
 
     def __mul__(
         self, other: utils.NUMERICAL_TYPE | Parameter
@@ -587,19 +591,22 @@ class Scalar:
         from pepflow.vector import Vector
 
         def _simplify(
-            scalar_or_float: Scalar | utils.NUMERICAL_TYPE | Parameter | Vector,
+            scalar_or_float_or_vector: Scalar
+            | utils.NUMERICAL_TYPE
+            | Parameter
+            | Vector,
         ) -> (
             ScalarByBasisRepresentation
             | utils.NUMERICAL_TYPE
             | Parameter
             | VectorByBasisRepresentation
         ):
-            if isinstance(scalar_or_float, (Scalar, Vector)):
+            if isinstance(scalar_or_float_or_vector, (Scalar, Vector)):
                 # We know after simplification, the eval_expression is always
                 # ScalarByBasisRepresentation or VectorByBasisRepresentation.
-                return scalar_or_float.simplify().eval_expression  # type: ignore
+                return scalar_or_float_or_vector.simplify().eval_expression  # type: ignore
             else:
-                return scalar_or_float
+                return scalar_or_float_or_vector
 
         if self.is_basis:
             # ScalarByBasisRepresentation and the original basis vector are representating the
@@ -623,19 +630,19 @@ class Scalar:
                 eval_expression = self.eval_expression
             else:
                 assert isinstance(self.eval_expression, ScalarRepresentation)
-                left_eval_exression = _simplify(self.eval_expression.left_scalar)
-                right_eval_exression = _simplify(self.eval_expression.right_scalar)
+                left_eval_expression = _simplify(self.eval_expression.left_scalar)
+                right_eval_expression = _simplify(self.eval_expression.right_scalar)
                 if self.eval_expression.op == utils.Op.ADD:
-                    eval_expression = left_eval_exression + right_eval_exression
+                    eval_expression = left_eval_expression + right_eval_expression
                 elif self.eval_expression.op == utils.Op.SUB:
-                    eval_expression = left_eval_exression - right_eval_exression
+                    eval_expression = left_eval_expression - right_eval_expression
                 elif self.eval_expression.op == utils.Op.MUL:
-                    eval_expression = left_eval_exression * right_eval_exression
+                    eval_expression = left_eval_expression * right_eval_expression
                 elif self.eval_expression.op == utils.Op.DIV:
-                    eval_expression = left_eval_exression / right_eval_exression
+                    eval_expression = left_eval_expression / right_eval_expression
                 else:
                     raise NotImplementedError(
-                        "Only add,sub,mul,div are supported for Vector simplification."
+                        "Only add,sub,mul,div are supported for Scalar simplification."
                     )
 
         return Scalar(
