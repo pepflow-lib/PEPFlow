@@ -210,3 +210,11 @@ def test_parameter_comparison(pep_context: pc.PEPContext):
 
     assert pp1 == pp2
     assert not pp1 == pp3
+
+
+def test_parameter_simplify_basic(pep_context: pc.PEPContext):
+    pm1 = Parameter("pm1")
+
+    p1 = pm1 + pm1
+    p2 = 2 * pm1
+    assert p1.simplify() == p2.simplify()

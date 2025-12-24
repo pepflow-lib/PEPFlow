@@ -19,7 +19,11 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
+from typing import Any, FrozenSet, Tuple
+
 import attrs
+import sympy as sp
 
 from pepflow import utils
 
@@ -45,6 +49,134 @@ def eval_parameter(
     if utils.is_sympy_expr(param):
         return param
     raise ValueError(f"Encounter the unknown parameter type: {param} ({type(param)})")
+
+
+@attrs.frozen
+class Monomial:
+    """Auxiliary class that serves as a key in a dictionary attribute of
+    ParameterByDictRepresentation. Represents terms of the form a^n * b^m * ..."""
+
+    powers: FrozenSet[Tuple[Parameter, int]]
+
+    def __repr__(self) -> str:
+        terms = [
+            f"{param_with_name}^{exp}" if exp != 1 else str(param_with_name)
+            for param_with_name, exp in sorted(
+                self.powers, key=lambda x: (x[0].name, x[1])
+            )
+        ]
+        return "*".join(terms)
+
+    def __mul__(self, other: Monomial) -> Monomial:
+        if not isinstance(other, Monomial):
+            return NotImplemented
+        new_powers = dict(self.powers)
+        for param_with_name, exp in other.powers:
+            new_powers[param_with_name] = new_powers.get(param_with_name, 0) + exp
+        new_frozen_powers = frozenset(
+            (param_with_name, exp)
+            for param_with_name, exp in new_powers.items()
+            if exp != 0
+        )
+        return Monomial(powers=new_frozen_powers)
+
+
+@attrs.frozen
+class ParameterByDictRepresentation:
+    """A representation of a Parameter as a rational function p(a, b, ...)/q(a, b, ...),
+    where a, b, ... are Parameter objects with names."""
+
+    # p(a, b, ...) = coeff_1 * a^{n_1} * b^{m_1} * ... + coeff_2 * a^{n_2} * b^{m_2} * ... * + ...
+    numerator_polynomial_dict: defaultdict[Monomial, Any] = attrs.field(
+        factory=lambda: defaultdict(int)
+    )
+
+    # TODO: implement denominator_polynomial_dict
+
+    offset: Any = 0
+
+    def __repr__(self) -> str:
+        terms = []
+        if self.offset != 0:
+            terms.append(repr(self.offset))
+        for monomial, coeff in self.numerator_polynomial_dict.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(coeff):
+                coeff_str = utils.numerical_str(coeff)
+            else:
+                coeff_str = repr(coeff)
+            terms.append(f"{coeff_str}*{repr(monomial)}")
+        return " + ".join(terms) if terms else "0"
+
+    def __add__(
+        self, other: ParameterByDictRepresentation
+    ) -> ParameterByDictRepresentation:
+        if not isinstance(other, ParameterByDictRepresentation):
+            # TODO: Allow addition with Python and SymPy numbers
+            return NotImplemented
+        new_offset = self.offset + other.offset
+
+        new_dict = self.numerator_polynomial_dict.copy()
+        for monomial, coeff in other.numerator_polynomial_dict.items():
+            if monomial in new_dict:
+                new_dict[monomial] += coeff
+            else:
+                new_dict[monomial] = coeff
+        return ParameterByDictRepresentation(
+            offset=new_offset, numerator_polynomial_dict=new_dict
+        )
+
+    def __radd__(
+        self, other: ParameterByDictRepresentation
+    ) -> ParameterByDictRepresentation:
+        return self.__add__(other)
+
+    def __neg__(
+        self,
+    ) -> ParameterByDictRepresentation:
+        new_dict = defaultdict(int)
+        for monomial, coeff in self.numerator_polynomial_dict.items():
+            new_dict[monomial] = -coeff
+        new_offset = -self.offset
+        return ParameterByDictRepresentation(
+            offset=new_offset, numerator_polynomial_dict=new_dict
+        )
+
+    def __sub__(
+        self, other: ParameterByDictRepresentation
+    ) -> ParameterByDictRepresentation:
+        return self.__add__(-other)
+
+    def __rsub__(
+        self, other: ParameterByDictRepresentation
+    ) -> ParameterByDictRepresentation:
+        return (-self).__add__(other)
+
+    def __mul__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            # TODO: Allow multiplication with Parameter
+            return NotImplemented
+
+        new_dict = defaultdict(int)
+        for monomial, coeff in self.numerator_polynomial_dict.items():
+            new_dict[monomial] = coeff * other
+
+        new_offset = self.offset * other
+
+        return ParameterByDictRepresentation(
+            numerator_polynomial_dict=new_dict,
+            offset=new_offset,
+        )
+
+    def __rmul__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
+        return self.__mul__(other)
+
+    def __truediv__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            # TODO: Allow division with Parameter
+            return NotImplemented
+
+        return self.__mul__(1 / other)
 
 
 @attrs.frozen
@@ -77,7 +209,9 @@ class Parameter:
     # If name is None, it is a composite parameter.
     name: str | None
 
-    eval_expression: ParameterRepresentation | None = None
+    eval_expression: ParameterRepresentation | ParameterByDictRepresentation | None = (
+        None
+    )
 
     def __attrs_post_init__(self):
         if self.name is None and self.eval_expression is None:
@@ -94,6 +228,9 @@ class Parameter:
     def __repr__(self):
         if self.eval_expression is None:
             return self.name
+
+        if isinstance(self.eval_expression, ParameterByDictRepresentation):
+            return repr(self.eval_expression)
 
         op = self.eval_expression.op
         if op == utils.Op.POW:
@@ -132,6 +269,11 @@ class Parameter:
             if val is NOT_FOUND:
                 raise ValueError(f"Cannot resolve Parameter named: {self.name}")
             return val
+
+        if isinstance(self.eval_expression, ParameterByDictRepresentation):
+            # TODO: when isinstance(self.eval_expression, ParameterByDictRepresentation)
+            return NotImplemented
+
         op = self.eval_expression.op
         left_param = eval_parameter(self.eval_expression.left_param, resolve_parameters)
         right_param = eval_parameter(
@@ -252,4 +394,60 @@ class Parameter:
             eval_expression=ParameterRepresentation(
                 op=utils.Op.POW, left_param=other, right_param=self
             ),
+        )
+
+    def simplify(self) -> Parameter:
+        """
+        Simplify the mathematical expression of this :class:`Parameter` object.
+
+        Returns:
+            :class:`Parameter`: A new :class:`Parameter` object with the simplified
+            mathematical expression.
+        """
+
+        def _simplify(
+            parameter_or_number: Parameter | utils.NUMERICAL_TYPE,
+        ) -> ParameterByDictRepresentation | utils.NUMERICAL_TYPE:
+            if isinstance(parameter_or_number, Parameter):
+                # We know after simplification, the eval_expression is always
+                # ScalarByBasisRepresentation or VectorByBasisRepresentation.
+                return parameter_or_number.simplify().eval_expression  # type: ignore
+            elif isinstance(parameter_or_number, sp.Basic):
+                simplified_result = parameter_or_number.simplify()
+                assert isinstance(simplified_result, utils.NUMERICAL_TYPE)
+                return simplified_result
+            else:
+                return parameter_or_number
+
+        if self.name is not None:
+            name = None
+            monomial_key = Monomial(frozenset({(self, 1)}))
+            eval_expression = ParameterByDictRepresentation(
+                numerator_polynomial_dict=defaultdict(int, {monomial_key: 1}),
+                offset=0,
+            )
+        else:
+            name = None
+            if isinstance(self.eval_expression, ParameterByDictRepresentation):
+                eval_expression = self.eval_expression
+            else:
+                assert isinstance(self.eval_expression, ParameterRepresentation)
+                left_eval_expression = _simplify(self.eval_expression.left_param)
+                right_eval_expression = _simplify(self.eval_expression.right_param)
+                if self.eval_expression.op == utils.Op.ADD:
+                    eval_expression = left_eval_expression + right_eval_expression
+                elif self.eval_expression.op == utils.Op.SUB:
+                    eval_expression = left_eval_expression - right_eval_expression
+                elif self.eval_expression.op == utils.Op.MUL:
+                    eval_expression = left_eval_expression * right_eval_expression
+                elif self.eval_expression.op == utils.Op.DIV:
+                    eval_expression = left_eval_expression / right_eval_expression
+                else:
+                    raise NotImplementedError(
+                        "Only add,sub,mul,div are supported for Parameter simplification."
+                    )
+
+        return Parameter(
+            name=name,
+            eval_expression=eval_expression,
         )
