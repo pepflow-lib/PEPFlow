@@ -145,8 +145,6 @@ class ExpressionManager:
             return vt.EvaluatedVector(coords=array)
         assert vector.eval_expression is not None  # To make typecheck happy
 
-        assert vector.eval_expression is not None  # To make typecheck happy
-
         if isinstance(vector.eval_expression, vt.ZeroVector):
             return vt.EvaluatedVector.zero(
                 num_basis_vectors=self._num_basis_vectors, sympy_mode=sympy_mode
@@ -247,6 +245,28 @@ class ExpressionManager:
                 offset=sp.S(0) if sympy_mode else float(0.0),
             )
         assert scalar.eval_expression is not None  # To make typecheck happy
+
+        if isinstance(scalar.eval_expression, sc.ScalarByBasisRepresentation):
+            array = np.zeros(self._num_basis_vectors)
+            if sympy_mode:
+                array = array * sp.S(0)
+            matrix = np.zeros((self._num_basis_vectors, self._num_basis_vectors))
+            if sympy_mode:
+                matrix = matrix * sp.S(0)
+            for key, coef in scalar.eval_expression.func_coeffs.items():
+                index = self.get_index_of_basis_scalar(key)
+                array[index] += self.eval_scalar(coef)
+            for key, coef in scalar.eval_expression.inner_prod_coeffs.items():
+                matrix += self.eval_scalar(coef) * utils.SOP(
+                    self.eval_vector(key[0], sympy_mode=sympy_mode).coords,
+                    self.eval_vector(key[1], sympy_mode=sympy_mode).coords,
+                    sympy_mode=sympy_mode,
+                )
+            return sc.EvaluatedScalar(
+                func_coords=array,
+                inner_prod_coords=matrix,
+                offset=scalar.eval_expression.offset,
+            )
 
         if isinstance(scalar.eval_expression, sc.ZeroScalar):
             return sc.EvaluatedScalar.zero(

@@ -30,7 +30,7 @@ import sympy as sp
 from pepflow import math_expression as me
 from pepflow import pep_context as pc
 from pepflow import utils
-from pepflow.scalar import Scalar, ScalarRepresentation
+from pepflow.scalar import Scalar, ScalarByBasisRepresentation, ScalarRepresentation
 
 if TYPE_CHECKING:
     from pepflow.parameter import Parameter
@@ -111,20 +111,34 @@ class VectorByBasisRepresentation:
         return VectorByBasisRepresentation(coeffs=new_coeffs)
 
     def __mul__(
-        self, scalar: utils.NUMERICAL_TYPE | Parameter
-    ) -> VectorByBasisRepresentation:
-        if not utils.is_numerical_or_parameter(scalar):
+        self, other: utils.NUMERICAL_TYPE | Parameter | VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation | ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other) and not isinstance(
+            other, VectorByBasisRepresentation
+        ):
             return NotImplemented
-
+        if isinstance(other, VectorByBasisRepresentation):
+            new_inner_prod_coeffs = defaultdict(int)
+            # <a*x, b*y + c*z> = a*b*<x,y> + a*c*<x,z>
+            for vec_l, coeff_l in self.coeffs.items():
+                str_l = str(vec_l)
+                for vec_r, coeff_r in other.coeffs.items():
+                    key = (vec_l, vec_r) if str_l < str(vec_r) else (vec_r, vec_l)
+                    new_inner_prod_coeffs[key] += coeff_l * coeff_r
+                return ScalarByBasisRepresentation(
+                    func_coeffs=defaultdict(int, {}),
+                    inner_prod_coeffs=new_inner_prod_coeffs,
+                    offset=0,
+                )
         new_coeffs = defaultdict(int)
         for vec, coeff in self.coeffs.items():
-            new_coeffs[vec] = coeff * scalar
+            new_coeffs[vec] = coeff * other
         return VectorByBasisRepresentation(coeffs=new_coeffs)
 
     def __rmul__(
-        self, scalar: utils.NUMERICAL_TYPE | Parameter
-    ) -> VectorByBasisRepresentation:
-        return self.__mul__(scalar)
+        self, other: utils.NUMERICAL_TYPE | Parameter | VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation | ScalarByBasisRepresentation:
+        return self.__mul__(other)
 
     def __truediv__(
         self, scalar: utils.NUMERICAL_TYPE | Parameter
