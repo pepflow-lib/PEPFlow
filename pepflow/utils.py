@@ -22,6 +22,7 @@ from __future__ import annotations
 import enum
 import math
 import numbers
+from collections import defaultdict
 from typing import TYPE_CHECKING, Any, TypeAlias
 
 import numpy as np
@@ -113,14 +114,66 @@ def is_numerical(val: Any) -> bool:
     return isinstance(val, numbers.Number) or val_is_sp_real
 
 
-def is_numerical_or_parameter(val: Any) -> bool:
+def is_parameter(val: Any) -> bool:
     from pepflow import parameter as param
 
-    return is_numerical(val) or isinstance(val, param.Parameter)
+    return isinstance(val, param.Parameter)
+
+
+def is_numerical_or_parameter(val: Any) -> bool:
+    # return is_numerical(val) or isinstance(val, param.Parameter)
+    return is_numerical(val) or is_parameter(val)
 
 
 def is_sympy_expr(val: Any) -> bool:
     return isinstance(val, sp.Basic)
+
+
+def simplify_if_param_or_sympy_expr(
+    val: NUMERICAL_TYPE | Parameter | sp.Basic,
+) -> NUMERICAL_TYPE | Parameter | sp.Basic:
+    if not is_numerical_or_parameter(val):
+        return NotImplemented
+    # Both Parameter and SymPy expressions have a simplify() method
+    if is_parameter(val) or is_sympy_expr(val):
+        return val.simplify()  # type: ignore
+    return val
+
+
+def num_or_param_or_sympy_expr_is_zero(
+    val: NUMERICAL_TYPE | Parameter | sp.Basic,
+) -> bool:
+    if is_parameter(val):
+        from pepflow.parameter import ParameterByDictRepresentation
+
+        # Parameter objects have an eval_expression attribute.
+        expression = val.eval_expression  # type: ignore
+        if isinstance(expression, ParameterByDictRepresentation):
+            return expression.is_zero()
+        return False
+    elif is_sympy_expr(val):
+        # Both SymPy expressions has a equals method
+        return val.equals(0)  # type: ignore
+    return val == 0
+
+
+def simplify_dict(
+    old_dict: defaultdict[Any, Any],
+) -> defaultdict[Any, Any]:
+    """
+    Return a new defaultdict(int) whose values are simplified.
+    Entries whose simplified value is zero are removed.
+    """
+    return defaultdict(
+        int,
+        {
+            key: simplified_val
+            for key, val in old_dict.items()
+            if not num_or_param_or_sympy_expr_is_zero(
+                simplified_val := simplify_if_param_or_sympy_expr(val)
+            )
+        },
+    )
 
 
 def numerical_str(val: Any) -> str:

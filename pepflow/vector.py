@@ -154,7 +154,18 @@ class VectorByBasisRepresentation:
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, VectorByBasisRepresentation):
             return False
-        return self.coeffs == other.coeffs
+        # return self.coeffs == other.coeffs
+        if self.coeffs.keys() != other.coeffs.keys():
+            return False
+
+        for key in self.coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.coeffs[key] - other.coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
 
 
 @attrs.frozen
@@ -499,6 +510,11 @@ class Vector:
             if isinstance(vector_or_float, Vector):
                 # We know after simplification, the eval_expression is always VectorByBasisRepresentation.
                 return vector_or_float.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(vector_or_float) or utils.is_sympy_expr(
+                vector_or_float
+            ):
+                # Parameter has a simplify() method
+                return vector_or_float.simplify()  # type: ignore
             else:
                 return vector_or_float
 
@@ -534,6 +550,11 @@ class Vector:
                     raise NotImplementedError(
                         "Only add,sub,mul,div are supported for Vector simplification."
                     )
+
+        # coefficient simplification
+        eval_expression = VectorByBasisRepresentation(
+            coeffs=utils.simplify_dict(eval_expression.coeffs)
+        )
 
         return Vector(
             is_basis=is_basis,

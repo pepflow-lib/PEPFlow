@@ -101,34 +101,52 @@ class ParameterByDictRepresentation:
             terms.append(repr(self.offset))
         for monomial, coeff in self.numerator_polynomial_dict.items():
             # TODO: Add the correct parentheses where needed
-            if utils.is_numerical_or_parameter(coeff):
-                coeff_str = utils.numerical_str(coeff)
+            if coeff == 1:
+                terms.append(f"{repr(monomial)}")
             else:
-                coeff_str = repr(coeff)
-            terms.append(f"{coeff_str}*{repr(monomial)}")
+                if utils.is_numerical_or_parameter(coeff):
+                    coeff_str = utils.numerical_str(coeff)
+                else:
+                    coeff_str = repr(coeff)
+                terms.append(f"{coeff_str}*{repr(monomial)}")
         return " + ".join(terms) if terms else "0"
 
     def __add__(
-        self, other: ParameterByDictRepresentation
-    ) -> ParameterByDictRepresentation:
-        if not isinstance(other, ParameterByDictRepresentation):
-            # TODO: Allow addition with Python and SymPy numbers
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
+        if not (
+            utils.is_numerical(other)
+            or isinstance(other, ParameterByDictRepresentation)
+        ):
             return NotImplemented
-        new_offset = self.offset + other.offset
 
+        if utils.is_numerical(other):
+            assert utils.is_numerical(other)
+            return ParameterByDictRepresentation(
+                offset=self.offset + other,
+                numerator_polynomial_dict=self.numerator_polynomial_dict,
+            )
+
+        assert isinstance(other, ParameterByDictRepresentation)
+        new_offset = self.offset + other.offset
         new_dict = self.numerator_polynomial_dict.copy()
         for monomial, coeff in other.numerator_polynomial_dict.items():
             if monomial in new_dict:
                 new_dict[monomial] += coeff
+                if new_dict[monomial] == 0:
+                    del new_dict[monomial]
             else:
                 new_dict[monomial] = coeff
+
+        # TODO: Better to return zero when it is zero
+
         return ParameterByDictRepresentation(
             offset=new_offset, numerator_polynomial_dict=new_dict
         )
 
     def __radd__(
-        self, other: ParameterByDictRepresentation
-    ) -> ParameterByDictRepresentation:
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
         return self.__add__(other)
 
     def __neg__(
@@ -143,23 +161,33 @@ class ParameterByDictRepresentation:
         )
 
     def __sub__(
-        self, other: ParameterByDictRepresentation
-    ) -> ParameterByDictRepresentation:
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
         return self.__add__(-other)
 
     def __rsub__(
-        self, other: ParameterByDictRepresentation
-    ) -> ParameterByDictRepresentation:
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
         return (-self).__add__(other)
 
-    def __mul__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
-        if not utils.is_numerical_or_parameter(other):
-            # TODO: Allow multiplication with Parameter
+    def __mul__(
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
+        if not (
+            utils.is_numerical(other)
+            or isinstance(other, ParameterByDictRepresentation)
+        ):
+            return NotImplemented
+
+        if isinstance(other, ParameterByDictRepresentation):
+            # TODO: Allow multiplication between ParameterByDictRepresentation
             return NotImplemented
 
         new_dict = defaultdict(int)
         for monomial, coeff in self.numerator_polynomial_dict.items():
             new_dict[monomial] = coeff * other
+            if new_dict[monomial] == 0:
+                del new_dict[monomial]
 
         new_offset = self.offset * other
 
@@ -168,15 +196,29 @@ class ParameterByDictRepresentation:
             offset=new_offset,
         )
 
-    def __rmul__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
+    def __rmul__(
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
         return self.__mul__(other)
 
-    def __truediv__(self, other: utils.NUMERICAL_TYPE) -> ParameterByDictRepresentation:
-        if not utils.is_numerical_or_parameter(other):
-            # TODO: Allow division with Parameter
+    def __truediv__(
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
+        if not (
+            utils.is_numerical(other)
+            or isinstance(other, ParameterByDictRepresentation)
+        ):
             return NotImplemented
 
         return self.__mul__(1 / other)
+
+    def __rtruediv__(
+        self, other: utils.NUMERICAL_TYPE | ParameterByDictRepresentation
+    ) -> utils.NUMERICAL_TYPE | ParameterByDictRepresentation:
+        return (1 / self).__mul__(other)
+
+    def is_zero(self) -> bool:
+        return self.offset == 0 and not self.numerator_polynomial_dict
 
 
 @attrs.frozen

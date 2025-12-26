@@ -188,6 +188,39 @@ class ScalarByBasisRepresentation:
             offset=new_offset,
         )
 
+    def __eq__(self, other):
+        if self is other:
+            return True
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return NotImplemented
+
+        if not utils.num_or_param_or_sympy_expr_is_zero(
+            utils.simplify_if_param_or_sympy_expr(self.offset - other.offset)
+        ):
+            return False
+
+        if self.func_coeffs.keys() != other.func_coeffs.keys():
+            return False
+
+        for key in self.func_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.func_coeffs[key] - other.func_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        if self.inner_prod_coeffs.keys() != other.inner_prod_coeffs.keys():
+            return False
+
+        for key in self.inner_prod_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.inner_prod_coeffs[key] - other.inner_prod_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
+
 
 @attrs.frozen
 class ZeroScalar:
@@ -585,19 +618,27 @@ class Scalar:
         from pepflow.vector import Vector
 
         def _simplify(
-            scalar_or_float: Scalar | utils.NUMERICAL_TYPE | Parameter | Vector,
+            scalar_or_float_or_vector: Scalar
+            | utils.NUMERICAL_TYPE
+            | Parameter
+            | Vector,
         ) -> (
             ScalarByBasisRepresentation
             | utils.NUMERICAL_TYPE
             | Parameter
             | VectorByBasisRepresentation
         ):
-            if isinstance(scalar_or_float, (Scalar, Vector)):
+            if isinstance(scalar_or_float_or_vector, (Scalar, Vector)):
                 # We know after simplification, the eval_expression is always
                 # ScalarByBasisRepresentation or VectorByBasisRepresentation.
-                return scalar_or_float.simplify().eval_expression  # type: ignore
+                return scalar_or_float_or_vector.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(scalar_or_float_or_vector) or utils.is_sympy_expr(
+                scalar_or_float_or_vector
+            ):
+                return scalar_or_float_or_vector.simplify()  # type: ignore
             else:
-                return scalar_or_float
+                # return utils.simplify_if_param_or_sympy_expr(scalar_or_float)
+                return scalar_or_float_or_vector
 
         if self.is_basis:
             # ScalarByBasisRepresentation and the original basis vector are representating the
@@ -635,6 +676,13 @@ class Scalar:
                     raise NotImplementedError(
                         "Only add,sub,mul,div are supported for Vector simplification."
                     )
+
+        # coefficient simplification
+        eval_expression = ScalarByBasisRepresentation(
+            func_coeffs=utils.simplify_dict(eval_expression.func_coeffs),
+            inner_prod_coeffs=utils.simplify_dict(eval_expression.inner_prod_coeffs),
+            offset=utils.simplify_if_param_or_sympy_expr(eval_expression.offset),
+        )
 
         return Scalar(
             is_basis=is_basis,

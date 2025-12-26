@@ -293,9 +293,9 @@ def test_simplify_scalar_with_param(pep_context):
     # Also, 0 * or 0+ is necessary for s3 to make the test pass for now.
     s = pm1 * (s1 + s2) - s1 + pm2 * s3
     assert s.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
-        func_coeffs=defaultdict(int, {s1: 1 * pm1 - 1, s2: 1 * pm1, s3: 0 + 1 * pm2}),
+        func_coeffs=defaultdict(int, {s1: -1 + pm1, s2: pm1, s3: pm2}),
         inner_prod_coeffs=defaultdict(int, {}),
-        offset=0 * pm1 - 0 + 0 * pm2,
+        offset=0,
     )
 
     p1 = vector.Vector(is_basis=True, tags=["p1"])
@@ -308,11 +308,7 @@ def test_simplify_scalar_with_param(pep_context):
     assert ip.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
         func_coeffs=defaultdict(int, {}),
         inner_prod_coeffs=defaultdict(
-            int,
-            {
-                (p1, p2): (0 + 1 * pm1 * 1) + (0 + (2 * pm2).__rmul__(1) * 1),
-                (p1, p3): (0 + ((4 * pm1).__rmul__(1)) * 1).__radd__(0),
-            },
+            int, {(p1, p2): pm1 + 2 * pm2, (p1, p3): 4 * pm1}
         ),
         offset=0,
     )
