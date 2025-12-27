@@ -530,7 +530,7 @@ class Operator:
         return u
 
 
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class LinearOperatorTranspose(Operator):
     """
     The :class:`LinearOperatorTranspose` class represents the transpose of a
@@ -559,7 +559,7 @@ class LinearOperatorTranspose(Operator):
         )
 
 
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class LinearOperator(Operator):
     """
     The :class:`LinearOperator` class represents a bounded, linear operator.
@@ -694,7 +694,7 @@ class LinearOperator(Operator):
         )
 
 
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class MonotoneOperator(Operator):
     """
     The :class:`MonotoneOperator` class represents a monotone operator.
