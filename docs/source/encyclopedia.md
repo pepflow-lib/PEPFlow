@@ -130,6 +130,7 @@ As <span class="brand-color">PEPFlow</span> continues to grow, we plan to expand
 ## Monotone inclusion
 
 - [Accelerated Proximal Point Method (APPM)](examples/appm_example.ipynb)
+- [Dual Optimal Halpern Method (Dual-OHM)](examples/dual_ohm_example.ipynb)
 
 ## Looking ahead
 
