@@ -35,6 +35,8 @@ from pepflow import utils
 if TYPE_CHECKING:
     from pepflow.parameter import Parameter
     from pepflow.vector import Vector, VectorByBasisRepresentation
+    from pepflow.parameter import Parameter
+    from pepflow.vector import Vector, VectorByBasisRepresentation
 
 
 def is_numerical_or_scalar(val: Any) -> bool:
@@ -50,6 +52,147 @@ class ScalarRepresentation:
     op: utils.Op
     left_scalar: Vector | Scalar | float
     right_scalar: Vector | Scalar | float
+
+
+@attrs.frozen
+class ScalarByBasisRepresentation:
+    """A representation of a Scalar as a linear combination of basis Scalars."""
+
+    # The following represents `coef1*f1 + coef2*f2 + ...`
+    func_coeffs: defaultdict[Scalar, Any] = attrs.field(
+        factory=lambda: defaultdict(int)
+    )
+    # The following represents `sum coef_ij*<v_i, v_j>`.
+    # We should sort the vector in key so that <v_i, v_j> and <v_j, v_i> use the same entry.
+    inner_prod_coeffs: defaultdict[tuple[Vector, Vector], Any] = attrs.field(
+        factory=lambda: defaultdict(int)
+    )
+    offset: Any = 0
+
+    def __repr__(self) -> str:
+        terms = []
+        for key, val in self.func_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            terms.append(f"{coeff_str}*{repr(key)}")
+        for key, val in self.inner_prod_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            vec0_repr, vec1_repr = repr(key[0]), repr(key[1])
+            if vec0_repr != vec1_repr:
+                terms.append(f"{coeff_str}*⟨{vec0_repr},{vec1_repr}⟩")
+            else:
+                terms.append(f"{coeff_str}*|{vec0_repr}|^2")
+        return " + ".join(terms) if terms else "0"
+
+    # TODO: Support other types for `other` and add case distinction
+    def __add__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return NotImplemented
+        new_func_coeffs = defaultdict(int, self.func_coeffs)
+        for key, val in other.func_coeffs.items():
+            new_func_coeffs[key] += val
+
+        new_inner_prod_coeffs = defaultdict(int, self.inner_prod_coeffs)
+        for key, val in other.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] += val
+
+        new_offset = self.offset + other.offset
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    def __radd__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        return self.__add__(other)
+
+    # TODO: Support other types for `other` and add case distinction
+    def __sub__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return NotImplemented
+        new_func_coeffs = defaultdict(int, self.func_coeffs)
+        for key, val in other.func_coeffs.items():
+            new_func_coeffs[key] -= val
+
+        new_inner_prod_coeffs = defaultdict(int, self.inner_prod_coeffs)
+        for key, val in other.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] -= val
+
+        new_offset = self.offset - other.offset
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    # TODO: add __rsub__
+
+    def __mul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            return NotImplemented
+
+        new_func_coeffs = defaultdict(int)
+        for key, val in self.func_coeffs.items():
+            new_func_coeffs[key] = val * other
+
+        new_inner_prod_coeffs = defaultdict(int)
+        for key, val in self.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] = val * other
+
+        new_offset = self.offset * other
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    def __rmul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        return self.__mul__(other)
+
+    def __neg__(self) -> ScalarByBasisRepresentation:
+        return self.__rmul__(-1)
+
+    def __truediv__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            return NotImplemented
+
+        new_func_coeffs = defaultdict(int)
+        for key, val in self.func_coeffs.items():
+            new_func_coeffs[key] = val / other
+
+        new_inner_prod_coeffs = defaultdict(int)
+        for key, val in self.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] = val / other
+
+        new_offset = self.offset / other
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
 
 
 @attrs.frozen
@@ -418,7 +561,9 @@ class Scalar:
     is_basis: bool
 
     # The representation of scalar used for evaluation.
-    eval_expression: ScalarRepresentation | ZeroScalar | None = None
+    eval_expression: (
+        ScalarRepresentation | ScalarByBasisRepresentation | ZeroScalar | None
+    ) = None
 
     # Human tagged value for the scalar
     tags: list[str] = attrs.field(factory=list)
