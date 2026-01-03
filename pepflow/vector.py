@@ -58,6 +58,9 @@ class VectorByBasisRepresentation:
     # coeffs can be numerical or parameter type.
     coeffs: defaultdict[Vector, Any] = attrs.field(factory=lambda: defaultdict(int))
 
+    # Generate an automatic id
+    uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
     def __repr__(self) -> str:
         # TODO: Improve representation for parameters and Scalar types.
         terms = []
@@ -116,7 +119,11 @@ class VectorByBasisRepresentation:
         if not utils.is_numerical_or_parameter(other) and not isinstance(
             other, VectorByBasisRepresentation
         ):
-            return NotImplemented
+            raise ValueError(
+                f"Multiplication not implemented for type {type(other).__name__}. "
+                "Expected NUMERICAL_TYPE, Parameter, or VectorByBasisRepresentation"
+            )
+
         if isinstance(other, VectorByBasisRepresentation):
             new_inner_prod_coeffs = defaultdict(int)
             # <a*x, b*y + c*z> = a*b*<x,y> + a*c*<x,z>
@@ -151,10 +158,29 @@ class VectorByBasisRepresentation:
             new_coeffs[vec] = coeff / scalar
         return VectorByBasisRepresentation(coeffs=new_coeffs)
 
-    def __eq__(self, other: Any) -> bool:
+    def __hash__(self):
+        return hash(self.uid)
+
+    def __eq__(self, other):
+        if not isinstance(other, VectorByBasisRepresentation):
+            return NotImplemented
+        return self.uid == other.uid
+
+    def equiv(self, other: Any) -> bool:
         if not isinstance(other, VectorByBasisRepresentation):
             return False
-        return self.coeffs == other.coeffs
+
+        if self.coeffs.keys() != other.coeffs.keys():
+            return False
+
+        for key in self.coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.coeffs[key] - other.coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
 
 
 @attrs.frozen
@@ -499,6 +525,11 @@ class Vector:
             if isinstance(vector_or_float, Vector):
                 # We know after simplification, the eval_expression is always VectorByBasisRepresentation.
                 return vector_or_float.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(vector_or_float) or utils.is_sympy_expr(
+                vector_or_float
+            ):
+                # Parameter has a simplify() method
+                return vector_or_float.simplify()  # type: ignore
             else:
                 return vector_or_float
 
@@ -535,13 +566,16 @@ class Vector:
                         "Only add,sub,mul,div are supported for Vector simplification."
                     )
 
+        # coefficient simplification
+        eval_expression = VectorByBasisRepresentation(
+            coeffs=utils.simplify_dict(eval_expression.coeffs)
+        )
+
         return Vector(
             is_basis=is_basis,
             eval_expression=eval_expression,
             tags=[tag] if tag is not None else [],
-            math_expr=str(
-                eval_expression
-            ),  # TODO(Jaewook): Fix this to use simplified_expr
+            math_expr=str(eval_expression),
         )
 
     def eval(
