@@ -182,18 +182,21 @@ def test_simplify_vector_basic(pep_context):
     p3 = vector.Vector(is_basis=True, tags=["p3"])
 
     p = 5 * (p1 + p2) - p1 + p3
-    assert p.simplify().eval_expression == vector.VectorByBasisRepresentation(
-        coeffs=defaultdict(int, {p1: 4, p2: 5, p3: 1})
+    assert p.simplify().eval_expression.equiv(
+        vector.VectorByBasisRepresentation(
+            coeffs=defaultdict(int, {p1: 4, p2: 5, p3: 1})
+        )
     )
 
 
+# TODO: implement simplification for Parameter objects that includes
+# multiplication between Parameter objects
 # def test_simplify_vector_with_param(pep_context):
 #     p1 = vector.Vector(is_basis=True, tags=["p1"])
 #     p2 = vector.Vector(is_basis=True, tags=["p2"])
 #     pm1 = parameter.Parameter(name="pm1")
 #     pm2 = parameter.Parameter(name="pm2")
 #     p = pm1 * (p1 + pm2 * p2) + 5 * p1
-#     # TODO: we need to simplify the parameter expression.
 #     # The following 1* is necessary to make the test pass for now.
 #     assert p.simplify().eval_expression == vector.VectorByBasisRepresentation(
 #         coeffs=defaultdict(int, {p1: 1 * pm1 + 5, p2: 1 * pm2 * pm1})

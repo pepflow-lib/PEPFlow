@@ -19,6 +19,7 @@
 
 from __future__ import annotations
 
+import uuid
 from collections import defaultdict
 from typing import Any, FrozenSet, Tuple
 
@@ -87,13 +88,16 @@ class ParameterByDictRepresentation:
     where a, b, ... are Parameter objects with names."""
 
     # p(a, b, ...) = coeff_1 * a^{n_1} * b^{m_1} * ... + coeff_2 * a^{n_2} * b^{m_2} * ... * + ...
-    numerator_polynomial_dict: defaultdict[Monomial, Any] = attrs.field(
-        factory=lambda: defaultdict(int)
+    numerator_polynomial_dict: defaultdict[Monomial, int | float | sp.Number] = (
+        attrs.field(factory=lambda: defaultdict(int))
     )
 
     # TODO: implement denominator_polynomial_dict
 
-    offset: Any = 0
+    offset: int | float | sp.Number = 0
+
+    # Generate an automatic id
+    uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
 
     def __repr__(self) -> str:
         terms = []
@@ -121,7 +125,6 @@ class ParameterByDictRepresentation:
             return NotImplemented
 
         if utils.is_numerical(other):
-            assert utils.is_numerical(other)
             return ParameterByDictRepresentation(
                 offset=self.offset + other,
                 numerator_polynomial_dict=self.numerator_polynomial_dict,
@@ -154,7 +157,7 @@ class ParameterByDictRepresentation:
     ) -> ParameterByDictRepresentation:
         new_dict = defaultdict(int)
         for monomial, coeff in self.numerator_polynomial_dict.items():
-            new_dict[monomial] = -coeff
+            new_dict[monomial] = -coeff  # ty: ignore
         new_offset = -self.offset
         return ParameterByDictRepresentation(
             offset=new_offset, numerator_polynomial_dict=new_dict
@@ -219,6 +222,38 @@ class ParameterByDictRepresentation:
 
     def is_zero(self) -> bool:
         return self.offset == 0 and not self.numerator_polynomial_dict
+
+    def __hash__(self):
+        return hash(self.uid)
+
+    def __eq__(self, other):
+        if not isinstance(other, ParameterByDictRepresentation):
+            return NotImplemented
+        return self.uid == other.uid
+
+    def equiv(self, other: Any) -> bool:
+        if not isinstance(other, ParameterByDictRepresentation):
+            return False
+
+        if (
+            self.numerator_polynomial_dict.keys()
+            != other.numerator_polynomial_dict.keys()
+        ):
+            return False
+
+        for monomial in self.numerator_polynomial_dict:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.numerator_polynomial_dict[monomial]
+                - other.numerator_polynomial_dict[monomial]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        diff_offset = utils.simplify_if_param_or_sympy_expr(self.offset - other.offset)
+        if not utils.num_or_param_or_sympy_expr_is_zero(diff_offset):
+            return False
+
+        return True
 
 
 @attrs.frozen
@@ -313,8 +348,7 @@ class Parameter:
             return val
 
         if isinstance(self.eval_expression, ParameterByDictRepresentation):
-            # TODO: when isinstance(self.eval_expression, ParameterByDictRepresentation)
-            return NotImplemented
+            return NotImplemented  # TODO: implement this
 
         op = self.eval_expression.op
         left_param = eval_parameter(self.eval_expression.left_param, resolve_parameters)
@@ -438,6 +472,17 @@ class Parameter:
             ),
         )
 
+    def equiv(self, other: Any) -> bool:
+        if not isinstance(other, Parameter):
+            return NotImplemented
+
+        if not utils.num_or_param_or_sympy_expr_is_zero(
+            utils.simplify_if_param_or_sympy_expr(self - other)
+        ):
+            return False
+
+        return True
+
     def simplify(self) -> Parameter:
         """
         Simplify the mathematical expression of this :class:`Parameter` object.
@@ -452,7 +497,7 @@ class Parameter:
         ) -> ParameterByDictRepresentation | utils.NUMERICAL_TYPE:
             if isinstance(parameter_or_number, Parameter):
                 # We know after simplification, the eval_expression is always
-                # ScalarByBasisRepresentation or VectorByBasisRepresentation.
+                # ParameterByDictRepresentation
                 return parameter_or_number.simplify().eval_expression  # type: ignore
             elif isinstance(parameter_or_number, sp.Basic):
                 simplified_result = parameter_or_number.simplify()
@@ -462,6 +507,8 @@ class Parameter:
                 return parameter_or_number
 
         if self.name is not None:
+            # The Monomial created in this conditional should be unique for each name.
+            # If we keep `name = self.name`, another will be created each time we apply simplify repeatedly.
             name = None
             monomial_key = Monomial(frozenset({(self, 1)}))
             eval_expression = ParameterByDictRepresentation(

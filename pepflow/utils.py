@@ -121,7 +121,6 @@ def is_parameter(val: Any) -> bool:
 
 
 def is_numerical_or_parameter(val: Any) -> bool:
-    # return is_numerical(val) or isinstance(val, param.Parameter)
     return is_numerical(val) or is_parameter(val)
 
 
@@ -133,7 +132,9 @@ def simplify_if_param_or_sympy_expr(
     val: NUMERICAL_TYPE | Parameter | sp.Basic,
 ) -> NUMERICAL_TYPE | Parameter | sp.Basic:
     if not is_numerical_or_parameter(val):
-        return NotImplemented
+        raise TypeError(
+            f"Expected a numerical value, Parameter, or SymPy expression, got {type(val)}"
+        )
     # Both Parameter and SymPy expressions have a simplify() method
     if is_parameter(val) or is_sympy_expr(val):
         return val.simplify()  # type: ignore
