@@ -368,4 +368,4 @@ def launch_primal_interactive(
 
         return new_fig, (func_or_oper_tag, new_df.to_dict("records"), new_df.attrs)
 
-    app.run(debug=True, port=port, jupyter_mode=jupyter_mode)  # ty: ignore
+    app.run(debug=True, port=port, jupyter_mode=jupyter_mode)

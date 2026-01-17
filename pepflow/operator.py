@@ -587,7 +587,7 @@ class LinearOperator(Operator):
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.M, utils.NUMERICAL_TYPE):
-            assert self.M > 0  # ty: ignore
+            assert self.M > 0
 
     def __hash__(self):
         return super().__hash__()
