@@ -167,12 +167,23 @@ class VectorByBasisRepresentation:
         return self.uid == other.uid
 
     def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`VectorByBasisRepresentation` objects are mathematically
+        equivalent by verifying that the differences between their coefficients simplify to zero.
+        """
+
+        # Check that `other` has the correct type, then check object identity
         if not isinstance(other, VectorByBasisRepresentation):
             return False
+        if self is other:
+            return True
 
+        # Check whether both have the same nonzero basis elements.
         if self.coeffs.keys() != other.coeffs.keys():
             return False
 
+        # Check whether, for each basis element of `coeffs`,
+        # the difference between the two objects' coefficients simplifies to zero.
         for key in self.coeffs:
             diff = utils.simplify_if_param_or_sympy_expr(
                 self.coeffs[key] - other.coeffs[key]
@@ -512,11 +523,12 @@ class Vector:
 
     def simplify(self, tag: str | None = None) -> Vector:
         """
-        Simplify the mathematical expression of this :class:`Vector` object.
+        Flatten the `eval_expression` of a :class:`Vector` object into a
+        :class:`VectorByBasisRepresentation` consisting of basis and their coefficients.
 
         Returns:
-            :class:`Vector`: A new :class:`Vector` object with the simplified
-            mathematical expression.
+            :class:`Vector`: A new :class:`Vector` object whose `eval_expression`
+            is flattened into a :class:`VectorByBasisRepresentation`.
         """
 
         def _simplify(
@@ -550,7 +562,9 @@ class Vector:
             elif isinstance(self.eval_expression, VectorByBasisRepresentation):
                 eval_expression = self.eval_expression
             else:
-                assert isinstance(self.eval_expression, VectorRepresentation)
+                assert isinstance(
+                    self.eval_expression, VectorRepresentation
+                )  # to make type checker happy
                 left_eval_expression = _simplify(self.eval_expression.left_vector)
                 right_eval_expression = _simplify(self.eval_expression.right_vector)
                 if self.eval_expression.op == utils.Op.ADD:

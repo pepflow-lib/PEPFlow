@@ -709,7 +709,7 @@ class SmoothConvexFunction(Function):
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.L, utils.NUMERICAL_TYPE):
-            assert self.L > 0  # ty: ignore
+            assert self.L > 0
 
     def __hash__(self):
         return super().__hash__()

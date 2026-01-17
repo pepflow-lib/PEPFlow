@@ -173,9 +173,9 @@ def pprint_labeled_matrix(
         column_labels = row_labels
         if isinstance(mat, np.ndarray):
             if (
-                mat.shape[0] != mat.shape[1]  # ty: ignore
+                mat.shape[0] != mat.shape[1]
             ):  # if column_labels is None, the matrix should be square
-                raise ValueError(f"Array is not square: {mat.shape[0]}x{mat.shape[1]}")  # ty: ignore
+                raise ValueError(f"Array is not square: {mat.shape[0]}x{mat.shape[1]}")
 
     if isinstance(mat, pep_result.MatrixWithNames):
         row_labels = mat.row_names

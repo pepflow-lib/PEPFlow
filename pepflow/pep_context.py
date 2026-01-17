@@ -348,12 +348,12 @@ class PEPContext:
             :math:`\\{x_i\\}`.
         """
 
-        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:  # ty: ignore
+        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:
             return natsort.natsorted(
                 [t.point for t in triplets],
                 key=lambda x: x.tag,
             )
-        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:  # ty: ignore
+        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:
             return natsort.natsorted(
                 [t.point for t in duplets],
                 key=lambda x: x.tag,
@@ -443,9 +443,9 @@ class PEPContext:
         )
 
     def order_of_point(self, func_or_oper: Function | Operator) -> list[str]:
-        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:  # ty: ignore
+        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:
             return natsort.natsorted([t.point.tag for t in triplets])
-        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:  # ty: ignore
+        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:
             return natsort.natsorted([t.point.tag for t in duplets])
         raise ValueError(
             "The provided Function or Operator does not have any associated triplets or duplets in this context."

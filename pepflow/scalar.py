@@ -206,29 +206,36 @@ class ScalarByBasisRepresentation:
         return self.uid == other.uid
 
     def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`ScalarByBasisRepresentation` objects are mathematically
+        equivalent by verifying that the differences between their coefficients simplify to zero.
+        """
+        # Check that `other` has the correct type, then check object identity
         if not isinstance(other, ScalarByBasisRepresentation):
             return False
-
         if self is other:
             return True
 
+        # Check whether both have the same nonzero basis elements.
+        if self.func_coeffs.keys() != other.func_coeffs.keys():
+            return False
+        if self.inner_prod_coeffs.keys() != other.inner_prod_coeffs.keys():
+            return False
+
+        # Check whether the difference of the `offset` attributes simplifies to zero.
         if not utils.num_or_param_or_sympy_expr_is_zero(
             utils.simplify_if_param_or_sympy_expr(self.offset - other.offset)
         ):
             return False
 
-        if self.func_coeffs.keys() != other.func_coeffs.keys():
-            return False
-
+        # Check whether, for each basis element of `func_coeffs` and `inner_prod_coeffs`,
+        # the difference between the two objects' coefficients simplifies to zero.
         for key in self.func_coeffs:
             diff = utils.simplify_if_param_or_sympy_expr(
                 self.func_coeffs[key] - other.func_coeffs[key]
             )
             if not utils.num_or_param_or_sympy_expr_is_zero(diff):
                 return False
-
-        if self.inner_prod_coeffs.keys() != other.inner_prod_coeffs.keys():
-            return False
 
         for key in self.inner_prod_coeffs:
             diff = utils.simplify_if_param_or_sympy_expr(
@@ -629,11 +636,12 @@ class Scalar:
 
     def simplify(self, tag: str | None = None) -> Scalar:
         """
-        Simplify the mathematical expression of this :class:`Scalar` object.
+        Flatten the `eval_expression` of a :class:`Scalar` object into a
+        :class:`ScalarByBasisRepresentation` consisting of basis and their coefficients.
 
         Returns:
-            :class:`Scalar`: A new :class:`Scalar` object with the simplified
-            mathematical expression.
+            :class:`Scalar`: A new :class:`Scalar` object whose `eval_expression`
+            is flattened into a :class:`ScalarByBasisRepresentation`.
         """
         from pepflow.vector import Vector
 
@@ -680,7 +688,9 @@ class Scalar:
             elif isinstance(self.eval_expression, ScalarByBasisRepresentation):
                 eval_expression = self.eval_expression
             else:
-                assert isinstance(self.eval_expression, ScalarRepresentation)
+                assert isinstance(
+                    self.eval_expression, ScalarRepresentation
+                )  # to make type checker happy
                 left_eval_exression = _simplify(self.eval_expression.left_scalar)
                 right_eval_exression = _simplify(self.eval_expression.right_scalar)
                 if self.eval_expression.op == utils.Op.ADD:

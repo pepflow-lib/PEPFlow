@@ -84,7 +84,7 @@ class Monomial:
 
 @attrs.frozen
 class ParameterByDictRepresentation:
-    """A representation of a Parameter as a rational function p(a, b, ...)/q(a, b, ...),
+    """A representation of a Parameter as a polynomial p(a, b, ...),
     where a, b, ... are Parameter objects with names."""
 
     # p(a, b, ...) = coeff_1 * a^{n_1} * b^{m_1} * ... + coeff_2 * a^{n_2} * b^{m_2} * ... * + ...
@@ -130,7 +130,9 @@ class ParameterByDictRepresentation:
                 numerator_polynomial_dict=self.numerator_polynomial_dict,
             )
 
-        assert isinstance(other, ParameterByDictRepresentation)
+        assert isinstance(
+            other, ParameterByDictRepresentation
+        )  # to make type checker happy
         new_offset = self.offset + other.offset
         new_dict = self.numerator_polynomial_dict.copy()
         for monomial, coeff in other.numerator_polynomial_dict.items():
@@ -476,20 +478,19 @@ class Parameter:
         if not isinstance(other, Parameter):
             return NotImplemented
 
-        if not utils.num_or_param_or_sympy_expr_is_zero(
+        return utils.num_or_param_or_sympy_expr_is_zero(
             utils.simplify_if_param_or_sympy_expr(self - other)
-        ):
-            return False
-
-        return True
+        )
 
     def simplify(self) -> Parameter:
         """
-        Simplify the mathematical expression of this :class:`Parameter` object.
+        Flatten the `eval_expression` of a :class:`Parameter` object into a
+        :class:`ParameterByDictRepresentation` consisting of generating terms and their coefficients.
 
         Returns:
-            :class:`Parameter`: A new :class:`Parameter` object with the simplified
-            mathematical expression.
+            :class:`Parameter`: A new :class:`Parameter` object whose
+            `eval_expression` is flattened into a
+            :class:`ParameterByDictRepresentation`.
         """
 
         def _simplify(
@@ -501,7 +502,9 @@ class Parameter:
                 return parameter_or_number.simplify().eval_expression  # type: ignore
             elif isinstance(parameter_or_number, sp.Basic):
                 simplified_result = parameter_or_number.simplify()
-                assert isinstance(simplified_result, utils.NUMERICAL_TYPE)
+                assert isinstance(
+                    simplified_result, utils.NUMERICAL_TYPE
+                )  # to make type checker happy
                 return simplified_result
             else:
                 return parameter_or_number
@@ -520,7 +523,9 @@ class Parameter:
             if isinstance(self.eval_expression, ParameterByDictRepresentation):
                 eval_expression = self.eval_expression
             else:
-                assert isinstance(self.eval_expression, ParameterRepresentation)
+                assert isinstance(
+                    self.eval_expression, ParameterRepresentation
+                )  # to make type checker happy
                 left_eval_expression = _simplify(self.eval_expression.left_param)
                 right_eval_expression = _simplify(self.eval_expression.right_param)
                 if self.eval_expression.op == utils.Op.ADD:
@@ -536,7 +541,4 @@ class Parameter:
                         "Only add,sub,mul,div are supported for Parameter simplification."
                     )
 
-        return Parameter(
-            name=name,
-            eval_expression=eval_expression,
-        )
+        return Parameter(name=name, eval_expression=eval_expression)
