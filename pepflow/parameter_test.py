@@ -201,12 +201,23 @@ def test_parameter_comparison(pep_context: pc.PEPContext):
     pm2 = Parameter("pm2")
     pm3 = Parameter("pm1")  # same name as pm1 so we treat them as equal
 
-    assert pm1 == pm3
-    assert pm1 != pm2
+    assert pm1.equiv(pm3)
+    assert not pm1.equiv(pm2)
 
     pp1 = (pm1 + 2) * pm2
     pp2 = (pm1 + 2) * pm2
     pp3 = (pm2 + 2) * pm1
 
+    # TODO: implement simplification for Parameter objects that includes
+    # multiplication between Parameter objects, and change below to equiv
     assert pp1 == pp2
-    assert not pp1 == pp3
+    assert pp1 != pp3
+
+
+def test_parameter_simplify_basic(pep_context: pc.PEPContext):
+    pm1 = Parameter("pm1")
+
+    p1 = pm1 + pm1
+    p2 = 2 * pm1
+    assert p1.simplify().equiv(p2.simplify())
+    assert p1.simplify() != p2.simplify()
