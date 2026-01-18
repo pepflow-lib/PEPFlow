@@ -208,12 +208,10 @@ def test_parameter_comparison(pep_context: pc.PEPContext):
     pp2 = (pm1 + 2) * pm2
     pp3 = (pm2 + 2) * pm1
 
+    # TODO: implement simplification for Parameter objects that includes
+    # multiplication between Parameter objects, and change below to equiv
     assert pp1 == pp2
     assert pp1 != pp3
-    # TODO: Use the code below when implementing simplification for Parameters
-    # that include multiplication between parameters
-    # assert pp1.equiv(pp2)
-    # assert not pp1.equiv(pp3)
 
 
 def test_parameter_simplify_basic(pep_context: pc.PEPContext):
