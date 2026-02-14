@@ -475,6 +475,10 @@ class Parameter:
         )
 
     def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`Parameter` objects are mathematically
+        equivalent by verifying that their difference simplifies to zero.
+        """
         if not isinstance(other, Parameter):
             return NotImplemented
 
