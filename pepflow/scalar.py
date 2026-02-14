@@ -67,8 +67,13 @@ class ScalarByBasisRepresentation:
     )
     offset: Any = 0
 
+    # Generate an automatic id
+    uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
     def __repr__(self) -> str:
         terms = []
+        if self.offset:
+            terms.append(utils.numerical_str(self.offset))
         for key, val in self.func_coeffs.items():
             # TODO: Add the correct parentheses where needed
             if utils.is_numerical_or_parameter(val):
@@ -191,6 +196,55 @@ class ScalarByBasisRepresentation:
             inner_prod_coeffs=new_inner_prod_coeffs,
             offset=new_offset,
         )
+
+    def __hash__(self):
+        return hash(self.uid)
+
+    def __eq__(self, other):
+        if not isinstance(other, Scalar):
+            return NotImplemented
+        return self.uid == other.uid
+
+    def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`ScalarByBasisRepresentation` objects are mathematically
+        equivalent by verifying that the differences between their coefficients simplify to zero.
+        """
+        # Check that `other` has the correct type, then check object identity
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return False
+        if self is other:
+            return True
+
+        # Check whether both have the same nonzero basis elements.
+        if self.func_coeffs.keys() != other.func_coeffs.keys():
+            return False
+        if self.inner_prod_coeffs.keys() != other.inner_prod_coeffs.keys():
+            return False
+
+        # Check whether the difference of the `offset` attributes simplifies to zero.
+        if not utils.num_or_param_or_sympy_expr_is_zero(
+            utils.simplify_if_param_or_sympy_expr(self.offset - other.offset)
+        ):
+            return False
+
+        # Check whether, for each basis element of `func_coeffs` and `inner_prod_coeffs`,
+        # the difference between the two objects' coefficients simplifies to zero.
+        for key in self.func_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.func_coeffs[key] - other.func_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        for key in self.inner_prod_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.inner_prod_coeffs[key] - other.inner_prod_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
 
 
 @attrs.frozen
@@ -582,11 +636,12 @@ class Scalar:
 
     def simplify(self, tag: str | None = None) -> Scalar:
         """
-        Simplify the mathematical expression of this :class:`Scalar` object.
+        Flatten the `eval_expression` of a :class:`Scalar` object into a
+        :class:`ScalarByBasisRepresentation` consisting of basis and their coefficients.
 
         Returns:
-            :class:`Scalar`: A new :class:`Scalar` object with the simplified
-            mathematical expression.
+            :class:`Scalar`: A new :class:`Scalar` object whose `eval_expression`
+            is flattened into a :class:`ScalarByBasisRepresentation`.
         """
         from pepflow.vector import Vector
 
@@ -605,6 +660,10 @@ class Scalar:
                 # We know after simplification, the eval_expression is always
                 # ScalarByBasisRepresentation or VectorByBasisRepresentation.
                 return scalar_or_float_or_vector.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(scalar_or_float_or_vector) or utils.is_sympy_expr(
+                scalar_or_float_or_vector
+            ):
+                return scalar_or_float_or_vector.simplify()  # type: ignore
             else:
                 return scalar_or_float_or_vector
 
@@ -629,29 +688,36 @@ class Scalar:
             elif isinstance(self.eval_expression, ScalarByBasisRepresentation):
                 eval_expression = self.eval_expression
             else:
-                assert isinstance(self.eval_expression, ScalarRepresentation)
-                left_eval_expression = _simplify(self.eval_expression.left_scalar)
-                right_eval_expression = _simplify(self.eval_expression.right_scalar)
+                assert isinstance(
+                    self.eval_expression, ScalarRepresentation
+                )  # to make type checker happy
+                left_eval_exression = _simplify(self.eval_expression.left_scalar)
+                right_eval_exression = _simplify(self.eval_expression.right_scalar)
                 if self.eval_expression.op == utils.Op.ADD:
-                    eval_expression = left_eval_expression + right_eval_expression
+                    eval_expression = left_eval_exression + right_eval_exression
                 elif self.eval_expression.op == utils.Op.SUB:
-                    eval_expression = left_eval_expression - right_eval_expression
+                    eval_expression = left_eval_exression - right_eval_exression
                 elif self.eval_expression.op == utils.Op.MUL:
-                    eval_expression = left_eval_expression * right_eval_expression
+                    eval_expression = left_eval_exression * right_eval_exression
                 elif self.eval_expression.op == utils.Op.DIV:
-                    eval_expression = left_eval_expression / right_eval_expression
+                    eval_expression = left_eval_exression / right_eval_exression
                 else:
                     raise NotImplementedError(
-                        "Only add,sub,mul,div are supported for Scalar simplification."
+                        "Only add,sub,mul,div are supported for Vector simplification."
                     )
+
+        # coefficient simplification
+        eval_expression = ScalarByBasisRepresentation(
+            func_coeffs=utils.simplify_dict(eval_expression.func_coeffs),
+            inner_prod_coeffs=utils.simplify_dict(eval_expression.inner_prod_coeffs),
+            offset=utils.simplify_if_param_or_sympy_expr(eval_expression.offset),
+        )
 
         return Scalar(
             is_basis=is_basis,
             eval_expression=eval_expression,
             tags=[tag] if tag is not None else [],
-            math_expr=me.MathExpr(
-                expr_str=str(eval_expression)
-            ),  # TODO: Fix this to use simplified_expr
+            math_expr=me.MathExpr(expr_str=str(eval_expression)),
         )
 
     def le(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:

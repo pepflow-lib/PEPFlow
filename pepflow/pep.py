@@ -114,7 +114,7 @@ class PEPBuilder:
         # TODO: Add unit test.
         if isinstance(constraint, ScalarConstraint):
             for init_constr in self.init_conditions:
-                if init_constr.name == constraint.name:  # ty: ignore
+                if init_constr.name == constraint.name:
                     raise ValueError(
                         f"An initial constraint with the same name as {constraint.name} already exists."
                     )
