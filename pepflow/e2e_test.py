@@ -61,6 +61,39 @@ def test_gd_e2e():
         assert math.isclose(dual_result.opt_value, expected_opt_value, rel_tol=1e-3)
 
 
+def test_gd_strongly_convex_e2e():
+    ctx = pc.PEPContext("gd").set_as_current()
+    pep_builder = pep.PEPBuilder(ctx)
+    eta = 1
+    N = 9
+
+    f = function.SmoothStronglyConvexFunction(is_basis=True, tags=["f"], L=1, mu=0.1)
+    x = pep_builder.add_init_point("x_0")
+    x_star = f.set_stationary_point("x_star")
+    pep_builder.add_initial_constraint(
+        ((x - x_star) ** 2).le(1, name="initial_condition")
+    )
+
+    # We first build the algorithm with the largest number of iterations.
+    for i in range(N):
+        x = x - eta * f.grad(x)
+        x.add_tag(f"x_{i + 1}")
+
+    # To achieve the sweep, we can just update the performance_metric.
+    kappa = 0.1
+    for i in range(1, N + 1):
+        p = ctx.get_by_tag(f"x_{i}")
+        pep_builder.set_performance_metric(f.func_val(p) - f.func_val(x_star))
+        result = pep_builder.solve_primal()
+        expected_opt_value = (
+            1 / 2 * (kappa / ((kappa - 1) + 1 / (1 - kappa) ** (2 * i)))
+        )
+        assert math.isclose(result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+        dual_result = pep_builder.solve_dual()
+        assert math.isclose(dual_result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+
 def test_gd_diff_stepsize_e2e():
     ctx = pc.PEPContext("gd_diff_stepsize").set_as_current()
     pep_builder = pep.PEPBuilder(ctx)

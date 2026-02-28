@@ -48,6 +48,7 @@ from .registry import get_func_or_oper_by_tag as get_func_or_oper_by_tag
 
 # Function, Operator, Vector, Scalar, Parameter
 from .function import Function as Function
+from .function import SmoothStronglyConvexFunction as SmoothStronglyConvexFunction
 from .function import SmoothConvexFunction as SmoothConvexFunction
 from .function import ConvexFunction as ConvexFunction
 from .function import Triplet as Triplet
