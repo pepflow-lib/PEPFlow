@@ -650,3 +650,42 @@ def test_appm_e2e():
             resolve_parameters={f"beta_{i}": 1 / (i + 2) for i in range(N + 1)}
         )
         assert math.isclose(dual_result.opt_value, expected_opt_value_N, rel_tol=1e-2)
+
+
+def test_bppm_e2e():
+    ctx = pc.PEPContext("bppm").set_as_current()
+    pep_builder = pep.PEPBuilder(ctx)
+    alpha = 1
+    R = 1
+    N = 2
+
+    f = function.ConvexFunction(is_basis=True, tags=["f"])
+    h = function.ConvexFunction(is_basis=True, tags=["h"])
+
+    x = vector.Vector(is_basis=True, tags=["x_0"])
+    f.set_stationary_point("x_star")
+
+    x_0 = ctx["x_0"]
+    x_star = ctx["x_star"]
+    pep_builder.add_initial_constraint(
+        (h(x_star) - h(x_0) - h.grad(x_0) * (x_star - x_0)).le(
+            R, name="initial_condition"
+        )
+    )
+
+    # We first build the algorithm with the largest number of iterations.
+    for i in range(N):
+        x = f.bregman_prox(x, alpha, h)
+        x.add_tag(f"x_{i + 1}")
+
+    # To achieve the sweep, we can just update the performance_metric.
+    for i in range(1, N + 1):
+        x_i = ctx[f"x_{i}"]
+        pep_builder.set_performance_metric(f(x_i) - f(x_star))
+
+        result = pep_builder.solve_primal()
+        expected_opt_value = alpha * R / i
+        assert math.isclose(result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+        dual_result = pep_builder.solve_dual()
+        assert math.isclose(dual_result.opt_value, expected_opt_value, rel_tol=1e-3)

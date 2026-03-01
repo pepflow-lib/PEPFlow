@@ -584,6 +584,96 @@ class Function:
         self.add_triplet_to_func(new_triplet)
         return u
 
+    def bregman_prox(
+        self,
+        x_0: vt.Vector,
+        stepsize: numbers.Number,
+        h: Function,
+        tag: str | None = None,
+    ) -> vt.Vector:
+        """Perform a Bregman proximal step.
+
+        Define the Bregman proximal operator as
+
+        .. math:: \\text{prox}^{h}_{\\gamma f}(x) := \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} D_h(u, x) \\right\\}.
+
+        This function performs a Bregman proximal step with respect to some
+        :class:`Function` :math:`f` on the :class:`Vector` :math:`x`
+        with stepsize :math:`\\gamma` where :class:`Function` :math:`h` is
+        the kernel function that generates the Bregman distance:
+
+        .. math:: D_h (u, x) := h(u) - h(x) - \\langle \\nabla h(x), x - x \\rangle.
+
+        Note that the kernel function :math:`h` should be differentiable.
+
+        The optimality conditions of the optimization problem presented above gives:
+
+        .. math:: \\nabla h(u) = \\nabla h(x) - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
+
+        Args:
+            x (:class:`Vector`): The initial point.
+            stepsize (int | float): The stepsize.
+            h (:class:`Function`): The kernel function.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the Bregman proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the Bregman proximal operator applied on `x`.
+
+        Note:
+            For children of :class:`Function` for which the Bregman proximal operator is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = (
+            f"prox^{h.__repr__()}_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
+        )
+        u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=u_expr),
+        )
+        grad_u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
+            ),
+        )
+        func_val_u = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+
+        if tag:
+            u.add_tag(tag)
+            func_val_u.add_tag(f"{self.__repr__()}({tag})")
+            grad_u.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
+
+        grad_h = h.grad(x_0) - stepsize * grad_u
+        grad_h.math_expr.expr_str = utils.grad_tag(f"{h.__repr__()}({u.__repr__()})")
+        func_val_h = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{h.__repr__()}({u.__repr__()})"),
+        )
+
+        new_triplet = Triplet(
+            u,
+            func_val_u,
+            grad_u,
+            self,
+            name=utils.triplet_tag(u, func_val_u, grad_u),
+        )
+        self.add_triplet_to_func(new_triplet)
+
+        new_triplet_h = Triplet(
+            u,
+            func_val_h,
+            grad_h,
+            h,
+            name=utils.triplet_tag(u, func_val_h, grad_h),
+        )
+        h.add_triplet_to_func(new_triplet_h)
+        return u
+
 
 @attrs.frozen(kw_only=True, repr=False)
 class ConvexFunction(Function):
