@@ -30,3 +30,10 @@
     :members:
     :show-inheritance:
 ```
+
+## Smooth and Strongly Convex
+
+```{eval-rst} 
+.. autoclass:: pepflow.SmoothStronglyConvexFunction
+    :members:
+```
