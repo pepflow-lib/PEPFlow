@@ -30,3 +30,12 @@
     :members:
     :show-inheritance:
 ```
+
+
+## Lipschitz Continuous and Monotone Operator
+
+```{eval-rst} 
+.. autoclass:: pepflow.LipschitzMonotoneOperator
+    :members:
+    :show-inheritance:
+```
