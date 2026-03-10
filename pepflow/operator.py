@@ -805,7 +805,7 @@ class LipschitzMonotoneOperator(Operator):
 
     Example:
         >>> import pepflow as pf
-        >>> A = pf.MonotoneOperator(is_basis=True, tags=["A"], L=1)
+        >>> A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=1)
     """
 
     L: utils.NUMERICAL_TYPE | Parameter
