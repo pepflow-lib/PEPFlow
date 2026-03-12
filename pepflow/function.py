@@ -584,6 +584,96 @@ class Function:
         self.add_triplet_to_func(new_triplet)
         return u
 
+    def bregman_prox(
+        self,
+        x_0: vt.Vector,
+        stepsize: numbers.Number,
+        h: Function,
+        tag: str | None = None,
+    ) -> vt.Vector:
+        """Perform a Bregman proximal step.
+
+        Define the Bregman proximal operator as
+
+        .. math:: \\text{prox}^{h}_{\\gamma f}(x) := \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} D_h(u, x) \\right\\}.
+
+        This function performs a Bregman proximal step with respect to some
+        :class:`Function` :math:`f` on the :class:`Vector` :math:`x`
+        with stepsize :math:`\\gamma` where :class:`Function` :math:`h` is
+        the kernel function that generates the Bregman distance:
+
+        .. math:: D_h (u, x) := h(u) - h(x) - \\langle \\nabla h(x), x - x \\rangle.
+
+        Note that the kernel function :math:`h` should be differentiable.
+
+        The optimality conditions of the optimization problem presented above gives:
+
+        .. math:: \\nabla h(u) = \\nabla h(x) - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
+
+        Args:
+            x (:class:`Vector`): The initial point.
+            stepsize (int | float): The stepsize.
+            h (:class:`Function`): The kernel function.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the Bregman proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the Bregman proximal operator applied on `x`.
+
+        Note:
+            For children of :class:`Function` for which the Bregman proximal operator is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = (
+            f"prox^{h.__repr__()}_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
+        )
+        u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=u_expr),
+        )
+        grad_u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
+            ),
+        )
+        func_val_u = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+
+        if tag:
+            u.add_tag(tag)
+            func_val_u.add_tag(f"{self.__repr__()}({tag})")
+            grad_u.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
+
+        grad_h = h.grad(x_0) - stepsize * grad_u
+        grad_h.math_expr.expr_str = utils.grad_tag(f"{h.__repr__()}({u.__repr__()})")
+        func_val_h = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{h.__repr__()}({u.__repr__()})"),
+        )
+
+        new_triplet = Triplet(
+            u,
+            func_val_u,
+            grad_u,
+            self,
+            name=utils.triplet_tag(u, func_val_u, grad_u),
+        )
+        self.add_triplet_to_func(new_triplet)
+
+        new_triplet_h = Triplet(
+            u,
+            func_val_h,
+            grad_h,
+            h,
+            name=utils.triplet_tag(u, func_val_h, grad_h),
+        )
+        h.add_triplet_to_func(new_triplet_h)
+        return u
+
 
 @attrs.frozen(kw_only=True, repr=False)
 class ConvexFunction(Function):
@@ -709,7 +799,7 @@ class SmoothConvexFunction(Function):
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.L, utils.NUMERICAL_TYPE):
-            assert self.L > 0  # ty: ignore
+            assert self.L > 0
 
     def __hash__(self):
         return super().__hash__()
@@ -802,3 +892,146 @@ class SmoothConvexFunction(Function):
             )
         coef = sp.S(1) / sp.S(2 * self.L) if sympy_mode else 1 / (2 * self.L)
         return f2 - f1 + g2 * (x1 - x2) + coef * (g1 - g2) ** 2
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class SmoothStronglyConvexFunction(Function):
+    """
+    The :class:`SmoothStronglyConvexFunction` class represents a smooth, strongly
+    convex function.
+
+    The :class:`SmoothStronglyConvexFunction` class is a child of :class:`Function`.
+
+    A smooth, strongly convex function has a smoothness parameter :math:`L` and
+    a strong convexity parameter :math:`\\mu`.
+
+    We can instantiate a :class:`SmoothStronglyConvexFunction` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> f = pf.SmoothStronglyConvexFunction(is_basis=True, tags=["f"], L=1, mu=1)
+    """
+
+    L: utils.NUMERICAL_TYPE | Parameter
+    mu: utils.NUMERICAL_TYPE | Parameter
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+        if isinstance(self.L, utils.NUMERICAL_TYPE):
+            assert self.L > 0
+        if isinstance(self.mu, utils.NUMERICAL_TYPE):
+            assert self.mu > 0
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def smooth_strongly_convex_interpolability_constraints(
+        self, triplet_i, triplet_j
+    ) -> ct.ScalarConstraint:
+        point_i = triplet_i.point
+        func_val_i = triplet_i.func_val
+        grad_i = triplet_i.grad
+
+        point_j = triplet_j.point
+        func_val_j = triplet_j.func_val
+        grad_j = triplet_j.grad
+
+        func_diff = func_val_j - func_val_i
+        cross_term = grad_j * (point_i - point_j)
+        coef = 1 / 2 / (1 - self.mu / self.L)
+        quad_term = (
+            1 / self.L * (grad_i - grad_j) ** 2
+            + self.mu * (point_i - point_j) ** 2
+            - 2 * self.mu / self.L * (grad_i - grad_j) * (point_i - point_j)
+        )
+
+        return (func_diff + cross_term + coef * quad_term).le(
+            0,
+            name=f"{self.__repr__()}:{point_i.__repr__()},{point_j.__repr__()}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+        scal_constraint = []
+        for i in pep_context.func_to_triplets[self]:
+            for j in pep_context.func_to_triplets[self]:
+                if i == j:
+                    continue
+                scal_constraint.append(
+                    self.smooth_strongly_convex_interpolability_constraints(i, j)
+                )
+        cd.add_sc_constraint("Smooth Strongly Convex Function", scal_constraint)
+        return cd
+
+    def interp_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the interpolation inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The interpolation inequality between two points :math:`p_1, p_2` for a
+        smooth, strongly convex function :math:`f` is
+
+        .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle + \\tfrac{1}{2 (1-\\mu/L)} (\\tfrac{1}{L} \\lVert \\nabla f(p_1) - \\nabla f(p_2) \\rVert^2 + \\mu \\lVert p_1 - p_2 \\rVert^2 - 2 \\tfrac{\\mu}{L}\\langle \\nabla f(p_1) - \\nabla f(p_2), p_1 - p_2 \\rangle).
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+
+        Example:
+            >>> import pepflow as pf
+            >>> ctx = pf.PEPContext("ctx").set_as_current()
+            >>> xi = pf.Vector(is_basis=True, tags=["x_i"])
+            >>> xj = pf.Vector(is_basis=True, tags=["x_j"])
+            >>> f = pf.SmoothStronglyConvexFunction(is_basis=True, L=1, mu=1, tags=["f"])
+            >>> fi, fj = f(xi), f(xj)
+            >>> f.interp_ineq("x_i", "x_j")
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, f1, g1 = pep_context.get_triplet_by_point_tag(p1, func=self).expand()
+        x2, f2, g2 = pep_context.get_triplet_by_point_tag(p2, func=self).expand()
+        if sympy_mode and isinstance(self.L, float):
+            raise ValueError(
+                "Cannot use sympy mode with float L in SmoothStronglyConvexFunction. "
+                "Please use an integer number or sympy.Rational for L."
+            )
+        if sympy_mode and isinstance(self.mu, float):
+            raise ValueError(
+                "Cannot use sympy mode with float mu in SmoothStronglyConvexFunction. "
+                "Please use an integer number or sympy.Rational for mu."
+            )
+        coef = (
+            sp.S(1) / sp.S(2) / (sp.S(1) - sp.S(self.mu) / sp.S(self.L))
+            if sympy_mode
+            else 1 / 2 / (1 - self.mu / self.L)
+        )
+        if sympy_mode:
+            quad_term = (
+                sp.S(1) / sp.S(self.L) * (g1 - g2) ** 2
+                + sp.S(self.mu) * (x1 - x2) ** 2
+                - sp.S(2) * sp.S(self.mu) / sp.S(self.L) * (g1 - g2) * (x1 - x2)
+            )
+        else:
+            quad_term = (
+                1 / self.L * (g1 - g2) ** 2
+                + self.mu * (x1 - x2) ** 2
+                - 2 * self.mu / self.L * (g1 - g2) * (x1 - x2)
+            )
+        return f2 - f1 + g2 * (x1 - x2) + coef * quad_term

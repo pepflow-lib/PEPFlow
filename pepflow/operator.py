@@ -27,6 +27,7 @@ from typing import TYPE_CHECKING
 
 import attrs
 import numpy as np
+import sympy as sp
 
 from pepflow import constraint as ct
 from pepflow import math_expression as me
@@ -587,7 +588,7 @@ class LinearOperator(Operator):
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.M, utils.NUMERICAL_TYPE):
-            assert self.M > 0  # ty: ignore
+            assert self.M > 0
 
     def __hash__(self):
         return super().__hash__()
@@ -791,3 +792,157 @@ class MonotoneOperator(Operator):
         x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
         x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
         return -(x1 - x2) * (u1 - u2)
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class LipschitzMonotoneOperator(Operator):
+    """
+    The :class:`LipschitzMonotoneOperator` class represents a monotone and Lipschitz continuous operator.
+
+    The :class:`LipschitzMonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`LipschitzMonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=1)
+    """
+
+    L: utils.NUMERICAL_TYPE | Parameter
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> LipschitzMonotoneOperator:
+        """Add a new tag for this :class:`LipschitzMonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def monotone_inequality_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            (duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).ge(
+            0,
+            name=f"{self.tag} monotone:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def lipschitz_inequality_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            self.L**2 * (duplet_i.point - duplet_j.point) ** 2
+            - (duplet_i.output - duplet_j.output) ** 2
+        ).ge(
+            0,
+            name=f"{self.tag} Lipschitz:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions.
+
+        References:
+            E. K. Ryu, A. B. Taylor, C. Bergeling, and P. Giselsson, Operator splitting
+            performance estimation: Tight contraction factors and optimal parameter selection,
+            SIAM Journal on Optimization, 30 (2020), pp. 2251–2271.
+        """
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., -<A x_1 - A x_0, x_1 - x_0> <= 0
+        # is the same as -<A x_0 - A x_1, x_0 - x_1> <= 0.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+
+        scal_constraint_1 = []
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint_1.append(self.monotone_inequality_constraints(i, j))
+        cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint_1)
+
+        scal_constraint_2 = []
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint_2.append(self.lipschitz_inequality_constraints(i, j))
+        cd.add_sc_constraint("Lipschitz Continuous Inequality", scal_constraint_2)
+
+        return cd
+
+    def monotone_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the monotone inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The monotone inequality between two points :math:`p_1, p_2` for a
+        operator :math:`A` is
+
+        .. math:: \\langle \\nabla A(p_1) - A(p_2), p_1 - p_2 \\rangle >= 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        del sympy_mode  # No need for this case
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+        return (x1 - x2) * (u1 - u2)
+
+    def lipschitz_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the Lipschitz inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The Lipschitz inequality between two points :math:`p_1, p_2` for a
+        operator :math:`A` is
+
+        .. math:: L^2 \\| p_1 - p_2 \\|^2 - \\| A(p_1) - A(p_2) \\|^2 >= 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+
+        if sympy_mode and isinstance(self.L, float):
+            raise ValueError(
+                "Cannot use sympy mode with float L in LipschitzMonotoneOperator. "
+                "Please use an integer number or sympy.Rational for L."
+            )
+        coef = sp.S(self.L) if sympy_mode else self.L
+        return coef**2 * (x1 - x2) ** 2 - (u1 - u2) ** 2

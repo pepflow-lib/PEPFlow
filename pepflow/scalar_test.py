@@ -248,9 +248,9 @@ def test_scalar_by_basis_with_parameter_coeffs(pep_context):
     a = make_rep(funcs={f1: 2}, inners={(v1, v2): 3}, offset=4)
 
     b = a * pm
-    assert b.func_coeffs[f1] == 2 * pm
-    assert b.inner_prod_coeffs[(v1, v2)] == 3 * pm
-    assert b.offset == 4 * pm
+    assert b.func_coeffs[f1].equiv(2 * pm)
+    assert b.inner_prod_coeffs[(v1, v2)].equiv(3 * pm)
+    assert b.offset.equiv(4 * pm)
 
     d = a / pm
     assert isinstance(d.func_coeffs[f1], parameter.Parameter)
@@ -267,17 +267,21 @@ def test_simplify_scalar_basic(pep_context):
     p3 = vector.Vector(is_basis=True, tags=["p3"])
 
     s = 5 * (s1 + s2) - s1 + s3
-    assert s.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
-        func_coeffs=defaultdict(int, {s1: 4, s2: 5, s3: 1}),
-        inner_prod_coeffs=defaultdict(int, {}),
-        offset=0,
+    assert s.simplify().eval_expression.equiv(
+        scalar.ScalarByBasisRepresentation(
+            func_coeffs=defaultdict(int, {s1: 4, s2: 5, s3: 1}),
+            inner_prod_coeffs=defaultdict(int, {}),
+            offset=0,
+        )
     )
 
     ip = p1 * p2 + 4 * p1 * p3 + 2 * p2 * p1 + 3 * p3 * p1
-    assert ip.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
-        func_coeffs=defaultdict(int, {}),
-        inner_prod_coeffs=defaultdict(int, {(p1, p2): 3, (p1, p3): 7}),
-        offset=0,
+    assert ip.simplify().eval_expression.equiv(
+        scalar.ScalarByBasisRepresentation(
+            func_coeffs=defaultdict(int, {}),
+            inner_prod_coeffs=defaultdict(int, {(p1, p2): 3, (p1, p3): 7}),
+            offset=0,
+        )
     )
 
 
@@ -288,31 +292,25 @@ def test_simplify_scalar_with_param(pep_context):
     pm1 = parameter.Parameter(name="pm1")
     pm2 = parameter.Parameter(name="pm2")
 
-    # TODO: we need to simplify the parameter expression.
-    # The following 1* is necessary to make the test pass for now.
-    # Also, 0 * or 0+ is necessary for s3 to make the test pass for now.
     s = pm1 * (s1 + s2) - s1 + pm2 * s3
-    assert s.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
-        func_coeffs=defaultdict(int, {s1: 1 * pm1 - 1, s2: 1 * pm1, s3: 0 + 1 * pm2}),
-        inner_prod_coeffs=defaultdict(int, {}),
-        offset=0 * pm1 - 0 + 0 * pm2,
+    assert s.simplify().eval_expression.equiv(
+        scalar.ScalarByBasisRepresentation(
+            func_coeffs=defaultdict(int, {s1: -1 + pm1, s2: pm1, s3: pm2}),
+            inner_prod_coeffs=defaultdict(int, {}),
+            offset=0,
+        )
     )
 
     p1 = vector.Vector(is_basis=True, tags=["p1"])
     p2 = vector.Vector(is_basis=True, tags=["p2"])
     p3 = vector.Vector(is_basis=True, tags=["p3"])
-    # TODO: we need to simplify the parameter expression.
-    # The following 1* is necessary to make the test pass for now.
-    # Also, manual calculation with __rmul__ is necessary to make same operation history.
     ip = pm1 * p1 * p2 + 4 * pm1 * p1 * p3 + 2 * pm2 * p2 * p1
-    assert ip.simplify().eval_expression == scalar.ScalarByBasisRepresentation(
-        func_coeffs=defaultdict(int, {}),
-        inner_prod_coeffs=defaultdict(
-            int,
-            {
-                (p1, p2): (0 + 1 * pm1 * 1) + (0 + (2 * pm2).__rmul__(1) * 1),
-                (p1, p3): (0 + ((4 * pm1).__rmul__(1)) * 1).__radd__(0),
-            },
-        ),
-        offset=0,
+    assert ip.simplify().eval_expression.equiv(
+        scalar.ScalarByBasisRepresentation(
+            func_coeffs=defaultdict(int, {}),
+            inner_prod_coeffs=defaultdict(
+                int, {(p1, p2): pm1 + 2 * pm2, (p1, p3): 4 * pm1}
+            ),
+            offset=0,
+        )
     )

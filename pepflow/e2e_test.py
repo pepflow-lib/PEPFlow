@@ -22,6 +22,7 @@ import itertools
 import math
 
 import numpy as np
+import sympy as sp
 
 from pepflow import function, operator
 from pepflow import parameter as pm
@@ -55,6 +56,39 @@ def test_gd_e2e():
         pep_builder.set_performance_metric(f.func_val(p) - f.func_val(x_star))
         result = pep_builder.solve_primal()
         expected_opt_value = 1 / (4 * i + 2)
+        assert math.isclose(result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+        dual_result = pep_builder.solve_dual()
+        assert math.isclose(dual_result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+
+def test_gd_strongly_convex_e2e():
+    ctx = pc.PEPContext("gd").set_as_current()
+    pep_builder = pep.PEPBuilder(ctx)
+    eta = 1
+    N = 9
+
+    f = function.SmoothStronglyConvexFunction(is_basis=True, tags=["f"], L=1, mu=0.1)
+    x = pep_builder.add_init_point("x_0")
+    x_star = f.set_stationary_point("x_star")
+    pep_builder.add_initial_constraint(
+        ((x - x_star) ** 2).le(1, name="initial_condition")
+    )
+
+    # We first build the algorithm with the largest number of iterations.
+    for i in range(N):
+        x = x - eta * f.grad(x)
+        x.add_tag(f"x_{i + 1}")
+
+    # To achieve the sweep, we can just update the performance_metric.
+    kappa = 0.1
+    for i in range(1, N + 1):
+        p = ctx.get_by_tag(f"x_{i}")
+        pep_builder.set_performance_metric(f.func_val(p) - f.func_val(x_star))
+        result = pep_builder.solve_primal()
+        expected_opt_value = (
+            1 / 2 * (kappa / ((kappa - 1) + 1 / (1 - kappa) ** (2 * i)))
+        )
         assert math.isclose(result.opt_value, expected_opt_value, rel_tol=1e-3)
 
         dual_result = pep_builder.solve_dual()
@@ -617,3 +651,89 @@ def test_appm_e2e():
             resolve_parameters={f"beta_{i}": 1 / (i + 2) for i in range(N + 1)}
         )
         assert math.isclose(dual_result.opt_value, expected_opt_value_N, rel_tol=1e-2)
+
+
+def test_feg_e2e():
+    feg = pc.PEPContext("feg").set_as_current()
+    pep_builder = pep.PEPBuilder(feg)
+    alpha = 1
+    N_range = 10
+    R = 1
+
+    # Declare monotone operator.
+    A = operator.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=1)
+
+    # Declare a parameter used in the algorithm.
+    beta = [pm.Parameter(f"beta_{i}") for i in range(N_range + 1)]
+
+    # Define the initial points.
+    x_0 = pep_builder.add_init_point("x_0")
+    x = x_0
+
+    x_star = A.set_zero_point("x_star")
+    pep_builder.add_initial_constraint(
+        ((x_0 - x_star) ** 2).le(R, name="initial_condition")
+    )
+
+    x_next = (x - alpha * A(x_0)).add_tag("x_1")
+    x = x_next
+
+    for N in range(1, N_range):
+        x_half = (x + beta[N] * (x_0 - x) - (1 - beta[N]) * alpha * A(x)).add_tag(
+            f"x_{{{N + 1 / sp.S(2)}}}"
+        )
+        x_next = (x + beta[N] * (x_0 - x) - alpha * A(x_half)).add_tag(f"x_{{{N + 1}}}")
+        x = x_next
+
+        pep_builder.set_performance_metric(A(x_next) ** 2)
+
+        result = pep_builder.solve_primal(
+            resolve_parameters={f"beta_{i}": 1 / (i + 1) for i in range(N + 1)}
+        )
+
+        expected_opt_value_N = 4 / (alpha * (N + 1)) ** 2
+        assert math.isclose(result.opt_value, expected_opt_value_N, rel_tol=1e-2)
+
+        dual_result = pep_builder.solve_dual(
+            resolve_parameters={f"beta_{i}": 1 / (i + 1) for i in range(N + 1)}
+        )
+        assert math.isclose(dual_result.opt_value, expected_opt_value_N, rel_tol=1e-2)
+
+
+def test_bppm_e2e():
+    ctx = pc.PEPContext("bppm").set_as_current()
+    pep_builder = pep.PEPBuilder(ctx)
+    alpha = 1
+    R = 1
+    N = 2
+
+    f = function.ConvexFunction(is_basis=True, tags=["f"])
+    h = function.ConvexFunction(is_basis=True, tags=["h"])
+
+    x = vector.Vector(is_basis=True, tags=["x_0"])
+    f.set_stationary_point("x_star")
+
+    x_0 = ctx["x_0"]
+    x_star = ctx["x_star"]
+    pep_builder.add_initial_constraint(
+        (h(x_star) - h(x_0) - h.grad(x_0) * (x_star - x_0)).le(
+            R, name="initial_condition"
+        )
+    )
+
+    # We first build the algorithm with the largest number of iterations.
+    for i in range(N):
+        x = f.bregman_prox(x, alpha, h)
+        x.add_tag(f"x_{i + 1}")
+
+    # To achieve the sweep, we can just update the performance_metric.
+    for i in range(1, N + 1):
+        x_i = ctx[f"x_{i}"]
+        pep_builder.set_performance_metric(f(x_i) - f(x_star))
+
+        result = pep_builder.solve_primal()
+        expected_opt_value = alpha * R / i
+        assert math.isclose(result.opt_value, expected_opt_value, rel_tol=1e-3)
+
+        dual_result = pep_builder.solve_dual()
+        assert math.isclose(dual_result.opt_value, expected_opt_value, rel_tol=1e-3)
