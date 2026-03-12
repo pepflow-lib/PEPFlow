@@ -119,7 +119,7 @@ class ConstraintData:
             df["dual_value"] = df["constraint_name"].map(
                 lambda x: result.get_dual_value(x)
             )
-            df.attrs = {"order_row": order_row, "order_col": order_col}
+            df.attrs = {"order_row": order_row, "order_col": order_col}  # ty: ignore
             sc_df_dict[name] = df
         return sc_df_dict
 

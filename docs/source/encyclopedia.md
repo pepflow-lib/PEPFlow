@@ -23,18 +23,18 @@ $$\text{minimize} \quad f(x) + g(Ax) + h(x),$$
 where $f$ and $g$ are proper closed convex functions with inexpensive proximal operators, $h$ is $L$-smooth and (strongly) convex, and $A$ is a (bounded) linear operator.
 
 - $f = 0$ and $g = 0$: gradient-based methods 
-  - [gradient method](examples/gd_example.ipynb)
-  - [Nesterov's accelerated gradient method (AGM)](examples/agm_example.ipynb)
-  - [optimized gradient method (OGM)](examples/ogm_example.ipynb)
-  - [OGM-G](examples/ogm_g_example.ipynb)
+  - {doc}`gradient method <examples/gd_example>`
+  - {doc}`Nesterov's accelerated gradient method (AGM) <examples/agm_example>`
+  - {doc}`optimized gradient method (OGM) <examples/ogm_example>`
+  - {doc}`OGM-G <examples/ogm_g_example>`
 - $g = 0$: prox-grad-type methods
-  - [proximal gradient method (PGM)](examples/pgm_example.ipynb)
+  - {doc}`proximal gradient method (PGM) <examples/pgm_example>`
   - FISTA 
   - OptISTA
 - $f = 0$ 
   - Loris-Verhoeven algorithm (a.k.a. PDFP$^2$O, PAPC)
 - $h = 0$ and $A = I$
-  - [Douglas-Rachford splitting (DRS) method](examples/drs_example.ipynb)
+  - {doc}`Douglas-Rachford splitting (DRS) method <examples/drs_example>`
   - ADMM
 - $h = 0$ 
   - PDHG (a.k.a. Chambolle-Pock)
@@ -129,8 +129,8 @@ As <span class="brand-color">PEPFlow</span> continues to grow, we plan to expand
 
 ## Monotone inclusion
 
-- [Accelerated Proximal Point Method (APPM)](examples/appm_example.ipynb)
-- [Dual Optimal Halpern Method (Dual-OHM)](examples/dual_ohm_example.ipynb)
+- {doc}`Accelerated Proximal Point Method (APPM) <examples/appm_example>`
+- {doc}`Dual Optimal Halpern Method (Dual-OHM) <examples/dual_ohm_example>`
 
 ## Looking ahead
 
@@ -144,3 +144,16 @@ Algorithm analysis is not the limit of PEP, nor is it the limit of <span class="
 Ultimately, we hope <span class="brand-color">PEPFlow</span> becomes a tool for both research and education, one that helps students learn foundational concepts in optimization through advanced tools, and empowers scholars to experiment and validate ideas.
 
 Let's contribute to the growing body of PEP and optimization!
+
+```{toctree}
+:hidden:
+
+examples/gd_example.ipynb
+examples/agm_example.ipynb
+examples/ogm_example.ipynb
+examples/ogm_g_example.ipynb
+examples/pgm_example.ipynb
+examples/drs_example.ipynb
+examples/appm_example.ipynb
+examples/dual_ohm_example.ipynb
+```
