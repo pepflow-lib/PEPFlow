@@ -67,6 +67,7 @@ Welcome to <span class="brand-color">PEPFlow</span>!
 
 quickstart.ipynb
 tutorial
+examples
 api_reference
 encyclopedia
 ```
