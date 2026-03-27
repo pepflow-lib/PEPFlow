@@ -29,8 +29,7 @@ if TYPE_CHECKING:
 REGISTERED_FUNC_AND_OPER_DICT: dict[str, Function | Operator] = {}
 
 
-# TODO: Find a better way to declare the return type while keeping type checker happy.
-def get_func_or_oper_by_tag(tag: str):
+def get_func_or_oper_by_tag(tag: str) -> Function | Operator:
     """
     Return the :class:`Function` or :class:`Operator` object associated with
     the provided `tag`.
