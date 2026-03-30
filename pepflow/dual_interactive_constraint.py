@@ -438,4 +438,4 @@ def launch_dual_interactive(
 
         return dash.no_update, dash.no_update
 
-    app.run(debug=True, port=port)
+    app.run(debug=True, port=port, dev_tools_ui=False)
