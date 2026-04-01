@@ -443,8 +443,8 @@ class Vector:
     def __mul__(self, other):
         if not is_numerical_or_vector(other):
             return NotImplemented
-        expr_self = utils.parenthesize_tag(self)
         if utils.is_numerical_or_parameter(other):
+            expr_self = utils.parenthesize_tag(self)
             expr_other = utils.numerical_str(other)
             return Vector(
                 is_basis=False,
@@ -453,19 +453,18 @@ class Vector:
                 math_expr=me.MathExpr(f"{expr_self}*{expr_other}"),
             )
         else:
-            expr_other = utils.parenthesize_tag(other)
             return Scalar(
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
                 tags=[],
-                math_expr=me.MathExpr(f"{expr_self}*{expr_other}"),
+                math_expr=me.MathExpr(f"⟨{repr(self)},{repr(other)}⟩"),
             )
 
     def __rmul__(self, other):
         if not is_numerical_or_vector(other):
             return NotImplemented
-        expr_self = utils.parenthesize_tag(self)
         if utils.is_numerical_or_parameter(other):
+            expr_self = utils.parenthesize_tag(self)
             expr_other = utils.numerical_str(other)
             return Vector(
                 is_basis=False,
@@ -474,12 +473,11 @@ class Vector:
                 math_expr=me.MathExpr(f"{expr_other}*{expr_self}"),
             )
         else:
-            expr_other = utils.parenthesize_tag(other)
             return Scalar(
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
                 tags=[],
-                math_expr=me.MathExpr(f"{expr_other}*{expr_self}"),
+                math_expr=me.MathExpr(f"⟨{repr(other)},{repr(self)}⟩"),
             )
 
     def __pow__(self, power):

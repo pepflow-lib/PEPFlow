@@ -88,7 +88,7 @@ def test_vector_add_and_mul_tag(pep_context: pc.PEPContext) -> None:
     assert repr(p_add_mul) == "(p1+p2)*0.1"
 
     p_add_mul = (p1 + p2) * (p1 + p2)
-    assert repr(p_add_mul) == "(p1+p2)*(p1+p2)"
+    assert repr(p_add_mul) == "⟨p1+p2,p1+p2⟩"
 
     p_add_pow = (p1 + p2) ** 2
     assert repr(p_add_pow) == "|p1+p2|^2"

@@ -192,7 +192,7 @@ def test_parameter_power(pep_context: pc.PEPContext):
     assert not pp6.get_value({"pm1": 2}) == 2
 
     pp7 = sp.sqrt(2) ** pm1
-    assert str(pp7) == "(sqrt(2))**{pm1}"
+    assert str(pp7) == "(\\sqrt{2})**{pm1}"
     assert pp7.get_value({"pm1": 2}) == 2
 
 

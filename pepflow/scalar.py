@@ -585,7 +585,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
@@ -597,7 +597,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
@@ -618,7 +618,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = f"1/{utils.numerical_str(other)}"
+        expr_other = f"1/{utils.parenthesize_repr(other)}"
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.DIV, self, other),
