@@ -108,10 +108,7 @@ class Comparator(enum.Enum):
 
 
 def is_numerical(val: Any) -> bool:
-    val_is_sp_real = False
-    if isinstance(val, sp.Basic):
-        val_is_sp_real = val.is_real
-    return isinstance(val, numbers.Number) or val_is_sp_real
+    return isinstance(val, numbers.Number) or is_sympy_real(val)
 
 
 def is_parameter(val: Any) -> bool:
@@ -126,6 +123,14 @@ def is_numerical_or_parameter(val: Any) -> bool:
 
 def is_sympy_expr(val: Any) -> bool:
     return isinstance(val, sp.Basic)
+
+
+def is_sympy_real(val: Any) -> bool:
+    # NOTE: assumes real-valued SymPy expressions; complex support can be added if needed.
+    val_is_sp_real = False
+    if is_sympy_expr(val):
+        val_is_sp_real = val.is_real
+    return val_is_sp_real
 
 
 def simplify_if_param_or_sympy_expr(
@@ -186,43 +191,44 @@ def numerical_str(val: Any) -> str:
         )
     if isinstance(val, param.Parameter):
         return str(val)
-    val_is_sp_real = False
-    if isinstance(val, sp.Basic):
-        val_is_sp_real = val.is_real
-    return str(val) if val_is_sp_real else f"{val:.4g}"
+    return str(val) if is_sympy_real(val) else f"{val:.4g}"
 
 
-def tag_and_coef_to_str(tag: str, val: NUMERICAL_TYPE | Parameter | sp.Basic) -> str:
-    """Returns a string representation with values and tag."""
-    from pepflow import parameter as param
+def coef_times_term_to_str(
+    term_repr: str, val: NUMERICAL_TYPE | Parameter | sp.Basic
+) -> str:
+    """Returns a string representation with coefficient and term."""
 
     # TODO: Check performance
     if isinstance(val, sp.Basic):
         val = val.simplify()
 
-    if isinstance(val, param.Parameter) or is_sympy_expr(val):
-        if isinstance(val, sp.Integer):
-            sign = "+" if val >= 0 else "-"
-            if math.isclose(abs(val), 1):
-                return f"{sign} {tag} "
-            elif math.isclose(val, 0, abs_tol=1e-5):
-                return ""
-        coef = str(val)
-        if coef[0] == "-":
-            coef = coef[1:]
-            sign = "-"
-        else:
-            sign = "+"
-        return f"{sign} {coef}*{tag} "
+    if is_numerical(val):
+        sign = "+" if val >= 0 else "-"
+        if math.isclose(abs(val), 1):
+            return f"{sign} {term_repr} "
+        elif math.isclose(val, 0, abs_tol=1e-5):
+            return ""
+        if isinstance(val, numbers.Number):
+            coef = numerical_str(abs(val))
+            return f"{sign} {coef}*{term_repr} "
 
-    coef = numerical_str(abs(val))
-    sign = "+" if val >= 0 else "-"
-    if math.isclose(abs(val), 1):
-        return f"{sign} {tag} "
-    elif math.isclose(val, 0, abs_tol=1e-5):
-        return ""
+    if is_sympy_expr(val) and not isinstance(val, sp.Rational):
+        coef = sp.latex(val)  # We want LaTeX form (\pi), not plain text (pi)
     else:
-        return f"{sign} {coef}*{tag} "
+        coef = str(val)
+    coef = coef.strip()
+
+    parenthesize_coef = parenthesize_repr(val).strip()
+    if parenthesize_coef != coef:
+        return f"+ {parenthesize_coef}*{term_repr} "
+
+    if coef.startswith("-"):
+        coef = coef[1:].lstrip()
+        sign = "-"
+    else:
+        sign = "+"
+    return f"{sign} {coef}*{term_repr} "
 
 
 def parenthesize_tag(val: Vector | Scalar) -> str:
@@ -240,19 +246,25 @@ def parenthesize_repr(
     # TODO: this function needs to write it properly.
     from pepflow.parameter import Parameter
 
-    tmp_repr = val.__repr__()
+    if is_sympy_expr(val) and not isinstance(val, sp.Rational):
+        tmp_repr = sp.latex(val)  # We want LaTeX form (\pi), not plain text (pi)
+    else:
+        tmp_repr = str(val)
+
     if isinstance(val, sp.Basic):
-        if val.is_real:
-            if val.is_Add:
+        if val.is_Add:
+            return f"({tmp_repr})"
+        if pow_base:
+            if val.is_Mul or val.is_Pow:
                 return f"({tmp_repr})"
-            if pow_base:
-                if val.is_Mul or val.is_Pow:
-                    return f"({tmp_repr})"
-            return str(val)
+        return tmp_repr
+
     if isinstance(val, numbers.Number):
         return f"{val:.4g}"
+
     if pow_exponent:
         return f"{{{tmp_repr}}}"
+
     if isinstance(val, Parameter):
         if op := getattr(val.eval_expression, "op", None):
             if pow_base or op in (Op.ADD, Op.SUB):
@@ -277,8 +289,49 @@ def str_to_latex(s: str) -> str:
     """Convert string into latex style."""
     s = s.replace("star", r"\star")
     s = s.replace(f"{const.GRADIENT}_", r"\nabla ")
+    s = s.replace("⟨", r"\left\langle ")
+    s = s.replace("⟩", r" \right\rangle")
     s = s.replace("|", r"\|")
     s = s.replace("**", "^")
+
+    def _replace_parenthesized_after_token(expr: str, token: str) -> str:
+        """Replace `token(...)` with `token{...}` while preserving nesting."""
+        if not token:
+            return expr
+
+        def _find_matching_paren(open_idx: int) -> int:
+            depth = 1
+            i = open_idx + 1
+            while i < len(expr) and depth:
+                if expr[i] == "(":
+                    depth += 1
+                elif expr[i] == ")":
+                    depth -= 1
+                i += 1
+            return i if depth == 0 else -1
+
+        out: list[str] = []
+        i = 0
+        while (k := expr.find(token, i)) >= 0:
+            out.append(expr[i:k])
+            j = k + len(token)
+            if j >= len(expr) or expr[j] != "(":
+                out.append(token)
+                i = j
+                continue
+            end = _find_matching_paren(j)
+            if end < 0:
+                out.append(expr[k:])
+                return "".join(out)
+            inner = _replace_parenthesized_after_token(expr[j + 1 : end - 1], token)
+            out.append(f"{token}{{{inner}}}")
+            i = end
+
+        out.append(expr[i:])
+        return "".join(out)
+
+    s = _replace_parenthesized_after_token(s, "^")
+    s = _replace_parenthesized_after_token(s, r"\sqrt")
     return rf"$\displaystyle {s}$"
 
 

@@ -26,6 +26,7 @@ import pytest
 import sympy as sp
 
 from pepflow import expression_manager as exm
+from pepflow import math_expression as me
 from pepflow import parameter
 from pepflow import pep as pep
 from pepflow import pep_context as pc
@@ -88,7 +89,7 @@ def test_vector_add_and_mul_tag(pep_context: pc.PEPContext) -> None:
     assert repr(p_add_mul) == "(p1+p2)*0.1"
 
     p_add_mul = (p1 + p2) * (p1 + p2)
-    assert repr(p_add_mul) == "(p1+p2)*(p1+p2)"
+    assert repr(p_add_mul) == me.INNER_PROD_STR.format(A="p1+p2", B="p1+p2")
 
     p_add_pow = (p1 + p2) ** 2
     assert repr(p_add_pow) == "|p1+p2|^2"

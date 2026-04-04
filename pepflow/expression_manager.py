@@ -25,6 +25,7 @@ from typing import TYPE_CHECKING
 import numpy as np
 import sympy as sp
 
+from pepflow import math_expression as me
 from pepflow import parameter as pm
 from pepflow import pep_context as pc
 from pepflow import scalar as sc
@@ -367,7 +368,7 @@ class ExpressionManager:
         repr_str = ""
         for i, v in enumerate(evaluated_vector.coords):
             ith_tag = self.get_tag_of_basis_vector_index(i)
-            repr_str += utils.tag_and_coef_to_str(ith_tag, v)
+            repr_str += utils.coef_times_term_to_str(ith_tag, v)
 
         # Post processing
         if repr_str == "":
@@ -454,7 +455,7 @@ class ExpressionManager:
         for i, v in enumerate(evaluated_scalar.func_coords):
             # Note the tag is from scalar basis.
             ith_tag = self.get_tag_of_basis_scalar_index(i)
-            repr_str += utils.tag_and_coef_to_str(ith_tag, v)
+            repr_str += utils.coef_times_term_to_str(ith_tag, v)
 
         if greedy_square:
             diag_elem = np.diag(evaluated_scalar.inner_prod_coords).copy()
@@ -468,17 +469,17 @@ class ExpressionManager:
                     if diag_elem[i] * v > 0:  # same sign with diagonal elem
                         diag_elem[i] -= v
                         diag_elem[j] -= v
-                        repr_str += utils.tag_and_coef_to_str(
+                        repr_str += utils.coef_times_term_to_str(
                             f"|{ith_tag}+{jth_tag}|^2", v
                         )
                     else:  # different sign
                         diag_elem[i] += v
                         diag_elem[j] += v
-                        repr_str += utils.tag_and_coef_to_str(
+                        repr_str += utils.coef_times_term_to_str(
                             f"|{ith_tag}-{jth_tag}|^2", -v
                         )
                 # Handle the diagonal elements
-                repr_str += utils.tag_and_coef_to_str(f"|{ith_tag}|^2", diag_elem[i])
+                repr_str += utils.coef_times_term_to_str(f"|{ith_tag}|^2", diag_elem[i])
         else:
             for i in range(evaluated_scalar.inner_prod_coords.shape[0]):
                 ith_tag = self.get_tag_of_basis_vector_index(i)
@@ -486,10 +487,10 @@ class ExpressionManager:
                     jth_tag = self.get_tag_of_basis_vector_index(j)
                     v = evaluated_scalar.inner_prod_coords[i, j]
                     if i == j:
-                        repr_str += utils.tag_and_coef_to_str(f"|{ith_tag}|^2", v)
+                        repr_str += utils.coef_times_term_to_str(f"|{ith_tag}|^2", v)
                     else:
-                        repr_str += utils.tag_and_coef_to_str(
-                            f"⟨{ith_tag}, {jth_tag}⟩", 2 * v
+                        repr_str += utils.coef_times_term_to_str(
+                            me.INNER_PROD_STR.format(A=ith_tag, B=jth_tag), 2 * v
                         )
 
         # Post processing
