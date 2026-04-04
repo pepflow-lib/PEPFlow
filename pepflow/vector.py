@@ -457,7 +457,9 @@ class Vector:
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
                 tags=[],
-                math_expr=me.MathExpr(f"⟨{repr(self)},{repr(other)}⟩"),
+                math_expr=me.MathExpr(
+                    me.INNER_PROD_STR.format(A=repr(self), B=repr(other))
+                ),
             )
 
     def __rmul__(self, other):
@@ -477,7 +479,9 @@ class Vector:
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
                 tags=[],
-                math_expr=me.MathExpr(f"⟨{repr(other)},{repr(self)}⟩"),
+                math_expr=me.MathExpr(
+                    me.INNER_PROD_STR.format(A=repr(other), B=repr(self))
+                ),
             )
 
     def __pow__(self, power):

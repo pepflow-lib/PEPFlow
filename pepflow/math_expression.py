@@ -19,6 +19,8 @@
 
 import attrs
 
+INNER_PROD_STR = "⟨{A},{B}⟩"
+
 
 @attrs.mutable
 class MathExpr:

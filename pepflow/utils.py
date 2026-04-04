@@ -126,6 +126,7 @@ def is_sympy_expr(val: Any) -> bool:
 
 
 def is_sympy_real(val: Any) -> bool:
+    # NOTE: assumes real-valued SymPy expressions; complex support can be added if needed.
     val_is_sp_real = False
     if is_sympy_expr(val):
         val_is_sp_real = val.is_real

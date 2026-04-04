@@ -89,7 +89,9 @@ class ScalarByBasisRepresentation:
                 coeff_str = repr(val)
             vec0_repr, vec1_repr = repr(key[0]), repr(key[1])
             if vec0_repr != vec1_repr:
-                terms.append(f"{coeff_str}*⟨{vec0_repr},{vec1_repr}⟩")
+                terms.append(
+                    f"{coeff_str}*" + me.INNER_PROD_STR.format(A=vec0_repr, B=vec1_repr)
+                )
             else:
                 terms.append(f"{coeff_str}*|{vec0_repr}|^2")
         return " + ".join(terms) if terms else "0"

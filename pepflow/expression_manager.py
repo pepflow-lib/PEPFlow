@@ -25,6 +25,7 @@ from typing import TYPE_CHECKING
 import numpy as np
 import sympy as sp
 
+from pepflow import math_expression as me
 from pepflow import parameter as pm
 from pepflow import pep_context as pc
 from pepflow import scalar as sc
@@ -489,7 +490,7 @@ class ExpressionManager:
                         repr_str += utils.coef_times_term_to_str(f"|{ith_tag}|^2", v)
                     else:
                         repr_str += utils.coef_times_term_to_str(
-                            f"⟨{ith_tag}, {jth_tag}⟩", 2 * v
+                            me.INNER_PROD_STR.format(A=ith_tag, B=jth_tag), 2 * v
                         )
 
         # Post processing
