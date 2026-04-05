@@ -31,10 +31,11 @@ import plotly
 import plotly.graph_objects as go
 from dash import ALL, MATCH, Dash, Input, Output, State, ctx, dcc, html
 
+from pepflow import constants as const
 from pepflow import pep_context as pc
 from pepflow import registry as reg
 from pepflow import utils
-from pepflow.plot_data import PlotData
+from pepflow.plot_data import PlotData, style_dual_value_table
 
 if TYPE_CHECKING:
     from pepflow.function import Function
@@ -157,12 +158,19 @@ def launch_primal_interactive(
                     dbc.Button(
                         "Relax All Constraints",
                         id="relax-all-constraints-button",
-                        style={"margin-bottom": "5px", "margin-right": "5px"},
+                        style={
+                            "margin-bottom": "5px",
+                            "margin-right": "5px",
+                            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+                        },
                     ),
                     dbc.Button(
                         "Restore All Constraints",
                         id="restore-all-constraints-button",
-                        style={"margin-bottom": "5px"},
+                        style={
+                            "margin-bottom": "5px",
+                            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+                        },
                         color="success",
                     ),
                     dbc.Tabs(
@@ -177,16 +185,24 @@ def launch_primal_interactive(
             dbc.Col(
                 [
                     dbc.Button(
-                        "Solve PEP Problem",
+                        "Solve PEP",
                         id="solve-button",
                         color="primary",
                         className="me-1",
-                        style={"margin-bottom": "5px"},
+                        style={
+                            "margin-bottom": "5px",
+                            "fontSize": f"{const.BUTTON_FONT_REM * 1.1:.2f}rem",
+                            "fontWeight": "700",
+                        },
                     ),
                     dcc.Loading(
                         dbc.Card(
                             id="result-card",
-                            style={"height": "60vh", "overflow-y": "auto"},
+                            style={
+                                "height": "fit-content",
+                                "width": "fit-content",
+                                "display": "inline-block",
+                            },
                         )
                     ),
                 ],
@@ -204,12 +220,13 @@ def launch_primal_interactive(
     # 3. Define the app layout.
     app.layout = html.Div(
         [
-            html.H2("PEPFlow"),
+            html.H2("PEPFlow", style={"fontWeight": "700", "fontSize": "2.6rem"}),
             display_row,
             # For each function/operator interpolation group, store the corresponding
             # DataFrame/Dual Value Matrix as a dictionary in dcc.Store.
             *dcc_store_list,
-        ]
+        ],
+        style={"paddingTop": "24px", "paddingLeft": "32px", "paddingRight": "32px"},
     )
 
     @dash.callback(
@@ -227,9 +244,30 @@ def launch_primal_interactive(
         with np.printoptions(precision=3, linewidth=500, suppress=True):
             result_card = dbc.CardBody(
                 [
-                    html.H3(f"Optimal Value: {result.opt_value:.4g}"),
-                    html.H3(f"Solver Status: {result.solver_status}"),
-                    html.P("Relaxed Constraints:"),
+                    html.H3(
+                        [
+                            "Optimal Value: ",
+                            html.Span(
+                                f"{result.opt_value:.4g}", style={"fontWeight": "400"}
+                            ),
+                        ]
+                    ),
+                    html.H3(
+                        [
+                            "Solver Status: ",
+                            html.Span(
+                                f"{result.solver_status}", style={"fontWeight": "400"}
+                            ),
+                        ]
+                    ),
+                    html.P(
+                        "Relaxed Constraints:",
+                        style={
+                            "marginTop": "1rem",
+                            "fontWeight": "700",
+                            "fontSize": "1.2rem",
+                        },
+                    ),
                     html.Div(
                         style={
                             "display": "flex",
@@ -240,6 +278,7 @@ def launch_primal_interactive(
                             html.Pre(
                                 json.dumps(pep_builder.relaxed_constraints, indent=2),
                                 id="relaxed-constraints",
+                                style={"fontSize": "14.4px"},
                             ),
                             dcc.Clipboard(
                                 id="relaxed-constraint-copy",
@@ -255,14 +294,12 @@ def launch_primal_interactive(
         dual_value_displays = []
         for plot_data in plot_data_list:
             for df in plot_data.df_dict.values():
-                dual_value_displays.append(
-                    dbc.Table.from_dataframe(  # ty: ignore
-                        utils.get_pivot_table_of_dual_value(
-                            df, num_decs=3
-                        ).reset_index(),
-                        bordered=True,
-                    )
+                table = dbc.Table.from_dataframe(  # ty: ignore
+                    utils.get_pivot_table_of_dual_value(df, num_decs=3),
+                    bordered=True,
+                    index=True,
                 )
+                dual_value_displays.append(style_dual_value_table(table))
         # List that stores all the corresponding figures from the list of plot_data.
         figs: list[go.Figure] = []
         # List that stores all the corresponding information related to the dataframes from the list of plot_data.
@@ -368,4 +405,9 @@ def launch_primal_interactive(
 
         return new_fig, (func_or_oper_tag, new_df.to_dict("records"), new_df.attrs)
 
-    app.run(debug=True, port=port, jupyter_mode=jupyter_mode)
+    app.run(
+        debug=True,
+        port=port,
+        jupyter_mode=jupyter_mode,
+        dev_tools_ui=False,
+    )

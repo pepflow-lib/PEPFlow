@@ -28,8 +28,9 @@ import numpy as np
 import plotly
 from dash import ALL, Dash, Input, Output, State, dcc, html
 
+from pepflow import constants as const
 from pepflow import utils
-from pepflow.plot_data import PlotData
+from pepflow.plot_data import PlotData, style_dual_value_table
 
 if TYPE_CHECKING:
     from pepflow.pep import PEPBuilder
@@ -101,7 +102,11 @@ def generate_dual_constraint_list_cardbody(data: list[str]) -> dbc.CardBody:
                 },
                 color="primary",
                 className="me-1",
-                style={"margin-bottom": "5px"},
+                style={
+                    "margin-bottom": "5px",
+                    "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+                    "fontWeight": "700",
+                },
             )
         )
 
@@ -154,7 +159,11 @@ def launch_dual_interactive(
         id="solve-button",
         color="primary",
         className="me-1",
-        style={"margin-bottom": "5px"},
+        style={
+            "margin-bottom": "5px",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+            "fontWeight": "700",
+        },
     )
     associated_constraint_div = html.Div(
         children="Associated Constraint",
@@ -195,14 +204,22 @@ def launch_dual_interactive(
         id="add-dual-constraint-button",
         color="primary",
         className="me-1",
-        style={"margin-bottom": "5px"},
+        style={
+            "margin-bottom": "5px",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+            "fontWeight": "700",
+        },
     )
     remove_all_constraint_button = dbc.Button(
         "Remove All Constraints",
         id="remove-dual-constraint-button",
         color="primary",
         className="me-1",
-        style={"margin-bottom": "5px"},
+        style={
+            "margin-bottom": "5px",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
+            "fontWeight": "700",
+        },
     )
     display_row = dbc.Row(
         [
@@ -249,7 +266,11 @@ def launch_dual_interactive(
                     dcc.Loading(
                         dbc.Card(
                             id="result-card",
-                            style={"height": "15vh", "overflow-y": "auto"},
+                            style={
+                                "height": "fit-content",
+                                "width": "fit-content",
+                                "display": "inline-block",
+                            },
                         )
                     ),
                 ],
@@ -266,13 +287,14 @@ def launch_dual_interactive(
     # 3. Define the app layout.
     app.layout = html.Div(
         [
-            html.H2("PEPFlow"),
+            html.H2("PEPFlow", style={"fontWeight": "700", "fontSize": "2.6rem"}),
             display_row,
             # For each function, store the corresponding DataFrame as a dictionary in dcc.Store.
             *dcc_store_list,
             dcc.Store(id="list-of-constraints-on-dual", data=[]),
             dcc.Store(id="old-clickData", data=[]),
-        ]
+        ],
+        style={"paddingTop": "24px", "paddingLeft": "32px", "paddingRight": "32px"},
     )
 
     @dash.callback(
@@ -290,21 +312,33 @@ def launch_dual_interactive(
         with np.printoptions(precision=3, linewidth=500, suppress=True):
             result_card = dbc.CardBody(
                 [
-                    html.H3(f"Optimal Value: {result.opt_value:.4g}"),
-                    html.H3(f"Solver Status: {result.solver_status}"),
+                    html.H3(
+                        [
+                            "Optimal Value: ",
+                            html.Span(
+                                f"{result.opt_value:.4g}", style={"fontWeight": "400"}
+                            ),
+                        ]
+                    ),
+                    html.H3(
+                        [
+                            "Solver Status: ",
+                            html.Span(
+                                f"{result.solver_status}", style={"fontWeight": "400"}
+                            ),
+                        ]
+                    ),
                 ]
             )
         dual_value_displays = []
         for plot_data in plot_data_list:
             for df in plot_data.df_dict.values():
-                dual_value_displays.append(
-                    dbc.Table.from_dataframe(  # ty: ignore
-                        utils.get_pivot_table_of_dual_value(
-                            df, num_decs=3
-                        ).reset_index(),
-                        bordered=True,
-                    )
+                table = dbc.Table.from_dataframe(  # ty: ignore
+                    utils.get_pivot_table_of_dual_value(df, num_decs=3),
+                    bordered=True,
+                    index=True,
                 )
+                dual_value_displays.append(style_dual_value_table(table))
         figs = []
         df_data = []
         psd_dv_data = []
@@ -403,4 +437,4 @@ def launch_dual_interactive(
 
         return dash.no_update, dash.no_update
 
-    app.run(debug=True, port=port)
+    app.run(debug=True, port=port, dev_tools_ui=False)
