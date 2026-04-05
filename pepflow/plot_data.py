@@ -29,6 +29,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash import dcc, html
 
+from pepflow import constants as const
 from pepflow import utils
 
 if TYPE_CHECKING:
@@ -40,13 +41,6 @@ if TYPE_CHECKING:
 
 plotly.io.renderers.default = "colab+vscode"
 plotly.io.templates.default = "plotly_white"
-
-FONT_SCALE = 6 / 5  # global scale
-TAB_LABEL_FONT_REM = 1.0 * FONT_SCALE  # e.g. "f Interpolation Conditions"
-SECTION_LABEL_FONT_REM = 1.2 * FONT_SCALE  # e.g. "Interactive Heat Map"
-LEGEND_TITLE_FONT_SIZE = 1.15 * 16  # e.g. "Constraint", "Dual Value"
-GRAPH_FONT_SIZE = 12 * FONT_SCALE  # graph text
-TABLE_CELL_FONT_REM = 1.0 * FONT_SCALE  # table cells
 
 
 def style_dual_value_table(table: dbc.Table) -> dbc.Table:
@@ -102,7 +96,7 @@ def style_dual_value_table(table: dbc.Table) -> dbc.Table:
                         "textAlign": "center",
                         "padding": "0.35rem 0.55rem",
                         "verticalAlign": "middle",
-                        "fontSize": f"{TABLE_CELL_FONT_REM:.2f}rem",
+                        "fontSize": f"{const.TABLE_CELL_FONT_REM:.2f}rem",
                     },
                 )
 
@@ -163,7 +157,7 @@ class PlotData:
                                 "marginTop": "10px",
                                 "marginBottom": "-30px",
                                 "fontWeight": "700",
-                                "fontSize": f"{SECTION_LABEL_FONT_REM:.2f}rem",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
                                 "position": "relative",
                                 "zIndex": "1",
                             },
@@ -180,14 +174,14 @@ class PlotData:
                             "Dual Value Matrix:",
                             style={
                                 "fontWeight": "700",
-                                "fontSize": f"{SECTION_LABEL_FONT_REM:.2f}rem",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
                             },
                         ),
                         self.dual_matrix_to_tab(name, df),
                     ]
                 ),
                 label=f"{name}",
-                label_style={"fontSize": f"{TAB_LABEL_FONT_REM:.2f}rem"},
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
                 tab_id=f"{self.func_or_oper.tag}-{name}-interactive-constraint-tab",
             )
             for (name, fig), (_, df) in zip(self.fig_dict.items(), self.df_dict.items())
@@ -203,7 +197,7 @@ class PlotData:
                             "Dual Value Matrix:",
                             style={
                                 "fontWeight": "700",
-                                "fontSize": f"{SECTION_LABEL_FONT_REM:.2f}rem",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
                             },
                         ),
                         html.Pre(
@@ -216,7 +210,7 @@ class PlotData:
                     ]
                 ),
                 label=f"{name}",
-                label_style={"fontSize": f"{TAB_LABEL_FONT_REM:.2f}rem"},
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
                 tab_id=f"{self.func_or_oper.tag}-{name}-interactive-constraint-tab",
             )
             for name, psd_dv in self.psd_dv_dict.items()
@@ -237,7 +231,7 @@ class PlotData:
                     )
                 ],
                 label=f"{self.func_or_oper.tag} Interpolation Conditions",
-                label_style={"fontSize": f"{TAB_LABEL_FONT_REM:.2f}rem"},
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
             )
         else:
             tabs = dbc.Tab(
@@ -250,7 +244,7 @@ class PlotData:
                     )
                 ],
                 label=f"{self.func_or_oper.tag} Interpolation Conditions",
-                label_style={"fontSize": f"{TAB_LABEL_FONT_REM:.2f}rem"},
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
             )
         return tabs
 
@@ -330,14 +324,14 @@ class PlotData:
                 tickmode="array",
                 tickvals=list(range(len(df.attrs["order_col"]))),
                 ticktext=df.attrs["order_col"],
-                tickfont=dict(size=GRAPH_FONT_SIZE),
+                tickfont=dict(size=const.GRAPH_FONT_SIZE),
                 zeroline=False,
             )
             fig.update_yaxes(
                 tickmode="array",
                 tickvals=list(range(len(df.attrs["order_row"]))),
                 ticktext=df.attrs["order_row"],
-                tickfont=dict(size=GRAPH_FONT_SIZE),
+                tickfont=dict(size=const.GRAPH_FONT_SIZE),
                 zeroline=False,
             )
             match pep_result.pep_type:
@@ -346,9 +340,9 @@ class PlotData:
                 case utils.PEPType.DUAL:
                     fig.update_layout(showlegend=False)
             fig.update_layout(
-                font=dict(size=GRAPH_FONT_SIZE),
+                font=dict(size=const.GRAPH_FONT_SIZE),
                 legend_title_text="<b>Constraint</b>",
-                legend_title_font=dict(size=LEGEND_TITLE_FONT_SIZE),
+                legend_title_font=dict(size=const.LEGEND_TITLE_FONT_SIZE),
                 legend=dict(yanchor="top", y=1.0),
                 coloraxis_colorbar=dict(
                     title_text="<b>Dual Value</b>",
@@ -356,8 +350,8 @@ class PlotData:
                     y=1.01,
                     x=1.3,
                     ticks="outside",
-                    tickfont=dict(size=GRAPH_FONT_SIZE),
-                    title_font=dict(size=LEGEND_TITLE_FONT_SIZE),
+                    tickfont=dict(size=const.GRAPH_FONT_SIZE),
+                    title_font=dict(size=const.LEGEND_TITLE_FONT_SIZE),
                 ),
             )
 

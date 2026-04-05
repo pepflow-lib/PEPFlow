@@ -31,6 +31,7 @@ import plotly
 import plotly.graph_objects as go
 from dash import ALL, MATCH, Dash, Input, Output, State, ctx, dcc, html
 
+from pepflow import constants as const
 from pepflow import pep_context as pc
 from pepflow import registry as reg
 from pepflow import utils
@@ -47,8 +48,6 @@ if TYPE_CHECKING:
 
 plotly.io.renderers.default = "colab+vscode"
 plotly.io.templates.default = "plotly_white"
-
-BUTTON_FONT_REM = 6 / 5
 
 
 def solve_primal_prob_and_get_all_plot_data(
@@ -162,7 +161,7 @@ def launch_primal_interactive(
                         style={
                             "margin-bottom": "5px",
                             "margin-right": "5px",
-                            "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+                            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
                         },
                     ),
                     dbc.Button(
@@ -170,7 +169,7 @@ def launch_primal_interactive(
                         id="restore-all-constraints-button",
                         style={
                             "margin-bottom": "5px",
-                            "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+                            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
                         },
                         color="success",
                     ),
@@ -192,7 +191,7 @@ def launch_primal_interactive(
                         className="me-1",
                         style={
                             "margin-bottom": "5px",
-                            "fontSize": f"{BUTTON_FONT_REM * 1.1:.2f}rem",
+                            "fontSize": f"{const.BUTTON_FONT_REM * 1.1:.2f}rem",
                             "fontWeight": "700",
                         },
                     ),

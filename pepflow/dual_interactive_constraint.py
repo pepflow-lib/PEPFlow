@@ -28,6 +28,7 @@ import numpy as np
 import plotly
 from dash import ALL, Dash, Input, Output, State, dcc, html
 
+from pepflow import constants as const
 from pepflow import utils
 from pepflow.plot_data import PlotData, style_dual_value_table
 
@@ -40,8 +41,6 @@ if TYPE_CHECKING:
 
 plotly.io.renderers.default = "colab+vscode"
 plotly.io.templates.default = "plotly_white"
-
-BUTTON_FONT_REM = 6 / 5
 
 
 def solve_dual_prob_and_get_all_plot_data(
@@ -105,7 +104,7 @@ def generate_dual_constraint_list_cardbody(data: list[str]) -> dbc.CardBody:
                 className="me-1",
                 style={
                     "margin-bottom": "5px",
-                    "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+                    "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
                     "fontWeight": "700",
                 },
             )
@@ -162,7 +161,7 @@ def launch_dual_interactive(
         className="me-1",
         style={
             "margin-bottom": "5px",
-            "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
             "fontWeight": "700",
         },
     )
@@ -207,7 +206,7 @@ def launch_dual_interactive(
         className="me-1",
         style={
             "margin-bottom": "5px",
-            "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
             "fontWeight": "700",
         },
     )
@@ -218,7 +217,7 @@ def launch_dual_interactive(
         className="me-1",
         style={
             "margin-bottom": "5px",
-            "fontSize": f"{BUTTON_FONT_REM:.2f}rem",
+            "fontSize": f"{const.BUTTON_FONT_REM:.2f}rem",
             "fontWeight": "700",
         },
     )
