@@ -27,6 +27,7 @@ from typing import TYPE_CHECKING, Any, TypeAlias
 
 import numpy as np
 import pandas as pd
+import regex as re
 import sympy as sp
 
 from pepflow import constants as const
@@ -299,36 +300,28 @@ def str_to_latex(s: str) -> str:
         if not token:
             return expr
 
-        def _find_matching_paren(open_idx: int) -> int:
-            depth = 1
-            i = open_idx + 1
-            while i < len(expr) and depth:
-                if expr[i] == "(":
-                    depth += 1
-                elif expr[i] == ")":
-                    depth -= 1
-                i += 1
-            return i if depth == 0 else -1
+        pattern = re.compile(
+            rf"""
+            {re.escape(token)}
+            (?P<par>
+                \(
+                    (?:
+                        [^()]++
+                        | (?&par)
+                    )*
+                \)
+            )
+            """,
+            re.VERBOSE,
+        )
 
-        out: list[str] = []
-        i = 0
-        while (k := expr.find(token, i)) >= 0:
-            out.append(expr[i:k])
-            j = k + len(token)
-            if j >= len(expr) or expr[j] != "(":
-                out.append(token)
-                i = j
-                continue
-            end = _find_matching_paren(j)
-            if end < 0:
-                out.append(expr[k:])
-                return "".join(out)
-            inner = _replace_parenthesized_after_token(expr[j + 1 : end - 1], token)
-            out.append(f"{token}{{{inner}}}")
-            i = end
+        def _repl(m: re.Match) -> str:  # ty: ignore
+            # `ty` cannot resolve `regex.Match`` from third-party `regex`
+            par = m.group("par")
+            inner = _replace_parenthesized_after_token(par[1:-1], token)
+            return f"{token}{{{inner}}}"
 
-        out.append(expr[i:])
-        return "".join(out)
+        return pattern.sub(_repl, expr)
 
     s = _replace_parenthesized_after_token(s, "^")
     s = _replace_parenthesized_after_token(s, r"\sqrt")
