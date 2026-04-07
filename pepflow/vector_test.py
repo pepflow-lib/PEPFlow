@@ -18,6 +18,7 @@
 # under the License.
 
 import time
+from collections import defaultdict
 from typing import Iterator
 
 import numpy as np
@@ -25,6 +26,7 @@ import pytest
 import sympy as sp
 
 from pepflow import expression_manager as exm
+from pepflow import math_expression as me
 from pepflow import parameter
 from pepflow import pep as pep
 from pepflow import pep_context as pc
@@ -87,7 +89,7 @@ def test_vector_add_and_mul_tag(pep_context: pc.PEPContext) -> None:
     assert repr(p_add_mul) == "(p1+p2)*0.1"
 
     p_add_mul = (p1 + p2) * (p1 + p2)
-    assert repr(p_add_mul) == "(p1+p2)*(p1+p2)"
+    assert repr(p_add_mul) == me.INNER_PROD_STR.format(A="p1+p2", B="p1+p2")
 
     p_add_pow = (p1 + p2) ** 2
     assert repr(p_add_pow) == "|p1+p2|^2"
@@ -184,3 +186,31 @@ def test_equals_random_sample(pep_context):
     p3 = (pm1 - pm2) * p1
 
     assert p2.equals_random_sample(p3)
+def test_simplify_vector_basic(pep_context):
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    p2 = vector.Vector(is_basis=True, tags=["p2"])
+    p3 = vector.Vector(is_basis=True, tags=["p3"])
+
+    p = 5 * (p1 + p2) - p1 + p3
+    assert p.simplify().eval_expression.equiv(
+        vector.VectorByBasisRepresentation(
+            coeffs=defaultdict(int, {p1: 4, p2: 5, p3: 1})
+        )
+    )
+
+
+def test_simplify_vector_with_param(pep_context):
+    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    p2 = vector.Vector(is_basis=True, tags=["p2"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+
+    p = pm1 * (p1 + p2) + 5 * pm2 * p1
+    assert p.simplify().eval_expression.equiv(
+        vector.VectorByBasisRepresentation(
+            coeffs=defaultdict(int, {p1: pm1 + 5 * pm2, p2: pm1})
+        )
+    )
+
+    # TODO: implement simplification for Parameter objects that includes
+    # multiplication between Parameter objects, and add corresponding unit test

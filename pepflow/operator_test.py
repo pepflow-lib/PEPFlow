@@ -462,9 +462,9 @@ def test_linear_operator_interpolability_constraints(pep_context: pc.PEPContext)
         ):
             assert inter_constrs[2].rhs == 0
             assert inter_constrs[2].lhs.shape == (2, 2)
-            assert (inter_constrs[2].lhs - inter_constrs[2].rhs).shape == (2, 2)
+            assert (inter_constrs[2].lhs - inter_constrs[2].rhs).shape == (2, 2)  # ty: ignore
             assert np.empty(
-                (inter_constrs[2].lhs - inter_constrs[2].rhs).shape
+                (inter_constrs[2].lhs - inter_constrs[2].rhs).shape  # ty: ignore
             ).shape == (2, 2)
             np.testing.assert_allclose(
                 pm.eval_scalar(inter_constrs[2].lhs[0, 0]).matrix,

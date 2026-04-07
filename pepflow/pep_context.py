@@ -31,6 +31,7 @@ from pepflow import constraint as ct
 from pepflow import utils
 
 if TYPE_CHECKING:
+    from pepflow.constraint import PSDConstraint, ScalarConstraint
     from pepflow.function import Function, Triplet
     from pepflow.operator import Duplet, Operator
     from pepflow.pep_result import PEPResult
@@ -56,7 +57,7 @@ class ConstraintData:
     :class:`PSDConstraint` object.
 
     Attributes:
-        func_or_oper (:class:`Function` | :class:`Operator): The associated
+        func_or_oper (:class:`Function` | :class:`Operator`): The associated
             :class:`Function` or :class:`Operator`.
         sc_dict (dict[str, list[:class:`ScalarConstraint`]]): A dictionary in which
             the keys are the name of the groups of :class:`ScalarConstraint` objects and
@@ -67,8 +68,8 @@ class ConstraintData:
     """
 
     func_or_oper: Function | Operator
-    sc_dict: dict[str, list[ct.ScalarConstraint]] = attrs.field(factory=dict)
-    psd_dict: dict[str, ct.PSDConstraint] = attrs.field(factory=dict)
+    sc_dict: dict[str, list[ScalarConstraint]] = attrs.field(factory=dict)
+    psd_dict: dict[str, PSDConstraint] = attrs.field(factory=dict)
 
     def add_sc_constraint(
         self, constraint_type: str, scal_constraint: list[ct.ScalarConstraint]
@@ -109,7 +110,7 @@ class ConstraintData:
                     )
                     for constraint in sc
                 ],
-                columns=["constraint_name", "col_point", "row_point"],
+                columns=["constraint_name", "row_point", "col_point"],
             )
             order_col = natsort.natsorted(df["col_point"].unique())
             order_row = natsort.natsorted(df["row_point"].unique())
@@ -118,7 +119,7 @@ class ConstraintData:
             df["dual_value"] = df["constraint_name"].map(
                 lambda x: result.get_dual_value(x)
             )
-            df.attrs = {"order_row": order_row, "order_col": order_col}
+            df.attrs = {"order_row": order_row, "order_col": order_col}  # ty: ignore
             sc_df_dict[name] = df
         return sc_df_dict
 
@@ -284,13 +285,36 @@ class PEPContext:
             for t in triplets:
                 if (
                     t.point == point_or_tag
-                ):  # TODO: Using other way instead of uid to determine if two points are the same or not
+                ):  # TODO: Find another way besides uid to determine if two points are the same or not.
                     return t
         else:
             for t in triplets:
                 if point_or_tag in t.point.tags:
                     return t
         raise ValueError(f"Cannot find the triplet associated with {point_or_tag}")
+
+    def get_duplet_by_point_tag(
+        self, point_or_tag: Vector | str, op: Operator
+    ) -> Duplet:
+        """Returns a duplet of the given point or its tag in the operator."""
+        from pepflow.vector import Vector
+
+        if op not in self.oper_to_duplets:
+            raise ValueError(
+                f"Cannot find the duplets associated with {op=} in the context."
+            )
+        duplets = self.oper_to_duplets[op]
+        if isinstance(point_or_tag, Vector):
+            for t in duplets:
+                if (
+                    t.point == point_or_tag
+                ):  # TODO: Find another way besides uid to determine if two points are the same or not.
+                    return t
+        else:
+            for t in duplets:
+                if point_or_tag in t.point.tags:
+                    return t
+        raise ValueError(f"Cannot find the duplet associated with {point_or_tag}")
 
     def clear(self) -> None:
         """Reset this :class:`PEPContext` object."""
@@ -324,12 +348,12 @@ class PEPContext:
             :math:`\\{x_i\\}`.
         """
 
-        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:  # ty: ignore
+        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:
             return natsort.natsorted(
                 [t.point for t in triplets],
                 key=lambda x: x.tag,
             )
-        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:  # ty: ignore
+        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:
             return natsort.natsorted(
                 [t.point for t in duplets],
                 key=lambda x: x.tag,
@@ -419,9 +443,9 @@ class PEPContext:
         )
 
     def order_of_point(self, func_or_oper: Function | Operator) -> list[str]:
-        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:  # ty: ignore
+        if (triplets := self.func_to_triplets.get(func_or_oper)) is not None:
             return natsort.natsorted([t.point.tag for t in triplets])
-        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:  # ty: ignore
+        elif (duplets := self.oper_to_duplets.get(func_or_oper)) is not None:
             return natsort.natsorted([t.point.tag for t in duplets])
         raise ValueError(
             "The provided Function or Operator does not have any associated triplets or duplets in this context."

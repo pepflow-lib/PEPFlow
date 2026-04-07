@@ -20,7 +20,8 @@
 from __future__ import annotations
 
 import uuid
-from typing import Any
+from collections import defaultdict
+from typing import TYPE_CHECKING, Any
 
 import attrs
 import numpy as np
@@ -30,7 +31,10 @@ from pepflow import math_expression as me
 from pepflow import parameter as param
 from pepflow import pep_context as pc
 from pepflow import utils
-from pepflow.scalar import Scalar, ScalarRepresentation
+from pepflow.scalar import Scalar, ScalarByBasisRepresentation, ScalarRepresentation
+
+if TYPE_CHECKING:
+    from pepflow.parameter import Parameter
 
 
 def is_numerical_or_vector(val: Any) -> bool:
@@ -44,8 +48,151 @@ def is_numerical_or_evaluated_vector(val: Any) -> bool:
 @attrs.frozen
 class VectorRepresentation:
     op: utils.Op
-    left_vector: Vector | float
-    right_vector: Vector | float
+    left_vector: Vector | utils.NUMERICAL_TYPE | Parameter
+    right_vector: Vector | utils.NUMERICAL_TYPE | Parameter
+
+
+@attrs.frozen
+class VectorByBasisRepresentation:
+    """A representation of a Vector as a linear combination of basis Vectors."""
+
+    # coeffs can be numerical or parameter type.
+    coeffs: defaultdict[Vector, Any] = attrs.field(factory=lambda: defaultdict(int))
+
+    # Generate an automatic id
+    uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
+    def __repr__(self) -> str:
+        # TODO: Improve representation for parameters and Scalar types.
+        terms = []
+        for vec, coeff in self.coeffs.items():
+            if utils.is_numerical_or_parameter(coeff):
+                coeff_str = utils.numerical_str(coeff)
+            else:
+                coeff_str = repr(coeff)
+            terms.append(f"{coeff_str}*{repr(vec)}")
+        return " + ".join(terms) if terms else "0"
+
+    def __add__(
+        self, other: VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation:
+        if not isinstance(other, VectorByBasisRepresentation):
+            return NotImplemented
+
+        new_coeffs = self.coeffs.copy()
+        for vec, coeff in other.coeffs.items():
+            if vec in new_coeffs:
+                new_coeffs[vec] += coeff
+            else:
+                new_coeffs[vec] = coeff
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
+    def __radd__(
+        self, other: VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation:
+        return self.__add__(other)
+
+    def __sub__(
+        self, other: VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation:
+        if not isinstance(other, VectorByBasisRepresentation):
+            return NotImplemented
+
+        new_coeffs = self.coeffs.copy()
+        for vec, coeff in other.coeffs.items():
+            if vec in new_coeffs:
+                new_coeffs[vec] -= coeff
+            else:
+                new_coeffs[vec] = -coeff
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
+    def __neg__(
+        self,
+    ) -> VectorByBasisRepresentation:
+        new_coeffs = defaultdict(int)
+        for vec, coeff in self.coeffs.items():
+            new_coeffs[vec] = -coeff
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
+    def __mul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter | VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation | ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other) and not isinstance(
+            other, VectorByBasisRepresentation
+        ):
+            raise ValueError(
+                f"Multiplication not implemented for type {type(other).__name__}. "
+                "Expected NUMERICAL_TYPE, Parameter, or VectorByBasisRepresentation"
+            )
+
+        if isinstance(other, VectorByBasisRepresentation):
+            new_inner_prod_coeffs = defaultdict(int)
+            # <a*x, b*y + c*z> = a*b*<x,y> + a*c*<x,z>
+            for vec_l, coeff_l in self.coeffs.items():
+                str_l = str(vec_l)
+                for vec_r, coeff_r in other.coeffs.items():
+                    key = (vec_l, vec_r) if str_l < str(vec_r) else (vec_r, vec_l)
+                    new_inner_prod_coeffs[key] += coeff_l * coeff_r
+                return ScalarByBasisRepresentation(
+                    func_coeffs=defaultdict(int, {}),
+                    inner_prod_coeffs=new_inner_prod_coeffs,
+                    offset=0,
+                )
+        new_coeffs = defaultdict(int)
+        for vec, coeff in self.coeffs.items():
+            new_coeffs[vec] = coeff * other
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
+    def __rmul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter | VectorByBasisRepresentation
+    ) -> VectorByBasisRepresentation | ScalarByBasisRepresentation:
+        return self.__mul__(other)
+
+    def __truediv__(
+        self, scalar: utils.NUMERICAL_TYPE | Parameter
+    ) -> VectorByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(scalar):
+            return NotImplemented
+
+        new_coeffs = defaultdict(int)
+        for vec, coeff in self.coeffs.items():
+            new_coeffs[vec] = coeff / scalar
+        return VectorByBasisRepresentation(coeffs=new_coeffs)
+
+    def __hash__(self):
+        return hash(self.uid)
+
+    def __eq__(self, other):
+        if not isinstance(other, VectorByBasisRepresentation):
+            return NotImplemented
+        return self.uid == other.uid
+
+    def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`VectorByBasisRepresentation` objects are mathematically
+        equivalent by verifying that the differences between their coefficients simplify to zero.
+        """
+
+        # Check that `other` has the correct type, then check object identity
+        if not isinstance(other, VectorByBasisRepresentation):
+            return False
+        if self is other:
+            return True
+
+        # Check whether both have the same nonzero basis elements.
+        if self.coeffs.keys() != other.coeffs.keys():
+            return False
+
+        # Check whether, for each basis element of `coeffs`,
+        # the difference between the two objects' coefficients simplifies to zero.
+        for key in self.coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.coeffs[key] - other.coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
 
 
 @attrs.frozen
@@ -64,7 +211,7 @@ class EvaluatedVector:
     representation as a unit vector. The concrete representations of
     linear combinations of abstract basis :class:`Vector` objects are
     linear combinations of the unit vectors. This information is stored
-    in the `vector` attribute.
+    in the `coords` attribute.
 
     :class:`EvaluatedVector` objects can be constructed as linear combinations
     of other :class:`EvaluatedVector` objects. Let `a` and `b` be some numeric
@@ -72,7 +219,7 @@ class EvaluatedVector:
     can form a new :class:`EvaluatedVector` object: `a*x+b*y`.
 
     Attributes:
-        vector (np.ndarray): The concrete representation of an
+        coords (np.ndarray): The concrete representation of an
             abstract :class:`Vector`.
     """
 
@@ -131,7 +278,7 @@ class EvaluatedVector:
 @attrs.frozen
 class Vector:
     """
-    A :class:`Vector` object represents an element of a pre-Hilbert space.
+    A :class:`Vector` object represents an element of a vector space.
 
     Examples include a point or a gradient.
 
@@ -149,20 +296,28 @@ class Vector:
             combination of other vectors. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Vector` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
 
     Example:
         >>> import pepflow as pf
         >>> ctx = pf.PEPContext("ctx").set_as_current()
         >>> x_0 = pf.Vector(is_basis=True).add_tag("x_0")
+
+    Note:
+        Basis :class:`Vector` objects should be defined using the constructor
+        as shown in the example but composite :class:`Vector` objects should
+        be created using operations on :class:`Vector` objects.
     """
 
     # If true, the vector is the basis for the evaluations of G
     is_basis: bool
 
     # The representation of vector used for evaluation.
-    eval_expression: VectorRepresentation | ZeroVector | None = None
+    eval_expression: (
+        VectorRepresentation | VectorByBasisRepresentation | ZeroVector | None
+    ) = None
 
     # Human tagged value for the Vector
     tags: list[str] = attrs.field(factory=list)
@@ -191,6 +346,12 @@ class Vector:
 
     @staticmethod
     def zero() -> Vector:
+        """A static method that returns a :class:`Vector` object that
+        corresponds to zero.
+
+        Returns:
+            :class:`Vector`: A zero :class:`Vector` object.
+        """
         return Vector(
             is_basis=False,
             eval_expression=ZeroVector(),
@@ -283,8 +444,8 @@ class Vector:
     def __mul__(self, other):
         if not is_numerical_or_vector(other):
             return NotImplemented
-        expr_self = utils.parenthesize_tag(self)
         if utils.is_numerical_or_parameter(other):
+            expr_self = utils.parenthesize_tag(self)
             expr_other = utils.numerical_str(other)
             return Vector(
                 is_basis=False,
@@ -293,19 +454,20 @@ class Vector:
                 math_expr=me.MathExpr(f"{expr_self}*{expr_other}"),
             )
         else:
-            expr_other = utils.parenthesize_tag(other)
             return Scalar(
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
                 tags=[],
-                math_expr=me.MathExpr(f"{expr_self}*{expr_other}"),
+                math_expr=me.MathExpr(
+                    me.INNER_PROD_STR.format(A=repr(self), B=repr(other))
+                ),
             )
 
     def __rmul__(self, other):
         if not is_numerical_or_vector(other):
             return NotImplemented
-        expr_self = utils.parenthesize_tag(self)
         if utils.is_numerical_or_parameter(other):
+            expr_self = utils.parenthesize_tag(self)
             expr_other = utils.numerical_str(other)
             return Vector(
                 is_basis=False,
@@ -314,12 +476,13 @@ class Vector:
                 math_expr=me.MathExpr(f"{expr_other}*{expr_self}"),
             )
         else:
-            expr_other = utils.parenthesize_tag(other)
             return Scalar(
                 is_basis=False,
                 eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
                 tags=[],
-                math_expr=me.MathExpr(f"{expr_other}*{expr_self}"),
+                math_expr=me.MathExpr(
+                    me.INNER_PROD_STR.format(A=repr(other), B=repr(self))
+                ),
             )
 
     def __pow__(self, power):
@@ -361,6 +524,77 @@ class Vector:
             return NotImplemented
         return self.uid == other.uid
 
+    def simplify(self, tag: str | None = None) -> Vector:
+        """
+        Flatten the `eval_expression` of a :class:`Vector` object into a
+        :class:`VectorByBasisRepresentation` consisting of basis and their coefficients.
+
+        Returns:
+            :class:`Vector`: A new :class:`Vector` object whose `eval_expression`
+            is flattened into a :class:`VectorByBasisRepresentation`.
+        """
+
+        def _simplify(
+            vector_or_float: Vector | utils.NUMERICAL_TYPE | Parameter,
+        ) -> VectorByBasisRepresentation | utils.NUMERICAL_TYPE | Parameter:
+            if isinstance(vector_or_float, Vector):
+                # We know after simplification, the eval_expression is always VectorByBasisRepresentation.
+                return vector_or_float.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(vector_or_float) or utils.is_sympy_expr(
+                vector_or_float
+            ):
+                # Parameter has a simplify() method
+                return vector_or_float.simplify()  # type: ignore
+            else:
+                return vector_or_float
+
+        if self.is_basis:
+            # VectorByBasisRepresentation and the original basis vector are representating the
+            # the same basis vector. However, we do not wanna introduce another basis vector in the context.
+            # So we have to keep this is_basis = False but the eval_expression should be the same.
+            is_basis = False
+            eval_expression = VectorByBasisRepresentation(
+                coeffs=defaultdict(int, {self: 1})
+            )
+        else:
+            is_basis = False
+            if isinstance(self.eval_expression, ZeroVector):
+                eval_expression = VectorByBasisRepresentation(
+                    coeffs=defaultdict(int, {})
+                )
+            elif isinstance(self.eval_expression, VectorByBasisRepresentation):
+                eval_expression = self.eval_expression
+            else:
+                assert isinstance(
+                    self.eval_expression, VectorRepresentation
+                )  # to make type checker happy
+                left_eval_expression = _simplify(self.eval_expression.left_vector)
+                right_eval_expression = _simplify(self.eval_expression.right_vector)
+                if self.eval_expression.op == utils.Op.ADD:
+                    eval_expression = left_eval_expression + right_eval_expression
+                elif self.eval_expression.op == utils.Op.SUB:
+                    eval_expression = left_eval_expression - right_eval_expression
+                elif self.eval_expression.op == utils.Op.MUL:
+                    eval_expression = left_eval_expression * right_eval_expression
+                elif self.eval_expression.op == utils.Op.DIV:
+                    eval_expression = left_eval_expression / right_eval_expression
+                else:
+                    raise NotImplementedError(
+                        "Only add,sub,mul,div are supported for Vector simplification."
+                    )
+
+        # coefficient simplification
+        eval_expression = VectorByBasisRepresentation(
+            coeffs=utils.simplify_dict(eval_expression.coeffs)
+        )
+
+        return Vector(
+            is_basis=is_basis,
+            eval_expression=eval_expression,
+            tags=[tag] if tag is not None else [],
+            math_expr=str(eval_expression),
+        )
+
     def eval(
         self,
         ctx: pc.PEPContext | None = None,
@@ -378,6 +612,13 @@ class Vector:
             ctx (:class:`PEPContext` | None): The :class:`PEPContext` object
                 we consider. `None` if we consider the current global
                 :class:`PEPContext` object.
+            resolve_parameters (dict[str, :data:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical
+                values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             :class:`EvaluatedVector`: The concrete representation of
@@ -411,8 +652,12 @@ class Vector:
             ctx (:class:`PEPContext`): The :class:`PEPContext` object
                 whose basis :class:`Vector` objects we consider. `None` if
                 we consider the current global :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of this :class:`Vector` object in terms of

@@ -36,7 +36,11 @@ from pepflow import utils
 from pepflow import vector as vt
 
 if TYPE_CHECKING:
+    from pepflow.math_expression import MathExpr
     from pepflow.parameter import Parameter
+    from pepflow.scalar import Scalar
+    from pepflow.utils import NUMERICAL_TYPE
+    from pepflow.vector import Vector
 
 
 @attrs.frozen
@@ -56,14 +60,18 @@ class Triplet:
         name (str): The unique name of the :class:`Triplet` object.
     """
 
-    point: vt.Vector
-    func_val: sc.Scalar
-    grad: vt.Vector
+    point: Vector
+    func_val: Scalar
+    grad: Vector
     func: Function
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
 
     def expand(self) -> tuple[vt.Vector, sc.Scalar, vt.Vector]:
+        """
+        Return the `point`, `func_value`, and `grad` member variables of a
+        :class:`Triplet` as a tuple.
+        """
         return self.point, self.func_val, self.grad
 
 
@@ -130,8 +138,9 @@ class Function:
             combination of other functions. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Function` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
     """
 
     is_basis: bool
@@ -142,7 +151,7 @@ class Function:
     tags: list[str] = attrs.field(factory=list)
 
     # Mathematical expression
-    math_expr: me.MathExpr = attrs.field(factory=me.MathExpr)
+    math_expr: MathExpr = attrs.field(factory=me.MathExpr)
 
     # Generate an automatic id
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
@@ -207,9 +216,9 @@ class Function:
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
         """When implemented, structure the types of constraints as a list of related
-        scalar constraints or individual PSDConstraints."""
+        :class:`ScalarConstraint` or individual :class:`PSDConstraint` objects."""
         raise NotImplementedError(
-            "This method should be implemented in the children class."
+            "This method should be implemented in the children of Function."
         )
 
     def get_interpolation_constraints(
@@ -515,8 +524,158 @@ class Function:
             return NotImplemented
         return self.uid == other.uid
 
+    def prox(
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
+        """Apply the proximal operator on the input :math:`x`.
 
-@attrs.mutable(kw_only=True)
+        Define the proximal operator as
+
+        .. math:: \\text{prox}_{\\gamma f}(x) := \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\}.
+
+        This function returns the output :class:`Vector` :math:`u` found from
+        applying the proximal operator with respect to some :class:`Function` :math:`f`
+        on the input :class:`Vector` :math:`x` with stepsize :math:`\\gamma`. Consider
+        the following equivalence relationship:
+
+        .. math:: \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} \\|u - x\\|^2 \\right\\} \\Longleftrightarrow x - u \\in \\gamma \\partial f(u) \\Longleftrightarrow u = x - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
+
+        Args:
+            x (:class:`Vector`): The input point.
+            stepsize (numbers.Number | :class:`Parameter`): The stepsize.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the proximal operator applied on `x`.
+
+        Note:
+            For children of :class:`Function` for which the proximal operator is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = f"prox_{{{stepsize}*{self.__repr__()}}}({x.__repr__()})"
+        func_val_u = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+        grad_u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
+            ),
+        )
+
+        u = x - stepsize * grad_u
+        u.math_expr.expr_str = u_expr
+
+        if tag:
+            u.add_tag(tag)
+            func_val_u.add_tag(f"{self.__repr__()}({tag})")
+            grad_u.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
+
+        new_triplet = Triplet(
+            u,
+            func_val_u,
+            grad_u,
+            self,
+            name=utils.triplet_tag(u, func_val_u, grad_u),
+        )
+        self.add_triplet_to_func(new_triplet)
+        return u
+
+    def bregman_prox(
+        self,
+        x_0: vt.Vector,
+        stepsize: numbers.Number,
+        h: Function,
+        tag: str | None = None,
+    ) -> vt.Vector:
+        """Perform a Bregman proximal step.
+
+        Define the Bregman proximal operator as
+
+        .. math:: \\text{prox}^{h}_{\\gamma f}(x) := \\arg\\min_u \\left\\{ \\gamma f(u) + \\frac{1}{2} D_h(u, x) \\right\\}.
+
+        This function performs a Bregman proximal step with respect to some
+        :class:`Function` :math:`f` on the :class:`Vector` :math:`x`
+        with stepsize :math:`\\gamma` where :class:`Function` :math:`h` is
+        the kernel function that generates the Bregman distance:
+
+        .. math:: D_h (u, x) := h(u) - h(x) - \\langle \\nabla h(x), x - x \\rangle.
+
+        Note that the kernel function :math:`h` should be differentiable.
+
+        The optimality conditions of the optimization problem presented above gives:
+
+        .. math:: \\nabla h(u) = \\nabla h(x) - \\gamma \\widetilde{\\nabla} f(u) \\text{ where } \\widetilde{\\nabla} f(u)\\in\\partial f(u).
+
+        Args:
+            x (:class:`Vector`): The initial point.
+            stepsize (int | float): The stepsize.
+            h (:class:`Function`): The kernel function.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the Bregman proximal operator applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the Bregman proximal operator applied on `x`.
+
+        Note:
+            For children of :class:`Function` for which the Bregman proximal operator is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = (
+            f"prox^{h.__repr__()}_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
+        )
+        u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=u_expr),
+        )
+        grad_u = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(
+                expr_str=utils.grad_tag(f"{self.__repr__()}({u_expr})")
+            ),
+        )
+        func_val_u = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+
+        if tag:
+            u.add_tag(tag)
+            func_val_u.add_tag(f"{self.__repr__()}({tag})")
+            grad_u.add_tag(utils.grad_tag(f"{self.__repr__()}({tag})"))
+
+        grad_h = h.grad(x_0) - stepsize * grad_u
+        grad_h.math_expr.expr_str = utils.grad_tag(f"{h.__repr__()}({u.__repr__()})")
+        func_val_h = sc.Scalar(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{h.__repr__()}({u.__repr__()})"),
+        )
+
+        new_triplet = Triplet(
+            u,
+            func_val_u,
+            grad_u,
+            self,
+            name=utils.triplet_tag(u, func_val_u, grad_u),
+        )
+        self.add_triplet_to_func(new_triplet)
+
+        new_triplet_h = Triplet(
+            u,
+            func_val_h,
+            grad_h,
+            h,
+            name=utils.triplet_tag(u, func_val_h, grad_h),
+        )
+        h.add_triplet_to_func(new_triplet_h)
+        return u
+
+
+@attrs.frozen(kw_only=True, repr=False)
 class ConvexFunction(Function):
     """
     The :class:`ConvexFunction` class represents a closed, convex, and proper (CCP)
@@ -529,7 +688,7 @@ class ConvexFunction(Function):
 
     Example:
         >>> import pepflow as pf
-        >>> f = pf.ConvexFunction(is_basis=True, tags=["f"], L=1)
+        >>> f = pf.ConvexFunction(is_basis=True, tags=["f"])
     """
 
     def __attrs_post_init__(self):
@@ -537,9 +696,6 @@ class ConvexFunction(Function):
 
     def __hash__(self):
         return super().__hash__()
-
-    def __repr__(self):
-        return super().__repr__()
 
     def convex_interpolability_constraints(
         self, triplet_i: Triplet, triplet_j: Triplet
@@ -591,7 +747,14 @@ class ConvexFunction(Function):
         The interpolation inequality between two points :math:`p_1, p_2` for a
         CCP function :math:`f` is
 
-        .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle.
+        .. math:: f(p_2) - f(p_1) + \\langle \\widetilde{\\nabla} f(p_2), p_1 - p_2 \\rangle,
+
+        where :math:`\\widetilde{\\nabla} f(p_2) \\in\\partial f(p_2)`.
+
+        References:
+            A. B. Taylor, J. M. Hendrickx, and F. Glineur. Smooth strongly convex interpolation
+            and exact worst-case performance of first-order methods. Mathematical Programming,
+            161(1-2):307–345, 2017.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
@@ -615,59 +778,8 @@ class ConvexFunction(Function):
         x2, f2, g2 = pep_context.get_triplet_by_point_tag(p2, func=self).expand()
         return f2 - f1 + g2 * (x1 - x2)
 
-    def proximal_step(self, x_0: vt.Vector, stepsize: numbers.Number) -> vt.Vector:
-        """Perform a proximal step. 
-        
-        Define the proximal operator as
-    
-        .. math:: \\text{prox}_{\\gamma f}(x_0) := \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} \\|x - x_0\\|^2 \\right\\}.
 
-        This function performs a proximal step with respect to some
-        :class:`Function` :math:`f` on the :class:`Vector` :math:`x_0`
-        with stepsize :math:`\\gamma`:
-
-        .. math::
-            :nowrap:
-
-            \\begin{eqnarray}
-                x := \\text{prox}_{\\gamma f}(x_0) & := & \\arg\\min_x \\left\\{ \\gamma f(x) + \\frac{1}{2} \\|x - x_0\\|^2 \\right\\}, \\\\
-                & \\Updownarrow & \\\\
-                0 & = & \\gamma \\partial f(x) + x - x_0,\\\\
-                & \\Updownarrow & \\\\
-                x & = & x_0 - \\gamma \\widetilde{\\nabla} f(x) \\text{ where } \\widetilde{\\nabla} f(x)\\in\\partial f(x).
-            \\end{eqnarray}
-
-        Args:
-            x_0 (:class:`Vector`): The initial point.
-            stepsize (int | float): The stepsize.
-        """
-
-        x_tag = f"prox_{{{stepsize}*{self.__repr__()}}}({x_0.__repr__()})"
-        grad = vt.Vector(
-            is_basis=True,
-            math_expr=me.MathExpr(
-                expr_str=utils.grad_tag(f"{self.__repr__()}({x_tag})")
-            ),
-        )
-        func_val = sc.Scalar(
-            is_basis=True, math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({x_tag})")
-        )
-
-        x = x_0 - stepsize * grad
-        x.math_expr.expr_str = x_tag
-
-        new_triplet = Triplet(
-            x,
-            func_val,
-            grad,
-            self,
-            name=utils.triplet_tag(x, func_val, grad),
-        )
-        self.add_triplet_to_func(new_triplet)
-        return x
-
-
-@attrs.mutable(kw_only=True, repr=False)
+@attrs.frozen(kw_only=True, repr=False)
 class SmoothConvexFunction(Function):
     """
     The :class:`SmoothConvexFunction` class represents a smooth, convex function.
@@ -682,18 +794,15 @@ class SmoothConvexFunction(Function):
         >>> f = pf.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
     """
 
-    L: utils.NUMERICAL_TYPE | Parameter
+    L: NUMERICAL_TYPE | Parameter
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.L, utils.NUMERICAL_TYPE):
-            assert self.L > 0  # ty: ignore
+            assert self.L > 0
 
     def __hash__(self):
         return super().__hash__()
-
-    def __repr__(self):
-        return super().__repr__()
 
     def smooth_convex_interpolability_constraints(
         self, triplet_i, triplet_j
@@ -718,6 +827,8 @@ class SmoothConvexFunction(Function):
     def get_interpolation_constraints_by_group(
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the function's
+        groups of interpolation conditions."""
         cd = pc.ConstraintData(func_or_oper=self)
         if pep_context is None:
             pep_context = pc.get_current_context()
@@ -749,6 +860,11 @@ class SmoothConvexFunction(Function):
 
         .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle + \\tfrac{1}{2} \\lVert \\nabla f(p_1) - \\nabla f(p_2) \\rVert^2.
 
+        References:
+            A. B. Taylor, J. M. Hendrickx, and F. Glineur. Smooth strongly convex
+            interpolation and exact worst-case performance of first-order methods.
+            Mathematical Programming, 161(1-2):307–345, 2017.
+
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
             p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
@@ -776,3 +892,146 @@ class SmoothConvexFunction(Function):
             )
         coef = sp.S(1) / sp.S(2 * self.L) if sympy_mode else 1 / (2 * self.L)
         return f2 - f1 + g2 * (x1 - x2) + coef * (g1 - g2) ** 2
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class SmoothStronglyConvexFunction(Function):
+    """
+    The :class:`SmoothStronglyConvexFunction` class represents a smooth, strongly
+    convex function.
+
+    The :class:`SmoothStronglyConvexFunction` class is a child of :class:`Function`.
+
+    A smooth, strongly convex function has a smoothness parameter :math:`L` and
+    a strong convexity parameter :math:`\\mu`.
+
+    We can instantiate a :class:`SmoothStronglyConvexFunction` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> f = pf.SmoothStronglyConvexFunction(is_basis=True, tags=["f"], L=1, mu=1)
+    """
+
+    L: utils.NUMERICAL_TYPE | Parameter
+    mu: utils.NUMERICAL_TYPE | Parameter
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+        if isinstance(self.L, utils.NUMERICAL_TYPE):
+            assert self.L > 0
+        if isinstance(self.mu, utils.NUMERICAL_TYPE):
+            assert self.mu > 0
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def smooth_strongly_convex_interpolability_constraints(
+        self, triplet_i, triplet_j
+    ) -> ct.ScalarConstraint:
+        point_i = triplet_i.point
+        func_val_i = triplet_i.func_val
+        grad_i = triplet_i.grad
+
+        point_j = triplet_j.point
+        func_val_j = triplet_j.func_val
+        grad_j = triplet_j.grad
+
+        func_diff = func_val_j - func_val_i
+        cross_term = grad_j * (point_i - point_j)
+        coef = 1 / 2 / (1 - self.mu / self.L)
+        quad_term = (
+            1 / self.L * (grad_i - grad_j) ** 2
+            + self.mu * (point_i - point_j) ** 2
+            - 2 * self.mu / self.L * (grad_i - grad_j) * (point_i - point_j)
+        )
+
+        return (func_diff + cross_term + coef * quad_term).le(
+            0,
+            name=f"{self.__repr__()}:{point_i.__repr__()},{point_j.__repr__()}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+        scal_constraint = []
+        for i in pep_context.func_to_triplets[self]:
+            for j in pep_context.func_to_triplets[self]:
+                if i == j:
+                    continue
+                scal_constraint.append(
+                    self.smooth_strongly_convex_interpolability_constraints(i, j)
+                )
+        cd.add_sc_constraint("Smooth Strongly Convex Function", scal_constraint)
+        return cd
+
+    def interp_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the interpolation inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The interpolation inequality between two points :math:`p_1, p_2` for a
+        smooth, strongly convex function :math:`f` is
+
+        .. math:: f(p_2) - f(p_1) + \\langle \\nabla f(p_2), p_1 - p_2 \\rangle + \\tfrac{1}{2 (1-\\mu/L)} (\\tfrac{1}{L} \\lVert \\nabla f(p_1) - \\nabla f(p_2) \\rVert^2 + \\mu \\lVert p_1 - p_2 \\rVert^2 - 2 \\tfrac{\\mu}{L}\\langle \\nabla f(p_1) - \\nabla f(p_2), p_1 - p_2 \\rangle).
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+
+        Example:
+            >>> import pepflow as pf
+            >>> ctx = pf.PEPContext("ctx").set_as_current()
+            >>> xi = pf.Vector(is_basis=True, tags=["x_i"])
+            >>> xj = pf.Vector(is_basis=True, tags=["x_j"])
+            >>> f = pf.SmoothStronglyConvexFunction(is_basis=True, L=1, mu=1, tags=["f"])
+            >>> fi, fj = f(xi), f(xj)
+            >>> f.interp_ineq("x_i", "x_j")
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, f1, g1 = pep_context.get_triplet_by_point_tag(p1, func=self).expand()
+        x2, f2, g2 = pep_context.get_triplet_by_point_tag(p2, func=self).expand()
+        if sympy_mode and isinstance(self.L, float):
+            raise ValueError(
+                "Cannot use sympy mode with float L in SmoothStronglyConvexFunction. "
+                "Please use an integer number or sympy.Rational for L."
+            )
+        if sympy_mode and isinstance(self.mu, float):
+            raise ValueError(
+                "Cannot use sympy mode with float mu in SmoothStronglyConvexFunction. "
+                "Please use an integer number or sympy.Rational for mu."
+            )
+        coef = (
+            sp.S(1) / sp.S(2) / (sp.S(1) - sp.S(self.mu) / sp.S(self.L))
+            if sympy_mode
+            else 1 / 2 / (1 - self.mu / self.L)
+        )
+        if sympy_mode:
+            quad_term = (
+                sp.S(1) / sp.S(self.L) * (g1 - g2) ** 2
+                + sp.S(self.mu) * (x1 - x2) ** 2
+                - sp.S(2) * sp.S(self.mu) / sp.S(self.L) * (g1 - g2) * (x1 - x2)
+            )
+        else:
+            quad_term = (
+                1 / self.L * (g1 - g2) ** 2
+                + self.mu * (x1 - x2) ** 2
+                - 2 * self.mu / self.L * (g1 - g2) * (x1 - x2)
+            )
+        return f2 - f1 + g2 * (x1 - x2) + coef * quad_term

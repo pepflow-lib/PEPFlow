@@ -44,3 +44,10 @@
 .. autoclass:: pepflow.PSDConstraint
     :members:
 ```
+
+## ConstraintData
+
+```{eval-rst}  
+.. autoclass:: pepflow.ConstraintData
+    :members:
+```

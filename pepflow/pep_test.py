@@ -21,8 +21,7 @@ from typing import Iterator
 
 import pytest
 
-from pepflow import function as fc
-from pepflow import pep
+from pepflow import function, pep
 from pepflow import pep_context as pc
 from pepflow import registry as reg
 
@@ -42,7 +41,7 @@ def pep_context() -> Iterator[pc.PEPContext]:
 def test_add_initial_constraint_twice(pep_context: pc.PEPContext) -> None:
     builder = pep.PEPBuilder(pep_context)
 
-    f = reg.declare_func(fc.SmoothConvexFunction, "f", L=1)
+    f = function.SmoothConvexFunction(is_basis=True, tags=["f"], L=1)
     x = builder.add_init_point("x_0")
     x_star = f.set_stationary_point("x_star")
     builder.add_initial_constraint(((x - x_star) ** 2).le(1, name="initial_condition"))

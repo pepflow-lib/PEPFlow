@@ -37,13 +37,18 @@ warnings.filterwarnings(
 
 
 def evaled_scalar_to_cvx_express(
-    eval_scalar: sc.EvaluatedScalar, vec_var: cvxpy.Variable, matrix_var: cvxpy.Variable
+    eval_scalar: sc.EvaluatedScalar,
+    vec_var: cvxpy.Variable | np.ndarray,
+    matrix_var: cvxpy.Variable | np.ndarray,
 ) -> cvxpy.Expression:
-    return (
-        vec_var @ eval_scalar.func_coords
-        + cvxpy.trace(matrix_var @ eval_scalar.inner_prod_coords)
-        + eval_scalar.offset
-    )
+    # Matrix multiplication between two np.zeros(0) returns np.float(64).
+    # Matrix multiplication between two np.zeros((0,0)) returns np.zeros(0).
+    # Exception handling for the case where inner_prod_coords is zero-dimensional
+    if isinstance(matrix_var, np.ndarray):
+        cvx_inner = 0
+    else:
+        cvx_inner = cvxpy.trace(matrix_var @ eval_scalar.inner_prod_coords)
+    return vec_var @ eval_scalar.func_coords + cvx_inner + eval_scalar.offset
 
 
 class PrimalPEPDualVarManager:
@@ -51,9 +56,10 @@ class PrimalPEPDualVarManager:
     A class to access the dual variables associated with the constraints
     of the Primal PEP.
 
-    Should not be instantiated directly. Automatically
-    generated as a member variable of the :class:`PEPResult` object
-    returned when calling :py:func:`pepflow.PEPBuilder.solve_primal`.
+    Note:
+        Should not be instantiated directly. Automatically
+        generated as a member variable of the :class:`PEPResult` object
+        returned when calling :py:func:`pepflow.PEPBuilder.solve_primal`.
     """
 
     # It is used in the primal PEP to get the dual variables.
@@ -75,16 +81,18 @@ class PrimalPEPDualVarManager:
 
     def dual_value(self, name: str) -> float | None:
         """
-        Given the name of a :class:`Constraint` object representing a constraint in
-        Primal PEP, return the value of its corresponding dual variable.
+        Given the name of a :class:`PSDConstraint` or :class:`ScalarConstraint`
+        object, return the value of its corresponding dual variable.
 
         Args:
-            name (str): The name of the :class:`Constraint` object whose
-                associated dual variable we want to retrieve.
+            name (str): The name of the :class:`PSDConstraint` or
+                :class:`ScalarConstraint` object whose associated dual
+                variable we want to retrieve.
 
         Returns:
             float: The value of the dual variable corresponding to the
-            :class:`Constraint` object associated with the `name` argument.
+            :class:`PSDConstraint` or :class:`ScalarConstraint` object
+            associated with the `name` argument.
         """
         if name not in self.named_constraints:
             return None  # Is this good choice?
@@ -99,10 +107,11 @@ class DualPEPDualVarManager:
     A class to access the dual variables associated with the constraints
     of Primal PEP after solving Dual PEP.
 
-    Should not be instantiated
-    directly. Automatically generated as a member variable of the
-    :class:`PEPResult` object returned when calling
-    :py:func:`pepflow.PEPBuilder.solve_dual`.
+    Note:
+        Should not be instantiated
+        directly. Automatically generated as a member variable of the
+        :class:`PEPResult` object returned when calling
+        :py:func:`pepflow.PEPBuilder.solve_dual`.
     """
 
     # It is used in the dual PEP to get the dual variables.
@@ -129,16 +138,18 @@ class DualPEPDualVarManager:
 
     def dual_value(self, name: str) -> float | None:
         """
-        Given the name of a :class:`Constraint` object representing a constraint in the
-        Primal PEP, return the value of its corresponding dual variable.
+        Given the name of a :class:`PSDConstraint` or :class:`ScalarConstraint`
+        object, return the value of its corresponding dual variable.
 
         Args:
-            name (str): The name of the :class:`Constraint` object whose
-                corresponding dual variable we want to retrieve.
+            name (str): The name of the :class:`PSDConstraint` or
+                :class:`ScalarConstraint` object whose corresponding dual
+                variable we want to retrieve.
 
         Returns:
             float: The value of the dual variable corresponding to the
-            :class:`Constraint` object associated with the `name` argument.
+            :class:`PSDConstraint` or :class:`ScalarConstraint` object
+            associated with the `name` argument.
         """
         if name not in self.named_variables:
             return None  # Is this good choice?
@@ -164,10 +175,16 @@ class CVXPrimalSolver:
         self, resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None
     ) -> cvxpy.Problem:
         em = exm.ExpressionManager(self.context, resolve_parameters=resolve_parameters)
-        f_var = cvxpy.Variable(em._num_basis_scalars)
-        g_var = cvxpy.Variable(
-            (em._num_basis_vectors, em._num_basis_vectors), symmetric=True
-        )
+        if em._num_basis_scalars == 0:
+            f_var = np.zeros(0)
+        else:
+            f_var = cvxpy.Variable(em._num_basis_scalars)
+        if em._num_basis_vectors == 0:
+            g_var = np.zeros((0, 0))
+        else:
+            g_var = cvxpy.Variable(
+                (em._num_basis_vectors, em._num_basis_vectors), symmetric=True
+            )
 
         # Evaluate all points and scalars in advance to store it in cache.
         for vector in self.context.vectors:
@@ -176,7 +193,8 @@ class CVXPrimalSolver:
             em.eval_scalar(scalar)
 
         self.dual_var_manager.clear()
-        self.dual_var_manager.add_constraint(constants.PSD_CONSTRAINT, g_var >> 0)
+        if em._num_basis_vectors > 0:
+            self.dual_var_manager.add_constraint(constants.PSD_CONSTRAINT, g_var >> 0)
         for c in self.constraints:
             if isinstance(c, ctr.ScalarConstraint):
                 exp = evaled_scalar_to_cvx_express(
@@ -273,9 +291,10 @@ class CVXDualSolver:
         dual_constraints = []
         lambd_constraints = []
         em = exm.ExpressionManager(self.context, resolve_parameters=resolve_parameters)
-        # The one corresponding to G >= 0
-        S = cvxpy.Variable((em._num_basis_vectors, em._num_basis_vectors), PSD=True)
-        self.dual_var_manager.add_variable(constants.PSD_CONSTRAINT, S)
+        # The dual variable corresponding to G >= 0
+        if em._num_basis_vectors > 0:
+            S = cvxpy.Variable((em._num_basis_vectors, em._num_basis_vectors), PSD=True)
+            self.dual_var_manager.add_variable(constants.PSD_CONSTRAINT, S)
         evaled_perf_metric_scalar = em.eval_scalar(self.perf_metric)
 
         extra_constraints = []
@@ -302,8 +321,10 @@ class CVXDualSolver:
                     raise RuntimeError(
                         f"Unknown comparator in constraint {c.name}: get {c.cmp=}"
                     )
-                G_coef_mat += sign * lambd * evaled_scalar.inner_prod_coords
-                F_coef_vec += sign * lambd * evaled_scalar.func_coords
+                if em._num_basis_vectors > 0:
+                    G_coef_mat += sign * lambd * evaled_scalar.inner_prod_coords
+                if em._num_basis_scalars > 0:
+                    F_coef_vec += sign * lambd * evaled_scalar.func_coords
                 obj += sign * lambd * evaled_scalar.offset
 
                 # We can add extra constraints to directly manipulate the dual variables in dual PEP.
@@ -366,8 +387,10 @@ class CVXDualSolver:
                     raise RuntimeError(
                         f"Unknown comparator in constraint {c.name}: get {c.cmp=}"
                     )
-                G_coef_mat_PSD += sign * cvxpy.bmat(c_G_mat)
-                F_coef_vec_PSD += sign * cvxpy.hstack(c_F_mat)
+                if em._num_basis_vectors > 0:
+                    G_coef_mat_PSD += sign * cvxpy.bmat(c_G_mat)
+                if em._num_basis_scalars > 0:
+                    F_coef_vec_PSD += sign * cvxpy.hstack(c_F_mat)
                 obj += sign * c_offset
 
                 # We can add extra constraints to directly manipulate the dual variables in dual PEP.
@@ -384,16 +407,18 @@ class CVXDualSolver:
                             f"get {cmp=}"
                         )
 
-        dual_constraints.append(
-            F_coef_vec + F_coef_vec_PSD + evaled_perf_metric_scalar.func_coords == 0
-        )
-        dual_constraints.append(
-            S
-            + evaled_perf_metric_scalar.inner_prod_coords
-            + G_coef_mat
-            + G_coef_mat_PSD
-            == 0
-        )
+        if em._num_basis_scalars > 0:
+            dual_constraints.append(
+                F_coef_vec + F_coef_vec_PSD + evaled_perf_metric_scalar.func_coords == 0
+            )
+        if em._num_basis_vectors > 0:
+            dual_constraints.append(
+                S
+                + evaled_perf_metric_scalar.inner_prod_coords
+                + G_coef_mat
+                + G_coef_mat_PSD
+                == 0
+            )
 
         return cvxpy.Problem(
             cvxpy.Minimize(obj),

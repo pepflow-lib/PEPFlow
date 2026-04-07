@@ -8,6 +8,8 @@
     :exclude-members: composition, uid
 ```
 
+## Duplet
+
 ```{eval-rst}  
 .. autoclass:: pepflow.Duplet
     :members:
@@ -21,3 +23,19 @@
     :show-inheritance:
 ```
 
+## Monotone Operator
+
+```{eval-rst} 
+.. autoclass:: pepflow.MonotoneOperator
+    :members:
+    :show-inheritance:
+```
+
+
+## Lipschitz Continuous and Monotone Operator
+
+```{eval-rst} 
+.. autoclass:: pepflow.LipschitzMonotoneOperator
+    :members:
+    :show-inheritance:
+```

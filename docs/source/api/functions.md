@@ -8,6 +8,8 @@
     :exclude-members: composition, uid
 ```
 
+## Triplet
+
 ```{eval-rst}  
 .. autoclass:: pepflow.Triplet
     :members:
@@ -26,4 +28,13 @@
 ```{eval-rst} 
 .. autoclass:: pepflow.SmoothConvexFunction
     :members:
+    :show-inheritance:
+```
+
+## Smooth and Strongly Convex
+
+```{eval-rst} 
+.. autoclass:: pepflow.SmoothStronglyConvexFunction
+    :members:
+    :show-inheritance:
 ```

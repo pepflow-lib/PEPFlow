@@ -20,6 +20,7 @@
 from __future__ import annotations
 
 import uuid
+from collections import defaultdict
 from typing import TYPE_CHECKING, Any
 
 import attrs
@@ -32,7 +33,8 @@ from pepflow import pep_context as pc
 from pepflow import utils
 
 if TYPE_CHECKING:
-    from pepflow.vector import Vector
+    from pepflow.parameter import Parameter
+    from pepflow.vector import Vector, VectorByBasisRepresentation
 
 
 def is_numerical_or_scalar(val: Any) -> bool:
@@ -51,6 +53,203 @@ class ScalarRepresentation:
 
 
 @attrs.frozen
+class ScalarByBasisRepresentation:
+    """A representation of a Scalar as a linear combination of basis Scalars."""
+
+    # The following represents `coef1*f1 + coef2*f2 + ...`
+    func_coeffs: defaultdict[Scalar, Any] = attrs.field(
+        factory=lambda: defaultdict(int)
+    )
+    # The following represents `sum coef_ij*<v_i, v_j>`.
+    # We should sort the vector in key so that <v_i, v_j> and <v_j, v_i> use the same entry.
+    inner_prod_coeffs: defaultdict[tuple[Vector, Vector], Any] = attrs.field(
+        factory=lambda: defaultdict(int)
+    )
+    offset: Any = 0
+
+    # Generate an automatic id
+    uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
+    def __repr__(self) -> str:
+        terms = []
+        if self.offset:
+            terms.append(utils.numerical_str(self.offset))
+        for key, val in self.func_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            terms.append(f"{coeff_str}*{repr(key)}")
+        for key, val in self.inner_prod_coeffs.items():
+            # TODO: Add the correct parentheses where needed
+            if utils.is_numerical_or_parameter(val):
+                coeff_str = utils.numerical_str(val)
+            else:
+                coeff_str = repr(val)
+            vec0_repr, vec1_repr = repr(key[0]), repr(key[1])
+            if vec0_repr != vec1_repr:
+                terms.append(
+                    f"{coeff_str}*" + me.INNER_PROD_STR.format(A=vec0_repr, B=vec1_repr)
+                )
+            else:
+                terms.append(f"{coeff_str}*|{vec0_repr}|^2")
+        return " + ".join(terms) if terms else "0"
+
+    # TODO: Support other types for `other` and add case distinction
+    def __add__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return NotImplemented
+        new_func_coeffs = defaultdict(int, self.func_coeffs)
+        for key, val in other.func_coeffs.items():
+            new_func_coeffs[key] += val
+
+        new_inner_prod_coeffs = defaultdict(int, self.inner_prod_coeffs)
+        for key, val in other.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] += val
+
+        new_offset = self.offset + other.offset
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    def __radd__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        return self.__add__(other)
+
+    # TODO: Support other types for `other` and add case distinction
+    def __sub__(
+        self, other: ScalarByBasisRepresentation
+    ) -> ScalarByBasisRepresentation:
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return NotImplemented
+        new_func_coeffs = defaultdict(int, self.func_coeffs)
+        for key, val in other.func_coeffs.items():
+            new_func_coeffs[key] -= val
+
+        new_inner_prod_coeffs = defaultdict(int, self.inner_prod_coeffs)
+        for key, val in other.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] -= val
+
+        new_offset = self.offset - other.offset
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    # TODO: add __rsub__
+
+    def __mul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            return NotImplemented
+
+        new_func_coeffs = defaultdict(int)
+        for key, val in self.func_coeffs.items():
+            new_func_coeffs[key] = val * other
+
+        new_inner_prod_coeffs = defaultdict(int)
+        for key, val in self.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] = val * other
+
+        new_offset = self.offset * other
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    def __rmul__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        return self.__mul__(other)
+
+    def __neg__(self) -> ScalarByBasisRepresentation:
+        return self.__rmul__(-1)
+
+    def __truediv__(
+        self, other: utils.NUMERICAL_TYPE | Parameter
+    ) -> ScalarByBasisRepresentation:
+        if not utils.is_numerical_or_parameter(other):
+            return NotImplemented
+
+        new_func_coeffs = defaultdict(int)
+        for key, val in self.func_coeffs.items():
+            new_func_coeffs[key] = val / other
+
+        new_inner_prod_coeffs = defaultdict(int)
+        for key, val in self.inner_prod_coeffs.items():
+            new_inner_prod_coeffs[key] = val / other
+
+        new_offset = self.offset / other
+
+        return ScalarByBasisRepresentation(
+            func_coeffs=new_func_coeffs,
+            inner_prod_coeffs=new_inner_prod_coeffs,
+            offset=new_offset,
+        )
+
+    def __hash__(self):
+        return hash(self.uid)
+
+    def __eq__(self, other):
+        if not isinstance(other, Scalar):
+            return NotImplemented
+        return self.uid == other.uid
+
+    def equiv(self, other: Any) -> bool:
+        """
+        Checks whether two :class:`ScalarByBasisRepresentation` objects are mathematically
+        equivalent by verifying that the differences between their coefficients simplify to zero.
+        """
+        # Check that `other` has the correct type, then check object identity
+        if not isinstance(other, ScalarByBasisRepresentation):
+            return False
+        if self is other:
+            return True
+
+        # Check whether both have the same nonzero basis elements.
+        if self.func_coeffs.keys() != other.func_coeffs.keys():
+            return False
+        if self.inner_prod_coeffs.keys() != other.inner_prod_coeffs.keys():
+            return False
+
+        # Check whether the difference of the `offset` attributes simplifies to zero.
+        if not utils.num_or_param_or_sympy_expr_is_zero(
+            utils.simplify_if_param_or_sympy_expr(self.offset - other.offset)
+        ):
+            return False
+
+        # Check whether, for each basis element of `func_coeffs` and `inner_prod_coeffs`,
+        # the difference between the two objects' coefficients simplifies to zero.
+        for key in self.func_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.func_coeffs[key] - other.func_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        for key in self.inner_prod_coeffs:
+            diff = utils.simplify_if_param_or_sympy_expr(
+                self.inner_prod_coeffs[key] - other.inner_prod_coeffs[key]
+            )
+            if not utils.num_or_param_or_sympy_expr_is_zero(diff):
+                return False
+
+        return True
+
+
+@attrs.frozen
 class ZeroScalar:
     """A special class to represent 0 in scalar."""
 
@@ -66,17 +265,17 @@ class EvaluatedScalar:
     representation as a unit vector. The concrete representations of
     linear combinations of abstract basis :class:`Scalar` objects
     are linear combinations of the unit vectors. This information is
-    stored in the `vector` attribute.
+    stored in the `func_coords` attribute.
 
     Abstract :class:`Scalar` objects can be formed through taking the
     inner product of two abstract :class:`Vector` objects. The
     concrete representation of an abstract :class:`Scalar` object formed
     this way is the outer product of the concrete representations of the
     two abstract :class:`Vector` objects, i.e., a matrix. This information
-    is stored in the `matrix` attribute.
+    is stored in the `inner_prod_coords` attribute.
 
     Abstract :class:`Scalar` objects can be added or subtracted with
-    numeric data types. This information is stored in the `constant`
+    numeric data types. This information is stored in the `offset`
     attribute.
 
     :class:`EvaluatedScalar` objects can be constructed as linear combinations
@@ -85,11 +284,12 @@ class EvaluatedScalar:
     can form a new :class:`EvaluatedScalar` object: `a*u+b*v`.
 
     Attributes:
-        vector (np.ndarray): The vector component of the concrete
+        func_coords (np.ndarray): The vector component of the concrete
             representation of the abstract :class:`Scalar`.
-        matrix (np.ndarray): The matrix component of the concrete
-            representation of the abstract :class:`Scalar`.
-        constant (float): The constant component of the concrete
+        inner_prod_coords (np.ndarray): The matrix component of the concrete
+            representation of the abstract :class:`Scalar`. An alias is
+            `matrix`.
+        offset (float): The constant component of the concrete
             representation of the abstract :class:`Scalar`.
     """
 
@@ -99,7 +299,7 @@ class EvaluatedScalar:
 
     @property
     def matrix(self) -> np.ndarray:
-        # A short alias for inner_prod_coords.
+        """A short alias for inner_prod_coords."""
         return self.inner_prod_coords
 
     @classmethod
@@ -214,7 +414,7 @@ class EvaluatedScalar:
 class Scalar:
     """
     A :class:`Scalar` object represents linear combination of functions values,
-    inner products of, and constant scalar values.
+    inner products of :class:`Point` objects, and constant scalar values.
 
     :class:`Scalar` objects can be constructed as linear combinations of
     other :class:`Scalar` objects. Let `a` and `b` be some numeric data type.
@@ -226,20 +426,28 @@ class Scalar:
             combination of other scalars. False otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Vector` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
 
     Example:
         >>> import pepflow as pf
         >>> ctx = pf.PEPContext("cts").set_as_current()
         >>> s1 = pf.Scalar(is_basis=True, tags=["s1"])
+
+    Note:
+        Basis :class:`Scalar` objects should be defined using the constructor
+        as shown in the example but composite :class:`Scalar` objects should
+        be created using operations on :class:`Scalar` objects.
     """
 
     # If true, the scalar is the basis for the evaluations of F
     is_basis: bool
 
     # The representation of scalar used for evaluation.
-    eval_expression: ScalarRepresentation | ZeroScalar | None = None
+    eval_expression: (
+        ScalarRepresentation | ScalarByBasisRepresentation | ZeroScalar | None
+    ) = None
 
     # Human tagged value for the scalar
     tags: list[str] = attrs.field(factory=list)
@@ -268,7 +476,12 @@ class Scalar:
 
     @staticmethod
     def zero() -> Scalar:
-        """A function that returns :class:`Scalar` object that corresponds to zero."""
+        """A static method that returns a :class:`Scalar` object that
+        corresponds to zero.
+
+        Returns:
+            :class:`Scalar`: A zero :class:`Scalar` object.
+        """
         return Scalar(
             is_basis=False,
             eval_expression=ZeroScalar(),
@@ -374,7 +587,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
@@ -386,7 +599,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
@@ -407,7 +620,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = f"1/{utils.numerical_str(other)}"
+        expr_other = f"1/{utils.parenthesize_repr(other)}"
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.DIV, self, other),
@@ -423,82 +636,168 @@ class Scalar:
             return NotImplemented
         return self.uid == other.uid
 
+    def simplify(self, tag: str | None = None) -> Scalar:
+        """
+        Flatten the `eval_expression` of a :class:`Scalar` object into a
+        :class:`ScalarByBasisRepresentation` consisting of basis and their coefficients.
+
+        Returns:
+            :class:`Scalar`: A new :class:`Scalar` object whose `eval_expression`
+            is flattened into a :class:`ScalarByBasisRepresentation`.
+        """
+        from pepflow.vector import Vector
+
+        def _simplify(
+            scalar_or_float_or_vector: Scalar
+            | utils.NUMERICAL_TYPE
+            | Parameter
+            | Vector,
+        ) -> (
+            ScalarByBasisRepresentation
+            | utils.NUMERICAL_TYPE
+            | Parameter
+            | VectorByBasisRepresentation
+        ):
+            if isinstance(scalar_or_float_or_vector, (Scalar, Vector)):
+                # We know after simplification, the eval_expression is always
+                # ScalarByBasisRepresentation or VectorByBasisRepresentation.
+                return scalar_or_float_or_vector.simplify().eval_expression  # type: ignore
+            elif utils.is_parameter(scalar_or_float_or_vector) or utils.is_sympy_expr(
+                scalar_or_float_or_vector
+            ):
+                return scalar_or_float_or_vector.simplify()  # type: ignore
+            else:
+                return scalar_or_float_or_vector
+
+        if self.is_basis:
+            # ScalarByBasisRepresentation and the original basis vector are representating the
+            # the same basis vector. However, we do not wanna introduce another basis vector in the context.
+            # So we have to keep this is_basis = False but the eval_expression should be the same.
+            is_basis = False
+            eval_expression = ScalarByBasisRepresentation(
+                func_coeffs=defaultdict(int, {self: 1}),
+                inner_prod_coeffs=defaultdict(int, {}),
+                offset=0,
+            )
+        else:
+            is_basis = False
+            if isinstance(self.eval_expression, ZeroScalar):
+                eval_expression = ScalarByBasisRepresentation(
+                    func_coeffs=defaultdict(int, {}),
+                    inner_prod_coeffs=defaultdict(int, {}),
+                    offset=0,
+                )
+            elif isinstance(self.eval_expression, ScalarByBasisRepresentation):
+                eval_expression = self.eval_expression
+            else:
+                assert isinstance(
+                    self.eval_expression, ScalarRepresentation
+                )  # to make type checker happy
+                left_eval_exression = _simplify(self.eval_expression.left_scalar)
+                right_eval_exression = _simplify(self.eval_expression.right_scalar)
+                if self.eval_expression.op == utils.Op.ADD:
+                    eval_expression = left_eval_exression + right_eval_exression
+                elif self.eval_expression.op == utils.Op.SUB:
+                    eval_expression = left_eval_exression - right_eval_exression
+                elif self.eval_expression.op == utils.Op.MUL:
+                    eval_expression = left_eval_exression * right_eval_exression
+                elif self.eval_expression.op == utils.Op.DIV:
+                    eval_expression = left_eval_exression / right_eval_exression
+                else:
+                    raise NotImplementedError(
+                        "Only add,sub,mul,div are supported for Vector simplification."
+                    )
+
+        # coefficient simplification
+        eval_expression = ScalarByBasisRepresentation(
+            func_coeffs=utils.simplify_dict(eval_expression.func_coeffs),
+            inner_prod_coeffs=utils.simplify_dict(eval_expression.inner_prod_coeffs),
+            offset=utils.simplify_if_param_or_sympy_expr(eval_expression.offset),
+        )
+
+        return Scalar(
+            is_basis=is_basis,
+            eval_expression=eval_expression,
+            tags=[tag] if tag is not None else [],
+            math_expr=me.MathExpr(expr_str=str(eval_expression)),
+        )
+
     def le(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` <= `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` <= `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.LE, name=name)
 
     def lt(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` < `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` < `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.LE, name=name)
 
     def ge(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` >= `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` >= `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.GE, name=name)
 
     def gt(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` > `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` > `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.GE, name=name)
 
     def eq(self, other: Scalar | float | int, name: str) -> ctr.ScalarConstraint:
         """
-        Generate a :class:`Constraint` object that represents the inequality
+        Generate a :class:`ScalarConstraint` object that represents the inequality
         `self` = `other`.
 
         Args:
             other (:class:`Scalar` | float | int): The other side of the
                 relation.
-            name (str): The name of the generated :class:`Constraint` object.
+            name (str): The name of the generated :class:`ScalarConstraint` object.
 
         Returns:
-            :class:`Constraint`: An object that represents the inequality
+            :class:`ScalarConstraint`: An object that represents the inequality
             `self` = `other`.
         """
         return ctr.ScalarConstraint(self, other, cmp=utils.Comparator.EQ, name=name)
@@ -520,8 +819,12 @@ class Scalar:
             ctx (:class:`PEPContext` | None): The :class:`PEPContext` object
                 we consider. `None` if we consider the current global
                 :class:`PEPContext` object.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             :class:`EvaluatedScalar`: The concrete representation of
@@ -558,14 +861,18 @@ class Scalar:
             ctx (:class:`PEPContext`): The :class:`PEPContext` object
                 whose basis :class:`Vector` and :class:`Scalar` objects we
                 consider. `None` if we consider the current global
-                `PEPContext` object.
+                :class:`PEPContext` object.
             greedy_square (bool): If `greedy_square` is true, the function will
                 try to return :math:`\\|a-b\\|^2` whenever possible. If not,
                 the function will return
                 :math:`\\|a\\|^2 - 2 * \\langle a, b \\rangle + \\|b\\|^2` instead.
                 `True` by default.
-            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`]): A dictionary that
-                maps the name of parameters to the numerical values.
+            resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | `None`): A
+                dictionary that maps the name of parameters to the numerical values.
+            sympy_mode (bool): If true, then the input should be defined completely
+                in terms of SymPy objects and should not mix Python numeric objects.
+                Will raise an error if sympy_mode is `True` and the input contains a
+                Python numeric object. By default `False`.
 
         Returns:
             str: The representation of this :class:`Scalar` object in terms of

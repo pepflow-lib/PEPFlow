@@ -61,4 +61,4 @@ tutorial_notebooks/tutorial_part_3.md
 ```
 
 [^1]: Y. Drori and M. Teboulle. Performance of first-order methods for smooth convex minimization: a novel approach. _Mathematical Programming_, 145(1-2):451–482, 2014.
-[^2]: B. Goujaud, A. Dieuleveut, and A. B. Taylor. On fundamental proof structures in first-order optimization. In _62nd IEEE Conference on Decision and Control (CDC)_, 2023.
+[^2]: A. B. Taylor, J. M. Hendrickx, and F. Glineur. Smooth strongly convex interpolation and exact worst-case performance of first-order methods. _Mathematical Programming_, 161(1-2):307–345, 2017.

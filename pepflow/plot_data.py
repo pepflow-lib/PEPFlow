@@ -29,6 +29,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash import dcc, html
 
+from pepflow import constants as const
 from pepflow import utils
 
 if TYPE_CHECKING:
@@ -42,6 +43,85 @@ plotly.io.renderers.default = "colab+vscode"
 plotly.io.templates.default = "plotly_white"
 
 
+def style_dual_value_table(table: dbc.Table) -> dbc.Table:
+    """Apply centralized styling rules for dual-value tables.
+
+    Current rules:
+    - Shrink table width to content as much as possible.
+    - Center-align table text.
+    - Reduce cell padding (compact spacing).
+    - Apply a subtle gray background to header cells and row-index cells.
+    - Make row index cells (first body cell in each row) bold.
+
+    Extend this function when additional table styling is needed.
+    """
+
+    # Normalize Dash children into a list so loops can stay uniform
+    def as_list(node: object) -> list[object]:
+        if node is None:
+            return []
+        if isinstance(node, (list, tuple)):
+            return list(node)
+        return [node]
+
+    # Merge new style keys without dropping existing component styles
+    def merge_style(component: object, extra_style: dict[str, str]) -> None:
+        setattr(
+            component,
+            "style",
+            {**(getattr(component, "style", None) or {}), **extra_style},
+        )
+
+    # Set base table layout/style in a type-checker-safe way
+    setattr(
+        table,
+        "style",
+        {
+            "width": "auto",
+            "maxWidth": "100%",
+            "textAlign": "center",
+            "marginBottom": "0",
+        },
+    )
+
+    sections = as_list(getattr(table, "children", None))
+
+    # Pass 1: shared styling for every cell
+    for section in sections:
+        for row in as_list(getattr(section, "children", None)):
+            for cell in as_list(getattr(row, "children", None)):
+                merge_style(
+                    cell,
+                    {
+                        "textAlign": "center",
+                        "padding": "0.35rem 0.55rem",
+                        "verticalAlign": "middle",
+                        "fontSize": f"{const.TABLE_CELL_FONT_REM:.2f}rem",
+                    },
+                )
+
+    # Pass 2: highlight header cells (column labels)
+    if sections:
+        for row in as_list(getattr(sections[0], "children", None)):
+            for cell in as_list(getattr(row, "children", None)):
+                merge_style(cell, {"backgroundColor": "#f5f6f8"})
+
+    # Pass 3: highlight row index cells (first cell in each body row)
+    if len(sections) >= 2:
+        for row in as_list(getattr(sections[1], "children", None)):
+            cells = as_list(getattr(row, "children", None))
+            if not cells:
+                continue
+            merge_style(
+                cells[0],
+                {
+                    "fontWeight": "700",
+                    "backgroundColor": "#f5f6f8",
+                },
+            )
+    return table
+
+
 @attrs.frozen
 class PlotData:
     func_or_oper: Function | Operator
@@ -51,15 +131,19 @@ class PlotData:
     pep_type: utils.PEPType
 
     def dual_matrix_to_tab(self, name: str, df: pd.DataFrame) -> html.Div:
+        table = dbc.Table.from_dataframe(  # ty: ignore
+            utils.get_pivot_table_of_dual_value(df, num_decs=3),
+            bordered=True,
+            index=True,
+        )
+        table = style_dual_value_table(table)
         return html.Div(
-            dbc.Table.from_dataframe(  # ty: ignore
-                utils.get_pivot_table_of_dual_value(df, num_decs=3).reset_index(),
-                bordered=True,
-            ),
+            table,
             id={
                 "type": "dual-value-display",
                 "index": f"{self.func_or_oper.tag}-{name}",
             },
+            style={"marginLeft": "36px"},
         )
 
     def make_list_of_scalar_constraint_tabs(self) -> list[dbc.Tab]:
@@ -67,19 +151,37 @@ class PlotData:
             dbc.Tab(
                 html.Div(
                     [
-                        html.P("Interactive Heat Map:"),
+                        html.P(
+                            "Interactive Heat Map:",
+                            style={
+                                "marginTop": "10px",
+                                "marginBottom": "-30px",
+                                "fontWeight": "700",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
+                                "position": "relative",
+                                "zIndex": "1",
+                            },
+                        ),
                         dcc.Graph(
                             id={
                                 "type": "interactive-scatter",
                                 "index": f"{self.func_or_oper.tag}-{name}",
                             },
                             figure=fig,
+                            config={"displayModeBar": False},
                         ),
-                        html.P("Dual Value Matrix:"),
+                        html.P(
+                            "Dual Value Matrix:",
+                            style={
+                                "fontWeight": "700",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
+                            },
+                        ),
                         self.dual_matrix_to_tab(name, df),
                     ]
                 ),
                 label=f"{name}",
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
                 tab_id=f"{self.func_or_oper.tag}-{name}-interactive-constraint-tab",
             )
             for (name, fig), (_, df) in zip(self.fig_dict.items(), self.df_dict.items())
@@ -91,7 +193,13 @@ class PlotData:
             dbc.Tab(
                 html.Div(
                     [
-                        html.P("Dual Value Matrix:"),
+                        html.P(
+                            "Dual Value Matrix:",
+                            style={
+                                "fontWeight": "700",
+                                "fontSize": f"{const.SECTION_LABEL_FONT_REM:.2f}rem",
+                            },
+                        ),
                         html.Pre(
                             psd_dv,
                             id={
@@ -102,6 +210,7 @@ class PlotData:
                     ]
                 ),
                 label=f"{name}",
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
                 tab_id=f"{self.func_or_oper.tag}-{name}-interactive-constraint-tab",
             )
             for name, psd_dv in self.psd_dv_dict.items()
@@ -122,6 +231,7 @@ class PlotData:
                     )
                 ],
                 label=f"{self.func_or_oper.tag} Interpolation Conditions",
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
             )
         else:
             tabs = dbc.Tab(
@@ -134,6 +244,7 @@ class PlotData:
                     )
                 ],
                 label=f"{self.func_or_oper.tag} Interpolation Conditions",
+                label_style={"fontSize": f"{const.TAB_LABEL_FONT_REM:.2f}rem"},
             )
         return tabs
 
@@ -189,8 +300,8 @@ class PlotData:
 
             fig = px.scatter(
                 df,
-                x="row",
-                y="col",
+                x="col",
+                y="row",
                 color="dual_value",
                 symbol="constraint",
                 symbol_map={"inactive": "x-open", "active": "circle"},
@@ -202,24 +313,47 @@ class PlotData:
             fig.update_traces(marker=dict(size=15))
             fig.update_layout(
                 coloraxis_colorbar=dict(
-                    title_text="Dual Value", yanchor="top", y=1, x=1.3, ticks="outside"
+                    title_text="<b>Dual Value</b>",
+                    yanchor="top",
+                    y=1.06,
+                    x=1.3,
+                    ticks="outside",
                 )
             )
             fig.update_xaxes(
                 tickmode="array",
-                tickvals=list(range(len(df.attrs["order_row"]))),
-                ticktext=df.attrs["order_row"],
+                tickvals=list(range(len(df.attrs["order_col"]))),
+                ticktext=df.attrs["order_col"],
+                tickfont=dict(size=const.GRAPH_FONT_SIZE),
+                zeroline=False,
             )
             fig.update_yaxes(
                 tickmode="array",
-                tickvals=list(range(len(df.attrs["order_col"]))),
-                ticktext=df.attrs["order_col"],
+                tickvals=list(range(len(df.attrs["order_row"]))),
+                ticktext=df.attrs["order_row"],
+                tickfont=dict(size=const.GRAPH_FONT_SIZE),
+                zeroline=False,
             )
             match pep_result.pep_type:
                 case utils.PEPType.PRIMAL:
                     fig.update_layout(showlegend=True)
                 case utils.PEPType.DUAL:
                     fig.update_layout(showlegend=False)
+            fig.update_layout(
+                font=dict(size=const.GRAPH_FONT_SIZE),
+                legend_title_text="<b>Constraint</b>",
+                legend_title_font=dict(size=const.LEGEND_TITLE_FONT_SIZE),
+                legend=dict(yanchor="top", y=1.0),
+                coloraxis_colorbar=dict(
+                    title_text="<b>Dual Value</b>",
+                    yanchor="top",
+                    y=1.01,
+                    x=1.3,
+                    ticks="outside",
+                    tickfont=dict(size=const.GRAPH_FONT_SIZE),
+                    title_font=dict(size=const.LEGEND_TITLE_FONT_SIZE),
+                ),
+            )
 
             fig.for_each_xaxis(lambda x: x.update(title=""))
             fig.for_each_yaxis(lambda y: y.update(title=""))

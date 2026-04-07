@@ -26,6 +26,7 @@ import numpy as np
 
 if TYPE_CHECKING:
     from pepflow.scalar import Scalar
+    from pepflow.utils import Comparator
 
 from pepflow import utils
 
@@ -52,7 +53,7 @@ class ScalarConstraint(Constraint):
             that can be either `GE`, `LE`, or `EQ`. They represent `>=`, `<=`,
             or `=` respectively.
         name (str): The unique name of the :class:`Comparator` object.
-        associated_dual_var_constraints (list[tuple[utils.Comparator, float]]):
+        associated_dual_var_constraints (list[tuple[:class:`Comparator`, float]]):
             A list of all the constraints imposed on the associated dual
             variable of this :class:`ScalarConstraint` object.
 
@@ -64,11 +65,11 @@ class ScalarConstraint(Constraint):
 
     lhs: Scalar | float
     rhs: Scalar | float
-    cmp: utils.Comparator
+    cmp: Comparator
     name: str
 
     # Used to represent the constraint on primal variable in dual PEP.
-    associated_dual_var_constraints: list[tuple[utils.Comparator, float]] = attrs.field(
+    associated_dual_var_constraints: list[tuple[Comparator, float]] = attrs.field(
         factory=list
     )
 
@@ -165,7 +166,7 @@ class PSDConstraint(Constraint):
             that can be either `SEQ`, `PEQ`, or `EQ`. They represent `>>`, `<<`,
             or `=` respectively.
         name (str): The unique name of the :class:`Comparator` object.
-        associated_dual_var_constraints (list[tuple[utils.Comparator, float]]):
+        associated_dual_var_constraints (list[tuple[:class:`Comparator`, float]]):
             A list of all the constraints imposed on the associated dual
             variable of this :class:`PSDConstraint` object.
     """

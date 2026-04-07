@@ -19,12 +19,15 @@
 
 from __future__ import annotations
 
+import itertools
+import numbers
 import uuid
 from functools import cached_property
 from typing import TYPE_CHECKING
 
 import attrs
 import numpy as np
+import sympy as sp
 
 from pepflow import constraint as ct
 from pepflow import math_expression as me
@@ -35,7 +38,10 @@ from pepflow import utils
 from pepflow import vector as vt
 
 if TYPE_CHECKING:
+    from pepflow.math_expression import MathExpr
     from pepflow.parameter import Parameter
+    from pepflow.utils import NUMERICAL_TYPE
+    from pepflow.vector import Vector
 
 
 @attrs.frozen
@@ -50,11 +56,18 @@ class Duplet:
         name (str): The unique name of the :class:`Duplet` object.
     """
 
-    point: vt.Vector
-    output: vt.Vector
+    point: Vector
+    output: Vector
     oper: Operator
     name: str | None
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
+
+    def expand(self) -> tuple[vt.Vector, vt.Vector]:
+        """
+        Return the `point` and `output` member variables of a :class:`Duplet`
+        as a tuple.
+        """
+        return self.point, self.output
 
 
 @attrs.frozen
@@ -120,8 +133,9 @@ class Operator:
             combination of other operators. `False` otherwise.
         tags (list[str]): A list that contains tags that can be used to
             identify the :class:`Operator` object. Tags should be unique.
-        math_expr (:class:MathExpr): An object of :class:MathExpr that
-            contains a mathematical expression represented as a `str`.
+        math_expr (:class:`MathExpr`): A :class:`MathExpr` object with a
+            member variable that contains a mathematical expression
+            represented as a string.
     """
 
     is_basis: bool
@@ -132,7 +146,7 @@ class Operator:
     tags: list[str] = attrs.field(factory=list)
 
     # Mathematical expression
-    math_expr: me.MathExpr = attrs.field(factory=me.MathExpr)
+    math_expr: MathExpr = attrs.field(factory=me.MathExpr)
 
     # Generate an automatic id
     uid: uuid.UUID = attrs.field(factory=uuid.uuid4, init=False)
@@ -190,9 +204,9 @@ class Operator:
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
         """When implemented, structure the types of constraints as a list of related
-        scalar constraints or individual PSDConstraints."""
+        :class:`ScalarConstraint` or individual :class:`PSDConstraint` objects."""
         raise NotImplementedError(
-            "This method should be implemented in the children class."
+            "This method should be implemented in the children of Operator."
         )
 
     def get_interpolation_constraints(
@@ -465,8 +479,59 @@ class Operator:
             return NotImplemented
         return self.uid == other.uid
 
+    def resolvent(
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
+        """Apply the resolvent of this operator on the input :math:`x`.
 
-@attrs.mutable(kw_only=True)
+        Define the resolvent operator as
+
+        .. math:: J_{\\gamma A} := (I+\\gamma A)^{-1},
+
+        where :math:`I` is the identity operator.
+
+        This function returns the output :class:`Vector` :math:`u` found from
+        applying the resolvent of this :class:`Operator` :math:`A` on the input
+        :class:`Vector` :math:`x` with stepsize :math:`\\gamma`.
+
+        Args:
+            x (:class:`Vector`): The input point.
+            stepsize (numbers.Number | :class:`Parameter`): The stepsize.
+            tag (str | None): By default set to `None`. Pass a tag to add
+                to the output of the resolvent applied the input point.
+
+        Returns:
+            :class:`Vector`: The output of the resolvent applied on `x`.
+
+        Note:
+            For children of :class:`Operator` for which the resolvent is
+            not defined, overwrite the function to raise `NotImplemented`.
+        """
+
+        u_expr = f"J_{{{stepsize}*{self.__repr__()}}}({x.__repr__()})"
+        Au = vt.Vector(
+            is_basis=True,
+            math_expr=me.MathExpr(expr_str=f"{self.__repr__()}({u_expr})"),
+        )
+
+        u = x - stepsize * Au
+        u.math_expr.expr_str = u_expr
+
+        if tag:
+            u.add_tag(tag)
+            Au.add_tag(f"{self.__repr__()}({tag})")
+
+        new_duplet = Duplet(
+            u,
+            Au,
+            self,
+            name=f"{u.__repr__()}_{Au.__repr__()}",
+        )
+        self.add_duplet_to_oper(new_duplet)
+        return u
+
+
+@attrs.frozen(kw_only=True, repr=False)
 class LinearOperatorTranspose(Operator):
     """
     The :class:`LinearOperatorTranspose` class represents the transpose of a
@@ -483,8 +548,19 @@ class LinearOperatorTranspose(Operator):
     def __hash__(self):
         return super().__hash__()
 
+    def resolvent(
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
+        """
+        Note:
+            The resolvent is not implemented for :class:`LinearOperatorTranspose`.
+        """
+        raise NotImplementedError(
+            "The resolvent is not implemented for the transpose of linear operators."
+        )
 
-@attrs.mutable(kw_only=True)
+
+@attrs.frozen(kw_only=True, repr=False)
 class LinearOperator(Operator):
     """
     The :class:`LinearOperator` class represents a bounded, linear operator.
@@ -497,19 +573,27 @@ class LinearOperator(Operator):
     Example:
         >>> import pepflow as pf
         >>> A = pf.LinearOperator(is_basis=True, tags=["A"], M=1)
+
+    We can access the transpose of a :class:`LinearOperator` object as
+    follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.LinearOperator(is_basis=True, tags=["A"], M=1)
+        >>> A.T
     """
 
-    M: utils.NUMERICAL_TYPE | Parameter
+    M: NUMERICAL_TYPE | Parameter
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
         if isinstance(self.M, utils.NUMERICAL_TYPE):
-            assert self.M > 0  # ty: ignore
+            assert self.M > 0
 
     def __hash__(self):
         return super().__hash__()
 
-    def add_tag(self, tag: str) -> None:
+    def add_tag(self, tag: str) -> Operator:
         """Add a new tag for this :class:`Operator` object.
 
         Args:
@@ -517,6 +601,7 @@ class LinearOperator(Operator):
         """
         self.tags.append(tag)
         self.T.tags.append(f"{tag}.T")
+        return self
 
     def equality_interpolability_constraints(
         self, duplet_i, duplet_j
@@ -536,6 +621,14 @@ class LinearOperator(Operator):
     def get_interpolation_constraints_by_group(
         self, pep_context: pc.PEPContext | None = None
     ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions.
+
+        References:
+            N. Bousselmi, J. M. Hendrickx, and F. Glineur, Interpolation Conditions
+            for Linear Operators and Applications to Performance Estimation Problems,
+            SIAM Journal on Optimization, 34 (2024), pp. 3033–3063.
+        """
         cd = pc.ConstraintData(func_or_oper=self)
         if pep_context is None:
             pep_context = pc.get_current_context()
@@ -550,7 +643,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self]) > 0:
             X = [d.point for d in pep_context.oper_to_duplets[self]]
             Y = [d.output for d in pep_context.oper_to_duplets[self]]
-            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(
+            matrix_SDP_constraint_1 = (self.M * self.M) * np.outer(X, X) - np.outer(  # ty: ignore
                 Y, Y
             )
 
@@ -567,7 +660,7 @@ class LinearOperator(Operator):
         if len(pep_context.oper_to_duplets[self.T]) > 0:
             U = [d.point for d in pep_context.oper_to_duplets[self.T]]
             V = [d.output for d in pep_context.oper_to_duplets[self.T]]
-            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(
+            matrix_SDP_constraint_2 = (self.M * self.M) * np.outer(U, U) - np.outer(  # ty: ignore
                 V, V
             )
 
@@ -589,3 +682,267 @@ class LinearOperator(Operator):
         return LinearOperatorTranspose(is_basis=True, tags=[f"{self.tag}.T"])
 
     # TODO: How should we make interpolate_ineq()? There are two PSD constraints and a set of equality constraints.
+
+    def resolvent(
+        self, x: Vector, stepsize: numbers.Number | Parameter, tag: str | None = None
+    ) -> Vector:
+        """
+        Note:
+            The resolvent is not implemented for :class:`LinearOperator`.
+        """
+        raise NotImplementedError(
+            "The resolvent is not implemented for linear operators."
+        )
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class MonotoneOperator(Operator):
+    """
+    The :class:`MonotoneOperator` class represents a monotone operator.
+
+    The :class:`MonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`MonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.MonotoneOperator(is_basis=True, tags=["A"])
+    """
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> MonotoneOperator:
+        """Add a new tag for this :class:`MonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def inequality_interpolability_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            -(duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).le(
+            0,
+            name=f"{self.tag}:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions."""
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+        scal_constraint = []
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., -<A x_1 - A x_0, x_1 - x_0> <= 0
+        # is the same as -<A x_0 - A x_1, x_0 - x_1> <= 0.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint.append(self.inequality_interpolability_constraints(i, j))
+        cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint)
+
+        return cd
+
+    def interp_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+    ) -> sc.Scalar:
+        """Generate the interpolation inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The interpolation inequality between two points :math:`p_1, p_2` for a
+        monotone operator :math:`A` is
+
+        .. math:: - \\langle A(p_1) - A(p_2), p_1 - p_2 \\rangle \\leq 0.
+
+        References:
+            H. H. Bauschke and P. L. Combettes, Convex Analysis and Monotone Operator Theory
+            in Hilbert Spaces, 2017.
+
+            E. K. Ryu, A. B. Taylor, C. Bergeling, and P. Giselsson, Operator splitting
+            performance estimation: Tight contraction factors and optimal parameter selection,
+            SIAM Journal on Optimization, 30 (2020), pp. 2251–2271.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+        return -(x1 - x2) * (u1 - u2)
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class LipschitzMonotoneOperator(Operator):
+    """
+    The :class:`LipschitzMonotoneOperator` class represents a monotone and Lipschitz continuous operator.
+
+    The :class:`LipschitzMonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`LipschitzMonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=1)
+    """
+
+    L: utils.NUMERICAL_TYPE | Parameter
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> LipschitzMonotoneOperator:
+        """Add a new tag for this :class:`LipschitzMonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def monotone_inequality_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            (duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).ge(
+            0,
+            name=f"{self.tag} monotone:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def lipschitz_inequality_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            self.L**2 * (duplet_i.point - duplet_j.point) ** 2
+            - (duplet_i.output - duplet_j.output) ** 2
+        ).ge(
+            0,
+            name=f"{self.tag} Lipschitz:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions.
+
+        References:
+            E. K. Ryu, A. B. Taylor, C. Bergeling, and P. Giselsson, Operator splitting
+            performance estimation: Tight contraction factors and optimal parameter selection,
+            SIAM Journal on Optimization, 30 (2020), pp. 2251–2271.
+        """
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., -<A x_1 - A x_0, x_1 - x_0> <= 0
+        # is the same as -<A x_0 - A x_1, x_0 - x_1> <= 0.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+
+        scal_constraint_1 = []
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint_1.append(self.monotone_inequality_constraints(i, j))
+        cd.add_sc_constraint("Monotone Operator Inequality", scal_constraint_1)
+
+        scal_constraint_2 = []
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint_2.append(self.lipschitz_inequality_constraints(i, j))
+        cd.add_sc_constraint("Lipschitz Continuous Inequality", scal_constraint_2)
+
+        return cd
+
+    def monotone_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the monotone inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The monotone inequality between two points :math:`p_1, p_2` for a
+        operator :math:`A` is
+
+        .. math:: \\langle \\nabla A(p_1) - A(p_2), p_1 - p_2 \\rangle >= 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        del sympy_mode  # No need for this case
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+        return (x1 - x2) * (u1 - u2)
+
+    def lipschitz_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the Lipschitz inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The Lipschitz inequality between two points :math:`p_1, p_2` for a
+        operator :math:`A` is
+
+        .. math:: L^2 \\| p_1 - p_2 \\|^2 - \\| A(p_1) - A(p_2) \\|^2 >= 0.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+
+        if sympy_mode and isinstance(self.L, float):
+            raise ValueError(
+                "Cannot use sympy mode with float L in LipschitzMonotoneOperator. "
+                "Please use an integer number or sympy.Rational for L."
+            )
+        coef = sp.S(self.L) if sympy_mode else self.L
+        return coef**2 * (x1 - x2) ** 2 - (u1 - u2) ** 2
