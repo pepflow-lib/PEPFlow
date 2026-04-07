@@ -89,7 +89,9 @@ class ScalarByBasisRepresentation:
                 coeff_str = repr(val)
             vec0_repr, vec1_repr = repr(key[0]), repr(key[1])
             if vec0_repr != vec1_repr:
-                terms.append(f"{coeff_str}*⟨{vec0_repr},{vec1_repr}⟩")
+                terms.append(
+                    f"{coeff_str}*" + me.INNER_PROD_STR.format(A=vec0_repr, B=vec1_repr)
+                )
             else:
                 terms.append(f"{coeff_str}*|{vec0_repr}|^2")
         return " + ".join(terms) if terms else "0"
@@ -585,7 +587,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, self, other),
@@ -597,7 +599,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = utils.numerical_str(other)
+        expr_other = utils.parenthesize_repr(other)
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.MUL, other, self),
@@ -618,7 +620,7 @@ class Scalar:
         if not utils.is_numerical_or_parameter(other):
             return NotImplemented
         expr_self = utils.parenthesize_tag(self)
-        expr_other = f"1/{utils.numerical_str(other)}"
+        expr_other = f"1/{utils.parenthesize_repr(other)}"
         return Scalar(
             is_basis=False,
             eval_expression=ScalarRepresentation(utils.Op.DIV, self, other),

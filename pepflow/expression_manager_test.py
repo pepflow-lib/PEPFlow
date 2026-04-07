@@ -26,6 +26,7 @@ import sympy as sp
 
 from pepflow import expression_manager as exm
 from pepflow import function as fc
+from pepflow import math_expression as me
 from pepflow import pep as pep
 from pepflow import pep_context as pc
 from pepflow import scalar as sc
@@ -336,7 +337,9 @@ def test_repr_scalar_by_basis(pep_context: pc.PEPContext) -> None:
 
     s = f(x) + x * f.grad(x)
     em = exm.ExpressionManager(pep_context)
-    assert em.repr_scalar_by_basis(s, greedy_square=False) == "f(x) + ⟨x, grad_f(x)⟩"
+    assert em.repr_scalar_by_basis(s, greedy_square=False) == (
+        f"f(x) + {me.INNER_PROD_STR.format(A='x', B='grad_f(x)')}"
+    )
     assert (
         em.repr_scalar_by_basis(s, greedy_square=True)
         == "f(x) - 0.5*|x-grad_f(x)|^2 + 0.5*|x|^2 + 0.5*|grad_f(x)|^2"
@@ -349,7 +352,9 @@ def test_repr_scalar_by_basis2(pep_context: pc.PEPContext) -> None:
 
     s = f(x) - x * f.grad(x)
     em = exm.ExpressionManager(pep_context)
-    assert em.repr_scalar_by_basis(s, greedy_square=False) == "f(x) - ⟨x, grad_f(x)⟩"
+    assert em.repr_scalar_by_basis(s, greedy_square=False) == (
+        f"f(x) - {me.INNER_PROD_STR.format(A='x', B='grad_f(x)')}"
+    )
     assert (
         em.repr_scalar_by_basis(s, greedy_square=True)
         == "f(x) + 0.5*|x-grad_f(x)|^2 - 0.5*|x|^2 - 0.5*|grad_f(x)|^2"
@@ -364,7 +369,13 @@ def test_repr_scalar_by_basis_interpolation(pep_context: pc.PEPContext) -> None:
     fj = f(xj)  # noqa: F841
     interp_scalar = f.interp_ineq("x_i", "x_j", sympy_mode=False)
     em = exm.ExpressionManager(pep_context)
-    expected_repr = "-f(x_i) + f(x_j) + ⟨x_i, grad_f(x_j)⟩ - ⟨x_j, grad_f(x_j)⟩ + 0.5*|grad_f(x_i)|^2 - ⟨grad_f(x_i), grad_f(x_j)⟩ + 0.5*|grad_f(x_j)|^2"
+    xigj = me.INNER_PROD_STR.format(A="x_i", B="grad_f(x_j)")
+    xjgj = me.INNER_PROD_STR.format(A="x_j", B="grad_f(x_j)")
+    gigj = me.INNER_PROD_STR.format(A="grad_f(x_i)", B="grad_f(x_j)")
+    expected_repr = (
+        f"-f(x_i) + f(x_j) + {xigj} - {xjgj} + 0.5*|grad_f(x_i)|^2"
+        f" - {gigj} + 0.5*|grad_f(x_j)|^2"
+    )
     assert em.repr_scalar_by_basis(interp_scalar, greedy_square=False) == expected_repr
     expected_square_repr = "-f(x_i) + f(x_j) - 0.5*|x_i-grad_f(x_j)|^2 + 0.5*|x_i|^2 + 0.5*|x_j-grad_f(x_j)|^2 - 0.5*|x_j|^2 + 0.5*|grad_f(x_i)-grad_f(x_j)|^2"
     assert (
@@ -383,7 +394,13 @@ def test_repr_scalar_by_basis_interpolation_sympy_mode(
     fj = f(xj)  # noqa: F841
     interp_scalar = f.interp_ineq("x_i", "x_j", sympy_mode=True)
     em = exm.ExpressionManager(pep_context)
-    expected_repr = "-f(x_i) + f(x_j) + ⟨x_i, grad_f(x_j)⟩ - ⟨x_j, grad_f(x_j)⟩ + 1/2*|grad_f(x_i)|^2 - ⟨grad_f(x_i), grad_f(x_j)⟩ + 1/2*|grad_f(x_j)|^2"
+    xigj = me.INNER_PROD_STR.format(A="x_i", B="grad_f(x_j)")
+    xjgj = me.INNER_PROD_STR.format(A="x_j", B="grad_f(x_j)")
+    gigj = me.INNER_PROD_STR.format(A="grad_f(x_i)", B="grad_f(x_j)")
+    expected_repr = (
+        f"-f(x_i) + f(x_j) + {xigj} - {xjgj} + 1/2*|grad_f(x_i)|^2"
+        f" - {gigj} + 1/2*|grad_f(x_j)|^2"
+    )
     assert (
         em.repr_scalar_by_basis(interp_scalar, greedy_square=False, sympy_mode=True)
         == expected_repr
