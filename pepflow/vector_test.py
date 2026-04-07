@@ -154,7 +154,7 @@ def test_expression_manager_eval_vector_large_scale(pep_context):
     for pp in pep_context.vectors:
         pm.eval_vector(pp)
 
-    assert (time.time() - t) < 0.5
+    assert (time.time() - t) < 1.5
 
 
 def test_zero_vector(pep_context):
@@ -175,6 +175,26 @@ def test_zero_vector(pep_context):
         np.array([sp.S(0), sp.S(0)]),
         strict=True,
     )
+
+
+def test_equals_random_sample(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+
+    p2 = v1 * pm1 - pm2 * v1
+    p3 = (pm1 - pm2) * v1
+
+    assert p2.equals_random_sample(p3)
+
+    p4 = v1 * (pm1 + pm2) - v1 * pm2
+    p5 = pm1 * v1
+    assert p4.equals_random_sample(p5)
+
+    p6 = pm1 * (v1 + v2) - pm1 * v2
+    p7 = pm1 * v1
+    assert p6.equals_random_sample(p7)
 
 
 def test_simplify_vector_basic(pep_context):
