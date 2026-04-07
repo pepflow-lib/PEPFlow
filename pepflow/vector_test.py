@@ -178,14 +178,25 @@ def test_zero_vector(pep_context):
 
 
 def test_equals_random_sample(pep_context):
-    p1 = vector.Vector(is_basis=True, tags=["p1"])
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
     pm1 = parameter.Parameter(name="pm1")
     pm2 = parameter.Parameter(name="pm2")
 
-    p2 = p1 * pm1 - pm2 * p1
-    p3 = (pm1 - pm2) * p1
+    p2 = v1 * pm1 - pm2 * v1
+    p3 = (pm1 - pm2) * v1
 
     assert p2.equals_random_sample(p3)
+
+    p4 = v1 * (pm1 + pm2) - v1 * pm2
+    p5 = pm1 * v1
+    assert p4.equals_random_sample(p5)
+
+    p6 = pm1 * (v1 + v2) - pm1 * v2
+    p7 = pm1 * v1
+    assert p6.equals_random_sample(p7)
+
+
 def test_simplify_vector_basic(pep_context):
     p1 = vector.Vector(is_basis=True, tags=["p1"])
     p2 = vector.Vector(is_basis=True, tags=["p2"])

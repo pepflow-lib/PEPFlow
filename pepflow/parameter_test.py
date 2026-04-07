@@ -26,7 +26,7 @@ import sympy as sp
 from pepflow import pep_context as pc
 from pepflow import registry as reg
 from pepflow.expression_manager import ExpressionManager
-from pepflow.parameter import Parameter
+from pepflow.parameter import Parameter, ParameterByDictRepresentation
 from pepflow.scalar import Scalar
 from pepflow.vector import Vector
 
@@ -221,3 +221,14 @@ def test_parameter_simplify_basic(pep_context: pc.PEPContext):
     p2 = 2 * pm1
     assert p1.simplify().equiv(p2.simplify())
     assert p1.simplify() != p2.simplify()
+
+
+def test_parameter_get_names_with_dict_representation(pep_context: pc.PEPContext):
+    pm1 = Parameter("pm1")
+    pm2 = Parameter("pm2")
+    pm3 = Parameter("pm3")
+
+    composite = (pm1 + 2 * pm2 - pm3).simplify()
+
+    assert isinstance(composite.eval_expression, ParameterByDictRepresentation)
+    assert composite.get_names() == {"pm1", "pm2", "pm3"}
