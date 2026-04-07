@@ -474,7 +474,7 @@ class Parameter:
             ),
         )
 
-    def get_names(self) -> set[Parameter]:
+    def get_names(self) -> set[str]:
         """A function that collects all `name`s in a :class:`Parameter` object."""
         names = set()
         if self.eval_expression is None:

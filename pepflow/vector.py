@@ -673,7 +673,7 @@ class Vector:
         em = ExpressionManager(ctx, resolve_parameters=resolve_parameters)
         return em.repr_vector_by_basis(self, sympy_mode=sympy_mode)
 
-    def get_names(self) -> set[param.Parameter]:
+    def get_names(self) -> set[str]:
         """A function that collects all `name`s in a :class:`Vector` object."""
         names = set()
         if isinstance(self.eval_expression, VectorRepresentation):
