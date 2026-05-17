@@ -28,6 +28,7 @@ import numpy as np
 import sympy as sp
 
 from pepflow import math_expression as me
+from pepflow import parameter as param
 from pepflow import pep_context as pc
 from pepflow import utils
 from pepflow.scalar import Scalar, ScalarByBasisRepresentation, ScalarRepresentation
@@ -671,3 +672,56 @@ class Vector:
             raise RuntimeError("Did you forget to create a context?")
         em = ExpressionManager(ctx, resolve_parameters=resolve_parameters)
         return em.repr_vector_by_basis(self, sympy_mode=sympy_mode)
+
+    def get_param_names(self) -> set[str]:
+        """A function that collects all parameter names in a :class:`Vector` object."""
+        names = set()
+        if isinstance(self.eval_expression, VectorRepresentation):
+            left_vector = self.eval_expression.left_vector
+            right_vector = self.eval_expression.right_vector
+            if isinstance(left_vector, Vector) or isinstance(
+                left_vector, param.Parameter
+            ):
+                names.update(left_vector.get_param_names())
+            if isinstance(right_vector, Vector) or isinstance(
+                right_vector, param.Parameter
+            ):
+                names.update(right_vector.get_param_names())
+        elif isinstance(self.eval_expression, VectorByBasisRepresentation):
+            for coeff in self.eval_expression.coeffs.values():
+                if isinstance(coeff, param.Parameter):
+                    names.update(coeff.get_param_names())
+        return names
+
+    def equiv_by_randomness(
+        self,
+        other,
+        ctx: pc.PEPContext | None = None,
+        seed: int | None = None,
+        repetitions: int = 3,
+        atol: float = 1e-9,
+    ) -> bool:
+        """A function that determines whether two :class:Vector objects are
+        equivalent by comparing numerical values obtained by substituting all
+        parameters with randomly generated numbers."""
+        from pepflow.expression_manager import ExpressionManager
+
+        if repetitions < 1:
+            raise ValueError("repetitions should be at least 1.")
+        if atol < 0:
+            raise ValueError("atol should be non-negative.")
+        if ctx is None:
+            ctx = pc.get_current_context()
+        if ctx is None:
+            raise RuntimeError("Did you forget to create a context?")
+        diff = self - other
+        parameters = diff.get_param_names()
+        rng = np.random.default_rng(seed)
+
+        for _ in range(repetitions):
+            resolve_parameters_random = {name: rng.random() for name in parameters}
+            em = ExpressionManager(ctx, resolve_parameters=resolve_parameters_random)
+            diff_resolved = em.eval_vector(diff, sympy_mode=False).coords
+            if np.any(np.abs(diff_resolved) > atol):
+                return False
+        return True

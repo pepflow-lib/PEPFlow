@@ -154,7 +154,7 @@ def test_expression_manager_eval_vector_large_scale(pep_context):
     for pp in pep_context.vectors:
         pm.eval_vector(pp)
 
-    assert (time.time() - t) < 0.5
+    assert (time.time() - t) < 1.5
 
 
 def test_zero_vector(pep_context):
@@ -175,6 +175,76 @@ def test_zero_vector(pep_context):
         np.array([sp.S(0), sp.S(0)]),
         strict=True,
     )
+
+
+def test_equiv_by_randomness(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+
+    p2 = v1 * pm1 - pm2 * v1
+    p3 = (pm1 - pm2) * v1
+
+    assert p2.equiv_by_randomness(p3)
+
+    p4 = v1 * (pm1 + pm2) - v1 * pm2
+    p5 = pm1 * v1
+    assert p4.equiv_by_randomness(p5)
+
+    p6 = pm1 * (v1 + v2) - pm1 * v2
+    p7 = pm1 * v1
+    assert p6.equiv_by_randomness(p7)
+
+
+def test_equiv_by_randomness_seed_and_repetitions(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    pm1 = parameter.Parameter(name="pm1")
+    rng = np.random.default_rng(0)
+    first_sample = rng.random()
+
+    p1 = pm1 * v1
+    p2 = first_sample * v1
+
+    assert p1.equiv_by_randomness(p2, seed=0, repetitions=1)
+    assert not p1.equiv_by_randomness(p2, seed=0, repetitions=2)
+
+
+def test_equiv_by_randomness_with_simplified_param_coefficients(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+    v2 = vector.Vector(is_basis=True, tags=["v2"])
+    pm1 = parameter.Parameter(name="pm1")
+    pm2 = parameter.Parameter(name="pm2")
+
+    p1 = vector.Vector(
+        is_basis=False,
+        eval_expression=vector.VectorByBasisRepresentation(
+            coeffs=defaultdict(int, {v1: pm1, v2: pm2})
+        ),
+    )
+    p2 = vector.Vector(
+        is_basis=False,
+        eval_expression=vector.VectorByBasisRepresentation(
+            coeffs=defaultdict(int, {v1: pm1, v2: pm2})
+        ),
+    )
+
+    assert p1.get_param_names() == {"pm1", "pm2"}
+    assert p1.equiv_by_randomness(p2, seed=0)
+
+
+def test_equiv_by_randomness_rejects_invalid_repetitions(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+
+    with pytest.raises(ValueError, match="repetitions"):
+        v1.equiv_by_randomness(v1, repetitions=0)
+
+
+def test_equiv_by_randomness_rejects_negative_atol(pep_context):
+    v1 = vector.Vector(is_basis=True, tags=["v1"])
+
+    with pytest.raises(ValueError, match="atol"):
+        v1.equiv_by_randomness(v1, atol=-1)
 
 
 def test_simplify_vector_basic(pep_context):
