@@ -231,4 +231,4 @@ def test_parameter_get_names_with_dict_representation(pep_context: pc.PEPContext
     composite = (pm1 + 2 * pm2 - pm3).simplify()
 
     assert isinstance(composite.eval_expression, ParameterByDictRepresentation)
-    assert composite.get_names() == {"pm1", "pm2", "pm3"}
+    assert composite.get_param_names() == {"pm1", "pm2", "pm3"}

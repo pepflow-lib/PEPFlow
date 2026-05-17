@@ -474,7 +474,7 @@ class Parameter:
             ),
         )
 
-    def get_names(self) -> set[str]:
+    def get_param_names(self) -> set[str]:
         """A function that collects all `name`s in a :class:`Parameter` object."""
         names = set()
         if self.eval_expression is None:
@@ -482,14 +482,14 @@ class Parameter:
         elif isinstance(self.eval_expression, ParameterByDictRepresentation):
             for monomial in self.eval_expression.numerator_polynomial_dict.keys():
                 for param_with_name, _ in monomial.powers:
-                    names.update(param_with_name.get_names())
+                    names.update(param_with_name.get_param_names())
         else:
             left_param = self.eval_expression.left_param
             right_param = self.eval_expression.right_param
             if isinstance(left_param, Parameter):
-                names.update(left_param.get_names())
+                names.update(left_param.get_param_names())
             if isinstance(right_param, Parameter):
-                names.update(right_param.get_names())
+                names.update(right_param.get_param_names())
         return names
 
     def equiv(self, other: Any) -> bool:
