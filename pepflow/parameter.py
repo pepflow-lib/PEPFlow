@@ -344,10 +344,10 @@ class Parameter:
         self, resolve_parameters: dict[str, utils.NUMERICAL_TYPE]
     ) -> utils.NUMERICAL_TYPE:
         if self.eval_expression is None:
-            val = resolve_parameters.get(self.name, NOT_FOUND)  # ty:ignore
+            val = resolve_parameters.get(self.name, NOT_FOUND)
             if val is NOT_FOUND:
                 raise ValueError(f"Cannot resolve Parameter named: {self.name}")
-            return val
+            return val  # ty:ignore
 
         if isinstance(self.eval_expression, ParameterByDictRepresentation):
             return NotImplemented  # TODO: implement this
