@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import itertools
 import numbers
+import sys
 import uuid
 from functools import cached_property
 from typing import TYPE_CHECKING
@@ -159,7 +160,10 @@ class Operator:
 
         for tag in self.tags:
             if tag in reg.REGISTERED_FUNC_AND_OPER_DICT:
-                print(f"Warning: operator with tag {tag} has been created before.")
+                print(
+                    f"Warning: operator with tag {tag} has been created before.",
+                    file=sys.stderr,
+                )
 
             reg.REGISTERED_FUNC_AND_OPER_DICT[tag] = self
 
@@ -184,7 +188,10 @@ class Operator:
             tag (str): The new tag to be added to the `tags` list.
         """
         if tag in reg.REGISTERED_FUNC_AND_OPER_DICT:
-            print(f"Warning: operator with tag {tag} has been created before.")
+            print(
+                f"Warning: operator with tag {tag} has been created before.",
+                file=sys.stderr,
+            )
 
         reg.REGISTERED_FUNC_AND_OPER_DICT[tag] = self
         self.tags.append(tag)
@@ -946,3 +953,109 @@ class LipschitzMonotoneOperator(Operator):
             )
         coef = sp.S(self.L) if sympy_mode else self.L
         return coef**2 * (x1 - x2) ** 2 - (u1 - u2) ** 2
+
+
+@attrs.frozen(kw_only=True, repr=False)
+class StronglyMonotoneOperator(Operator):
+    """
+    The :class:`StronglyMonotoneOperator` class represents a strongly monotone operator.
+
+    The :class:`StronglyMonotoneOperator` class is a child of :class:`Operator`.
+
+    We can instantiate a :class:`StronglyMonotoneOperator` object as follows:
+
+    Example:
+        >>> import pepflow as pf
+        >>> A = pf.StronglyMonotoneOperator(is_basis=True, tags=["A"], mu=1)
+    """
+
+    mu: utils.NUMERICAL_TYPE | Parameter
+
+    def __attrs_post_init__(self):
+        super().__attrs_post_init__()
+        if isinstance(self.mu, utils.NUMERICAL_TYPE):
+            assert self.mu > 0
+
+    def __hash__(self):
+        return super().__hash__()
+
+    def add_tag(self, tag: str) -> StronglyMonotoneOperator:
+        """Add a new tag for this :class:`StronglyMonotoneOperator` object.
+
+        Args:
+            tag (str): The new tag to be added to the `tags` list.
+        """
+        self.tags.append(tag)
+        return self
+
+    def strongly_monotone_inequality_constraints(
+        self, duplet_i, duplet_j
+    ) -> ct.ScalarConstraint:
+        return (
+            (duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).ge(
+            self.mu * (duplet_i.point - duplet_j.point) ** 2,
+            name=f"{self.tag} strongly monotone:{duplet_i.point.tag},{duplet_j.point.tag}",
+        )
+
+    def get_interpolation_constraints_by_group(
+        self, pep_context: pc.PEPContext | None = None
+    ) -> pc.ConstraintData:
+        """Return a :class:`ConstraintData` object that manages the operator's
+        groups of interpolation conditions.
+
+        References:
+            E. K. Ryu, A. B. Taylor, C. Bergeling, and P. Giselsson, Operator splitting
+            performance estimation: Tight contraction factors and optimal parameter selection,
+            SIAM Journal on Optimization, 30 (2020), pp. 2251–2271.
+        """
+        cd = pc.ConstraintData(func_or_oper=self)
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to create a context?")
+
+        # We order the points in this case because the interpolation
+        # constraints are symmetric, i.e., -<A x_1 - A x_0, x_1 - x_0> <= - mu * || x_1 - x_0||^2
+        # is the same as -<A x_0 - A x_1, x_0 - x_1> <= - mu * || x_1 - x_0||^2.
+        ordered_duplets = [
+            pep_context.get_duplet_by_point_tag(points.tag, self)
+            for points in pep_context.tracked_point(self)
+        ]
+
+        scal_constraint = []
+        for i, j in itertools.combinations(ordered_duplets, 2):
+            scal_constraint.append(self.strongly_monotone_inequality_constraints(i, j))
+        cd.add_sc_constraint("Strongly Monotone Operator Inequality", scal_constraint)
+
+        return cd
+
+    def strongly_monotone_ineq(
+        self,
+        p1: vt.Vector | str,
+        p2: vt.Vector | str,
+        pep_context: pc.PEPContext | None = None,
+        sympy_mode: bool = False,
+    ) -> sc.Scalar:
+        """Generate the strongly monotone inequality :class:`Scalar` object between two
+        :class:`Vector` objects through the objects themselves or their tags.
+
+        The strongly monotone inequality between two points :math:`p_1, p_2` for a
+        operator :math:`A` is
+
+        .. math:: \\langle A(p_1) - A(p_2), p_1 - p_2 \\rangle >= mu * (p1 - p2) ** 2.
+
+        Args:
+            p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
+            p2 (:class:`Vector` | str): A :class:`Vector` :math:`p_2` point or its tag.
+        """
+        if pep_context is None:
+            pep_context = pc.get_current_context()
+        if pep_context is None:
+            raise RuntimeError("Did you forget to specify a context?")
+
+        x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
+        x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
+
+        coef = sp.S(self.mu) if sympy_mode else self.mu
+        return -(x1 - x2) * (u1 - u2) + coef * (x1 - x2) ** 2

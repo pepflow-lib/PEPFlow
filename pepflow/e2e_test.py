@@ -700,6 +700,78 @@ def test_feg_e2e():
         assert math.isclose(dual_result.opt_value, expected_opt_value_N, rel_tol=1e-2)
 
 
+def test_oc_halpern_e2e():
+    oc_halpern = pc.PEPContext("oc_halpern").set_as_current()
+    pep_builder = pep.PEPBuilder(oc_halpern)
+    alpha = 1
+    N_range = 4
+    mu = 0.2
+
+    # Declare monotone operator.
+    A = operator.StronglyMonotoneOperator(is_basis=True, tags=["A"], mu=mu)
+
+    # Declare a parameter used in the algorithm.
+    beta = [pm.Parameter(f"beta_{i}") for i in range(N_range + 1)]
+
+    @functools.cache
+    def beta_reciprocal(k):
+        if k == -1:
+            return 0
+        return beta_reciprocal(k - 1) + (1 + 2 * mu) ** (2 * k)
+
+    @functools.cache
+    def gamma_geomteric_sum(N):
+        if N == -1:
+            return 0
+        return gamma_geomteric_sum(N - 1) + (1 + 2 * mu) ** N
+
+    # Define the initial points.
+    y_0 = pep_builder.add_init_point("y_0")
+    y = y_0
+
+    x_star = A.set_zero_point("x_star")
+    pep_builder.add_initial_constraint(
+        ((y_0 - x_star) ** 2).le(1, name="initial_condition")
+    )
+
+    for N in range(1, N_range + 1):
+        x = A.resolvent(y, alpha, tag=f"x_{N}")
+        y = (
+            (1 - beta[N]) * ((1 + 1 / (1 + 2 * mu)) * x - 1 / (1 + 2 * mu) * y)
+            + beta[N] * y_0
+        ).add_tag(f"y_{N}")
+
+        pep_builder.set_performance_metric(
+            (
+                (1 + 1 / (1 + 2 * mu)) * oc_halpern[f"y_{N - 1}"]
+                - (1 + 1 / (1 + 2 * mu)) * oc_halpern[f"x_{N}"]
+            )
+            ** 2
+        )
+
+        expected_opt_value_N_minus_1 = (1 + 1 / (1 + 2 * mu)) ** 2 * (
+            1 / gamma_geomteric_sum(N - 1)
+        ) ** 2
+
+        result = pep_builder.solve_primal(
+            resolve_parameters={
+                f"beta_{i}": 1 / beta_reciprocal(i) for i in range(N + 1)
+            }
+        )
+        assert math.isclose(
+            result.opt_value, expected_opt_value_N_minus_1, rel_tol=1e-2
+        )
+
+        dual_result = pep_builder.solve_dual(
+            resolve_parameters={
+                f"beta_{i}": 1 / beta_reciprocal(i) for i in range(N + 1)
+            }
+        )
+        assert math.isclose(
+            dual_result.opt_value, expected_opt_value_N_minus_1, rel_tol=1e-2
+        )
+
+
 def test_bppm_e2e():
     ctx = pc.PEPContext("bppm").set_as_current()
     pep_builder = pep.PEPBuilder(ctx)

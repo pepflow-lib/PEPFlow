@@ -39,3 +39,11 @@
     :members:
     :show-inheritance:
 ```
+
+## Strongly Monotone Operator
+
+```{eval-rst} 
+.. autoclass:: pepflow.StronglyMonotoneOperator
+    :members:
+    :show-inheritance:
+```
