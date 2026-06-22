@@ -19,7 +19,9 @@
 
 from __future__ import annotations
 
+import warnings
 from itertools import combinations
+from math import comb
 from typing import TYPE_CHECKING
 
 import numpy as np
@@ -37,7 +39,7 @@ if TYPE_CHECKING:
 
 
 def vectors_in_column_space(
-    V: np.ndarray,
+    V: Scalar,
     vecs: list[Vector],
     pep_context: pc.PEPContext | None = None,
     *,
@@ -48,7 +50,8 @@ def vectors_in_column_space(
     """Collect vectors that lie in the column space of ``V``.
 
     Args:
-        V (np.ndarray): Matrix representation of the quadratic form.
+        V (:class:`Scalar`): Scalar expression built from vector inner products.
+            Its evaluated matrix is used for the column-space test.
         vecs (list[:class:`Vector`]): Candidate vectors to test for membership
             in ``col(V)``.
         pep_context (:class:`PEPContext` | None): The :class:`PEPContext` object
@@ -63,6 +66,9 @@ def vectors_in_column_space(
         list[:class:`Vector`]: Vectors that lie in ``col(V)`` within the given
         tolerances.
     """
+    if not vecs:
+        return []
+
     if pep_context is None:
         pep_context = pc.get_current_context()
     if pep_context is None:
@@ -72,7 +78,8 @@ def vectors_in_column_space(
 
     # Build an orthonormal basis for the column space of V.
     U, singular_values, _ = np.linalg.svd(V_coords, full_matrices=False)
-    tol = atol + rtol * singular_values[0]
+    scale = singular_values[0] if singular_values.size else 0.0
+    tol = atol + rtol * scale
     rank = np.sum(singular_values > tol)
     column_space_basis = U[:, :rank]
 
@@ -112,6 +119,9 @@ def select_independent_subset(
     Returns:
         tuple[list[Vector], list[int]]: The selected vectors and their indices in
         ``vecs``.
+
+    Note:
+        The order of ``vecs`` matters because vectors are selected greedily.
 
     Example:
         >>> import pepflow as pf
@@ -164,9 +174,10 @@ def find_symmetric_coefficient_matrix(
     resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
     indep_tol: float = 1e-7,
 ) -> np.ndarray:
-    """Find the symmetric coefficient matrix representing ``V`` over ``vecs``.
+    """Find the symmetric coefficient matrix for the inner-product part of ``V``.
 
-    Finds a coefficient matrix ``A`` such that
+    Finds a coefficient matrix ``A`` such that the inner-product part of ``V``
+    satisfies
 
     .. math:: V \\approx [v_1 \\; \\cdots \\; v_m] A [v_1 \\; \\cdots \\; v_m]^\\top.
 
@@ -179,8 +190,8 @@ def find_symmetric_coefficient_matrix(
     .. math:: B_{ii} = v_i v_i^\\top,\\quad B_{ij} = v_i v_j^\\top + v_j v_i^\\top \\quad (i < j).
 
     Args:
-        V (:class:`Scalar`): Symmetric scalar expression with
-            ``inner_prod_coords``.
+        V (:class:`Scalar`): Scalar expression whose inner-product coefficients
+            are decomposed.
         vecs (list[:class:`Vector`]): Vector list used to build the
             decomposition basis.
         pep_context (:class:`PEPContext` | None): The :class:`PEPContext` object
@@ -222,20 +233,42 @@ def _find_symmetric_coefficient_matrix_from_coords(
     indep_tol: float = 1e-7,
 ) -> np.ndarray:
     """Numerical backend for symmetric decomposition from pre-evaluated coords."""
-    m = len(vecs)
+    num_vecs = len(vecs)
+    V_rank = np.linalg.matrix_rank(V_coords, tol=indep_tol)
+
+    # Handle the empty-basis case before stacking vecs.
+    if num_vecs == 0:
+        vecs_rank = 0
+        if V_rank > vecs_rank:
+            raise ValueError(f"rank(V_coords)={V_rank} exceeds rank(vecs)={vecs_rank}.")
+        return np.zeros((0, 0))
+
+    vecs_matrix = np.stack(vecs, axis=1)
+    vecs_rank = np.linalg.matrix_rank(vecs_matrix, tol=indep_tol)
+
+    # A basis with too small a span cannot represent V_coords.
+    if V_rank > vecs_rank:
+        raise ValueError(f"rank(V_coords)={V_rank} exceeds rank(vecs)={vecs_rank}.")
+
+    # Check whether the columns of V_coords lie in span(vecs).
+    projection_coeffs, *_ = np.linalg.lstsq(vecs_matrix, V_coords, rcond=None)
+    projection_residual = np.linalg.norm(
+        V_coords - vecs_matrix @ projection_coeffs, ord="fro"
+    )
+    if projection_residual > indep_tol * max(1.0, np.linalg.norm(V_coords, ord="fro")):
+        raise ValueError("The columns of V_coords are not contained in span(vecs).")
 
     # Require an independent vector basis for the coefficient matrix
-    rank = np.linalg.matrix_rank(np.stack(vecs, axis=1), tol=indep_tol)
-    if rank < m:
+    if vecs_rank < num_vecs:
         raise ValueError(
-            f"vecs are linearly dependent: {m} vectors but rank is {rank}."
+            f"vecs are linearly dependent: {num_vecs} vectors but rank is {vecs_rank}."
         )
 
     # Build flattened symmetric outer-product basis matrices
     flattened_basis = []
     coef_indices = []
-    for i in range(m):
-        for j in range(i, m):
+    for i in range(num_vecs):
+        for j in range(i, num_vecs):
             basis_matrix = np.outer(vecs[i], vecs[j])
             if i != j:
                 basis_matrix = basis_matrix + basis_matrix.T
@@ -249,7 +282,7 @@ def _find_symmetric_coefficient_matrix_from_coords(
     coeffs, *_ = np.linalg.lstsq(stacked_basis, V_flattened, rcond=None)
 
     # Place solved coefficients back into a symmetric matrix
-    coeff_matrix = np.zeros((m, m))
+    coeff_matrix = np.zeros((num_vecs, num_vecs))
     for (i, j), c in zip(coef_indices, coeffs):
         coeff_matrix[i, j] = c
         coeff_matrix[j, i] = c
@@ -266,14 +299,15 @@ def find_basis_with_sparsest_coefficients(
     zero_tol: float = 1e-6,
     indep_tol: float = 1e-7,
 ) -> tuple[list[Vector], np.ndarray]:
-    """Find a basis whose coefficient matrix represents ``V`` most sparsely.
+    """Find a basis whose coefficient matrix sparsely represents inner products.
 
     Among linearly independent subsets of size ``rank(vecs)``, this function
-    finds a subset whose coefficient matrix has the maximum number of zero entries.
+    finds a subset whose coefficient matrix for the inner-product part of ``V``
+    has the maximum number of zero entries.
 
     Args:
-        V (:class:`Scalar`): Symmetric scalar expression with
-            ``inner_prod_coords``.
+        V (:class:`Scalar`): Scalar expression whose inner-product coefficients
+            are decomposed.
         vecs (list[:class:`Vector`]): Candidate vectors used for subset search.
         pep_context (:class:`PEPContext` | None): The :class:`PEPContext` object
             we consider. `None` if we consider the current global
@@ -310,10 +344,8 @@ def find_basis_with_sparsest_coefficients(
     # Find fixed-vector indices for constrained subset search
     fixed_idx: list[int] = []
     if fixed_vectors:
-        idx_by_id = {id(v): i for i, v in enumerate(vecs)}
-
         # Validate that every fixed vector is available in the input vectors
-        not_in_vecs = [v for v in fixed_vectors if id(v) not in idx_by_id]
+        not_in_vecs = [v for v in fixed_vectors if v not in vecs]
         if not_in_vecs:
             not_in_vecs_str = ", ".join(str(v) for v in not_in_vecs)
             raise ValueError(
@@ -321,12 +353,7 @@ def find_basis_with_sparsest_coefficients(
             )
 
         # Collect fixed-vector indices
-        seen_idx = set()
-        for v in fixed_vectors:
-            i = idx_by_id[id(v)]
-            if i not in seen_idx:
-                seen_idx.add(i)
-                fixed_idx.append(i)
+        fixed_idx = sorted({vecs.index(v) for v in fixed_vectors})
 
     if len(fixed_idx) > rank:
         raise ValueError(
@@ -340,6 +367,13 @@ def find_basis_with_sparsest_coefficients(
     fixed_idx_set = set(fixed_idx)
     free_idx = [i for i in range(len(vecs)) if i not in fixed_idx_set]
     num_free_to_pick = rank - len(fixed_idx)
+
+    # The search cost scales with the number of candidate subsets.
+    num_subsets = comb(len(free_idx), num_free_to_pick)
+    if num_subsets > 1_000:
+        warnings.warn(
+            f"Exhaustive subset search may be slow: checking {num_subsets} subsets."
+        )
 
     # Search all feasible bases and keep the one with the sparsest coefficients
     for picked_free in combinations(free_idx, num_free_to_pick):

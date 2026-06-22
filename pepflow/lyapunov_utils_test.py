@@ -25,7 +25,7 @@ import pytest
 from pepflow import lyapunov_utils
 from pepflow import pep_context as pc
 from pepflow import registry as reg
-from pepflow import vector
+from pepflow import scalar, vector
 from pepflow.pep_result import MatrixWithNames
 
 
@@ -61,6 +61,30 @@ def test_vectors_in_column_space_filters_candidates(
     assert selected == [e1, two_e1]
 
 
+def test_vectors_in_column_space_handles_degenerate_cases(
+    pep_context: pc.PEPContext,
+):
+    zero_dim_V = scalar.Scalar.zero()
+
+    assert (
+        lyapunov_utils.vectors_in_column_space(zero_dim_V, [], pep_context=pep_context)
+        == []
+    )
+
+    e1 = vector.Vector(is_basis=True, tags=["e_1"])
+    zero_vector = vector.Vector.zero()
+
+    assert (
+        lyapunov_utils.vectors_in_column_space(
+            scalar.Scalar.zero(), [], pep_context=pep_context
+        )
+        == []
+    )
+    assert lyapunov_utils.vectors_in_column_space(
+        scalar.Scalar.zero(), [zero_vector, e1], pep_context=pep_context
+    ) == [zero_vector]
+
+
 def test_select_independent_subset_skips_dependent_vectors(
     pep_context: pc.PEPContext, basis_vectors
 ):
@@ -88,6 +112,34 @@ def test_find_symmetric_coefficient_matrix_recovers_known_coefficients(
 
     expected = np.array([[2.0, 1.5], [1.5, 5.0]])
     np.testing.assert_allclose(coeff_matrix, expected, atol=1e-10)
+
+
+def test_find_symmetric_coefficient_matrix_helper_handles_edge_cases():
+    coeff_matrix = lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
+        np.zeros((0, 0)), []
+    )
+
+    np.testing.assert_allclose(coeff_matrix, np.zeros((0, 0)))
+
+    with pytest.raises(ValueError, match=r"rank\(V_coords\)=1 exceeds rank\(vecs\)=0"):
+        lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(np.eye(1), [])
+
+    with pytest.raises(ValueError, match=r"rank\(V_coords\)=2 exceeds rank\(vecs\)=1"):
+        lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
+            np.eye(2), [np.array([1.0, 0.0])]
+        )
+
+    with pytest.raises(ValueError, match="not contained in span"):
+        lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
+            np.array([[0.0, 0.0], [0.0, 1.0]]),
+            [np.array([1.0, 0.0])],
+        )
+
+    with pytest.raises(ValueError, match="vecs are linearly dependent"):
+        lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
+            np.array([[1.0, 0.0], [0.0, 0.0]]),
+            [np.array([1.0, 0.0]), np.array([2.0, 0.0])],
+        )
 
 
 def test_find_basis_with_sparsest_coefficients_selects_sparse_basis(
@@ -126,6 +178,22 @@ def test_find_basis_with_sparsest_coefficients_respects_fixed_vectors(
     assert e1 in basis
     assert len(basis) == 2
     assert coeff_matrix.shape == (2, 2)
+
+
+def test_find_basis_with_sparsest_coefficients_warns_for_large_subset_search(
+    pep_context: pc.PEPContext,
+):
+    e1 = vector.Vector(is_basis=True, tags=["e_1"])
+    e2 = vector.Vector(is_basis=True, tags=["e_2"])
+    basis = [e1, e2]
+    for i in range(150):
+        basis.append(e1 + (i + 1) * e2)
+    V = e1**2 + e2**2
+
+    with pytest.warns(UserWarning, match="checking 11476 subsets"):
+        lyapunov_utils.find_basis_with_sparsest_coefficients(
+            V, basis, pep_context=pep_context
+        )
 
 
 def test_complete_basis_with_sparsifying_last_vector_eliminates_last_cross_block(
