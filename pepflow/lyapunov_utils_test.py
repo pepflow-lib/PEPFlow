@@ -121,10 +121,10 @@ def test_find_symmetric_coefficient_matrix_helper_handles_edge_cases():
 
     np.testing.assert_allclose(coeff_matrix, np.zeros((0, 0)))
 
-    with pytest.raises(ValueError, match=r"rank\(V_coords\)=1 exceeds rank\(vecs\)=0"):
+    with pytest.raises(ValueError, match="not contained in span"):
         lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(np.eye(1), [])
 
-    with pytest.raises(ValueError, match=r"rank\(V_coords\)=2 exceeds rank\(vecs\)=1"):
+    with pytest.raises(ValueError, match="not contained in span"):
         lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
             np.eye(2), [np.array([1.0, 0.0])]
         )
@@ -140,6 +140,16 @@ def test_find_symmetric_coefficient_matrix_helper_handles_edge_cases():
             np.array([[1.0, 0.0], [0.0, 0.0]]),
             [np.array([1.0, 0.0]), np.array([2.0, 0.0])],
         )
+
+
+def test_find_symmetric_coefficient_matrix_helper_allows_tiny_residual_rank():
+    coeff_matrix = lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
+        np.diag([2.0, 3.0, 1e-8]),
+        [np.array([1.0, 0.0, 0.0]), np.array([0.0, 1.0, 0.0])],
+    )
+
+    expected = np.array([[2.0, 0.0], [0.0, 3.0]])
+    np.testing.assert_allclose(coeff_matrix, expected, atol=1e-7)
 
 
 def test_find_basis_with_sparsest_coefficients_selects_sparse_basis(

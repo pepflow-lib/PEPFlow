@@ -173,6 +173,7 @@ def find_symmetric_coefficient_matrix(
     *,
     resolve_parameters: dict[str, utils.NUMERICAL_TYPE] | None = None,
     indep_tol: float = 1e-7,
+    span_tol: float = 1e-5,
 ) -> np.ndarray:
     """Find the symmetric coefficient matrix for the inner-product part of ``V``.
 
@@ -200,6 +201,8 @@ def find_symmetric_coefficient_matrix(
         resolve_parameters (dict[str, :class:`NUMERICAL_TYPE`] | None): A
             dictionary that maps the name of parameters to the numerical values.
         indep_tol (float): Tolerance for linear-independence rank checks of ``vecs``.
+        span_tol (float): Tolerance for checking whether ``V`` is represented
+            by the span of ``vecs``.
 
     Raises:
         ValueError: If inputs have incompatible shapes or ``vecs`` are linearly
@@ -223,6 +226,7 @@ def find_symmetric_coefficient_matrix(
         V_coords,
         vecs_coords,
         indep_tol=indep_tol,
+        span_tol=span_tol,
     )
 
 
@@ -231,31 +235,26 @@ def _find_symmetric_coefficient_matrix_from_coords(
     vecs: list[np.ndarray],
     *,
     indep_tol: float = 1e-7,
+    span_tol: float = 1e-5,
 ) -> np.ndarray:
     """Numerical backend for symmetric decomposition from pre-evaluated coords."""
     num_vecs = len(vecs)
-    V_rank = np.linalg.matrix_rank(V_coords, tol=indep_tol)
 
     # Handle the empty-basis case before stacking vecs.
     if num_vecs == 0:
-        vecs_rank = 0
-        if V_rank > vecs_rank:
-            raise ValueError(f"rank(V_coords)={V_rank} exceeds rank(vecs)={vecs_rank}.")
+        if np.linalg.norm(V_coords, ord="fro") > span_tol:
+            raise ValueError("The columns of V_coords are not contained in span(vecs).")
         return np.zeros((0, 0))
 
     vecs_matrix = np.stack(vecs, axis=1)
     vecs_rank = np.linalg.matrix_rank(vecs_matrix, tol=indep_tol)
-
-    # A basis with too small a span cannot represent V_coords.
-    if V_rank > vecs_rank:
-        raise ValueError(f"rank(V_coords)={V_rank} exceeds rank(vecs)={vecs_rank}.")
 
     # Check whether the columns of V_coords lie in span(vecs).
     projection_coeffs, *_ = np.linalg.lstsq(vecs_matrix, V_coords, rcond=None)
     projection_residual = np.linalg.norm(
         V_coords - vecs_matrix @ projection_coeffs, ord="fro"
     )
-    if projection_residual > indep_tol * max(1.0, np.linalg.norm(V_coords, ord="fro")):
+    if projection_residual > span_tol * max(1.0, np.linalg.norm(V_coords, ord="fro")):
         raise ValueError("The columns of V_coords are not contained in span(vecs).")
 
     # Require an independent vector basis for the coefficient matrix
@@ -264,26 +263,27 @@ def _find_symmetric_coefficient_matrix_from_coords(
             f"vecs are linearly dependent: {num_vecs} vectors but rank is {vecs_rank}."
         )
 
-    # Build flattened symmetric outer-product basis matrices
-    flattened_basis = []
-    coef_indices = []
-    for i in range(num_vecs):
-        for j in range(i, num_vecs):
-            basis_matrix = np.outer(vecs[i], vecs[j])
-            if i != j:
-                basis_matrix = basis_matrix + basis_matrix.T
-            flattened_basis_matrix = basis_matrix.reshape(-1)
-            flattened_basis.append(flattened_basis_matrix)
-            coef_indices.append((i, j))
+    # Build flattened symmetric outer-product basis matrices.
+    row_idx, col_idx = np.triu_indices(num_vecs)
+    flattened_outer_products = np.einsum(
+        "ai,bj->ijab", vecs_matrix, vecs_matrix
+    ).reshape(num_vecs, num_vecs, -1)
+    flattened_basis = flattened_outer_products[row_idx, col_idx]
+
+    # Symmetrize off-diagonal basis entries: v_i v_j^T -> v_i v_j^T + v_j v_i^T.
+    off_diagonal = row_idx != col_idx
+    flattened_basis[off_diagonal] += flattened_outer_products[
+        col_idx[off_diagonal], row_idx[off_diagonal]
+    ]
 
     # Solve the vectorized least-squares problem for the coefficients
-    stacked_basis = np.stack(flattened_basis, axis=1)
+    stacked_basis = flattened_basis.T
     V_flattened = V_coords.reshape(-1)
     coeffs, *_ = np.linalg.lstsq(stacked_basis, V_flattened, rcond=None)
 
     # Place solved coefficients back into a symmetric matrix
     coeff_matrix = np.zeros((num_vecs, num_vecs))
-    for (i, j), c in zip(coef_indices, coeffs):
+    for i, j, c in zip(row_idx, col_idx, coeffs):
         coeff_matrix[i, j] = c
         coeff_matrix[j, i] = c
     return coeff_matrix
@@ -298,6 +298,7 @@ def find_basis_with_sparsest_coefficients(
     fixed_vectors: list[Vector] | None = None,
     zero_tol: float = 1e-6,
     indep_tol: float = 1e-7,
+    span_tol: float = 1e-5,
 ) -> tuple[list[Vector], np.ndarray]:
     """Find a basis whose coefficient matrix sparsely represents inner products.
 
@@ -320,6 +321,8 @@ def find_basis_with_sparsest_coefficients(
         zero_tol (float): Absolute threshold for counting near-zero
             coefficients.
         indep_tol (float): Tolerance for linear-independence rank checks.
+        span_tol (float): Tolerance for checking whether ``V`` is represented
+            by the span of each candidate basis.
 
     Returns:
         tuple[list[Vector], np.ndarray]: A best basis and its sparsest
@@ -393,6 +396,7 @@ def find_basis_with_sparsest_coefficients(
             V_coords,
             candidate_basis_coords,
             indep_tol=indep_tol,
+            span_tol=span_tol,
         )
         num_zeros = int(np.sum(np.abs(coeff_matrix) < zero_tol))
 
