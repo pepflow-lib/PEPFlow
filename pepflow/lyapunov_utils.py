@@ -19,13 +19,13 @@
 
 from __future__ import annotations
 
+import itertools
+import math
 import warnings
-from itertools import combinations
-from math import comb
 from typing import TYPE_CHECKING
 
 import numpy as np
-from scipy.linalg import ldl
+import scipy.linalg
 
 from pepflow import expression_manager as exm
 from pepflow import ipython_utils
@@ -36,6 +36,22 @@ from pepflow.pep_result import MatrixWithNames
 if TYPE_CHECKING:
     from pepflow.scalar import Scalar
     from pepflow.vector import Vector
+
+
+def _eval_scalar_inner_prod_coords(
+    V: Scalar,
+    pm: exm.ExpressionManager,
+) -> np.ndarray:
+    """Evaluate the inner-product coordinate matrix of a scalar expression."""
+    return np.asarray(pm.eval_scalar(V).inner_prod_coords, dtype=float)
+
+
+def _eval_vectors_coords(
+    vecs: list[Vector],
+    pm: exm.ExpressionManager,
+) -> list[np.ndarray]:
+    """Evaluate vectors as one-dimensional coordinate arrays."""
+    return [np.asarray(pm.eval_vector(v).coords, dtype=float).ravel() for v in vecs]
 
 
 def vectors_in_column_space(
@@ -74,7 +90,7 @@ def vectors_in_column_space(
     if pep_context is None:
         raise RuntimeError("Did you forget to create a context?")
     pm = exm.ExpressionManager(pep_context, resolve_parameters=resolve_parameters)
-    V_coords = np.asarray(pm.eval_scalar(V).inner_prod_coords, dtype=float)
+    V_coords = _eval_scalar_inner_prod_coords(V, pm)
 
     # Build an orthonormal basis for the column space of V.
     U, singular_values, _ = np.linalg.svd(V_coords, full_matrices=False)
@@ -84,9 +100,7 @@ def vectors_in_column_space(
     column_space_basis = U[:, :rank]
 
     # Detect column-space membership using projection residuals.
-    vector_coords = np.column_stack(
-        [np.asarray(pm.eval_vector(v).coords, dtype=float) for v in vecs]
-    )
+    vector_coords = np.column_stack(_eval_vectors_coords(vecs, pm))
     projections = column_space_basis @ (column_space_basis.T @ vector_coords)
     residuals = np.linalg.norm(vector_coords - projections, axis=0)
     vector_norms = np.linalg.norm(vector_coords, axis=0)
@@ -145,13 +159,13 @@ def select_independent_subset(
     idx = []
 
     for i, v in enumerate(vecs):
-        v_coords = np.asarray(pm.eval_vector(v).coords, dtype=float)
-        v_norm = np.linalg.norm(v_coords)
+        vec_coords = np.asarray(pm.eval_vector(v).coords, dtype=float)
+        v_norm = np.linalg.norm(vec_coords)
         if v_norm == 0:
             continue
 
         # Remove components already spanned by selected vectors.
-        r = v_coords.copy()
+        r = vec_coords.copy()
         for basis_vec in orthonormal_basis:
             r -= basis_vec * (basis_vec @ r)
 
@@ -217,14 +231,12 @@ def find_symmetric_coefficient_matrix(
         raise RuntimeError("Did you forget to create a context?")
     pm = exm.ExpressionManager(pep_context, resolve_parameters=resolve_parameters)
 
-    V_coords = np.asarray(pm.eval_scalar(V).inner_prod_coords, dtype=float)
-    vecs_coords = [
-        np.asarray(pm.eval_vector(u).coords, dtype=float).ravel() for u in vecs
-    ]
+    V_coords = _eval_scalar_inner_prod_coords(V, pm)
+    vec_coords = _eval_vectors_coords(vecs, pm)
 
     return _find_symmetric_coefficient_matrix_from_coords(
         V_coords,
-        vecs_coords,
+        vec_coords,
         indep_tol=indep_tol,
         span_tol=span_tol,
     )
@@ -232,24 +244,24 @@ def find_symmetric_coefficient_matrix(
 
 def _find_symmetric_coefficient_matrix_from_coords(
     V_coords: np.ndarray,
-    vecs: list[np.ndarray],
+    vec_coords: list[np.ndarray],
     *,
     indep_tol: float = 1e-7,
     span_tol: float = 1e-5,
 ) -> np.ndarray:
     """Numerical backend for symmetric decomposition from pre-evaluated coords."""
-    num_vecs = len(vecs)
+    num_vecs = len(vec_coords)
 
-    # Handle the empty-basis case before stacking vecs.
+    # Handle the empty-basis case before stacking vec_coords.
     if num_vecs == 0:
         if np.linalg.norm(V_coords, ord="fro") > span_tol:
             raise ValueError("The columns of V_coords are not contained in span(vecs).")
         return np.zeros((0, 0))
 
-    vecs_matrix = np.stack(vecs, axis=1)
+    vecs_matrix = np.stack(vec_coords, axis=1)
     vecs_rank = np.linalg.matrix_rank(vecs_matrix, tol=indep_tol)
 
-    # Check whether the columns of V_coords lie in span(vecs).
+    # Check whether the columns of V_coords lie in span(vec_coords).
     projection_coeffs, *_ = np.linalg.lstsq(vecs_matrix, V_coords, rcond=None)
     projection_residual = np.linalg.norm(
         V_coords - vecs_matrix @ projection_coeffs, ord="fro"
@@ -337,11 +349,9 @@ def find_basis_with_sparsest_coefficients(
     if not vecs:
         return [], np.zeros((0, 0))
 
-    V_coords = np.asarray(pm.eval_scalar(V).inner_prod_coords, dtype=float)
-    vecs_coords = [
-        np.asarray(pm.eval_vector(u).coords, dtype=float).ravel() for u in vecs
-    ]
-    rank = np.linalg.matrix_rank(np.stack(vecs_coords, axis=1), tol=indep_tol)
+    V_coords = _eval_scalar_inner_prod_coords(V, pm)
+    vec_coords = _eval_vectors_coords(vecs, pm)
+    rank = np.linalg.matrix_rank(np.stack(vec_coords, axis=1), tol=indep_tol)
     fixed_vectors = fixed_vectors or []
 
     # Find fixed-vector indices for constrained subset search
@@ -372,17 +382,17 @@ def find_basis_with_sparsest_coefficients(
     num_free_to_pick = rank - len(fixed_idx)
 
     # The search cost scales with the number of candidate subsets.
-    num_subsets = comb(len(free_idx), num_free_to_pick)
+    num_subsets = math.comb(len(free_idx), num_free_to_pick)
     if num_subsets > 1_000:
         warnings.warn(
             f"Exhaustive subset search may be slow: checking {num_subsets} subsets."
         )
 
     # Search all feasible bases and keep the one with the sparsest coefficients
-    for picked_free in combinations(free_idx, num_free_to_pick):
+    for picked_free in itertools.combinations(free_idx, num_free_to_pick):
         idx = tuple(sorted(fixed_idx + list(picked_free)))
         candidate_basis = [vecs[i] for i in idx]
-        candidate_basis_coords = [vecs_coords[i] for i in idx]
+        candidate_basis_coords = [vec_coords[i] for i in idx]
 
         # Skip subsets that do not span the same space as the input vectors
         candidate_rank = np.linalg.matrix_rank(
@@ -454,12 +464,9 @@ def complete_basis_with_sparsifying_last_vector(
         raise RuntimeError("Did you forget to create a context?")
     pm = exm.ExpressionManager(pep_context, resolve_parameters=resolve_parameters)
 
-    V_coords = np.asarray(pm.eval_scalar(V).inner_prod_coords, dtype=float)
+    V_coords = _eval_scalar_inner_prod_coords(V, pm)
     fixed_basis_matrix = np.stack(
-        [
-            np.asarray(pm.eval_vector(v).coords, dtype=float).ravel()
-            for v in fixed_basis_vectors
-        ],
+        _eval_vectors_coords(fixed_basis_vectors, pm),
         axis=1,
     )
 
@@ -587,7 +594,7 @@ def ldl_decompose_with_reversed_basis(
         )
 
     # Apply any LDL permutation consistently to factors, labels, and basis
-    lower_factor, D, perm = ldl(S_reversed)
+    lower_factor, D, perm = scipy.linalg.ldl(S_reversed)
     perm = np.asarray(perm, dtype=int)
     if not np.array_equal(perm, np.arange(len(perm))):
         lower_factor = lower_factor[perm, :]
