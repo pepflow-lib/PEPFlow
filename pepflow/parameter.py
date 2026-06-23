@@ -347,7 +347,7 @@ class Parameter:
             val = resolve_parameters.get(self.name, NOT_FOUND)
             if val is NOT_FOUND:
                 raise ValueError(f"Cannot resolve Parameter named: {self.name}")
-            return val  # ty:ignore
+            return val  # ty: ignore
 
         if isinstance(self.eval_expression, ParameterByDictRepresentation):
             return NotImplemented  # TODO: implement this
