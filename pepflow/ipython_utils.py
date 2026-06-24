@@ -206,6 +206,15 @@ def pprint_labeled_matrix(
             "The shape of the matrix does not match the length of row_labels and column_labels."
         )
 
+    if raw_matrix.shape == (0, 0):
+        if print_label:
+            display(Math(r"\text{Empty matrix}"))
+        else:
+            display(Matrix(raw_matrix))
+        if return_matrix:
+            return raw_matrix
+        return None
+
     if precision:
         matrix = np.round(np.array(raw_matrix, dtype=float), precision)
     else:

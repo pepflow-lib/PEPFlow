@@ -402,12 +402,16 @@ def find_basis_with_sparsest_coefficients(
             continue
 
         # Sparsity score: count near-zero entries in the coefficient matrix
-        coeff_matrix = _find_symmetric_coefficient_matrix_from_coords(
-            V_coords,
-            candidate_basis_coords,
-            indep_tol=indep_tol,
-            span_tol=span_tol,
-        )
+        try:
+            coeff_matrix = _find_symmetric_coefficient_matrix_from_coords(
+                V_coords,
+                candidate_basis_coords,
+                indep_tol=indep_tol,
+                span_tol=span_tol,
+            )
+        except ValueError:
+            # This candidate cannot represent V, so keep searching.
+            continue
         num_zeros = int(np.sum(np.abs(coeff_matrix) < zero_tol))
 
         # Update the best basis
@@ -416,11 +420,14 @@ def find_basis_with_sparsest_coefficients(
             best_basis = candidate_basis
             sparsest_coeff_matrix = coeff_matrix
 
-    if max_zeros < 0 and fixed_vectors:
-        fixed_s = ", ".join(str(v) for v in fixed_vectors)
-        raise ValueError(
-            f"No feasible independent subset satisfies `fixed_vectors`: {fixed_s}"
-        )
+    if max_zeros < 0:
+        if fixed_vectors:
+            fixed_s = ", ".join(str(v) for v in fixed_vectors)
+            print(
+                f"No feasible independent subset satisfies `fixed_vectors`: {fixed_s}"
+            )
+        else:
+            print("No feasible independent subset can represent V.")
 
     return best_basis, sparsest_coeff_matrix
 
