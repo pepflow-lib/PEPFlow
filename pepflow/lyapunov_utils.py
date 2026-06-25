@@ -180,6 +180,10 @@ def select_independent_subset(
     return selected, idx
 
 
+class SpanRepresentationError(ValueError):
+    """Raised when a scalar/vector expression cannot be represented in a span."""
+
+
 def find_symmetric_coefficient_matrix(
     V: Scalar,
     vecs: list[Vector],
@@ -219,6 +223,7 @@ def find_symmetric_coefficient_matrix(
             by the span of ``vecs``.
 
     Raises:
+        SpanRepresentationError: If ``V`` is not represented by the span of ``vecs``.
         ValueError: If inputs have incompatible shapes or ``vecs`` are linearly
             dependent.
 
@@ -255,7 +260,9 @@ def _find_symmetric_coefficient_matrix_from_coords(
     # Handle the empty-basis case before stacking vec_coords.
     if num_vecs == 0:
         if np.linalg.norm(V_coords, ord="fro") > span_tol:
-            raise ValueError("The columns of V_coords are not contained in span(vecs).")
+            raise SpanRepresentationError(
+                "The columns of V_coords are not contained in span(vecs)."
+            )
         return np.zeros((0, 0))
 
     vecs_matrix = np.stack(vec_coords, axis=1)
@@ -267,7 +274,9 @@ def _find_symmetric_coefficient_matrix_from_coords(
         V_coords - vecs_matrix @ projection_coeffs, ord="fro"
     )
     if projection_residual > span_tol * max(1.0, np.linalg.norm(V_coords, ord="fro")):
-        raise ValueError("The columns of V_coords are not contained in span(vecs).")
+        raise SpanRepresentationError(
+            "The columns of V_coords are not contained in span(vecs)."
+        )
 
     # Require an independent vector basis for the coefficient matrix
     if vecs_rank < num_vecs:
@@ -402,12 +411,16 @@ def find_basis_with_sparsest_coefficients(
             continue
 
         # Sparsity score: count near-zero entries in the coefficient matrix
-        coeff_matrix = _find_symmetric_coefficient_matrix_from_coords(
-            V_coords,
-            candidate_basis_coords,
-            indep_tol=indep_tol,
-            span_tol=span_tol,
-        )
+        try:
+            coeff_matrix = _find_symmetric_coefficient_matrix_from_coords(
+                V_coords,
+                candidate_basis_coords,
+                indep_tol=indep_tol,
+                span_tol=span_tol,
+            )
+        except SpanRepresentationError:
+            # This candidate cannot represent V, so keep searching.
+            continue
         num_zeros = int(np.sum(np.abs(coeff_matrix) < zero_tol))
 
         # Update the best basis
@@ -416,11 +429,14 @@ def find_basis_with_sparsest_coefficients(
             best_basis = candidate_basis
             sparsest_coeff_matrix = coeff_matrix
 
-    if max_zeros < 0 and fixed_vectors:
-        fixed_s = ", ".join(str(v) for v in fixed_vectors)
-        raise ValueError(
-            f"No feasible independent subset satisfies `fixed_vectors`: {fixed_s}"
-        )
+    if max_zeros < 0:
+        if fixed_vectors:
+            fixed_s = ", ".join(str(v) for v in fixed_vectors)
+            print(
+                f"No feasible independent subset satisfies `fixed_vectors`: {fixed_s}"
+            )
+        else:
+            print("No feasible independent subset can represent V.")
 
     return best_basis, sparsest_coeff_matrix
 

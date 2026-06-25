@@ -22,6 +22,9 @@ dependencies = [
     "sympy>=1.14.0",
 ]
 
+[tool.setuptools.packages.find]
+include = ["pepflow", "pepflow.*"]
+
 [tool.ruff]
 line-length = 88
 
