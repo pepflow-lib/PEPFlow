@@ -22,9 +22,10 @@ from __future__ import annotations
 import itertools
 import types
 
+import IPython.display as ipd
 import numpy as np
 import sympy as sp
-from IPython.display import Math, display
+from IPython.display import display
 from sympy import Matrix
 
 from pepflow import pep_result, utils
@@ -39,7 +40,7 @@ def pprint_str(string: str) -> None:
     Example:
         >>> pprint_str("x_0")
     """
-    display(Math(utils.str_to_latex(string)))
+    display(ipd.Math(utils.str_to_latex(string)))
 
 
 def pprint_matrix(mat: np.ndarray, precision: int = 3) -> None:
@@ -121,7 +122,7 @@ def pprint_labeled_vector(
         """
 
         latex_str = utils.str_to_latex(latex_str)
-        display(Math(latex_str))
+        display(ipd.Math(latex_str))
     else:
         display(Matrix(vector))
 
@@ -208,7 +209,7 @@ def pprint_labeled_matrix(
 
     if raw_matrix.shape == (0, 0):
         if print_label:
-            display(Math(r"\text{Empty matrix}"))
+            display(ipd.Math(r"\text{Empty matrix}"))
         else:
             display(Matrix(raw_matrix))
         if return_matrix:
@@ -238,7 +239,7 @@ def pprint_labeled_matrix(
 
         latex_str = utils.str_to_latex(latex_str)
         latex_str = latex_str.replace(r"\|", "|")
-        display(Math(latex_str))
+        display(ipd.Math(latex_str))
     else:
         display(Matrix(matrix))
 

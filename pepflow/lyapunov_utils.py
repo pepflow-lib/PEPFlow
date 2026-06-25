@@ -180,6 +180,10 @@ def select_independent_subset(
     return selected, idx
 
 
+class SpanRepresentationError(ValueError):
+    """Raised when a scalar/vector expression cannot be represented in a span."""
+
+
 def find_symmetric_coefficient_matrix(
     V: Scalar,
     vecs: list[Vector],
@@ -219,6 +223,7 @@ def find_symmetric_coefficient_matrix(
             by the span of ``vecs``.
 
     Raises:
+        SpanRepresentationError: If ``V`` is not represented by the span of ``vecs``.
         ValueError: If inputs have incompatible shapes or ``vecs`` are linearly
             dependent.
 
@@ -255,7 +260,9 @@ def _find_symmetric_coefficient_matrix_from_coords(
     # Handle the empty-basis case before stacking vec_coords.
     if num_vecs == 0:
         if np.linalg.norm(V_coords, ord="fro") > span_tol:
-            raise ValueError("The columns of V_coords are not contained in span(vecs).")
+            raise SpanRepresentationError(
+                "The columns of V_coords are not contained in span(vecs)."
+            )
         return np.zeros((0, 0))
 
     vecs_matrix = np.stack(vec_coords, axis=1)
@@ -267,7 +274,9 @@ def _find_symmetric_coefficient_matrix_from_coords(
         V_coords - vecs_matrix @ projection_coeffs, ord="fro"
     )
     if projection_residual > span_tol * max(1.0, np.linalg.norm(V_coords, ord="fro")):
-        raise ValueError("The columns of V_coords are not contained in span(vecs).")
+        raise SpanRepresentationError(
+            "The columns of V_coords are not contained in span(vecs)."
+        )
 
     # Require an independent vector basis for the coefficient matrix
     if vecs_rank < num_vecs:
@@ -409,7 +418,7 @@ def find_basis_with_sparsest_coefficients(
                 indep_tol=indep_tol,
                 span_tol=span_tol,
             )
-        except ValueError:
+        except SpanRepresentationError:
             # This candidate cannot represent V, so keep searching.
             continue
         num_zeros = int(np.sum(np.abs(coeff_matrix) < zero_tol))

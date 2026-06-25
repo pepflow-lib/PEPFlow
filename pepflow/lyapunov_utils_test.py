@@ -121,15 +121,21 @@ def test_find_symmetric_coefficient_matrix_helper_handles_edge_cases():
 
     np.testing.assert_allclose(coeff_matrix, np.zeros((0, 0)))
 
-    with pytest.raises(ValueError, match="not contained in span"):
+    with pytest.raises(
+        lyapunov_utils.SpanRepresentationError, match="not contained in span"
+    ):
         lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(np.eye(1), [])
 
-    with pytest.raises(ValueError, match="not contained in span"):
+    with pytest.raises(
+        lyapunov_utils.SpanRepresentationError, match="not contained in span"
+    ):
         lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
             np.eye(2), [np.array([1.0, 0.0])]
         )
 
-    with pytest.raises(ValueError, match="not contained in span"):
+    with pytest.raises(
+        lyapunov_utils.SpanRepresentationError, match="not contained in span"
+    ):
         lyapunov_utils._find_symmetric_coefficient_matrix_from_coords(
             np.array([[0.0, 0.0], [0.0, 1.0]]),
             [np.array([1.0, 0.0])],
