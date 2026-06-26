@@ -28,7 +28,7 @@ from pepflow import operator as oper
 from pepflow import pep as pep
 from pepflow import pep_context as pc
 from pepflow import registry as reg
-from pepflow import vector
+from pepflow import utils, vector
 
 
 @pytest.fixture
@@ -309,6 +309,33 @@ def test_function_generate_duplet(pep_context: pc.PEPContext):
 
     np.testing.assert_allclose(
         pm.eval_vector(p1_duplet_1.output).coords, np.array([0, 5, 5])
+    )
+
+
+def test_lipschitz_monotone_operator_uses_nonpositive_inequality_convention(
+    pep_context: pc.PEPContext,
+):
+    A = oper.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=1)
+    x = vector.Vector(is_basis=True, tags=["x"])
+    y = vector.Vector(is_basis=True, tags=["y"])
+    A(x)
+    A(y)
+
+    cd = A.get_interpolation_constraints_by_group(pep_context)
+    monotone_constraint = cd.sc_dict["Monotone Operator Inequality"][0]
+    lipschitz_constraint = cd.sc_dict["Lipschitz Continuous Inequality"][0]
+
+    assert monotone_constraint.cmp == utils.Comparator.LE
+    assert lipschitz_constraint.cmp == utils.Comparator.LE
+
+    pm = exm.ExpressionManager(pep_context)
+    np.testing.assert_allclose(
+        pm.eval_scalar(monotone_constraint.lhs).inner_prod_coords,
+        pm.eval_scalar(A.monotone_ineq("x", "y", pep_context)).inner_prod_coords,
+    )
+    np.testing.assert_allclose(
+        pm.eval_scalar(lipschitz_constraint.lhs).inner_prod_coords,
+        pm.eval_scalar(A.lipschitz_ineq("x", "y", pep_context)).inner_prod_coords,
     )
 
 
