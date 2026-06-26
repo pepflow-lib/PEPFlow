@@ -836,8 +836,8 @@ class LipschitzMonotoneOperator(Operator):
         self, duplet_i, duplet_j
     ) -> ct.ScalarConstraint:
         return (
-            (duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
-        ).ge(
+            -(duplet_i.point - duplet_j.point) * (duplet_i.output - duplet_j.output)
+        ).le(
             0,
             name=f"{self.tag} monotone:{duplet_i.point.tag},{duplet_j.point.tag}",
         )
@@ -846,9 +846,9 @@ class LipschitzMonotoneOperator(Operator):
         self, duplet_i, duplet_j
     ) -> ct.ScalarConstraint:
         return (
-            self.L**2 * (duplet_i.point - duplet_j.point) ** 2
-            - (duplet_i.output - duplet_j.output) ** 2
-        ).ge(
+            (duplet_i.output - duplet_j.output) ** 2
+            - self.L**2 * (duplet_i.point - duplet_j.point) ** 2
+        ).le(
             0,
             name=f"{self.tag} Lipschitz:{duplet_i.point.tag},{duplet_j.point.tag}",
         )
@@ -903,7 +903,7 @@ class LipschitzMonotoneOperator(Operator):
         The monotone inequality between two points :math:`p_1, p_2` for a
         operator :math:`A` is
 
-        .. math:: \\langle \\nabla A(p_1) - A(p_2), p_1 - p_2 \\rangle >= 0.
+        .. math:: -\\langle A(p_1) - A(p_2), p_1 - p_2 \\rangle \\leq 0.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
@@ -917,7 +917,7 @@ class LipschitzMonotoneOperator(Operator):
 
         x1, u1 = pep_context.get_duplet_by_point_tag(p1, op=self).expand()
         x2, u2 = pep_context.get_duplet_by_point_tag(p2, op=self).expand()
-        return (x1 - x2) * (u1 - u2)
+        return -(x1 - x2) * (u1 - u2)
 
     def lipschitz_ineq(
         self,
@@ -932,7 +932,7 @@ class LipschitzMonotoneOperator(Operator):
         The Lipschitz inequality between two points :math:`p_1, p_2` for a
         operator :math:`A` is
 
-        .. math:: L^2 \\| p_1 - p_2 \\|^2 - \\| A(p_1) - A(p_2) \\|^2 >= 0.
+        .. math:: \\| A(p_1) - A(p_2) \\|^2 - L^2 \\| p_1 - p_2 \\|^2 \\leq 0.
 
         Args:
             p1 (:class:`Vector` | str): A :class:`Vector` :math:`p_1` point or its tag.
@@ -952,7 +952,7 @@ class LipschitzMonotoneOperator(Operator):
                 "Please use an integer number or sympy.Rational for L."
             )
         coef = sp.S(self.L) if sympy_mode else self.L
-        return coef**2 * (x1 - x2) ** 2 - (u1 - u2) ** 2
+        return (u1 - u2) ** 2 - coef**2 * (x1 - x2) ** 2
 
 
 @attrs.frozen(kw_only=True, repr=False)

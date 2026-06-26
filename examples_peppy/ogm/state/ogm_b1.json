@@ -1,0 +1,84 @@
+{
+  "algo_name": "ogm",
+  "problem_type": "smooth_convex",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N) - f(x_star)",
+  "initial_condition": "||x_0 - x_star||^2 <= R^2, where grad f(x_star)=0",
+  "conjectured_rate": "L * R^2 / (2 * theta_N^2), with the fixed-horizon OGM theta_N recurrence",
+  "setup_file": "examples_peppy/ogm/ogm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.12499891224858557,
+      "tau_sol": 0.12500015649618346
+    },
+    {
+      "N": 2,
+      "opt_value": 0.0618918527616518,
+      "tau_sol": 0.061894529210386184
+    },
+    {
+      "N": 3,
+      "opt_value": 0.037692043766443126,
+      "tau_sol": 0.03769235485863601
+    },
+    {
+      "N": 4,
+      "opt_value": 0.02558362639363744,
+      "tau_sol": 0.025583988038089762
+    },
+    {
+      "N": 5,
+      "opt_value": 0.018586948259434403,
+      "tau_sol": 0.0185880019393754
+    },
+    {
+      "N": 6,
+      "opt_value": 0.014155392931955123,
+      "tau_sol": 0.01415594156658368
+    }
+  ],
+  "candidate_rate_values": [
+    {
+      "N": 1,
+      "theta_N": 2.0,
+      "rate_LR2_1": 0.125
+    },
+    {
+      "N": 2,
+      "theta_N": 2.8422356793243053,
+      "rate_LR2_1": 0.06189418239776468
+    },
+    {
+      "N": 3,
+      "theta_N": 3.6421524705465673,
+      "rate_LR2_1": 0.03769239720788239
+    },
+    {
+      "N": 4,
+      "theta_N": 4.420804104823752,
+      "rate_LR2_1": 0.025583942049932206
+    },
+    {
+      "N": 5,
+      "theta_N": 5.1864127202260875,
+      "rate_LR2_1": 0.01858813666365106
+    },
+    {
+      "N": 6,
+      "theta_N": 5.943130256071122,
+      "rate_LR2_1": 0.014155965863218723
+    },
+    {
+      "N": 7,
+      "theta_N": 6.693369391494984,
+      "rate_LR2_1": 0.01116041688775744
+    }
+  ],
+  "N_verify": 4,
+  "notes": [
+    "Numerical PEP sweep completed for N=1..6.",
+    "N=7 was attempted twice and exceeded the practical local solve window, so it is not included as a solved PEP value."
+  ]
+}

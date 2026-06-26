@@ -1,0 +1,20 @@
+{
+  "name": "pepflow-marketplace",
+  "interface": {
+    "displayName": "PEPFlow Plugins"
+  },
+  "plugins": [
+    {
+      "name": "pepflow-workflows",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pepflow-workflows"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

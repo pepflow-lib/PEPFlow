@@ -1,0 +1,32 @@
+{
+  "name": "pepflow-workflows",
+  "version": "0.1.0",
+  "description": "Codex skills adapted from the PEPFlow Claude command workflows for PEP convergence analysis and Lyapunov proof discovery.",
+  "author": {
+    "name": "Anonymous"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "pepflow",
+    "performance-estimation",
+    "lyapunov",
+    "optimization"
+  ],
+  "skills": "./skills",
+  "interface": {
+    "displayName": "PEPFlow Workflows",
+    "shortDescription": "PEPFlow convergence-analysis and Lyapunov-proof workflows for Codex.",
+    "longDescription": "Codex-native skills adapted from the existing PEPFlow Claude slash-command workflows. They preserve the original block structure while adding Codex execution guidance for repository inspection, file edits, state files, and verification.",
+    "developerName": "Anonymous",
+    "category": "Productivity",
+    "capabilities": [
+      "Code",
+      "Analysis"
+    ],
+    "defaultPrompt": [
+      "Use pep-implement to create a PEPFlow setup for this algorithm.",
+      "Use pep-full-proof for the implemented algorithm.",
+      "Use lyap-analyze after pep-analyze to discover a Lyapunov function."
+    ]
+  }
+}
