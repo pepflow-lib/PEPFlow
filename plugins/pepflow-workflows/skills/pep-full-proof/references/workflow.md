@@ -200,6 +200,25 @@ EOF
 
 ## Step 5 — Decompose S
 
+Before computing a new LDL factorization, inspect whether the algorithm already
+has a proof-specific S decomposition in the state, reference notebooks/modules,
+or prior proof cells. In particular, if `examples_peppy/_references/{ALGO_NAME}/`
+exists, search it for names and patterns such as `S_guess`, `S_piece`,
+`S_decomp`, `square`, `remainder`, `rank V`, `lyap`, or `partial_sum`.
+
+If a reference contains a verified decomposition, such as `S_guess` matching the
+certificate matrix or a sum like `S_guess1 + S_guess2 + ...`, adapt that
+decomposition first and store it in the Block 2 state as executable `S_code`.
+When possible, also store named square families or per-step pieces so Block 3
+can subtract those same proof-specific pieces when constructing `V_k`.
+
+Do not treat the absence of serialized S pieces in an existing state file as
+evidence that no known decomposition exists. A reference notebook may contain
+the intended decomposition only as executable notebook code. Use LDL only after
+you have checked the reference sources and either found no known decomposition
+or explicitly verified that the known decomposition is insufficient for the
+certificate being built.
+
 ### 5a — LDL decomposition
 
 ```bash

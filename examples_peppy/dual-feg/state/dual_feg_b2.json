@@ -6,8 +6,6 @@
   "params_json": "{\"L\": 1, \"R\": 1}",
   "performance_metric": "||A(x_N)||^2",
   "initial_condition": "||x_0 - x_star||^2 <= R^2, where A(x_star)=0",
-  "step_size": "alpha = 1/L",
-  "z0_assumption": "z_0 = 0",
   "conjectured_rate": "4 * L^2 * R^2 / N^2 for N >= 2; N=1 tight value is 2 * L^2 * R^2",
   "setup_file": "examples_peppy/dual-feg/dual_feg_setup.py",
   "sweep_results": [
@@ -3436,6 +3434,8 @@
     }
   ],
   "N_verify": 4,
+  "step_size": "alpha = 1/L",
+  "z0_assumption": "z_0 = 0",
   "opt_value": 0.2500011995865052,
   "tau_sol": 0.25000007522244755,
   "relaxed_constraints": [
@@ -4044,5 +4044,56 @@
     6,
     7
   ],
-  "proof_residual_max": 8.326672684688674e-17
+  "proof_residual_max": 1.1102230246251565e-16,
+  "active_lambda_entries": [
+    {
+      "group": "Monotone Operator Inequality",
+      "row": "x_0.5",
+      "col": "x_4",
+      "value": 0.3333326272377577
+    },
+    {
+      "group": "Monotone Operator Inequality",
+      "row": "x_1.5",
+      "col": "x_4",
+      "value": 0.6666653203219117
+    },
+    {
+      "group": "Monotone Operator Inequality",
+      "row": "x_2.5",
+      "col": "x_4",
+      "value": 1.999996035915751
+    },
+    {
+      "group": "Monotone Operator Inequality",
+      "row": "x_4",
+      "col": "x_star",
+      "value": 0.9999981881539312
+    },
+    {
+      "group": "Lipschitz Continuous Inequality",
+      "row": "x_0",
+      "col": "x_0.5",
+      "value": 0.12499972150719876
+    },
+    {
+      "group": "Lipschitz Continuous Inequality",
+      "row": "x_1",
+      "col": "x_1.5",
+      "value": 0.222221762626046
+    },
+    {
+      "group": "Lipschitz Continuous Inequality",
+      "row": "x_2",
+      "col": "x_2.5",
+      "value": 0.4999989997109679
+    },
+    {
+      "group": "Lipschitz Continuous Inequality",
+      "row": "x_3",
+      "col": "x_4",
+      "value": 1.9999960796860548
+    }
+  ],
+  "lambda_storage": "lambda_groups by interpolation group; use lamb_code for closed form"
 }

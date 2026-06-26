@@ -124,13 +124,32 @@ Common sources to check:
 - a prior proof notebook section that verifies `S_guess` against the relaxed
   certificate matrix
 
+When a reference directory exists, inspect it before computing LDL. Search the
+reference notebooks/modules for proof-specific decomposition names and patterns
+such as `S_guess`, `S_piece`, `S_decomp`, `square`, `remainder`, `rank V`,
+`lyap`, or `partial_sum`. If a reference contains a verified decomposition
+(`S_guess` matching the certificate matrix, a sequence of square terms, or a
+rank-profile construction that uses named S pieces), adapt that decomposition
+into this workflow.
+
+Do not treat the absence of already-serialized per-step fields in
+`{ALGO_NAME}_b2.json` as evidence that no known decomposition exists. A reference
+notebook may give the proof-specific decomposition only as executable notebook
+code, such as `S_guess1 + S_guess2 + ...`; in that case, translate those sums
+into named pieces and record the translated code in the new state.
+
 When using a known decomposition, record its per-step pieces explicitly, e.g.
 `S_i`, `S_piece[i]`, or another named per-step square/residual term, because Step 4 should
 subtract those same pieces when building `V_k`.
 
-Use LDL only when no verified direct/closed-form S decomposition is available,
-or when the known decomposition is insufficient for constructing the partial
-sums.
+Use LDL only after all of the following are true:
+
+1. `{ALGO_NAME}_b2.json` has no usable direct or closed-form S decomposition.
+2. No reference notebook/module contains a verified `S_guess`, `S_piece`, or
+   equivalent square-term construction.
+3. You have explicitly reported that no known decomposition was found, or that
+   the known decomposition was tried and is insufficient for constructing the
+   partial sums.
 
 ```bash
 cd "$(git rev-parse --show-toplevel)" && \
@@ -157,6 +176,22 @@ skip the LDL computation and carry the known terms forward.
 ## Step 4 — Build Partial Sums V_k
 
 Accumulate dual contributions step by step. The canonical ordering is:
+
+**Sign convention (mandatory)**: Define the partial sums `V_k` so they are
+nonincreasing in the final proof under the residual convention used in that
+notebook. For the common convention
+`I_lip <= 0`, `I_mon <= 0`, and nonnegative dual multipliers, the displayed
+increment should have the form
+
+```text
+V_{k+1} - V_k = positive_lip * I_lip + positive_mon * I_mon + ...
+```
+
+so that `V_{k+1} <= V_k`. If the algebraic identity is zero only after flipping
+this direction, flip the definition of `V_k` rather than carrying a
+sign-reversed Lyapunov function forward. Do not proceed based only on a zero
+residual matrix; explicitly check the telescoping inequality direction and
+record the convention in `grouping_code`.
 
 - **Smooth function problems**: at step `j` (j=0..N−1), add:  
   - First add the initial boundary interpolation term `(star, 0)` outside the loop.
@@ -248,6 +283,10 @@ Interpret the rank profile `ranks = [r_0, r_1, ..., r_N]`:
 - **Good**: constant rank `r` for `k = 1..N−1`, with potential exceptions at `k = N`
   → each V_k lives in a fixed r-dimensional subspace
 - **Growing rank** (rank increases with k): the grouping of constraint terms is wrong
+- **Wrong monotonicity direction**: the ranks may look good but the proof direction is
+  invalid if the chosen `V_k` is nondecreasing under residuals that are `<= 0`.
+  In that case, flip the sign convention for the partial sums and recompute the
+  rank profile and boundary coverage before saving state.
 
 **If rank grows**: try reordering/shifting the way constraint duals are grouped. For example, you may add duals for `(j, j+1), (star, j+1)` rather than `(j, j+1), (star, j)`. Rerun Step 4 with the adjusted order.
 

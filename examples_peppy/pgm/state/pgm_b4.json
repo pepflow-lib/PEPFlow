@@ -2592,9 +2592,9 @@
     "grad_g(x_4)",
     "grad_f(x_4)"
   ],
-  "lamb_code": "def lamb(ri, ci, N=N_int):\n    i = tag_to_index(ri, N)\n    j = tag_to_index(ci, N)\n    if i == N + 1:\n        if j == 0:\n            return lamb(\"x_0\", \"x_1\", N)\n        if j < N:\n            return lamb(f\"x_{j}\", f\"x_{j + 1}\", N) - lamb(f\"x_{j - 1}\", f\"x_{j}\", N)\n        if j == N:\n            return sp.S(1) - lamb(f\"x_{N - 1}\", f\"x_{N}\", N)\n    if i < N and i + 1 == j:\n        return sp.Rational(j, 2 * N + 1 - j)\n    return sp.S(0)\n",
+  "lamb_code": "def tag_to_index(tag, N=N_int):\n    idx = tag.split(\"_\")[1]\n    return int(idx) if idx.isdigit() else N + 1\n\n\ndef lamb(ri, ci, N=N_int):\n    i = tag_to_index(ri, N)\n    j = tag_to_index(ci, N)\n    if i == N + 1:\n        if j == 0:\n            return lamb(\"x_0\", \"x_1\", N)\n        if j < N:\n            return lamb(f\"x_{j}\", f\"x_{j + 1}\", N) - lamb(f\"x_{j - 1}\", f\"x_{j}\", N)\n        if j == N:\n            return sp.S(1) - lamb(f\"x_{N - 1}\", f\"x_{N}\", N)\n    if i < N and i + 1 == j:\n        return sp.Rational(j, 2 * N + 1 - j)\n    return sp.S(0)\n",
   "gamm_code": "def gamm(ri, ci, N=N_int):\n    i = tag_to_index(ri, N)\n    j = tag_to_index(ci, N)\n    if i == N + 1 and 1 <= j <= N:\n        return sp.Rational(2 * N, (2 * N + 1 - j) * (2 * N - j))\n    if i < N and i + 1 == j:\n        return sp.Rational(j - 1, 2 * N + 1 - j)\n    return sp.S(0)\n",
-  "S_code": "S_guess = S_guess1 + S_guess2 + S_guess3\n# See notebook Block 2 for the three explicit square-sum definitions.\n",
+  "S_code": "x = ctx.tracked_point(f)\nS_guess1 = sum(\n    N / ((2 * N + 1 - i) * (2 * N - i) * L)\n    * (\n        sp.Rational(i, 2 * N_int) * f.grad(x[i])\n        + sp.Rational(2 * N_int - i, 2 * N_int) * f.grad(x[i - 1])\n        - f.grad(x[N_int + 1])\n    ) ** 2\n    for i in range(1, N_int + 1)\n)\nS_guess2 = sum(\n    (\n        sp.Rational(i - 1, 2 * N_int - i) * sp.Rational(2 * N_int + 2, 2 * N_int + 1)\n        + sp.Rational(1, (2 * N_int - i) ** 2) * sp.Rational(2 * N_int, 2 * N_int + 1)\n    )\n    / (2 * L)\n    * (f.grad(x[i - 1]) + g.grad(x[i]) - L / (2 * N + 1 - i) * (x[i - 1] - x[N_int + 1])) ** 2\n    for i in range(1, N_int + 1)\n)\nS_guess3 = sum(\n    sp.Rational(i, 2 * N_int + 1 - i)\n    * sp.Rational(2 * N_int, 2 * N_int + 1)\n    / (2 * L)\n    * (\n        sp.Rational(2 * N_int + 1, 2 * N_int) * (f.grad(x[i]) + g.grad(x[i]))\n        - sp.Rational(1, 2 * N_int) * (f.grad(x[i - 1]) + g.grad(x[i]))\n        - L / (2 * N - i) * (x[i] - x[N_int + 1])\n    ) ** 2\n    for i in range(1, N_int + 1)\n)\nS_guess = S_guess1 + S_guess2 + S_guess3\n",
   "S_decomp_type": "direct_three_square_sums",
   "lambda_max_residual": 0.00010079152359090959,
   "gamma_max_residual": 0.0001115631254652305,
@@ -3553,40 +3553,85 @@
       ]
     }
   ],
-  "basis_code": "def V_k_basis(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return [ctx_lyap[\"x_0\"] - x_star]\n    return [\n        ctx_lyap[\"x_0\"] - x_star,\n        ctx_lyap[f\"x_{k}\"] - x_star,\n        f.grad(ctx_lyap[f\"x_{k}\"]),\n        f.grad(ctx_lyap[f\"x_{k}\"]) - f.grad(x_star),\n    ]\n\n\ndef V_k_basis_labels(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return [\"x_0 - x_star\"]\n    return [\n        \"x_0 - x_star\",\n        f\"x_{k} - x_star\",\n        f\"grad_f(x_{k})\",\n        f\"grad_f(x_{k}) - grad_f(x_star)\",\n    ]\n",
-  "candidate_column_space_by_k": {
+  "candidate_labels": [
+    "x_0",
+    "x_0 - x_star",
+    "grad_f(x_0)",
+    "grad_f(x_0) - grad_f(x_star)",
+    "x_1",
+    "x_1 - x_star",
+    "grad_f(x_1)",
+    "grad_f(x_1) - grad_f(x_star)",
+    "x_2",
+    "x_2 - x_star",
+    "grad_f(x_2)",
+    "grad_f(x_2) - grad_f(x_star)",
+    "x_3",
+    "x_3 - x_star",
+    "grad_f(x_3)",
+    "grad_f(x_3) - grad_f(x_star)",
+    "x_4",
+    "x_4 - x_star",
+    "grad_f(x_4)",
+    "grad_f(x_4) - grad_f(x_star)",
+    "x_star",
+    "grad_f(x_star)",
+    "x_0 - x_1",
+    "x_0 - x_2",
+    "x_0 - x_3",
+    "x_0 - x_4",
+    "x_1 - x_2",
+    "x_1 - x_3",
+    "x_1 - x_4",
+    "x_2 - x_3",
+    "x_2 - x_4",
+    "x_3 - x_4"
+  ],
+  "column_space_candidates_by_k": {
     "1": [
       "x_0 - x_star",
-      "grad_f(x_star)",
       "x_1 - x_star",
       "grad_f(x_1)",
       "grad_f(x_1) - grad_f(x_star)",
-      "grad_f(x_0) + grad_g(x_1)"
+      "grad_f(x_star)",
+      "x_0 - x_1"
     ],
     "2": [
       "x_0 - x_star",
-      "grad_f(x_star)",
       "x_2 - x_star",
       "grad_f(x_2)",
-      "grad_f(x_2) - grad_f(x_star)"
+      "grad_f(x_2) - grad_f(x_star)",
+      "grad_f(x_star)",
+      "x_0 - x_2"
     ],
     "3": [
       "x_0 - x_star",
-      "grad_f(x_star)",
       "x_3 - x_star",
       "grad_f(x_3)",
-      "grad_f(x_3) - grad_f(x_star)"
-    ],
-    "4": [
-      "x_0 - x_star"
+      "grad_f(x_3) - grad_f(x_star)",
+      "grad_f(x_star)",
+      "x_0 - x_3"
     ]
   },
-  "basis_independence_ranks": {
-    "1": 4,
-    "2": 4,
-    "3": 4,
-    "4": 1
+  "basis_independence": {
+    "1": {
+      "basis_size": 4,
+      "independent_rank": 4
+    },
+    "2": {
+      "basis_size": 4,
+      "independent_rank": 4
+    },
+    "3": {
+      "basis_size": 4,
+      "independent_rank": 4
+    },
+    "4": {
+      "basis_size": 1,
+      "independent_rank": 1
+    }
   },
+  "basis_code": "def V_k_basis(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return [ctx_lyap[\"x_0\"] - x_star]\n    return [\n        ctx_lyap[\"x_0\"] - x_star,\n        ctx_lyap[f\"x_{k}\"] - x_star,\n        f.grad(ctx_lyap[f\"x_{k}\"]),\n        f.grad(ctx_lyap[f\"x_{k}\"]) - f.grad(x_star),\n    ]\n\n\ndef V_k_basis_labels(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return [\"x_0 - x_star\"]\n    return [\n        \"x_0 - x_star\",\n        f\"x_{k} - x_star\",\n        f\"grad_f(x_{k})\",\n        f\"grad_f(x_{k}) - grad_f(x_star)\",\n    ]\n",
   "coeff_by_k": {
     "1": {
       "basis_labels": [
@@ -3646,7 +3691,11 @@
           "0",
           "1/14"
         ]
-      ]
+      ],
+      "function_terms": {
+        "f(x_1)-f(x_star)": "2/7",
+        "g(x_1)-g(x_star)": "1/7"
+      }
     },
     "2": {
       "basis_labels": [
@@ -3706,7 +3755,11 @@
           "0",
           "1/12"
         ]
-      ]
+      ],
+      "function_terms": {
+        "f(x_2)-f(x_star)": "1/2",
+        "g(x_2)-g(x_star)": "1/3"
+      }
     },
     "3": {
       "basis_labels": [
@@ -3766,7 +3819,11 @@
           "0",
           "1/10"
         ]
-      ]
+      ],
+      "function_terms": {
+        "f(x_3)-f(x_star)": "4/5",
+        "g(x_3)-g(x_star)": "3/5"
+      }
     },
     "4": {
       "basis_labels": [
@@ -3781,32 +3838,18 @@
         [
           "-1/16"
         ]
-      ]
+      ],
+      "function_terms": {
+        "f(x_4)-f(x_star)": "1",
+        "g(x_4)-g(x_star)": "1"
+      }
     }
   },
   "coeff_code": "def coeff_pattern(k, N):\n    if k == N:\n        return [[-sp.Rational(1, 4 * N)]], {\n            f\"f(x_{N})-f(x_star)\": sp.S(1),\n            f\"g(x_{N})-g(x_star)\": sp.S(1),\n        }\n    C = [\n        [-sp.Rational(1, 4 * N), sp.S(0), sp.S(0), sp.S(0)],\n        [\n            sp.S(0),\n            sp.Rational(N - k, (2 * N - k) ** 2),\n            -sp.Rational(1, 2 * (2 * N - k)),\n            sp.S(0),\n        ],\n        [sp.S(0), -sp.Rational(1, 2 * (2 * N - k)), sp.S(0), sp.S(0)],\n        [sp.S(0), sp.S(0), sp.S(0), sp.Rational(1, 2 * (2 * N - k))],\n    ]\n    return C, {\n        f\"f(x_{k})-f(x_star)\": sp.Rational(k + 1, 2 * N - k),\n        f\"g(x_{k})-g(x_star)\": sp.Rational(k, 2 * N - k),\n    }\n",
-  "coeff_residuals": {
+  "coeff_formula_residuals": {
     "1": 6.938893903907228e-17,
     "2": 4.163336342344337e-17,
     "3": 1.0408340855860843e-16,
     "4": 0.0
-  },
-  "function_patterns": {
-    "1": {
-      "f(x_1)-f(x_star)": "2/7",
-      "g(x_1)-g(x_star)": "1/7"
-    },
-    "2": {
-      "f(x_2)-f(x_star)": "1/2",
-      "g(x_2)-g(x_star)": "1/3"
-    },
-    "3": {
-      "f(x_3)-f(x_star)": "4/5",
-      "g(x_3)-g(x_star)": "3/5"
-    },
-    "4": {
-      "f(x_4)-f(x_star)": "1",
-      "g(x_4)-g(x_star)": "1"
-    }
   }
 }

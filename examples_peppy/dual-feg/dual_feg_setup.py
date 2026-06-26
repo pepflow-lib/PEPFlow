@@ -18,7 +18,7 @@ A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=L)
 
 
 def make_ctx_dual_feg(ctx_name: str, N, **kwargs) -> pf.PEPContext:
-    """Build the PEPContext encoding N steps of dual FEG."""
+    """Build the PEPContext encoding N steps of Dual FEG."""
     N_int = int(N)
     ctx = pf.PEPContext(ctx_name).set_as_current()
 
@@ -26,21 +26,21 @@ def make_ctx_dual_feg(ctx_name: str, N, **kwargs) -> pf.PEPContext:
     z = pf.Vector.zero().add_tag("z_0")
     A.set_zero_point("x_star")
 
+    alpha = sp.S(1) / L
     for k in range(N_int):
-        theta = sp.Rational(N_int - k - 1, N_int - k)
+        weight = sp.Rational(N_int - k - 1, N_int - k)
         inv_remaining = sp.Rational(1, N_int - k)
 
-        x_half = x - (sp.S(1) / L) * z - (sp.S(1) / L) * A(x)
+        Ax = A(x)
+        x_half = x - alpha * z - alpha * Ax
         x_half.add_tag(f"x_{k + 0.5}")
+        Ax_half = A(x_half)
 
-        x_next = x_half - theta * (sp.S(1) / L) * (A(x_half) - A(x))
-        x_next.add_tag(f"x_{k + 1}")
+        x = x_half - weight * alpha * (Ax_half - Ax)
+        x.add_tag(f"x_{k + 1}")
 
-        z_next = theta * z - inv_remaining * A(x_half)
-        z_next.add_tag(f"z_{k + 1}")
-
-        x = x_next
-        z = z_next
+        z = weight * z - inv_remaining * Ax_half
+        z.add_tag(f"z_{k + 1}")
 
     return ctx
 

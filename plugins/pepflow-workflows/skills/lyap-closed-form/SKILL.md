@@ -16,6 +16,7 @@ Start from `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b4.json`, solve the sym
 - Use SymPy for exact expressions whenever possible; avoid fitting formulas from floats without subsequent symbolic verification.
 - Build a minimal one-step symbolic PEPFlow context matching the algorithm's recurrence.
 - Verify all three symbolic identities described in the workflow before presenting the proof as complete.
+- Enforce the PEPFlow Lyapunov sign convention: `V_k` should be defined so the proof uses a nonincreasing Lyapunov sequence, i.e. after applying the residual sign convention and nonnegative multipliers the telescoping direction is `V_{k+1} <= V_k` (or the equivalent `V_N <= V_0`). A zero symbolic identity with the opposite inequality direction is not a valid completion.
 - Update the notebook under `examples_peppy/{ALGO_NAME}/` and keep durable state under `examples_peppy/{ALGO_NAME}/state/`.
 - Avoid system-level temporary directories; use `examples_peppy/{ALGO_NAME}/state/.runtime/` only for tool/runtime scratch files when needed.
 - If the closed form does not simplify cleanly, report the exact obstruction and the last verified identity.

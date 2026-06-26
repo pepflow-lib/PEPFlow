@@ -1,13 +1,11 @@
 {
   "algo_name": "feg",
-  "folder_name": "feg",
   "problem_type": "monotone_operator",
   "obj_tag": "A",
   "params_json": "{\"L\": 1, \"R\": 1}",
   "performance_metric": "||A(x_N)||^2",
   "initial_condition": "||x_0 - x_star||^2 <= R^2, where A(x_star)=0",
-  "step_size": "alpha = 1/L",
-  "conjectured_rate": "4 * L^2 * R^2 / N^2 for N >= 2; N=1 tight value is 2 * L^2 * R^2",
+  "conjectured_rate": "2 * L^2 * R^2 for N = 1; 4 * L^2 * R^2 / N^2 for N >= 2",
   "setup_file": "examples_peppy/feg/feg_setup.py",
   "sweep_results": [
     {

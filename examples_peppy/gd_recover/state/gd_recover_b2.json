@@ -4,7 +4,7 @@
   "obj_tag": "f",
   "params_json": "{\"L\": 1, \"R\": 1}",
   "performance_metric": "f(x_N) - f(x_star)",
-  "initial_condition": "||x_0 - x_star|| <= R (encoded as ||x_0 - x_star||^2 <= R^2)",
+  "initial_condition": "||x_0 - x_star||^2 <= R^2, where grad f(x_star)=0",
   "conjectured_rate": "L * R^2 / (4 * N + 2)",
   "setup_file": "examples_peppy/gd_recover/gd_recover_setup.py",
   "sweep_results": [
@@ -1409,9 +1409,9 @@
     "grad_f(x_3)",
     "grad_f(x_4)"
   ],
-  "lamb_code": "def tag_to_index(tag, N=N_int):\n    return N + 1 if tag == \"x_star\" else int(tag.split(\"_\")[1])\n\n\ndef lamb(ri, ci, N=N_int):\n    i = tag_to_index(ri, N)\n    j = tag_to_index(ci, N)\n    if i == N + 1:\n        if j == 0:\n            return lamb(\"x_0\", \"x_1\", N)\n        if j < N:\n            return lamb(f\"x_{j}\", f\"x_{j + 1}\", N) - lamb(f\"x_{j - 1}\", f\"x_{j}\", N)\n        if j == N:\n            return 1 - lamb(f\"x_{N - 1}\", f\"x_{N}\", N)\n    if i < N and i + 1 == j:\n        return sp.Rational(j, 2 * N + 1 - j)\n    return sp.S(0)",
-  "S_code": "delta = [sp.Rational(9, 128), sp.Rational(23, 98), sp.Rational(11, 24), sp.Rational(39, 50), sp.Rational(1, 2)]\nS_guess = pf.Scalar.zero()\nfor i, coeff_i in enumerate(delta):\n    z_i = (x[i] - x_star) / sp.S(2 * N_int + 1 - i) - (1 / L) * f.grad(x[i])\n    S_guess += L * coeff_i * z_i ** 2",
-  "S_decomp_type": "ldl_rationalized",
+  "lamb_code": "def tag_to_index(tag, N=N_int):\n    return N + 1 if tag == \"x_star\" else int(tag.split(\"_\")[1])\n\n\ndef lamb(ri, ci, N=N_int):\n    i = tag_to_index(ri, N)\n    j = tag_to_index(ci, N)\n    if i == N + 1:\n        if j == 0:\n            return lamb(\"x_0\", \"x_1\", N)\n        if j < N:\n            return lamb(f\"x_{j}\", f\"x_{j + 1}\", N) - lamb(f\"x_{j - 1}\", f\"x_{j}\", N)\n        if j == N:\n            return sp.Rational(1, 1) - lamb(f\"x_{N - 1}\", f\"x_{N}\", N)\n    if i < N and i + 1 == j:\n        return sp.Rational(j, 2 * N + 1 - j)\n    return sp.S(0)",
+  "S_code": "delta = [sp.Rational(9, 128), sp.Rational(23, 98), sp.Rational(11, 24), sp.Rational(39, 50), sp.Rational(1, 2)]\nS_guess = pf.Scalar.zero()\nfor i, coeff_i in enumerate(delta):\n    z_i = (x[i] - x_star) / sp.S(2 * N_int + 1 - i) - (sp.S(1) / L) * f.grad(x[i])\n    S_guess += L * coeff_i * z_i ** 2",
+  "S_decomp_type": "direct_rationalized_rank5",
   "S_delta": [
     "9/128",
     "23/98",
@@ -1422,6 +1422,7 @@
   "S_vectors": [
     "(x_i - x_star)/(2*N + 1 - i) - (1/L) * grad_f(x_i), for i=0..N"
   ],
+  "S_rank_tol_1e-7": 5,
   "proof_identity": "f(x_N) - f(x_star) - tau * ||x_0 - x_star||^2 - interpolation_sum + S_guess = 0",
   "proof_valid": true,
   "proof_residual_max_abs": 5.551115123125783e-17

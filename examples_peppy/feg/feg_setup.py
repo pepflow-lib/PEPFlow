@@ -1,7 +1,7 @@
 """
 feg setup module for pep_runner.py.
 
-Algorithm: Fast extragradient method for monotone L-Lipschitz operators.
+Algorithm: Fast extragradient method with fixed stepsize 1/L.
 Performance metric: ||A(x_N)||^2
 Initial condition: ||x_0 - x_star||^2 <= R^2, where A(x_star)=0.
 Conjectured rate: to be determined
@@ -19,35 +19,34 @@ A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=L)
 
 def make_ctx_feg(ctx_name: str, N, **kwargs) -> pf.PEPContext:
     """Build the PEPContext encoding N steps of FEG."""
-    del kwargs
+    N_int = int(N)
     ctx = pf.PEPContext(ctx_name).set_as_current()
 
-    x0 = pf.Vector(is_basis=True, tags=["x_0"])
-    x = x0
+    x_0 = pf.Vector(is_basis=True, tags=["x_0"])
+    x_0.add_tag("x_0.5")
+    x = x_0
     A.set_zero_point("x_star")
 
-    for k in range(int(N)):
+    for k in range(N_int):
         if k == 0:
-            x_half = x
-            x_half.add_tag("x_0.5")
+            x_half = x_0
         else:
-            k_sp = sp.S(k)
-            denom = k_sp + 1
+            inv_k_plus_1 = sp.Rational(1, k + 1)
             x_half = (
-                x + sp.S(1) / denom * (x0 - x) - k_sp / denom * (sp.S(1) / L) * A(x)
+                x
+                + inv_k_plus_1 * (x_0 - x)
+                - sp.Rational(k, k + 1) * (sp.S(1) / L) * A(x)
             )
             x_half.add_tag(f"x_{k + 0.5}")
 
-        x_next = x + sp.S(1) / (k + 1) * (x0 - x) - (sp.S(1) / L) * A(x_half)
-        x_next.add_tag(f"x_{k + 1}")
-        x = x_next
+        x = x + sp.Rational(1, k + 1) * (x_0 - x) - (sp.S(1) / L) * A(x_half)
+        x.add_tag(f"x_{k + 1}")
 
     return ctx
 
 
 def get_pep_setup(N, params):
     """Standard interface for pep_runner.py."""
-    del params
     ctx = make_ctx_feg(f"ctx_{N}", N)
     pb = pf.PEPBuilder(ctx)
     pb.add_initial_constraint(

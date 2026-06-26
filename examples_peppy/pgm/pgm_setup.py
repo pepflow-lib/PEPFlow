@@ -1,11 +1,13 @@
 """
 pgm setup module for pep_runner.py.
 
-Algorithm: Proximal gradient descent with fixed step size 1/L.
+Algorithm: Proximal gradient descent with fixed stepsize 1/L.
 Performance metric: h(x_N) - h(x_star), where h = f + g.
-Initial condition: ||x_0 - x_star||^2 <= R^2.
-Conjectured rate: L * R^2 / (4 * N).
+Initial condition: ||x_0 - x_star||^2 <= R^2, where x_star minimizes h.
+Conjectured rate: L * R^2 / (4 * N)
 """
+
+import sympy as sp
 
 import pepflow as pf
 
@@ -24,9 +26,9 @@ def make_ctx_pgm(ctx_name: str, N, **kwargs) -> pf.PEPContext:
     h.set_stationary_point("x_star")
 
     for k in range(int(N)):
-        y = x - (1 / L) * f.grad(x)
+        y = x - (sp.S(1) / L) * f.grad(x)
         y.add_tag(f"y_{k + 1}")
-        x = g.prox(y, 1 / L, tag=f"x_{k + 1}")
+        x = g.prox(y, sp.S(1) / L, tag=f"x_{k + 1}")
 
     return ctx
 

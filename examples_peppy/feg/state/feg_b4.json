@@ -1,13 +1,11 @@
 {
   "algo_name": "feg",
-  "folder_name": "feg",
   "problem_type": "monotone_operator",
   "obj_tag": "A",
   "params_json": "{\"L\": 1, \"R\": 1}",
   "performance_metric": "||A(x_N)||^2",
   "initial_condition": "||x_0 - x_star||^2 <= R^2, where A(x_star)=0",
-  "step_size": "alpha = 1/L",
-  "conjectured_rate": "4 * L^2 * R^2 / N^2 for N >= 2; N=1 tight value is 2 * L^2 * R^2",
+  "conjectured_rate": "2 * L^2 * R^2 for N = 1; 4 * L^2 * R^2 / N^2 for N >= 2",
   "setup_file": "examples_peppy/feg/feg_setup.py",
   "sweep_results": [
     {
@@ -3451,14 +3449,21 @@
     "A(x_3.5)",
     "A(x_4)"
   ],
-  "lamb_code": "\ndef _step_index(tag):\n    if tag == \"x_star\":\n        return None\n    return sp.Rational(tag.split(\"_\")[1])\n\n\ndef lamb_mono(ri, ci, N=N_int):\n    i = _step_index(ri)\n    j = _step_index(ci)\n    if ci == \"x_star\" and ri == f\"x_{N}\":\n        return sp.Rational(4, N)\n    if i is not None and j is not None and i == int(i) and j == i + 1 and 1 <= i <= N - 1:\n        return sp.Rational(4, 1) * i * (i + 1) / N**2\n    return sp.S(0)\n\n\ndef lamb_lip(ri, ci, N=N_int):\n    i = _step_index(ri)\n    j = _step_index(ci)\n    if i is not None and j is not None and i.q == 2 and j == i + sp.Rational(1, 2):\n        k = i - sp.Rational(1, 2)\n        return sp.Rational(2, 1) * (k + 1) ** 2 / N**2\n    return sp.S(0)\n\n\ndef lamb(group, ri, ci, N=N_int):\n    if group == \"Monotone Operator Inequality\":\n        return lamb_mono(ri, ci, N)\n    if group == \"Lipschitz Continuous Inequality\":\n        return lamb_lip(ri, ci, N)\n    return sp.S(0)\n",
-  "S_code": "\n# Direct rank-one Gram certificate for the FEG full proof.\nS_guess = (obj(ctx[f\"x_{N_int}\"]) - (2 * L / N_int) * (ctx[\"x_0\"] - ctx[\"x_star\"])) ** 2\n",
+  "lamb_code": "\ndef lamb_mono(ri, ci, N=N_int):\n    for i in range(1, N):\n        if ri == f\"x_{i}\" and ci == f\"x_{i + 1}\":\n            return sp.Rational(4 * i * (i + 1), N**2)\n    if ri == f\"x_{N}\" and ci == \"x_star\":\n        return sp.Rational(4, N)\n    return sp.S(0)\n\n\ndef lamb_lip(ri, ci, N=N_int):\n    for i in range(N):\n        half = \"x_0.5\" if i == 0 else f\"x_{i}.5\"\n        if ri == half and ci == f\"x_{i + 1}\":\n            return sp.Rational(2 * (i + 1) ** 2, N**2)\n    return sp.S(0)\n\n\ndef lamb(group, ri, ci, N=N_int):\n    if group == \"Monotone Operator Inequality\":\n        return lamb_mono(ri, ci, N)\n    if group == \"Lipschitz Continuous Inequality\":\n        return lamb_lip(ri, ci, N)\n    return sp.S(0)\n",
+  "S_code": "\n# Direct rank-one Gram certificate for FEG.\nS_guess = (obj(ctx[f\"x_{N_int}\"]) - (2 * L / N_int) * (ctx[\"x_0\"] - ctx[\"x_star\"])) ** 2\n",
   "S_decomp_type": "direct_rank_one",
-  "proof_identity": "perf - (4*L**2/N**2)*||x_0-x_star||^2 - sum(lambda_i * interpolation_i) + S_guess == 0",
-  "rate": "4 * L^2 * R^2 / N^2",
+  "proof_identity": "perf - rate * initial_condition - interpolation_sum + S_guess == 0",
+  "rate": "4 * L^2 * R^2 / N^2 for N >= 2",
   "proof_valid": true,
-  "proof_checked_N": 4,
-  "proof_residual_max": 1.66533453693773e-16,
+  "proof_checked_N": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "proof_residual_max": 2.220446049250313e-16,
   "rank_profile": [
     0,
     2,
@@ -3467,6 +3472,8 @@
     2
   ],
   "rank_tolerance": 0.0001,
+  "interior_rank_constant": true,
+  "interior_rank": 2,
   "lyap_inner_prod_coords": [
     [
       [
@@ -3967,145 +3974,142 @@
         0.0,
         0.0,
         0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -2.7755575615628914e-17,
+        0.0,
+        8.326672684688674e-17,
+        0.0,
+        -0.12500000000000006
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -5.551115123125783e-17,
+        0.0,
+        1.6653345369377348e-16,
+        0.0,
+        -0.2500000000000001
+      ],
+      [
+        0.0,
+        0.0,
+        -2.7755575615628914e-17,
+        0.0,
+        -5.551115123125783e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.375
+      ],
+      [
+        0.0,
+        0.0,
+        8.326672684688674e-17,
+        0.0,
+        1.6653345369377348e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
         -0.5
       ],
       [
         0.0,
         0.0,
+        -0.12500000000000006,
         0.0,
+        -0.2500000000000001,
         0.0,
+        -0.375,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.5
-      ],
-      [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        -2.7755575615628914e-17,
-        0.0,
-        8.326672684688674e-17,
-        0.0,
-        -5.551115123125783e-17
-      ],
-      [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        -5.551115123125783e-17,
-        0.0,
-        1.6653345369377348e-16,
-        0.0,
-        -1.1102230246251565e-16
-      ],
-      [
-        0.0,
-        0.0,
-        -2.7755575615628914e-17,
-        0.0,
-        -5.551115123125783e-17,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        8.326672684688674e-17,
-        0.0,
-        1.6653345369377348e-16,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
         -0.5,
-        0.5,
-        -5.551115123125783e-17,
-        0.0,
-        -1.1102230246251565e-16,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
         2.0
       ]
     ]
   ],
-  "grouping_code": "\ndef mono_weight(k, N=N_int):\n    return sp.Rational(4 * k * (k + 1), N**2)\n\n\ndef lip_weight(step, N=N_int):\n    return sp.Rational(2 * (step + 1) ** 2, N**2)\n\n\nlyap = [pf.Scalar.zero()]\npartial_sum = pf.Scalar.zero()\nfor step in range(N_int):\n    partial_sum = partial_sum + lip_weight(step) * obj.lipschitz_ineq(\n        f\"x_{step}.5\", f\"x_{step + 1}\", ctx\n    )\n    if step >= 1:\n        partial_sum = partial_sum + mono_weight(step) * obj.monotone_ineq(\n            f\"x_{step}\", f\"x_{step + 1}\", ctx\n        )\n    if step == N_int - 1:\n        partial_sum = partial_sum + sp.Rational(4, N_int) * obj.monotone_ineq(\n            f\"x_{N_int}\", \"x_star\", ctx\n        )\n    lyap.append(partial_sum)\n",
+  "grouping_code": "\ndef mono_weight(i, N=N_int):\n    return sp.Rational(4 * i * (i + 1), N**2)\n\n\ndef lip_weight(i, N=N_int):\n    return sp.Rational(2 * (i + 1) ** 2, N**2)\n\n\nlyap = [pf.Scalar.zero()]\npartial_sum = pf.Scalar.zero()\nfor step in range(N_int):\n    half = \"x_0.5\" if step == 0 else f\"x_{step}.5\"\n    partial_sum = partial_sum + lip_weight(step) * obj.lipschitz_ineq(\n        half, f\"x_{step + 1}\"\n    )\n    if step >= 1:\n        partial_sum = partial_sum + mono_weight(step) * obj.monotone_ineq(\n            f\"x_{step}\", f\"x_{step + 1}\"\n        )\n    lyap.append(partial_sum)\n",
+  "grouping_description": "At step k, add the positive Lipschitz residual coefficient 2(k+1)^2/N^2 on (x_{k+1/2}, x_{k+1}); for k>=1 also add the positive monotone residual coefficient 4k(k+1)/N^2 on (x_k, x_{k+1}). The final monotone term (x_N, x_star) and rank-one S term are boundary terms.",
   "extra_duals": {},
-  "grouped_terms_description": [
-    "At every step s=0,...,N-1: +(2(s+1)^2/N^2) * Lip(x_{s+1/2}, x_{s+1}).",
-    "For steps s=1,...,N-1: +(4s(s+1)/N^2) * Mon(x_s, x_{s+1}).",
-    "At the final step s=N-1: additionally +(4/N) * Mon(x_N, x_star)."
-  ],
-  "final_partial_sum_rank": 2,
-  "boundary_identity": "A(x_N)^2 - (4/N^2)||x_0-x_star||^2 - V_N + S_guess == 0 for L=R=1 coordinates",
-  "boundary_residual_max": 1.6653345369377348e-16,
+  "S_piece_code": "S is kept as the rank-one boundary term from Block 2; no per-step S pieces are subtracted in V_k.",
+  "coverage_rank": 2,
+  "coverage_note": "V_N has rank 2. The remaining boundary identity combines V_N with the final monotone term (x_N, x_star), the rank-one S term, and the performance-rate expression.",
   "basis_templates": [
-    {
-      "range": "1 <= k <= N-1",
-      "basis": [
-        "A(x_k)",
-        "x_0 - x_k"
-      ]
-    },
-    {
-      "range": "k = N",
-      "basis": [
-        "A(x_N)",
-        "x_0 - x_star"
-      ]
-    }
+    "[A(x_k), x_0 - x_k] for 1 <= k < N"
   ],
-  "basis_code": "\ndef V_k_basis(k):\n    if k == N_int:\n        return [obj(ctx[f\"x_{N_int}\"]), ctx[\"x_0\"] - ctx[\"x_star\"]]\n    return [obj(ctx[f\"x_{k}\"]), ctx[\"x_0\"] - ctx[f\"x_{k}\"]]\n\n\ndef V_k_basis_labels(k):\n    if k == N_int:\n        return [f\"A(x_{N_int})\", \"x_0-x_star\"]\n    return [f\"A(x_{k})\", f\"x_0-x_{k}\"]\n",
+  "basis_code": "\ndef V_k_basis(k):\n    return [obj(ctx[f\"x_{k}\"]), ctx[\"x_0\"] - ctx[f\"x_{k}\"]]\n\n\ndef V_k_basis_labels(k):\n    return [f\"A(x_{k})\", f\"x_0 - x_{k}\"]\n",
+  "basis_labels": {
+    "1": [
+      "A(x_1)",
+      "x_0 - x_1"
+    ],
+    "2": [
+      "A(x_2)",
+      "x_0 - x_2"
+    ],
+    "3": [
+      "A(x_3)",
+      "x_0 - x_3"
+    ]
+  },
   "coeff_by_k": {
     "1": [
       [
@@ -4136,30 +4140,22 @@
         -0.37499999999999983,
         0.0
       ]
-    ],
-    "4": [
-      [
-        2.0,
-        -0.5
-      ],
-      [
-        -0.5,
-        0.0
-      ]
     ]
   },
-  "coeff_code": "\ndef coeff_pattern(k, N):\n    if k == N:\n        return sp.Matrix([\n            [sp.S(2), -sp.Rational(2, N)],\n            [-sp.Rational(2, N), sp.S(0)],\n        ])\n    return sp.Matrix([\n        [sp.Rational(2, 1) * k**2 / N**2, -sp.Rational(2 * k, N**2)],\n        [-sp.Rational(2 * k, N**2), sp.S(0)],\n    ])\n",
-  "coeff_formula": "interior [[2*k**2/N**2, -2*k/N**2], [-2*k/N**2, 0]]; terminal [[2, -2/N], [-2/N, 0]]",
+  "coeff_code": "\ndef coeff_pattern(k, N):\n    return sp.Matrix([\n        [sp.Rational(2 * k**2, N**2), -sp.Rational(2 * k, N**2)],\n        [-sp.Rational(2 * k, N**2), sp.S(0)],\n    ])\n",
+  "coeff_formula": "[[2*k^2/N^2, -2*k/N^2], [-2*k/N^2, 0]] in basis [A(x_k), x_0 - x_k]",
   "coeff_formula_residuals": {
     "1": 2.7755575615628914e-17,
     "2": 0.0,
-    "3": 1.6653345369377348e-16,
-    "4": 0.0
+    "3": 1.6653345369377348e-16
   },
-  "basis_independence_ranks": {
-    "1": 2,
-    "2": 2,
-    "3": 2,
-    "4": 2
+  "candidate_scan_summary": {
+    "rank": 2,
+    "selected_template": "[A(x_k), x_0 - x_k]",
+    "interior_k": [
+      1,
+      2,
+      3
+    ]
   }
 }

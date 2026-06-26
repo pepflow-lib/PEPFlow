@@ -179,7 +179,7 @@ Look for a **k-dependent pattern** in `basis_by_k`, not only in the larger colum
 - `[A(x_N), y_0 − x_N]` (APPM-like, 2 constant vectors)
 - Pattern with `x_{k+1}` shifting as k increases
 
-**Check linear independence**: Make sure to check that the vectors corresponding to the conjectured pattern are linearly independent. Otherwise, the proposed set is degenerate. If the sparse basis is awkward but another independent subset gives a clearer algorithmic pattern, it is acceptable to use the clearer subset, but record the reason and verify its decomposition residual in Step 5.
+**Check linear independence**: Make sure to check that the vectors corresponding to the conjectured pattern are linearly independent. Otherwise, the proposed set is degenerate. If the sparse basis is awkward but another independent subset gives a clearer algorithmic pattern, it is acceptable to use the clearer subset, but record the reason and verify its decomposition residual in Step 4.
 
 **Optional fixed anchors**: If recurrence structure strongly suggests that certain vectors must appear, pass them through `fixed_vectors`:
 
@@ -199,37 +199,11 @@ Use fixed anchors sparingly: they should encode a real structural guess, not for
 1. Print the full spanning sets for k=1, 2, 3.
 2. Print the sparse bases and zero-counts chosen by `find_basis_with_sparsest_coefficients`.
 3. Ask the user whether an auxiliary sequence (e.g., a running sum) might be needed to express V_k.
-Do not proceed to Step 4 until a consistent basis hypothesis is identified.
+Do not proceed to coefficient extraction until a consistent basis hypothesis is identified.
 
 ---
 
-## Step 4 — Automated Template Inference
-
-There is currently no maintained automatic `infer_k_dependent_basis_templates` helper in `pepflow.lyapunov_utils`.
-If the sparse bases from Step 3 suggest a consistent k-indexed pattern, encode that pattern manually and verify it in Step 5:
-
-```bash
-cd "$(git rev-parse --show-toplevel)" && \
-.venv/bin/python3 - <<'EOF'
-# (continuing — lyap, basis_by_k, ctx, params_sp available)
-# Manually encode the inferred pattern after inspecting Step 3.
-def V_k_basis(k):
-    # Example (GD-like):
-    # return [ctx["x_0"] - ctx["x_star"], obj.grad(ctx[f"x_{k}"]), ctx[f"x_{k+1}"] - ctx["x_star"]]
-    return basis_by_k.get(k, [])
-
-for k in range(1, N_int):
-    vecs = V_k_basis(k)
-    print(f"  k={k}: {[str(v) for v in vecs]}")
-EOF
-```
-
-If the manually encoded pattern is consistent, proceed to Step 5 using this pattern.
-Again, the vectors consisting the conjectured pattern should be linearly independent.
-
----
-
-## Step 5 — Extract Coefficient Matrices
+## Step 4 — Extract Coefficient Matrices
 
 For each k, compute the coefficient matrix `C[k]` expressing `V_k = Σ_{ij} C[i,j] * v_i * v_j^T`:
 
@@ -240,7 +214,7 @@ cd "$(git rev-parse --show-toplevel)" && \
 import fractions
 
 def V_k_basis(k):
-    # Use basis_by_k[k], or encode the manually identified pattern here:
+    # Use basis_by_k[k], or replace this with the manually identified pattern from Step 3:
     # Example (GD-like):
     #   return [ctx["x_0"] - ctx["x_star"], obj.grad(ctx[f"x_{k}"]), ctx[f"x_{k+1}"] - ctx["x_star"]]
     return basis_by_k.get(k, [])
@@ -269,7 +243,7 @@ EOF
 
 ---
 
-## Step 6 — Identify Coefficient Pattern
+## Step 5 — Identify Coefficient Pattern
 
 From the printed fractions, identify how each coefficient depends on `k` (and `N`):
 - Constant → `C[i,j] = c`
@@ -283,7 +257,7 @@ Encode the pattern as a function `coeff_pattern(k, N)` and verify it reproduces 
 
 ---
 
-## Step 7 — Save State
+## Step 6 — Save State
 
 ```bash
 cd "$(git rev-parse --show-toplevel)" && \
@@ -328,7 +302,7 @@ EOF
 
 ---
 
-## Step 8 — Update Lyapunov Notebook
+## Step 7 — Update Lyapunov Notebook
 
 Open the existing notebook and add or replace the special-vector and coefficient sections with this structure:
 

@@ -1,6 +1,6 @@
 # /lyap-closed-form: PEPFlow Block 5 — Find Closed-Form Lyapunov Function
 
-Using the Lyapunov structure from Block 4 and the closed-form dual certificates from Block 2, build and solve the symbolic recursion V_{k+1} − V_k = dual contributions, verify three symbolic identities, and produce a human-readable proof.
+Using the Lyapunov structure from Block 4 and the closed-form dual certificates from Block 2, build and solve the symbolic recursion V_{k+1} − V_k = dual contributions, verify three symbolic identities, and produce a human-readable proof. The default PEPFlow convention is that `V_k` is defined with the sign that makes the Lyapunov sequence nonincreasing in the proof.
 
 > $ARGUMENTS  (ALGO_NAME, e.g. `heavy_ball`)
 
@@ -100,6 +100,17 @@ EOF
 ## Step 3 — Symbolic Recursion: Step Identity
 
 Build the expression `V_{k+1} − V_k − Σ(dual_k * ineq_k) - (S contribution)` and verify it is identically zero:
+
+Before accepting the identity, verify the sign direction. With residuals written
+as `I <= 0` and nonnegative multipliers, the accepted convention is
+
+```text
+V_{k+1} - V_k = positive_coefficients * I_terms + negative_squares
+```
+
+or an algebraically equivalent form implying `V_{k+1} <= V_k`. If the verified
+identity instead implies `V_{k+1} >= V_k`, flip the sign of `V_k` and update
+Block 3/4 state before proceeding. A zero residual matrix alone is insufficient.
 
 ```bash
 cd "$(git rev-parse --show-toplevel)" && \
@@ -213,7 +224,10 @@ index range and any coefficient definitions such as a_k, theta_k, or beta_k.
 
 2. (Step recursion, k=1..N-1) V_{k+1} − V_k = λ_k * interp(x_k, x_{k+1}) + ... ≤ 0
    since interpolation inequalities are ≤ 0 and all duals λ_k ≥ 0.
-   Therefore V_k is nonincreasing: V_N ≤ ... ≤ V_1 ≤ 0.
+   Therefore V_k is nonincreasing: V_N ≤ ... ≤ V_1 ≤ V_0.
+   This nonincreasing direction is the convention; if the identity gives the
+   opposite direction, redefine `V_k` with the opposite sign and update every
+   boundary identity accordingly.
    This must be written as a detailed equation, not as an ellipsis-only summary:
    include every active interpolation residual family, every extra constraint
    residual, and every negative slack/square term that appears in the per-step
@@ -373,6 +387,7 @@ This block is not complete until all of the following are true:
    - theorem markdown near the top that explicitly states the final closed-form Lyapunov function `V_k`, including terminal/special cases
    - proof outline markdown near the top that explicitly states the final `V_k` formula
    - proof outline markdown near the top that explicitly states the detailed `V_{k+1}-V_k` or `V_k-V_{k-1}` equation with all residual and slack terms
+   - proof outline markdown explicitly states why the chosen sign convention makes `V_k` nonincreasing (or otherwise gives the equivalent telescoping direction needed for the final bound); do not accept a sign-reversed Lyapunov statement even if all symbolic residual matrices are zero
    - symbolic step identity implemented in the notebook cell itself with symbolic PEPFlow expressions and `pf.ExpressionManager`; no stored-boolean-only checks
    - base identity implemented in the notebook cell itself with symbolic PEPFlow expressions and `pf.ExpressionManager`; no stored-boolean-only checks
    - boundary identity implemented in the notebook cell itself with symbolic PEPFlow expressions and `pf.ExpressionManager`; no stored-boolean-only checks
@@ -385,6 +400,7 @@ This block is not complete until all of the following are true:
    - base identity residual is exactly zero or simplifies to zero through `pf.ExpressionManager` coordinates using symbolic `N` and algorithm parameters where applicable
    - boundary identity residual is exactly zero or simplifies to zero through `pf.ExpressionManager` coordinates using symbolic `N` and algorithm parameters where applicable
    - the code cells visibly build `LHS`, `RHS`, and `diff`; a call to a helper script or an assertion of a stored state flag does not satisfy this requirement
+   - after the residual identities are zero, the notebook checks the inequality direction implied by the residual signs and nonnegative multipliers, and confirms the final boundary step discards terms in the correct direction for the claimed rate
 4. The notebook must be executed with `jupyter nbconvert --execute` before the block is reported complete.
 5. `ruff check examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb` must pass for this generated notebook. The type check must also pass, using either `uvx ty check examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb` if `uv` is available, or `ty check examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb` otherwise.
 6. If notebook execution or static checks fail, fix the notebook and rerun the failing command.

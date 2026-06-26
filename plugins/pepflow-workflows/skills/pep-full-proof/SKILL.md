@@ -20,6 +20,7 @@ Use the algorithm name from the user request or from `examples_peppy/{ALGO_NAME}
 - Store durable output in `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b2.json`; later Lyapunov skills depend on the same keys.
 - Avoid system-level temporary directories; store dense/relaxed solver outputs and scratch JSON under `examples_peppy/{ALGO_NAME}/state/`.
 - Treat near-zero dual entries carefully: state the tolerance used and rerun verification after imposing sparsity.
+- Before using LDL for the Gram certificate `S`, inspect any existing `examples_peppy/_references/{ALGO_NAME}/` notebook/module for verified `S_guess`, `S_piece`, square-term, or rank-profile constructions; adapt those proof-specific decompositions into `S_code` and, when possible, named pieces for Block 3.
 - If the numerical certificate disagrees with the conjecture, pause the proof workflow and diagnose the setup, parameters, and relaxation before proceeding.
 
 ## Related Skills
