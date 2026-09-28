@@ -1,0 +1,31 @@
+{
+  "current_block": "B4",
+  "completion_status": "complete",
+  "next_block": "B5",
+  "entry_exit_reason": "Consistent basis found and every index reconstructed, including endpoints; notebook and source checks complete.",
+  "operational_status": "awaiting_same_session_continuation",
+  "sources": [
+    "approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+    "approved/pepflow/lyapunov_utils.py",
+    "Own B3 state and generated replay/search/coefficient files"
+  ],
+  "commands": [
+    "Python -I -B supplementary/b4_trial.py",
+    "Python -I -B supplementary/b4_finalize.py",
+    "Python -I -B supplementary/b4_notebook.py",
+    "Python -I -B supplementary/execute_notebook.py",
+    "Approved adapter b4-static-001/002.json",
+    "Notebook source/output inspection"
+  ],
+  "incidents": [
+    {
+      "classification": "Static keyword-unpacking inference error",
+      "repair": "Use explicit unchanged tolerance keyword arguments; execute and recheck"
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_exposure_observed": false,
+  "unresolved": [
+    "Exact coefficient functions and step/base/terminal proof in B5"
+  ]
+}

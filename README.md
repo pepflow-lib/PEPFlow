@@ -1,3 +1,5 @@
+> **Peppy experiment supplementary:** This branch accompanies Section 4, Table 2 and Appendix E of the Peppy paper. Start with the [experiment guide](examples_peppy/_evaluations/README.md) for all 30 submissions, assessments and reproduction commands. The PEPFlow library documentation follows below.
+
 <div align="center">
 <h1 align="center">
   <img width="45" alt="PEPflow logo" src="docs/assets/pepflow-logo.svg">

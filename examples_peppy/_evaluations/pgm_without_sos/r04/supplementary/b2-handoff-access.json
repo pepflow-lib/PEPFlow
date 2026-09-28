@@ -1,0 +1,19 @@
+﻿{
+  "current_block": "B2",
+  "completion_status": "complete",
+  "next_block": "B3",
+  "entry_exit_reason": "Complete coherent sparse numerical certificate and initial closed-form search; request boundary",
+  "operational_status": "awaiting_same_session_continuation",
+  "deadline_utc": "2026-09-23T21:58:02.889281+00:00",
+  "sources_added": ["approved pep-full-proof/references/workflow.md", "approved pepflow/lyapunov_utils.py", "approved pepflow/ipython_utils.py", "approved pepflow/pep_result.py", "approved pepflow/expression_manager.py", "explicit approved pepflow files hashed using allowlist.json", "own generated B1/B2 artifacts and scripts"],
+  "commands": ["Scoped Get-Content and rg", "Pinned python -I -B explore_b2.py", "Pinned python -I -B acquire_b2.py", "Pinned python -I -B finalize_b2.py", "Pinned python -I -B execute_notebook.py", "Pinned approved static adapter, b2-static-001.json and b2-static-002.json"],
+  "incidents": [{"kind":"static_type_diagnostics", "evidence":"b2-static-001.json", "repair":"Typed numeric parameter dictionaries with exact SymPy ones and explicitly narrowed optional dual values; selected solve re-acquired with hashes of corrected source. Numerical values unchanged; prior execution outputs preserved."}],
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "unresolved_work": "All-horizon analytic formulas/signs and B3-B5 obligations remain.",
+  "access_control":"instruction_only",
+  "prohibited_content_observed":false,
+  "audit_limit":"No exhaustive OS read tracing. No target references or other attempts consulted."
+}
+

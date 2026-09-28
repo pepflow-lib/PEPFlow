@@ -1,0 +1,106 @@
+{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Candidate scan, actual sparse basis search, uniform basis independence, every-index coefficient and full scalar reconstruction, notebook execution and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate_id":  "ee4c302b97c4d2a6c7ba9a4125a5c6f4c7dc5c640b0fe47f69c0d45576a0b7a9",
+    "numerical_reconstruction":  {
+                                     "certificate_id":  "ee4c302b97c4d2a6c7ba9a4125a5c6f4c7dc5c640b0fe47f69c0d45576a0b7a9",
+                                     "required_indices":  [
+                                                              0,
+                                                              1,
+                                                              2,
+                                                              3,
+                                                              4,
+                                                              5,
+                                                              6
+                                                          ],
+                                     "quadratic_residuals":  {
+                                                                 "0":  0.0,
+                                                                 "1":  2.1042203829566175E-16,
+                                                                 "2":  8.4206543385983865E-10,
+                                                                 "3":  1.245414275745644E-09,
+                                                                 "4":  1.6928759697224119E-09,
+                                                                 "5":  2.1602673290467504E-09,
+                                                                 "6":  3.2706191516623884E-09
+                                                             },
+                                     "component_residuals":  {
+                                                                 "0":  {
+                                                                           "gram":  0.0,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "1":  {
+                                                                           "gram":  1.1102230246251565E-16,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "2":  {
+                                                                           "gram":  4.294343491917374E-10,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "3":  {
+                                                                           "gram":  4.7347657738949778E-10,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "4":  {
+                                                                           "gram":  4.9912846772359742E-10,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "5":  {
+                                                                           "gram":  5.0868106862139717E-10,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "6":  {
+                                                                           "gram":  9.3431778980246349E-10,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       }
+                                                             },
+                                     "tolerances":  {
+                                                        "indep_tol":  1E-07,
+                                                        "span_tol":  1E-05,
+                                                        "component_atol":  0.0001,
+                                                        "component_rtol":  1E-05
+                                                    },
+                                     "passed":  true
+                                 },
+    "coefficient_formula_status":  "candidate",
+    "evidence":  [
+                     "supplementary/b4-exploration-output.txt",
+                     "supplementary/b4-notebook-003-output.txt",
+                     "supplementary/b4-static-001.json"
+                 ],
+    "new_approved_sources":  [
+                                 "approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                                 "approved/pepflow/lyapunov_utils.py"
+                             ],
+    "own_sources":  [
+                        "supplementary/b4_rebuild.py",
+                        "supplementary/b4_scan.py",
+                        "supplementary/b4_search.py",
+                        "supplementary/b4_basis.py",
+                        "supplementary/b4_coefficients.py",
+                        "supplementary/b4_formula.py",
+                        "supplementary/b4_structure.py",
+                        "supplementary/b4_verify.py",
+                        "supplementary/b4_save.py",
+                        "supplementary/update_b4_notebook.py",
+                        "supplementary/explore_b4.py"
+                    ],
+    "commands":  "Exact-path workflow/API reads; pinned Python -I -B basis exploration and notebook replay; unchanged static adapter",
+    "operational_repairs":  [
+                                "Corrected LaTeX string escaping caught before notebook write",
+                                "Passed original candidate objects to fixed_vectors rather than newly created equal-coordinate objects",
+                                "Initial exploratory script omitted private runtime environment assignments; these were added, and definitive notebook run used private runtime/cache paths. No prohibited content observed; exhaustive file reads not traced."
+                            ],
+    "access_control":  "instruction_only",
+    "observed_prohibited_exposure":  false,
+    "deadline_utc":  "2026-09-23T22:54:22.120435+00:00",
+    "unresolved_work":  "B5 exact arbitrary-horizon identities, L scaling, sign/domain reasoning and final theorem"
+}

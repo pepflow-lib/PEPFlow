@@ -1,0 +1,57 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Dense solve, rate-preserving sparsity solve, complete numerical certificate checks, initial formula search, notebook execution and static checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00",
+    "certificate_id":  "6cb778e9759046df488896509df7ad60e689562fe8730b41e4cbe8b103e34c4c",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "checks":  {
+                   "tolerances":  {
+                                      "identity_atol":  1E-05,
+                                      "identity_rtol":  0.0,
+                                      "reconstruction_atol":  0.0001,
+                                      "reconstruction_rtol":  1E-05,
+                                      "dual_tol":  1E-06,
+                                      "psd_tol":  1E-06,
+                                      "dense_opt_atol":  1E-05
+                                  },
+                   "residuals":  {
+                                     "identity_gram_max_abs":  7.5129992601227648E-09,
+                                     "identity_func_max_abs":  0.0,
+                                     "identity_offset_abs":  6.564890756011188E-09,
+                                     "S_reconstruction_max_abs":  5.5511151231257827E-17,
+                                     "dense_relaxed_gap":  7.4569589392226021E-10,
+                                     "minimum_scalar_inequality_dual":  0.05556830706343723,
+                                     "minimum_S_eigenvalue":  7.3434706924258383E-10,
+                                     "minimum_matrix_inequality_eigenvalue":  0.0
+                                 },
+                   "passed":  true
+               },
+    "static_evidence":  "supplementary/b2-static-002.json",
+    "notebook_evidence":  "supplementary/b2-notebook-002-output.txt",
+    "consulted_sources":  [
+                              "state/feg_b1.json",
+                              "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                              "supplementary/approved/pepflow/lyapunov_utils.py",
+                              "supplementary/approved/pepflow/expression_manager.py",
+                              "supplementary/approved/pepflow/pep_result.py",
+                              "supplementary/approved/pepflow/scalar.py"
+                          ],
+    "transitive_sources":  "Exact allowlisted pepflow files hashed by certificate.py; manifests in selected certificate and static evidence",
+    "own_generated_files_consulted":  "Dense/sparse certificates, own helper and runner scripts, B2 notebook, and static diagnostics",
+    "commands":  "Pinned Python -I -B: run_b2_dense.py, run_b2_sparse.py, finalize_b2.py, build_b2_notebook.py; static adapter exact invocations retained in tool transcript and b2-static evidence",
+    "incidents":  [
+                      "Type checker required explicit parameter dictionary type and narrowed non-null dual before float conversion. Own source repaired; fresh sparse solve captured complete replacement certificate and all checks rerun. Previous sparse sample retained."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "audit_limit":  "No exhaustive filesystem read audit",
+    "remaining_obligations":  "B3-B5 and arbitrary-horizon analytic proof; candidate formulas fail numerical matching threshold and remain separate from authoritative numeric certificate"
+}

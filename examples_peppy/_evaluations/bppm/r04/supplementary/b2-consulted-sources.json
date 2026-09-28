@@ -1,0 +1,24 @@
+{
+  "phase": "B2",
+  "access_control": "instruction_only",
+  "approved_sources": [
+    "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "pepflow/pep_result.py",
+    "pepflow/ipython_utils.py",
+    "pepflow/pep_context.py"
+  ],
+  "own_sources": "B1 state/setup/notebook, B2 generated scripts, solver state, and tool evidence. Generic approved package source hashes and actual import route recorded in selected certificate.",
+  "incidents": [
+    {
+      "classification": "operational_error",
+      "reason": "First shell call had misspelled attempt cwd; process creation rejected, no command executed."
+    },
+    {
+      "classification": "source_diagnostics",
+      "evidence": "b2-static-001.json",
+      "repair": "Removed notebook module docstring before imports and duplicate setup import; explicit None branch for multiplier capture. Required checks repeated."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "Instruction-only isolation, not exhaustive filesystem tracing."
+}

@@ -1,0 +1,29 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Alternative PSD decomposition of same saved S verified, common rank reconfirmed, preserved N=4 sample selected, notebook/static gates passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/pgm_b3.json",
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-transport-trial.json",
+                     "supplementary/b3-transport-static-002.json"
+                 ],
+    "source":  "supplementary/helpers/transport_grouping.py",
+    "consulted_sources":  [
+                              "Own saved certificates and grouping sources",
+                              "Previously approved framework used by replay"
+                          ],
+    "commands":  [
+                     "Pinned Python -I -B b3_transport_trial.py, complete_b3_transport.py and notebook update scripts",
+                     "Approved static adapter",
+                     "Exact-path notebook output inspection"
+                 ],
+    "incidents":  [
+                      "PowerShell serialization added notebook UTF-8 BOM; removed it and reran static checks successfully"
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "unresolved_work":  "B4 independent basis/reconstruction verification and B5 analytic proof"
+}

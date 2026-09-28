@@ -1,0 +1,34 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Candidate search, consistent adopted basis, all-index independence and full-component reconstruction, notebook and static checks passed",
+    "run_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/feg_b4.json",
+                     "supplementary/b4-discovery-output.txt",
+                     "supplementary/b4-notebook-output.txt",
+                     "supplementary/b4-static-001.json"
+                 ],
+    "commands":  [
+                     "Get-Content approved B4 workflow",
+                     "Get-Content approved lyapunov utility implementation section",
+                     "apply_patch own B4 discovery and notebook scripts",
+                     "python -I -B supplementary/bootstrap.py supplementary/b4_discover.py",
+                     "python -I -B supplementary/bootstrap.py supplementary/b4_notebook.py",
+                     "static adapter b4-static-001"
+                 ],
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "supplementary/approved/pepflow/lyapunov_utils.py",
+                              "own B3 state and rank evidence",
+                              "own B3 probe and generated B4 files",
+                              "own evolving notebook/checklist"
+                          ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+
+                  ],
+    "unresolved_work":  "B5 must derive coefficient functions and prove exact step/base/boundary identities; no analytic proof claimed."
+}

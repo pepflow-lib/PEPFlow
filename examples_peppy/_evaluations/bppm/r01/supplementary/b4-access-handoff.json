@@ -1,0 +1,88 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Consistent basis search, independence, all-index full-expression reconstruction, candidate coefficient checks, notebook execution and static checks passed.",
+    "run_status":  "awaiting_continuation",
+    "sources":  [
+                    "approved lyap-vectors workflow",
+                    "approved/pepflow/lyapunov_utils.py",
+                    "own B3 certificate and replay sources",
+                    "own generated candidate/basis/coefficient/structure sources"
+                ],
+    "commands":  [
+                     "run_b4_search.py",
+                     "save_b4.py",
+                     "update_b4_notebook.py twice",
+                     "static adapter b4-static-001/002.json",
+                     "finalize_b4.py"
+                 ],
+    "incidents":  [
+                      {
+                          "classification":  "type diagnostic",
+                          "issue":  "Dictionary-expanded tolerance arguments ambiguous to ty",
+                          "repair":  "Explicit keyword arguments with identical frozen values; checks passed."
+                      },
+                      {
+                          "classification":  "operational encoding",
+                          "issue":  "Checklist was written with the Windows default encoding and read as UTF-8",
+                          "repair":  "Converted the attempt-owned checklist to explicit UTF-8; final inspection passed."
+                      }
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "observability_limit":  "Tool-visible record; no exhaustive OS tracing.",
+    "numerical_reconstruction":  {
+                                     "certificate_id":  "3d6864e4ccad8806be8f6ae7199535b87bb5895cfe9dd43256a49afaea78553b",
+                                     "required_indices":  [
+                                                              0,
+                                                              1,
+                                                              2,
+                                                              3,
+                                                              4
+                                                          ],
+                                     "quadratic_residuals":  {
+                                                                 "0":  0.0,
+                                                                 "1":  2.3760028391898634E-16,
+                                                                 "2":  3.0172916326173935E-10,
+                                                                 "3":  3.9675931452597896E-10,
+                                                                 "4":  4.3795269752135557E-10
+                                                             },
+                                     "component_residuals":  {
+                                                                 "0":  {
+                                                                           "gram":  0.0,
+                                                                           "function":  0.0,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "1":  {
+                                                                           "gram":  1.1102230246251565E-16,
+                                                                           "function":  5.5511151231257827E-17,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "2":  {
+                                                                           "gram":  1.1122677778807599E-10,
+                                                                           "function":  2.2245355557615198E-10,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "3":  {
+                                                                           "gram":  1.7671719643175265E-10,
+                                                                           "function":  2.2245355557615198E-10,
+                                                                           "offset":  0.0
+                                                                       },
+                                                                 "4":  {
+                                                                           "gram":  1.7671719643175265E-10,
+                                                                           "function":  2.2245383313190814E-10,
+                                                                           "offset":  0.0
+                                                                       }
+                                                             },
+                                     "tolerances":  {
+                                                        "indep_tol":  1E-07,
+                                                        "span_tol":  1E-05,
+                                                        "component_atol":  0.0001,
+                                                        "component_rtol":  1E-05
+                                                    },
+                                     "passed":  true
+                                 },
+    "unresolved_work":  "B5 arbitrary-horizon exact Lyapunov identities, signs, boundary normalization, and final theorem.",
+    "deadline_utc":  "2026-09-23T17:01:13.976153+00:00"
+}

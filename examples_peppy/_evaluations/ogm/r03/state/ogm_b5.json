@@ -1,0 +1,1702 @@
+{
+  "algo_name": "ogm",
+  "problem_type": "smooth_convex",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N)-f(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2; grad f(x_star)=0; z_0=x_0",
+  "conjectured_rate": "L*R**2/(2*theta_N**2)",
+  "setup_file": "ogm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.12499999967511367,
+      "theta_N": 2.0,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 2,
+      "opt_value": 0.06189418309675962,
+      "theta_N": 2.8422356793243053,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 3,
+      "opt_value": 0.03769239858737249,
+      "theta_N": 3.6421524705465673,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 4,
+      "opt_value": 0.025583945166769366,
+      "theta_N": 4.420804104823752,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 5,
+      "opt_value": 0.018588139751366063,
+      "theta_N": 5.1864127202260875,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 6,
+      "opt_value": 0.014155967322699733,
+      "theta_N": 5.943130256071122,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 7,
+      "opt_value": 0.011160419511615859,
+      "theta_N": 6.693369391494984,
+      "solve_attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    }
+  ],
+  "N_verify": 4,
+  "rate_status": "numerically conjectured; not proved",
+  "max_rate_absolute_error": 3.1168371598944145e-09,
+  "presentation_policy": "evaluation-ancillary-v1",
+  "completion_status": "complete",
+  "N": 4,
+  "opt_value": 0.02558394201140301,
+  "tau_sol": 0.025583942102815994,
+  "tau_name": "initial_condition",
+  "relaxed_constraints": [
+    "f:z_0,x_star",
+    "f:z_0,x_2",
+    "f:z_0,x_3",
+    "f:z_0,x_4",
+    "f:x_1,x_star",
+    "f:x_1,z_0",
+    "f:x_1,x_3",
+    "f:x_1,x_4",
+    "f:x_2,x_star",
+    "f:x_2,z_0",
+    "f:x_2,x_1",
+    "f:x_2,x_4",
+    "f:x_3,x_star",
+    "f:x_3,z_0",
+    "f:x_3,x_1",
+    "f:x_3,x_2",
+    "f:x_4,x_star",
+    "f:x_4,z_0",
+    "f:x_4,x_1",
+    "f:x_4,x_2",
+    "f:x_4,x_3"
+  ],
+  "S_matrix": [
+    [
+      0.025583942125486776,
+      -0.02558394203443089,
+      -0.051167884162480186,
+      -0.0827913756261482,
+      -0.11223813972575983,
+      -0.14070100449794443,
+      -0.11310159598754355
+    ],
+    [
+      -0.02558394203443089,
+      0.025583942125486776,
+      0.051167884162480186,
+      0.0827913756261482,
+      0.11223813972575983,
+      0.14070100449794443,
+      0.11310159598754355
+    ],
+    [
+      -0.051167884162480186,
+      0.051167884162480186,
+      0.10233576841714351,
+      0.16558275128367222,
+      0.2244762794541883,
+      0.2814020090188292,
+      0.22620319198069894
+    ],
+    [
+      -0.0827913756261482,
+      0.0827913756261482,
+      0.16558275128367222,
+      0.26791851966924857,
+      0.36321024983956784,
+      0.4553180151900309,
+      0.3660044530135003
+    ],
+    [
+      -0.11223813972575983,
+      0.11223813972575983,
+      0.2244762794541883,
+      0.36321024983956784,
+      0.4923947991201274,
+      0.6172629289661759,
+      0.49618282848114037
+    ],
+    [
+      -0.14070100449794443,
+      0.14070100449794443,
+      0.2814020090188292,
+      0.4553180151900309,
+      0.6172629289661759,
+      0.7737968081162088,
+      0.6220115786002921
+    ],
+    [
+      -0.11310159598754355,
+      0.11310159598754355,
+      0.22620319198069894,
+      0.3660044530135003,
+      0.49618282848114037,
+      0.6220115786002921,
+      0.5000000000910773
+    ]
+  ],
+  "S_row_names": [
+    "z_0",
+    "x_star",
+    "grad_f(z_0)",
+    "grad_f(x_1)",
+    "grad_f(x_2)",
+    "grad_f(x_3)",
+    "grad_f(x_4)"
+  ],
+  "S_col_names": [
+    "z_0",
+    "x_star",
+    "grad_f(z_0)",
+    "grad_f(x_1)",
+    "grad_f(x_2)",
+    "grad_f(x_3)",
+    "grad_f(x_4)"
+  ],
+  "basis_vectors": [
+    "z_0",
+    "x_star",
+    "grad_f(z_0)",
+    "grad_f(x_1)",
+    "grad_f(x_2)",
+    "grad_f(x_3)",
+    "grad_f(x_4)"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "f(z_0)",
+    "f(x_1)",
+    "f(x_2)",
+    "f(x_3)",
+    "f(x_4)"
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.025583942102815994,
+    "f:x_star,z_0": 0.10233576842211013,
+    "f:x_star,x_1": 0.16558275132843417,
+    "f:x_star,x_2": 0.22447627951908947,
+    "f:x_star,x_3": 0.28140200905783536,
+    "f:x_star,x_4": 0.2262031920335532,
+    "f:z_0,x_star": null,
+    "f:z_0,x_1": 0.10233576842240312,
+    "f:z_0,x_2": null,
+    "f:z_0,x_3": null,
+    "f:z_0,x_4": null,
+    "f:x_1,x_star": null,
+    "f:x_1,z_0": null,
+    "f:x_1,x_2": 0.2679185196742483,
+    "f:x_1,x_3": null,
+    "f:x_1,x_4": null,
+    "f:x_2,x_star": null,
+    "f:x_2,z_0": null,
+    "f:x_2,x_1": null,
+    "f:x_2,x_3": 0.4923947991252491,
+    "f:x_2,x_4": null,
+    "f:x_3,x_star": null,
+    "f:x_3,z_0": null,
+    "f:x_3,x_1": null,
+    "f:x_3,x_2": null,
+    "f:x_3,x_4": 0.7737968081214347,
+    "f:x_4,x_star": null,
+    "f:x_4,z_0": null,
+    "f:x_4,x_1": null,
+    "f:x_4,x_2": null,
+    "f:x_4,x_3": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:z_0,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:z_0,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "solver_attempts": [
+    {
+      "solver": "CLARABEL",
+      "settings": {},
+      "status": "optimal"
+    }
+  ],
+  "lambda_matrix": [
+    [
+      0.0,
+      0.2679185196742483,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.4923947991252491,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.7737968081214347,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.16558275132843417,
+      0.22447627951908947,
+      0.28140200905783536,
+      0.2262031920335532,
+      0.0,
+      0.10233576842211013
+    ],
+    [
+      0.10233576842240312,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "lambda_row_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star",
+    "z_0"
+  ],
+  "lambda_col_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star",
+    "z_0"
+  ],
+  "certificate_provenance": {
+    "solve_id": "660e4faf-e42c-4023-bfe6-044ab32559f4",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "solver": {
+      "api": "CVXPrimalSolver.build_problem",
+      "cvxpy_version": "1.7.1",
+      "effective_name": "CLARABEL",
+      "settings": {}
+    },
+    "source_hashes": {
+      "ogm_setup.py": "52d88cf7281b8f1dbd3f1017c1309d71ed76aa2d27a6323af6686d8dfbccbbfd",
+      "supplementary/helpers/certificates.py": "e50f232a53ea33b047d11a61a1d368c7a43f483e7fc1e7bb39afb3c8ab40d87e",
+      "supplementary/approved/pepflow/__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "supplementary/approved/pepflow/constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "supplementary/approved/pepflow/constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "supplementary/approved/pepflow/dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "supplementary/approved/pepflow/expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "supplementary/approved/pepflow/function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "supplementary/approved/pepflow/ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "supplementary/approved/pepflow/logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "supplementary/approved/pepflow/lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "supplementary/approved/pepflow/math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "supplementary/approved/pepflow/operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "supplementary/approved/pepflow/parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "supplementary/approved/pepflow/pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "supplementary/approved/pepflow/pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "supplementary/approved/pepflow/pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "supplementary/approved/pepflow/pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "supplementary/approved/pepflow/plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "supplementary/approved/pepflow/primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "supplementary/approved/pepflow/registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "supplementary/approved/pepflow/scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "supplementary/approved/pepflow/solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "supplementary/approved/pepflow/utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "supplementary/approved/pepflow/vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    }
+  },
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "||x_0-x_star||^2 <= R^2; grad f(x_star)=0; z_0=x_0",
+    "performance_metric": "f(x_N)-f(x_star)",
+    "bound_value": 0.02558394201140301,
+    "bound_formula": "L*R**2/(2*theta_N**2)"
+  },
+  "numerical_decomposition": {
+    "method": "direct",
+    "construction": "full spectral decomposition; no eigenvalues omitted",
+    "D": [
+      [
+        9.77129400833766e-12,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        7.140794655116578e-11,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        9.105594270922789e-11,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.6167537431589574e-10,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.1939454507764686e-10,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        6.697599488511162e-10,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.187613778441713
+      ]
+    ],
+    "ell_coords": [
+      [
+        -0.610297839316161,
+        0.6103004199680784,
+        -0.26838475217488306,
+        0.15738643919104867,
+        -0.3210072555773637,
+        0.1697489547147858,
+        -0.1625075767819115
+      ],
+      [
+        0.18816745455075395,
+        -0.18816702991969309,
+        0.46817462165345614,
+        0.4348035447956523,
+        -0.5670561449423062,
+        0.333424747899648,
+        -0.2970182569188238
+      ],
+      [
+        -0.7071075685615589,
+        -0.7071059938074591,
+        -1.2297343649214643e-06,
+        1.458234651058321e-06,
+        -9.409407066285347e-07,
+        3.475443927092314e-08,
+        2.3206436772227335e-08
+      ],
+      [
+        0.15506465633660055,
+        -0.15506251571979138,
+        -0.5113950364052952,
+        0.6556360979426124,
+        -0.18543949822464015,
+        -0.2951920273955125,
+        0.37282818006260615
+      ],
+      [
+        0.16504930734367146,
+        -0.16504897811604136,
+        -0.4909760880218204,
+        0.16846178312761098,
+        0.37638357571484804,
+        0.3535489534725455,
+        -0.6398587430168111
+      ],
+      [
+        0.1707255495864086,
+        -0.17072557724364004,
+        -0.39927448435349644,
+        -0.4532842965486497,
+        -0.4174520437053893,
+        0.5423658807689535,
+        0.32922915913357464
+      ],
+      [
+        0.10814299827487907,
+        -0.10814299827487894,
+        -0.21628599657218658,
+        -0.3499580937658371,
+        -0.4744291917509575,
+        -0.5947413603404463,
+        -0.4780790106851848
+      ]
+    ],
+    "basis_labels": [
+      "z_0",
+      "x_star",
+      "grad_f(z_0)",
+      "grad_f(x_1)",
+      "grad_f(x_2)",
+      "grad_f(x_3)",
+      "grad_f(x_4)"
+    ]
+  },
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05,
+      "rank_tolerance": 0.0001,
+      "lyapunov_component_atol": 1e-05,
+      "lyapunov_component_rtol": 1e-05,
+      "basis_zero_tol": 1e-06,
+      "basis_indep_tol": 1e-07,
+      "basis_span_tol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 1.280334727127297e-10,
+      "identity_func_max_abs": 3.610223231476084e-10,
+      "identity_offset_abs": 9.141298482062687e-11,
+      "minimum_S_eigenvalue": 9.771199224236941e-12,
+      "minimum_scalar_inequality_dual": 0.025583942102815994,
+      "minimum_matrix_inequality_eigenvalue": 0.0,
+      "S_reconstruction_max_abs": 7.771561172376096e-16,
+      "dense_relaxed_gap": 3.1553663570882406e-09
+    },
+    "passed": true
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "Own B1 setup and dense/sparse certificates only; external examples excluded by clean-room policy"
+    ],
+    "attempts": [
+      {
+        "method": "Compare star multipliers to 2 theta_k/theta_N^2 and terminal 1/theta_N; consecutive multipliers to 2 theta_k^2/theta_N^2",
+        "max_error": 3.6926295354788863e-10
+      },
+      {
+        "method": "Inspect rank-one S and compare squared z_N-x_star-theta_N grad f(x_N)/L with coefficient L/(2 theta_N^2)",
+        "gram_max_error": 3.6414127269068786e-10,
+        "function_and_offset_zero": true
+      }
+    ],
+    "unresolved_components": [
+      "arbitrary-horizon analytic certificate identity"
+    ]
+  },
+  "formula_status": {
+    "lambda": "verified",
+    "S": "verified"
+  },
+  "lamb_code": "def lamb(i, j, N, theta):\n    if i == \"star\":\n        return 1/theta[N] if j == N else 2*theta[j]/theta[N]**2\n    return 2*theta[i]**2/theta[N]**2 if j == i+1 else 0",
+  "S_code": "S_guess = L/(2*theta[N]**2)*(ctx[f\"z_{N}\"]-ctx[\"x_star\"]-theta[N]/L*f.grad(ctx[f\"x_{N}\"]))**2",
+  "S_decomp_type": "direct",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": true,
+  "lyapunov_proof_verified": true,
+  "require_analytic_full_pep": false,
+  "proof_valid": true,
+  "certificate_id": "940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3",
+  "lyap_inner_prod_coords": [
+    [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.03162349157494167,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.03162349157494167,
+        0.05116788421120156,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.023326761949821254,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.13655724299668692,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.023326761949821254,
+        0.13655724299668692,
+        0.13395925983712414,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        -0.11223813975954473,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.11223813975954473,
+        0.0,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.22447627952377983,
+        0.01860791522312224,
+        0.0
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.3632102499574664,
+        0.1089326330954872,
+        0.0
+      ],
+      [
+        -0.11223813975954473,
+        0.11223813975954473,
+        0.22447627952377983,
+        0.3632102499574664,
+        0.4923947991592934,
+        0.3032535293962441,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.01860791522312224,
+        0.1089326330954872,
+        0.3032535293962441,
+        0.24619739956262454,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        -0.11223813975954473,
+        -0.14070100452891768,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.11223813975954473,
+        0.14070100452891768,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.22447627952377983,
+        0.2814020090798807,
+        0.011574338717312341
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.3632102499574664,
+        0.4553180152871389,
+        0.06775735904305809
+      ],
+      [
+        -0.11223813975954473,
+        0.11223813975954473,
+        0.22447627952377983,
+        0.3632102499574664,
+        0.4923947991592934,
+        0.6172629290942093,
+        0.18862720645304137
+      ],
+      [
+        -0.14070100452891768,
+        0.14070100452891768,
+        0.2814020090798807,
+        0.4553180152871389,
+        0.6172629290942093,
+        0.7737968081522596,
+        0.39379292016691847
+      ],
+      [
+        0.0,
+        0.0,
+        0.011574338717312341,
+        0.06775735904305809,
+        0.18862720645304137,
+        0.39379292016691847,
+        0.38689840406071735
+      ]
+    ]
+  ],
+  "lyap_func_coords": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.10233576842211013,
+      -2.929878561985788e-13,
+      0.10233576842240312,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.2679185197505443,
+      -2.929878561985788e-13,
+      7.658899903173477e-11,
+      0.2679185196742483,
+      0.0,
+      0.0
+    ],
+    [
+      -0.4923947992696338,
+      -2.929878561985788e-13,
+      7.658899903173477e-11,
+      6.80886458326313e-11,
+      0.4923947991252491,
+      0.0
+    ],
+    [
+      -0.7737968083274691,
+      -2.929878561985788e-13,
+      7.658899903173477e-11,
+      6.80886458326313e-11,
+      6.164974086786401e-11,
+      0.7737968081214347
+    ]
+  ],
+  "lyap_offsets": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rank_profile": [
+    0,
+    3,
+    4,
+    4,
+    4
+  ],
+  "rank_search": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 2,
+      "right": 0
+    },
+    "rank": 4,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3",
+    "recipe_id": "star-and-forward-pair-whole-S-boundary",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "absolute, no rescaling",
+      "coordinate_order": "setup basis creation order"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "certificate_check_code": "\"\"\"Reconstruct and group the current certificate, without solving.\"\"\"\nimport hashlib\nimport json\n\nimport numpy as np\nimport pepflow as pf\n\nfrom certificates import certificate_digest, revalidate\n\n\ndef check_certificate(certificate, notebook_dir):\n    assert certificate_digest(certificate) == certificate[\"certificate_id\"]\n    assert certificate[\"closed_form_search\"][\"completed\"]\n    assert certificate[\"certificate_provenance\"][\"pep_type\"] == \"primal\"\n    for path, expected in certificate[\"certificate_provenance\"][\"source_hashes\"].items():\n        source = (notebook_dir / path).resolve()\n        assert source.is_relative_to(notebook_dir)\n        assert hashlib.sha256(source.read_bytes()).hexdigest() == expected\n    assert json.loads(certificate[\"params_json\"]) == {\"L\": 1, \"R\": 1}\n    assert certificate[\"N\"] == certificate[\"N_verify\"]\n    ctx, pb, obj, pm, checked, residuals = revalidate(certificate)\n    pb.set_relaxed_constraints(certificate[\"relaxed_constraints\"])\n    basis = ctx.basis_vectors()\n    labels = [str(v) for v in basis]\n    assert labels == certificate[\"S_row_names\"] == certificate[\"S_col_names\"]\n    S = np.asarray(certificate[\"S_matrix\"], dtype=float)\n    assert S.shape == (len(basis), len(basis)) and np.all(np.isfinite(S))\n    assert np.allclose(S, S.T, atol=1e-6, rtol=0)\n    decomposition = certificate[\"numerical_decomposition\"]\n    D, E = np.asarray(decomposition[\"D\"]), np.asarray(decomposition[\"ell_coords\"])\n    assert decomposition[\"basis_labels\"] == labels\n    assert np.all(np.isfinite(D)) and np.all(np.isfinite(E))\n    assert np.allclose(E.T @ D @ E, S, atol=1e-4, rtol=1e-5)\n    constraints = [*pb.init_conditions, *obj.get_interpolation_constraints(ctx)]\n    groups = ctx.get_constraint_data(obj)\n    group_names = {c.name: str(group) for group, family in groups.sc_dict.items() for c in family}\n    assert not groups.psd_dict and not ctx.oper_to_duplets and len(ctx.func_to_triplets) == 1\n    weighted_terms = {}\n    for constraint in constraints:\n        initial = constraint.name == certificate[\"tau_name\"]\n        expected = dict(origin=\"initial\" if initial else \"interpolation\", owner=None if initial else str(obj), group=group_names.get(constraint.name), kind=\"scalar\", comparator=constraint.cmp.value, shape=[], relaxed=constraint.name in certificate[\"relaxed_constraints\"])\n        assert expected == certificate[\"constraint_metadata\"][constraint.name]\n        value = certificate[\"named_dual_values\"][constraint.name]\n        if expected[\"relaxed\"]:\n            assert value is None\n            continue\n        assert value is not None and value >= -1e-6\n        residual = constraint.lhs - constraint.rhs\n        if constraint.cmp == pf.Comparator.GE:\n            residual = -residual\n        weighted_terms[constraint.name] = value * residual\n    assert certificate[\"tau_sol\"] == certificate[\"named_dual_values\"][certificate[\"tau_name\"]]\n    assert certificate[\"normalization\"][\"bound_value\"] == certificate[\"opt_value\"]\n    return ctx, pb, obj, pm, weighted_terms, residuals\n\n\n\nctx, pb, obj, pm, weighted_terms, residuals = check_certificate(certificate, notebook_dir)\n",
+  "decomposition_code": "basis = ctx.basis_vectors()\n\nmatrix = np.asarray(certificate[\"S_matrix\"])\nS_scalar = sum((float(matrix[i, j])*basis[i]*basis[j] for i,j in np.ndindex(matrix.shape)), pf.Scalar.zero())\n# Keep the complete numerical PSD block as the single terminal S piece.\nS_piece_terms = {\"terminal_S\": S_scalar}\nS_assignment = {\"terminal_S\": \"boundary\"}\n",
+  "grouping_code": "def build_partial_sums(certificate, notebook_dir):\n    ctx, pb, obj, pm, weighted_terms, residuals = check_certificate(certificate, notebook_dir)\n    n = certificate[\"N\"]\n    basis = ctx.basis_vectors()\n    matrix = np.asarray(certificate[\"S_matrix\"])\n    S_scalar = sum((float(matrix[i, j])*basis[i]*basis[j] for i,j in np.ndindex(matrix.shape)), pf.Scalar.zero())\n    # Keep the complete numerical PSD block as the single terminal S piece.\n    S_piece_terms = {\"terminal_S\": S_scalar}\n    S_assignment = {\"terminal_S\": \"boundary\"}\n    group_terms = {name: term for name, term in weighted_terms.items() if name != certificate[\"tau_name\"]}\n    term_assignment = {}\n    for k in range(n):\n        tag = \"z_0\" if k == 0 else f\"x_{k}\"\n        term_assignment[f\"f:x_star,{tag}\"] = k\n        term_assignment[f\"f:{tag},x_{k+1}\"] = k\n    term_assignment[f\"f:x_star,x_{n}\"] = \"boundary\"\n    assert set(term_assignment) == set(group_terms)\n    lyap = [pf.Scalar.zero()]\n    partial_sum = pf.Scalar.zero()\n    for k in range(n):\n        increment = sum((group_terms[name] for name, step in term_assignment.items() if step == k), pf.Scalar.zero())\n        partial_sum += increment\n        lyap.append(partial_sum)\n    ranks, singular_values, evaluated = [], [], []\n    for k, Vk in enumerate(lyap):\n        value = pm.eval_scalar(Vk)\n        evaluated.append(value)\n        singular = np.linalg.svd(np.asarray(value.inner_prod_coords, dtype=float), compute_uv=False)\n        singular_values.append(singular.tolist())\n        rank = int(np.count_nonzero(singular > 1e-4))\n        ranks.append(rank)\n        print(f\"rank V_{k}: {rank}\")\n        if k == 0:\n            print()\n    print(\"Interior rank is constant at this N:\", len(set(ranks[2:n+1])) == 1 and n-1 >= 3, \"boundary exclusions:\", (2,0))\n    leftover = group_terms[f\"f:x_star,x_{n}\"] - S_scalar\n    coverage = lyap[n] + leftover - (sum(group_terms.values(),pf.Scalar.zero())-S_scalar)\n    expressions = [coverage, sum(S_piece_terms.values(), pf.Scalar.zero())-S_scalar]\n    for k in range(n):\n        increment = sum((group_terms[name] for name, step in term_assignment.items() if step == k),pf.Scalar.zero())\n        expressions.append(lyap[k+1]-lyap[k]-increment)\n    coverage_max = 0.\n    for expression in expressions:\n        value = pm.eval_scalar(expression)\n        for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset)):\n            error = float(np.max(np.abs(np.asarray(coords,dtype=float)),initial=0))\n            coverage_max = max(coverage_max,error)\n            assert error <= 1e-5\n    assert np.linalg.eigvalsh(matrix).min() >= -1e-6\n    rank_credible = all(not any(1e-5 < s < 1e-3 for s in singular) for singular in singular_values)\n    observation = dict(N=n, certificate_id=certificate[\"certificate_id\"], recipe_id=\"star-and-forward-pair-whole-S-boundary\", rank_profile=ranks, singular_values=singular_values, rank_convention=dict(tolerance=1e-4, scaling=\"absolute, no rescaling\", coordinate_order=\"setup basis creation order\"), rank_credible=rank_credible, certificate_checked=True, grouping_checked=True, coverage_max_abs=coverage_max)\n    coordinates = dict(lyap_inner_prod_coords=[np.asarray(v.inner_prod_coords,dtype=float).tolist() for v in evaluated], lyap_func_coords=[np.asarray(v.func_coords,dtype=float).tolist() for v in evaluated], lyap_offsets=[float(v.offset) for v in evaluated])\n    coverage_record = dict(constraint_assignment=term_assignment,S_assignment=S_assignment,normalization_constraint=certificate[\"tau_name\"], boundary_constraints=[f\"f:x_star,x_{n}\"], boundary_S=[\"terminal_S\"], omitted_constraints=[], checked=True)\n    return observation, coordinates, coverage_record\n\nobservation, coordinates, grouping_coverage = build_partial_sums(certificate, notebook_dir)\n",
+  "extra_duals": {},
+  "rank_tolerance": 0.0001,
+  "reconstruction_tolerance": 0.0001,
+  "reconstruction_rtol": 1e-05,
+  "grouping_coverage": {
+    "constraint_assignment": {
+      "f:x_star,z_0": 0,
+      "f:z_0,x_1": 0,
+      "f:x_star,x_1": 1,
+      "f:x_1,x_2": 1,
+      "f:x_star,x_2": 2,
+      "f:x_2,x_3": 2,
+      "f:x_star,x_3": 3,
+      "f:x_3,x_4": 3,
+      "f:x_star,x_4": "boundary"
+    },
+    "S_assignment": {
+      "terminal_S": "boundary"
+    },
+    "normalization_constraint": "initial_condition",
+    "boundary_constraints": [
+      "f:x_star,x_4"
+    ],
+    "boundary_S": [
+      "terminal_S"
+    ],
+    "omitted_constraints": [],
+    "checked": true
+  },
+  "basis_templates": [
+    "x_0-x_star",
+    "z_k-x_star",
+    "x_k-x_star",
+    "g_k"
+  ],
+  "basis_code": "def V_k_basis(k):\n    if k == 0:\n        return []\n    if k == 1:\n        return [ctx[\"x_0\"]-ctx[\"x_star\"],ctx[\"z_1\"]-ctx[\"x_star\"],obj.grad(ctx[\"x_1\"])]\n    return [ctx[\"x_0\"]-ctx[\"x_star\"],ctx[f\"z_{k}\"]-ctx[\"x_star\"],ctx[f\"x_{k}\"]-ctx[\"x_star\"],obj.grad(ctx[f\"x_{k}\"])]\n\ndef V_k_basis_labels(k):\n    if k == 0:\n        return []\n    if k == 1:\n        return [\"x_0-x_star\",\"z_1-x_star\",\"g_1\"]\n    return [\"x_0-x_star\",f\"z_{k}-x_star\",f\"x_{k}-x_star\",f\"g_{k}\"]\n\n",
+  "structure_code": "function_coefficients = {0: [0.0], 1: [-2.929878561985788e-13, 0.10233576842240312], 2: [-2.929878561985788e-13, 7.658899903173477e-11, 0.2679185196742483], 3: [-2.929878561985788e-13, 7.658899903173477e-11, 6.80886458326313e-11, 0.4923947991252491], 4: [-2.929878561985788e-13, 7.658899903173477e-11, 6.80886458326313e-11, 6.164974086786401e-11, 0.7737968081214347]}\ngauge_coefficients = {0: 0.0, 1: 0.0, 2: 0.0, 3: -5.551115123125783e-17, 4: -1.1102230246251565e-16}\ndef V_k_structure(k):\n    basis = V_k_basis(k)\n    C = coeff_by_k[k]\n    quadratic = sum((float(C[i,j])*basis[i]*basis[j] for i,j in np.ndindex(C.shape)),pf.Scalar.zero())\n    function_terms = sum((function_coefficients[k][j]*(obj(ctx[f\"x_{j}\"])-obj(ctx[\"x_star\"])) for j in range(k+1)),pf.Scalar.zero())\n    return quadratic + function_terms + gauge_coefficients[k]*obj(ctx[\"x_star\"])\n\n",
+  "coeff_by_k": {
+    "0": [],
+    "1": [
+      [
+        -0.025583942105490892,
+        -3.6626951471774305e-14,
+        0.01581174578747083
+      ],
+      [
+        -3.6626951471774305e-14,
+        0.025583942105564174,
+        -0.015811745787470827
+      ],
+      [
+        0.01581174578747083,
+        -0.015811745787470827,
+        0.05116788421120156
+      ]
+    ],
+    "2": [
+      [
+        -0.02558394210600176,
+        7.509223277912813e-12,
+        -2.1398421229390507e-11,
+        4.336808689942018e-18
+      ],
+      [
+        7.509223277912813e-12,
+        0.025583942273689923,
+        -2.9952939607780227e-10,
+        -0.11223813978211258
+      ],
+      [
+        -2.1398421229390507e-11,
+        -2.9952939607780227e-10,
+        4.591490473417059e-10,
+        0.11223813978211258
+      ],
+      [
+        4.336808689942018e-18,
+        -0.11223813978211258,
+        0.11223813978211258,
+        0.13395925983712417
+      ]
+    ],
+    "3": [
+      [
+        -0.025583942086633133,
+        -2.362628322150062e-12,
+        -1.8855416360208377e-12,
+        -3.209238430557093e-17
+      ],
+      [
+        -2.362628322150062e-12,
+        0.02558394209973811,
+        -5.446554101826151e-11,
+        -0.14070100469561012
+      ],
+      [
+        -1.8855416360208377e-12,
+        -5.446554101826151e-11,
+        1.0432244716522543e-10,
+        0.14070100469561003
+      ],
+      [
+        -3.209238430557093e-17,
+        -0.14070100469561012,
+        0.14070100469561003,
+        0.24619739956262454
+      ]
+    ],
+    "4": [
+      [
+        -0.025583942079819635,
+        3.2010418621331027e-12,
+        -2.1207245161358745e-11,
+        7.632783294297951e-17
+      ],
+      [
+        3.2010418621331027e-12,
+        0.025583942103202383,
+        -9.96575105424724e-11,
+        -0.11310159605899187
+      ],
+      [
+        -2.1207245161358745e-11,
+        -9.96575105424724e-11,
+        2.1194472305668954e-10,
+        0.11310159605899184
+      ],
+      [
+        7.632783294297951e-17,
+        -0.11310159605899187,
+        0.11310159605899184,
+        0.38689840406071735
+      ]
+    ]
+  },
+  "coeff_code": "def closed_form_coefficients(k, n, theta, smoothness):\n    T = sp.sympify(theta[n])\n    smoothness = sp.sympify(smoothness)\n    tau = smoothness/(2*T**2)\n    if k == 0:\n        return sp.zeros(0,0)\n    if k == 1:\n        cross = 1/(2*theta[1]*T**2)\n        return sp.Matrix([[-tau,0,cross],[0,tau,-cross],[cross,-cross,1/(smoothness*T**2)]])\n    rho = theta[k] if k < n else T/2\n    C = sp.zeros(4,4)\n    C[0,0],C[1,1] = -tau,tau\n    C[1,3]=C[3,1]=-rho/T**2\n    C[2,3]=C[3,2]=rho/T**2\n    C[3,3]=theta[k-1]**2/(smoothness*T**2)\n    return C\n\n",
+  "coefficient_formula_status": "verified",
+  "expression_structure": {
+    "quadratic_convention": "sum_i,j C_ij <v_i,v_j>, symmetric C; off-diagonal entries occur twice",
+    "interior": {
+      "index_domain": "2<=k<=N; left=2 right=0 discovery exclusions",
+      "basis_labels": [
+        "x_0-x_star",
+        "z_k-x_star",
+        "x_k-x_star",
+        "g_k"
+      ],
+      "coefficients": {
+        "C00": "-L/(2*T^2)",
+        "C11": "L/(2*T^2)",
+        "C13=C31": "-rho_k/T^2",
+        "C23=C32": "rho_k/T^2",
+        "C33": "theta_{k-1}^2/(L*T^2)",
+        "all_other_entries": "0"
+      },
+      "rho_k": "theta_k if k<N; T/2 if k=N"
+    },
+    "initial": {
+      "index_domain": "k=0,1",
+      "cases": {
+        "0": {
+          "basis_labels": [],
+          "potential": "0"
+        },
+        "1": {
+          "basis_labels": [
+            "x_0-x_star",
+            "z_1-x_star",
+            "g_1"
+          ],
+          "coefficients": {
+            "C00": "-L/(2*T^2)",
+            "C11": "L/(2*T^2)",
+            "C02=C20": "1/(2*theta_1*T^2)",
+            "C12=C21": "-1/(2*theta_1*T^2)",
+            "C22": "1/(L*T^2)",
+            "all_other_entries": "0"
+          },
+          "small_horizon": "For N=1, theta_1=T=2; exact first and terminal identities checked."
+        }
+      }
+    },
+    "terminal": {
+      "index_domain": "No separate excluded terminal index; k=N uses rho_N=T/2 in its applicable interior or N=1 initial formula."
+    },
+    "function_terms": [
+      {
+        "index_domain": "0<=k<=N",
+        "expression": "f(x_k)-f_star",
+        "coefficient": "2*theta_{k-1}^2/T^2"
+      }
+    ],
+    "constant_terms": []
+  },
+  "unresolved_coefficients": [],
+  "numerical_reconstruction": {
+    "certificate_id": "940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3",
+    "required_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "quadratic_residuals": {
+      "0": 0.0,
+      "1": 1.0682291383637863e-16,
+      "2": 7.896803474405452e-17,
+      "3": 1.3979280975567532e-10,
+      "4": 3.0588779024846866e-10
+    },
+    "component_residuals": {
+      "0": {
+        "gram": 0.0,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "1": {
+        "gram": 6.938893903907228e-17,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "2": {
+        "gram": 2.7755575615628914e-17,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "3": {
+        "gram": 6.628866899838215e-11,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "4": {
+        "gram": 1.8858697936607882e-10,
+        "function": 1.1102230246251565e-16,
+        "offset": 0.0
+      }
+    },
+    "tolerances": {
+      "indep_tol": 1e-07,
+      "span_tol": 1e-05,
+      "component_atol": 0.0001,
+      "component_rtol": 1e-05
+    },
+    "passed": true
+  },
+  "proof_checks": {
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "signs": true,
+    "domain": true,
+    "normalization": true
+  },
+  "proof_arguments": {
+    "derivation": "Exact PEPFlow Gram/function/offset equations solve the sparse ansatz jointly with local multipliers, after fixing the radius coefficient a=1/2. Derived (a,b,c,d,m,n)=(1/2,2,1,2,2,2).",
+    "step": "For k<N, theta_{k-1}^2=theta_k^2-theta_k. For both next-index recurrences, rho_{k+1}(theta_{k+1}-1)=theta_k^2. Substitution into the exact generic identity yields V_{k+1}-V_k = 2*theta_k/T^2 I_star,k + 2*theta_k^2/T^2 I_k,k+1.",
+    "base": "z_0=x_0 and theta_{-1}=0 imply V_0=0. A separate symbolic initial-update context verifies the first increment and three-vector initial coefficient reduction.",
+    "boundary": "gap_N - L/(2*T^2)||x_0-x_star||^2 = V_N + I_star,N/T - L/(2*T^2)||z_N-x_star-T*g_N/L||^2, checked exactly in all coordinates.",
+    "signs": "Smooth convex interpolation gives I<=0. L>0, theta_k>=1, and T>=2 make every step, terminal, normalization, and square coefficient positive. Consequently V decreases; terminal residual and negative square have the required upper-bound sign.",
+    "domain": "Every integer N>=1, real finite-dimensional Euclidean space, L>0, R>=0. Recurrence induction gives theta_k>=1 and every next theta>1, so all denominators are nonzero. N=1 (T=2) checked separately. No division by R is used.",
+    "normalization": "The exact radius identity includes L/(2*T^2)*(||x_0-x_star||^2-R^2). Combining its nonpositivity with V_N<=0 and the boundary signs proves gap_N<=L*R^2/(2*T^2).",
+    "global_certificate": "Sum the exact local identities from k=0 through N-1, use V_0=0, and substitute the boundary identity. This proves the full global lambda and rank-one S formulas, including the initial constraint offset. See the final notebook telescoping equation."
+  },
+  "lyapunov_formula": "V_k = L/(2*T^2)*(||z_k-x_star||^2-||x_0-x_star||^2) + 2*theta_{k-1}^2/T^2*(f(x_k)-f_star) + theta_{k-1}^2/(L*T^2)*||g_k||^2 + 2*rho_k/T^2*<g_k,x_k-z_k>; T=theta_N, rho_k=theta_k for k<N and T/2 for k=N, theta_{-1}=0.",
+  "discovery_expression_structure": {
+    "quadratic_convention": "sum_i,j C_ij <v_i,v_j>; symmetric C, off-diagonal entries counted twice",
+    "interior": {
+      "index_domain": "2 <= k <= N, exclusions left=2 right=0",
+      "basis_labels": [
+        "x_0-x_star",
+        "z_k-x_star",
+        "x_k-x_star",
+        "g_k"
+      ],
+      "coefficients": {
+        "0,0": "c_00(k,N,L)",
+        "0,1": "c_01(k,N,L)",
+        "0,2": "c_02(k,N,L)",
+        "0,3": "c_03(k,N,L)",
+        "1,1": "c_11(k,N,L)",
+        "1,2": "c_12(k,N,L)",
+        "1,3": "c_13(k,N,L)",
+        "2,2": "c_22(k,N,L)",
+        "2,3": "c_23(k,N,L)",
+        "3,3": "c_33(k,N,L)"
+      }
+    },
+    "initial": {
+      "index_domain": "k=0,1",
+      "cases": {
+        "0": {
+          "basis_labels": [],
+          "quadratic": 0
+        },
+        "1": {
+          "basis_labels": [
+            "x_0-x_star",
+            "z_1-x_star",
+            "g_1"
+          ],
+          "coefficients": {
+            "0,0": "d_00(k,N,L)",
+            "0,1": "d_01(k,N,L)",
+            "0,2": "d_02(k,N,L)",
+            "1,1": "d_11(k,N,L)",
+            "1,2": "d_12(k,N,L)",
+            "2,2": "d_22(k,N,L)"
+          }
+        }
+      }
+    },
+    "terminal": {
+      "index_domain": "empty; k=N follows interior when N>=2, k=1 case when N=1"
+    },
+    "function_terms": [
+      {
+        "expression": "sum_{j=0}^k a(k,j,N,L)*(f(x_j)-f_star) + b(k,N,L)*f_star",
+        "index_domain": "0<=k<=N",
+        "numerical_observation": "Earlier j<k coefficients and gauge b are near zero; terminal gap coefficient remains nonzero"
+      }
+    ],
+    "constant_terms": []
+  },
+  "analytic_potential_code": "def closed_form_potential(k, context, function, theta, smoothness):\n    n = len(theta)-1\n    T = theta[n]\n    if k == 0:\n        return pf.Scalar.zero()\n    rho = theta[k] if k < n else T/2\n    previous_squared = theta[k-1]**2\n    xk,zk,star,x0 = context[f\"x_{k}\"],context[f\"z_{k}\"],context[\"x_star\"],context[\"x_0\"]\n    gk = function.grad(xk)\n    return smoothness/(2*T**2)*((zk-star)**2-(x0-star)**2)+2*previous_squared/T**2*(function(xk)-function(star))+previous_squared/(smoothness*T**2)*gk**2+2*rho/T**2*gk*(xk-zk)\n\n",
+  "local_multiplier_code": "step_RHS = 2*t_exact/T_exact**2*I_star_step+2*t_exact**2/T_exact**2*I_forward_step\nboundary_RHS = V_terminal+I_terminal/T_exact-terminal_square",
+  "remaining_unknowns": [],
+  "theorem": "f(x_N)-f(x_star) <= L*R^2/(2*theta_N^2)",
+  "run_status": "completed",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_work": [],
+  "notebook_path": "ogm_example_lyap.ipynb",
+  "notebook_sha256": "44a82dbc9876ae6a302f3ec27091a96cc1a065899417d68a5449cd758e071ab2",
+  "static_evidence": "supplementary/b5-static-002.json",
+  "execution_evidence": "supplementary/b5-final-nbconvert-output-002.txt",
+  "symbolic_source": "supplementary/b5_symbolic_cells.py",
+  "formula_comparisons": [
+    {
+      "N": 4,
+      "k": 0,
+      "gram": 0.0,
+      "function": 0.0,
+      "offset": 0.0
+    },
+    {
+      "N": 4,
+      "k": 1,
+      "gram": 2.225278017409238e-10,
+      "function": 2.2267429566902308e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 4,
+      "k": 2,
+      "gram": 3.00822089460695e-10,
+      "function": 3.388236358148333e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 4,
+      "k": 3,
+      "gram": 4.033072764642043e-10,
+      "function": 5.136476799449952e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 4,
+      "k": 4,
+      "gram": 4.033072764642043e-10,
+      "function": 3.912955515161798e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 0,
+      "gram": 0.0,
+      "function": 0.0,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 1,
+      "gram": 4.735732153648975e-10,
+      "function": 4.748499579654286e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 2,
+      "gram": 9.248718180199234e-10,
+      "function": 9.861354233198227e-10,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 3,
+      "gram": 1.3046305702424377e-09,
+      "function": 1.48970874525034e-09,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 4,
+      "gram": 1.3046305702424377e-09,
+      "function": 1.4294361805333722e-09,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 5,
+      "gram": 1.3046305702424377e-09,
+      "function": 1.415632611134754e-09,
+      "offset": 0.0
+    },
+    {
+      "N": 6,
+      "k": 6,
+      "gram": 1.3046305702424377e-09,
+      "function": 1.088322099107586e-09,
+      "offset": 0.0
+    }
+  ],
+  "finished_utc": "2026-09-23T18:48:50.626814+00:00",
+  "original_deadline_utc": "2026-09-23T20:02:47.999904+00:00",
+  "rendered_review_performed": false
+}

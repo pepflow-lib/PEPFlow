@@ -1,0 +1,3829 @@
+{
+  "N": 4,
+  "N_verify": 4,
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "opt_value": 0.062499998838795916,
+  "tau_sol": 0.06250000200444804,
+  "tau_name": "initial_condition",
+  "relaxed_constraints": [
+    "f:x_0,x_star",
+    "f:x_0,x_2",
+    "f:x_0,x_3",
+    "f:x_0,x_4",
+    "f:x_1,x_star",
+    "f:x_1,x_0",
+    "f:x_1,x_3",
+    "f:x_1,x_4",
+    "f:x_2,x_star",
+    "f:x_2,x_0",
+    "f:x_2,x_1",
+    "f:x_2,x_4",
+    "f:x_3,x_star",
+    "f:x_3,x_0",
+    "f:x_3,x_1",
+    "f:x_3,x_2",
+    "f:x_4,x_star",
+    "f:x_4,x_0",
+    "f:x_4,x_1",
+    "f:x_4,x_2",
+    "f:x_4,x_3",
+    "g:x_1,x_star",
+    "g:x_1,x_3",
+    "g:x_1,x_4",
+    "g:x_2,x_star",
+    "g:x_2,x_1",
+    "g:x_2,x_4",
+    "g:x_3,x_star",
+    "g:x_3,x_1",
+    "g:x_3,x_2",
+    "g:x_4,x_star",
+    "g:x_4,x_1",
+    "g:x_4,x_2",
+    "g:x_4,x_3"
+  ],
+  "S_matrix": [
+    [
+      0.06250000252382612,
+      -0.06249999971374151,
+      1.8637696858098425e-16,
+      -0.06250002461933903,
+      -0.07142732710216965,
+      -0.08035782711576889,
+      -0.09524006692694977,
+      -0.10714371235765693,
+      -0.13333417230511027,
+      -0.1499994296756841,
+      -0.19999843366577122,
+      -0.09999900623154992
+    ],
+    [
+      -0.06249999971374151,
+      0.06250000252382612,
+      -1.8634539532928593e-16,
+      0.06250002461933903,
+      0.07142732710216965,
+      0.08035782711576889,
+      0.09524006692694977,
+      0.10714371235765693,
+      0.13333417230511027,
+      0.1499994296756841,
+      0.19999843366577122,
+      0.09999900623154992
+    ],
+    [
+      1.8637696858098425e-16,
+      -1.8634539532928593e-16,
+      0.5000000028099136,
+      -0.06250002461933164,
+      -7.52955543147264e-15,
+      -0.0803578271157615,
+      -7.529526359609241e-15,
+      -0.10714371235764954,
+      -7.529528181720504e-15,
+      -0.14999942967567673,
+      -7.529529105595196e-15,
+      -0.09999900623154255
+    ],
+    [
+      -0.06250002461933903,
+      0.06250002461933903,
+      -0.06250002461933164,
+      0.1250000520485923,
+      0.07142732710216193,
+      0.08035782711577666,
+      0.09524006692694204,
+      0.10714371235766469,
+      0.13333417230510253,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.07142732710216965,
+      0.07142732710216965,
+      -7.52955543147264e-15,
+      0.07142732710216193,
+      0.14285465701425257,
+      0.14285785173510085,
+      0.09524006692695705,
+      0.10714371235764958,
+      0.13333417230511754,
+      0.14999942967567678,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.08035782711576889,
+      0.08035782711576889,
+      -0.0803578271157615,
+      0.08035782711577666,
+      0.14285785173510085,
+      0.2857157062801307,
+      0.16666739402911146,
+      0.10714371235766469,
+      0.13333417230510253,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.09524006692694977,
+      0.09524006692694977,
+      -7.529526359609241e-15,
+      0.09524006692694204,
+      0.09524006692695705,
+      0.16666739402911146,
+      0.33333479086815154,
+      0.2500015640927581,
+      0.13333417230511754,
+      0.14999942967567678,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.10714371235765693,
+      0.10714371235765693,
+      -0.10714371235764954,
+      0.10714371235766469,
+      0.10714371235764958,
+      0.10714371235766469,
+      0.2500015640927581,
+      0.500003130995445,
+      0.3000015663342214,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.13333417230511027,
+      0.13333417230511027,
+      -7.529528181720504e-15,
+      0.13333417230510253,
+      0.13333417230511754,
+      0.13333417230510253,
+      0.13333417230511754,
+      0.3000015663342214,
+      0.6000031354783715,
+      0.40000099376844245,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.1499994296756841,
+      0.1499994296756841,
+      -0.14999942967567673,
+      0.14999942967569188,
+      0.14999942967567678,
+      0.14999942967569188,
+      0.14999942967567678,
+      0.14999942967569188,
+      0.40000099376844245,
+      0.8000019903468137,
+      0.4999999999999924,
+      0.09999900623155768
+    ],
+    [
+      -0.19999843366577122,
+      0.19999843366577122,
+      -7.529529105595196e-15,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.4999999999999924,
+      1.0000000028099136,
+      0.49999999999999256
+    ],
+    [
+      -0.09999900623154992,
+      0.09999900623154992,
+      -0.09999900623154255,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.49999999999999256,
+      0.5000000028099139
+    ]
+  ],
+  "S_row_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "S_col_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_vectors": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "g(x_star)",
+    "f(x_0)",
+    "g(x_1)",
+    "f(x_1)",
+    "g(x_2)",
+    "f(x_2)",
+    "g(x_3)",
+    "f(x_3)",
+    "g(x_4)",
+    "f(x_4)"
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.06250000200444804,
+    "f:x_star,x_0": 0.1250000524780983,
+    "f:x_star,x_1": 0.16071565747095803,
+    "f:x_star,x_2": 0.21428742795473416,
+    "f:x_star,x_3": 0.29999886259078856,
+    "f:x_star,x_4": 0.1999980157025201,
+    "f:x_0,x_star": null,
+    "f:x_0,x_1": 0.1250000524780985,
+    "f:x_0,x_2": null,
+    "f:x_0,x_3": null,
+    "f:x_0,x_4": null,
+    "f:x_1,x_star": null,
+    "f:x_1,x_0": null,
+    "f:x_1,x_2": 0.2857157067096368,
+    "f:x_1,x_3": null,
+    "f:x_1,x_4": null,
+    "f:x_2,x_star": null,
+    "f:x_2,x_0": null,
+    "f:x_2,x_1": null,
+    "f:x_2,x_3": 0.5000031314249512,
+    "f:x_2,x_4": null,
+    "f:x_3,x_star": null,
+    "f:x_3,x_0": null,
+    "f:x_3,x_1": null,
+    "f:x_3,x_2": null,
+    "f:x_3,x_4": 0.8000019907763198,
+    "f:x_4,x_star": null,
+    "f:x_4,x_0": null,
+    "f:x_4,x_1": null,
+    "f:x_4,x_2": null,
+    "f:x_4,x_3": null,
+    "g:x_star,x_1": 0.1428546574437588,
+    "g:x_star,x_2": 0.190480137093319,
+    "g:x_star,x_3": 0.26666834784964005,
+    "g:x_star,x_4": 0.39999687057096195,
+    "g:x_1,x_star": null,
+    "g:x_1,x_2": 0.14285465744375864,
+    "g:x_1,x_3": null,
+    "g:x_1,x_4": null,
+    "g:x_2,x_star": null,
+    "g:x_2,x_1": null,
+    "g:x_2,x_3": 0.3333347912976577,
+    "g:x_2,x_4": null,
+    "g:x_3,x_star": null,
+    "g:x_3,x_1": null,
+    "g:x_3,x_2": null,
+    "g:x_3,x_4": 0.6000031359078778,
+    "g:x_4,x_star": null,
+    "g:x_4,x_1": null,
+    "g:x_4,x_2": null,
+    "g:x_4,x_3": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "certificate_provenance": {
+    "solve_id": "46c375c4-10bc-4d46-97db-ac9b7abbb97a",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "solver": {
+      "api": "CVXPrimalSolver.build_problem",
+      "effective_name": "CLARABEL",
+      "settings": {
+        "solver": "CLARABEL"
+      },
+      "failure": null
+    },
+    "source_hashes": {
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\pgm_setup.py": "e0a02a3c10577dcf9eb5ab134355f900c9e5b73754b5f5e56c2caae68cee6eab",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\helpers\\certificates.py": "c1f4e10ec500aa7508484d488d025e59b020b653bfbbdba038064733f06e9b3b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow\\vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    }
+  },
+  "algo_name": "pgm",
+  "problem_type": "composite",
+  "obj_tag": "f",
+  "performance_metric": "h(x_N)-h(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "L*R**2/(4*N)",
+  "rate_status": "numerical_conjecture",
+  "setup_file": "pgm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.25000000431910757,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 2,
+      "opt_value": 0.12499999766566457,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 3,
+      "opt_value": 0.0833333327868809,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 4,
+      "opt_value": 0.06249999907262903,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 5,
+      "opt_value": 0.04999999951378083,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 6,
+      "opt_value": 0.04166666248812821,
+      "status": "optimal_inaccurate",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    },
+    {
+      "N": 7,
+      "opt_value": 0.03571428428419599,
+      "status": "optimal_inaccurate",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null
+    }
+  ],
+  "supplied_assistance": "Fixed SOS aid in approved/input.md; not used or verified in B1",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "proof_valid": true,
+  "require_analytic_full_pep": false,
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "||x_0-x_star||^2 <= R^2",
+    "performance_metric": "h(x_N)-h(x_star)",
+    "bound_value": 0.062499998838795916,
+    "bound_formula": "L*R**2/(4*N)",
+    "supplied_sos_scale": 1
+  },
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05,
+      "rank_tolerance": 0.0001,
+      "lyapunov_component_atol": 1e-05,
+      "lyapunov_component_rtol": 1e-05,
+      "basis_zero_tol": 1e-06,
+      "basis_indep_tol": 1e-07,
+      "basis_span_tol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 5.288635973599298e-09,
+      "identity_func_max_abs": 1.619709921740764e-08,
+      "identity_offset_abs": 3.165652122383289e-09,
+      "S_reconstruction_max_abs": 3.135478371496525e-06,
+      "candidate_identity_gram_max_abs": 3.1391472977704282e-06,
+      "dense_relaxed_gap": 2.33833112595061e-10,
+      "conjecture_gap": 1.161204084276779e-09,
+      "minimum_scalar_inequality_dual": 0.06250000200444804,
+      "minimum_S_eigenvalue": 2.198704447512869e-09,
+      "minimum_matrix_inequality_eigenvalue": 0.0
+    },
+    "passed": true,
+    "exact_candidate_fixed_horizon": true
+  },
+  "numerical_decomposition": {
+    "method": "direct",
+    "D": [
+      [
+        0.07142857142857142,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.009070294784580499,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.05555555555555555,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.09523809523809523,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.10493827160493827,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.12698412698412698,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.13333333333333333,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.24,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2222222222222222,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4444444444444444,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35555555555555557
+      ]
+    ],
+    "ell_coords": [
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.875,
+        0.0,
+        0.125,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.125,
+        0.125,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.14285714285714285,
+        0.14285714285714285,
+        0.0,
+        0.01785714285714285,
+        1.1428571428571428,
+        1.125,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.75,
+        0.0,
+        0.25,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.14285714285714285,
+        0.14285714285714285,
+        0.0,
+        0.14285714285714285,
+        0.14285714285714285,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.16666666666666666,
+        0.16666666666666666,
+        0.0,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.04166666666666666,
+        1.1666666666666667,
+        1.125,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.625,
+        0.0,
+        0.375,
+        0.0,
+        0.0
+      ],
+      [
+        -0.16666666666666666,
+        0.16666666666666666,
+        0.0,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.2,
+        0.2,
+        0.0,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.07500000000000001,
+        1.2,
+        1.125,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.5
+      ],
+      [
+        -0.2,
+        0.2,
+        0.0,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        1.0,
+        1.0,
+        0.0
+      ],
+      [
+        -0.25,
+        0.25,
+        0.0,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.125,
+        1.25,
+        1.125
+      ]
+    ],
+    "basis_labels": [
+      "x_0",
+      "x_star",
+      "grad_f(x_star)",
+      "grad_f(x_0)",
+      "grad_g(x_1)",
+      "grad_f(x_1)",
+      "grad_g(x_2)",
+      "grad_f(x_2)",
+      "grad_g(x_3)",
+      "grad_f(x_3)",
+      "grad_g(x_4)",
+      "grad_f(x_4)"
+    ],
+    "supplied_assistance": true,
+    "pieces": [
+      [
+        [
+          0.0012755102040816326,
+          -0.0012755102040816326,
+          0.0,
+          -0.0012755102040816326,
+          -0.01020408163265306,
+          -0.008928571428571426,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.0012755102040816326,
+          0.0012755102040816326,
+          0.0,
+          0.0012755102040816326,
+          0.01020408163265306,
+          0.008928571428571426,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.07142857142857142,
+          -0.0625,
+          0.0,
+          -0.008928571428571428,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.0012755102040816326,
+          0.0012755102040816326,
+          -0.0625,
+          0.06377551020408163,
+          0.01020408163265306,
+          0.008928571428571428,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01020408163265306,
+          0.01020408163265306,
+          0.0,
+          0.01020408163265306,
+          0.08163265306122448,
+          0.07142857142857141,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.008928571428571426,
+          0.008928571428571426,
+          -0.008928571428571428,
+          0.008928571428571428,
+          0.07142857142857141,
+          0.07142857142857142,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.005668934240362812,
+          -0.005668934240362812,
+          0.0,
+          -0.005668934240362812,
+          -0.005668934240362812,
+          -0.015873015873015872,
+          -0.03968253968253968,
+          -0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.005668934240362812,
+          0.005668934240362812,
+          0.0,
+          0.005668934240362812,
+          0.005668934240362812,
+          0.015873015873015872,
+          0.03968253968253968,
+          0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.09523809523809523,
+          0.0,
+          0.0,
+          -0.07142857142857142,
+          0.0,
+          -0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.005668934240362812,
+          0.005668934240362812,
+          0.0,
+          0.005668934240362812,
+          0.005668934240362812,
+          0.015873015873015872,
+          0.03968253968253968,
+          0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.005668934240362812,
+          0.005668934240362812,
+          0.0,
+          0.005668934240362812,
+          0.005668934240362812,
+          0.015873015873015872,
+          0.03968253968253968,
+          0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015873015873015872,
+          0.015873015873015872,
+          -0.07142857142857142,
+          0.015873015873015872,
+          0.015873015873015872,
+          0.15873015873015872,
+          0.1111111111111111,
+          0.023809523809523808,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.03968253968253968,
+          0.03968253968253968,
+          0.0,
+          0.03968253968253968,
+          0.03968253968253968,
+          0.1111111111111111,
+          0.2777777777777778,
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.023809523809523808,
+          0.023809523809523808,
+          -0.023809523809523808,
+          0.023809523809523808,
+          0.023809523809523808,
+          0.023809523809523808,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.015555555555555557,
+          -0.015555555555555557,
+          0.0,
+          -0.015555555555555557,
+          -0.015555555555555557,
+          -0.015555555555555557,
+          -0.015555555555555557,
+          -0.04333333333333333,
+          -0.09333333333333332,
+          -0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015555555555555557,
+          0.015555555555555557,
+          0.0,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.04333333333333333,
+          0.09333333333333332,
+          0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.13333333333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.08333333333333333,
+          0.0,
+          -0.05,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015555555555555557,
+          0.015555555555555557,
+          0.0,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.04333333333333333,
+          0.09333333333333332,
+          0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015555555555555557,
+          0.015555555555555557,
+          0.0,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.04333333333333333,
+          0.09333333333333332,
+          0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015555555555555557,
+          0.015555555555555557,
+          0.0,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.04333333333333333,
+          0.09333333333333332,
+          0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          -0.015555555555555557,
+          0.015555555555555557,
+          0.0,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.015555555555555557,
+          0.04333333333333333,
+          0.09333333333333332,
+          0.049999999999999996,
+          0.0,
+          0.0
+        ],
+        [
+          -0.04333333333333333,
+          0.04333333333333333,
+          -0.08333333333333333,
+          0.04333333333333333,
+          0.04333333333333333,
+          0.04333333333333333,
+          0.04333333333333333,
+          0.2933333333333333,
+          0.26,
+          0.05,
+          0.0,
+          0.0
+        ],
+        [
+          -0.09333333333333332,
+          0.09333333333333332,
+          0.0,
+          0.09333333333333332,
+          0.09333333333333332,
+          0.09333333333333332,
+          0.09333333333333332,
+          0.26,
+          0.5599999999999999,
+          0.29999999999999993,
+          0.0,
+          0.0
+        ],
+        [
+          -0.049999999999999996,
+          0.049999999999999996,
+          -0.05,
+          0.049999999999999996,
+          0.049999999999999996,
+          0.049999999999999996,
+          0.049999999999999996,
+          0.05,
+          0.29999999999999993,
+          0.3,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.04000000000000001,
+          -0.04000000000000001,
+          0.0,
+          -0.04000000000000001,
+          -0.04000000000000001,
+          -0.04000000000000001,
+          -0.04000000000000001,
+          -0.04000000000000001,
+          -0.04000000000000001,
+          -0.1,
+          -0.2,
+          -0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          0.0,
+          0.0,
+          0.2,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.1,
+          0.0,
+          -0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.04000000000000001,
+          0.04000000000000001,
+          0.0,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.04000000000000001,
+          0.1,
+          0.2,
+          0.1
+        ],
+        [
+          -0.1,
+          0.1,
+          -0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.49999999999999994,
+          0.5,
+          0.1
+        ],
+        [
+          -0.2,
+          0.2,
+          0.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.5,
+          1.0,
+          0.5
+        ],
+        [
+          -0.1,
+          0.1,
+          -0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.5,
+          0.5
+        ]
+      ]
+    ]
+  },
+  "S_decomp_type": "direct",
+  "formula_status": {
+    "lambda": "candidate",
+    "S": "candidate"
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "approved/input.md: supplied fixed SOS"
+    ],
+    "attempts": [
+      "Sparse consecutive/star pattern preserves dense bound",
+      "Rationalized consecutive multipliers; star coefficients derived by function-value conservation",
+      "Supplied SOS compared to same numerical slack with scale 1",
+      "Exact candidate full-coordinate identity verified at N=4"
+    ],
+    "unresolved_components": [
+      "arbitrary-horizon analytic full-PEP identity"
+    ],
+    "multiplier_max_error": 3.9466171285473806e-06,
+    "S_max_error": 3.135478371496525e-06
+  },
+  "lambda_row_names": [
+    "x_star",
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4"
+  ],
+  "lambda_col_names": [
+    "x_star",
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4"
+  ],
+  "lambda_matrix": [
+    [
+      0.0,
+      0.1250000524780983,
+      0.16071565747095803,
+      0.21428742795473416,
+      0.29999886259078856,
+      0.1999980157025201
+    ],
+    [
+      0.0,
+      0.0,
+      0.1250000524780985,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.2857157067096368,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5000031314249512,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000019907763198
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "lamb_code": "def candidate_multiplier(name, horizon):\n    horizon = sp.S(horizon)\n    if name == 'initial_condition':\n        return sp.S(1)/(4*horizon)\n    owner, pair = name.split(':')\n    left, right = pair.split(',')\n    if left == 'x_star':\n        j = int(right.split('_')[1])\n        if j == horizon:\n            return sp.S(1 if owner == 'f' else 2)/(horizon+1)\n        return (2*horizon + (1 if owner == 'f' else 0))/((2*horizon-j)*(2*horizon+1-j))\n    if right == 'x_star':\n        return sp.S(0)\n    i, j = int(left.split('_')[1]), int(right.split('_')[1])\n    return (i + (1 if owner == 'f' else 0))/(2*horizon-i) if j == i+1 else sp.S(0)\n\nlambda_errors = []\nfor name, value in selected['named_dual_values'].items():\n    candidate = candidate_multiplier(name, N)\n    if value is not None:\n        error = abs(float(candidate)-value)\n        lambda_errors.append(error)\n        print(name, 'numerical=', round(value, 9), 'candidate=', candidate)\n    else:\n        assert candidate == 0\nprint('Maximum multiplier comparison error:', max(lambda_errors))\nassert max(lambda_errors) < 1e-4\nfor owner_name, indices in [('f', ['star', *range(N_int+1)]), ('g', ['star', *range(1, N_int+1)])]:\n    labels = [f'x_{i}' for i in indices]\n    candidate_matrix = sp.Matrix([[0 if a == b else candidate_multiplier(f'{owner_name}:{a},{b}', N)\n                                  for b in labels] for a in labels])\n    pf.pprint_labeled_matrix(np.asarray(candidate_matrix, dtype=object), labels, labels)\n",
+  "S_code": "S_candidate = pf.Scalar.zero()\nsquare_vectors, square_coefficients, pieces = [], [], []\nfor ii in range(1, N_int+1):\n    i = sp.S(ii)\n    a = f.grad(ctx[f'x_{ii}'])\n    ap = f.grad(ctx[f'x_{ii-1}'])\n    ast = f.grad(ctx['x_star'])\n    s = g.grad(ctx[f'x_{ii}'])\n    c1 = N / ((2*N+1-i)*(2*N-i)*L)\n    u1 = i/(2*N)*a + (2*N-i)/(2*N)*ap - ast\n    c2 = ((i-1)/(2*N-i)*(2*N+2)/(2*N+1) + 2*N/((2*N-i)**2*(2*N+1)))/(2*L)\n    u2 = ap+s-L/(2*N+1-i)*(ctx[f'x_{ii-1}']-ctx['x_star'])\n    c3 = i/(2*N+1-i)*(2*N)/(2*N+1)/(2*L)\n    u3 = (2*N+1)/(2*N)*(a+s)-(ap+s)/(2*N)-L/(2*N-i)*(ctx[f'x_{ii}']-ctx['x_star'])\n    piece = c1*u1**2 + c2*u2**2 + c3*u3**2\n    S_candidate += piece\n    pieces.append(piece)\n    square_vectors.extend([u1, u2, u3])\n    square_coefficients.extend([c1, c2, c3])\nE = np.asarray([pm.eval_vector(v).coords for v in square_vectors], dtype=float)\nD = np.diag([float(c.get_value({'L': sp.S(1)})) for c in square_coefficients])\ncandidate_eval = pm.eval_scalar(S_candidate)\nS_reconstructed = E.T @ D @ E\ndef max_abs(values):\n    return float(np.max(np.abs(np.asarray(values, dtype=float)), initial=0.0))\nprint('Supplied SOS reconstruction residual:', max_abs(S_reconstructed - S_array))\nassert np.allclose(S_reconstructed, S_array, atol=1e-4, rtol=1e-5)\nassert max_abs(candidate_eval.func_coords) == 0 and max_abs(candidate_eval.offset) == 0\npf.pprint_labeled_matrix(S_reconstructed, selected['basis_vectors'], selected['basis_vectors'])\n",
+  "certificate_check_code": "# Visible/replayable selected-certificate and partial-sum checks; no solves.\nimport hashlib\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nimport pepflow as pf\nimport sympy as sp\n\n# Caller supplies notebook_dir, certificate and get_pep_setup.\nN_int = certificate['N_verify']\nparams_sp = {name: sp.S(value) for name, value in json.loads(certificate['params_json']).items()}\nctx, pb, obj = get_pep_setup(N_int, params_sp)\nctx.set_as_current()\npb.set_relaxed_constraints(certificate['relaxed_constraints'])\ncertificate_keys = ('N_verify', 'params_json', 'relaxed_constraints', 'S_matrix', 'S_row_names',\n    'S_col_names', 'basis_vectors', 'basis_scalars', 'opt_value', 'tau_sol', 'tau_name',\n    'named_dual_values', 'constraint_metadata', 'normalization', 'certificate_provenance',\n    'numerical_checks', 'numerical_decomposition')\ndigest = hashlib.sha256(json.dumps({key: certificate[key] for key in certificate_keys},\n    sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()\nassert digest == certificate['certificate_id']\nfor path, expected in certificate['certificate_provenance']['source_hashes'].items():\n    source_path = Path(path).resolve()\n    assert source_path.is_relative_to(notebook_dir)\n    assert hashlib.sha256(source_path.read_bytes()).hexdigest() == expected\nassert Path(pf.__file__).resolve().is_relative_to(notebook_dir / 'supplementary' / 'approved')\nassert certificate['certificate_provenance']['pep_type'] == 'primal'\nassert certificate['certificate_provenance']['solver_status'] == 'optimal'\nassert certificate['closed_form_search']['completed']\nassert certificate['normalization']['tau_name'] == 'initial_condition'\nassert certificate['normalization']['initial_condition'] == '||x_0-x_star||^2 <= R^2'\nassert certificate['normalization']['performance_metric'] == 'h(x_N)-h(x_star)'\nassert certificate['normalization']['bound_formula'] == 'L*R**2/(4*N)'\nassert certificate['normalization']['bound_value'] == certificate['opt_value']\nrecords = [(c, 'initial', None, None) for c in pb.init_conditions]\nassert not ctx.oper_to_duplets\nfor owner in ctx.func_to_triplets:\n    owner.get_interpolation_constraints(ctx)\n    data = ctx.get_constraint_data(owner)\n    assert not data.psd_dict\n    records.extend((c, 'interpolation', str(owner), str(group))\n                   for group, family in data.sc_dict.items() for c in family)\nassert len({c.name for c, *_ in records}) == len(records)\nassert {c.name for c, *_ in records} == set(certificate['named_dual_values']) == set(certificate['constraint_metadata'])\nbasis = ctx.basis_vectors()\nbasis_labels = [str(v) for v in basis]\nassert basis_labels == certificate['basis_vectors'] == certificate['S_row_names'] == certificate['S_col_names']\nassert [str(v) for v in ctx.basis_scalars()] == certificate['basis_scalars']\npm = pf.ExpressionManager(ctx, resolve_parameters=params_sp)\ntol = certificate['numerical_checks']['tolerances']\nS_array = np.asarray(certificate['S_matrix'], dtype=float)\nassert S_array.shape == (len(basis), len(basis))\nassert np.all(np.isfinite(S_array))\nassert np.allclose(S_array, S_array.T, atol=tol['psd_tol'], rtol=0)\nassert np.linalg.eigvalsh(S_array).min() >= -tol['psd_tol']\nweighted_terms, group_terms, extra_duals = {}, {}, {}\nfor c, origin, owner, group in records:\n    assert isinstance(c, pf.ScalarConstraint)\n    dropped = c.name in certificate['relaxed_constraints']\n    meta = dict(origin=origin, owner=owner, group=group, kind='scalar',\n                comparator=c.cmp.value, shape=[], relaxed=dropped)\n    assert meta == certificate['constraint_metadata'][c.name]\n    value = certificate['named_dual_values'][c.name]\n    if dropped:\n        assert value is None\n        continue\n    assert value is not None and np.isfinite(value)\n    if c.cmp != pf.Comparator.EQ:\n        assert value >= -tol['dual_tol']\n    residual = c.rhs-c.lhs if c.cmp in (pf.Comparator.GE, pf.Comparator.SEQ) else c.lhs-c.rhs\n    weighted_terms[c.name] = value*residual\n    if origin == 'interpolation':\n        group_terms[c.name] = weighted_terms[c.name]\n    elif c.name != certificate['tau_name']:\n        group_terms[c.name] = weighted_terms[c.name]\n        extra_duals[c.name] = value\nassert set(certificate['relaxed_constraints']).issubset(certificate['constraint_metadata'])\nassert certificate['named_dual_values']['initial_condition'] == certificate['tau_sol']\nS_scalar = sum((float(S_array[i,j])*basis[i]*basis[j] for i,j in np.ndindex(S_array.shape)), pf.Scalar.zero())\n\n\ndef scalar_residual(expression):\n    evaluated = pm.eval_scalar(expression)\n    return [float(np.max(np.abs(np.asarray(values, dtype=float)), initial=0.0))\n            for values in (evaluated.inner_prod_coords, evaluated.func_coords, evaluated.offset)]\n\n\nassert pb.performance_metric is not None\ncertificate_residuals = scalar_residual(pb.performance_metric-certificate['opt_value']-\n                                      sum(weighted_terms.values(), pf.Scalar.zero())+S_scalar)\nassert max(certificate_residuals) <= tol['identity_atol']\ncertificate_checked = True\n",
+  "certificate_id": "de6d064660db34c6b0b36ca349bb8efd96ecfa937480cd1fcca5702c618da1e1",
+  "rank_profile": [
+    0,
+    4,
+    4,
+    4,
+    1
+  ],
+  "rank_search": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 4,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "de6d064660db34c6b0b36ca349bb8efd96ecfa937480cd1fcca5702c618da1e1",
+    "recipe_id": "star_and_consecutive_by_destination_minus_polar_aligned_supplied_sos",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "unscaled Gram matrix",
+      "coordinate_order": "setup insertion order"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "lyap_inner_prod_coords": [
+    [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        -0.0012752048244018136,
+        0.001275204824401817,
+        -9.447862360512525e-08,
+        -0.06122471516812743,
+        -0.06122462120315683,
+        -0.07143017358740279,
+        1.1628947333637385e-07,
+        3.274126962391816e-08,
+        6.088029469848066e-08,
+        -9.112237721016728e-09,
+        -1.8554658508787962e-09,
+        -1.2536381561916657e-08
+      ],
+      [
+        0.001275204824401817,
+        -0.0012752048244018205,
+        9.447862366806548e-08,
+        0.061224715168127365,
+        0.061224621203156804,
+        0.07143017358740276,
+        -1.1628947333637466e-07,
+        -3.274126962391833e-08,
+        -6.088029469848095e-08,
+        9.112237721016914e-09,
+        1.8554658508789633e-09,
+        1.2536381561916866e-08
+      ],
+      [
+        -9.447862360512525e-08,
+        9.447862366806548e-08,
+        0.07142920096210242,
+        5.0707044257913836e-08,
+        -4.327842132760904e-07,
+        -0.07142901078124685,
+        4.5876920450015765e-07,
+        8.514031258167255e-08,
+        1.2524214640407577e-07,
+        -1.7036020287654732e-07,
+        -1.7804864132015553e-07,
+        -1.8248951348249543e-07
+      ],
+      [
+        -0.06122471516812743,
+        0.061224715168127365,
+        5.0707044257913836e-08,
+        0.06122463275497729,
+        0.0612245394732778,
+        0.07142936942011599,
+        -6.889249473154454e-07,
+        -1.143093950865297e-07,
+        -2.2750994136110494e-07,
+        1.8310281666752566e-07,
+        1.6951167530693438e-07,
+        1.9712715454826332e-07
+      ],
+      [
+        -0.06122462120315683,
+        0.061224621203156804,
+        -4.327842132760904e-07,
+        0.0612245394732778,
+        0.06122444498066698,
+        0.07142955063557607,
+        -9.304115860822673e-07,
+        -2.6195643102436757e-07,
+        -4.870932898079261e-07,
+        7.29035719820908e-08,
+        1.4842731803016536e-08,
+        1.0029939065232112e-07
+      ],
+      [
+        -0.07143017358740279,
+        0.07143017358740276,
+        -0.07142901078124685,
+        0.07142936942011599,
+        0.07142955063557607,
+        0.07142821722360906,
+        -7.002808251211646e-07,
+        -2.3279260243378426e-07,
+        -3.84836408368612e-07,
+        6.016456518887623e-08,
+        2.3382009523638703e-08,
+        8.566591150828756e-08
+      ],
+      [
+        1.1628947333637385e-07,
+        -1.1628947333637466e-07,
+        4.5876920450015765e-07,
+        -6.889249473154454e-07,
+        -9.304115860822673e-07,
+        -7.002808251211646e-07,
+        -1.7303252327530575e-11,
+        -3.687511322881921e-12,
+        -7.606254668769612e-12,
+        2.471362498213849e-12,
+        1.5727393405627653e-12,
+        2.861235362155099e-12
+      ],
+      [
+        3.274126962391816e-08,
+        -3.274126962391833e-08,
+        8.514031258167255e-08,
+        -1.143093950865297e-07,
+        -2.6195643102436757e-07,
+        -2.3279260243378426e-07,
+        -3.687511322881921e-12,
+        -9.485180449020012e-13,
+        -1.7640132002883675e-12,
+        4.5957171545668e-13,
+        2.7059677285346675e-13,
+        5.61932854712087e-13
+      ],
+      [
+        6.088029469848066e-08,
+        -6.088029469848095e-08,
+        1.2524214640407577e-07,
+        -2.2750994136110494e-07,
+        -4.870932898079261e-07,
+        -3.84836408368612e-07,
+        -7.606254668769612e-12,
+        -1.7640132002883675e-12,
+        -3.5425808363871053e-12,
+        9.157154157666966e-13,
+        4.87380714057385e-13,
+        1.1003607120117073e-12
+      ],
+      [
+        -9.112237721016728e-09,
+        9.112237721016914e-09,
+        -1.7036020287654732e-07,
+        1.8310281666752566e-07,
+        7.29035719820908e-08,
+        6.016456518887623e-08,
+        2.471362498213849e-12,
+        4.5957171545668e-13,
+        9.157154157666966e-13,
+        -5.509486489386847e-13,
+        -4.757603480320166e-13,
+        -6.043032656013448e-13
+      ],
+      [
+        -1.8554658508787962e-09,
+        1.8554658508789633e-09,
+        -1.7804864132015553e-07,
+        1.6951167530693438e-07,
+        1.4842731803016536e-08,
+        2.3382009523638703e-08,
+        1.5727393405627653e-12,
+        2.7059677285346675e-13,
+        4.87380714057385e-13,
+        -4.757603480320166e-13,
+        -4.645328890049995e-13,
+        -5.109566610904356e-13
+      ],
+      [
+        -1.2536381561916657e-08,
+        1.2536381561916866e-08,
+        -1.8248951348249543e-07,
+        1.9712715454826332e-07,
+        1.0029939065232112e-07,
+        8.566591150828756e-08,
+        2.861235362155099e-12,
+        5.61932854712087e-13,
+        1.1003607120117073e-12,
+        -6.043032656013448e-13,
+        -5.109566610904356e-13,
+        -6.689119117833049e-13
+      ]
+    ],
+    [
+      [
+        -0.0069446575824316055,
+        0.006944657582431608,
+        -6.64516838586086e-07,
+        -0.055555344237654083,
+        -0.05555527495732698,
+        -0.05555541268629666,
+        -0.055555500956545815,
+        -0.08333342180232954,
+        6.17542152925988e-08,
+        -9.529622352895082e-08,
+        -1.500382774166633e-07,
+        -9.734194890596961e-08
+      ],
+      [
+        0.006944657582431608,
+        -0.006944657582431611,
+        6.645168386859429e-07,
+        0.05555534423765403,
+        0.055555274957326956,
+        0.05555541268629656,
+        0.05555550095654582,
+        0.08333342180232958,
+        -6.1754215292599e-08,
+        9.529622352895113e-08,
+        1.5003827741666362e-07,
+        9.734194890596995e-08
+      ],
+      [
+        -6.64516838586086e-07,
+        6.645168386859429e-07,
+        0.08333449574623027,
+        3.0189727903458017e-07,
+        1.127019738628602e-06,
+        -4.1280146939604023e-07,
+        -4.5878184697296415e-07,
+        -0.08333394492821576,
+        -2.6148987636924503e-07,
+        -1.1747035520499752e-07,
+        -2.293691655688573e-07,
+        -1.450646193417006e-07
+      ],
+      [
+        -0.055555344237654083,
+        0.05555534423765403,
+        3.0189727903458017e-07,
+        0.05555534364794662,
+        0.055555275051240735,
+        0.05555541328761925,
+        0.05555550105218045,
+        0.08333342704540406,
+        -2.2838452822104182e-07,
+        2.6928448426944425e-07,
+        3.1769089277210085e-07,
+        2.819304092838388e-07
+      ],
+      [
+        -0.05555527495732698,
+        0.055555274957326956,
+        1.127019738628602e-06,
+        0.055555275051240735,
+        0.055555205218296405,
+        0.05555534511192808,
+        0.055555432377496106,
+        0.08333239297333371,
+        -4.879613458676879e-07,
+        1.5908167231992778e-07,
+        1.6301948042723175e-07,
+        1.8509937044914777e-07
+      ],
+      [
+        -0.05555541268629666,
+        0.05555541268629656,
+        -4.1280146939604023e-07,
+        0.05555541328761925,
+        0.05555534511192808,
+        0.0555554821713907,
+        0.055555571128770576,
+        0.08333410203085248,
+        -2.0834148365805095e-07,
+        4.875741715745786e-07,
+        7.083529736204538e-07,
+        5.140532706740785e-07
+      ],
+      [
+        -0.055555500956545815,
+        0.05555550095654582,
+        -4.5878184697296415e-07,
+        0.05555550105218045,
+        0.055555432377496106,
+        0.055555571128770576,
+        0.055555660454145284,
+        0.0833344837199447,
+        -6.13792605573735e-09,
+        6.032531882114387e-07,
+        1.0372195578399148e-06,
+        5.93604682705161e-07
+      ],
+      [
+        -0.08333342180232954,
+        0.08333342180232958,
+        -0.08333394492821576,
+        0.08333342704540406,
+        0.08333239297333371,
+        0.08333410203085248,
+        0.0833344837199447,
+        0.08333364948235697,
+        2.041088024214365e-07,
+        1.2295001446789128e-07,
+        4.0356691826454337e-07,
+        1.27788586855559e-07
+      ],
+      [
+        6.17542152925988e-08,
+        -6.1754215292599e-08,
+        -2.6148987636924503e-07,
+        -2.2838452822104182e-07,
+        -4.879613458676879e-07,
+        -2.0834148365805095e-07,
+        -6.13792605573735e-09,
+        2.041088024214365e-07,
+        -5.316416608499432e-12,
+        1.5569411732031067e-12,
+        7.256570025755592e-13,
+        1.6662027007972032e-12
+      ],
+      [
+        -9.529622352895082e-08,
+        9.529622352895113e-08,
+        -1.1747035520499752e-07,
+        2.6928448426944425e-07,
+        1.5908167231992778e-07,
+        4.875741715745786e-07,
+        6.032531882114387e-07,
+        1.2295001446789128e-07,
+        1.5569411732031067e-12,
+        -2.7299782247381588e-12,
+        -3.5609908583128277e-12,
+        -2.728647010649885e-12
+      ],
+      [
+        -1.500382774166633e-07,
+        1.5003827741666362e-07,
+        -2.293691655688573e-07,
+        3.1769089277210085e-07,
+        1.6301948042723175e-07,
+        7.083529736204538e-07,
+        1.0372195578399148e-06,
+        4.0356691826454337e-07,
+        7.256570025755592e-13,
+        -3.5609908583128277e-12,
+        -5.248528192012098e-12,
+        -3.5427014245520723e-12
+      ],
+      [
+        -9.734194890596961e-08,
+        9.734194890596995e-08,
+        -1.450646193417006e-07,
+        2.819304092838388e-07,
+        1.8509937044914777e-07,
+        5.140532706740785e-07,
+        5.93604682705161e-07,
+        1.27788586855559e-07,
+        1.6662027007972032e-12,
+        -2.728647010649885e-12,
+        -3.5427014245520723e-12,
+        -2.742169180551442e-12
+      ]
+    ],
+    [
+      [
+        -0.022500487454425015,
+        0.022500487454424976,
+        -4.1134470941444095e-07,
+        -0.03999954771132339,
+        -0.03999951661063238,
+        -0.03999962584340182,
+        -0.03999969145218357,
+        -0.039999665215181335,
+        -0.03999968199622814,
+        -0.09999920252955356,
+        -3.4802849870133114e-07,
+        -2.1449730388246278e-07
+      ],
+      [
+        0.022500487454424976,
+        -0.022500487454424945,
+        4.1134470946162243e-07,
+        0.03999954771132337,
+        0.03999951661063239,
+        0.03999962584340176,
+        0.039999691452183614,
+        0.03999966521518143,
+        0.03999968199622836,
+        0.09999920252955377,
+        3.480284987013311e-07,
+        2.1449730388246265e-07
+      ],
+      [
+        -4.1134470941444095e-07,
+        4.1134470946162243e-07,
+        0.10000037991645272,
+        1.912355467818908e-07,
+        -4.0783336321642024e-07,
+        2.4392948142166604e-07,
+        6.128154329858365e-07,
+        1.9619535926440612e-08,
+        1.8730102635870342e-07,
+        -0.10000009978305355,
+        -2.3398109306085043e-07,
+        -5.766159603767538e-07
+      ],
+      [
+        -0.03999954771132339,
+        0.03999954771132337,
+        1.912355467818908e-07,
+        0.03999958046704971,
+        0.039999550051419044,
+        0.039999659789347,
+        0.03999972489204441,
+        0.03999969916138766,
+        0.039999715436549205,
+        0.09999940537530447,
+        5.156806645986626e-07,
+        3.9908597265676844e-07
+      ],
+      [
+        -0.03999951661063238,
+        0.03999951661063239,
+        -4.0783336321642024e-07,
+        0.039999550051419044,
+        0.03999951838424354,
+        0.039999629802911274,
+        0.03999969441110213,
+        0.03999966755605821,
+        0.03999968495720467,
+        0.09999994598812964,
+        3.61008709816839e-07,
+        3.022500362641688e-07
+      ],
+      [
+        -0.03999962584340182,
+        0.03999962584340176,
+        2.4392948142166604e-07,
+        0.039999659789347,
+        0.039999629802911274,
+        0.03999973835114788,
+        0.03999980464429927,
+        0.03999977729365858,
+        0.03999979356890135,
+        0.0999995112182655,
+        9.063428224856072e-07,
+        6.312112548722754e-07
+      ],
+      [
+        -0.03999969145218357,
+        0.039999691452183614,
+        6.128154329858365e-07,
+        0.03999972489204441,
+        0.03999969441110213,
+        0.03999980464429927,
+        0.039999871304121144,
+        0.039999844015919404,
+        0.03999985979831289,
+        0.0999993910255815,
+        1.2352097005107603e-06,
+        7.107641798332365e-07
+      ],
+      [
+        -0.039999665215181335,
+        0.03999966521518143,
+        1.9619535926440612e-08,
+        0.03999969916138766,
+        0.03999966755605821,
+        0.03999977729365858,
+        0.039999844015919404,
+        0.03999981709554562,
+        0.03999983456080658,
+        0.09999983139037587,
+        1.1032055474429269e-06,
+        7.322120488699599e-07
+      ],
+      [
+        -0.03999968199622814,
+        0.03999968199622836,
+        1.8730102635870342e-07,
+        0.039999715436549205,
+        0.03999968495720467,
+        0.03999979356890135,
+        0.03999985979831289,
+        0.03999983456080658,
+        0.039999852392052615,
+        0.09999977871326915,
+        1.1879347708453702e-06,
+        7.029360092572854e-07
+      ],
+      [
+        -0.09999920252955356,
+        0.09999920252955377,
+        -0.10000009978305355,
+        0.09999940537530447,
+        0.09999994598812964,
+        0.0999995112182655,
+        0.0999993910255815,
+        0.09999983139037587,
+        0.09999977871326915,
+        0.10000043037157053,
+        4.92902354916657e-07,
+        5.30056872386183e-07
+      ],
+      [
+        -3.4802849870133114e-07,
+        3.480284987013311e-07,
+        -2.3398109306085043e-07,
+        5.156806645986626e-07,
+        3.61008709816839e-07,
+        9.063428224856072e-07,
+        1.2352097005107603e-06,
+        1.1032055474429269e-06,
+        1.1879347708453702e-06,
+        4.92902354916657e-07,
+        -7.943596879205032e-12,
+        -5.05880691196574e-12
+      ],
+      [
+        -2.1449730388246278e-07,
+        2.1449730388246265e-07,
+        -5.766159603767538e-07,
+        3.9908597265676844e-07,
+        3.022500362641688e-07,
+        6.312112548722754e-07,
+        7.107641798332365e-07,
+        7.322120488699599e-07,
+        7.029360092572854e-07,
+        5.30056872386183e-07,
+        -5.05880691196574e-12,
+        -5.0218606549211145e-12
+      ]
+    ],
+    [
+      [
+        -0.06250000009612859,
+        0.0625000000961285,
+        1.022630818905739e-10,
+        -1.5174460507583198e-09,
+        -1.4663550790272595e-09,
+        -1.5174300566078713e-09,
+        -1.4662944886056906e-09,
+        -1.5174503598114342e-09,
+        -1.4663004976878113e-09,
+        -1.5174512063564904e-09,
+        -1.4663054104246953e-09,
+        -1.5174505541004635e-09
+      ],
+      [
+        0.0625000000961285,
+        -0.06250000009612841,
+        -1.0226314265105301e-10,
+        1.5174460923916833e-09,
+        1.4663551484161985e-09,
+        1.5174300635467652e-09,
+        1.466294599627993e-09,
+        1.5174505263448879e-09,
+        1.4663007821824614e-09,
+        1.5174516920790637e-09,
+        1.4663056879804515e-09,
+        1.5174506928783416e-09
+      ],
+      [
+        1.022630818905739e-10,
+        -1.0226314265105301e-10,
+        5.579858380899694e-09,
+        -1.3284929865061418e-09,
+        -2.656555978901732e-10,
+        -1.3284919146820324e-09,
+        -2.656502926043931e-10,
+        -1.3284941169801592e-09,
+        -2.656501569417169e-10,
+        -1.3284921634992841e-09,
+        -2.656500271800281e-10,
+        -1.3284934818891259e-09
+      ],
+      [
+        -1.5174460507583198e-09,
+        1.5174460923916833e-09,
+        -1.3284929865061418e-09,
+        7.207305030565436e-10,
+        1.3540545767964929e-09,
+        1.9109283738716343e-09,
+        1.3540605026118868e-09,
+        1.910926313020145e-09,
+        1.354059989133738e-09,
+        1.910926222814524e-09,
+        1.354059475655589e-09,
+        1.910926222814524e-09
+      ],
+      [
+        -1.4663550790272595e-09,
+        1.4663551484161985e-09,
+        -2.656555978901732e-10,
+        1.3540545767964929e-09,
+        7.335009821751726e-10,
+        2.9737667814333513e-09,
+        1.9237061874011196e-09,
+        1.3540538343348452e-09,
+        1.9237054033061085e-09,
+        1.3540539522960415e-09,
+        1.923704723294506e-09,
+        1.3540539106626781e-09
+      ],
+      [
+        -1.5174300566078713e-09,
+        1.5174300635467652e-09,
+        -1.3284919146820324e-09,
+        1.9109283738716343e-09,
+        2.9737667814333513e-09,
+        2.340443422399474e-09,
+        2.9737728252099416e-09,
+        1.910928172643711e-09,
+        1.3540623552965592e-09,
+        1.9109276383488805e-09,
+        1.3540619181462432e-09,
+        1.910928165704817e-09
+      ],
+      [
+        -1.4662944886056906e-09,
+        1.466294599627993e-09,
+        -2.656502926043931e-10,
+        1.3540605026118868e-09,
+        1.9237061874011196e-09,
+        2.9737728252099416e-09,
+        3.9729385961639885e-09,
+        2.9737696541354275e-09,
+        1.9237142295791543e-09,
+        1.3540597254557696e-09,
+        1.923714104679064e-09,
+        1.3540605026118868e-09
+      ],
+      [
+        -1.5174503598114342e-09,
+        1.5174505263448879e-09,
+        -1.3284941169801592e-09,
+        1.910926313020145e-09,
+        1.3540538343348452e-09,
+        1.910928172643711e-09,
+        2.9737696541354275e-09,
+        2.3404389121184366e-09,
+        2.9737684328901004e-09,
+        1.9109254734139824e-09,
+        1.354059697700194e-09,
+        1.9109268195594e-09
+      ],
+      [
+        -1.4663004976878113e-09,
+        1.4663007821824614e-09,
+        -2.656501569417169e-10,
+        1.354059989133738e-09,
+        1.9237054033061085e-09,
+        1.3540623552965592e-09,
+        1.9237142295791543e-09,
+        2.9737684328901004e-09,
+        3.9729363549012575e-09,
+        2.973769328007414e-09,
+        1.923714021412337e-09,
+        1.3540600446448892e-09
+      ],
+      [
+        -1.5174512063564904e-09,
+        1.5174516920790637e-09,
+        -1.3284921634992841e-09,
+        1.910926222814524e-09,
+        1.3540539522960415e-09,
+        1.9109276383488805e-09,
+        1.3540597254557696e-09,
+        1.9109254734139824e-09,
+        2.973769328007414e-09,
+        2.34043939784101e-09,
+        2.9737690088182944e-09,
+        1.910925709336375e-09
+      ],
+      [
+        -1.4663054104246953e-09,
+        1.4663056879804515e-09,
+        -2.656500271800281e-10,
+        1.354059475655589e-09,
+        1.923704723294506e-09,
+        1.3540619181462432e-09,
+        1.923714104679064e-09,
+        1.354059697700194e-09,
+        1.923714021412337e-09,
+        2.9737690088182944e-09,
+        3.972934425888752e-09,
+        2.97376745450606e-09
+      ],
+      [
+        -1.5174505541004635e-09,
+        1.5174506928783416e-09,
+        -1.3284934818891259e-09,
+        1.910926222814524e-09,
+        1.3540539106626781e-09,
+        1.910928165704817e-09,
+        1.3540605026118868e-09,
+        1.9109268195594e-09,
+        1.3540600446448892e-09,
+        1.910925709336375e-09,
+        2.97376745450606e-09,
+        7.207285879218261e-10
+      ]
+    ]
+  ],
+  "lyap_func_coords": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.2857157099490564,
+      -0.1428546574437588,
+      -1.942890293094024e-16,
+      0.1428546574437588,
+      0.28571570994905654,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.5000031379037906,
+      -0.3333347945370778,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      0.33333479453707765,
+      0.500003134664371,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.8000020004945791,
+      -0.6000031423867178,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394197324592255e-09,
+      0.6000031391472977,
+      0.8000019940157398,
+      0.0,
+      0.0
+    ],
+    [
+      -1.0000000161970992,
+      -1.0000000129576798,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394199545038305e-09,
+      1.0000000064788397,
+      1.00000000647884
+    ]
+  ],
+  "lyap_offsets": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "decomposition_code": "# Decomposition: align supplied square factors to the same saved PSD slack.\nD = np.asarray(certificate['numerical_decomposition']['D'], dtype=float)\nE = np.asarray(certificate['numerical_decomposition']['ell_coords'], dtype=float)\nassert E.shape == (3*N_int, len(basis)) and D.shape == (3*N_int, 3*N_int)\nassert np.allclose(D, np.diag(np.diag(D)), atol=0, rtol=0)\nassert np.min(np.diag(D)) >= 0\nassert certificate['numerical_decomposition']['basis_labels'] == basis_labels\nassert np.allclose(E.T@D@E, S_array, atol=tol['reconstruction_atol'], rtol=tol['reconstruction_rtol'])\nA_supplied = np.sqrt(D)@E\npolar_U, polar_singular, polar_Vt = np.linalg.svd(A_supplied,full_matrices=False)\nslack_eigenvalues, slack_vectors = np.linalg.eigh(S_array)\nslack_sqrt = slack_vectors@np.diag(np.sqrt(np.where(slack_eigenvalues>tol['psd_tol'],slack_eigenvalues,0)))@slack_vectors.T\nE = polar_U@polar_Vt@slack_sqrt\nD = np.eye(3*N_int)\npolar_reconstruction = float(np.max(np.abs(E.T@E-S_array)))\nassert polar_reconstruction <= tol['identity_atol']\ndecomposition_trial = dict(method='polar_aligned_supplied_squares',\n    eigenvalue_cutoff=tol['psd_tol'], discarded_slack_eigenvalues=slack_eigenvalues[slack_eigenvalues<=tol['psd_tol']].tolist(),\n    reconstruction_max_abs=polar_reconstruction,D=D.tolist(),ell_coords=E.tolist())\nell = [sum((float(c)*v for c,v in zip(row,basis)), pf.Vector.zero()) for row in E]\nS_piece_terms = {f'S_{i+1}': sum((float(D[j,j])*ell[j]**2 for j in range(3*i,3*i+3)), pf.Scalar.zero())\n                 for i in range(N_int)}\npiece_residuals = scalar_residual(sum(S_piece_terms.values(), pf.Scalar.zero())-S_scalar)\nassert max(piece_residuals) <= tol['identity_atol']\nfor piece in S_piece_terms.values():\n    evaluated = pm.eval_scalar(piece)\n    assert np.max(np.abs(evaluated.func_coords), initial=0.0) == 0 and evaluated.offset == 0\n    assert np.linalg.eigvalsh(np.asarray(evaluated.inner_prod_coords,dtype=float)).min() >= -tol['psd_tol']\n",
+  "grouping_code": "# Grouping convention: each increment is a sum of nonpositive residuals minus PSD pieces.\nterm_assignment = {}\nfor name in group_terms:\n    left, right = name.split(':')[1].split(',')\n    assert right != 'x_star'\n    j = int(right.split('_')[1])\n    term_assignment[name] = j-1\nS_assignment = {f'S_{i+1}': i for i in range(N_int)}\nlyap = [pf.Scalar.zero()]\npartial_sum = sum((group_terms[name] for name, step in term_assignment.items() if step == -1), pf.Scalar.zero())\nfor k in range(N_int):\n    partial_sum += sum((group_terms[name] for name, step in term_assignment.items() if step == k), pf.Scalar.zero())\n    partial_sum -= S_piece_terms[f'S_{k+1}']\n    lyap.append(partial_sum)\nrank_tolerance, rank_left, rank_right = 1e-4, 1, 1\nranks, singular_values = [], []\nfor k, value in enumerate(lyap):\n    matrix = np.asarray(pm.eval_scalar(value).inner_prod_coords,dtype=float)\n    singular = np.linalg.svd(matrix, compute_uv=False)\n    singular_values.append(singular.tolist())\n    rank = int(np.sum(singular > rank_tolerance))\n    ranks.append(rank)\n    print(f'rank V_{k}: {rank}')\n    if k == 0:\n        print()\nretained_ranks = ranks[rank_left:N_int+1-rank_right]\nprint('Interior rank is constant at this N:', len(retained_ranks)>=3 and len(set(retained_ranks))==1,\n      'boundary exclusions:', (rank_left,rank_right))\ncoverage_residuals = scalar_residual(lyap[-1]-(sum(group_terms.values(),pf.Scalar.zero())-S_scalar))\nassert max(coverage_residuals) <= tol['identity_atol']\nincrement_residuals = []\nfor k in range(N_int):\n    steps = {-1,0} if k == 0 else {k}\n    increment = sum((group_terms[name] for name,step in term_assignment.items() if step in steps),pf.Scalar.zero())-S_piece_terms[f'S_{k+1}']\n    residual = scalar_residual(lyap[k+1]-lyap[k]-increment)\n    increment_residuals.append(residual)\n    assert max(residual) <= tol['identity_atol']\ngrouping_checked = True\nrank_credible = all(not any(rank_tolerance/2 < v < rank_tolerance*2 for v in values) for values in singular_values)\nprint('Coverage residuals:', coverage_residuals, 'rank credible:', rank_credible)\n",
+  "extra_duals": {},
+  "rank_tolerance": 0.0001,
+  "decomposition_trial": {
+    "method": "polar_aligned_supplied_squares",
+    "eigenvalue_cutoff": 1e-06,
+    "discarded_slack_eigenvalues": [
+      2.198704578845148e-09,
+      2.8099816183142465e-09,
+      2.8100847905256e-09
+    ],
+    "reconstruction_max_abs": 2.4276977234061192e-09,
+    "D": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "ell_coords": [
+      [
+        -3.580423509325568e-07,
+        3.580423511680574e-07,
+        -0.267261396412585,
+        0.23385379035444856,
+        -1.583036572076629e-06,
+        0.033408543672469614,
+        1.7165576215979122e-06,
+        3.1856585379853297e-07,
+        4.6861348685569175e-07,
+        -6.374293235487704e-07,
+        -6.661967059818835e-07,
+        -6.828130340406635e-07
+      ],
+      [
+        -0.011902686802613832,
+        0.011902686802613903,
+        1.4366881224262615e-07,
+        0.09523719690639486,
+        0.0952343706211685,
+        1.327213072770386e-06,
+        2.9116827526183494e-06,
+        3.810156836730177e-07,
+        1.1766975630644626e-06,
+        -3.5092225633978965e-07,
+        -1.4386393982694184e-07,
+        -3.8274416402413267e-07
+      ],
+      [
+        -0.033667950207170345,
+        0.03366795020717042,
+        -1.4784677784358274e-08,
+        0.0042072301329176345,
+        0.26937079855280477,
+        0.26516694167795957,
+        2.4246207553696986e-06,
+        8.377713831892301e-07,
+        1.3922518024417174e-06,
+        -1.4658129629742206e-07,
+        -4.2432017813607895e-09,
+        -2.3703412672641946e-07
+      ],
+      [
+        -1.7733031536596038e-06,
+        1.773303153779227e-06,
+        -0.30860722479065467,
+        7.401221947053067e-07,
+        4.980511857506648e-06,
+        0.23145419322714572,
+        -3.4899588431347997e-06,
+        0.077152069889541,
+        -1.2531534405743781e-06,
+        1.713847052218085e-07,
+        -1.6629408198810445e-07,
+        1.212725602812394e-07
+      ],
+      [
+        -0.04628135924501933,
+        0.04628135924501946,
+        -4.995499472342566e-07,
+        0.046279613964115764,
+        0.04627729016737469,
+        0.3239430505429238,
+        0.32394361576095954,
+        -2.753979075744855e-08,
+        3.62814820429505e-07,
+        -1.4262817862113828e-06,
+        -1.9509919156126543e-06,
+        -1.3933842755786574e-06
+      ],
+      [
+        -0.059392664036214536,
+        0.059392664036214425,
+        5.653906196560735e-09,
+        0.05939264632776781,
+        0.059394041387412645,
+        0.014847385276625324,
+        0.4157399041001057,
+        0.4008933473639075,
+        -2.6796946200198046e-07,
+        -3.396720844243392e-07,
+        -9.746651355808814e-07,
+        -3.4209720177328283e-07
+      ],
+      [
+        6.989533103228614e-07,
+        -6.989533104671193e-07,
+        -0.36514866441566785,
+        -3.0867266059254183e-07,
+        -4.2089781792146775e-06,
+        1.792916173279921e-06,
+        2.9290735348396222e-06,
+        0.22821851033945584,
+        1.1953849797562012e-06,
+        0.13692975453471778,
+        -1.2629296068730004e-08,
+        -1.1818509792088131e-06
+      ],
+      [
+        -0.08165050033352111,
+        0.0816505003335211,
+        -6.086333594755849e-07,
+        0.08165027113184706,
+        0.08165005769705004,
+        0.08165053428757198,
+        0.0816506370055283,
+        0.48989969178032716,
+        0.48989946516616323,
+        -4.5100199648056096e-07,
+        -1.3554025042076954e-06,
+        -6.330981527731946e-07
+      ],
+      [
+        -0.09428162952977924,
+        0.09428162952977887,
+        5.053527392008714e-07,
+        0.09428147434622293,
+        0.09428125420467087,
+        0.09428114375410544,
+        0.09428129516524537,
+        0.03535536212891963,
+        0.5656870166252775,
+        0.5303308485807967,
+        -9.261712798728162e-07,
+        -6.943388699100832e-07
+      ],
+      [
+        8.68279892281516e-07,
+        -8.682798925228818e-07,
+        -0.44721290476428427,
+        -3.788419928246821e-07,
+        9.630948428757368e-07,
+        -4.966691764130946e-07,
+        -1.3191476577847762e-06,
+        4.903731231138843e-09,
+        -3.676674195308663e-07,
+        0.22360712904887958,
+        7.813301053985188e-07,
+        0.22360670393271354
+      ],
+      [
+        -0.1333324510355389,
+        0.13333245103553856,
+        -1.9386127626710569e-07,
+        0.13333257809221738,
+        0.1333330058031131,
+        0.1333327332985583,
+        0.13333278570960677,
+        0.13333304718234887,
+        0.13333308243841785,
+        0.6666676907262611,
+        0.6666668106792147,
+        -1.7080775706213778e-07
+      ],
+      [
+        -0.14907035299416613,
+        0.14907035299416602,
+        3.286300586420632e-07,
+        0.14907046443027688,
+        0.14906987359396937,
+        0.1490708497379461,
+        0.14907124331794672,
+        0.14907083311022387,
+        0.14907091448854518,
+        0.0745349944624879,
+        0.7453558653664404,
+        0.6708204263959082
+      ]
+    ]
+  },
+  "reconstruction_tolerance": 0.0001,
+  "reconstruction_rtol": 1e-05,
+  "grouping_coverage": {
+    "constraint_assignment": {
+      "f:x_star,x_0": -1,
+      "f:x_star,x_1": 0,
+      "f:x_star,x_2": 1,
+      "f:x_star,x_3": 2,
+      "f:x_star,x_4": 3,
+      "f:x_0,x_1": 0,
+      "f:x_1,x_2": 1,
+      "f:x_2,x_3": 2,
+      "f:x_3,x_4": 3,
+      "g:x_star,x_1": 0,
+      "g:x_star,x_2": 1,
+      "g:x_star,x_3": 2,
+      "g:x_star,x_4": 3,
+      "g:x_1,x_2": 1,
+      "g:x_2,x_3": 2,
+      "g:x_3,x_4": 3
+    },
+    "S_assignment": {
+      "S_1": 0,
+      "S_2": 1,
+      "S_3": 2,
+      "S_4": 3
+    },
+    "normalization_constraint": "initial_condition",
+    "boundary_constraints": [],
+    "boundary_S": [],
+    "omitted_constraints": [],
+    "checked": true,
+    "coverage_residuals": [
+      2.4276977095283314e-09,
+      0.0,
+      0.0
+    ],
+    "increment_residuals": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        2.0816681711721685e-17,
+        5.551115123125783e-17,
+        0.0
+      ],
+      [
+        2.7755575615628914e-17,
+        5.551115123125783e-17,
+        0.0
+      ],
+      [
+        5.551115123125783e-17,
+        5.551115123125783e-17,
+        0.0
+      ]
+    ]
+  },
+  "basis_templates": {
+    "interior": [
+      "r_0",
+      "r_k",
+      "a_k-a_star",
+      "a_k"
+    ],
+    "initial": [],
+    "terminal": [
+      "r_0"
+    ]
+  },
+  "basis_code": "\ndef V_k_basis(k):\n    if k == 0:\n        return []\n    r0 = ctx['x_0']-ctx['x_star']\n    if k == N_int:\n        return [r0]\n    xk = ctx[f'x_{k}']\n    return [r0, xk-ctx['x_star'], f.grad(xk)-f.grad(ctx['x_star']), f.grad(xk)]\n\n\ndef V_k_basis_labels(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return ['r_0']\n    return ['r_0',f'r_{k}',f'a_{k}-a_star',f'a_{k}']\n\n",
+  "structure_code": "function_coeff_by_k = {0: [0.0, 0.0], 1: [0.28571570994905643, 0.14285465744375878], 2: [0.5000031362840807, 0.3333347945370776], 3: [0.8000019972551591, 0.6000031407670074], 4: [1.0000000113379695, 1.000000009718259]}\n\ndef V_k_structure(k):\n    vectors = V_k_basis(k)\n    C = coeff_by_k[k]\n    value = sum((float(C[i,j])*vectors[i]*vectors[j] for i,j in np.ndindex(C.shape)),pf.Scalar.zero())\n    if k > 0:\n        alpha,beta = function_coeff_by_k[k]\n        value += alpha*(f(ctx[f'x_{k}'])-f(ctx['x_star']))\n        value += beta*(g(ctx[f'x_{k}'])-g(ctx['x_star']))\n    return value\n\n\n",
+  "coeff_by_k": {
+    "0": [],
+    "1": [
+      [
+        -0.06250000202513607,
+        1.2901509216858842e-07,
+        2.855172082164015e-07,
+        -9.990767649531949e-07
+      ],
+      [
+        1.2901509216858842e-07,
+        0.06122453917054993,
+        -1.9103858453148326e-07,
+        -0.0714292689892615
+      ],
+      [
+        2.855172082164015e-07,
+        -1.9103858453148326e-07,
+        0.07142920096210244,
+        -1.9018085556810611e-07
+      ],
+      [
+        -9.990767649531949e-07,
+        -0.0714292689892615,
+        -1.9018085556810611e-07,
+        -6.033767822031897e-07
+      ]
+    ],
+    "2": [
+      [
+        -0.06250000103195272,
+        -3.975993474389372e-08,
+        5.251834133065958e-07,
+        -3.45543359190315e-07
+      ],
+      [
+        -3.975993474389372e-08,
+        0.055555422969390617,
+        1.3933342531136095e-07,
+        -0.08333374077580907
+      ],
+      [
+        5.251834133065958e-07,
+        1.3933342531136095e-07,
+        0.0833344957462303,
+        -5.508180145167623e-07
+      ],
+      [
+        -3.45543359190315e-07,
+        -0.08333374077580907,
+        -5.508180145167623e-07,
+        2.553721557090139e-07
+      ]
+    ],
+    "3": [
+      [
+        -0.0625000010120196,
+        -1.0791389719669309e-07,
+        2.701667661045293e-07,
+        1.7125550133036638e-07
+      ],
+      [
+        -1.0791389719669309e-07,
+        0.039999729385388975,
+        1.411779433496685e-07,
+        -0.09999978512976447
+      ],
+      [
+        2.701667661045293e-07,
+        1.411779433496685e-07,
+        0.10000037991645275,
+        -2.801333991952901e-07
+      ],
+      [
+        1.7125550133036638e-07,
+        -0.09999978512976447,
+        -2.801333991952901e-07,
+        6.107219161347526e-07
+      ]
+    ],
+    "4": [
+      [
+        -0.0625000000961285
+      ]
+    ]
+  },
+  "function_coeff_by_k": {
+    "0": [
+      0.0,
+      0.0
+    ],
+    "1": [
+      0.28571570994905643,
+      0.14285465744375878
+    ],
+    "2": [
+      0.5000031362840807,
+      0.3333347945370776
+    ],
+    "3": [
+      0.8000019972551591,
+      0.6000031407670074
+    ],
+    "4": [
+      1.0000000113379695,
+      1.000000009718259
+    ]
+  },
+  "coeff_code": null,
+  "coefficient_formula_status": "unresolved",
+  "expression_structure": {
+    "quadratic_convention": "sum_ij C_ij <b_i,b_j>; C symmetric, off diagonals counted twice",
+    "interior": {
+      "index_domain": "1 <= k <= N-1; exclusions a=b=1",
+      "basis_labels": [
+        "r_0",
+        "r_k",
+        "a_k-a_star",
+        "a_k"
+      ],
+      "coefficients": {
+        "0,0": "c_00(k,N,L)",
+        "0,1": "c_01(k,N,L)",
+        "0,2": "c_02(k,N,L)",
+        "0,3": "c_03(k,N,L)",
+        "1,1": "c_11(k,N,L)",
+        "1,2": "c_12(k,N,L)",
+        "1,3": "c_13(k,N,L)",
+        "2,2": "c_22(k,N,L)",
+        "2,3": "c_23(k,N,L)",
+        "3,3": "c_33(k,N,L)"
+      }
+    },
+    "initial": {
+      "index_domain": "k=0",
+      "basis_labels": [],
+      "expression": "0"
+    },
+    "terminal": {
+      "index_domain": "k=N",
+      "basis_labels": [
+        "r_0"
+      ],
+      "coefficients": {
+        "0,0": "c_T(N,L)"
+      }
+    },
+    "function_terms": [
+      {
+        "expression": "f(x_k)-f(x_star)",
+        "coefficient": "alpha(k,N)",
+        "index_domain": "1<=k<N"
+      },
+      {
+        "expression": "g(x_k)-g(x_star)",
+        "coefficient": "beta(k,N)",
+        "index_domain": "1<=k<N"
+      },
+      {
+        "expression": "f(x_N)-f(x_star)",
+        "coefficient": "alpha_T(N)",
+        "index_domain": "k=N"
+      },
+      {
+        "expression": "g(x_N)-g(x_star)",
+        "coefficient": "beta_T(N)",
+        "index_domain": "k=N"
+      }
+    ],
+    "constant_terms": []
+  },
+  "unresolved_coefficients": [
+    {
+      "name": "c_00",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,0] = C[0,0]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_01",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,1] = C[1,0]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_02",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,2] = C[2,0]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_03",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,3] = C[3,0]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_11",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,1] = C[1,1]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_12",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,2] = C[2,1]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_13",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,3] = C[3,1]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_22",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[2,2] = C[2,2]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_23",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[2,3] = C[3,2]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_33",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[3,3] = C[3,3]",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "alpha",
+      "arguments": [
+        "k",
+        "N"
+      ],
+      "role": "f gap coefficient",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "beta",
+      "arguments": [
+        "k",
+        "N"
+      ],
+      "role": "g gap coefficient",
+      "index_domain": "1 <= k < N"
+    },
+    {
+      "name": "c_T",
+      "arguments": [
+        "N",
+        "L"
+      ],
+      "role": "terminal squared initial distance",
+      "index_domain": "k=N"
+    },
+    {
+      "name": "alpha_T",
+      "arguments": [
+        "N"
+      ],
+      "role": "terminal f gap",
+      "index_domain": "k=N"
+    },
+    {
+      "name": "beta_T",
+      "arguments": [
+        "N"
+      ],
+      "role": "terminal g gap",
+      "index_domain": "k=N"
+    }
+  ],
+  "numerical_reconstruction": {
+    "certificate_id": "de6d064660db34c6b0b36ca349bb8efd96ecfa937480cd1fcca5702c618da1e1",
+    "required_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "quadratic_residuals": {
+      "0": 0.0,
+      "1": 2.468749937490517e-06,
+      "2": 4.075162600352645e-06,
+      "3": 4.439718095265403e-06,
+      "4": 2.2002820433585744e-08
+    },
+    "component_residuals": {
+      "0": {
+        "gram": 0.0,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "1": {
+        "gram": 9.304115860822673e-07,
+        "function": 1.942890293094024e-16,
+        "offset": 0.0
+      },
+      "2": {
+        "gram": 1.2084690500513418e-06,
+        "function": 3.2394197324592255e-09,
+        "offset": 0.0
+      },
+      "3": {
+        "gram": 1.2352097005107603e-06,
+        "function": 3.239420065526133e-09,
+        "offset": 0.0
+      },
+      "4": {
+        "gram": 5.579858380899694e-09,
+        "function": 4.859129765222292e-09,
+        "offset": 0.0
+      }
+    },
+    "independence": {
+      "0": 0,
+      "1": 4,
+      "2": 4,
+      "3": 4,
+      "4": 1
+    },
+    "tolerances": {
+      "indep_tol": 1e-07,
+      "span_tol": 1e-05,
+      "component_atol": 1e-05,
+      "component_rtol": 1e-05
+    },
+    "passed": true
+  }
+}

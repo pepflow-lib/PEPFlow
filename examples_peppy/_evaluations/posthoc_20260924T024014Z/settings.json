@@ -1,0 +1,45 @@
+{
+  "campaign": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1",
+  "created_at": "2026-09-24T02:40:14.209357+00:00",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "review_wall_limit_seconds": 7200,
+  "token_cap": null,
+  "generation_rerun": false,
+  "fresh_reviews": [
+    "feg_r03",
+    "pgm_without_sos_r02"
+  ],
+  "preserve_completed_mathematics": true,
+  "policy": "User-authorized post hoc separation of mathematical validity, delivery completion, and actual prohibited mathematical exposure. Generic dependency-path and display issues are operational. Frozen mathematical criteria unchanged.",
+  "isolation": "instruction_only",
+  "original_protocol": "2026-09-20.isolation-recovery-v1",
+  "original_inventory_excludes": [
+    ".runtime",
+    "__pycache__"
+  ],
+  "reviews": {
+    "feg_r03": {
+      "original_submission": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r03",
+      "directory": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\posthoc_20260924T024014Z\\feg_r03",
+      "status": "completed",
+      "dispatched_at": "2026-09-24T02:41:31.334160+00:00",
+      "deadline": "2026-09-24T04:41:31.334160+00:00",
+      "agent_name": "ph_feg_r03",
+      "session_id": "01a0d14a-9309-7821-b450-4134dbcc2397",
+      "review_sha256": "769912bc3b2cc024f5c30fe2af8df3f59714e25818d1d1e7a609422d1365469b",
+      "stopped_at": "2026-09-24T02:48:12.182329+00:00"
+    },
+    "pgm_without_sos_r02": {
+      "original_submission": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r02",
+      "directory": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\posthoc_20260924T024014Z\\pgm_without_sos_r02",
+      "status": "completed",
+      "dispatched_at": "2026-09-24T02:42:07.228219+00:00",
+      "deadline": "2026-09-24T04:42:07.228219+00:00",
+      "agent_name": "ph_pgm_without_sos_r02",
+      "session_id": "01a0d14a-cd83-7920-a67c-c9096ad890f9",
+      "review_sha256": "cb512c510c81bc63a936b199b2bf529c5fc3cea04e2188c669dc6817824477fe",
+      "stopped_at": "2026-09-24T02:50:20.962175+00:00"
+    }
+  }
+}

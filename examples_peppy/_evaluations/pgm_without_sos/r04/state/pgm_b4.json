@@ -1,0 +1,2780 @@
+{
+  "algo_name": "pgm",
+  "problem_type": "composite",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "h(x_N)-h(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "L*R**2/(4*N)",
+  "setup_file": "pgm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.25000000431910757,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.25000001244787884
+    },
+    {
+      "N": 2,
+      "opt_value": 0.12499999766566457,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.12500000387334023
+    },
+    {
+      "N": 3,
+      "opt_value": 0.0833333327868809,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.08333333523459194
+    },
+    {
+      "N": 4,
+      "opt_value": 0.06249999907262903,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.06250000138699424
+    },
+    {
+      "N": 5,
+      "opt_value": 0.04999999951378083,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.050000001242885436
+    },
+    {
+      "N": 6,
+      "opt_value": 0.04166666248812821,
+      "solver_status": "optimal_inaccurate",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.04166667070295893
+    },
+    {
+      "N": 7,
+      "opt_value": 0.03571428428419599,
+      "solver_status": "optimal_inaccurate",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "tau_sol": 0.03571428693317304
+    }
+  ],
+  "N_verify": 4,
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "N": 4,
+  "opt_value": 0.062499998838795916,
+  "tau_sol": 0.06250000200444804,
+  "tau_name": "initial_condition",
+  "solver_status": "optimal",
+  "solver_options": {
+    "solver": "CLARABEL"
+  },
+  "fallback_reason": null,
+  "named_dual_values": {
+    "initial_condition": 0.06250000200444804,
+    "f:x_star,x_0": 0.1250000524780983,
+    "f:x_star,x_1": 0.16071565747095803,
+    "f:x_star,x_2": 0.21428742795473416,
+    "f:x_star,x_3": 0.29999886259078856,
+    "f:x_star,x_4": 0.1999980157025201,
+    "f:x_0,x_star": null,
+    "f:x_0,x_1": 0.1250000524780985,
+    "f:x_0,x_2": null,
+    "f:x_0,x_3": null,
+    "f:x_0,x_4": null,
+    "f:x_1,x_star": null,
+    "f:x_1,x_0": null,
+    "f:x_1,x_2": 0.2857157067096368,
+    "f:x_1,x_3": null,
+    "f:x_1,x_4": null,
+    "f:x_2,x_star": null,
+    "f:x_2,x_0": null,
+    "f:x_2,x_1": null,
+    "f:x_2,x_3": 0.5000031314249512,
+    "f:x_2,x_4": null,
+    "f:x_3,x_star": null,
+    "f:x_3,x_0": null,
+    "f:x_3,x_1": null,
+    "f:x_3,x_2": null,
+    "f:x_3,x_4": 0.8000019907763198,
+    "f:x_4,x_star": null,
+    "f:x_4,x_0": null,
+    "f:x_4,x_1": null,
+    "f:x_4,x_2": null,
+    "f:x_4,x_3": null,
+    "g:x_star,x_1": 0.1428546574437588,
+    "g:x_star,x_2": 0.190480137093319,
+    "g:x_star,x_3": 0.26666834784964005,
+    "g:x_star,x_4": 0.39999687057096195,
+    "g:x_1,x_star": null,
+    "g:x_1,x_2": 0.14285465744375864,
+    "g:x_1,x_3": null,
+    "g:x_1,x_4": null,
+    "g:x_2,x_star": null,
+    "g:x_2,x_1": null,
+    "g:x_2,x_3": 0.3333347912976577,
+    "g:x_2,x_4": null,
+    "g:x_3,x_star": null,
+    "g:x_3,x_1": null,
+    "g:x_3,x_2": null,
+    "g:x_3,x_4": 0.6000031359078778,
+    "g:x_4,x_star": null,
+    "g:x_4,x_1": null,
+    "g:x_4,x_2": null,
+    "g:x_4,x_3": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_0,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "S_matrix": [
+    [
+      0.06250000252382612,
+      -0.06249999971374151,
+      1.8637696858098425e-16,
+      -0.06250002461933903,
+      -0.07142732710216965,
+      -0.08035782711576889,
+      -0.09524006692694977,
+      -0.10714371235765693,
+      -0.13333417230511027,
+      -0.1499994296756841,
+      -0.19999843366577122,
+      -0.09999900623154992
+    ],
+    [
+      -0.06249999971374151,
+      0.06250000252382612,
+      -1.8634539532928593e-16,
+      0.06250002461933903,
+      0.07142732710216965,
+      0.08035782711576889,
+      0.09524006692694977,
+      0.10714371235765693,
+      0.13333417230511027,
+      0.1499994296756841,
+      0.19999843366577122,
+      0.09999900623154992
+    ],
+    [
+      1.8637696858098425e-16,
+      -1.8634539532928593e-16,
+      0.5000000028099136,
+      -0.06250002461933164,
+      -7.52955543147264e-15,
+      -0.0803578271157615,
+      -7.529526359609241e-15,
+      -0.10714371235764954,
+      -7.529528181720504e-15,
+      -0.14999942967567673,
+      -7.529529105595196e-15,
+      -0.09999900623154255
+    ],
+    [
+      -0.06250002461933903,
+      0.06250002461933903,
+      -0.06250002461933164,
+      0.1250000520485923,
+      0.07142732710216193,
+      0.08035782711577666,
+      0.09524006692694204,
+      0.10714371235766469,
+      0.13333417230510253,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.07142732710216965,
+      0.07142732710216965,
+      -7.52955543147264e-15,
+      0.07142732710216193,
+      0.14285465701425257,
+      0.14285785173510085,
+      0.09524006692695705,
+      0.10714371235764958,
+      0.13333417230511754,
+      0.14999942967567678,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.08035782711576889,
+      0.08035782711576889,
+      -0.0803578271157615,
+      0.08035782711577666,
+      0.14285785173510085,
+      0.2857157062801307,
+      0.16666739402911146,
+      0.10714371235766469,
+      0.13333417230510253,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.09524006692694977,
+      0.09524006692694977,
+      -7.529526359609241e-15,
+      0.09524006692694204,
+      0.09524006692695705,
+      0.16666739402911146,
+      0.33333479086815154,
+      0.2500015640927581,
+      0.13333417230511754,
+      0.14999942967567678,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.10714371235765693,
+      0.10714371235765693,
+      -0.10714371235764954,
+      0.10714371235766469,
+      0.10714371235764958,
+      0.10714371235766469,
+      0.2500015640927581,
+      0.500003130995445,
+      0.3000015663342214,
+      0.14999942967569188,
+      0.19999843366576348,
+      0.09999900623155768
+    ],
+    [
+      -0.13333417230511027,
+      0.13333417230511027,
+      -7.529528181720504e-15,
+      0.13333417230510253,
+      0.13333417230511754,
+      0.13333417230510253,
+      0.13333417230511754,
+      0.3000015663342214,
+      0.6000031354783715,
+      0.40000099376844245,
+      0.19999843366577852,
+      0.09999900623154259
+    ],
+    [
+      -0.1499994296756841,
+      0.1499994296756841,
+      -0.14999942967567673,
+      0.14999942967569188,
+      0.14999942967567678,
+      0.14999942967569188,
+      0.14999942967567678,
+      0.14999942967569188,
+      0.40000099376844245,
+      0.8000019903468137,
+      0.4999999999999924,
+      0.09999900623155768
+    ],
+    [
+      -0.19999843366577122,
+      0.19999843366577122,
+      -7.529529105595196e-15,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.19999843366576348,
+      0.19999843366577852,
+      0.4999999999999924,
+      1.0000000028099136,
+      0.49999999999999256
+    ],
+    [
+      -0.09999900623154992,
+      0.09999900623154992,
+      -0.09999900623154255,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.09999900623154259,
+      0.09999900623155768,
+      0.49999999999999256,
+      0.5000000028099139
+    ]
+  ],
+  "S_row_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "S_col_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_vectors": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "g(x_star)",
+    "f(x_0)",
+    "g(x_1)",
+    "f(x_1)",
+    "g(x_2)",
+    "f(x_2)",
+    "g(x_3)",
+    "f(x_3)",
+    "g(x_4)",
+    "f(x_4)"
+  ],
+  "relaxed_constraints": [
+    "f:x_0,x_star",
+    "f:x_0,x_2",
+    "f:x_0,x_3",
+    "f:x_0,x_4",
+    "f:x_1,x_star",
+    "f:x_1,x_0",
+    "f:x_1,x_3",
+    "f:x_1,x_4",
+    "f:x_2,x_star",
+    "f:x_2,x_0",
+    "f:x_2,x_1",
+    "f:x_2,x_4",
+    "f:x_3,x_star",
+    "f:x_3,x_0",
+    "f:x_3,x_1",
+    "f:x_3,x_2",
+    "f:x_4,x_star",
+    "f:x_4,x_0",
+    "f:x_4,x_1",
+    "f:x_4,x_2",
+    "f:x_4,x_3",
+    "g:x_1,x_star",
+    "g:x_1,x_3",
+    "g:x_1,x_4",
+    "g:x_2,x_star",
+    "g:x_2,x_1",
+    "g:x_2,x_4",
+    "g:x_3,x_star",
+    "g:x_3,x_1",
+    "g:x_3,x_2",
+    "g:x_4,x_star",
+    "g:x_4,x_1",
+    "g:x_4,x_2",
+    "g:x_4,x_3"
+  ],
+  "lambda_matrix": [
+    [
+      0.0,
+      0.1250000524780985,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.2857157067096368,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.5000031314249512,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000019907763198,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.1250000524780983,
+      0.16071565747095803,
+      0.21428742795473416,
+      0.29999886259078856,
+      0.1999980157025201,
+      0.0
+    ]
+  ],
+  "lambda_row_names": [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star"
+  ],
+  "lambda_col_names": [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star"
+  ],
+  "certificate_provenance": {
+    "solve_id": "b0d343f8-58b5-477e-871c-04aaa79e9d43",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "solver": {
+      "api": "CVXPrimalSolver.build_problem",
+      "effective_name": "CLARABEL",
+      "settings": {
+        "solver": "CLARABEL"
+      }
+    },
+    "source_hashes": {
+      "pgm_setup.py": "74eab33fcb303c83ff41d5bd02a32eaf2c06d168a52d3dab405e7bd1564972ef",
+      "supplementary\\helpers\\certificates.py": "a0312f21ee8c7990c119a7b69e3668b089b9ceedd4b711e3de53967e9025e520",
+      "supplementary\\approved\\pepflow\\__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "supplementary\\approved\\pepflow\\constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "supplementary\\approved\\pepflow\\constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "supplementary\\approved\\pepflow\\dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "supplementary\\approved\\pepflow\\expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "supplementary\\approved\\pepflow\\function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "supplementary\\approved\\pepflow\\ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "supplementary\\approved\\pepflow\\logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "supplementary\\approved\\pepflow\\lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "supplementary\\approved\\pepflow\\math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "supplementary\\approved\\pepflow\\operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "supplementary\\approved\\pepflow\\parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "supplementary\\approved\\pepflow\\pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "supplementary\\approved\\pepflow\\pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "supplementary\\approved\\pepflow\\pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "supplementary\\approved\\pepflow\\pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "supplementary\\approved\\pepflow\\plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "supplementary\\approved\\pepflow\\primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "supplementary\\approved\\pepflow\\registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "supplementary\\approved\\pepflow\\scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "supplementary\\approved\\pepflow\\solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "supplementary\\approved\\pepflow\\utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "supplementary\\approved\\pepflow\\vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    }
+  },
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "||x_0-x_star||^2 <= R^2",
+    "performance_metric": "h(x_N)-h(x_star)",
+    "bound_value": 0.062499998838795916,
+    "bound_formula": "L*R**2/(4*N)"
+  },
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0.0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 5.288635973599298e-09,
+      "identity_func_max_abs": 1.619709921740764e-08,
+      "identity_offset_abs": 3.165652122383289e-09,
+      "S_reconstruction_max_abs": 1.1102230246251565e-16,
+      "dense_relaxed_gap": 2.33833112595061e-10,
+      "minimum_scalar_inequality_dual": 0.06250000200444804,
+      "minimum_S_eigenvalue": 2.198704447512869e-09,
+      "minimum_matrix_inequality_eigenvalue": 0.0
+    },
+    "passed": true
+  },
+  "numerical_decomposition": {
+    "method": "reverse_ldl",
+    "D": [
+      [
+        0.5000000028099139,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.5000000056198424,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.4600008006306881,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.3643497752300034,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3126511587103348,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.18893223637876605,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.17707804114105952,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0528175404996736,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.06250005218187304,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.809981453077981e-08,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5868434595094883e-09,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5675780451900797e-09
+      ]
+    ],
+    "ell_coords": [
+      [
+        -0.19999801133914547,
+        0.19999801133914547,
+        -0.19999801133913073,
+        0.19999801133916098,
+        0.1999980113391308,
+        0.19999801133916098,
+        0.1999980113391308,
+        0.19999801133916098,
+        0.1999980113391308,
+        0.19999801133916098,
+        0.9999999943801574,
+        1.0
+      ],
+      [
+        -0.19999885374447587,
+        0.19999885374447587,
+        0.1999980090911981,
+        0.19999885374444487,
+        0.19999885374450513,
+        0.19999885374444487,
+        0.19999885374450513,
+        0.19999885374444487,
+        0.19999885374450513,
+        0.8000019796690566,
+        1.0,
+        0.0
+      ],
+      [
+        -0.10869565196885621,
+        0.10869565196885621,
+        -0.4565192701972189,
+        0.1086956519688967,
+        0.10869565196881804,
+        0.1086956519688967,
+        0.10869565196881804,
+        0.1086956519688967,
+        0.6521763671110501,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.16666930523148535,
+        0.16666930523148535,
+        0.3758927820648157,
+        0.16666930523143506,
+        0.16666930523153276,
+        0.16666930523143506,
+        0.16666930523153276,
+        0.6241071996939928,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.07615535710329449,
+        0.07615535710329449,
+        -0.5430758705286072,
+        0.07615535710335442,
+        0.07615535710323794,
+        0.07615535710335442,
+        0.5330794648672637,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.1428665648062449,
+        0.1428665648062449,
+        0.4790754925026463,
+        0.14286656480616483,
+        0.14286656480632057,
+        0.520924478432794,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.05042073560166902,
+        0.05042073560166902,
+        -0.6470481020294631,
+        0.050420735601764,
+        0.40337259917879215,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.12497757193123346,
+        0.12497757193123346,
+        0.8750223511566995,
+        0.12497757193102177,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -3.960415235327011e-07,
+        3.960415235327011e-07,
+        -0.9999999325610259,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.04999868957794921,
+        0.04999868957794921,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.08629866995630125,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "basis_labels": [
+      "x_0",
+      "x_star",
+      "grad_f(x_star)",
+      "grad_f(x_0)",
+      "grad_g(x_1)",
+      "grad_f(x_1)",
+      "grad_g(x_2)",
+      "grad_f(x_2)",
+      "grad_g(x_3)",
+      "grad_f(x_3)",
+      "grad_g(x_4)",
+      "grad_f(x_4)"
+    ]
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "Own B1 and B2 certificates; target references excluded by clean-room policy"
+    ],
+    "attempts": [
+      {
+        "component": "lambda",
+        "method": "Rational reconstruction and cumulative indexed sequences for f and g",
+        "max_error": 3.9466171285473806e-06
+      },
+      {
+        "component": "S",
+        "method": "Residual formula from rational lambda; compare full scalar coordinates; reverse LDL inspected",
+        "max_error": 3.135478371496525e-06
+      }
+    ],
+    "unresolved_components": [
+      "analytic lambda validity for all horizons",
+      "analytic PSD decomposition of S"
+    ]
+  },
+  "formula_status": {
+    "lambda": "candidate",
+    "S": "candidate"
+  },
+  "lamb_code": "def candidate_lambda(owner, ri, ci, horizon):\n    def cumulative(i):\n        if owner == 'f':\n            if i < 0:\n                return sp.S.Zero\n            if i == horizon:\n                return sp.S.One\n            return sp.Rational(i + 1, 2 * horizon - i)\n        if i <= 0:\n            return sp.S.Zero\n        if i == horizon:\n            return sp.S.One\n        return sp.Rational(i, 2 * horizon - i)\n    if ci == 'x_star':\n        return sp.S.Zero\n    j = int(ci[2:])\n    if ri == 'x_star':\n        return cumulative(j) - cumulative(j - 1)\n    i = int(ri[2:])\n    return cumulative(i) if j == i + 1 else sp.S.Zero\n",
+  "S_code": "S_guess = sp.Rational(1, 4*N)*(ctx['x_0']-ctx['x_star'])**2 - pb.performance_metric + weighted_guess",
+  "S_decomp_type": "ldl",
+  "require_analytic_full_pep": false,
+  "proof_valid": true,
+  "certificate_id": "05606d921f56d642bc98868910acdbe1a14228af6bf9f93d198591acdb90d47a",
+  "rank_profile": [
+    0,
+    4,
+    4,
+    4,
+    1
+  ],
+  "rank_search": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 4,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "05606d921f56d642bc98868910acdbe1a14228af6bf9f93d198591acdb90d47a",
+    "recipe_id": "reverse_ldl_latest_iterate_v1",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "absolute",
+      "coordinate_order": "setup basis: earlier iterates first"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "lyap_inner_prod_coords": [
+    [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        -0.0012751573576676913,
+        0.0012751545475830819,
+        -1.1014060744629975e-06,
+        -0.06122484678586524,
+        -0.06122484678587131,
+        -0.07142942364224418,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0012751545475830819,
+        -0.0012751573576676913,
+        1.1014060744629975e-06,
+        0.06122484678586524,
+        0.06122484678587131,
+        0.07142942364224418,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.1014060744629975e-06,
+        1.1014060744629975e-06,
+        -0.03422019646565795,
+        1.09978631930574e-06,
+        1.1014061171502054e-06,
+        0.03422018169593871,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.06122484678586524,
+        0.06122484678586524,
+        1.09978631930574e-06,
+        0.06122484559565789,
+        0.061224846785875704,
+        0.07142942364222737,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.06122484678587131,
+        0.06122484678587131,
+        1.1014061171502054e-06,
+        0.061224846785875704,
+        0.061224845595670915,
+        0.07142942526197,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.07142942364224418,
+        0.07142942364224418,
+        0.03422018169593871,
+        0.07142942364222737,
+        0.07142942526197,
+        -0.03422018616653125,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        -0.006944689574086411,
+        0.006944686764001801,
+        -5.174096651015467e-07,
+        -0.055555314569447255,
+        -0.0555553145694519,
+        -0.055555314569447255,
+        -0.05555531456945188,
+        -0.08333365333702272,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.006944686764001801,
+        -0.006944689574086411,
+        5.174096651015467e-07,
+        0.055555314569447255,
+        0.0555553145694519,
+        0.055555314569447255,
+        0.05555531456945188,
+        0.08333365333702272,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -5.174096651015467e-07,
+        5.174096651015467e-07,
+        -0.06264959304448085,
+        5.157899273661171e-07,
+        5.174096913366372e-07,
+        5.157899273453004e-07,
+        5.174096913557191e-07,
+        0.0626495862110257,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.055555314569447255,
+        0.055555314569447255,
+        5.157899273661171e-07,
+        0.05555531337924064,
+        0.055555314569457025,
+        0.0555553145694369,
+        0.055555314569457025,
+        0.08333365333700399,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.0555553145694519,
+        0.0555553145694519,
+        5.174096913366372e-07,
+        0.055555314569457025,
+        0.055555313379250806,
+        0.05555531618916698,
+        0.05555531456944701,
+        0.08333365333704042,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.055555314569447255,
+        0.055555314569447255,
+        5.157899273453004e-07,
+        0.0555553145694369,
+        0.05555531618916698,
+        0.055555314998950514,
+        0.055555316189166926,
+        0.08333365333700399,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.05555531456945188,
+        0.05555531456945188,
+        5.174096913557191e-07,
+        0.055555314569457025,
+        0.05555531456944701,
+        0.055555316189166926,
+        0.055555316618670636,
+        0.0833336549567503,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08333365333702272,
+        0.08333365333702272,
+        0.0626495862110257,
+        0.08333365333700399,
+        0.08333365333704042,
+        0.08333365333700399,
+        0.0833336549567503,
+        -0.0626495913781493,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        -0.02250062916728207,
+        0.022500626357197462,
+        -8.412729946959824e-08,
+        -0.039999374976252625,
+        -0.03999937497625526,
+        -0.039999374976252625,
+        -0.03999937497625525,
+        -0.03999937497625263,
+        -0.039999374976255275,
+        -0.0999993443646458,
+        0.0,
+        0.0
+      ],
+      [
+        0.022500626357197462,
+        -0.02250062916728207,
+        8.412729946959824e-08,
+        0.039999374976252625,
+        0.03999937497625526,
+        0.039999374976252625,
+        0.03999937497625525,
+        0.03999937497625263,
+        0.039999374976255275,
+        0.0999993443646458,
+        0.0,
+        0.0
+      ],
+      [
+        -8.412729946959824e-08,
+        8.412729946959824e-08,
+        -0.05999979813541555,
+        8.25075771246353e-08,
+        8.412731119893102e-08,
+        8.250757710381862e-08,
+        8.412731121801298e-08,
+        8.250757710381862e-08,
+        8.412731117291017e-08,
+        0.059999798498663826,
+        0.0,
+        0.0
+      ],
+      [
+        -0.039999374976252625,
+        0.039999374976252625,
+        8.25075771246353e-08,
+        0.03999937378604704,
+        0.03999937497626142,
+        0.0399993749762433,
+        0.03999937497626142,
+        0.03999937497624331,
+        0.03999937497626144,
+        0.09999934436462717,
+        0.0,
+        0.0
+      ],
+      [
+        -0.03999937497625526,
+        0.03999937497625526,
+        8.412731119893102e-08,
+        0.03999937497626142,
+        0.0399993737860532,
+        0.03999937659597138,
+        0.039999374976249405,
+        0.03999937497626146,
+        0.03999937497624945,
+        0.09999934436466335,
+        0.0,
+        0.0
+      ],
+      [
+        -0.039999374976252625,
+        0.039999374976252625,
+        8.250757710381862e-08,
+        0.0399993749762433,
+        0.03999937659597138,
+        0.03999937540575691,
+        0.039999376595971324,
+        0.03999937497624331,
+        0.03999937497626144,
+        0.09999934436462717,
+        0.0,
+        0.0
+      ],
+      [
+        -0.03999937497625525,
+        0.03999937497625525,
+        8.412731121801298e-08,
+        0.03999937497626142,
+        0.039999374976249405,
+        0.039999376595971324,
+        0.03999937702547303,
+        0.03999937659597134,
+        0.03999937497624945,
+        0.09999934436466335,
+        0.0,
+        0.0
+      ],
+      [
+        -0.03999937497625263,
+        0.03999937497625263,
+        8.250757710381862e-08,
+        0.03999937497624331,
+        0.03999937497626146,
+        0.03999937497624331,
+        0.03999937659597134,
+        0.03999937540575696,
+        0.03999937659597136,
+        0.09999934436462717,
+        0.0,
+        0.0
+      ],
+      [
+        -0.039999374976255275,
+        0.039999374976255275,
+        8.412731117291017e-08,
+        0.03999937497626144,
+        0.03999937497624945,
+        0.03999937497626144,
+        0.03999937497624945,
+        0.03999937659597136,
+        0.03999937702547329,
+        0.09999934598437327,
+        0.0,
+        0.0
+      ],
+      [
+        -0.0999993443646458,
+        0.0999993443646458,
+        0.059999798498663826,
+        0.09999934436462717,
+        0.09999934436466335,
+        0.09999934436462717,
+        0.09999934436466335,
+        0.09999934436462717,
+        0.09999934598437327,
+        -0.059999803622818204,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        -0.06250000252382612,
+        0.062499999713741504,
+        -1.8301332671555315e-16,
+        -1.6197101299075811e-09,
+        -1.6197097552073103e-09,
+        -1.6197101299075811e-09,
+        -1.6197097413295225e-09,
+        -1.619710136846475e-09,
+        -1.6197097690850981e-09,
+        -1.6197101992965202e-09,
+        -1.6197097552073103e-09,
+        -1.6197101299075811e-09
+      ],
+      [
+        0.062499999713741504,
+        -0.06250000252382612,
+        1.8301332671555315e-16,
+        1.6197101299075811e-09,
+        1.6197097552073103e-09,
+        1.6197101299075811e-09,
+        1.6197097413295225e-09,
+        1.619710136846475e-09,
+        1.6197097690850981e-09,
+        1.6197101992965202e-09,
+        1.6197097552073103e-09,
+        1.6197101299075811e-09
+      ],
+      [
+        -1.8301332671555315e-16,
+        1.8301332671555315e-16,
+        5.2886359527826166e-09,
+        -1.619717509421248e-09,
+        7.520026268359459e-15,
+        -1.6197175302379296e-09,
+        7.539108226595204e-15,
+        -1.6197175302379296e-09,
+        7.494005416219807e-15,
+        -1.6197175961574217e-09,
+        7.53563877964325e-15,
+        -1.619717499012907e-09
+      ],
+      [
+        -1.6197101299075811e-09,
+        1.6197101299075811e-09,
+        -1.619717509421248e-09,
+        4.295060904158099e-10,
+        1.6197174712573315e-09,
+        1.6197023514075148e-09,
+        1.6197174712573315e-09,
+        1.6197023652853026e-09,
+        1.6197174851351193e-09,
+        1.61970241385756e-09,
+        1.619717499012907e-09,
+        1.6197023722241966e-09
+      ],
+      [
+        -1.6197097552073103e-09,
+        1.6197097552073103e-09,
+        7.520026268359459e-15,
+        1.6197174712573315e-09,
+        4.295062361325819e-10,
+        3.239427427692565e-09,
+        1.6197024416131356e-09,
+        1.619717505951801e-09,
+        1.619702483246499e-09,
+        1.619717499012907e-09,
+        1.6197024554909234e-09,
+        1.6197174573795436e-09
+      ],
+      [
+        -1.6197101299075811e-09,
+        1.6197101299075811e-09,
+        -1.6197175302379296e-09,
+        1.6197023514075148e-09,
+        3.239427427692565e-09,
+        2.0492159635843166e-09,
+        3.2394273721814137e-09,
+        1.6197023652853026e-09,
+        1.6197174851351193e-09,
+        1.61970241385756e-09,
+        1.619717499012907e-09,
+        1.6197023722241966e-09
+      ],
+      [
+        -1.6197097413295225e-09,
+        1.6197097413295225e-09,
+        7.539108226595204e-15,
+        1.6197174712573315e-09,
+        1.6197024416131356e-09,
+        3.2394273721814137e-09,
+        3.668926065736322e-09,
+        3.2394273860592016e-09,
+        1.619702483246499e-09,
+        1.619717499012907e-09,
+        1.6197024554909234e-09,
+        1.6197174573795436e-09
+      ],
+      [
+        -1.619710136846475e-09,
+        1.619710136846475e-09,
+        -1.6197175302379296e-09,
+        1.6197023652853026e-09,
+        1.619717505951801e-09,
+        1.6197023652853026e-09,
+        3.2394273860592016e-09,
+        2.049216012156574e-09,
+        3.2394274068758833e-09,
+        1.61970241385756e-09,
+        1.619717499012907e-09,
+        1.6197023722241966e-09
+      ],
+      [
+        -1.6197097690850981e-09,
+        1.6197097690850981e-09,
+        7.494005416219807e-15,
+        1.6197174851351193e-09,
+        1.619702483246499e-09,
+        1.6197174851351193e-09,
+        1.619702483246499e-09,
+        3.2394274068758833e-09,
+        3.6689263294142904e-09,
+        3.239427420753671e-09,
+        1.6197024554909234e-09,
+        1.6197174573795436e-09
+      ],
+      [
+        -1.6197101992965202e-09,
+        1.6197101992965202e-09,
+        -1.6197175961574217e-09,
+        1.61970241385756e-09,
+        1.619717499012907e-09,
+        1.61970241385756e-09,
+        1.619717499012907e-09,
+        1.61970241385756e-09,
+        3.239427420753671e-09,
+        2.049216074606619e-09,
+        3.239427504020398e-09,
+        1.6197023722241966e-09
+      ],
+      [
+        -1.6197097552073103e-09,
+        1.6197097552073103e-09,
+        7.53563877964325e-15,
+        1.619717499012907e-09,
+        1.6197024554909234e-09,
+        1.619717499012907e-09,
+        1.6197024554909234e-09,
+        1.619717499012907e-09,
+        1.6197024554909234e-09,
+        3.239427504020398e-09,
+        3.6689260518585343e-09,
+        3.2394273929980955e-09
+      ],
+      [
+        -1.6197101299075811e-09,
+        1.6197101299075811e-09,
+        -1.619717499012907e-09,
+        1.6197023722241966e-09,
+        1.6197174573795436e-09,
+        1.6197023722241966e-09,
+        1.6197174573795436e-09,
+        1.6197023722241966e-09,
+        1.6197174573795436e-09,
+        1.6197023722241966e-09,
+        3.2394273929980955e-09,
+        4.295060973547038e-10
+      ]
+    ]
+  ],
+  "lyap_func_coords": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.2857157099490564,
+      -0.1428546574437588,
+      -1.942890293094024e-16,
+      0.1428546574437588,
+      0.28571570994905654,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.5000031379037906,
+      -0.3333347945370778,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      0.33333479453707765,
+      0.500003134664371,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.8000020004945791,
+      -0.6000031423867178,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394197324592255e-09,
+      0.6000031391472977,
+      0.8000019940157398,
+      0.0,
+      0.0
+    ],
+    [
+      -1.0000000161970992,
+      -1.0000000129576798,
+      -1.942890293094024e-16,
+      1.6653345369377348e-16,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394197324592255e-09,
+      3.2394199545038305e-09,
+      3.2394199545038305e-09,
+      1.0000000064788397,
+      1.00000000647884
+    ]
+  ],
+  "lyap_offsets": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "certificate_check_code": "import hashlib\nimport json\nfrom pathlib import Path\nimport numpy as np\nimport sympy as sp\nimport pepflow as pf\nfrom pepflow.constraint import ScalarConstraint\nfrom pepflow.operator import LinearOperatorTranspose\nfrom pepflow.pep_result import MatrixWithNames\nfrom pepflow.utils import name_to_vector_tuple\n\ncertificate_checked = False\nif not certificate.get(\"numerical_certificate_verified\", False):\n    raise ValueError(\"Recover or verify the complete numerical certificate in Block 2\")\nif not certificate.get(\"closed_form_search\", {}).get(\"completed\", False):\n    raise ValueError(\"Complete or recover Block 2's initial closed-form attempt\")\ncertificate_keys = (\n    \"N_verify\", \"params_json\", \"relaxed_constraints\",\n    \"S_matrix\", \"S_row_names\", \"S_col_names\", \"basis_vectors\", \"basis_scalars\",\n    \"opt_value\", \"tau_sol\", \"tau_name\", \"named_dual_values\", \"constraint_metadata\",\n    \"normalization\", \"certificate_provenance\", \"numerical_checks\",\n    \"numerical_decomposition\",\n)\npayload = {key: certificate[key] for key in certificate_keys}\ndigest = hashlib.sha256(json.dumps(\n    payload, sort_keys=True, separators=(\",\", \":\"), allow_nan=False\n).encode(\"utf-8\")).hexdigest()\nif digest != certificate[\"certificate_id\"]:\n    raise ValueError(\"Certificate components changed; recover one coherent certificate\")\nprovenance = certificate[\"certificate_provenance\"]\nif provenance[\"pep_type\"] != \"primal\":\n    raise ValueError(\"Recover and verify the certificate's actual dual sign convention\")\nfor relative_path, expected_hash in provenance[\"source_hashes\"].items():\n    source_path = (notebook_dir / relative_path).resolve()\n    if not source_path.is_relative_to(notebook_dir):\n        raise ValueError(\"Certificate source path must stay in the selected repository\")\n    if hashlib.sha256(source_path.read_bytes()).hexdigest() != expected_hash:\n        raise ValueError(f\"Certificate source changed: {relative_path}\")\nif not Path(pf.__file__).resolve().is_relative_to(REPO_ROOT):\n    raise ValueError(\"The imported PEPFlow source is not the selected repository\")\nif N_int != certificate[\"N_verify\"]:\n    raise ValueError(\"Certificate horizon differs from the rebuilt setup\")\nsaved_params = json.loads(certificate[\"params_json\"])\nexpected_params = {\n    key: (sp.Rational(value) if isinstance(value, str) else\n          sp.nsimplify(value, rational=True, tolerance=1e-9)\n          if isinstance(value, float) else sp.S(value))\n    for key, value in saved_params.items()\n}\nif params_sp != expected_params:\n    raise ValueError(\"Certificate parameters differ from the rebuilt setup\")\nif not certificate[\"numerical_checks\"][\"passed\"]:\n    raise ValueError(\"Block 2 numerical checks did not pass\")\ntol = certificate[\"numerical_checks\"][\"tolerances\"]\n\nrecords = [(c, \"initial\", None, None) for c in pb.init_conditions]\nowners = list(ctx.func_to_triplets) + [\n    owner for owner in ctx.oper_to_duplets\n    if not isinstance(owner, LinearOperatorTranspose)\n]\nfor owner in owners:\n    data = ctx.get_constraint_data(owner)\n    for group, family in data.sc_dict.items():\n        records.extend((c, \"interpolation\", str(owner), str(group)) for c in family)\n    records.extend((c, \"interpolation\", str(owner), str(group))\n                   for group, c in data.psd_dict.items())\nconstraints_by_name = {c.name: c for c, _, _, _ in records}\nif len(constraints_by_name) != len(records):\n    raise ValueError(\"Constraint names must identify one unique contribution\")\nsaved_meta = certificate[\"constraint_metadata\"]\nsaved_duals = certificate[\"named_dual_values\"]\nif set(constraints_by_name) != set(saved_meta) or set(saved_duals) != set(saved_meta):\n    raise ValueError(\"The saved certificate does not cover the rebuilt constraints\")\nrelaxed = set(certificate[\"relaxed_constraints\"])\nif set(pb.relaxed_constraints) != relaxed or not relaxed.issubset(constraints_by_name):\n    raise ValueError(\"The selected relaxation differs from the saved certificate\")\nif pb.ctx is not ctx:\n    raise ValueError(\"The builder and expression context differ\")\nbasis = list(ctx.basis_vectors())\nbasis_labels = [repr(v) for v in basis]\nscalar_labels = [repr(v) for v in ctx.basis_scalars()]\nif basis_labels != certificate[\"basis_vectors\"] or scalar_labels != certificate[\"basis_scalars\"]:\n    raise ValueError(\"Certificate coordinate order differs from the rebuilt context\")\nif certificate[\"S_row_names\"] != basis_labels or certificate[\"S_col_names\"] != basis_labels:\n    raise ValueError(\"S labels do not match the rebuilt basis\")\nS_array = np.asarray(certificate[\"S_matrix\"], dtype=float)\nif S_array.shape != (len(basis), len(basis)) or not np.all(np.isfinite(S_array)):\n    raise ValueError(\"Invalid S shape or entries\")\nif not np.allclose(S_array, S_array.T, atol=tol[\"psd_tol\"], rtol=0):\n    raise ValueError(\"S is not numerically symmetric\")\nif len(basis) and np.linalg.eigvalsh((S_array + S_array.T) / 2).min() < -tol[\"psd_tol\"]:\n    raise ValueError(\"S failed the recorded PSD tolerance\")\nS_sol = MatrixWithNames(S_array, basis_labels, basis_labels)\npm = pf.ExpressionManager(ctx, resolve_parameters=params_sp)\nS_scalar = sum((float(S_array[i, j]) * basis[i] * basis[j]\n                for i, j in np.ndindex(S_array.shape)), pf.Scalar.zero())\n\nweighted_terms = {}\ninterpolation_terms = {}\ninterpolation_pairs = {}\nextra_terms = {}\nextra_duals = {}\nfor constraint, origin, owner, group in records:\n    name = constraint.name\n    kind = \"scalar\" if isinstance(constraint, ScalarConstraint) else \"psd\"\n    residual = constraint.lhs - constraint.rhs\n    shape = [] if kind == \"scalar\" else list(np.shape(residual))\n    expected_meta = dict(origin=origin, owner=owner, group=group, kind=kind,\n                         comparator=constraint.cmp.value, shape=shape,\n                         relaxed=name in relaxed)\n    if any(saved_meta[name].get(key) != value for key, value in expected_meta.items()):\n        raise ValueError(f\"Constraint metadata changed: {name}\")\n    value = saved_duals[name]\n    if name in relaxed:\n        if value is not None:\n            raise ValueError(f\"A relaxed constraint must have no retained multiplier: {name}\")\n        continue\n    if value is None:\n        raise ValueError(f\"Missing unrelaxed dual: {name}\")\n    dual = np.asarray(value, dtype=float)\n    if list(dual.shape) != shape or not np.all(np.isfinite(dual)):\n        raise ValueError(f\"Invalid saved dual: {name}\")\n    # Normalize inequalities to residual <= 0; primal equality duals keep their sign.\n    if constraint.cmp.name in (\"GE\", \"SEQ\"):\n        residual = -residual\n    if kind == \"scalar\":\n        if constraint.cmp.name != \"EQ\" and float(dual) < -tol[\"dual_tol\"]:\n            raise ValueError(f\"Negative inequality multiplier: {name}\")\n        contribution = pf.Scalar.zero() + float(dual) * residual\n    else:\n        if constraint.cmp.name != \"EQ\" and not np.allclose(dual, dual.T, atol=tol[\"psd_tol\"], rtol=0):\n            raise ValueError(f\"Nonsymmetric matrix dual: {name}\")\n        if constraint.cmp.name != \"EQ\" and dual.size and np.linalg.eigvalsh((dual + dual.T) / 2).min() < -tol[\"psd_tol\"]:\n            raise ValueError(f\"Matrix dual is not PSD: {name}\")\n        contribution = sum((float(dual[i, j]) * residual[j, i]\n                            for i, j in np.ndindex(dual.shape)), pf.Scalar.zero())\n    weighted_terms[name] = contribution\n    if origin == \"interpolation\" and kind == \"scalar\":\n        interpolation_terms[name] = contribution\n        try:\n            interpolation_pairs[name] = name_to_vector_tuple(name)\n        except (ValueError, IndexError):\n            interpolation_pairs[name] = None  # Assign this term explicitly when grouping.\n    elif name != certificate[\"tau_name\"]:\n        extra_terms[name] = contribution\n        extra_duals[name] = value\n\ntau_name = certificate[\"tau_name\"]\nif (tau_name not in weighted_terms or saved_meta[tau_name][\"origin\"] != \"initial\"\n        or saved_meta[tau_name][\"kind\"] != \"scalar\" or tau_name in relaxed\n        or certificate[\"normalization\"][\"tau_name\"] != tau_name):\n    raise ValueError(\"Missing or inconsistent bound normalization constraint\")\nif not np.allclose(saved_duals[tau_name], certificate[\"tau_sol\"], atol=tol[\"dual_tol\"], rtol=0):\n    raise ValueError(\"The saved normalization dual is inconsistent\")\nif not np.isfinite(certificate[\"opt_value\"]) or not np.allclose(\n    certificate[\"normalization\"][\"bound_value\"], certificate[\"opt_value\"],\n    atol=tol[\"identity_atol\"], rtol=tol[\"identity_rtol\"]\n):\n    raise ValueError(\"The saved bound/normalization is inconsistent\")\nassert pb.performance_metric is not None\nassert pb.performance_metric is not None\ncertificate_diff = (pb.performance_metric - float(certificate[\"opt_value\"])\n                    - sum(weighted_terms.values(), pf.Scalar.zero()) + S_scalar)\nevaluated_diff = pm.eval_scalar(certificate_diff)\nfor label, coords in (\n    (\"Gram\", evaluated_diff.inner_prod_coords),\n    (\"function\", evaluated_diff.func_coords),\n    (\"offset\", np.asarray(evaluated_diff.offset)),\n):\n    if not np.allclose(np.asarray(coords, dtype=float), 0,\n                       atol=tol[\"identity_atol\"], rtol=tol[\"identity_rtol\"]):\n        raise ValueError(f\"Numerical certificate {label} identity failed\")\ndecomposition = certificate[\"numerical_decomposition\"]\nD_saved = np.asarray(decomposition[\"D\"], dtype=float)\nE_saved = np.asarray(decomposition[\"ell_coords\"], dtype=float)\nif decomposition[\"basis_labels\"] != basis_labels or E_saved.ndim != 2:\n    raise ValueError(\"Numerical S decomposition basis differs\")\nif E_saved.shape[1] != len(basis) or D_saved.shape != (E_saved.shape[0], E_saved.shape[0]):\n    raise ValueError(\"Numerical S decomposition shape differs\")\nif not np.all(np.isfinite(D_saved)) or not np.all(np.isfinite(E_saved)):\n    raise ValueError(\"Numerical S decomposition contains nonfinite values\")\nif not np.allclose(E_saved.T @ D_saved @ E_saved, S_array,\n                   atol=tol[\"reconstruction_atol\"], rtol=tol[\"reconstruction_rtol\"]):\n    raise ValueError(\"Numerical S decomposition does not reconstruct this certificate\")\ncertificate_checked = True\nprint(\"Numerical certificate checked for this N and parameter sample.\")\n",
+  "decomposition_code": "# Reuse the saved complete reverse-LDL factors; never truncate small pieces.\nD = np.asarray(certificate['numerical_decomposition']['D'], dtype=float)\nE = np.asarray(certificate['numerical_decomposition']['ell_coords'], dtype=float)\nassert np.array_equal(D, np.diag(np.diag(D)))\nell = [sum((float(coef)*vector for coef,vector in zip(row,basis)), pf.Vector.zero()) for row in E]\nS_piece_terms = {i: float(D[i,i])*ell[i]**2 for i in range(len(D))}\nS_assignment = {i: N_int-i//2-1 if i < 2*N_int else -1 for i in S_piece_terms}\nassert np.allclose(E.T@D@E, S_array, atol=1e-4, rtol=1e-5)\nfor piece in S_piece_terms.values():\n    evaluated_piece = pm.eval_scalar(piece)\n    assert np.allclose(evaluated_piece.func_coords, 0, atol=1e-5, rtol=0)\n    assert abs(float(evaluated_piece.offset)) <= 1e-5\n    assert np.linalg.eigvalsh(np.asarray(evaluated_piece.inner_prod_coords,float)).min() >= -1e-6\n",
+  "grouping_code": "\n# Nonpositive interpolation residuals minus nonnegative S pieces give V_(k+1)<=V_k.\ngrouping_checked = False\ngroup_terms = {name:term for name,term in weighted_terms.items() if name != tau_name}\nterm_assignment = {}\nfor name in group_terms:\n    pair = interpolation_pairs[name]\n    assert pair is not None\n    ri, ci = pair\n    j = int(ci[2:])\n    assert ri == 'x_star' or int(ri[2:])+1 == j\n    term_assignment[name] = j-1\nassert set(term_assignment) == set(group_terms)\nassert set(S_assignment) == set(S_piece_terms)\nrank_tolerance = 1e-4\nrank_left, rank_right = 1, 1\nlyap = [pf.Scalar.zero()]\npartial_sum = sum((term for name,term in group_terms.items() if term_assignment[name] == -1), pf.Scalar.zero())\npartial_sum -= sum((piece for i,piece in S_piece_terms.items() if S_assignment[i] == -1), pf.Scalar.zero())\nfor k in range(N_int):\n    partial_sum += sum((term for name,term in group_terms.items() if term_assignment[name] == k), pf.Scalar.zero())\n    partial_sum -= sum((piece for i,piece in S_piece_terms.items() if S_assignment[i] == k), pf.Scalar.zero())\n    lyap.append(partial_sum)\nranks = []\nsingular_values = []\nfor k,Vk in enumerate(lyap):\n    matrix = np.asarray(pm.eval_scalar(Vk).inner_prod_coords, float)\n    singular = np.linalg.svd(matrix, compute_uv=False)\n    singular_values.append(singular.tolist())\n    rank = int(np.sum(singular > rank_tolerance))\n    ranks.append(rank)\n    print(f'rank V_{k}: {rank}')\n    if k == 0:\n        print()\nretained_ranks = ranks[rank_left:N_int+1-rank_right]\nprint('Interior rank is constant at this N:',len(retained_ranks)>=3 and len(set(retained_ranks))==1,'boundary exclusions:',(rank_left,rank_right))\n# No interpolation or S piece is omitted or held at the terminal boundary.\ncoverage_diff = lyap[N_int] - (sum(group_terms.values(), pf.Scalar.zero()) - S_scalar)\npiece_diff = sum(S_piece_terms.values(), pf.Scalar.zero()) - S_scalar\nchecks = [('coverage',coverage_diff), ('S pieces',piece_diff)]\nfor k in range(N_int):\n    targets = {-1,0} if k == 0 else {k}\n    increment = sum((term for name,term in group_terms.items() if term_assignment[name] in targets),pf.Scalar.zero())\n    increment -= sum((piece for i,piece in S_piece_terms.items() if S_assignment[i] in targets),pf.Scalar.zero())\n    checks.append((f'increment_{k}',lyap[k+1]-lyap[k]-increment))\ncoverage_residuals = {}\nfor label, expression in checks:\n    evaluated = pm.eval_scalar(expression)\n    residual = max(float(np.max(np.abs(np.asarray(coords,float)),initial=0)) for coords in\n                   (evaluated.inner_prod_coords,evaluated.func_coords,np.asarray(evaluated.offset)))\n    coverage_residuals[label] = residual\n    assert residual <= 1e-5\nassert all(value is not None and value >= -1e-6 for name,value in saved_duals.items() if name in group_terms)\ngrouping_checked = True\nprint('Full-coordinate coverage and increment checks:',coverage_residuals)\n\n",
+  "extra_duals": {},
+  "rank_tolerance": 0.0001,
+  "reconstruction_tolerance": 0.0001,
+  "reconstruction_rtol": 1e-05,
+  "grouping_coverage": {
+    "constraint_assignment": {
+      "f:x_star,x_0": -1,
+      "f:x_star,x_1": 0,
+      "f:x_star,x_2": 1,
+      "f:x_star,x_3": 2,
+      "f:x_star,x_4": 3,
+      "f:x_0,x_1": 0,
+      "f:x_1,x_2": 1,
+      "f:x_2,x_3": 2,
+      "f:x_3,x_4": 3,
+      "g:x_star,x_1": 0,
+      "g:x_star,x_2": 1,
+      "g:x_star,x_3": 2,
+      "g:x_star,x_4": 3,
+      "g:x_1,x_2": 1,
+      "g:x_2,x_3": 2,
+      "g:x_3,x_4": 3
+    },
+    "S_assignment": {
+      "0": 3,
+      "1": 3,
+      "2": 2,
+      "3": 2,
+      "4": 1,
+      "5": 1,
+      "6": 0,
+      "7": 0,
+      "8": -1,
+      "9": -1,
+      "10": -1,
+      "11": -1
+    },
+    "normalization_constraint": "initial_condition",
+    "boundary_constraints": [],
+    "boundary_S": [],
+    "omitted_constraints": [],
+    "checked": true
+  },
+  "basis_templates": {
+    "interior": [
+      "e_0",
+      "e_k",
+      "p_k",
+      "s_star"
+    ],
+    "initial": [],
+    "terminal": [
+      "e_0"
+    ]
+  },
+  "basis_code": "from pgm_setup import f as setup_f, g as setup_g\ndef V_k_basis(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return [ctx['x_0']-ctx['x_star']]\n    return [ctx['x_0']-ctx['x_star'],ctx[f'x_{k}']-ctx['x_star'],\n            setup_f.grad(ctx[f'x_{k}'])-setup_f.grad(ctx['x_star']),setup_f.grad(ctx['x_star'])]\n\ndef V_k_basis_labels(k):\n    if k == 0:\n        return []\n    if k == N_int:\n        return ['e_0']\n    return ['e_0',f'e_{k}',f'p_{k}','s_star']\n",
+  "structure_code": "function_sample_coefficients = {0: [0.0, 0.0], 1: [0.28571570994905643, 0.14285465744375878], 2: [0.5000031362840807, 0.3333347945370776], 3: [0.8000019972551591, 0.6000031407670074], 4: [1.0000000113379695, 1.000000009718259]}\ndef V_k_structure(k):\n    if k == 0:\n        return pf.Scalar.zero()\n    vectors = V_k_basis(k)\n    C = coeff_by_k[k]\n    quadratic = sum((float(C[i,j])*vectors[i]*vectors[j] for i,j in np.ndindex(C.shape)),pf.Scalar.zero())\n    f_weight,g_weight = function_sample_coefficients[k]\n    return quadratic+f_weight*(setup_f(ctx[f'x_{k}'])-setup_f(ctx['x_star']))+g_weight*(setup_g(ctx[f'x_{k}'])-setup_g(ctx['x_star']))\n",
+  "coeff_by_k": {
+    "0": [],
+    "1": [
+      [
+        -0.06250000333359186,
+        5.950982276403671e-10,
+        8.098544057588697e-10,
+        -1.8587974472438957e-15
+      ],
+      [
+        5.950982276403671e-10,
+        0.06122484619077003,
+        -0.07142942445209863,
+        -0.07143052504831685
+      ],
+      [
+        8.098544057588697e-10,
+        -0.07142942445209863,
+        -0.034220186166531254,
+        -4.470592535161413e-09
+      ],
+      [
+        -1.8587974472438957e-15,
+        -0.07143052504831685,
+        -4.470592535161413e-09,
+        -1.9240311773579635e-08
+      ]
+    ],
+    "2": [
+      [
+        -0.06250000232741973,
+        -4.110739769414007e-10,
+        4.04926973895936e-10,
+        -4.049287488316516e-10
+      ],
+      [
+        -4.110739769414007e-10,
+        0.05555531498052356,
+        -0.08333365374194966,
+        -0.08333417034175901
+      ],
+      [
+        4.04926973895936e-10,
+        -0.08333365374194966,
+        -0.06264959137814931,
+        -5.167123584836632e-09
+      ],
+      [
+        -4.049287488316516e-10,
+        -0.08333417034175901,
+        -5.167123584836632e-09,
+        -1.2000578740852853e-08
+      ]
+    ],
+    "3": [
+      [
+        -0.06250000230697263,
+        -4.3152108622490637e-10,
+        2.6995113783234714e-10,
+        -5.399041399365556e-10
+      ],
+      [
+        -4.3152108622490637e-10,
+        0.03999937540777503,
+        -0.09999934463459692,
+        -0.09999942795204106
+      ],
+      [
+        2.6995113783234714e-10,
+        -0.09999934463459692,
+        -0.059999803622818225,
+        -5.124154384481515e-09
+      ],
+      [
+        -5.399041399365556e-10,
+        -0.09999942795204106,
+        -5.124154384481515e-09,
+        -4.760906092197679e-09
+      ]
+    ],
+    "4": [
+      [
+        -0.0625000011187838
+      ]
+    ]
+  },
+  "coeff_code": null,
+  "coefficient_formula_status": "unresolved",
+  "expression_structure": {
+    "quadratic_convention": "sum_ij C_ij <v_i,v_j>, symmetric C, off-diagonals counted twice",
+    "interior": {
+      "index_domain": "1 <= k <= N-1",
+      "basis_labels": [
+        "e_0",
+        "e_k",
+        "p_k",
+        "s_star"
+      ],
+      "definitions": "e_k=x_k-x_star; p_k=grad f(x_k)-grad f(x_star); s_star=grad f(x_star)",
+      "quadratic_coefficients": {
+        "0,0": "c_00(k,N,L)",
+        "0,1": "c_01(k,N,L)",
+        "0,2": "c_02(k,N,L)",
+        "0,3": "c_03(k,N,L)",
+        "1,1": "c_11(k,N,L)",
+        "1,2": "c_12(k,N,L)",
+        "1,3": "c_13(k,N,L)",
+        "2,2": "c_22(k,N,L)",
+        "2,3": "c_23(k,N,L)",
+        "3,3": "c_33(k,N,L)"
+      }
+    },
+    "initial": {
+      "index_domain": "k=0",
+      "basis_labels": [],
+      "quadratic_coefficients": {},
+      "expression": "V_0=0 by construction"
+    },
+    "terminal": {
+      "index_domain": "k=N",
+      "basis_labels": [
+        "e_0"
+      ],
+      "quadratic_coefficients": {
+        "0,0": "t00(N,L)"
+      }
+    },
+    "function_terms": [
+      {
+        "index_domain": "1 <= k <= N-1",
+        "expression": "f(x_k)-f(x_star)",
+        "coefficient": "a(k,N,L)"
+      },
+      {
+        "index_domain": "1 <= k <= N-1",
+        "expression": "g(x_k)-g(x_star)",
+        "coefficient": "b(k,N,L)"
+      },
+      {
+        "index_domain": "k=N",
+        "expression": "f(x_N)-f(x_star)",
+        "coefficient": "tF(N,L)"
+      },
+      {
+        "index_domain": "k=N",
+        "expression": "g(x_N)-g(x_star)",
+        "coefficient": "tG(N,L)"
+      }
+    ],
+    "constant_terms": []
+  },
+  "unresolved_coefficients": [
+    {
+      "name": "c_00",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,0] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_01",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,1] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_02",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,2] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_03",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[0,3] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_11",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,1] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_12",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,2] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_13",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[1,3] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_22",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[2,2] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_23",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[2,3] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "c_33",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "interior.C[3,3] symmetric",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "a",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "coefficient of f_k-f_star",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "b",
+      "arguments": [
+        "k",
+        "N",
+        "L"
+      ],
+      "role": "coefficient of g_k-g_star",
+      "index_domain": "1 <= k <= N-1"
+    },
+    {
+      "name": "t00",
+      "arguments": [
+        "N",
+        "L"
+      ],
+      "role": "terminal.C[0,0]",
+      "index_domain": "k=N"
+    },
+    {
+      "name": "tF",
+      "arguments": [
+        "N",
+        "L"
+      ],
+      "role": "terminal f gap",
+      "index_domain": "k=N"
+    },
+    {
+      "name": "tG",
+      "arguments": [
+        "N",
+        "L"
+      ],
+      "role": "terminal g gap",
+      "index_domain": "k=N"
+    }
+  ],
+  "function_sample_coefficients": {
+    "0": [
+      0.0,
+      0.0
+    ],
+    "1": [
+      0.28571570994905643,
+      0.14285465744375878
+    ],
+    "2": [
+      0.5000031362840807,
+      0.3333347945370776
+    ],
+    "3": [
+      0.8000019972551591,
+      0.6000031407670074
+    ],
+    "4": [
+      1.0000000113379695,
+      1.000000009718259
+    ]
+  },
+  "numerical_reconstruction": {
+    "certificate_id": "05606d921f56d642bc98868910acdbe1a14228af6bf9f93d198591acdb90d47a",
+    "required_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "quadratic_residuals": {
+      "0": 0.0,
+      "1": 3.815820973709258e-09,
+      "2": 5.664479833513212e-09,
+      "3": 6.784154741688643e-09,
+      "4": 2.2564463720853352e-08
+    },
+    "component_residuals": {
+      "0": {
+        "gram": 0.0,
+        "function": 0.0,
+        "offset": 0.0
+      },
+      "1": {
+        "gram": 1.4050423168682213e-09,
+        "function": 1.942890293094024e-16,
+        "offset": 0.0
+      },
+      "2": {
+        "gram": 1.6381470763215944e-09,
+        "function": 3.2394197324592255e-09,
+        "offset": 0.0
+      },
+      "3": {
+        "gram": 1.6217279949493069e-09,
+        "function": 3.239420065526133e-09,
+        "offset": 0.0
+      },
+      "4": {
+        "gram": 5.2886359527826166e-09,
+        "function": 4.859129765222292e-09,
+        "offset": 0.0
+      }
+    },
+    "tolerances": {
+      "indep_tol": 1e-07,
+      "span_tol": 1e-05,
+      "component_atol": 0.0001,
+      "component_rtol": 1e-05
+    },
+    "passed": true
+  }
+}

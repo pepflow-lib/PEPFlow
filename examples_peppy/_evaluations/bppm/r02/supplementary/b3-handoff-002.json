@@ -1,0 +1,41 @@
+{
+  "current_block": "B3",
+  "completion_status": "complete",
+  "next_block": "B4",
+  "entry_exit_reason": "Rank 4 confirmed at N=4 and N=6; complete coverage, signs, certificate replay, notebook execution and static checks passed.",
+  "operational_status": "awaiting_same_session_continuation",
+  "selected_rank_profile": [
+    0,
+    4,
+    4,
+    4,
+    4
+  ],
+  "boundary_exclusions": {
+    "left": 1,
+    "right": 1
+  },
+  "confirmed_horizons": [
+    4,
+    6
+  ],
+  "rank_tolerance": 0.0001,
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "evidence": [
+    "rank_search.json",
+    "b3-static-002.json",
+    "b3-notebook-execution.json"
+  ],
+  "incidents": [
+    {
+      "evidence": "b3-static-001.json",
+      "repair": "Added explicit integer type guard before comparing mixed boundary/index assignment values; reran grouping and notebook checks."
+    }
+  ],
+  "consulted_sources": "Own selected and N6 certificates, own helpers/notebook, approved source hashes and already authorized generic B3 workflow only.",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "unresolved_work": "B4 basis and coefficient reconstruction; B5 exact arbitrary-horizon proof."
+}

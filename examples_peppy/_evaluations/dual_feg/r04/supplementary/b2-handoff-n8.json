@@ -1,0 +1,54 @@
+{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_certificate",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Independent coherent N=8 dense and structural sparse certificate acquired, decomposed and verified; notebook replay and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "additional_certificate_path":  "supplementary/n8/dual_feg_b2.json",
+    "certificate_id":  "84af091c2b29e159e9b8d0874f7dc04213d7ac12afe2de35dd6d3f9207f3305b",
+    "selected_main_horizon":  6,
+    "selected_main_state_unchanged":  true,
+    "numerical_checks":  {
+                             "tolerances":  {
+                                                "identity_atol":  1E-05,
+                                                "identity_rtol":  0,
+                                                "reconstruction_atol":  0.0001,
+                                                "reconstruction_rtol":  1E-05,
+                                                "dual_tol":  1E-06,
+                                                "psd_tol":  1E-06,
+                                                "dense_opt_atol":  1E-05
+                                            },
+                             "residuals":  {
+                                               "identity_gram_max_abs":  1.9831020412675744E-09,
+                                               "identity_func_max_abs":  0.0,
+                                               "identity_offset_abs":  5.196245794758525E-10,
+                                               "S_reconstruction_max_abs":  2.0679515313825692E-25,
+                                               "dense_relaxed_gap":  1.43754584625011E-09,
+                                               "minimum_scalar_inequality_dual":  0.031250862159542064,
+                                               "minimum_S_eigenvalue":  2.7073432363582835E-11,
+                                               "minimum_matrix_inequality_eigenvalue":  0.0,
+                                               "conjecture_gap":  1.5607748427015622E-10
+                                           },
+                             "passed":  true
+                         },
+    "evidence":  [
+                     "supplementary/n8-acquisition-output.txt",
+                     "supplementary/n8-notebook-002-output.txt",
+                     "supplementary/n8-static-002.json"
+                 ],
+    "new_approved_sources":  [
+
+                             ],
+    "own_sources":  [
+                        "supplementary/acquire_n8.py",
+                        "supplementary/n8/verification.py",
+                        "supplementary/update_n8_notebook.py"
+                    ],
+    "commands":  "Pinned Python -I -B acquisition and notebook replay; unchanged static adapter twice",
+    "operational_repair":  "Added explicit numeric dictionary annotation required by ty; no mathematical or solver changes",
+    "access_control":  "instruction_only",
+    "observed_prohibited_exposure":  false,
+    "audit_limit":  "Resolution probes are not an exhaustive filesystem read audit; the pinned interpreter and its installed startup hooks/dependencies must be reviewed.",
+    "deadline_utc":  "2026-09-23T22:54:22.120435+00:00",
+    "unresolved_work":  "B3 cross-horizon comparison has not been executed at N=8; B4-B5 remain"
+}

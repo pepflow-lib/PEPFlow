@@ -1,0 +1,88 @@
+{
+  "algo_name": "pgm",
+  "problem_type": "composite",
+  "obj_tag": "f",
+  "additional_obj_tags": [
+    "g"
+  ],
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "h(x_N)-h(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "L*R**2/(4*N)",
+  "setup_file": "pgm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.25000000431910757,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "fallback_reason": null
+    },
+    {
+      "N": 2,
+      "opt_value": 0.12499999766566457,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "fallback_reason": null
+    },
+    {
+      "N": 3,
+      "opt_value": 0.0833333327868809,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "fallback_reason": null
+    },
+    {
+      "N": 4,
+      "opt_value": 0.06249999907262903,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "fallback_reason": null
+    },
+    {
+      "N": 5,
+      "opt_value": 0.04999999951378083,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "fallback_reason": null
+    },
+    {
+      "N": 6,
+      "opt_value": 0.04166666248812821,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal_inaccurate",
+      "fallback_reason": null
+    },
+    {
+      "N": 7,
+      "opt_value": 0.03571428428419599,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal_inaccurate",
+      "fallback_reason": null
+    }
+  ],
+  "N_verify": 4,
+  "rate_status": "numerical conjecture; arbitrary-horizon proof pending",
+  "presentation_policy": "evaluation-ancillary-v1"
+}

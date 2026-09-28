@@ -1,0 +1,529 @@
+{
+  "schema_version": "peppy-static-isolation-v1",
+  "mode": "check",
+  "started_utc": "2026-09-23T15:29:12.407152+00:00",
+  "commands": [
+    {
+      "label": "python_version",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "Python 3.11.13\n",
+      "stderr": ""
+    },
+    {
+      "label": "ruff_version",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "ruff 0.12.4\n",
+      "stderr": ""
+    },
+    {
+      "label": "ty_version",
+      "command": [
+        "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "ty 0.0.82 (6999edb88 2026-09-17)\n",
+      "stderr": ""
+    },
+    {
+      "label": "python_environment",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-c",
+        "import json,sys,sysconfig,importlib.metadata; print(json.dumps({'executable':sys.executable,'paths':sys.path,'site_paths':list(set([sysconfig.get_path('purelib'),sysconfig.get_path('platlib')])), 'distribution_versions':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()}}))"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "{\"executable\": \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\.venv\\\\Scripts\\\\python.exe\", \"paths\": [\"C:\\\\Users\\\\Jack\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.13-windows-x86_64-none\\\\python311.zip\", \"C:\\\\Users\\\\Jack\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.13-windows-x86_64-none\\\\DLLs\", \"C:\\\\Users\\\\Jack\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.13-windows-x86_64-none\\\\Lib\", \"C:\\\\Users\\\\Jack\\\\AppData\\\\Roaming\\\\uv\\\\python\\\\cpython-3.11.13-windows-x86_64-none\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\.venv\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\.venv\\\\Lib\\\\site-packages\"], \"site_paths\": [\"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\.venv\\\\Lib\\\\site-packages\"], \"distribution_versions\": {\"asttokens\": \"3.0.0\", \"attrs\": \"25.3.0\", \"beautifulsoup4\": \"4.15.0\", \"bleach\": \"6.4.0\", \"blinker\": \"1.9.0\", \"certifi\": \"2025.8.3\", \"cffi\": \"1.17.1\", \"charset-normalizer\": \"3.4.3\", \"clarabel\": \"0.11.1\", \"click\": \"8.2.1\", \"colorama\": \"0.4.6\", \"comm\": \"0.2.3\", \"contourpy\": \"1.3.2\", \"cvxpy\": \"1.7.1\", \"cycler\": \"0.12.1\", \"dash\": \"3.2.0\", \"dash-bootstrap-components\": \"2.0.3\", \"debugpy\": \"1.8.17\", \"decorator\": \"5.2.1\", \"defusedxml\": \"0.7.1\", \"executing\": \"2.2.1\", \"fastjsonschema\": \"2.22.2\", \"Flask\": \"3.1.1\", \"fonttools\": \"4.58.5\", \"idna\": \"3.10\", \"importlib_metadata\": \"8.7.0\", \"iniconfig\": \"2.1.0\", \"ipykernel\": \"7.1.0\", \"ipython\": \"9.6.0\", \"ipython_pygments_lexers\": \"1.1.1\", \"isort\": \"6.0.1\", \"itsdangerous\": \"2.2.0\", \"jedi\": \"0.19.2\", \"Jinja2\": \"3.1.6\", \"joblib\": \"1.5.1\", \"jsonschema\": \"4.26.0\", \"jsonschema-specifications\": \"2025.9.1\", \"jupyterlab_pygments\": \"0.3.0\", \"jupyter_client\": \"8.6.3\", \"jupyter_core\": \"5.9.1\", \"kiwisolver\": \"1.4.8\", \"MarkupSafe\": \"3.0.2\", \"matplotlib\": \"3.10.3\", \"matplotlib-inline\": \"0.2.1\", \"mistune\": \"3.3.4\", \"mpmath\": \"1.3.0\", \"narwhals\": \"2.1.1\", \"natsort\": \"8.4.0\", \"nbclient\": \"0.11.0\", \"nbconvert\": \"7.17.1\", \"nbformat\": \"5.11.1\", \"nest-asyncio\": \"1.6.0\", \"numpy\": \"2.3.1\", \"osqp\": \"1.0.4\", \"packaging\": \"25.0\", \"pandas\": \"2.3.1\", \"pandocfilters\": \"1.5.1\", \"parso\": \"0.8.5\", \"pillow\": \"11.3.0\", \"platformdirs\": \"4.5.0\", \"plotly\": \"6.3.0\", \"pluggy\": \"1.6.0\", \"prompt_toolkit\": \"3.0.52\", \"psutil\": \"7.1.3\", \"pure_eval\": \"0.2.3\", \"pycparser\": \"2.22\", \"Pygments\": \"2.19.2\", \"pyparsing\": \"3.2.3\", \"pytest\": \"8.4.1\", \"python-dateutil\": \"2.9.0.post0\", \"pytz\": \"2025.2\", \"pyzmq\": \"27.1.0\", \"referencing\": \"0.37.0\", \"regex\": \"2026.9.10\", \"requests\": \"2.32.4\", \"retrying\": \"1.4.2\", \"rpds-py\": \"2026.6.3\", \"ruff\": \"0.12.4\", \"scipy\": \"1.16.1\", \"scs\": \"3.2.7.post2\", \"setuptools\": \"80.9.0\", \"six\": \"1.17.0\", \"soupsieve\": \"2.9.2\", \"stack-data\": \"0.6.3\", \"sympy\": \"1.14.0\", \"tinycss2\": \"1.5.1\", \"tornado\": \"6.5.2\", \"traitlets\": \"5.14.3\", \"typing_extensions\": \"4.14.1\", \"tzdata\": \"2025.2\", \"urllib3\": \"2.5.0\", \"wcwidth\": \"0.2.14\", \"webencodings\": \"0.6.1\", \"Werkzeug\": \"3.1.3\", \"zipp\": \"3.23.0\"}}\n",
+      "stderr": ""
+    },
+    {
+      "label": "source_origin_probe_no_execution",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-c",
+        "import importlib.machinery,json,sys\nroots=['C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source', 'C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source\\\\supplementary\\\\helpers', 'C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\approved']\nnames=['pepflow', 'numpy']\nfound={name:importlib.machinery.PathFinder.find_spec(name,roots+sys.path) for name in names}\nprint(json.dumps({name:(spec.origin if spec else None) for name,spec in found.items()}))\n"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "{\"pepflow\": \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\approved\\\\pepflow\\\\__init__.py\", \"numpy\": \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\.venv\\\\Lib\\\\site-packages\\\\numpy\\\\__init__.py\"}\n",
+      "stderr": ""
+    },
+    {
+      "label": "missing_module_probe",
+      "command": [
+        "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+        "check",
+        "--project",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+        "--config-file",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\resolution.toml",
+        "--python",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "--color",
+        "never",
+        "--no-progress",
+        "--no-respect-ignore-files",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\missing_probe.py"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 1,
+      "stdout": "error[unresolved-import]: Cannot resolve imported module `peppy_intentionally_missing_resolution_probe_21e74a`\n --> missing_probe.py:1:8\n  |\n1 | import peppy_intentionally_missing_resolution_probe_21e74a\n  |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ninfo: Searched in the following paths during module resolution:\ninfo:   1. C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source (first-party code)\ninfo:   2. C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers (first-party code)\ninfo:   3. C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved (first-party code)\ninfo:   4. vendored://stdlib (stdlib typeshed stubs vendored by ty)\ninfo:   5. C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages (site-packages)\ninfo: make sure your Python environment is properly configured: https://docs.astral.sh/ty/modules/#python-environment\n\nFound 1 diagnostic\n",
+      "stderr": ""
+    },
+    {
+      "label": "preflight_ruff",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+        "check",
+        "--isolated",
+        "--no-cache",
+        "--output-format",
+        "full",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\probe\\preflight.ipynb",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\probe\\supplementary\\helpers\\runtime.py"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "label": "preflight_ty",
+      "command": [
+        "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+        "check",
+        "--project",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+        "--config-file",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\preflight.toml",
+        "--python",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "--color",
+        "never",
+        "--no-progress",
+        "--no-respect-ignore-files",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\probe\\preflight.ipynb",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\probe\\supplementary\\helpers\\runtime.py"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "label": "clean_kernel_import_probe",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "-c",
+        "import json,nbformat\nfrom nbclient import NotebookClient\nnb=nbformat.read('C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\probe\\\\preflight.ipynb',as_version=4)\nNotebookClient(nb,timeout=105,kernel_name='peppy-probe',resources={'metadata':{'path':'C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\probe'}}).execute()\nprint(json.dumps([o.get('text','') for c in nb.cells for o in c.get('outputs',[]) if o.get('output_type')=='stream']))\n"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "[\"{\\\"helper\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\examples_peppy\\\\\\\\_evaluations\\\\\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\\\\\bppm\\\\\\\\r01\\\\\\\\supplementary\\\\\\\\.runtime\\\\\\\\static-check-_05x_vwq\\\\\\\\probe\\\\\\\\supplementary\\\\\\\\helpers\\\\\\\\runtime.py\\\", \\\"framework\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\examples_peppy\\\\\\\\_evaluations\\\\\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\\\\\bppm\\\\\\\\r01\\\\\\\\supplementary\\\\\\\\.runtime\\\\\\\\static-check-_05x_vwq\\\\\\\\approved\\\\\\\\pepflow\\\\\\\\__init__.py\\\", \\\"dependency\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\.venv\\\\\\\\Lib\\\\\\\\site-packages\\\\\\\\numpy\\\\\\\\__init__.py\\\"}\\n\"]\n",
+      "stderr": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n"
+    },
+    {
+      "label": "source_ruff",
+      "command": [
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+        "check",
+        "--isolated",
+        "--no-cache",
+        "--output-format",
+        "full",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_setup.py",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_example_lyap.ipynb",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\runtime.py",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\certificate.py"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "label": "source_ty",
+      "command": [
+        "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+        "check",
+        "--project",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+        "--config-file",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source.toml",
+        "--python",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+        "--color",
+        "never",
+        "--no-progress",
+        "--no-respect-ignore-files",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_setup.py",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_example_lyap.ipynb",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\runtime.py",
+        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\certificate.py"
+      ],
+      "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+      "returncode": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    }
+  ],
+  "status": "passed",
+  "access_mode": "instruction_only",
+  "audit_limit": "Resolution probes are not an exhaustive filesystem read audit; the pinned interpreter and its installed startup hooks/dependencies must be reviewed.",
+  "temporary_root": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq",
+  "sources": [
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\constants.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\constants.py",
+      "sha256": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\constraint.py",
+      "sha256": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\dual_interactive_constraint.py",
+      "sha256": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\expression_manager.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\expression_manager.py",
+      "sha256": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\function.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\function.py",
+      "sha256": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\ipython_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\ipython_utils.py",
+      "sha256": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\logging.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\logging.py",
+      "sha256": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\lyapunov_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\lyapunov_utils.py",
+      "sha256": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\math_expression.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\math_expression.py",
+      "sha256": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\operator.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\operator.py",
+      "sha256": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\parameter.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\parameter.py",
+      "sha256": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\pep.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\pep.py",
+      "sha256": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\pep_context.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\pep_context.py",
+      "sha256": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\pep_result.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\pep_result.py",
+      "sha256": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\pep_runner.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\pep_runner.py",
+      "sha256": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\plot_data.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\plot_data.py",
+      "sha256": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\primal_interactive_constraint.py",
+      "sha256": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\registry.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\registry.py",
+      "sha256": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\scalar.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\scalar.py",
+      "sha256": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\solver.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\solver.py",
+      "sha256": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\utils.py",
+      "sha256": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\vector.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\vector.py",
+      "sha256": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow\\__init__.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\__init__.py",
+      "sha256": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\helpers\\certificate.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\certificate.py",
+      "sha256": "40c506e4ffd7e4239a93c3c1e6a6f63a146faba1873e2bafcd81496c8a96ceb0"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\helpers\\runtime.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\runtime.py",
+      "sha256": "1fa587ed00f89527925f509ebe0953b50817baf901b27c70a7aa63bab98e9554"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\bppm_setup.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_setup.py",
+      "sha256": "6d56011517c9fc58118609610064c84b4459e126777db5c6ba8ae0cf57f401f8"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\bppm_example_lyap.ipynb",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\bppm_example_lyap.ipynb",
+      "sha256": "fe42d48c33bfaab6d53f99645e19e126175ebad053d8fb7b2fa2ee8c8edebd50"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\helpers\\runtime.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\runtime.py",
+      "sha256": "1fa587ed00f89527925f509ebe0953b50817baf901b27c70a7aa63bab98e9554"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\helpers\\certificate.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers\\certificate.py",
+      "sha256": "40c506e4ffd7e4239a93c3c1e6a6f63a146faba1873e2bafcd81496c8a96ceb0"
+    }
+  ],
+  "declared_roots": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved"
+  ],
+  "helper_roots": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\helpers"
+  ],
+  "approved_packages": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\approved\\pepflow"
+  ],
+  "private_environment": {
+    "TEMP": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\temp",
+    "TMP": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\tmp",
+    "TMPDIR": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\tmpdir",
+    "XDG_CACHE_HOME": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\xdg_cache_home",
+    "IPYTHONDIR": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\ipythondir",
+    "MPLCONFIGDIR": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\mplconfigdir",
+    "JUPYTER_RUNTIME_DIR": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\jupyter_runtime_dir",
+    "JUPYTER_CONFIG_DIR": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\jupyter_config_dir",
+    "PYTHONPYCACHEPREFIX": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\pythonpycacheprefix",
+    "JUPYTER_PATH": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\cache\\jupyter"
+  },
+  "tools": {
+    "python": {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+      "sha256": "b66c2619ec0c6a94a81d4ce90dee3e0cca5f01da9eafb3b6e7298c1217dee3e4",
+      "version": "Python 3.11.13"
+    },
+    "ruff": {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+      "sha256": "8d340f3c08fead252690889695a4dcf0337f3d9a1c2040b7075737309e871852",
+      "version": "ruff 0.12.4"
+    },
+    "ty": {
+      "path": "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+      "sha256": "74e8ec582d1d556282fdf75f549acdbdf2225ff2b617ce814a10764dfa273c17",
+      "version": "ty 0.0.82 (6999edb88 2026-09-17)"
+    }
+  },
+  "python_environment": {
+    "executable": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+    "paths": [
+      "C:\\Users\\Jack\\AppData\\Roaming\\uv\\python\\cpython-3.11.13-windows-x86_64-none\\python311.zip",
+      "C:\\Users\\Jack\\AppData\\Roaming\\uv\\python\\cpython-3.11.13-windows-x86_64-none\\DLLs",
+      "C:\\Users\\Jack\\AppData\\Roaming\\uv\\python\\cpython-3.11.13-windows-x86_64-none\\Lib",
+      "C:\\Users\\Jack\\AppData\\Roaming\\uv\\python\\cpython-3.11.13-windows-x86_64-none",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages"
+    ],
+    "site_paths": [
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages"
+    ],
+    "distribution_versions": {
+      "asttokens": "3.0.0",
+      "attrs": "25.3.0",
+      "beautifulsoup4": "4.15.0",
+      "bleach": "6.4.0",
+      "blinker": "1.9.0",
+      "certifi": "2025.8.3",
+      "cffi": "1.17.1",
+      "charset-normalizer": "3.4.3",
+      "clarabel": "0.11.1",
+      "click": "8.2.1",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "contourpy": "1.3.2",
+      "cvxpy": "1.7.1",
+      "cycler": "0.12.1",
+      "dash": "3.2.0",
+      "dash-bootstrap-components": "2.0.3",
+      "debugpy": "1.8.17",
+      "decorator": "5.2.1",
+      "defusedxml": "0.7.1",
+      "executing": "2.2.1",
+      "fastjsonschema": "2.22.2",
+      "Flask": "3.1.1",
+      "fonttools": "4.58.5",
+      "idna": "3.10",
+      "importlib_metadata": "8.7.0",
+      "iniconfig": "2.1.0",
+      "ipykernel": "7.1.0",
+      "ipython": "9.6.0",
+      "ipython_pygments_lexers": "1.1.1",
+      "isort": "6.0.1",
+      "itsdangerous": "2.2.0",
+      "jedi": "0.19.2",
+      "Jinja2": "3.1.6",
+      "joblib": "1.5.1",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyterlab_pygments": "0.3.0",
+      "jupyter_client": "8.6.3",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.4.8",
+      "MarkupSafe": "3.0.2",
+      "matplotlib": "3.10.3",
+      "matplotlib-inline": "0.2.1",
+      "mistune": "3.3.4",
+      "mpmath": "1.3.0",
+      "narwhals": "2.1.1",
+      "natsort": "8.4.0",
+      "nbclient": "0.11.0",
+      "nbconvert": "7.17.1",
+      "nbformat": "5.11.1",
+      "nest-asyncio": "1.6.0",
+      "numpy": "2.3.1",
+      "osqp": "1.0.4",
+      "packaging": "25.0",
+      "pandas": "2.3.1",
+      "pandocfilters": "1.5.1",
+      "parso": "0.8.5",
+      "pillow": "11.3.0",
+      "platformdirs": "4.5.0",
+      "plotly": "6.3.0",
+      "pluggy": "1.6.0",
+      "prompt_toolkit": "3.0.52",
+      "psutil": "7.1.3",
+      "pure_eval": "0.2.3",
+      "pycparser": "2.22",
+      "Pygments": "2.19.2",
+      "pyparsing": "3.2.3",
+      "pytest": "8.4.1",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2025.2",
+      "pyzmq": "27.1.0",
+      "referencing": "0.37.0",
+      "regex": "2026.9.10",
+      "requests": "2.32.4",
+      "retrying": "1.4.2",
+      "rpds-py": "2026.6.3",
+      "ruff": "0.12.4",
+      "scipy": "1.16.1",
+      "scs": "3.2.7.post2",
+      "setuptools": "80.9.0",
+      "six": "1.17.0",
+      "soupsieve": "2.9.2",
+      "stack-data": "0.6.3",
+      "sympy": "1.14.0",
+      "tinycss2": "1.5.1",
+      "tornado": "6.5.2",
+      "traitlets": "5.14.3",
+      "typing_extensions": "4.14.1",
+      "tzdata": "2025.2",
+      "urllib3": "2.5.0",
+      "wcwidth": "0.2.14",
+      "webencodings": "0.6.1",
+      "Werkzeug": "3.1.3",
+      "zipp": "3.23.0"
+    }
+  },
+  "source_module_origins_without_execution": {
+    "pepflow": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\__init__.py",
+    "numpy": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+  },
+  "configurations": {
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\resolution.toml": "[environment]\nroot = [\"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source\\\\supplementary\\\\helpers\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\approved\"]\n",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\preflight.toml": "[environment]\nroot = [\"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\probe\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\probe\\\\supplementary\\\\helpers\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\approved\"]\n",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source.toml": "[environment]\nroot = [\"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\source\\\\supplementary\\\\helpers\", \"C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\bppm\\\\r01\\\\supplementary\\\\.runtime\\\\static-check-_05x_vwq\\\\approved\"]\n"
+  },
+  "effective_resolution_paths": [
+    {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source",
+      "kind": "first-party code"
+    },
+    {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\source\\supplementary\\helpers",
+      "kind": "first-party code"
+    },
+    {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved",
+      "kind": "first-party code"
+    },
+    {
+      "path": "vendored://stdlib",
+      "kind": "stdlib typeshed stubs vendored by ty"
+    },
+    {
+      "path": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages",
+      "kind": "site-packages"
+    }
+  ],
+  "runtime_import_origins": {
+    "helper": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\probe\\supplementary\\helpers\\runtime.py",
+    "framework": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r01\\supplementary\\.runtime\\static-check-_05x_vwq\\approved\\pepflow\\__init__.py",
+    "dependency": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+  },
+  "preflight_passed": true,
+  "temporary_scope_removed": true,
+  "finished_utc": "2026-09-23T15:29:22.803986+00:00"
+}

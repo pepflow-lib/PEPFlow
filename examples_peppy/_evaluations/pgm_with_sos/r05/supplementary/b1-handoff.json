@@ -1,0 +1,59 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; implementation, sweep, notebook execution and required static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "dispatch_utc":  "2026-09-23T21:46:30.668388+00:00",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "approved_sources":  [
+                             "dispatch.md",
+                             "input.md",
+                             "worker-protocol.md",
+                             "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                             "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                             "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                             "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                             "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                             "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                             "plugins/pepflow-workflows/references/output-layout.md",
+                             "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+                             "pepflow/function.py",
+                             "pepflow/pep.py",
+                             "pepflow/pep_runner.py",
+                             "pepflow/pep_result.py",
+                             "pepflow/solver.py",
+                             "pepflow/__init__.py"
+                         ],
+    "generated_sources_consulted":  [
+                                        "pgm_setup.py",
+                                        "pgm_example_lyap.ipynb",
+                                        "supplementary/run_b1.py",
+                                        "supplementary/build_b1_notebook.py",
+                                        "supplementary/b1_sweep.json",
+                                        "supplementary/b1-static-001.json",
+                                        "supplementary/b1-static-002.json"
+                                    ],
+    "commands":  [
+                     "Read exact approved sources using Get-Content and scoped rg",
+                     "python -I -B supplementary/run_b1.py",
+                     "python -I -B supplementary/build_b1_notebook.py",
+                     "Approved static adapter check of pgm_setup.py and pgm_example_lyap.ipynb; exact subprocess argv and source manifests in evidence JSON"
+                 ],
+    "static_evidence":  "supplementary/b1-static-002.json",
+    "notebook_execution":  "supplementary/b1-notebook-output.txt",
+    "incident":  {
+                     "frozen_sources_modified":  false,
+                     "outcome":  "Full generic preflight and source checks passed on retry",
+                     "error":  "WinError 206 during recursive helper staging",
+                     "classification":  "operational configuration error",
+                     "evidence":  "supplementary/b1-static-001.json",
+                     "repair":  "Narrowed helper-root from supplementary to supplementary/helpers and probe layout to supplementary/helpers/runtime.py, avoiding duplicated approved plugin tree"
+                 },
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing; adapter manifests and tool calls are available evidence",
+    "mathematical_obligations":  "B2 through B5 pending; supplied SOS unverified",
+    "presentation_policy":  "evaluation-ancillary-v1",
+    "rendering_performed":  false
+}

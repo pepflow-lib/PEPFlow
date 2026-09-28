@@ -1,0 +1,74 @@
+﻿{
+    "phase":  "preflight_only",
+    "attempt_id":  "feg_r04",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "command":  [
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                    "-I",
+                    "-B",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary\\approved\\plugins\\pepflow-workflows\\optional\\with-clean-room\\scripts\\check_static.py",
+                    "--python",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                    "--ruff",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+                    "--ty",
+                    "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+                    "--attempt-root",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04",
+                    "--approved-package",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary\\approved\\pepflow",
+                    "--helper-root",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary",
+                    "--probe-helper-path",
+                    "supplementary/runtime.py",
+                    "--evidence",
+                    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary\\preflight-001.json",
+                    "--expect-ty-version",
+                    "0.0.82",
+                    "--timeout",
+                    "120",
+                    "preflight"
+                ],
+    "command_cwd":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04",
+    "transitive_source_and_command_evidence":  "supplementary/preflight-001.json",
+    "output_log":  "supplementary/preflight-001-output.txt",
+    "tool_versions":  {
+                          "python":  {
+                                         "path":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                                         "sha256":  "b66c2619ec0c6a94a81d4ce90dee3e0cca5f01da9eafb3b6e7298c1217dee3e4",
+                                         "version":  "Python 3.11.13"
+                                     },
+                          "ruff":  {
+                                       "path":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+                                       "sha256":  "8d340f3c08fead252690889695a4dcf0337f3d9a1c2040b7075737309e871852",
+                                       "version":  "ruff 0.12.4"
+                                   },
+                          "ty":  {
+                                     "path":  "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+                                     "sha256":  "74e8ec582d1d556282fdf75f549acdbdf2225ff2b617ce814a10764dfa273c17",
+                                     "version":  "ty 0.0.82 (6999edb88 2026-09-17)"
+                                 }
+                      },
+    "runtime_import_origins":  {
+                                   "helper":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary\\.runtime\\static-check-vznjdih3\\probe\\supplementary\\runtime.py",
+                                   "framework":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\feg\\r04\\supplementary\\.runtime\\static-check-vznjdih3\\approved\\pepflow\\__init__.py",
+                                   "dependency":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+                               },
+    "status":  "passed",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "audit_limit":  "Instruction-only access restriction; no exhaustive filesystem read audit. No prohibited material observed in actual tool outputs.",
+    "obstruction":  null,
+    "mathematical_generation_started":  false
+}

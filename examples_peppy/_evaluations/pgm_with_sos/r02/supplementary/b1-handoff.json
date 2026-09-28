@@ -1,0 +1,68 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "B1 setup, sweep, notebook and required checks completed; request boundary",
+    "operational_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "access_status":  "no_observed_prohibited_exposure",
+    "audit_limit":  "No exhaustive OS filesystem-read tracing",
+    "supplied_assistance":  "Own approved/input.md fixed SOS aid, not used or verified during B1",
+    "direct_reads":  [
+                         "supplementary/approved/dispatch.md",
+                         "supplementary/approved/input.md",
+                         "supplementary/approved/worker-protocol.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                         "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                         "supplementary/approved/pepflow/function.py",
+                         "supplementary/approved/pepflow/pep.py",
+                         "supplementary/approved/pepflow/pep_runner.py",
+                         "supplementary/approved/pepflow/pep_result.py",
+                         "supplementary/approved/pepflow/solver.py",
+                         "supplementary/approved/pepflow/__init__.py",
+                         "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                     ],
+    "own_artifacts_consulted":  [
+                                    "supplementary/_sweep_tmp.json",
+                                    "pgm_setup.py",
+                                    "pgm_example_lyap.ipynb",
+                                    "supplementary/helpers/runtime.py",
+                                    "supplementary/run_b1.py",
+                                    "supplementary/build_b1_notebook.py",
+                                    "supplementary/b1-static-001.json",
+                                    "supplementary/b1-static-002.json",
+                                    "supplementary/b1-static-003.json"
+                                ],
+    "commands":  [
+                     "Pinned Python -I -B supplementary/run_b1.py",
+                     "Pinned Python -I -B supplementary/build_b1_notebook.py (two executions, no repeated solve)",
+                     "Adapter invocations preserved in b1-static-001/002/003.json"
+                 ],
+    "incidents":  [
+                      "b1-static-001 Windows path length failure while staging supplementary; narrowed own helper root to supplementary/helpers and updated own runtime imports",
+                      "b1-static-002 unused sys notebook import; removed and repeated notebook execution and checks"
+                  ],
+    "static_status":  "passed",
+    "runtime_import_origins":  {
+                                   "helper":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\.runtime\\static-check-56ipy0y0\\probe\\supplementary\\helpers\\runtime.py",
+                                   "framework":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\.runtime\\static-check-56ipy0y0\\approved\\pepflow\\__init__.py",
+                                   "dependency":  "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\numpy\\__init__.py"
+                               },
+    "checks":  [
+                   "Single N=1..7 sweep",
+                   "Clean-kernel notebook execution",
+                   "Plot output present",
+                   "Markdown delimiter/control-character checks",
+                   "Ruff and ty via approved adapter; generic imports and fresh-kernel probes"
+               ],
+    "presentation_policy":  "evaluation-ancillary-v1",
+    "rendered_review":  "omitted per policy",
+    "original_deadline_utc":  "2026-09-23T18:17:47.370960+00:00",
+    "usage_tokens":  null
+}

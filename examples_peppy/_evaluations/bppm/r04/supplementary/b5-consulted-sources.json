@@ -1,0 +1,28 @@
+﻿{
+    "phase":  "B5",
+    "approved_sources":  [
+                             "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+                             "pepflow/expression_manager.py (definition-name scan)",
+                             "pepflow/parameter.py (definition-name scan)"
+                         ],
+    "own_sources":  "B4 state and exact reconstruction scripts, B5 symbolic initialization/step/base/boundary/sign scripts, final notebook authoring/repair/execution/audit scripts and their generated output.",
+    "commands":  "All Python used pinned interpreter -I -B; actual tool transcript and supplementary console/static evidence retained. Final notebook executed with nbconvert --execute.",
+    "incidents":  [
+                      {
+                          "classification":  "source_diagnostic",
+                          "evidence":  "b5-static-001.json",
+                          "repair":  "Explicit typing cast for symbolic parameter mapping supported by ExpressionManager sympy_mode; no runtime expression change, gate suppression, or frozen source edit. b5-static-002 passed."
+                      },
+                      {
+                          "classification":  "audit_parser_error",
+                          "reason":  "Final audit initially inserted extra newlines between split Jupyter stream chunks, leaving the proof-status literal empty.",
+                          "repair":  "Concatenated stream chunks with their original delimiters; final audit passed. Notebook and proof calculations unchanged."
+                      }
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_used_or_encountered":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "audit_limit":  "Instruction-only access restrictions; no exhaustive OS filesystem read tracing, and no claim about training exposure. Available tool transcript and source records support only observed accesses."
+}

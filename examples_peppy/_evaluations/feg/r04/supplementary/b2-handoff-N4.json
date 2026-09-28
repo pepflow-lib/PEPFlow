@@ -1,0 +1,46 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Requested additional-horizon dense and sparse coherent certificates acquired and numerically verified",
+    "operational_status":  "awaiting_same_session_continuation",
+    "N":  4,
+    "selected_horizon_unchanged":  6,
+    "certificate_id":  "3ac96253427c9cb4f079f166dada318404e7298425e300e4cbe6f621175e6311",
+    "evidence":  "supplementary/b2-certificate-N4.json",
+    "output":  "supplementary/b2-N4-output.txt",
+    "checks":  {
+                   "tolerances":  {
+                                      "identity_atol":  1E-05,
+                                      "identity_rtol":  0.0,
+                                      "reconstruction_atol":  0.0001,
+                                      "reconstruction_rtol":  1E-05,
+                                      "dual_tol":  1E-06,
+                                      "psd_tol":  1E-06,
+                                      "dense_opt_atol":  1E-05
+                                  },
+                   "residuals":  {
+                                     "identity_gram_max_abs":  2.2958673749313691E-09,
+                                     "identity_func_max_abs":  0.0,
+                                     "identity_offset_abs":  2.0003696477033373E-09,
+                                     "S_reconstruction_max_abs":  5.5511151231257827E-17,
+                                     "dense_relaxed_gap":  6.81235190480578E-09,
+                                     "minimum_scalar_inequality_dual":  0.1250023593930748,
+                                     "minimum_S_eigenvalue":  5.7741728939358571E-10,
+                                     "minimum_matrix_inequality_eigenvalue":  0.0
+                                 },
+                   "passed":  true
+               },
+    "consulted_sources":  [
+                              "state/feg_b2.json",
+                              "own generated certificate.py and run_b2_N4.py",
+                              "exact frozen framework files recorded by source hashes"
+                          ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "remaining_obligations":  "B3 recomputation and cross-horizon rank comparison, coverage, notebook update and completion gates",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00"
+}

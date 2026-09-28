@@ -1,0 +1,78 @@
+{
+  "algo_name": "bppm",
+  "problem_type": "convex_bregman",
+  "obj_tag": "f",
+  "params_json": "{\"alpha\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N)-f(x_star)",
+  "initial_condition": "D_h(x_star,x_0)<=R",
+  "conjectured_rate": "R/(alpha*N)",
+  "setup_file": "bppm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.9999999997978739,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 1.0,
+      "error": -2.0212609364023137e-10
+    },
+    {
+      "N": 2,
+      "opt_value": 0.49999999818080565,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.5,
+      "error": -1.8191943507162023e-09
+    },
+    {
+      "N": 3,
+      "opt_value": 0.3333333297114047,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.3333333333333333,
+      "error": -3.6219285903804632e-09
+    },
+    {
+      "N": 4,
+      "opt_value": 0.249999999673264,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.25,
+      "error": -3.267359993675001e-10
+    },
+    {
+      "N": 5,
+      "opt_value": 0.19999999694933834,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.2,
+      "error": -3.050661667725052e-09
+    },
+    {
+      "N": 6,
+      "opt_value": 0.16666666623031473,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.16666666666666666,
+      "error": -4.363519268135718e-10
+    },
+    {
+      "N": 7,
+      "opt_value": 0.14285714117216203,
+      "solver": "CLARABEL",
+      "solver_options": {},
+      "status": "optimal",
+      "candidate": 0.14285714285714285,
+      "error": -1.6849808215368967e-09
+    }
+  ],
+  "N_verify": 4,
+  "notebook": "bppm_example_lyap.ipynb",
+  "presentation_policy": "evaluation-ancillary-v1"
+}

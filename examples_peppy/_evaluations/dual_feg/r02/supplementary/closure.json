@@ -1,0 +1,58 @@
+{
+  "run_status": "completed",
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact proof and final delivery gates passed",
+  "notebook_sha256": "1f8fb8e949620e62b837b45ce1c0bb125de2d2b55ac617d13729e13203caffef",
+  "static_evidence": "supplementary/b5-static-003.json",
+  "clean_execution": "supplementary/b5-final-nbconvert-output-002.txt",
+  "exact_checks": {
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "signs": true,
+    "domain": true,
+    "normalization": true
+  },
+  "all_twelve_items_verified": true,
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendered_review_performed": false,
+  "required_unresolved_work": [],
+  "separate_global_analytic_full_pep": "not claimed; not required for completed local proof",
+  "access_control": "instruction_only",
+  "access_status": "no_prohibited_exposure_observed",
+  "audit_limit": "No exhaustive OS read tracing. Declaration and per-command/adapter evidence do not certify all process reads or training knowledge.",
+  "prohibited_sources_used_or_encountered": false,
+  "source_records": [
+    "preflight-access-001.json",
+    "b1-handoff-access.json",
+    "b2-handoff-access.json",
+    "b3-revisit-b2-handoff.json",
+    "b2-N4-handoff-access.json",
+    "b3-handoff-access.json",
+    "b4-handoff-access.json"
+  ],
+  "B5_consulted_sources": [
+    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "approved/pepflow/expression_manager.py",
+    "own B4 state, prior notebook and B5 generated scripts"
+  ],
+  "B5_commands": [
+    "Pinned Python -I -B supplementary/b5_run.py",
+    "Pinned Python -I -B supplementary/b5_notebook_prepare.py",
+    "approved check_static.py B5 attempts 001,002,003",
+    "Pinned Python -I -B supplementary/b5_type_repair.py",
+    "Pinned Python -I -B supplementary/b5_display_repair.py",
+    "Pinned Python -I -B supplementary/b5_execute_nbconvert.py (two attempts)",
+    "Pinned Python -I -B supplementary/b5_inspect_saved.py",
+    "Pinned Python -I -B supplementary/b5_close.py"
+  ],
+  "incidents": [
+    "Type annotations on frozen ExpressionManager accept numbers but the approved symbolic workflow maps SymPy Symbols. Narrow typing.cast at each symbolic mapping corrects generated caller annotations without changing runtime or frozen code.",
+    "First final notebook execution stopped only on symbolic coefficient display float conversion; precision=0 repaired the generated display, static and final execution rerun passed.",
+    "Prior B2 additional/B3 trial numerical imports preceded thread environment setup; actual BLAS thread counts unavailable for those processes. Preserved in B3 record. Subsequent final verification configured thread environment before numerical imports."
+  ],
+  "provider_usage": "unavailable",
+  "completed_utc": "2026-09-23T17:59:51.937121+00:00"
+}

@@ -1,0 +1,1659 @@
+{
+  "N": 4,
+  "opt_value": 0.250000000230413,
+  "solver_status": "optimal",
+  "attempts": [
+    {
+      "solver": "CLARABEL",
+      "options": {},
+      "status": "optimal"
+    }
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.25000000223078267,
+    "A monotone:x_1,x_1+1/2": null,
+    "A monotone:x_1,x_1/2": null,
+    "A monotone:x_1,x_2": 0.5000094295466974,
+    "A monotone:x_1,x_2+1/2": null,
+    "A monotone:x_1,x_3": null,
+    "A monotone:x_1,x_3+1/2": null,
+    "A monotone:x_1,x_4": null,
+    "A monotone:x_1,x_star": null,
+    "A monotone:x_1+1/2,x_1/2": null,
+    "A monotone:x_1+1/2,x_2": null,
+    "A monotone:x_1+1/2,x_2+1/2": null,
+    "A monotone:x_1+1/2,x_3": null,
+    "A monotone:x_1+1/2,x_3+1/2": null,
+    "A monotone:x_1+1/2,x_4": null,
+    "A monotone:x_1+1/2,x_star": null,
+    "A monotone:x_1/2,x_2": null,
+    "A monotone:x_1/2,x_2+1/2": null,
+    "A monotone:x_1/2,x_3": null,
+    "A monotone:x_1/2,x_3+1/2": null,
+    "A monotone:x_1/2,x_4": null,
+    "A monotone:x_1/2,x_star": null,
+    "A monotone:x_2,x_2+1/2": null,
+    "A monotone:x_2,x_3": 1.50002827331512,
+    "A monotone:x_2,x_3+1/2": null,
+    "A monotone:x_2,x_4": null,
+    "A monotone:x_2,x_star": null,
+    "A monotone:x_2+1/2,x_3": null,
+    "A monotone:x_2+1/2,x_3+1/2": null,
+    "A monotone:x_2+1/2,x_4": null,
+    "A monotone:x_2+1/2,x_star": null,
+    "A monotone:x_3,x_3+1/2": null,
+    "A monotone:x_3,x_4": 3.0000565286933263,
+    "A monotone:x_3,x_star": null,
+    "A monotone:x_3+1/2,x_4": null,
+    "A monotone:x_3+1/2,x_star": null,
+    "A monotone:x_4,x_star": 1.0000188460138035,
+    "A Lipschitz:x_1,x_1+1/2": null,
+    "A Lipschitz:x_1,x_1/2": 0.1250023593930748,
+    "A Lipschitz:x_1,x_2": null,
+    "A Lipschitz:x_1,x_2+1/2": null,
+    "A Lipschitz:x_1,x_3": null,
+    "A Lipschitz:x_1,x_3+1/2": null,
+    "A Lipschitz:x_1,x_4": null,
+    "A Lipschitz:x_1,x_star": null,
+    "A Lipschitz:x_1+1/2,x_1/2": null,
+    "A Lipschitz:x_1+1/2,x_2": 0.5000094275256938,
+    "A Lipschitz:x_1+1/2,x_2+1/2": null,
+    "A Lipschitz:x_1+1/2,x_3": null,
+    "A Lipschitz:x_1+1/2,x_3+1/2": null,
+    "A Lipschitz:x_1+1/2,x_4": null,
+    "A Lipschitz:x_1+1/2,x_star": null,
+    "A Lipschitz:x_1/2,x_2": null,
+    "A Lipschitz:x_1/2,x_2+1/2": null,
+    "A Lipschitz:x_1/2,x_3": null,
+    "A Lipschitz:x_1/2,x_3+1/2": null,
+    "A Lipschitz:x_1/2,x_4": null,
+    "A Lipschitz:x_1/2,x_star": null,
+    "A Lipschitz:x_2,x_2+1/2": null,
+    "A Lipschitz:x_2,x_3": null,
+    "A Lipschitz:x_2,x_3+1/2": null,
+    "A Lipschitz:x_2,x_4": null,
+    "A Lipschitz:x_2,x_star": null,
+    "A Lipschitz:x_2+1/2,x_3": 1.1250212038910445,
+    "A Lipschitz:x_2+1/2,x_3+1/2": null,
+    "A Lipschitz:x_2+1/2,x_4": null,
+    "A Lipschitz:x_2+1/2,x_star": null,
+    "A Lipschitz:x_3,x_3+1/2": null,
+    "A Lipschitz:x_3,x_4": null,
+    "A Lipschitz:x_3,x_star": null,
+    "A Lipschitz:x_3+1/2,x_4": 2.0000376845030043,
+    "A Lipschitz:x_3+1/2,x_star": null,
+    "A Lipschitz:x_4,x_star": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_1,x_1+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_1,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1,x_1+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1+1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_2+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_3+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "S_matrix": [
+    [
+      0.2500000027004959,
+      -0.2500000003582889,
+      1.1311333733801757e-11,
+      7.173609641143763e-12,
+      1.593975620369605e-11,
+      6.175041686787078e-12,
+      1.3849298945354546e-11,
+      3.792718932499602e-12,
+      -2.1153789865822367e-11,
+      -0.5000094214328601
+    ],
+    [
+      -0.2500000003582889,
+      0.2500000027004959,
+      -1.1311334745561857e-11,
+      -7.173610061530159e-12,
+      -1.5939757305938327e-11,
+      -6.1750421731483465e-12,
+      -1.3849300184280222e-11,
+      -3.7927193980745e-12,
+      2.1153788949594776e-11,
+      0.5000094214328601
+    ],
+    [
+      1.1311333733801757e-11,
+      -1.1311334745561857e-11,
+      2.256511438719698e-09,
+      -9.460765428031286e-10,
+      -5.730701255817096e-11,
+      -7.701824967518833e-10,
+      -5.08366061399616e-11,
+      -6.570166131032065e-10,
+      -1.000053381929626e-10,
+      1.4040584080186954e-10
+    ],
+    [
+      7.173609641143763e-12,
+      -7.173610061530159e-12,
+      -9.460765428031286e-10,
+      3.3979986336638083e-09,
+      -3.9633652623963394e-10,
+      -9.60610279507238e-12,
+      -3.236014790931874e-11,
+      -1.9521060136383596e-11,
+      -5.763579839120298e-11,
+      7.165859625184499e-12
+    ],
+    [
+      1.593975620369605e-11,
+      -1.5939757305938327e-11,
+      -5.730701255817096e-11,
+      -3.9633652623963394e-10,
+      2.2580061221334177e-09,
+      -7.926166788442945e-10,
+      -3.690547945137933e-11,
+      -1.2727882832294716e-09,
+      -9.489824650454185e-11,
+      2.7414295332894433e-10
+    ],
+    [
+      6.175041686787078e-12,
+      -6.1750421731483465e-12,
+      -7.701824967518833e-10,
+      -9.60610279507238e-12,
+      -7.926166788442945e-10,
+      4.830248182450126e-09,
+      -4.2420015363495487e-10,
+      -1.5745054689327185e-11,
+      -4.4620344451807325e-11,
+      6.168777358066048e-12
+    ],
+    [
+      1.3849298945354546e-11,
+      -1.3849300184280222e-11,
+      -5.08366061399616e-11,
+      -3.236014790931874e-11,
+      -3.690547945137933e-11,
+      -4.2420015363495487e-10,
+      2.295867374931369e-09,
+      -1.2866902632764621e-09,
+      -7.27082569603617e-11,
+      4.011642788422763e-10
+    ],
+    [
+      3.792718932499602e-12,
+      -3.7927193980745e-12,
+      -6.570166131032065e-10,
+      -1.9521060136383596e-11,
+      -1.2727882832294716e-09,
+      -1.5745054689327185e-11,
+      -1.2866902632764621e-09,
+      7.819958371599268e-09,
+      -8.221539719962215e-10,
+      3.785465028510271e-12
+    ],
+    [
+      -2.1153789865822367e-11,
+      2.1153788949594776e-11,
+      -1.000053381929626e-10,
+      -5.763579839120298e-11,
+      -9.489824650454185e-11,
+      -4.4620344451807325e-11,
+      -7.27082569603617e-11,
+      -8.221539719962215e-10,
+      2.1804914197463764e-09,
+      1.5216940937242314e-09
+    ],
+    [
+      -0.5000094214328601,
+      0.5000094214328601,
+      1.4040584080186954e-10,
+      7.165859625184499e-12,
+      2.7414295332894433e-10,
+      6.168777358066048e-12,
+      4.011642788422763e-10,
+      3.785465028510271e-12,
+      1.5216940937242314e-09,
+      1.000037684972719
+    ]
+  ],
+  "S_row_names": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "S_col_names": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "basis_vectors": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "lambda_groups": {
+    "Monotone Operator Inequality": {
+      "matrix": [
+        [
+          0.0,
+          0.0,
+          0.5000094295466974,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.50002827331512,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          3.0000565286933263,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0000188460138035
+        ]
+      ],
+      "row_names": [
+        "x_1",
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4"
+      ],
+      "col_names": [
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4",
+        "x_star"
+      ]
+    },
+    "Lipschitz Continuous Inequality": {
+      "matrix": [
+        [
+          0.0,
+          0.1250023593930748,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.5000094275256938,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.1250212038910445,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0000376845030043,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "row_names": [
+        "x_1",
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4"
+      ],
+      "col_names": [
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4",
+        "x_star"
+      ]
+    }
+  },
+  "algo_name": "feg",
+  "problem_type": "monotone_operator",
+  "obj_tag": "A",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "||A(x_N)||^2",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "4*L**2*R**2/N**2",
+  "setup_file": "feg_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 1.9999999956242245,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 2,
+      "opt_value": 0.9999999961052993,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 3,
+      "opt_value": 0.44444445082796696,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 4,
+      "opt_value": 0.25000000704304937,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 5,
+      "opt_value": 0.16000000444443294,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 6,
+      "opt_value": 0.1111111198799224,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 7,
+      "opt_value": 0.08163265853119377,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    }
+  ],
+  "N_verify": 4,
+  "analytic_status": "unproved",
+  "first_horizon_value": "2*L**2*R**2",
+  "tau_sol": 0.25000000223078267,
+  "tau_name": "initial_condition",
+  "relaxed_constraints": [
+    "A monotone:x_1,x_1+1/2",
+    "A monotone:x_1,x_1/2",
+    "A monotone:x_1,x_2+1/2",
+    "A monotone:x_1,x_3",
+    "A monotone:x_1,x_3+1/2",
+    "A monotone:x_1,x_4",
+    "A monotone:x_1,x_star",
+    "A monotone:x_1+1/2,x_1/2",
+    "A monotone:x_1+1/2,x_2",
+    "A monotone:x_1+1/2,x_2+1/2",
+    "A monotone:x_1+1/2,x_3",
+    "A monotone:x_1+1/2,x_3+1/2",
+    "A monotone:x_1+1/2,x_4",
+    "A monotone:x_1+1/2,x_star",
+    "A monotone:x_1/2,x_2",
+    "A monotone:x_1/2,x_2+1/2",
+    "A monotone:x_1/2,x_3",
+    "A monotone:x_1/2,x_3+1/2",
+    "A monotone:x_1/2,x_4",
+    "A monotone:x_1/2,x_star",
+    "A monotone:x_2,x_2+1/2",
+    "A monotone:x_2,x_3+1/2",
+    "A monotone:x_2,x_4",
+    "A monotone:x_2,x_star",
+    "A monotone:x_2+1/2,x_3",
+    "A monotone:x_2+1/2,x_3+1/2",
+    "A monotone:x_2+1/2,x_4",
+    "A monotone:x_2+1/2,x_star",
+    "A monotone:x_3,x_3+1/2",
+    "A monotone:x_3,x_star",
+    "A monotone:x_3+1/2,x_4",
+    "A monotone:x_3+1/2,x_star",
+    "A Lipschitz:x_1,x_1+1/2",
+    "A Lipschitz:x_1,x_2",
+    "A Lipschitz:x_1,x_2+1/2",
+    "A Lipschitz:x_1,x_3",
+    "A Lipschitz:x_1,x_3+1/2",
+    "A Lipschitz:x_1,x_4",
+    "A Lipschitz:x_1,x_star",
+    "A Lipschitz:x_1+1/2,x_1/2",
+    "A Lipschitz:x_1+1/2,x_2+1/2",
+    "A Lipschitz:x_1+1/2,x_3",
+    "A Lipschitz:x_1+1/2,x_3+1/2",
+    "A Lipschitz:x_1+1/2,x_4",
+    "A Lipschitz:x_1+1/2,x_star",
+    "A Lipschitz:x_1/2,x_2",
+    "A Lipschitz:x_1/2,x_2+1/2",
+    "A Lipschitz:x_1/2,x_3",
+    "A Lipschitz:x_1/2,x_3+1/2",
+    "A Lipschitz:x_1/2,x_4",
+    "A Lipschitz:x_1/2,x_star",
+    "A Lipschitz:x_2,x_2+1/2",
+    "A Lipschitz:x_2,x_3",
+    "A Lipschitz:x_2,x_3+1/2",
+    "A Lipschitz:x_2,x_4",
+    "A Lipschitz:x_2,x_star",
+    "A Lipschitz:x_2+1/2,x_3+1/2",
+    "A Lipschitz:x_2+1/2,x_4",
+    "A Lipschitz:x_2+1/2,x_star",
+    "A Lipschitz:x_3,x_3+1/2",
+    "A Lipschitz:x_3,x_4",
+    "A Lipschitz:x_3,x_star",
+    "A Lipschitz:x_3+1/2,x_star",
+    "A Lipschitz:x_4,x_star"
+  ],
+  "basis_scalars": [],
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "||x_0-x_star||^2 <= R^2",
+    "performance_metric": "||A(x_N)||^2",
+    "bound_value": 0.250000000230413,
+    "bound_formula": "4*L**2*R**2/N**2"
+  },
+  "certificate_provenance": {
+    "solve_id": "d4d37263-db40-454a-8a80-3f13b3c6d198",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "source_hashes": {
+      "feg_setup.py": "286b9e56844fca6a8a9e6f78e87cb8371adc05b7aaf32aa0a0e539a0d05e66a1",
+      "supplementary/b2_finalize.py": "cf9c941b03a8d8ada6c642fe794ae3a6d368f200431123c6569e34d03d0dac79",
+      "supplementary/b2_acquire.py": "56e3e3ec3e422244b2823e1e94bcd25c1fcb04a03d18c09a8a1566bfc56ed91b",
+      "supplementary/approved/pepflow/__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "supplementary/approved/pepflow/constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "supplementary/approved/pepflow/constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "supplementary/approved/pepflow/dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "supplementary/approved/pepflow/expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "supplementary/approved/pepflow/function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "supplementary/approved/pepflow/ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "supplementary/approved/pepflow/logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "supplementary/approved/pepflow/lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "supplementary/approved/pepflow/math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "supplementary/approved/pepflow/operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "supplementary/approved/pepflow/parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "supplementary/approved/pepflow/pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "supplementary/approved/pepflow/pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "supplementary/approved/pepflow/pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "supplementary/approved/pepflow/pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "supplementary/approved/pepflow/plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "supplementary/approved/pepflow/primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "supplementary/approved/pepflow/registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "supplementary/approved/pepflow/scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "supplementary/approved/pepflow/solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "supplementary/approved/pepflow/utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "supplementary/approved/pepflow/vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    "source_root": "notebook_dir",
+    "solver": {
+      "api": "CVXPrimalSolver.build_problem / cvxpy.Problem.solve",
+      "effective_name": "CLARABEL",
+      "settings": {},
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    }
+  },
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0.0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 2.295867374931366e-09,
+      "identity_func_max_abs": 0.0,
+      "identity_offset_abs": 2.0003696477033373e-09,
+      "S_reconstruction_max_abs": 2.220446049250313e-16,
+      "dense_relaxed_gap": 6.812636343944689e-09,
+      "minimum_scalar_inequality_dual": 0.1250023593930748,
+      "minimum_S_eigenvalue": 5.774173199614862e-10,
+      "minimum_matrix_inequality_eigenvalue": 0.0,
+      "conjecture_gap": 2.304130219954459e-10
+    },
+    "passed": true
+  },
+  "numerical_decomposition": {
+    "method": "direct",
+    "D": [
+      [
+        5.774173199614862e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.387668959730548e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        2.0820303295422983e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        2.3098561124696023e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.3422071820247952e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.7517285619106286e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.827139088478696e-09,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.231954891617815e-09,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        8.5392528444288e-09,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.5000376863635372
+      ]
+    ],
+    "ell_coords": [
+      [
+        0.31037942402889884,
+        -0.3103794910329324,
+        -0.35240701050877976,
+        -0.19078784668861865,
+        -0.39081010984016606,
+        -0.17624386735636866,
+        -0.3220315620878461,
+        -0.21223061400849877,
+        -0.4667612877189086,
+        0.3103736107268492
+      ],
+      [
+        -0.3280834028089321,
+        0.32808353062851336,
+        -0.5159691502404531,
+        -0.3031608237436672,
+        -0.35687822972334154,
+        -0.20597698626116875,
+        -0.10921093593857562,
+        -0.10043266183538584,
+        0.3565876965240595,
+        -0.3280772859478251
+      ],
+      [
+        0.09799542894364689,
+        -0.09799556817548341,
+        -0.556415328280244,
+        -0.27280684091189084,
+        0.384640053768079,
+        0.05013529413960557,
+        0.6337367535570656,
+        0.14590487155193965,
+        -0.1174623156960319,
+        0.09799365228977835
+      ],
+      [
+        0.009493112235568727,
+        -0.009493213914262534,
+        0.2821580148892616,
+        0.007551518047986483,
+        -0.6966294043592192,
+        -0.02360185030478088,
+        0.655572181719943,
+        0.016112507401445073,
+        -0.06461733106296554,
+        0.009492984219114384
+      ],
+      [
+        -0.7071067589106327,
+        -0.70710680346241,
+        -2.0601290067992494e-09,
+        -5.198924975176447e-10,
+        -2.1168151908060728e-08,
+        -2.180614957161684e-08,
+        -1.0891821835567986e-07,
+        6.013353295282034e-09,
+        2.4608015114827964e-07,
+        2.2275468580801316e-08
+      ],
+      [
+        0.3455436110144263,
+        -0.3455432960694129,
+        -0.030033371809457747,
+        -0.03860333690139978,
+        -0.0890751907175395,
+        -0.035259637983281036,
+        -0.022237222710029925,
+        0.09486435985630431,
+        0.7878705928151849,
+        0.3455369428101697
+      ],
+      [
+        -0.0011192934849206966,
+        0.0011192931535343666,
+        0.38036654707634154,
+        -0.8755110196286359,
+        0.04228296585437558,
+        0.27403426863490643,
+        -0.10137163409549638,
+        0.03667103951953396,
+        -0.017157594304351296,
+        -0.001119272228238942
+      ],
+      [
+        -0.004057555861850406,
+        0.004057555355455865,
+        -0.2507709480980945,
+        0.16740908253191583,
+        -0.19176119574662687,
+        0.9164156314973647,
+        -0.05641055928123985,
+        -0.16591505643007642,
+        0.04169912503035628,
+        -0.004057479139134996
+      ],
+      [
+        0.01587823770169725,
+        -0.015878236771924077,
+        0.10912007178290746,
+        -0.03431254296247475,
+        0.20042528338179985,
+        -0.08535428040858747,
+        0.19753134628485008,
+        -0.9409844762886899,
+        0.11930234196634404,
+        0.015877937877516797
+      ],
+      [
+        0.40824316289076656,
+        -0.4082431628907668,
+        -7.026894068891006e-11,
+        4.1451632135157494e-15,
+        -1.4054553326833932e-10,
+        3.3468075543947142e-15,
+        -2.108237403750698e-10,
+        3.9104748966537204e-15,
+        -8.398039731303108e-10,
+        -0.8165017084525213
+      ]
+    ],
+    "basis_labels": [
+      "x_1/2",
+      "x_star",
+      "A(x_1/2)",
+      "A(x_1)",
+      "A(x_1+1/2)",
+      "A(x_2)",
+      "A(x_2+1/2)",
+      "A(x_3)",
+      "A(x_3+1/2)",
+      "A(x_4)"
+    ],
+    "description": "Full symmetric eigendecomposition; all eigenvalues and factors retained"
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "Own input and approved generic operator API; no target references authorized"
+    ],
+    "attempts": [
+      {
+        "component": "lambda",
+        "method": "Rational inspection of all sparse groups: k(k+1), (k+1)^2 and terminal factors",
+        "maximum_sample_difference": 5.6528693326285406e-05,
+        "comparison_atol": 0.0001,
+        "passed": true
+      },
+      {
+        "component": "S",
+        "method": "Inspect rank-one dominant eigenspace and compare square ||(2L/N)(x0-xstar)-A(xN)||^2",
+        "maximum_sample_difference": 3.7684972719054244e-05,
+        "comparison_atol": 0.0001,
+        "passed": true
+      },
+      {
+        "component": "joint",
+        "method": "Reassemble candidate finite-N certificate",
+        "sample_identity_max_abs": 1.6653345369377348e-16
+      }
+    ],
+    "unresolved_components": [
+      "All-horizon validity of candidate lambda and S identities"
+    ]
+  },
+  "formula_status": {
+    "lambda": "candidate",
+    "S": "candidate"
+  },
+  "lamb_code": "def lambda_candidate(name, N, L=1):\n    import sympy as sp\n    N, L = sp.S(N), sp.S(L)\n    if name == \"initial_condition\":\n        return 4*L**2/N**2\n    for k in range(1,int(N)):\n        if name == f\"A monotone:x_{k},x_{k+1}\":\n            return 4*L*k*(k+1)/N**2\n    if name == f\"A monotone:x_{N},x_star\":\n        return 4*L/N\n    for k in range(int(N)):\n        half = \"x_1/2\" if k==0 else f\"x_{k}+1/2\"\n        pair = f\"x_1,{half}\" if k==0 else f\"{half},x_{k+1}\"\n        if name == f\"A Lipschitz:{pair}\":\n            return 2*sp.Integer(k+1)**2/N**2\n    return sp.S.Zero\n",
+  "S_code": "def S_candidate(ctx, op, N, L=1):\n    import sympy as sp\n    return (2*sp.S(L)/sp.S(N)*(ctx[\"x_0\"]-ctx[\"x_star\"])-op(ctx[f\"x_{N}\"]))**2\n",
+  "S_decomp_type": "direct",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "require_analytic_full_pep": false,
+  "proof_valid": true,
+  "certificate_id": "b99c82f986d37fbb743a8502360cfb5fcdca64e0976bed6191852e3b567d0089"
+}

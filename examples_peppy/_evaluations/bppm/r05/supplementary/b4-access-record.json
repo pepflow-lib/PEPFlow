@@ -1,0 +1,37 @@
+{
+  "current_block": "B4",
+  "access_control": "instruction_only",
+  "new_approved_reads": [
+    "plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+    "pepflow/lyapunov_utils.py"
+  ],
+  "generated_reads": [
+    "state/bppm_b3.json",
+    "supplementary/rank_search.json",
+    "supplementary/b4_scan.py",
+    "supplementary/b4_basis.py",
+    "supplementary/b4_coefficients.py",
+    "state/bppm_b4.json",
+    "bppm_example_lyap.ipynb",
+    "supplementary/bppm_example_lyap_checklist.md",
+    "supplementary/b4-static-001.json",
+    "supplementary/b4-static-002.json"
+  ],
+  "commands": [
+    "python -I -B supplementary/run_b4.py",
+    "python -I -B supplementary/author_b4.py (twice)",
+    "python -I -B supplementary/execute_notebook.py B4 (twice)",
+    "approved static adapter twice",
+    "python -I -B supplementary/finalize_b4.py"
+  ],
+  "source_hash_reads": "Exact certificate-provenance files only",
+  "incidents": [
+    {
+      "classification": "lint diagnostic",
+      "evidence": "b4-static-001.json",
+      "repair": "Changed descriptive snippet docstring to comment before notebook import; reran fresh-kernel and static checks."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "Instruction-only access; no exhaustive OS read trace."
+}

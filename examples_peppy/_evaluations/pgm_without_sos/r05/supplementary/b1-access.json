@@ -1,0 +1,44 @@
+﻿{
+    "current_block":  "B1",
+    "access_control":  "instruction_only",
+    "consulted_approved_files":  [
+                                     "dispatch.md",
+                                     "input.md",
+                                     "worker-protocol.md",
+                                     "settings.json",
+                                     "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                     "plugins/pepflow-workflows/references/output-layout.md",
+                                     "pepflow/function.py",
+                                     "pepflow/pep.py",
+                                     "pepflow/pep_runner.py",
+                                     "pepflow/pep_context.py",
+                                     "pepflow/solver.py",
+                                     "pepflow/__init__.py",
+                                     "pepflow/pep_result.py",
+                                     "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                 ],
+    "own_files":  "Generated setup, helper, runner, notebook builder, notebook, sweep/state and check evidence",
+    "executed_commands":  [
+                              "run_b1.py -I -B: one sweep horizons 1..7",
+                              "build_b1_notebook.py -I -B: initial execution and two operational repairs",
+                              "check_static.py options then check -- explicit targets: b1-static-001,002,003",
+                              "Exact-path Get-Content and scoped rg API inspection; own-file writes and helper move"
+                          ],
+    "incidents":  [
+                      "b1-static-001: WinError206 during helper staging; approved path metadata only; narrowed helper root without source changes",
+                      "b1-static-002: Ruff E402; split notebook bootstrap/import cells; ty passed"
+                  ],
+    "mathematical_criteria_changed":  false,
+    "source_substitution":  false,
+    "exposure_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing; instruction-only restrictions",
+    "original_deadline_utc":  "2026-09-23T23:46:05.983486+00:00",
+    "external_resources":  [
+
+                           ]
+}

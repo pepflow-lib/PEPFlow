@@ -1,0 +1,13 @@
+{
+  "kind": "confirmed_unapproved_generic_dependency_execution",
+  "access_control": "instruction_only",
+  "access_status": "unresolved",
+  "eligible": false,
+  "source": "C:/Users/Jack/AppData/Local/Programs/Python/Python313/Scripts/jupyter-nbconvert.EXE and its Python313/Lib/site-packages dependencies",
+  "evidence": "supplementary/b5-final-execution.json",
+  "exposure": "Generic nbconvert/jupyter dependency stack and launcher code consumed outside the approved pinned dependency environment; no prohibited target mathematics observed",
+  "frozen_equivalence_exceptions": [],
+  "classification": "error; not confirmed mathematical contamination",
+  "reason": "Pinned python -I -B -m jupyter dispatched an external PATH-resolved nbconvert executable. Frozen allowlist permits pinned .venv dependencies; no predeclared equivalence rule covers Python313.",
+  "recovery": "Mathematical work suspended immediately on observed traceback; bounded triage of own execution log and approved settings confirms no authorized equivalence route. Stop without repair or further execution."
+}

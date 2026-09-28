@@ -1,0 +1,20 @@
+﻿{
+    "phase":  "preflight_only",
+    "access_control":  "instruction_only",
+    "direct_read_files":  [
+                              "supplementary/approved/preflight-only.md",
+                              "supplementary/approved/allowlist.json",
+                              "supplementary/approved/settings.json",
+                              "supplementary/approved/clean-room.md",
+                              "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                              "supplementary/preflight-001.json"
+                          ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "invocation":  "Exact settings.json preflight_command invoked with PowerShell call operator from attempt root; stdout/stderr preserved in supplementary/preflight-001-output.txt",
+    "transitive_sources_and_commands":  "supplementary/preflight-001.json",
+    "status":  "passed",
+    "prohibited_content_observed":  false,
+    "audit_limit":  "Resolution probes are not an exhaustive filesystem read audit; the pinned interpreter and its installed startup hooks/dependencies must be reviewed.",
+    "mathematical_generation_started":  false,
+    "operational_obstruction":  null
+}

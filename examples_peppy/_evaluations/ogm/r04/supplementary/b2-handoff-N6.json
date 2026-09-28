@@ -1,0 +1,28 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_horizon",
+    "next_block":  "B3",
+    "entry_exit_reason":  "N6 dense and sparse solves acquired coherently; full-coordinate certificate, candidate formulas, signs, and S reconstruction passed. N4 remains selected.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "additional_horizon":  6,
+    "selected_horizon":  4,
+    "certificate_id":  "82c16a34f94dcd92d1504a0d66c4756bbca972a08a76e9dc01c37fd58d84ced2",
+    "residuals":  {
+                      "identity_gram_max_abs":  5.5887549033073469E-09,
+                      "identity_func_max_abs":  7.686165037767978E-10,
+                      "identity_offset_abs":  1.3698065945422222E-10,
+                      "S_reconstruction_max_abs":  5.6279050308916112E-09,
+                      "dense_relaxed_gap":  1.4911078760615482E-09,
+                      "minimum_scalar_inequality_dual":  0.014155965968572517,
+                      "minimum_S_eigenvalue":  1.5523331706932335E-11,
+                      "minimum_matrix_inequality_eigenvalue":  0.0
+                  },
+    "certificate_path":  "supplementary/b2-N6-verified.json",
+    "executed_source":  "supplementary/b2_N6_verified_source.py",
+    "console":  "supplementary/b2-N6-console.txt",
+    "source_note":  "Same checked B2 mathematical source, adapted only sample input/output paths and N6 assertion; existing main notebook certificate section remains selected N4. No new external sources.",
+    "deadline_utc":  "2026-09-23T21:58:24.306780+00:00",
+    "prohibited_material_observed":  false,
+    "access_control":  "instruction_only",
+    "unresolved_work":  "B3 must compute N6 rank/coverage and compare with N4; B4-B5 pending."
+}

@@ -1,0 +1,31 @@
+﻿{
+    "phase":  "B1",
+    "access_control":  "instruction_only",
+    "additional_approved_sources":  [
+                                        "dispatch.md",
+                                        "input.md",
+                                        "worker-protocol.md",
+                                        "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                        "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                        "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                        "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                        "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                        "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                        "plugins/pepflow-workflows/references/output-layout.md",
+                                        "pepflow/function.py",
+                                        "pepflow/pep.py",
+                                        "pepflow/pep_runner.py",
+                                        "pepflow/__init__.py",
+                                        "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                    ],
+    "commands":  "PowerShell tool transcript; sweep/notebook console logs and static/preflight evidence preserve executable commands and results. All Python invocations used pinned interpreter -I -B.",
+    "incident":  {
+                     "classification":  "operational_error",
+                     "evidence":  "b1-static-001.json",
+                     "reason":  "Windows path length during recursive staging of supplementary helper root",
+                     "repair":  "Narrowed attempt-local helper directory to supplementary/helpers; regenerated notebook and repeated preflight/static checks. Frozen adapter unchanged."
+                 },
+    "prohibited_content_observed":  false,
+    "audit_limit":  "No exhaustive OS tracing; consulted-source declaration limited to observed tool content.",
+    "diagnostics_recovery":  "b1-static-002 reported notebook import placement and framework Parameter/Number annotation mismatch. Split imports into a separate cell and used typing.cast(Number, alpha); no checks suppressed, frozen source unchanged. b1-static-003 passed. Final setup sweep repeated and matched previous values exactly."
+}

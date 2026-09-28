@@ -1,0 +1,200 @@
+REPLAY CELL ae8aee9b
+REPLAY CELL b3a05ee7
+INFO:matplotlib.font_manager:generated new fontManager
+REPLAY CELL ab4e088d
+REPLAY CELL 08dc8c63
+REPLAY CELL 950b3261
+N=1: PEP=1.0000000006, conjecture=1.0000000000, status=optimal
+N=2: PEP=0.4999999958, conjecture=0.5000000000, status=optimal
+N=3: PEP=0.3333333333, conjecture=0.3333333333, status=optimal
+N=4: PEP=0.2499999995, conjecture=0.2500000000, status=optimal
+N=5: PEP=0.1999999999, conjecture=0.2000000000, status=optimal
+N=6: PEP=0.1666666661, conjecture=0.1666666667, status=optimal
+N=7: PEP=0.1428571412, conjecture=0.1428571429, status=optimal
+Maximum absolute error: 4.241049955666654e-09
+REPLAY CELL c039912f
+REPLAY CELL c545529f
+Dense bound: 0.2499999995235287
+Basis vectors: ['x_0', 'x_star', 'grad_f(x_0)', 'grad_h(x_star)', 'x_1', 'grad_f(x_1)', 'grad_h(x_0)', 'x_2', 'grad_f(x_2)', 'x_3', 'grad_f(x_3)', 'x_4', 'grad_f(x_4)']
+f dense active: [('f:x_star,x_1', 0.25), ('f:x_star,x_2', 0.25), ('f:x_star,x_3', 0.25), ('f:x_star,x_4', 0.25), ('f:x_1,x_2', 0.13709), ('f:x_1,x_3', 0.0731308), ('f:x_1,x_4', 0.0397792), ('f:x_2,x_3', 0.2545141), ('f:x_2,x_4', 0.1325759), ('f:x_3,x_4', 0.5776448)]
+h dense active: [('h:x_star,x_4', 0.25), ('h:x_1,x_0', 0.25), ('h:x_1,x_2', 0.0639592), ('h:x_1,x_3', 0.0333515), ('h:x_1,x_4', 0.0397792), ('h:x_2,x_1', 0.38709), ('h:x_2,x_3', 0.1219381), ('h:x_2,x_4', 0.1325759), ('h:x_3,x_2', 0.5776448), ('h:x_3,x_4', 0.5776448), ('h:x_4,x_3', 1.0)]
+Dense S maximum: 2.8944308375966715e-10
+Dropped constraints: 45
+Selected bound: 0.24999999998930528 preserved gap: 4.657765839688466e-10
+f selected active: [('f:x_star,x_1', 0.25), ('f:x_star,x_2', 0.25), ('f:x_star,x_3', 0.25), ('f:x_star,x_4', 0.25), ('f:x_1,x_2', 0.25), ('f:x_2,x_3', 0.5), ('f:x_3,x_4', 0.75)]
+h selected active: [('h:x_star,x_4', 0.25), ('h:x_1,x_0', 0.25), ('h:x_1,x_2', 0.25), ('h:x_2,x_1', 0.5), ('h:x_2,x_3', 0.5), ('h:x_3,x_2', 0.75), ('h:x_3,x_4', 0.75), ('h:x_4,x_3', 1.0)]
+REPLAY CELL dd9962b1
+f candidate multiplier matrix
+<IPython.core.display.Math object>
+h candidate multiplier matrix
+<IPython.core.display.Math object>
+Candidate multiplier error: 3.3287683720573114e-10
+Candidate S=0 error: 1.9119710294695356e-10
+Candidate S matrix:
+<IPython.core.display.Math object>
+REPLAY CELL ee1fb963
+Full coordinate certificate checks: {'identity_gram_max_abs': 1.9119710294695349e-10, 'identity_func_max_abs': 8.855547406483311e-10, 'identity_offset_abs': 2.0461143890315725e-10, 'S_reconstruction_max_abs': 4.1359030627651384e-25, 'dense_relaxed_gap': 4.657765839688466e-10, 'minimum_scalar_inequality_dual': 0.0, 'minimum_S_eigenvalue': 9.192492405114347e-11, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Numerical S decomposition: full eigenbasis, all eigenvalues retained
+Diagonal D: [9.19249241e-11 1.59475678e-10 1.74155200e-10 1.85651347e-10
+ 1.91197060e-10 1.91197086e-10 1.91197087e-10 1.91197087e-10
+ 1.91197114e-10 1.96742799e-10 2.08238939e-10 2.22918465e-10
+ 2.90469253e-10]
+Gram identity residual:
+<IPython.core.display.Math object>
+Function coordinates: [ 8.85554741e-10  0.00000000e+00 -1.66533454e-16 -1.11022302e-16
+ -5.55111512e-17  2.21388907e-10 -2.21388574e-10  0.00000000e+00
+ -2.21388685e-10 -2.22044605e-16 -4.42777370e-10 -2.21388463e-10]
+Constant: 2.0461143890315725e-10
+Search record: {'completed': True, 'references_reviewed': ['own approved input and generic function/solver API; target-specific references prohibited'], 'attempts': ['Dense multipliers suggest star-to-iterate f terms and forward pairs; selected consecutive-only f/h relaxation.', 'Rational inspection yields f star weights 1/N, consecutive f weights (k-1)/N; h forward weights k/(alpha*N), reverse weights (k-1)/(alpha*N), terminal weight 1/(alpha*N).', 'Compared every active numerical multiplier and S=0 to the selected sample.'], 'candidate_lambda_max_error': 3.3287683720573114e-10, 'candidate_S_max_error': 1.9119710294695356e-10, 'unresolved_components': ['All-horizon analytic identity and parameter-domain proof are deferred; candidates verified numerically only.']}
+Numerical certificate verified: True
+Analytic full-PEP verified: False
+Lyapunov proof verified: False
+Actual selected numerical S:
+<IPython.core.display.Math object>
+REPLAY CELL 32563a03
+Full coordinate certificate checks: {'identity_gram_max_abs': 5.104187512907829e-10, 'identity_func_max_abs': 3.5669680542582682e-09, 'identity_offset_abs': 7.105981914001802e-10, 'S_reconstruction_max_abs': 1.34416849539867e-24, 'dense_relaxed_gap': 4.145392085153077e-10, 'minimum_scalar_inequality_dual': 0.0, 'minimum_S_eigenvalue': 2.9284622690354593e-10, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Additional horizon: 6 dense bound: 0.16666666606928843 selected bound: 0.16666666648382764
+Candidate checks: 8.20438328386075e-10 5.104187512907835e-10
+REPLAY CELL 552381d0
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\bppm_r04\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+Certificate horizon: 6
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+lyap[6] rank: 4
+Coverage checked with all scalar components and explicit boundary leftovers.
+Certificate horizon: 4
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+lyap[4] rank: 4
+Coverage checked with all scalar components and explicit boundary leftovers.
+REPLAY CELL bfb3f708
+Confirmed horizons: [4, 6] common rank: 4 exclusions: {'left': 1, 'right': 1}
+Rank convention: {'tolerance': 0.0001, 'scaling': 'absolute singular values, unscaled Gram coordinates', 'coordinate_order': 'setup basis order'}
+Boundary leftovers: ['h:x_star,x_4'] ['terminal_S']
+All omitted terms: []
+Numerical certificate and grouping verified; analytic statuses remain false.
+REPLAY CELL 57dd9842
+Candidate count: 32
+REPLAY CELL 9a7053d4
+V_1 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_1-x_star
+   grad_h(x_1)
+   grad_f(x_1)
+   x_0-x_1
+V_2 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_2-x_star
+   grad_h(x_2)
+   x_0-x_2
+V_3 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_3-x_star
+   grad_h(x_3)
+   x_0-x_3
+V_4 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_4-x_star
+   grad_h(x_4)
+   x_0-x_4
+REPLAY CELL cc033a59
+k=1, rank=4: sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_1-x_star', 'grad_h(x_1)']
+zero coefficients: 12/16
+k=2, rank=4: sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_2-x_star', 'grad_h(x_2)']
+zero coefficients: 12/16
+k=3, rank=4: sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_3-x_star', 'grad_h(x_3)']
+zero coefficients: 12/16
+k=4, rank=4: sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_4-x_star', 'grad_h(x_4)']
+zero coefficients: 12/16
+REPLAY CELL 960e824b
+REPLAY CELL 07ce1939
+k=0: empty quadratic basis; zero initial expression checked
+k=1: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_1-x_star', 'grad_h(x_1)'], residual 1.3877787807814457e-16
+<IPython.core.display.Math object>
+Function terms: h(x_0)-h(x_k), f(x_k)-f(x_star); coefficients: [0.25 0.25] offset: 0.0
+k=2: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_2-x_star', 'grad_h(x_2)'], residual 1.1069442584776823e-10
+<IPython.core.display.Math object>
+Function terms: h(x_0)-h(x_k), f(x_k)-f(x_star); coefficients: [0.25 0.5 ] offset: 0.0
+k=3: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_3-x_star', 'grad_h(x_3)'], residual 1.759649925769935e-10
+<IPython.core.display.Math object>
+Function terms: h(x_0)-h(x_k), f(x_k)-f(x_star); coefficients: [0.25 0.75] offset: 0.0
+k=4: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_4-x_star', 'grad_h(x_4)'], residual 1.759649925769935e-10
+<IPython.core.display.Math object>
+Function terms: h(x_0)-h(x_k), f(x_k)-f(x_star); coefficients: [0.25 1.  ] offset: 0.0
+REPLAY CELL f3a7f8e0
+Full expression reconstruction k= 0 {'gram': 0.0, 'function': 0.0, 'offset': 0.0}
+Full expression reconstruction k= 1 {'gram': 1.3877787807814457e-16, 'function': 5.551115123125783e-17, 'offset': 0.0}
+Full expression reconstruction k= 2 {'gram': 1.1069442584776823e-10, 'function': 2.2138885169553646e-10, 'offset': 0.0}
+Full expression reconstruction k= 3 {'gram': 1.759649925769935e-10, 'function': 2.2138885169553646e-10, 'offset': 0.0}
+Full expression reconstruction k= 4 {'gram': 1.759649925769935e-10, 'function': 2.213889072066877e-10, 'offset': 0.0}
+REPLAY CELL e6fb5c69
+Candidate formula comparison: {'0': {'quadratic': 0.0, 'h': 0.0, 'f': 0.0, 'offset': 0.0}, '1': {'quadratic': 9.695830249789594e-11, 'h': 1.9391671601809435e-10, 'f': 1.7609619318292857e-10, 'offset': 0.0}, '2': {'quadratic': 8.767989112534735e-11, 'h': 8.322231792590173e-11, 'f': 4.581869328390553e-10, 'offset': 0.0}, '3': {'quadratic': 9.390527244690361e-11, 'h': 8.322231792590173e-11, 'f': 6.020620668678589e-10, 'offset': 0.0}, '4': {'quadratic': 9.123585220649488e-11, 'h': 8.322237343705297e-11, 'f': 6.641658334416434e-10, 'offset': 0.0}}
+k=1: closed-form candidate matrix and difference from extracted matrix
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=2: closed-form candidate matrix and difference from extracted matrix
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=3: closed-form candidate matrix and difference from extracted matrix
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=4: closed-form candidate matrix and difference from extracted matrix
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+REPLAY CELL 587b3aa6
+REPLAY CELL 36310e94
+Step Gram residual:
+<IPython.core.display.Math object>
+Step function residual: [0, 0, 0, 0, 0, 0, 0]
+Step constant residual: 0
+Coefficient structure Gram residual:
+<IPython.core.display.Math object>
+Coefficient structure function residual: [0, 0, 0, 0, 0, 0, 0]
+Coefficient structure constant residual: 0
+REPLAY CELL b7276a21
+Initial zero Gram residual:
+<IPython.core.display.Math object>
+Initial zero function residual: [0, 0, 0, 0, 0]
+Initial zero constant residual: 0
+Base first step Gram residual:
+<IPython.core.display.Math object>
+Base first step function residual: [0, 0, 0, 0, 0]
+Base first step constant residual: 0
+Initial normalization Gram residual:
+<IPython.core.display.Math object>
+Initial normalization function residual: [0, 0, 0, 0, 0]
+Initial normalization constant residual: 0
+REPLAY CELL a8b4a071
+Boundary Gram residual:
+<IPython.core.display.Math object>
+Boundary function residual: [0, 0, 0, 0, 0]
+Boundary constant residual: 0
+Metric domination Gram residual:
+<IPython.core.display.Math object>
+Metric domination function residual: [0, 0, 0, 0, 0]
+Metric domination constant residual: 0
+REPLAY CELL 9c85f0ba
+Exact proof checks: {'step': True, 'base': True, 'boundary': True, 'signs': True, 'domain': True, 'normalization': True}
+V_k=(D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N)+(k/N)*(f(x_k)-f(x_star))
+For every N>=1: f(x_N)-f(x_star) <= R/(alpha*N).

@@ -1,0 +1,46 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "run_status": "completed",
+  "entry_exit_reason": "Exact local Lyapunov proof, final static checks, clean-kernel nbconvert and all twelve notebook content items verified.",
+  "unresolved_required_work": [],
+  "consulted_sources": [
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "supplementary/approved/pepflow/function.py",
+    "own B4 state, generated symbolic source and notebook outputs"
+  ],
+  "commands": [
+    "run_b5.py",
+    "finalize_b5_notebook.py",
+    "approved adapter b5-static-001.json",
+    "repair_b5_typing.py",
+    "run_b5.py (recheck)",
+    "approved adapter b5-static-002.json",
+    "pinned python -I -B -m nbconvert --to notebook --execute bppm_example_lyap.ipynb --output bppm_example_lyap.ipynb --output-dir own attempt --ExecutePreprocessor.timeout=120",
+    "final_audit.py"
+  ],
+  "incidents": [
+    {
+      "kind": "static_diagnostic",
+      "evidence": "supplementary/b5-static-001.json",
+      "repair": "Explicit heterogeneous symbolic-parameter mapping annotation and direct all-component V0 zero check; frozen sources unchanged."
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "external_resources": [],
+  "audit_limit": "Source records and actual tool logs support this declaration; no exhaustive filesystem or dependency startup-hook tracing. No claim of OS-enforced read isolation.",
+  "prior_access_records": [
+    "preflight-access-001.json",
+    "b1-access.json",
+    "b2-access.json",
+    "b3-access-001.json",
+    "b2-access-N6.json",
+    "b3-access-002.json",
+    "b4-access.json"
+  ],
+  "operational_status": "closed",
+  "completed_utc": "2026-09-23T19:25:59.772142+00:00"
+}

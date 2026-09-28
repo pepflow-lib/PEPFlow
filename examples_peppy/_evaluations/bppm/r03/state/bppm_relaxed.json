@@ -1,0 +1,1384 @@
+{
+  "algo_name": "bppm",
+  "problem_type": "convex_bregman",
+  "obj_tag": "f",
+  "params_json": "{\"alpha\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N)-f(x_star)",
+  "initial_condition": "D_h(x_star,x_0)<=R",
+  "conjectured_rate": "R/(alpha*N)",
+  "setup_file": "bppm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.9999999997978739,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 2,
+      "opt_value": 0.49999999818080565,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 3,
+      "opt_value": 0.3333333297114047,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 4,
+      "opt_value": 0.249999999673264,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 5,
+      "opt_value": 0.19999999694933834,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 6,
+      "opt_value": 0.16666666623031473,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    },
+    {
+      "N": 7,
+      "opt_value": 0.14285714117216203,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    }
+  ],
+  "N_verify": 4,
+  "N": 4,
+  "opt_value": 0.24999999998895409,
+  "tau_sol": 0.250000000194885,
+  "tau_name": "initial_condition",
+  "named_dual_values": {
+    "initial_condition": 0.250000000194885,
+    "f:x_star,x_1": 0.25000000017685203,
+    "f:x_star,x_2": 0.25000000028344505,
+    "f:x_star,x_3": 0.25000000025593727,
+    "f:x_star,x_4": 0.2500000001735796,
+    "f:x_1,x_star": null,
+    "f:x_1,x_2": 0.2500000001768519,
+    "f:x_1,x_3": null,
+    "f:x_1,x_4": null,
+    "f:x_2,x_star": null,
+    "f:x_2,x_1": null,
+    "f:x_2,x_3": 0.5000000002378435,
+    "f:x_2,x_4": null,
+    "f:x_3,x_star": null,
+    "f:x_3,x_1": null,
+    "f:x_3,x_2": null,
+    "f:x_3,x_4": 0.7500000002713274,
+    "f:x_4,x_star": null,
+    "f:x_4,x_1": null,
+    "f:x_4,x_2": null,
+    "f:x_4,x_3": null,
+    "h:x_0,x_1": null,
+    "h:x_0,x_2": null,
+    "h:x_0,x_3": null,
+    "h:x_0,x_4": null,
+    "h:x_0,x_star": null,
+    "h:x_1,x_0": 0.25000000019488505,
+    "h:x_1,x_2": 0.25000000013443113,
+    "h:x_1,x_3": null,
+    "h:x_1,x_4": null,
+    "h:x_1,x_star": null,
+    "h:x_2,x_0": null,
+    "h:x_2,x_1": 0.5000000001068626,
+    "h:x_2,x_3": 0.5000000003342693,
+    "h:x_2,x_4": null,
+    "h:x_2,x_star": null,
+    "h:x_3,x_0": null,
+    "h:x_3,x_1": null,
+    "h:x_3,x_2": 0.7500000003067007,
+    "h:x_3,x_4": 0.7500000002243119,
+    "h:x_3,x_star": null,
+    "h:x_4,x_0": null,
+    "h:x_4,x_1": null,
+    "h:x_4,x_2": null,
+    "h:x_4,x_3": 1.0000000001967435,
+    "h:x_4,x_star": null,
+    "h:x_star,x_0": null,
+    "h:x_star,x_1": null,
+    "h:x_star,x_2": null,
+    "h:x_star,x_3": null,
+    "h:x_star,x_4": 0.25000000019488483
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_0,x_1": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_0,x_2": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_0,x_3": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_0,x_4": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_0,x_star": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_1,x_0": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_2,x_0": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_3,x_0": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_4,x_0": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "h:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_star,x_0": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "h:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "h",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    }
+  },
+  "S_matrix": [
+    [
+      1.9250557053196017e-10,
+      -3.8630618204455055e-24,
+      -3.111474941611851e-24,
+      4.3301355193469e-25,
+      -2.0648322883206226e-17,
+      -3.2022482452679547e-24,
+      -6.159951933475711e-26,
+      -4.230437809243325e-24,
+      1.6230804537345613e-25,
+      -3.761003049515747e-24,
+      -2.198050996776988e-27,
+      0.0
+    ],
+    [
+      -3.8630618204455055e-24,
+      1.9250552492484685e-10,
+      2.057155750547364e-17,
+      -9.016352240152713e-12,
+      -3.9316429698942655e-17,
+      -1.3855251171549737e-18,
+      4.428010221896196e-11,
+      3.8989936558550055e-18,
+      3.052628130533172e-11,
+      1.5298815129910062e-17,
+      -1.0652531944751047e-11,
+      0.0
+    ],
+    [
+      -3.111474941611851e-24,
+      2.057155750547364e-17,
+      1.9250556267623892e-10,
+      9.01639542291149e-12,
+      6.002456107674163e-19,
+      -5.86803521145975e-18,
+      2.1210360264385362e-11,
+      4.61705224830837e-19,
+      -3.678628891303937e-18,
+      -8.96150080972176e-18,
+      -1.3177441078243286e-17,
+      0.0
+    ],
+    [
+      4.3301355193469e-25,
+      -9.016352240152713e-12,
+      9.01639542291149e-12,
+      1.9250555125782577e-10,
+      -1.936874567489673e-18,
+      -1.1299761176164795e-17,
+      -1.0867745261379253e-17,
+      -6.173886295698812e-17,
+      -1.2647116383137927e-17,
+      -1.1499842584583635e-18,
+      -1.9059193351255633e-17,
+      0.0
+    ],
+    [
+      -2.0648322883206226e-17,
+      -3.9316429698942655e-17,
+      6.002456107674163e-19,
+      -1.936874567489673e-18,
+      1.9250557053199804e-10,
+      9.635517703611952e-18,
+      -5.3752168320907074e-18,
+      5.851798297306247e-17,
+      -4.676264223208032e-18,
+      -8.59640001735505e-18,
+      -2.269435135302712e-18,
+      0.0
+    ],
+    [
+      -3.2022482452679547e-24,
+      -1.3855251171549737e-18,
+      -5.86803521145975e-18,
+      -1.1299761176164795e-17,
+      9.635517703611952e-18,
+      1.9250557892140877e-10,
+      -6.54904145839224e-11,
+      6.256100836020296e-19,
+      -4.8212892331397824e-11,
+      -8.240020502212933e-19,
+      -2.883981307823561e-18,
+      0.0
+    ],
+    [
+      -6.159951933475711e-26,
+      4.428010221896196e-11,
+      2.1210360264385362e-11,
+      -1.0867745261379253e-17,
+      -5.3752168320907074e-18,
+      -6.54904145839224e-11,
+      1.925055854508916e-10,
+      -6.077131424574888e-17,
+      -4.880964849867602e-18,
+      -4.698286520488282e-18,
+      -2.9568648010340955e-17,
+      0.0
+    ],
+    [
+      -4.230437809243325e-24,
+      3.8989936558550055e-18,
+      4.61705224830837e-19,
+      -6.173886295698812e-17,
+      5.851798297306247e-17,
+      6.256100836020296e-19,
+      -6.077131424574888e-17,
+      1.9250557100156707e-10,
+      1.7686653252956632e-11,
+      -5.381389103557575e-18,
+      2.35076357230185e-11,
+      0.0
+    ],
+    [
+      1.6230804537345613e-25,
+      3.052628130533172e-11,
+      -3.678628891303937e-18,
+      -1.2647116383137927e-17,
+      -4.676264223208032e-18,
+      -4.8212892331397824e-11,
+      -4.880964849867602e-18,
+      1.7686653252956632e-11,
+      1.9250555079052053e-10,
+      -1.054071381500854e-17,
+      -3.385865127981208e-17,
+      0.0
+    ],
+    [
+      -3.761003049515747e-24,
+      1.5298815129910062e-17,
+      -8.96150080972176e-18,
+      -1.1499842584583635e-18,
+      -8.59640001735505e-18,
+      -8.240020502212933e-19,
+      -4.698286520488282e-18,
+      -5.381389103557575e-18,
+      -1.054071381500854e-17,
+      1.9250556943199545e-10,
+      -1.2855058743460341e-11,
+      0.0
+    ],
+    [
+      -2.198050996776988e-27,
+      -1.0652531944751047e-11,
+      -1.3177441078243286e-17,
+      -1.9059193351255633e-17,
+      -2.269435135302712e-18,
+      -2.883981307823561e-18,
+      -2.9568648010340955e-17,
+      2.35076357230185e-11,
+      -3.385865127981208e-17,
+      -1.2855058743460341e-11,
+      1.9250554728495779e-10,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.9250557053199113e-10
+    ]
+  ],
+  "S_row_names": [
+    "x_0",
+    "x_star",
+    "x_1",
+    "grad_f(x_1)",
+    "grad_h(x_0)",
+    "x_2",
+    "grad_f(x_2)",
+    "x_3",
+    "grad_f(x_3)",
+    "x_4",
+    "grad_f(x_4)",
+    "grad_h(x_star)"
+  ],
+  "S_col_names": [
+    "x_0",
+    "x_star",
+    "x_1",
+    "grad_f(x_1)",
+    "grad_h(x_0)",
+    "x_2",
+    "grad_f(x_2)",
+    "x_3",
+    "grad_f(x_3)",
+    "x_4",
+    "grad_f(x_4)",
+    "grad_h(x_star)"
+  ],
+  "basis_vectors": [
+    "x_0",
+    "x_star",
+    "x_1",
+    "grad_f(x_1)",
+    "grad_h(x_0)",
+    "x_2",
+    "grad_f(x_2)",
+    "x_3",
+    "grad_f(x_3)",
+    "x_4",
+    "grad_f(x_4)",
+    "grad_h(x_star)"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "f(x_1)",
+    "h(x_0)",
+    "h(x_1)",
+    "f(x_2)",
+    "h(x_2)",
+    "f(x_3)",
+    "h(x_3)",
+    "f(x_4)",
+    "h(x_4)",
+    "h(x_star)"
+  ],
+  "lambda_matrix": [
+    [
+      0.0,
+      0.2500000001768519,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.5000000002378435,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.7500000002713274,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.25000000017685203,
+      0.25000000028344505,
+      0.25000000025593727,
+      0.2500000001735796,
+      0.0
+    ]
+  ],
+  "lambda_row_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star"
+  ],
+  "lambda_col_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star"
+  ],
+  "relaxed_constraints": [
+    "f:x_1,x_star",
+    "f:x_1,x_3",
+    "f:x_1,x_4",
+    "f:x_2,x_star",
+    "f:x_2,x_1",
+    "f:x_2,x_4",
+    "f:x_3,x_star",
+    "f:x_3,x_1",
+    "f:x_3,x_2",
+    "f:x_4,x_star",
+    "f:x_4,x_1",
+    "f:x_4,x_2",
+    "f:x_4,x_3",
+    "h:x_0,x_1",
+    "h:x_0,x_2",
+    "h:x_0,x_3",
+    "h:x_0,x_4",
+    "h:x_0,x_star",
+    "h:x_1,x_3",
+    "h:x_1,x_4",
+    "h:x_1,x_star",
+    "h:x_2,x_0",
+    "h:x_2,x_4",
+    "h:x_2,x_star",
+    "h:x_3,x_0",
+    "h:x_3,x_1",
+    "h:x_3,x_star",
+    "h:x_4,x_0",
+    "h:x_4,x_1",
+    "h:x_4,x_2",
+    "h:x_4,x_star",
+    "h:x_star,x_0",
+    "h:x_star,x_1",
+    "h:x_star,x_2",
+    "h:x_star,x_3"
+  ],
+  "numerical_decomposition": {
+    "method": "direct",
+    "D": [
+      [
+        9.285150418730223e-11,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.6077674179370535e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.7534701436788335e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.869722479613962e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.925055477172728e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.925055690659158e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.9250557053199113e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.9250559304649282e-10,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.980388651451177e-10,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.0966409188265325e-10,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.2423436902544102e-10,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.921596386110312e-10
+      ]
+    ],
+    "ell_coords": [
+      [
+        2.81016716997621e-14,
+        0.38606348524728246,
+        0.1203890166940976,
+        0.024037117628728403,
+        1.1940712629776584e-07,
+        -0.5762281753572499,
+        -0.5758504146499938,
+        0.06641756528798493,
+        -0.40882850734134296,
+        0.0033581567915211947,
+        0.026033790645076767,
+        -0.0
+      ],
+      [
+        -9.443810774320157e-13,
+        -0.18284591761815241,
+        -0.10970013205941807,
+        -0.020784891557548153,
+        -1.4729772226940163e-06,
+        -0.07537204618676098,
+        0.1729368149764189,
+        0.6205198142039167,
+        -0.28451243842520424,
+        -0.2526008766907181,
+        -0.6234691508434781,
+        0.0
+      ],
+      [
+        7.558626642184062e-13,
+        0.29658219250623535,
+        -0.6098259597795973,
+        0.47629522897687815,
+        6.144539563268658e-07,
+        0.07922992018564012,
+        0.2908606735987462,
+        0.06003201679569062,
+        -0.3668960009385797,
+        0.17398326691300547,
+        0.23222865738455162,
+        0.0
+      ],
+      [
+        8.544334183921286e-12,
+        0.35994758794323556,
+        0.03980405814378508,
+        0.5216629424727981,
+        2.311798001919385e-06,
+        0.2366494536725198,
+        -0.23214035487672852,
+        -0.08330657891585516,
+        0.3424897676954927,
+        -0.5530924757857274,
+        -0.23807251670668278,
+        0.0
+      ],
+      [
+        0.6375482702181681,
+        -0.13949828037830403,
+        -0.13949860876499626,
+        -1.937979393717685e-06,
+        0.7044381812829064,
+        -0.13949840712383701,
+        9.430722089241192e-07,
+        -0.13949821873124332,
+        -1.208969825720365e-06,
+        -0.13949860641201417,
+        -7.081413103983755e-07,
+        0.0
+      ],
+      [
+        -0.4129657402958423,
+        -0.4070864153258119,
+        -0.4070878215273535,
+        2.5942398593330847e-07,
+        -0.02932047761976575,
+        -0.4070867591293742,
+        -1.1301987349774048e-07,
+        -0.4070867156312122,
+        1.2736750347233054e-07,
+        -0.4070878768194755,
+        3.837771904979158e-09,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.6503779674033618,
+        -0.12173821914422023,
+        -0.12173879011104732,
+        2.0644733312263922e-06,
+        -0.709159473129223,
+        -0.12173831319749323,
+        -9.962317993045294e-07,
+        -0.12173847024422348,
+        1.2659942077068821e-06,
+        -0.1217388275133653,
+        6.966092395465791e-07,
+        0.0
+      ],
+      [
+        -7.491013463426621e-12,
+        -0.3599476577497187,
+        -0.039802484709488564,
+        0.5216656079289997,
+        2.014028922525668e-06,
+        -0.23664923335571403,
+        -0.2321400234773489,
+        0.08330701638641949,
+        0.3424890862986712,
+        0.5530910064055651,
+        -0.238071616670101,
+        0.0
+      ],
+      [
+        5.260731016869284e-13,
+        0.29658099851994574,
+        -0.6098258690083077,
+        -0.4762941067000863,
+        -4.6324432068090005e-07,
+        0.07922923151837452,
+        -0.2908609150892107,
+        0.06003132778609788,
+        0.3668967858523785,
+        0.17398560507366884,
+        -0.2322298411418789,
+        0.0
+      ],
+      [
+        -8.925727044130695e-13,
+        -0.18284507557451476,
+        -0.10970056678353676,
+        0.02078366593011641,
+        1.3559829153131364e-06,
+        -0.07537239750121734,
+        -0.17293679660506828,
+        0.6205202224335626,
+        0.28451263310754893,
+        -0.25260123237382004,
+        0.6234686855372293,
+        0.0
+      ],
+      [
+        -4.217493183906742e-14,
+        -0.3860632750663573,
+        -0.12038924148519177,
+        0.024037287966474096,
+        2.1777687875257357e-07,
+        0.5762282701962074,
+        -0.5758505744688613,
+        -0.06641739317650719,
+        -0.40882825658481964,
+        -0.003358338366012211,
+        0.02603442993941108,
+        0.0
+      ]
+    ],
+    "basis_labels": [
+      "x_0",
+      "x_star",
+      "x_1",
+      "grad_f(x_1)",
+      "grad_h(x_0)",
+      "x_2",
+      "grad_f(x_2)",
+      "x_3",
+      "grad_f(x_3)",
+      "x_4",
+      "grad_f(x_4)",
+      "grad_h(x_star)"
+    ]
+  },
+  "certificate_provenance": {
+    "solve_id": "354edfdc-f56b-421c-b92f-622bc3219510",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "source_hashes": {
+      "bppm_setup.py": "d603503ee1a19f6442e73d02d806b818d565f59b72e5b92d86de8d6634d7380e",
+      "supplementary\\helpers\\runtime.py": "4abe51c98a6049eb22d80e1f0860a4eb99c48cdf7ad4cb03f782487f52b50d95",
+      "supplementary\\helpers\\certificate.py": "b8d45d43ac3dcfca3ffda221a3dc461556c3b02ad6824ee49a42cfb7c240bab9",
+      "supplementary\\approved\\pepflow\\__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "supplementary\\approved\\pepflow\\constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "supplementary\\approved\\pepflow\\constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "supplementary\\approved\\pepflow\\dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "supplementary\\approved\\pepflow\\expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "supplementary\\approved\\pepflow\\function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "supplementary\\approved\\pepflow\\ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "supplementary\\approved\\pepflow\\logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "supplementary\\approved\\pepflow\\lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "supplementary\\approved\\pepflow\\math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "supplementary\\approved\\pepflow\\operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "supplementary\\approved\\pepflow\\parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "supplementary\\approved\\pepflow\\pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "supplementary\\approved\\pepflow\\pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "supplementary\\approved\\pepflow\\pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "supplementary\\approved\\pepflow\\pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "supplementary\\approved\\pepflow\\plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "supplementary\\approved\\pepflow\\primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "supplementary\\approved\\pepflow\\registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "supplementary\\approved\\pepflow\\scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "supplementary\\approved\\pepflow\\solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "supplementary\\approved\\pepflow\\utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "supplementary\\approved\\pepflow\\vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    "solver": {
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "fallback_reason": null,
+      "solver_name": "CLARABEL"
+    }
+  },
+  "numerical_checks": {
+    "passed": true,
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05,
+      "rank_tolerance": 0.0001,
+      "lyapunov_component_atol": 1e-05,
+      "lyapunov_component_rtol": 1e-05,
+      "basis_zero_tol": 1e-06,
+      "basis_indep_tol": 1e-07,
+      "basis_span_tol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 1.925055854508916e-10,
+      "identity_func_max_abs": 8.89814000260003e-10,
+      "identity_offset_abs": 2.0593091121234863e-10,
+      "S_reconstruction_max_abs": 2.8836072065850606e-25,
+      "dense_relaxed_gap": 3.1569008518417263e-10,
+      "minimum_scalar_inequality_dual": 0.25000000013443113,
+      "minimum_S_eigenvalue": 9.285150418730221e-11,
+      "minimum_matrix_inequality_eigenvalue": 0.0
+    }
+  },
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "D_h(x_star,x_0)<=R",
+    "performance_metric": "f(x_N)-f(x_star)",
+    "bound_value": 0.24999999998895409,
+    "bound_formula": "R/(alpha*N)"
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "own input, approved generic framework; target references excluded"
+    ],
+    "attempts": [
+      {
+        "method": "Inspect dense multipliers; drop all entries outside adjacent pairs, f optimum pairs, terminal h optimum pair",
+        "outcome": "Preserves optimum; all selected multipliers match index-linear candidates",
+        "lambda_max_error": 3.34269278923216e-10
+      },
+      {
+        "method": "Inspect near-zero dense and relaxed S; compare exact zero candidate to all Gram entries, and zero scalar/offset coordinates",
+        "outcome": "Numerically matches zero S; exact all-horizon proof deferred",
+        "S_max_error": 1.925055854508916e-10
+      }
+    ],
+    "unresolved_components": [
+      "analytic all-horizon lambda/S identity and domain proof"
+    ]
+  },
+  "formula_status": {
+    "lambda": "candidate",
+    "S": "candidate"
+  },
+  "lamb_code": "\"\"\"Fresh candidate formulas inferred from this attempt's certificate.\"\"\"\n\ndef candidate_duals(N, alpha):\n    values = {'initial_condition': 1 / (alpha * N), f'h:x_star,x_{N}': 1 / (alpha * N)}\n    for i in range(1, N + 1):\n        values[f'f:x_star,x_{i}'] = 1 / N\n        values[f'h:x_{i},x_{i-1}'] = i / (alpha * N)\n        if i > 1:\n            values[f'f:x_{i-1},x_{i}'] = (i - 1) / N\n            values[f'h:x_{i-1},x_{i}'] = (i - 1) / (alpha * N)\n    return values\n",
+  "S_code": "def S_guess():\n    return pf.Scalar.zero()\n",
+  "S_decomp_type": "direct",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "require_analytic_full_pep": false,
+  "proof_valid": true,
+  "candidate_lambda_max_error": 3.34269278923216e-10,
+  "candidate_S_max_error": 1.925055854508916e-10,
+  "construction_recipe": "f optimum pairs; f forward adjacent pairs from i=2; h reverse adjacent all; h forward adjacent from i=2; h optimum-to-terminal.",
+  "certificate_id": "d94a710ab988275c9ae01f78ba60fa0590f8e45bd758a0b90e384b873c660260"
+}

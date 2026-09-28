@@ -1,0 +1,142 @@
+{
+  "recipe": "reverse_ldl_by_pivot",
+  "delay": 0,
+  "rank_profile": [
+    0,
+    5,
+    5,
+    5,
+    1
+  ],
+  "singular_values": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.2836753737139136,
+      0.24035751389943175,
+      0.12501784599844512,
+      0.0641009999462101,
+      0.015093161723408154,
+      2.810084589675615e-09,
+      1.1902111993027599e-09,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.5688590735962192,
+      0.32815749521263265,
+      0.17972209804295017,
+      0.08824848180448296,
+      0.026770551252053704,
+      2.8100846224881206e-09,
+      2.2579110892045304e-09,
+      9.889728060205838e-10,
+      2.7704312313596847e-10,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.8903549138419047,
+      0.3122018408299733,
+      0.21162797816223664,
+      0.09493447580704353,
+      0.04028844064837099,
+      2.8100845662778983e-09,
+      2.634431919093049e-09,
+      2.388179676212079e-09,
+      1.3260901434732465e-09,
+      1.190199958811677e-09,
+      3.9423220911090855e-10,
+      0.0
+    ],
+    [
+      0.125000002237568,
+      1.833474328361168e-08,
+      5.667749580601382e-09,
+      3.6342358476930416e-09,
+      3.032903385185083e-09,
+      2.8100846162396375e-09,
+      2.798330002191518e-09,
+      2.0700517124155604e-09,
+      1.4521776089266187e-09,
+      9.98643122425108e-10,
+      9.212400406211818e-10,
+      2.2574777163418377e-10
+    ]
+  ],
+  "S_assignment": [
+    3,
+    2,
+    2,
+    1,
+    1,
+    0,
+    0,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "term_assignment": {
+    "f:x_star,x_0": -1,
+    "f:x_star,x_1": 0,
+    "f:x_star,x_2": 1,
+    "f:x_star,x_3": 2,
+    "f:x_star,x_4": 3,
+    "f:x_0,x_1": 0,
+    "f:x_1,x_2": 1,
+    "f:x_2,x_3": 2,
+    "f:x_3,x_4": 3,
+    "g:x_star,x_1": 0,
+    "g:x_star,x_2": 1,
+    "g:x_star,x_3": 2,
+    "g:x_star,x_4": 3,
+    "g:x_1,x_2": 1,
+    "g:x_2,x_3": 2,
+    "g:x_3,x_4": 3
+  },
+  "N": 4,
+  "certificate_id": "27dee0372da46f931c1c52c4da79c2a0b2abaa56af4d73cbcfa7fb2681220bef",
+  "recipe_id": "reverse_ldl_pivot_delay_0",
+  "rank_convention": {
+    "tolerance": 0.0001,
+    "scaling": "absolute, unscaled original Gram coordinates",
+    "coordinate_order": "setup chronological basis"
+  },
+  "rank_credible": true,
+  "certificate_checked": true,
+  "grouping_checked": true,
+  "coverage_residuals": {
+    "gram": 1.1102230246251565e-16,
+    "function": 0.0,
+    "offset": 0.0
+  },
+  "minimum_piece_eigenvalue": -2.5317158708444276e-16,
+  "boundary_exclusions": {
+    "left": 1,
+    "right": 1
+  },
+  "sign_convention": "increments are sums of nonpositive interpolation residuals with nonnegative weights minus PSD pieces",
+  "boundary_constraints": [],
+  "boundary_S": [],
+  "omitted_constraints": [],
+  "certificate_path": "state/pgm_b2.json",
+  "source_path": "supplementary/explore_b3.py"
+}

@@ -1,0 +1,30 @@
+{
+    "current_block":  "B2",
+    "access_control":  "instruction_only",
+    "new_approved_reads":  [
+
+                           ],
+    "generated_reads":  [
+                            "supplementary/relax_b2.py",
+                            "state/bppm_b1.json",
+                            "state/bppm_dense.json",
+                            "state/bppm_b2.json",
+                            "supplementary/bppm_N6_b2.json",
+                            "bppm_example_lyap.ipynb",
+                            "supplementary/b2-n6-static-001.json",
+                            "supplementary/bppm_example_lyap_checklist.md"
+                        ],
+    "source_hash_reads":  "Same exact certificate-provenance source files",
+    "commands":  [
+                     "python -I -B supplementary/relax_b2.py 6",
+                     "python -I -B supplementary/author_b2_n6.py",
+                     "python -I -B supplementary/execute_notebook.py B2N6 (executed prefix through B2 only)",
+                     "approved check_static adapter, b2-n6-static-001.json"
+                 ],
+    "incidents":  [
+                      "Get-Date -AsUTC unsupported in this PowerShell; UTC retrieved using clock tool",
+                      "Same-name context warning in dense acquisition; explicit context reset used, complete coordinate identity verified again in independent fresh notebook context"
+                  ],
+    "prohibited_content_observed":  false,
+    "audit_limit":  "Instruction-only access; no exhaustive OS trace."
+}

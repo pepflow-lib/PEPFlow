@@ -1,0 +1,46 @@
+{
+  "lambda_candidate_errors": {
+    "initial_condition": 5.286884263711045e-10,
+    "A monotone:x_4,x_star": 2.2105520509629883e-05,
+    "A Lipschitz:x_3,x_4": 4.421249634756208e-05,
+    "A monotone:x_4,x_half_0": 7.369892245201459e-06,
+    "A Lipschitz:x_0,x_half_0": 2.764955863127083e-06,
+    "A monotone:x_4,x_half_1": 1.4738702580285867e-05,
+    "A Lipschitz:x_1,x_half_1": 4.913341562412521e-06,
+    "A monotone:x_4,x_half_2": 4.4213814837767984e-05,
+    "A Lipschitz:x_2,x_half_2": 1.1054126277443288e-05
+  },
+  "lambda_comparison_passed": true,
+  "comparison_atol": 0.0001,
+  "samples": [
+    {
+      "N": 1,
+      "exact_identity_zero": true,
+      "offset": "0"
+    },
+    {
+      "N": 2,
+      "exact_identity_zero": true,
+      "offset": "0"
+    },
+    {
+      "N": 3,
+      "exact_identity_zero": true,
+      "offset": "0"
+    },
+    {
+      "N": 4,
+      "exact_identity_zero": true,
+      "offset": "0",
+      "S_candidate_gram_max_abs": 4.421263862464109e-05,
+      "S_candidate_func_max_abs": 0.0,
+      "S_candidate_offset_abs": 0.0
+    },
+    {
+      "N": 6,
+      "exact_identity_zero": true,
+      "offset": "0"
+    }
+  ],
+  "analytic_full_pep_verified": false
+}

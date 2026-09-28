@@ -1,0 +1,42 @@
+{
+  "schema_version": "activity-accounting-v1",
+  "protocol_version": "2026-09-20.isolation-recovery-v1",
+  "attempt_wall_seconds": 2992.5105650424957,
+  "activity_seconds": {
+    "mathematical_discovery_validation": 0.0,
+    "notebook_authoring_revision": 0.0,
+    "execution_rendered_review": 0.0,
+    "tooling_setup_repair": 0.0,
+    "handoff_wait": 0.0,
+    "unallocated": 2992.5105650424957
+  },
+  "activity_seconds_sum": 2992.5105650424957,
+  "segments": [
+    {
+      "start_offset_seconds": 0.0,
+      "end_offset_seconds": 2992.5105650424957,
+      "activity": "unallocated",
+      "reason": "no_observation"
+    }
+  ],
+  "activity_token_observed": {
+    "mathematical_discovery_validation": {},
+    "notebook_authoring_revision": {},
+    "execution_rendered_review": {},
+    "tooling_setup_repair": {},
+    "handoff_wait": {},
+    "unallocated": {}
+  },
+  "usage_status": "unavailable",
+  "tokens_total": null,
+  "request_count_observed": 0,
+  "observations": [],
+  "limits": [
+    "Activity and block views must never be added together.",
+    "Same-label overlaps use enclosing wall time; conflicting overlaps are unallocated.",
+    "Usage contains observed request deltas only; normalize cumulative host counters upstream.",
+    "Token fields may overlap (cached input/reasoning); do not sum fields.",
+    "Completeness requires separate host coverage reconciliation; no hidden activity is inferred."
+  ],
+  "limitations": "No complete orthogonal activity boundary stream was established; elapsed generation is retained as unallocated in this independent activity view. Block measurements remain separately available."
+}

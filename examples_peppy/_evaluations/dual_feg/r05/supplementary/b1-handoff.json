@@ -1,0 +1,57 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; setup, numerical sweep, notebook execution and source checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "deadline_utc":  "2026-09-24T00:52:12.648185+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "Available tool logs and resolution probes are not an exhaustive filesystem read audit.",
+    "consulted_sources":  [
+                              "preflight-access-record.json",
+                              "approved/dispatch.md",
+                              "approved/input.md",
+                              "approved/worker-protocol.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                              "approved/plugins/pepflow-workflows/references/output-layout.md",
+                              "approved/pepflow/__init__.py",
+                              "approved/pepflow/operator.py",
+                              "approved/pepflow/vector.py",
+                              "approved/pepflow/pep.py",
+                              "approved/pepflow/solver.py",
+                              "approved/pepflow/pep_result.py",
+                              "approved/pepflow/pep_runner.py",
+                              "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                          ],
+    "generated_files_consulted":  [
+                                      "dual_feg_setup.py",
+                                      "supplementary/run_b1.py",
+                                      "supplementary/build_b1_notebook.py",
+                                      "supplementary/_sweep_tmp.json",
+                                      "state/dual_feg_b1.json",
+                                      "dual_feg_example_lyap.ipynb",
+                                      "supplementary/b1-notebook-inspection.json",
+                                      "supplementary/b1-static-001.json",
+                                      "supplementary/b1-static-002.json",
+                                      "supplementary/b1-static-003.json"
+                                  ],
+    "commands":  "PowerShell Get-Content and scoped rg reads; own run_b1.py and build_b1_notebook.py executed with pinned Python -I -B; adapter invocations and subprocess commands preserved in evidence files; writes via Set-Content.",
+    "incidents":  [
+                      "B1-static-001: Windows path-length error staging broad helper root; narrowed own helper root to supplementary/helpers and repeated generic preflight-002 successfully. No frozen files edited.",
+                      "B1-static-002: Ruff E402 in notebook bootstrap cell; split bootstrap and imports; reran fresh kernel and static check.",
+                      "An initial functions.exec JavaScript parse error occurred before execution while composing notebook builder."
+                  ],
+    "verification":  [
+                         "N=1..7 sweep with CLARABEL default options; N=1 optimal_inaccurate, N=2..7 optimal",
+                         "Clean-kernel actual notebook execution, math delimiter/control-character checks, plot output presence",
+                         "b1-static-003.json required Ruff and ty checks"
+                     ],
+    "unresolved_work":  "B2-B5; arbitrary-horizon proof remains unestablished",
+    "usage":  "Host/provider usage unavailable to worker"
+}

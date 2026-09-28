@@ -1,0 +1,29 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Interpretable sparse basis identified; all-index independence, quadratic and full-component reconstructions passed. Candidate coefficients recorded. Notebook execution and static checks passed.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/ogm_b4.json",
+                     "supplementary/b4-notebook-002-console.txt",
+                     "supplementary/b4-static-002.json"
+                 ],
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "supplementary/approved/pepflow/lyapunov_utils.py",
+                              "state/ogm_b3.json",
+                              "supplementary/rank_search.json",
+                              "supplementary/b4_cells.py",
+                              "supplementary/b4_save.py",
+                              "supplementary/build_b4_notebook.py"
+                          ],
+    "incidents":  [
+                      "Own function-coordinate check needed explicit NumPy float conversion for SymPy values; corrected and rerun.",
+                      "Static type checker required explicit tolerance keyword arguments rather than heterogeneous optional-argument dictionary expansion; corrected without changing values."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_material_observed":  false,
+    "deadline_utc":  "2026-09-23T21:58:24.306780+00:00",
+    "unresolved_work":  "B5 exact arbitrary-horizon step, base, boundary and sign proof plus final notebook verification."
+}

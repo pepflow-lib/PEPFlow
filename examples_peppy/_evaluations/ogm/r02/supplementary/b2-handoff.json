@@ -1,0 +1,56 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Same-session continuation; coherent sparse certificate, numerical checks, initial formula search, notebook and static gates completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate_id":  "1416bc430c0f3d99372063e712922b1bdcc6a38d5fe289bf3f78185aed0df3df",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "notebook_sha256":  "84674ec85795b85476771ae24a004a0d4f558be67d8e1b47b97f99eabeb4050e",
+    "static_evidence":  "supplementary/b2-static-002.json",
+    "fresh_kernel_evidence":  "supplementary/b2-notebook-002-output.txt",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "audit_limit":  "No exhaustive OS filesystem-read audit",
+    "consulted_approved_files":  [
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                                     "pepflow/lyapunov_utils.py",
+                                     "pepflow/pep_result.py",
+                                     "pepflow/expression_manager.py",
+                                     "pepflow/ipython_utils.py",
+                                     "pepflow/pep_context.py",
+                                     "pepflow/function.py",
+                                     "allowlist.json",
+                                     "settings.json"
+                                 ],
+    "hashed_and_imported_sources":  "Complete exact framework file inventory and hashes retained in certificate_provenance.source_hashes",
+    "own_sources":  [
+                        "state/ogm_b1.json",
+                        "state/ogm_dense.json",
+                        "state/ogm_relaxed.json",
+                        "state/ogm_b2.json",
+                        "ogm_setup.py",
+                        "ogm_example_lyap.ipynb",
+                        "supplementary/helpers/certificate_tools.py",
+                        "supplementary/b2_dense.py",
+                        "supplementary/b2_selected.py",
+                        "supplementary/b2_notebook_cells.py",
+                        "supplementary/update_b2_notebook.py",
+                        "supplementary/b2-static-001.json",
+                        "supplementary/b2-static-002.json",
+                        "supplementary/ogm_example_lyap_checklist.md"
+                    ],
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+                      "Initial selected solve verified numerically but serialization failed on a SymPy Float in display-only S candidate. Converted display matrix to float; reacquired complete selected certificate and preserved output logs.",
+                      "First B2 static check: typed dictionary invariance, optional dual flow, and exec namespace typing diagnostics. Corrected own source; preserved prior complete sample under supplementary/b2-before-typefix; reacquired coherent dense/selected samples with current hashes. Ruff/ty then passed.",
+                      "Notebook rebuild creates a fresh matching context with the same name as B1 sample, causing a warning. The B2 builder is recreated and checks pass; older B1 builder is not reused."
+                  ],
+    "unresolved_work":  "B3 rank and coverage, B4 basis reconstruction, B5 exact theorem remain unstarted",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

@@ -1,0 +1,60 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; setup, numerical sweep, notebook execution and required static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "audit_limit":  "No exhaustive filesystem-read trace; pinned dependencies and interpreter used.",
+    "notebook_sha256":  "8717e18a7a856dc07e338fdbb7321a7647d70e40132f4f441c843b71c1c89004",
+    "static_evidence":  "supplementary/b1-static-004.json",
+    "fresh_kernel_evidence":  "supplementary/b1-notebook-002-output.txt",
+    "consulted_approved_files":  [
+                                     "dispatch.md",
+                                     "input.md",
+                                     "worker-protocol.md",
+                                     "settings.json",
+                                     "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                     "plugins/pepflow-workflows/references/output-layout.md",
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                     "pepflow/pep_runner.py",
+                                     "pepflow/pep.py",
+                                     "pepflow/function.py",
+                                     "pepflow/parameter.py",
+                                     "pepflow/__init__.py",
+                                     "pepflow/solver.py",
+                                     "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                 ],
+    "own_files_consulted":  [
+                                "ogm_setup.py",
+                                "ogm_example_lyap.ipynb",
+                                "state/ogm_b1.json",
+                                "supplementary/run_b1.py",
+                                "supplementary/initialize_notebook.py",
+                                "supplementary/_sweep_tmp.json",
+                                "supplementary/repaired-static-command.json",
+                                "supplementary/b1-static-001.json",
+                                "supplementary/b1-preflight-002.json",
+                                "supplementary/b1-static-003.json",
+                                "supplementary/b1-static-004.json"
+                            ],
+    "command_evidence":  "Actual tool transcript and supplementary preflight/static JSON plus sweep/notebook output logs",
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+                      "Static 001: Windows path length during broad helper-directory staging. Narrowed helper root to supplementary/helpers and probe-helper-path to supplementary/helpers/runtime.py; generic preflight 002 passed. Frozen sources unchanged.",
+                      "Static 002 invocation failed at PowerShell nested-array argument handling before Python execution; raw tool diagnostic retained in transcript. Reconstructed argv from settings.",
+                      "Static 003: three import-order diagnostics addressed with specific E402 annotations for approved-path bootstrap; type diagnostic addressed using SymPy Integer values. Refreshed sweep preserved original results and returned identical values. Static 004 passed.",
+                      "Fresh kernels emitted nonfatal Windows ZMQ event-loop warning."
+                  ],
+    "unresolved_work":  "B2-B5 not started; conjectured rate unproved",
+    "dispatch_utc":  "2026-09-23T16:18:16.664646+00:00",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

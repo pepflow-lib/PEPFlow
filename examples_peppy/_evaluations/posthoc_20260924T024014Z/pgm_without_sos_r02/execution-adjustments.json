@@ -1,0 +1,32 @@
+[
+  {
+    "scope": "validation/replay_selected.py, notebook cell 37 in memory only",
+    "before": "source_path=Path(source).resolve()",
+    "after": "source_path=notebook_dir / Path(source).relative_to(original)",
+    "reason": "Map certificate source provenance reads to identical owned validation copies. Certificate payload, certificate ID, expected hashes, and every mathematical expression remain unchanged. Original 146-file integrity independently checked."
+  },
+  {
+    "scope": "validation/replay_selected.py harness",
+    "before": "from pgm_setup import get_pep_setup",
+    "after": "from pgm_setup import get_pep_setup, f, g",
+    "reason": "First selective replay lacked notebook function bindings because setup-definition cells were replaced by importing the identical submitted setup. Import existing submitted f and g objects; no mathematical changes. Failed replay preserved in validation/selected-replay.log."
+  },
+  {
+    "scope": "validation/run_replay.py launcher",
+    "before": "PowerShell *> selected-replay-second.log",
+    "after": "subprocess.run([sys.executable, \"-I\", \"-B\", own_replay_script], cwd=validation, stdout=owned_log, stderr=subprocess.STDOUT)",
+    "reason": "PowerShell exposed an ordinary PEPContext overwrite warning as NativeCommandError despite completion. Direct subprocess status proves exit 0; previous transcript retained."
+  },
+  {
+    "scope": "selective replay only",
+    "before": "Notebook discovery/search and plotting cells",
+    "after": "Execute saved-certificate reconstruction and final proof cells only; load saved coeff_by_k/function_coefficients instead of rerunning basis/parameter search.",
+    "reason": "Required no-discovery review scope. Independence, symmetry, full-coordinate reconstruction, coefficient comparisons and all final proof identities still checked. Not represented as full nbconvert execution."
+  },
+  {
+    "scope": "runtime configuration",
+    "before": "Original runtime helper ROOT derived from its own file",
+    "after": "Unchanged runtime helper imported from validation/supplementary/helpers; ROOT now validation",
+    "reason": "All explicit TEMP, TMP, IPYTHONDIR, MPLCONFIGDIR, JUPYTER_RUNTIME_DIR, JUPYTER_CONFIG_DIR writes resolve under validation/supplementary/.runtime; -I -B pinned Python, explicit owned framework/helper imports. No solver, search, state writes or external helper execution."
+  }
+]

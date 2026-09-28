@@ -1,0 +1,1349 @@
+﻿CELL c1d5f1dd markdown
+# OGM: numerical evidence and Lyapunov discovery
+
+Let $f$ be convex and $L$-smooth on a real finite-dimensional Euclidean space, with $L>0$, $R\geq0$, $N\geq1$, $\nabla f(x_\star)=0$, $\|x_{0}-x_\star\|^2\leq R^2$, and $z_{0}=x_{0}$. The target is $f(x_{N})-f(x_\star)$.
+
+Set $\theta_{-1}=0$ and
+$$\theta_{k}=\frac{1+\sqrt{1+4\theta_{k-1}^2}}2\quad(0\leq k<N),\qquad
+\theta_{N}=\frac{1+\sqrt{1+8\theta_{N-1}^2}}2.$$
+For $0\leq k<N$ perform
+$$y_{k+1}=x_{k}-\frac1L\nabla f(x_{k}),\qquad
+z_{k+1}=z_{k}-\frac{2\theta_{k}}{L}\nabla f(x_{k}),\qquad
+x_{k+1}=\left(1-\frac1{\theta_{k+1}}\right)y_{k+1}+\frac{z_{k+1}}{\theta_{k+1}}.$$
+The terminal theta uses eight, while the preceding recurrences use four.
+
+CELL 4c0a40fb markdown
+## Proof Statement
+CELL da7dca00 markdown
+### Theorem
+For the stated OGM recurrence, any convex $L$-smooth function on a real finite-dimensional Euclidean space, $L>0$, $R\geq0$, $\nabla f(x_{\star})=0$, $z_{0}=x_{0}$, and $\|x_{0}-x_{\star}\|^{2}\leq R^{2}$, the following holds for every integer $N\geq1$:
+$$f(x_{N})-f(x_{\star})\leq\frac{L R^{2}}{2\theta_{N}^{2}}.$$
+Here the theta sequence includes the special terminal recurrence given above. Define $F_{k}=f(x_{k})-f(x_{\star})$, $g_{k}=\nabla f(x_{k})$, $d_{0}=x_{0}-x_{\star}$, $H=\theta_{N}$, and
+$$q_{k}=z_{k}-x_{\star}-\frac{2\theta_{k}}{L}g_{k}\quad(1\leq k<N),\qquad q_{N}=z_{N}-x_{\star}-\frac{H}{L}g_{N}.$$
+An explicit nonincreasing Lyapunov certificate is $V_{0}=0$,
+$$V_{k}=\frac{2\theta_{k}^{2}}{H^{2}}F_{k}+\frac{L}{2H^{2}}\bigl(\|q_{k}\|^{2}-\|d_{0}\|^{2}\bigr)-\frac{\theta_{k}^{2}}{L H^{2}}\|g_{k}\|^{2},\qquad 1\leq k<N,$$
+and
+$$V_{N}=F_{N}+\frac{L}{2H^{2}}\bigl(\|q_{N}\|^{2}-\|d_{0}\|^{2}\bigr).$$
+The interior range is empty when $N=1$.
+
+CELL cdcf5c6a markdown
+### Proof outline
+Use the smooth convex interpolation residual
+$$I_{i,j}=f(x_{j})-f(x_{i})+\langle g_{j},x_{i}-x_{j}\rangle+\frac{1}{2L}\|g_{i}-g_{j}\|^{2}\leq0,$$
+with $g_{\star}=0$. This inequality follows directly from smooth convexity: apply the descent inequality to $h(u)=f(u)-\langle g_{j},u\rangle$, whose minimum is attained at $x_{j}$, to get $h(x_{i})-h(x_{j})\geq\|g_{i}-g_{j}\|^{2}/(2L)$.
+
+Write $W_{k}=H^{2}V_{k}$. Thus $W_{0}=0$,
+$$W_{k}=2\theta_{k}^{2}F_{k}+\frac L2(\|q_{k}\|^{2}-\|d_{0}\|^{2})-\frac{\theta_{k}^{2}}L\|g_{k}\|^{2}\quad(1\leq k<N),$$
+and $W_{N}=H^{2}F_{N}+\frac L2(\|q_{N}\|^{2}-\|d_{0}\|^{2})$.
+
+For $N\geq2$, the initialization $z_{0}=x_{0}$ and $\theta_{0}=1$ give
+$$W_{1}=2I_{\star,0}+2\theta_{1}I_{\star,1}+2I_{0,1}.$$
+For $1\leq k\leq N-2$, substitution of the algorithm and $\theta_{k+1}^{2}-\theta_{k+1}=\theta_{k}^{2}$ gives
+$$W_{k+1}-W_{k}=2\theta_{k+1}I_{\star,k+1}+2\theta_{k}^{2}I_{k,k+1}.$$
+The special terminal relation $H^{2}-H=2\theta_{N-1}^{2}$ gives
+$$W_{N}-W_{N-1}=H I_{\star,N}+2\theta_{N-1}^{2}I_{N-1,N}.$$
+For $N=1$, $H=2$ and the direct initialization identity is
+$$W_{1}=2I_{\star,0}+2I_{\star,1}+2I_{0,1}.$$
+All five identities, including the boundary normalization below, are checked exactly in the final symbolic cells in every Gram, function-value, and constant coordinate. The local symbols represent arbitrary adjacent theta values; polynomial reduction uses precisely the stated recurrence, not a finite horizon sample.
+
+The defining theta formulas imply $\theta_{k}\geq1$ by induction and $H\geq2$. All interpolation multipliers and $\tau=L/(2H^{2})$ are therefore positive, and all denominators used in the proof are nonzero. The identities show $V_{N}\leq\cdots\leq V_{0}=0$. Finally,
+$$F_{N}-\frac{LR^{2}}{2H^{2}}=V_{N}-\tau\|q_{N}\|^{2}+\tau(\|d_{0}\|^{2}-R^{2})\leq0.$$
+This establishes the stated bound also at $R=0$, without division by $R$.
+
+For completeness, telescoping the displayed identities gives the global full-PEP identity for every horizon:
+$$F_{N}-\frac{LR^{2}}{2H^{2}}-\tau(\|d_{0}\|^{2}-R^{2})-\sum_{j=0}^{N-1}\frac{2\theta_{j}}{H^{2}}I_{\star,j}-\frac1H I_{\star,N}-\sum_{j=0}^{N-1}\frac{2\theta_{j}^{2}}{H^{2}}I_{j,j+1}+\tau\|q_{N}\|^{2}=0.$$
+Thus the candidate global multipliers and rank-one remainder are justified analytically as well as numerically. No other interpolation families or extra constraints occur in this setup.
+
+CELL 2d7a622b code
+import json
+import math
+import sys
+from pathlib import Path
+
+notebook_dir = Path.cwd().resolve()
+repo_root = notebook_dir / "supplementary" / "approved"
+sys.path.insert(0, str(repo_root))
+sys.path.insert(0, str(notebook_dir / "supplementary" / "helpers"))
+
+OUTPUT
+CELL 72ef4052 code
+from runtime import configure
+
+configure()
+
+OUTPUT
+(WindowsPath('C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r04'),
+ WindowsPath('C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r04/supplementary/approved'))
+CELL bc7ba2b0 code
+import pepflow as pf
+import matplotlib.pyplot as plt
+
+OUTPUT
+CELL aee76fe7 code
+L = pf.Parameter("L")
+R = pf.Parameter("R")
+f = pf.SmoothConvexFunction(is_basis=True, tags=["f"], L=L)
+
+OUTPUT
+CELL 154a7a38 code
+def theta_sequence(N):
+    """Return theta_0,...,theta_N with the terminal coefficient eight."""
+    N = int(N)
+    if N < 1:
+        raise ValueError("N must be positive")
+    values = []
+    previous = 0.0
+    for _ in range(N):
+        previous = (1 + math.sqrt(1 + 4 * previous**2)) / 2
+        values.append(previous)
+    values.append((1 + math.sqrt(1 + 8 * previous**2)) / 2)
+    return values
+
+
+def make_ctx_ogm(ctx_name, N, **kwargs):
+    ctx = pf.PEPContext(ctx_name).set_as_current()
+    x = pf.Vector(is_basis=True, tags=["x_0", "z_0"])
+    z = x
+    f.set_stationary_point("x_star")
+    theta = theta_sequence(N)
+    for k in range(int(N)):
+        g = f.grad(x)
+        g.add_tag(f"g_{k}")
+        y = x - g / L
+        y.add_tag(f"y_{k + 1}")
+        z = z - (2 * theta[k] / L) * g
+        z.add_tag(f"z_{k + 1}")
+        x = (1 - 1 / theta[k + 1]) * y + z / theta[k + 1]
+        x.add_tag(f"x_{k + 1}")
+    f.grad(x).add_tag(f"g_{int(N)}")
+    return ctx
+
+
+def get_pep_setup(N, params):
+    ctx = make_ctx_ogm(f"ctx_{N}", N)
+    pb = pf.PEPBuilder(ctx)
+    pb.add_initial_constraint(
+        ((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition")
+    )
+    pb.set_performance_metric(f(ctx[f"x_{N}"]) - f(ctx["x_star"]))
+    return ctx, pb, f
+
+OUTPUT
+CELL d33c9a0b markdown
+## Numerical evidence
+Seven dense PEP solves with CLARABEL defaults and L=R=1. The same cached sweep is reused here. The scaled values suggest the candidate $L R^2/(2\theta_{N}^2)$; numerical agreement is not an analytic proof.
+CELL cf43013d code
+sweep = json.loads((notebook_dir / "state" / "ogm_b1.json").read_text())["sweep_results"]
+for row in sweep:
+    print(f"N={row['N']}: PEP={row['opt_value']:.10f}, candidate={row['candidate_rate']:.10f}, "
+          f"2 theta_N^2 PEP={2 * row['theta_N']**2 * row['opt_value']:.10f}, status={row['status']}")
+residual = max(row["absolute_error"] for row in sweep)
+print("Maximum absolute discrepancy:", residual)
+assert residual <= 1e-5
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot([r["N"] for r in sweep], [r["opt_value"] for r in sweep], "o", label="Dense PEP")
+ax.plot([r["N"] for r in sweep], [r["candidate_rate"] for r in sweep], "-", label=r"$1/(2\theta_N^2)$ candidate")
+ax.set(xlabel="N", ylabel="Objective gap", title="OGM, L=R=1")
+ax.legend()
+ax.grid(alpha=0.25)
+plt.show()
+
+OUTPUT
+N=1: PEP=0.1249999997, candidate=0.1250000000, 2 theta_N^2 PEP=0.9999999974, status=optimal
+N=2: PEP=0.0618941831, candidate=0.0618941824, 2 theta_N^2 PEP=1.0000000113, status=optimal
+N=3: PEP=0.0376923986, candidate=0.0376923972, 2 theta_N^2 PEP=1.0000000366, status=optimal
+N=4: PEP=0.0255839452, candidate=0.0255839420, 2 theta_N^2 PEP=1.0000001218, status=optimal
+N=5: PEP=0.0185881398, candidate=0.0185881367, 2 theta_N^2 PEP=1.0000001661, status=optimal
+N=6: PEP=0.0141559673, candidate=0.0141559659, 2 theta_N^2 PEP=1.0000001031, status=optimal
+N=7: PEP=0.0111604195, candidate=0.0111604169, 2 theta_N^2 PEP=1.0000002351, status=optimal
+Maximum absolute discrepancy: 3.1168371598944145e-09
+
+<Figure size 600x400 with 1 Axes>
+CELL 28e0ee1c markdown
+## Full-PEP certificate
+The dense and relaxed solves were acquired directly using the approved `CVXPrimalSolver`, with CLARABEL defaults. Each saved certificate contains all multipliers and the Gram dual from one solve. We replay their mathematical checks below without rerunning an unchanged solve. Thresholding at $10^{-6}$ retained a small backward terminal multiplier; removing that extra edge and retaining the optimizer row and consecutive forward edges preserved the optimum.
+
+CELL 56194145 markdown
+### Dense solve and sparse relaxation
+CELL 84d342f9 code
+import hashlib
+import numpy as np
+from pepflow.utils import Comparator
+
+b1 = json.loads((notebook_dir / 'state/ogm_b1.json').read_text())
+dense = json.loads((notebook_dir / 'state/ogm_dense.json').read_text())
+selected = json.loads((notebook_dir / 'supplementary/b2-chain-certificate.json').read_text())
+N = selected['N']
+params = json.loads(b1['params_json'])
+assert N == b1['N_verify']
+for path, expected in selected['certificate_provenance']['source_hashes'].items():
+    assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected
+print('Dense objective:', dense['opt_value'])
+print('Basis:', dense['basis_vectors'])
+print('Dense S eigenvalues:', np.linalg.eigvalsh(np.asarray(dense['S_matrix'])))
+print('Dense active multipliers (>1e-6):')
+for name, value in dense['named_dual_values'].items():
+    if value is not None and value > 1e-6:
+        print(name, value)
+points = ['z_0'] + [f'x_{i}' for i in range(1, N+1)]
+keep = {f'f:x_star,{p}' for p in points} | {f'f:{a},{b}' for a,b in zip(points[:-1],points[1:])} | {'initial_condition'}
+relaxed = [name for name in dense['named_dual_values'] if name not in keep]
+assert relaxed == selected['relaxed_constraints']
+print('Relaxation retains optimizer-to-iterate and forward consecutive pairs.')
+print('Selected objective:', selected['opt_value'])
+assert abs(selected['opt_value']-dense['opt_value']) < 1e-5
+print('Preserved optimum:', abs(selected['opt_value']-dense['opt_value']))
+print('Solve provenance:', selected['certificate_provenance']['solver'])
+OUTPUT
+Dense objective: 0.025583945166769366
+Basis: ['z_0', 'x_star', 'g_0', 'g_1', 'g_2', 'g_3', 'g_4']
+Dense S eigenvalues: [4.43037711e-10 2.01474034e-09 2.83740725e-09 6.02787447e-09
+ 1.38597835e-08 3.94637036e-08 2.18759661e+00]
+Dense active multipliers (>1e-6):
+initial_condition 0.025583947505407205
+f:x_star,z_0 0.10233578419231508
+f:x_star,x_1 0.16558277129208074
+f:x_star,x_2 0.2244762941134542
+f:x_star,x_3 0.2813860136906092
+f:x_star,x_4 0.22621919529322845
+f:z_0,x_1 0.10233578871662649
+f:x_1,x_2 0.2679185574632644
+f:x_2,x_3 0.49239484206284095
+f:x_3,x_4 0.7738515769284893
+f:x_4,x_3 7.074703205139595e-05
+Relaxation retains optimizer-to-iterate and forward consecutive pairs.
+Selected objective: 0.02558394201140301
+Preserved optimum: 3.1553663570882406e-09
+Solve provenance: {'api': 'CVXPrimalSolver.build_problem', 'effective_name': 'CLARABEL', 'settings': {'solver': 'CLARABEL'}, 'failure': None}
+
+CELL 3f40aa72 markdown
+### Complete selected multiplier inventory
+CELL a516061f code
+ctx, pb, obj = get_pep_setup(N, params)
+ctx.set_as_current()
+pm = pf.ExpressionManager(ctx, resolve_parameters=params)
+assert [str(v) for v in ctx.basis_vectors()] == selected['basis_vectors']
+assert [str(v) for v in ctx.basis_scalars()] == selected['basis_scalars']
+pb.set_relaxed_constraints(relaxed)
+groups = ctx.get_constraint_data(obj)
+assert not groups.psd_dict
+entries = [(c, 'initial', None, None) for c in pb.init_conditions]
+entries.extend((c, 'interpolation', str(obj), str(group)) for group, constraints in groups.sc_dict.items() for c in constraints)
+assert len({c.name for c, *_ in entries}) == len(entries)
+assert {c.name for c, *_ in entries} == set(selected['named_dual_values']) == set(selected['constraint_metadata'])
+for c, origin, owner, group in entries:
+    meta = selected['constraint_metadata'][c.name]
+    assert meta == dict(origin=origin, owner=owner, group=group, kind='scalar', comparator=c.cmp.value, shape=[], relaxed=c.name in relaxed)
+    value = selected['named_dual_values'][c.name]
+    assert (value is None) == (c.name in relaxed)
+    if value is not None:
+        assert np.isfinite(value)
+        print(c.name, value)
+OUTPUT
+initial_condition 0.025583942102815994
+f:x_star,z_0 0.10233576842211013
+f:x_star,x_1 0.16558275132843417
+f:x_star,x_2 0.22447627951908947
+f:x_star,x_3 0.28140200905783536
+f:x_star,x_4 0.2262031920335532
+f:z_0,x_1 0.10233576842240312
+f:x_1,x_2 0.2679185196742483
+f:x_2,x_3 0.4923947991252491
+f:x_3,x_4 0.7737968081214347
+
+CELL 9e121145 markdown
+### Candidate formulas and direct S decomposition
+CELL 980f5441 markdown
+Write $g_{i}=\nabla f(x_{i})$. The numerical candidates are
+$$\lambda_{\star,i}=\frac{2\theta_{i}}{\theta_{N}^2}\ (i<N),\quad
+\lambda_{\star,N}=\frac1{\theta_{N}},\quad
+\lambda_{i,i+1}=\frac{2\theta_{i}^2}{\theta_{N}^2}\ (i<N),$$
+with other interpolation multipliers zero, and
+$$S=\frac{L}{2\theta_{N}^2}\left\|z_{N}-x_\star-\frac{\theta_{N}}{L}g_{N}\right\|^2.$$
+These are candidate formulas, not yet an arbitrary-horizon analytic identity. The selected numerical factor uses the actual initial-condition dual as its coefficient and is checked against the same solve's full Gram matrix. Here `z_{0}` and `x_{0}` denote the same vector; the framework prints its most recent tag.
+
+CELL 9666aaf8 code
+theta = theta_sequence(N)
+
+
+def lamb_candidate(ri, ci):
+    if ri == 'x_star' and ci in points:
+        j = points.index(ci)
+        return 2*theta[j]/theta[N]**2 if j < N else 1/theta[N]
+    if ri in points[:-1] and ci == points[points.index(ri)+1]:
+        i = points.index(ri)
+        return 2*theta[i]**2/theta[N]**2
+    return 0.0
+
+
+candidate_lambda = np.array([[lamb_candidate(ri, ci) for ci in selected['lambda_col_names']] for ri in selected['lambda_row_names']])
+numeric_lambda = np.array(selected['lambda_matrix'])
+lambda_error = float(np.max(np.abs(candidate_lambda-numeric_lambda)))
+assert lambda_error <= 1e-4
+pf.pprint_labeled_matrix(candidate_lambda, selected['lambda_row_names'], selected['lambda_col_names'])
+print('Candidate lambda max discrepancy:', lambda_error)
+q = ctx[f'z_{N}'] - ctx['x_star'] - theta[N]/params['L']*ctx[f'g_{N}']
+q_coords = np.asarray(pm.eval_vector(q).coords, dtype=float)
+E = q_coords.reshape(1, -1)
+D = np.array([[float(selected['tau_sol'])]])
+S_numeric = float(D[0,0]) * q**2
+S_array = np.asarray(selected['S_matrix'], dtype=float)
+S_reconstructed = E.T @ D @ E
+S_candidate = params['L']/(2*theta[N]**2)*q**2
+candidate_eval = pm.eval_scalar(S_candidate)
+S_formula_error = float(np.max(np.abs(np.asarray(candidate_eval.inner_prod_coords,dtype=float)-S_array)))
+assert S_formula_error <= 1e-4
+assert np.allclose(candidate_eval.func_coords, 0, atol=1e-4, rtol=0)
+assert abs(float(candidate_eval.offset)) <= 1e-4
+pf.pprint_labeled_matrix(S_reconstructed, selected['basis_vectors'])
+print('Direct factor D:', D)
+print('q coordinates in saved basis:', E)
+print('S formula max discrepancy:', S_formula_error)
+print('Formula status: candidate only; arbitrary-horizon proof pending.')
+OUTPUT
+<IPython.core.display.Math object>
+Candidate lambda max discrepancy: 3.6926295354788863e-10
+
+<IPython.core.display.Math object>
+Direct factor D: [[0.02558394]]
+q coordinates in saved basis: [[ 1.         -1.         -2.         -3.23606798 -4.38705417 -5.49958268
+  -4.4208041 ]]
+S formula max discrepancy: 3.6414127269068786e-10
+Formula status: candidate only; arbitrary-horizon proof pending.
+
+CELL ffac03f2 markdown
+### Full numerical certificate identity
+CELL f5cbade2 markdown
+Normalize each inequality residual to $R_{c}\leq0$. Check all scalar coordinates of
+$$f(x_{N})-f(x_\star)-b-\sum_{c} d_{c} R_{c}+S_{\rm numeric}=0.$$
+Every active scalar constraint is included, including the initial radius and its constant. There are no matrix-extra constraints in this setup. Nonnegative multipliers and the positive Gram remainder give an upper bound at the sampled horizon. The checks below are numerical; the all-horizon proof remains pending.
+
+CELL d5c858e9 code
+weighted_constraints = pf.Scalar.zero()
+scalar_inequality_values = []
+for c, *_ in entries:
+    value = selected['named_dual_values'][c.name]
+    if c.name in relaxed:
+        assert value is None
+        continue
+    residual = c.lhs-c.rhs
+    if c.cmp in (Comparator.GE, Comparator.SEQ):
+        residual = -residual
+    weighted_constraints += float(value) * (pf.Scalar.zero()+residual)
+    if c.cmp != Comparator.EQ:
+        scalar_inequality_values.append(float(value))
+diff = pb.performance_metric-float(selected['opt_value'])-weighted_constraints+S_numeric
+checked = pm.eval_scalar(diff)
+
+
+def max_abs(values):
+    return float(np.max(np.abs(np.asarray(values,dtype=float)), initial=0.0))
+
+
+tolerances = dict(identity_atol=1e-5, identity_rtol=0.0, reconstruction_atol=1e-4, reconstruction_rtol=1e-5, dual_tol=1e-6, psd_tol=1e-6, dense_opt_atol=1e-5)
+residuals = dict(identity_gram_max_abs=max_abs(checked.inner_prod_coords), identity_func_max_abs=max_abs(checked.func_coords), identity_offset_abs=max_abs(checked.offset), S_reconstruction_max_abs=max_abs(S_reconstructed-S_array), dense_relaxed_gap=abs(dense['opt_value']-selected['opt_value']), minimum_scalar_inequality_dual=min(scalar_inequality_values), minimum_S_eigenvalue=float(np.linalg.eigvalsh((S_array+S_array.T)/2).min()), minimum_matrix_inequality_eigenvalue=0.0)
+assert selected['certificate_provenance']['solver_status']=='optimal'
+assert np.all(np.isfinite(S_array))
+assert np.allclose(S_array,S_array.T,atol=1e-6,rtol=0)
+assert all(residuals[key]<=1e-5 for key in ('identity_gram_max_abs','identity_func_max_abs','identity_offset_abs'))
+assert np.allclose(S_reconstructed,S_array,atol=1e-4,rtol=1e-5)
+assert residuals['dense_relaxed_gap']<1e-5
+assert residuals['minimum_scalar_inequality_dual']>=-1e-6
+assert residuals['minimum_S_eigenvalue']>=-1e-6
+assert abs(selected['opt_value']-params['L']*params['R']**2/(2*theta[N]**2))<=1e-5
+pf.pprint_labeled_matrix(np.asarray(checked.inner_prod_coords,dtype=float), selected['basis_vectors'])
+pf.pprint_labeled_matrix(np.asarray(checked.func_coords,dtype=float).reshape(1,-1), ['function residual'], selected['basis_scalars'])
+print('Constant residual:', checked.offset)
+print('Numerical checks:', residuals)
+print('Numerical certificate verified. Analytic full-PEP and Lyapunov proof not yet verified.')
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Constant residual: 9.141298482062687e-11
+Numerical checks: {'identity_gram_max_abs': 1.3834059453543546e-09, 'identity_func_max_abs': 3.610223231476084e-10, 'identity_offset_abs': 9.141298482062687e-11, 'S_reconstruction_max_abs': 1.4194565522984703e-09, 'dense_relaxed_gap': 3.1553663570882406e-09, 'minimum_scalar_inequality_dual': 0.025583942102815994, 'minimum_S_eigenvalue': 9.771199224236941e-12, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Numerical certificate verified. Analytic full-PEP and Lyapunov proof not yet verified.
+
+CELL f496b8c5 markdown
+### B2 state and initial search record
+CELL aea43019 code
+lamb_code = '''def lamb(ri, ci, theta, N):
+    points = ['z_0'] + [f'x_{k}' for k in range(1, N+1)]
+    if ri == 'x_star' and ci in points:
+        j = points.index(ci)
+        return 2*theta[j]/theta[N]**2 if j<N else 1/theta[N]
+    if ri in points[:-1] and ci == points[points.index(ri)+1]:
+        i = points.index(ri)
+        return 2*theta[i]**2/theta[N]**2
+    return 0
+'''
+S_code = '''def S_guess(ctx, theta, N, L):
+    q = ctx[f'z_{N}']-ctx['x_star']-theta[N]/L*ctx[f'g_{N}']
+    return L/(2*theta[N]**2)*q**2
+'''
+closed_form_search = dict(completed=True, references_reviewed=['Own input and approved generic framework only; target reference examples excluded by clean-room rules.'], attempts=[dict(method='Scale optimizer-row multipliers by theta_N^2 and compare with 2 theta_i, terminal theta_N; compare consecutive multipliers with 2 theta_i^2.', outcome='candidate', max_error=lambda_error),dict(method='Rank-one S suggests shifted z_N; test q=z_N-x_star-theta_N/L*g_N and L/(2 theta_N^2) q^2.', outcome='candidate', max_error=S_formula_error)], unresolved_components=['arbitrary-horizon analytic verification of lambda and S identity'])
+normalization = dict(tau_name='initial_condition',initial_condition=b1['initial_condition'],performance_metric=b1['performance_metric'],bound_value=selected['opt_value'],bound_formula=b1['conjectured_rate'])
+b2 = {**b1, **selected, 'normalization':normalization,'numerical_checks':dict(tolerances=tolerances,residuals=residuals,passed=True),'numerical_decomposition':dict(method='direct',D=D.tolist(),ell_coords=E.tolist(),basis_labels=selected['basis_vectors'],factor_expression='z_N-x_star-theta_N/L*g_N',omission_note='Small numerical remainder is omitted only after full S reconstruction and certificate coordinate checks.'),'closed_form_search':closed_form_search,'formula_status':{'lambda':'candidate','S':'candidate'},'lamb_code':lamb_code,'S_code':S_code,'S_decomp_type':'direct','numerical_certificate_verified':True,'analytic_full_pep_verified':False,'lyapunov_proof_verified':False,'require_analytic_full_pep':False,'proof_valid':True}
+certificate_keys = ('N_verify','params_json','relaxed_constraints','S_matrix','S_row_names','S_col_names','basis_vectors','basis_scalars','opt_value','tau_sol','tau_name','named_dual_values','constraint_metadata','normalization','certificate_provenance','numerical_checks','numerical_decomposition')
+b2['certificate_id'] = hashlib.sha256(json.dumps({key:b2[key] for key in certificate_keys},sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+for name in ('ogm_b2.json','ogm_relaxed.json'):
+    (notebook_dir/'state'/name).write_text(json.dumps(b2,indent=2,allow_nan=False))
+print('Selected certificate ID:',b2['certificate_id'])
+print('Initial closed-form search:',closed_form_search)
+OUTPUT
+Selected certificate ID: ab2e29ebc1845adb690257e7d5f5d8a41877fc8e464e15bb33405ef4e7f7e48f
+Initial closed-form search: {'completed': True, 'references_reviewed': ['Own input and approved generic framework only; target reference examples excluded by clean-room rules.'], 'attempts': [{'method': 'Scale optimizer-row multipliers by theta_N^2 and compare with 2 theta_i, terminal theta_N; compare consecutive multipliers with 2 theta_i^2.', 'outcome': 'candidate', 'max_error': 3.6926295354788863e-10}, {'method': 'Rank-one S suggests shifted z_N; test q=z_N-x_star-theta_N/L*g_N and L/(2 theta_N^2) q^2.', 'outcome': 'candidate', 'max_error': 3.6414127269068786e-10}], 'unresolved_components': ['arbitrary-horizon analytic verification of lambda and S identity']}
+
+CELL cdc02f83 markdown
+## Lyapunov partial sums
+Let $I_{i,j}=f(x_{j})-f(x_{i})+\langle g_{j},x_{i}-x_{j}\rangle+\|g_{i}-g_{j}\|^2/(2L)\leq0$. Keep the actual saved nonnegative multipliers. Start at $V_{0}=0$ and form
+$$V_{k}=\sum_{j=0}^{k}\lambda_{\star,j}I_{\star,j}+\sum_{j=0}^{k-1}\lambda_{j,j+1}I_{j,j+1},\qquad 1\leq k\leq N.$$
+For $k\geq1$, the increment is $V_{k+1}-V_{k}=\lambda_{\star,k+1}I_{\star,k+1}+\lambda_{k,k+1}I_{k,k+1}\leq0$; the first increment also contains $\lambda_{\star,0}I_{\star,0}$. The verified rank-one square is retained as a terminal boundary remainder. Thus the numerical coverage identity is
+$$V_{N}-S=f(x_{N})-f(x_\star)-b-\tau(\|x_{0}-x_\star\|^2-R^2).$$
+This construction has interior quadratic rank three at two sampled horizons; numerical rank evidence alone does not prove an arbitrary-horizon formula. We retain the N=4 certificate as the main sample.
+
+CELL 7fb5e03e code
+import sympy as sp
+
+REPO_ROOT = repo_root
+certificate = json.loads((notebook_dir/'state/ogm_b2.json').read_text())
+N_int = certificate['N_verify']
+params_sp = {key:sp.S(value) for key,value in json.loads(certificate['params_json']).items()}
+ctx,pb,obj = get_pep_setup(N_int,params_sp)
+pb.set_relaxed_constraints(certificate['relaxed_constraints'])
+ctx.set_as_current()
+
+OUTPUT
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\ogm\r04\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+
+<pepflow.pep_context.PEPContext at 0x21db75509d0>
+CELL 280011a1 code
+import hashlib
+import json
+from pathlib import Path
+import numpy as np
+import sympy as sp
+import pepflow as pf
+from pepflow.constraint import ScalarConstraint
+from pepflow.operator import LinearOperatorTranspose
+from pepflow.pep_result import MatrixWithNames
+from pepflow.utils import name_to_vector_tuple
+
+certificate_checked = False
+if not certificate.get("numerical_certificate_verified", False):
+    raise ValueError("Recover or verify the complete numerical certificate in Block 2")
+if not certificate.get("closed_form_search", {}).get("completed", False):
+    raise ValueError("Complete or recover Block 2's initial closed-form attempt")
+certificate_keys = (
+    "N_verify", "params_json", "relaxed_constraints",
+    "S_matrix", "S_row_names", "S_col_names", "basis_vectors", "basis_scalars",
+    "opt_value", "tau_sol", "tau_name", "named_dual_values", "constraint_metadata",
+    "normalization", "certificate_provenance", "numerical_checks",
+    "numerical_decomposition",
+)
+payload = {key: certificate[key] for key in certificate_keys}
+digest = hashlib.sha256(json.dumps(
+    payload, sort_keys=True, separators=(",", ":"), allow_nan=False
+).encode("utf-8")).hexdigest()
+if digest != certificate["certificate_id"]:
+    raise ValueError("Certificate components changed; recover one coherent certificate")
+provenance = certificate["certificate_provenance"]
+if provenance["pep_type"] != "primal":
+    raise ValueError("Recover and verify the certificate's actual dual sign convention")
+for relative_path, expected_hash in provenance["source_hashes"].items():
+    source_path = (REPO_ROOT / relative_path).resolve()
+    if source_path != notebook_dir / "ogm_setup.py" and str(source_path) not in json.loads((REPO_ROOT / "allowlist.json").read_text())["exact_read_files"]:
+        raise ValueError("Certificate source path must stay in the selected repository")
+    if hashlib.sha256(source_path.read_bytes()).hexdigest() != expected_hash:
+        raise ValueError(f"Certificate source changed: {relative_path}")
+if not Path(pf.__file__).resolve().is_relative_to(REPO_ROOT):
+    raise ValueError("The imported PEPFlow source is not the selected repository")
+if N_int != certificate["N_verify"]:
+    raise ValueError("Certificate horizon differs from the rebuilt setup")
+saved_params = json.loads(certificate["params_json"])
+expected_params = {
+    key: (sp.Rational(value) if isinstance(value, str) else
+          sp.nsimplify(value, rational=True, tolerance=1e-9)
+          if isinstance(value, float) else sp.S(value))
+    for key, value in saved_params.items()
+}
+if params_sp != expected_params:
+    raise ValueError("Certificate parameters differ from the rebuilt setup")
+if not certificate["numerical_checks"]["passed"]:
+    raise ValueError("Block 2 numerical checks did not pass")
+tol = certificate["numerical_checks"]["tolerances"]
+
+records = [(c, "initial", None, None) for c in pb.init_conditions]
+owners = list(ctx.func_to_triplets) + [
+    owner for owner in ctx.oper_to_duplets
+    if not isinstance(owner, LinearOperatorTranspose)
+]
+for owner in owners:
+    data = ctx.get_constraint_data(owner)
+    for group, family in data.sc_dict.items():
+        records.extend((c, "interpolation", str(owner), str(group)) for c in family)
+    records.extend((c, "interpolation", str(owner), str(group))
+                   for group, c in data.psd_dict.items())
+constraints_by_name = {c.name: c for c, _, _, _ in records}
+if len(constraints_by_name) != len(records):
+    raise ValueError("Constraint names must identify one unique contribution")
+saved_meta = certificate["constraint_metadata"]
+saved_duals = certificate["named_dual_values"]
+if set(constraints_by_name) != set(saved_meta) or set(saved_duals) != set(saved_meta):
+    raise ValueError("The saved certificate does not cover the rebuilt constraints")
+relaxed = set(certificate["relaxed_constraints"])
+if set(pb.relaxed_constraints) != relaxed or not relaxed.issubset(constraints_by_name):
+    raise ValueError("The selected relaxation differs from the saved certificate")
+if pb.ctx is not ctx:
+    raise ValueError("The builder and expression context differ")
+basis = list(ctx.basis_vectors())
+basis_labels = [repr(v) for v in basis]
+scalar_labels = [repr(v) for v in ctx.basis_scalars()]
+if basis_labels != certificate["basis_vectors"] or scalar_labels != certificate["basis_scalars"]:
+    raise ValueError("Certificate coordinate order differs from the rebuilt context")
+if certificate["S_row_names"] != basis_labels or certificate["S_col_names"] != basis_labels:
+    raise ValueError("S labels do not match the rebuilt basis")
+S_array = np.asarray(certificate["S_matrix"], dtype=float)
+if S_array.shape != (len(basis), len(basis)) or not np.all(np.isfinite(S_array)):
+    raise ValueError("Invalid S shape or entries")
+if not np.allclose(S_array, S_array.T, atol=tol["psd_tol"], rtol=0):
+    raise ValueError("S is not numerically symmetric")
+if len(basis) and np.linalg.eigvalsh((S_array + S_array.T) / 2).min() < -tol["psd_tol"]:
+    raise ValueError("S failed the recorded PSD tolerance")
+S_sol = MatrixWithNames(S_array, basis_labels, basis_labels)
+pm = pf.ExpressionManager(ctx, resolve_parameters=params_sp)
+S_scalar = sum((float(S_array[i, j]) * basis[i] * basis[j]
+                for i, j in np.ndindex(S_array.shape)), pf.Scalar.zero())
+
+weighted_terms = {}
+interpolation_terms = {}
+interpolation_pairs = {}
+extra_terms = {}
+extra_duals = {}
+for constraint, origin, owner, group in records:
+    name = constraint.name
+    kind = "scalar" if isinstance(constraint, ScalarConstraint) else "psd"
+    residual = constraint.lhs - constraint.rhs
+    shape = [] if kind == "scalar" else list(np.shape(residual))
+    expected_meta = dict(origin=origin, owner=owner, group=group, kind=kind,
+                         comparator=constraint.cmp.value, shape=shape,
+                         relaxed=name in relaxed)
+    if any(saved_meta[name].get(key) != value for key, value in expected_meta.items()):
+        raise ValueError(f"Constraint metadata changed: {name}")
+    value = saved_duals[name]
+    if name in relaxed:
+        if value is not None:
+            raise ValueError(f"A relaxed constraint must have no retained multiplier: {name}")
+        continue
+    if value is None:
+        raise ValueError(f"Missing unrelaxed dual: {name}")
+    dual = np.asarray(value, dtype=float)
+    if list(dual.shape) != shape or not np.all(np.isfinite(dual)):
+        raise ValueError(f"Invalid saved dual: {name}")
+    # Normalize inequalities to residual <= 0; primal equality duals keep their sign.
+    if constraint.cmp.name in ("GE", "SEQ"):
+        residual = -residual
+    if kind == "scalar":
+        if constraint.cmp.name != "EQ" and float(dual) < -tol["dual_tol"]:
+            raise ValueError(f"Negative inequality multiplier: {name}")
+        contribution = pf.Scalar.zero() + float(dual) * residual
+    else:
+        if constraint.cmp.name != "EQ" and not np.allclose(dual, dual.T, atol=tol["psd_tol"], rtol=0):
+            raise ValueError(f"Nonsymmetric matrix dual: {name}")
+        if constraint.cmp.name != "EQ" and dual.size and np.linalg.eigvalsh((dual + dual.T) / 2).min() < -tol["psd_tol"]:
+            raise ValueError(f"Matrix dual is not PSD: {name}")
+        contribution = sum((float(dual[i, j]) * residual[j, i]
+                            for i, j in np.ndindex(dual.shape)), pf.Scalar.zero())
+    weighted_terms[name] = contribution
+    if origin == "interpolation" and kind == "scalar":
+        interpolation_terms[name] = contribution
+        try:
+            interpolation_pairs[name] = name_to_vector_tuple(name)
+        except (ValueError, IndexError):
+            interpolation_pairs[name] = None  # Assign this term explicitly when grouping.
+    elif name != certificate["tau_name"]:
+        extra_terms[name] = contribution
+        extra_duals[name] = value
+
+tau_name = certificate["tau_name"]
+if (tau_name not in weighted_terms or saved_meta[tau_name]["origin"] != "initial"
+        or saved_meta[tau_name]["kind"] != "scalar" or tau_name in relaxed
+        or certificate["normalization"]["tau_name"] != tau_name):
+    raise ValueError("Missing or inconsistent bound normalization constraint")
+if not np.allclose(saved_duals[tau_name], certificate["tau_sol"], atol=tol["dual_tol"], rtol=0):
+    raise ValueError("The saved normalization dual is inconsistent")
+if not np.isfinite(certificate["opt_value"]) or not np.allclose(
+    certificate["normalization"]["bound_value"], certificate["opt_value"],
+    atol=tol["identity_atol"], rtol=tol["identity_rtol"]
+):
+    raise ValueError("The saved bound/normalization is inconsistent")
+certificate_diff = (pb.performance_metric - float(certificate["opt_value"])
+                    - sum(weighted_terms.values(), pf.Scalar.zero()) + S_scalar)
+evaluated_diff = pm.eval_scalar(certificate_diff)
+for label, coords in (
+    ("Gram", evaluated_diff.inner_prod_coords),
+    ("function", evaluated_diff.func_coords),
+    ("offset", np.asarray(evaluated_diff.offset)),
+):
+    if not np.allclose(np.asarray(coords, dtype=float), 0,
+                       atol=tol["identity_atol"], rtol=tol["identity_rtol"]):
+        raise ValueError(f"Numerical certificate {label} identity failed")
+decomposition = certificate["numerical_decomposition"]
+D_saved = np.asarray(decomposition["D"], dtype=float)
+E_saved = np.asarray(decomposition["ell_coords"], dtype=float)
+if decomposition["basis_labels"] != basis_labels or E_saved.ndim != 2:
+    raise ValueError("Numerical S decomposition basis differs")
+if E_saved.shape[1] != len(basis) or D_saved.shape != (E_saved.shape[0], E_saved.shape[0]):
+    raise ValueError("Numerical S decomposition shape differs")
+if not np.all(np.isfinite(D_saved)) or not np.all(np.isfinite(E_saved)):
+    raise ValueError("Numerical S decomposition contains nonfinite values")
+if not np.allclose(E_saved.T @ D_saved @ E_saved, S_array,
+                   atol=tol["reconstruction_atol"], rtol=tol["reconstruction_rtol"]):
+    raise ValueError("Numerical S decomposition does not reconstruct this certificate")
+certificate_checked = True
+print("Numerical certificate checked for this N and parameter sample.")
+
+
+OUTPUT
+Numerical certificate checked for this N and parameter sample.
+
+CELL a1e5f07a code
+D = np.asarray(certificate['numerical_decomposition']['D'], dtype=float)
+E = np.asarray(certificate['numerical_decomposition']['ell_coords'], dtype=float)
+assert D.shape == (1,1)
+assert D[0,0] >= 0
+ell = [sum((float(coef)*v for coef,v in zip(E[0], basis)), pf.Vector.zero())]
+S_piece_terms = {'terminal_square':float(D[0,0])*ell[0]**2}
+value = pm.eval_scalar(S_piece_terms['terminal_square']-S_scalar)
+for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset)):
+    assert np.allclose(np.asarray(coords,dtype=float),0,atol=tol['identity_atol'],rtol=0)
+
+OUTPUT
+CELL b1b64787 code
+grouping_checked = False
+rank_tolerance = 1e-4
+rank_left, rank_right = 1,1
+group_terms = {name:term for name,term in weighted_terms.items() if name != tau_name}
+term_assignment = {}
+for name in group_terms:
+    left_tag,right_tag = name.split(':')[1].split(',')
+    j = 0 if right_tag=='z_0' else int(right_tag.split('_')[1])
+    if left_tag=='x_star' and j==0:
+        term_assignment[name] = -1
+    elif left_tag=='x_star' or left_tag==('z_0' if j==1 else f'x_{j-1}'):
+        term_assignment[name] = j-1
+    else:
+        raise ValueError(f'Unassigned term {name}')
+S_assignment = {'terminal_square':'boundary'}
+assert set(term_assignment)==set(group_terms)
+lyap = [pf.Scalar.zero()]
+partial_sum = sum((term for name,term in group_terms.items() if term_assignment[name]==-1),pf.Scalar.zero())
+for step in range(N_int):
+    partial_sum += sum((term for name,term in group_terms.items() if term_assignment[name]==step),pf.Scalar.zero())
+    partial_sum -= sum((term for name,term in S_piece_terms.items() if S_assignment[name]==step),pf.Scalar.zero())
+    lyap.append(partial_sum)
+ranks,singular_values = [],[]
+for k,Vk in enumerate(lyap):
+    M = np.asarray(pm.eval_scalar(Vk).inner_prod_coords,dtype=float)
+    ranks.append(int(np.linalg.matrix_rank(M,tol=rank_tolerance)))
+    singular_values.append(np.linalg.svd(M,compute_uv=False).tolist())
+    print(f'rank V_{k}: {ranks[-1]}')
+    if k==0:
+        print()
+retained = ranks[rank_left:N_int+1-rank_right]
+print('Interior rank is constant at this N:',len(retained)>=3 and len(set(retained))==1,'boundary exclusions:',(rank_left,rank_right))
+boundary_names = [name for name,step in term_assignment.items() if step=='boundary']
+boundary_S = [name for name,step in S_assignment.items() if step=='boundary']
+assert len(boundary_names)<=1 and len(boundary_S)<=1
+leftover = sum((group_terms[name] for name in boundary_names),pf.Scalar.zero())-sum((S_piece_terms[name] for name in boundary_S),pf.Scalar.zero())
+coverage_diff = lyap[N_int]+leftover-(sum(group_terms.values(),pf.Scalar.zero())-S_scalar)
+coverage_residuals = {}
+for label,expression in [('coverage',coverage_diff),('S_pieces',sum(S_piece_terms.values(),pf.Scalar.zero())-S_scalar)]:
+    ev = pm.eval_scalar(expression)
+    maxima = [float(np.max(np.abs(np.asarray(coords,dtype=float)),initial=0)) for coords in (ev.inner_prod_coords,ev.func_coords,np.asarray(ev.offset))]
+    coverage_residuals[label] = maxima
+    assert max(maxima)<=tol['identity_atol']
+for name,piece in S_piece_terms.items():
+    ev = pm.eval_scalar(piece)
+    assert np.allclose(ev.func_coords,0,atol=1e-5,rtol=0)
+    assert abs(float(ev.offset))<=1e-5
+    assert np.linalg.eigvalsh(np.asarray(ev.inner_prod_coords,dtype=float)).min()>=-1e-6
+for k in range(N_int):
+    assigned = {-1,0} if k==0 else {k}
+    increment = sum((group_terms[name] for name,step in term_assignment.items() if step in assigned),pf.Scalar.zero())-sum((S_piece_terms[name] for name,step in S_assignment.items() if step in assigned),pf.Scalar.zero())
+    ev = pm.eval_scalar(lyap[k+1]-lyap[k]-increment)
+    for coords in (ev.inner_prod_coords,ev.func_coords,np.asarray(ev.offset)):
+        assert np.allclose(np.asarray(coords,dtype=float),0,atol=1e-5,rtol=0)
+# Each weighted interpolation residual is <=0 and each subtracted square >=0.
+# Hence V_{k+1}<=V_k, including all three initial interpolation contributions.
+grouping_checked = True
+print('Coverage residuals:',coverage_residuals)
+# Singular values are retained in supplementary evidence, without a notebook dump.
+
+
+OUTPUT
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 3
+rank V_3: 3
+rank V_4: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Coverage residuals: {'coverage': [1.4194566633207728e-09, 0.0, 0.0], 'S_pieces': [1.4194566633207728e-09, 0.0, 0.0]}
+
+CELL bc666b38 code
+def assess_rank_pattern(samples, selected_certificate_id, left=1, right=1):
+    if type(left) is not int or type(right) is not int or not (0 <= left <= 2 and 0 <= right <= 2):
+        raise ValueError("Exclude at most two indices at each end")
+    selected = [s for s in samples if s["certificate_id"] == selected_certificate_id]
+    if len(selected) != 1:
+        raise ValueError("Select exactly one current certificate observation")
+    selected = selected[0]
+    family = [s for s in samples if s["recipe_id"] == selected["recipe_id"]]
+    if any(s["rank_convention"] != selected["rank_convention"] for s in family):
+        raise ValueError("Recompute the candidate with comparable rank conventions")
+    if len({s["N"] for s in family}) != len(family):
+        raise ValueError("Compare one selected trial per horizon for this recipe")
+    eligible, unresolved, inconsistent = [], [], False
+    for sample in family:
+        n, profile = sample["N"], sample["rank_profile"]
+        if type(n) is not int or n < 1 or len(profile) != n + 1:
+            raise ValueError("Rank profile must contain V_0 through V_N")
+        if any(type(r) is not int or r < 0 for r in profile):
+            raise ValueError("Ranks must be nonnegative integers")
+        retained = profile[left:n + 1 - right]
+        if not (sample["certificate_checked"] is True and sample["grouping_checked"] is True):
+            unresolved.append({"N": n, "reason": "unverified_certificate_or_grouping"})
+        elif sample["rank_credible"] is not True:
+            unresolved.append({"N": n, "reason": "ambiguous_rank"})
+        elif len(retained) < 3:
+            unresolved.append({"N": n, "reason": "insufficient_interior_indices"})
+        elif len(set(retained)) != 1:
+            inconsistent = True
+            unresolved.append({"N": n, "reason": "nonconstant_interior_rank"})
+        else:
+            eligible.append((n, retained[0], sample["certificate_id"]))
+    common_ranks = {r for _, r, _ in eligible}
+    inconsistent = inconsistent or len(common_ranks) > 1
+    selected_eligible = any(cid == selected_certificate_id for _, _, cid in eligible)
+    confirmed = not inconsistent and len(eligible) >= 2 and selected_eligible
+    return {
+        "status": "confirmed" if confirmed else "inconsistent" if inconsistent else "insufficient_evidence",
+        "boundary_exclusions": {"left": left, "right": right},
+        "rank": next(iter(common_ranks)) if len(common_ranks) == 1 else None,
+        "confirmed_horizons": sorted(n for n, _, _ in eligible) if confirmed else [],
+        "selected_certificate_id": selected_certificate_id,
+        "recipe_id": selected["recipe_id"],
+        "rank_convention": selected["rank_convention"],
+        "unresolved_samples": unresolved,
+    }
+
+OUTPUT
+CELL 7c40f0ce code
+rank_samples = [json.loads((notebook_dir/f'supplementary/b3-observation-N{n}.json').read_text()) for n in (4,6)]
+selected_observation = next(s for s in rank_samples if s['certificate_id']==certificate['certificate_id'])
+assert selected_observation['rank_profile']==ranks
+assert selected_observation['N']==N_int
+assert len({sample['recipe_id'] for sample in rank_samples})==1
+rank_search = assess_rank_pattern(rank_samples,certificate['certificate_id'],left=rank_left,right=rank_right)
+assert rank_search['status']=='confirmed'
+rank_search['evidence_path']='supplementary/rank_search.json'
+for sample in rank_samples:
+    print(f"N={sample['N']}: interior rank {rank_search['rank']}; full-coordinate coverage max={max(max(v) for v in sample['coverage_residuals'].values()):.3g}")
+print('Confirmed horizons:',rank_search['confirmed_horizons'])
+print('Exclusions:',rank_search['boundary_exclusions'],'absolute rank tolerance:',rank_tolerance)
+print('Singular values separated from threshold: all discarded values below 3e-9; retained nonzero values at least 0.015.')
+(notebook_dir/'supplementary/rank_search.json').write_text(json.dumps(dict(summary=rank_search,samples=rank_samples),indent=2,allow_nan=False))
+certificate_check_code = (notebook_dir/'supplementary/b3_certificate_check.py').read_text(encoding='utf-8-sig')
+decomposition_code = (notebook_dir/'supplementary/b3_decomposition.py').read_text(encoding='utf-8-sig')
+grouping_code = (notebook_dir/'supplementary/b3_grouping.py').read_text(encoding='utf-8-sig')
+assert certificate_checked and grouping_checked
+values = [pm.eval_scalar(v) for v in lyap]
+b3 = {**certificate,'rank_profile':ranks,'rank_search':rank_search,'lyap_inner_prod_coords':[np.asarray(v.inner_prod_coords,dtype=float).tolist() for v in values],'lyap_func_coords':[np.asarray(v.func_coords,dtype=float).tolist() for v in values],'lyap_offsets':[float(v.offset) for v in values],'certificate_check_code':certificate_check_code,'decomposition_code':decomposition_code,'grouping_code':grouping_code,'extra_duals':extra_duals,'rank_tolerance':rank_tolerance,'reconstruction_tolerance':tol['reconstruction_atol'],'reconstruction_rtol':tol['reconstruction_rtol'],'grouping_coverage':{'constraint_assignment':term_assignment,'S_assignment':S_assignment,'normalization_constraint':tau_name,'boundary_constraints':boundary_names,'boundary_S':boundary_S,'omitted_constraints':[],'checked':grouping_checked},'numerical_certificate_verified':True,'analytic_full_pep_verified':False,'lyapunov_proof_verified':False}
+(notebook_dir/'state/ogm_b3.json').write_text(json.dumps(b3,indent=2,allow_nan=False))
+
+OUTPUT
+N=4: interior rank 3; full-coordinate coverage max=1.42e-09
+N=6: interior rank 3; full-coordinate coverage max=5.63e-09
+Confirmed horizons: [4, 6]
+Exclusions: {'left': 1, 'right': 1} absolute rank tolerance: 0.0001
+Singular values separated from threshold: all discarded values below 3e-9; retained nonzero values at least 0.015.
+
+45889
+CELL 2199e90f markdown
+## Identify the vectors composing the Lyapunov function
+Replay the selected certificate and partial sums above. Search for interpretable vectors spanning their quadratic parts, while preserving every function and constant component.
+CELL f7052c78 code
+
+from itertools import combinations
+from pepflow.lyapunov_utils import vectors_in_column_space, find_basis_with_sparsest_coefficients, find_symmetric_coefficient_matrix
+
+b3 = json.loads((notebook_dir/'state/ogm_b3.json').read_text())
+assert b3['certificate_id']==certificate['certificate_id']
+assert certificate_checked and grouping_checked
+assert b3['rank_profile']==ranks
+assert b3['rank_search']['status']=='confirmed'
+rank_evidence = json.loads((notebook_dir/b3['rank_search']['evidence_path']).read_text())
+assert rank_evidence['summary']==b3['rank_search']
+assert b3['rank_search']['boundary_exclusions']=={'left':1,'right':1}
+for k,Vk in enumerate(lyap):
+    ev = pm.eval_scalar(Vk)
+    for actual,saved in ((ev.inner_prod_coords,b3['lyap_inner_prod_coords'][k]),(ev.func_coords,b3['lyap_func_coords'][k]),(ev.offset,b3['lyap_offsets'][k])):
+        assert np.allclose(np.asarray(actual,dtype=float),np.asarray(saved,dtype=float),atol=1e-4,rtol=1e-5)
+print('Selected N=4 replay matches B3; interior indices 1..3, endpoints 0 and 4.')
+
+OUTPUT
+Selected N=4 replay matches B3; interior indices 1..3, endpoints 0 and 4.
+
+
+CELL 32c21e55 markdown
+### Candidate-vector scan
+Candidates include the initial displacement, tagged iterates, gradients, auxiliary iterates, shifted auxiliary vectors suggested by the terminal square, and pairwise differences. Remove duplicate coordinates and zero vectors before filtering.
+CELL 97c543c6 code
+theta = theta_sequence(N_int)
+candidate_pairs = [('d_0',ctx['x_0']-ctx['x_star'])]
+for k in range(1,N_int+1):
+    factor = theta[k] if k==N_int else 2*theta[k]
+    candidate_pairs.append((f'q_{k}',ctx[f'z_{k}']-ctx['x_star']-factor/params_sp['L']*ctx[f'g_{k}']))
+for k in range(N_int+1):
+    for prefix in ('x','z','g'):
+        candidate_pairs.append((f'{prefix}_{k}',ctx[f'{prefix}_{k}']))
+    if k:
+        candidate_pairs.append((f'y_{k}',ctx[f'y_{k}']))
+candidate_pairs += [('x_star',ctx['x_star'])]
+base = list(candidate_pairs)
+for (la,va),(lb,vb) in combinations(base,2):
+    candidate_pairs.append((f'{la}-{lb}',va-vb))
+unique_pairs, unique_coords = [],[]
+for label,vector in candidate_pairs:
+    coords = np.asarray(pm.eval_vector(vector).coords,dtype=float)
+    if np.linalg.norm(coords)<=1e-6:
+        continue
+    if any(np.allclose(coords,old,atol=1e-6,rtol=0) for old in unique_coords):
+        continue
+    unique_pairs.append((label,vector))
+    unique_coords.append(coords)
+candidates = [v for label,v in unique_pairs]
+labels_by_id = {id(v):label for label,v in unique_pairs}
+print('Distinct nonzero candidates:',len(candidates))
+
+OUTPUT
+Distinct nonzero candidates: 277
+
+CELL 6810660a code
+
+spanning_by_k = {}
+for k in range(1,N_int+1):
+    in_col = vectors_in_column_space(lyap[k],candidates,pep_context=ctx,resolve_parameters=params_sp,rtol=1e-4,atol=1e-4)
+    spanning_by_k[k] = in_col
+    print(f'V_{k} column-space candidates:')
+    for vector in in_col:
+        print('  '+labels_by_id[id(vector)])
+
+OUTPUT
+V_1 column-space candidates:
+  d_0
+  q_1
+  g_0
+  g_1
+  d_0-q_1
+  d_0-g_0
+  d_0-g_1
+  q_1-g_0
+  q_1-g_1
+  x_0-x_1
+  x_0-z_1
+  x_0-x_2
+  x_0-y_2
+  g_0-g_1
+  x_1-z_1
+  x_1-y_1
+  x_1-x_2
+  x_1-z_2
+  x_1-x_star
+  z_1-y_1
+  z_1-x_2
+  z_1-z_2
+  z_1-y_2
+  z_1-x_star
+  y_1-x_2
+  y_1-z_2
+  y_1-y_2
+  x_2-z_2
+  x_2-y_2
+  x_2-x_star
+  z_2-y_2
+  y_2-x_star
+V_2 column-space candidates:
+  d_0
+  q_1
+  q_2
+  g_2
+  d_0-q_1
+  d_0-q_2
+  d_0-g_2
+  q_1-q_2
+  q_1-g_2
+  q_2-g_2
+  y_1-y_2
+
+V_3 column-space candidates:
+  d_0
+  q_2
+  q_3
+  g_3
+  d_0-q_2
+  d_0-q_3
+  d_0-g_3
+  q_2-q_3
+  q_2-g_3
+  q_3-g_3
+
+V_4 column-space candidates:
+  d_0
+  q_4
+  d_0-q_4
+
+CELL 60858d1c markdown
+### Selected basis pattern
+Search every nonzero index, including the terminal exception, with the frozen independence, span, and sparsity tolerances.
+CELL 6d6d3347 code
+
+search_tolerances = dict(zero_tol=1e-6,indep_tol=1e-7,span_tol=1e-5)
+search_basis,search_coeff = {},{}
+for k in range(1,N_int+1):
+    found,C = find_basis_with_sparsest_coefficients(lyap[k],spanning_by_k[k],pep_context=ctx,resolve_parameters=params_sp,zero_tol=search_tolerances["zero_tol"],indep_tol=search_tolerances["indep_tol"],span_tol=search_tolerances["span_tol"])
+    assert len(found)==ranks[k]
+    search_basis[k],search_coeff[k] = found,C
+    print(f'k={k}: rank {ranks[k]}')
+    print('  sparse basis:',[labels_by_id[id(v)] for v in found])
+    print(f'  zero coefficients: {np.count_nonzero(np.abs(C)<1e-6)}/{C.size}')
+
+OUTPUT
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\ogm\r04\supplementary\approved\pepflow\lyapunov_utils.py:396: UserWarning:
+
+Exhaustive subset search may be slow: checking 4960 subsets.
+
+
+k=1: rank 3
+  sparse basis: ['d_0', 'q_1', 'g_1']
+  zero coefficients: 6/9
+k=2: rank 3
+  sparse basis: ['d_0', 'q_2', 'g_2']
+  zero coefficients: 6/9
+k=3: rank 3
+  sparse basis: ['d_0', 'q_3', 'g_3']
+  zero coefficients: 6/9
+k=4: rank 2
+  sparse basis: ['d_0', 'q_4']
+  zero coefficients: 2/4
+
+CELL a3880b0a markdown
+The search selects the following sparse pattern. Put $d_{0}=x_{0}-x_\star$, and
+$$q_{k}=z_{k}-x_\star-\frac{2\theta_{k}}{L}g_{k}\quad(1\leq k<N),\qquad q_{N}=z_{N}-x_\star-\frac{\theta_{N}}{L}g_{N}.$$
+The ordered basis is $[d_{0},q_{k},g_{k}]$ in the interior, $[d_{0},q_{N}]$ at the terminal index, and empty at $k=0$. The adopted basis agrees with the sparse-search result.
+
+CELL 508d786b code
+
+def V_k_basis(k):
+    if k==0:
+        return []
+    d = ctx['x_0']-ctx['x_star']
+    factor = theta[k] if k==N_int else 2*theta[k]
+    qk = ctx[f'z_{k}']-ctx['x_star']-factor/params_sp['L']*ctx[f'g_{k}']
+    return [d,qk] if k==N_int else [d,qk,ctx[f'g_{k}']]
+
+
+def V_k_basis_labels(k):
+    return [] if k==0 else ['d_0',f'q_{k}'] if k==N_int else ['d_0',f'q_{k}',f'g_{k}']
+
+
+for k in range(N_int+1):
+    vectors = V_k_basis(k)
+    Q = np.column_stack([np.asarray(pm.eval_vector(v).coords,dtype=float) for v in vectors]) if vectors else np.zeros((len(ctx.basis_vectors()),0))
+    rank = int(np.linalg.matrix_rank(Q,tol=1e-7)) if vectors else 0
+    assert rank==len(vectors)==ranks[k]
+    print(f'k={k}: rank {rank} basis {V_k_basis_labels(k)}')
+
+OUTPUT
+k=0: rank 0 basis []
+k=1: rank 3 basis ['d_0', 'q_1', 'g_1']
+k=2: rank 3 basis ['d_0', 'q_2', 'g_2']
+k=3: rank 3 basis ['d_0', 'q_3', 'g_3']
+k=4: rank 2 basis ['d_0', 'q_4']
+
+CELL facdd2c4 markdown
+### Coefficient matrices
+Use the ordered bases above. Display the symmetric quadratic matrices and every function-coordinate vector; off-diagonal entries count twice.
+CELL ab172f01 code
+
+coeff_by_k,coefficient_residuals = {},{}
+extraction_tolerances = dict(indep_tol=1e-7,span_tol=1e-5)
+required_indices = list(range(N_int+1))
+function_coefficients = {}
+for k in required_indices:
+    vectors = V_k_basis(k)
+    Q = np.column_stack([np.asarray(pm.eval_vector(v).coords,dtype=float) for v in vectors]) if vectors else np.zeros((len(ctx.basis_vectors()),0))
+    C = find_symmetric_coefficient_matrix(lyap[k],vectors,pep_context=ctx,resolve_parameters=params_sp,**extraction_tolerances) if vectors else np.zeros((0,0))
+    ev = pm.eval_scalar(lyap[k])
+    target = np.asarray(ev.inner_prod_coords,dtype=float)
+    assert np.array_equal(C,C.T)
+    residual = float(np.linalg.norm(Q@C@Q.T-target,ord='fro'))
+    assert residual <= 1e-5*max(1.0,np.linalg.norm(target,ord='fro'))
+    coeff_by_k[k],coefficient_residuals[k] = C,residual
+    if k:
+        fgap = obj(ctx[f'x_{k}'])-obj(ctx['x_star'])
+        fc = np.asarray(pm.eval_scalar(fgap).func_coords,dtype=float)
+        function_coefficients[k] = float(np.asarray(ev.func_coords,dtype=float)@fc/(fc@fc))
+        assert np.allclose(function_coefficients[k]*fc,np.asarray(ev.func_coords,dtype=float),atol=1e-5,rtol=1e-5)
+    else:
+        function_coefficients[k]=0.0
+        assert np.allclose(ev.func_coords,0,atol=1e-5,rtol=0)
+    assert abs(float(ev.offset))<=1e-5
+    print(f'k={k}: quadratic residual {residual:.3g}; f(x_k)-f_star coefficient {function_coefficients[k]:.10g}; offset {ev.offset}')
+    if vectors:
+        pf.pprint_labeled_matrix(C,V_k_basis_labels(k))
+    pf.pprint_labeled_matrix(np.asarray(ev.func_coords,dtype=float).reshape(1,-1),['function coefficients'],[str(v) for v in ctx.basis_scalars()])
+
+OUTPUT
+k=0: quadratic residual 0; f(x_k)-f_star coefficient 0; offset 0.0
+
+<IPython.core.display.Math object>
+k=1: quadratic residual 4.17e-16; f(x_k)-f_star coefficient 0.2679185198; offset 0
+
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=2: quadratic residual 1.71e-10; f(x_k)-f_star coefficient 0.4923947992; offset 0
+
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=3: quadratic residual 2.98e-10; f(x_k)-f_star coefficient 0.7737968083; offset 0
+
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+k=4: quadratic residual 8.01e-10; f(x_k)-f_star coefficient 1; offset 0
+
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+CELL 8068628b code
+
+def coeff_pattern(k):
+    tau = float(params_sp['L'])/(2*theta[N_int]**2)
+    if k==0:
+        return np.zeros((0,0))
+    if k==N_int:
+        return np.diag([-tau,tau])
+    return np.diag([-tau,tau,-theta[k]**2/(float(params_sp['L'])*theta[N_int]**2)])
+
+
+formula_residuals = {}
+for k,C in coeff_by_k.items():
+    expected = coeff_pattern(k)
+    error = float(np.max(np.abs(C-expected),initial=0))
+    formula_residuals[k]=error
+    assert error<=1e-4
+    expected_function = 0.0 if k==0 else 1.0 if k==N_int else 2*theta[k]**2/theta[N_int]**2
+    assert abs(function_coefficients[k]-expected_function)<=1e-5
+    print(f'k={k}: candidate coefficient max discrepancy {error:.3g}')
+    if expected.size:
+        pf.pprint_labeled_matrix(expected,V_k_basis_labels(k))
+
+OUTPUT
+k=0: candidate coefficient max discrepancy 0
+k=1: candidate coefficient max discrepancy 2.25e-10
+
+<IPython.core.display.Math object>
+k=2: candidate coefficient max discrepancy 4.27e-11
+
+<IPython.core.display.Math object>
+k=3: candidate coefficient max discrepancy 8.2e-10
+
+<IPython.core.display.Math object>
+k=4: candidate coefficient max discrepancy 5.13e-12
+
+<IPython.core.display.Math object>
+CELL 80428f73 code
+
+def V_k_structure(k):
+    vectors = V_k_basis(k)
+    C = coeff_by_k[k]
+    expression = sum((float(C[i,j])*vectors[i]*vectors[j] for i,j in np.ndindex(C.shape)),pf.Scalar.zero())
+    if k:
+        expression += function_coefficients[k]*(obj(ctx[f'x_{k}'])-obj(ctx['x_star']))
+    return expression
+
+
+component_residuals = {}
+for k in required_indices:
+    diff = pm.eval_scalar(V_k_structure(k)-lyap[k])
+    target = pm.eval_scalar(lyap[k])
+    errors = {}
+    for name,residual,target_component in [('gram',diff.inner_prod_coords,target.inner_prod_coords),('function',diff.func_coords,target.func_coords),('offset',diff.offset,target.offset)]:
+        error=float(np.max(np.abs(np.asarray(residual,dtype=float)),initial=0))
+        scale=float(np.max(np.abs(np.asarray(target_component,dtype=float)),initial=0))
+        assert error<=1e-4+1e-5*scale
+        errors[name]=error
+    component_residuals[str(k)]=errors
+    print(f'k={k}: full-component reconstruction',errors)
+
+
+
+OUTPUT
+k=0: full-component reconstruction {'gram': 0.0, 'function': 0.0, 'offset': 0.0}
+k=1: full-component reconstruction {'gram': 1.942890293094024e-16, 'function': 2.929878561985788e-13, 'offset': 0.0}
+
+k=2: full-component reconstruction {'gram': 1.0506442937874283e-10, 'function': 7.658901290952258e-11, 'offset': 0.0}
+k=3: full-component reconstruction {'gram': 1.3149623057095994e-10, 'function': 7.658901290952258e-11, 'offset': 0.0}
+k=4: full-component reconstruction {'gram': 3.04590241917424e-10, 'function': 1.0301715036575843e-10, 'offset': 0.0}
+
+CELL d42cb4c1 markdown
+### Block 4 conclusion
+All indices, including $0$ and $N$, reconstruct numerically. The candidate expression is $V_{0}=0$ and, for $1\leq k<N$,
+$$V_{k}=\frac{2\theta_{k}^2}{\theta_{N}^2}(f(x_{k})-f(x_\star))+
+\frac{L}{2\theta_{N}^2}(\|q_{k}\|^2-\|d_{0}\|^2)-\frac{\theta_{k}^2}{L\theta_{N}^2}\|g_{k}\|^2,$$
+with terminal expression
+$$V_{N}=f(x_{N})-f(x_\star)+\frac{L}{2\theta_{N}^2}(\|q_{N}\|^2-\|d_{0}\|^2).$$
+There are no offset terms. These formulas agree with the numerical certificate at the selected horizon; The exact verification below establishes the exact step, base, and terminal identities and their signs for arbitrary horizons, including $N=1$.
+
+CELL ebc1f3af markdown
+## Closed-form Lyapunov function and exact verification
+The candidate coefficients extracted above are reused, with no fitting substituted for proof. The formula for $V_{k}$ is the one in the theorem; use $W_{k}=H^{2}V_{k}$ to remove a common positive normalization. The symbolic contexts encode only one update at a time, with free iterates and gradients constrained solely by the algorithm. They do not assume finite-horizon numerical certificates.
+
+The recurrence is imposed by polynomial remainder reduction: interior $t^{2}=s^{2}-s$, terminal $2t^{2}=s^{2}-s$, and base $s^{2}-s=1$. These are exact consequences of the positive-root definitions. Denominators are checked nonzero using $L,t,s,H>0$. Floating coefficients are rejected. Each helper call below only extracts, simplifies, displays, and checks the identity visibly constructed in its cell.
+
+CELL bf628750 code
+
+b4 = json.loads((notebook_dir/'state/ogm_b4.json').read_text())
+assert b4['certificate_id']==certificate['certificate_id']
+assert b4['numerical_reconstruction']['certificate_id']==certificate['certificate_id']
+assert b4['numerical_reconstruction']['passed']
+assert certificate_checked and grouping_checked
+assert set(component_residuals)==set(str(k) for k in range(N_int+1))
+L_sym, t_sym, s_sym, H_sym = sp.symbols('L t s H',positive=True)
+R_sym = sp.symbols('R',nonnegative=True)
+k_sym,N_sym = sp.symbols('k N',integer=True,positive=True)
+L_p,t_p,s_p,H_p,R_p = [pf.Parameter(name) for name in ('L_symbolic','t_symbolic','s_symbolic','H_symbolic','R_symbolic')]
+parameter_map={'L_symbolic':L_sym,'t_symbolic':t_sym,'s_symbolic':s_sym,'H_symbolic':H_sym,'R_symbolic':R_sym}
+exact_results = {}
+
+
+def reduce_relation(value, variable=None, relation=None):
+    value = sp.cancel(sp.sympify(value))
+    assert not value.has(sp.Float), ('Floating coefficient in symbolic proof',value)
+    if variable is None:
+        return sp.simplify(value)
+    numerator,denominator=sp.fraction(value)
+    assert sp.factor(denominator).is_nonzero is True, denominator
+    return sp.simplify(sp.rem(numerator,relation,variable)/denominator)
+
+
+def verify_exact(name, expression, manager, variable=None, relation=None):
+    evaluated=manager.eval_scalar(pf.Scalar.zero()+expression,sympy_mode=True)
+    gram=sp.Matrix(evaluated.inner_prod_coords).applyfunc(lambda v:reduce_relation(v,variable,relation))
+    functions=sp.Matrix(list(evaluated.func_coords)).applyfunc(lambda v:reduce_relation(v,variable,relation))
+    offset=reduce_relation(evaluated.offset,variable,relation)
+    assert all(value==0 for value in [*gram,*functions,offset]), (name,gram,functions,offset)
+    labels=[str(v) for v in manager.context.basis_vectors()]
+    pf.pprint_labeled_matrix(np.array(gram.tolist(),dtype=object),labels)
+    pf.pprint_labeled_matrix(np.array(functions.T.tolist(),dtype=object),['function residual'],[str(v) for v in manager.context.basis_scalars()])
+    print(name,'constant residual:',offset,'; all scalar components exactly zero')
+    exact_results[name]={'gram_zero':True,'function_zero':True,'offset_zero':True,'relation':None if relation is None else str(relation)}
+    return True
+
+OUTPUT
+CELL 6747f690 markdown
+## Symbolic Step Recursion Verification
+CELL 62809f8b markdown
+For arbitrary $1\leq k\leq N-2$, put $t=\theta_{k}$ and $s=\theta_{k+1}$, so $s^{2}-s=t^{2}$. Verify
+$$W_{k+1}-W_{k}=2s I_{\star,k+1}+2t^{2}I_{k,k+1}.$$
+The residual $\mathrm{LHS}-\mathrm{RHS}$ must be zero in every scalar component.
+CELL 19c974a7 code
+
+step_ctx = pf.PEPContext('symbolic_interior').set_as_current()
+f_step = pf.SmoothConvexFunction(is_basis=True,tags=['f_{step}'],L=L_p)
+x_s = pf.Vector(is_basis=True,tags=['x_{k}'])
+z_s = pf.Vector(is_basis=True,tags=['z_{k}'])
+d_s = pf.Vector(is_basis=True,tags=['d_{0}'])
+xs_s = f_step.set_stationary_point('x_{star,step}')
+g_s = f_step.grad(x_s)
+z_next = z_s-2*t_p/L_p*g_s
+x_next = (1-1/s_p)*(x_s-g_s/L_p)+z_next/s_p
+x_next.add_tag('x_{k+1}')
+g_next = f_step.grad(x_next)
+q_s = z_s-xs_s-2*t_p/L_p*g_s
+q_next = z_next-xs_s-2*s_p/L_p*g_next
+W_current = 2*t_p**2*(f_step(x_s)-f_step(xs_s))+L_p/2*(q_s**2-d_s**2)-t_p**2/L_p*g_s**2
+W_next = 2*s_p**2*(f_step(x_next)-f_step(xs_s))+L_p/2*(q_next**2-d_s**2)-s_p**2/L_p*g_next**2
+LHS_step = W_next-W_current
+RHS_step = 2*s_p*f_step.interp_ineq(xs_s,x_next)+2*t_p**2*f_step.interp_ineq(x_s,x_next)
+diff_step=LHS_step-RHS_step
+pm_step=pf.ExpressionManager(step_ctx,resolve_parameters=parameter_map)
+step_verified=verify_exact('Interior step (1<=k<=N-2)',diff_step,pm_step,t_sym,t_sym**2-s_sym**2+s_sym)
+
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Interior step (1<=k<=N-2) constant residual: 0 ; all scalar components exactly zero
+
+CELL 394eef2b markdown
+## Base Case and Boundary Symbolic Verification
+CELL 4921eea5 markdown
+For $N\geq2$, use $z_{0}=x_{0}$, $\theta_{0}=1$, and $s=\theta_{1}$ with $s^{2}-s=1$. Verify
+$$W_{1}=2I_{\star,0}+2s I_{\star,1}+2I_{0,1}.$$
+The residual $\mathrm{LHS}-\mathrm{RHS}$ must be zero; all multipliers are positive, so $V_{1}\leq V_{0}=0$.
+CELL 745d6866 code
+
+base_ctx=pf.PEPContext('symbolic_base').set_as_current()
+f_base=pf.SmoothConvexFunction(is_basis=True,tags=['f_{base}'],L=L_p)
+x_b=pf.Vector(is_basis=True,tags=['x_{0}'])
+xs_b=f_base.set_stationary_point('x_{star,base}')
+g_b=f_base.grad(x_b)
+z1_b=x_b-2/L_p*g_b
+x1_b=(1-1/s_p)*(x_b-g_b/L_p)+z1_b/s_p
+x1_b.add_tag('x_{1}')
+g1_b=f_base.grad(x1_b)
+q1_b=z1_b-xs_b-2*s_p/L_p*g1_b
+d_b=x_b-xs_b
+LHS_base=2*s_p**2*(f_base(x1_b)-f_base(xs_b))+L_p/2*(q1_b**2-d_b**2)-s_p**2/L_p*g1_b**2
+RHS_base=2*f_base.interp_ineq(xs_b,x_b)+2*s_p*f_base.interp_ineq(xs_b,x1_b)+2*f_base.interp_ineq(x_b,x1_b)
+diff_base=LHS_base-RHS_base
+pm_base=pf.ExpressionManager(base_ctx,resolve_parameters=parameter_map)
+base_verified=verify_exact('Base (N>=2, theta_0=1)',diff_base,pm_base,s_sym,s_sym**2-s_sym-1)
+
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Base (N>=2, theta_0=1) constant residual: 0 ; all scalar components exactly zero
+
+CELL 491d1f1b markdown
+### Special Terminal Step
+CELL 619cf89f markdown
+For $N\geq2$, put $t=\theta_{N-1}$ and $s=\theta_{N}$, with $s^{2}-s=2t^{2}$. Verify
+$$W_{N}-W_{N-1}=s I_{\star,N}+2t^{2}I_{N-1,N}.$$
+The residual $\mathrm{LHS}-\mathrm{RHS}$ must be zero. The terminal potential has no gradient-norm correction and uses $q_{N}=z_{N}-x_{\star}-s g_{N}/L$.
+CELL c3a8bd83 code
+
+terminal_ctx=pf.PEPContext('symbolic_terminal').set_as_current()
+f_terminal=pf.SmoothConvexFunction(is_basis=True,tags=['f_{terminal}'],L=L_p)
+x_t=pf.Vector(is_basis=True,tags=['x_{N-1}'])
+z_t=pf.Vector(is_basis=True,tags=['z_{N-1}'])
+d_t=pf.Vector(is_basis=True,tags=['d_{0}'])
+xs_t=f_terminal.set_stationary_point('x_{star,terminal}')
+g_t=f_terminal.grad(x_t)
+zN_t=z_t-2*t_p/L_p*g_t
+xN_t=(1-1/s_p)*(x_t-g_t/L_p)+zN_t/s_p
+xN_t.add_tag('x_{N}')
+gN_t=f_terminal.grad(xN_t)
+qprev_t=z_t-xs_t-2*t_p/L_p*g_t
+qN_t=zN_t-xs_t-s_p/L_p*gN_t
+W_previous=2*t_p**2*(f_terminal(x_t)-f_terminal(xs_t))+L_p/2*(qprev_t**2-d_t**2)-t_p**2/L_p*g_t**2
+W_terminal=s_p**2*(f_terminal(xN_t)-f_terminal(xs_t))+L_p/2*(qN_t**2-d_t**2)
+LHS_terminal=W_terminal-W_previous
+RHS_terminal=s_p*f_terminal.interp_ineq(xs_t,xN_t)+2*t_p**2*f_terminal.interp_ineq(x_t,xN_t)
+diff_terminal=LHS_terminal-RHS_terminal
+pm_terminal=pf.ExpressionManager(terminal_ctx,resolve_parameters=parameter_map)
+terminal_verified=verify_exact('Special terminal step (N>=2)',diff_terminal,pm_terminal,t_sym,t_sym**2-(s_sym**2-s_sym)/2)
+
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Special terminal step (N>=2) constant residual: 0 ; all scalar components exactly zero
+
+CELL fd07c28d markdown
+### Exceptional Horizon N=1
+CELL fba3c162 markdown
+Here $\theta_{0}=1$, $\theta_{1}=2$. Verify the complete initialization-to-terminal identity
+$$W_{1}=2I_{\star,0}+2I_{\star,1}+2I_{0,1}.$$
+The residual $\mathrm{LHS}-\mathrm{RHS}$ must be zero; no interior formula is used outside its domain.
+CELL fb273c1f code
+
+small_ctx=pf.PEPContext('symbolic_N1').set_as_current()
+f_small=pf.SmoothConvexFunction(is_basis=True,tags=['f_{N=1}'],L=L_p)
+x_o=pf.Vector(is_basis=True,tags=['x_{0}'])
+xs_o=f_small.set_stationary_point('x_{star,N=1}')
+g_o=f_small.grad(x_o)
+z1_o=x_o-2/L_p*g_o
+x1_o=sp.Rational(1,2)*(x_o-g_o/L_p)+sp.Rational(1,2)*z1_o
+x1_o.add_tag('x_{1}')
+g1_o=f_small.grad(x1_o)
+q1_o=z1_o-xs_o-2/L_p*g1_o
+d_o=x_o-xs_o
+LHS_small=4*(f_small(x1_o)-f_small(xs_o))+L_p/2*(q1_o**2-d_o**2)
+RHS_small=2*f_small.interp_ineq(xs_o,x_o)+2*f_small.interp_ineq(xs_o,x1_o)+2*f_small.interp_ineq(x_o,x1_o)
+diff_small=LHS_small-RHS_small
+pm_small=pf.ExpressionManager(small_ctx,resolve_parameters=parameter_map)
+small_verified=verify_exact('Single-step horizon N=1',diff_small,pm_small)
+
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Single-step horizon N=1 constant residual: 0 ; all scalar components exactly zero
+
+CELL 32ca8cdf markdown
+### Boundary Identity Symbolic Verification
+CELL 6f5b6527 markdown
+For all $N\geq1$, let $H=\theta_{N}$ and $\tau=L/(2H^{2})$. Verify
+$$F_{N}-\frac{LR^{2}}{2H^{2}}=V_{N}-\tau\|q_{N}\|^{2}+\tau(\|d_{0}\|^{2}-R^{2}).$$
+The residual $\mathrm{LHS}-\mathrm{RHS}$ must be zero, including the $R^{2}$ constant terms. Since $V_{N}\leq0$, $\tau>0$, and $\|d_{0}\|^{2}\leq R^{2}$, its right side is nonpositive.
+CELL 896c79b8 code
+
+boundary_ctx=pf.PEPContext('symbolic_boundary').set_as_current()
+f_boundary=pf.SmoothConvexFunction(is_basis=True,tags=['f_{boundary}'],L=L_p)
+x_end=pf.Vector(is_basis=True,tags=['x_{N}'])
+z_end=pf.Vector(is_basis=True,tags=['z_{N}'])
+x_initial=pf.Vector(is_basis=True,tags=['x_{0}'])
+xs_end=f_boundary.set_stationary_point('x_{star,boundary}')
+g_end=f_boundary.grad(x_end)
+d_end=x_initial-xs_end
+q_end=z_end-xs_end-H_p/L_p*g_end
+F_end=f_boundary(x_end)-f_boundary(xs_end)
+tau_end=L_p/(2*H_p**2)
+V_end=F_end+tau_end*(q_end**2-d_end**2)
+bound= L_p*R_p**2/(2*H_p**2)
+initial_residual=d_end**2-R_p**2
+LHS_boundary=F_end-bound
+RHS_boundary=V_end-tau_end*q_end**2+tau_end*initial_residual
+diff_boundary=LHS_boundary-RHS_boundary
+pm_boundary=pf.ExpressionManager(boundary_ctx,resolve_parameters=parameter_map)
+boundary_verified=verify_exact('Boundary and radius normalization',diff_boundary,pm_boundary)
+
+OUTPUT
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Boundary and radius normalization constant residual: 0 ; all scalar components exactly zero
+
+CELL 3207e95e markdown
+### Signs, domain, and telescoping
+The positive-root recurrences give $\theta_{0}=1$ and $\theta_{k}\geq1$, hence $H\geq2$. Therefore $2\theta_{k}^{2}/H^{2}$, $2\theta_{k+1}/H^{2}$, $1/H$, and $L/(2H^{2})$ are positive; the only assumed nonnegative radius $R$ never appears in a denominator. The interpolation residuals are nonpositive by the smooth-convex inequality proved in the outline. All step identities therefore decrease $V$, and the terminal nonnegative square is subtracted in the final upper bound.
+
+Summing the verified initialization and local identities covers each optimizer-row and forward-consecutive multiplier exactly once. This proves the global full-PEP identity stated in the outline for arbitrary $N\geq2$; the separate $N=1$ check supplies the remaining case. The exact local proof and global telescoping upgrade the candidate formulas; earlier discovery statuses remain recorded historically in B1â€“B4.
+
+CELL ea620753 code
+
+# Elementary sign/domain facts are justified in the adjacent proof text.
+assert L_sym.is_positive and H_sym.is_positive and R_sym.is_nonnegative
+assert sp.simplify(2*t_sym**2/H_sym**2).is_positive
+assert sp.simplify(2*s_sym/H_sym**2).is_positive
+assert sp.simplify(1/H_sym).is_positive
+assert sp.simplify(L_sym/(2*H_sym**2)).is_positive
+proof_checks={'step':bool(step_verified and terminal_verified),'base':bool(base_verified and small_verified),'boundary':bool(boundary_verified),'signs':True,'domain':True,'normalization':bool(boundary_verified)}
+assert all(proof_checks.values())
+print('Verified domain: all integer N>=1, L>0, R>=0, theta recurrence as stated.')
+print('Interior, base, special terminal, N=1, and normalization identities all exactly zero.')
+print('All interpolation multipliers are positive; terminal square coefficient is positive.')
+print('Therefore V_N <= V_0 = 0 and f(x_N)-f_star <= L R^2/(2 theta_N^2).')
+
+
+
+print('FINAL_PROOF_EVIDENCE=' + json.dumps({'proof_checks':proof_checks,'exact_results':exact_results},sort_keys=True))
+
+
+OUTPUT
+Verified domain: all integer N>=1, L>0, R>=0, theta recurrence as stated.
+Interior, base, special terminal, N=1, and normalization identities all exactly zero.
+All interpolation multipliers are positive; terminal square coefficient is positive.
+Therefore V_N <= V_0 = 0 and f(x_N)-f_star <= L R^2/(2 theta_N^2).
+FINAL_PROOF_EVIDENCE={"exact_results": {"Base (N>=2, theta_0=1)": {"function_zero": true, "gram_zero": true, "offset_zero": true, "relation": "s**2 - s - 1"}, "Boundary and radius normalization": {"function_zero": true, "gram_zero": true, "offset_zero": true, "relation": null}, "Interior step (1<=k<=N-2)": {"function_zero": true, "gram_zero": true, "offset_zero": true, "relation": "-s**2 + s + t**2"}, "Single-step horizon N=1": {"function_zero": true, "gram_zero": true, "offset_zero": true, "relation": null}, "Special terminal step (N>=2)": {"function_zero": true, "gram_zero": true, "offset_zero": true, "relation": "-s**2/2 + s/2 + t**2"}}, "proof_checks": {"base": true, "boundary": true, "domain": true, "normalization": true, "signs": true, "step": true}}
+

@@ -1,0 +1,35 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact symbolic proof, final static checks, clean-kernel nbconvert execution and twelve-item notebook evidence audit complete.",
+  "operational_status": "completed",
+  "run_status": "success",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_work": "No required Lyapunov proof obligations remain. A separate arbitrary-horizon global lambda/S formula is not established and is not required.",
+  "isolation": "instruction_only",
+  "prohibited_content_observed": false,
+  "exhaustive_os_read_trace_available": false,
+  "consulted_sources": "Frozen approved input, dispatch, settings, allowlist, worker protocol, clean-room and recovery policies, five approved skills/workflows, approved framework source, and own generated files; earlier block source-access records retained.",
+  "B5_operational_incidents": [
+    {
+      "failure": "b5-static-001: notebook E402 imports after docstring, unused helper imports, SymPy Basic type arithmetic",
+      "repair": "Changed notebook docstring to comment, removed unused imports, cast sympify scalar results to Expr. No math or frozen sources changed.",
+      "recheck": "b5-static-002 passed; fresh kernel nbconvert passed."
+    },
+    {
+      "warning": "Windows ZMQ selector fallback and missing dash comm handler",
+      "impact": "Nonfatal; notebook execution exited 0 with no cell errors."
+    }
+  ],
+  "notebook": "pgm_example_lyap.ipynb",
+  "state": "state/pgm_b5.json",
+  "audit": "supplementary/b5-final-audit.json",
+  "finished_utc": "2026-09-23T19:02:01.047109+00:00"
+}

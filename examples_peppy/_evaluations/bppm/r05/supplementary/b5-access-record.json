@@ -1,0 +1,49 @@
+{
+  "current_block": "B5",
+  "access_control": "instruction_only",
+  "new_approved_reads": [
+    "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "pepflow/expression_manager.py"
+  ],
+  "generated_reads": [
+    "state/bppm_b4.json",
+    "bppm_example_lyap.ipynb",
+    "supplementary/b5_symbolic_common.py",
+    "supplementary/b5_step.py",
+    "supplementary/b5_base.py",
+    "supplementary/b5_boundary.py",
+    "supplementary/b5-static-001.json",
+    "supplementary/b5-static-002.json",
+    "supplementary/b5-nbconvert-execution.json",
+    "supplementary/b5-write-incident.json"
+  ],
+  "commands": [
+    "python -I -B supplementary/run_b5.py",
+    "python -I -B supplementary/author_b5.py",
+    "python -I -B supplementary/update_b5_symbolic.py",
+    "approved static adapter twice",
+    "python -I -B supplementary/execute_final_nbconvert.py (actual nbconvert argv preserved)",
+    "python -I -B supplementary/finalize_b5.py"
+  ],
+  "incidents": [
+    {
+      "classification": "write_boundary_deviation",
+      "phase": "B5",
+      "path": "examples_peppy/_evaluations/20260923T140754Z_pgm_sos_6x5_isolation1/bppm/r05/supplementary/unused_placeholder.txt",
+      "content": "empty",
+      "cause": "Mistyped extra file path in patch",
+      "reads": "No external file content read; only own just-created empty file removed",
+      "cleanup": "Deleted own empty file and known newly-created empty directories nonrecursively",
+      "mathematical_exposure": false,
+      "status": "resolved",
+      "audit_limit": "Instruction-only restriction; tool transcript records the mutation and cleanup"
+    },
+    {
+      "classification": "source typing diagnostic",
+      "evidence": "b5-static-001.json",
+      "repair": "Generic symbolic substitution wrapper around numeric-only annotated framework API; no framework change or diagnostic suppression."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "Instruction-only restriction; no exhaustive OS read trace; cleaned accidental write outside attempt recorded separately."
+}

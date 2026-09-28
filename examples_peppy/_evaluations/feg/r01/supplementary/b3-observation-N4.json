@@ -1,0 +1,105 @@
+{
+  "N": 4,
+  "certificate_id": "3a313d8fa3f3283221811f3107db588a03e243c918867593814cb90065e83b18",
+  "certificate_path": "supplementary\\sample-N4\\feg_b2.json",
+  "recipe_id": "adjacent_full_plus_lip_complete_S_boundary",
+  "rank_profile": [
+    0,
+    2,
+    2,
+    2,
+    2
+  ],
+  "singular_values": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.2022580661719247,
+      0.07725570677884991,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.6250117839018663,
+      0.12500235637617257,
+      3.0942647446280135e-09,
+      5.826133374383871e-10,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.2940681341608091,
+      0.16904693026976492,
+      4.107470562803903e-09,
+      3.233989661050299e-09,
+      1.2197684463367264e-09,
+      3.5921936483932237e-11,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      2.2119616416230565,
+      0.21192395712005255,
+      6.534103172918246e-09,
+      4.321515839365698e-09,
+      3.225898544598547e-09,
+      1.4854321933950172e-09,
+      8.696736837666481e-11,
+      6.524367600748038e-11,
+      0.0,
+      0.0
+    ]
+  ],
+  "rank_convention": {
+    "tolerance": 0.0001,
+    "scaling": "absolute, unscaled original basis",
+    "coordinate_order": "setup basis order"
+  },
+  "rank_credible": true,
+  "certificate_checked": true,
+  "grouping_checked": true,
+  "term_assignment": {
+    "A monotone:x_1,x_2": 1,
+    "A monotone:x_2,x_3": 2,
+    "A monotone:x_3,x_4": 3,
+    "A monotone:x_4,x_star": "boundary",
+    "A Lipschitz:x_0,x_1": 0,
+    "A Lipschitz:x_2,x_3/2": 1,
+    "A Lipschitz:x_3,x_5/2": 2,
+    "A Lipschitz:x_4,x_7/2": 3
+  },
+  "S_assignment": {
+    "complete_S": "boundary"
+  },
+  "certificate_residuals": {
+    "identity_gram_max_abs": 2.295867374931369e-09,
+    "identity_func_max_abs": 0.0,
+    "identity_offset_abs": 2.0003696477033373e-09,
+    "dense_relaxed_gap": 0.0,
+    "minimum_scalar_inequality_dual": 0.1250023593930748,
+    "minimum_matrix_inequality_eigenvalue": 0,
+    "minimum_S_eigenvalue": 5.774172893935857e-10
+  }
+}

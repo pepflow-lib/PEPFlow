@@ -1,0 +1,23 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Requested complete N=6 dense and sparse certificates acquired and verified",
+    "selected_horizon":  4,
+    "additional_horizon":  6,
+    "evidence":  "supplementary/b2-N6-certificate.json",
+    "consulted_sources":  [
+                              "state/bppm_b2.json",
+                              "own generated helper modules and approved transitive framework dependencies"
+                          ],
+    "commands":  [
+                     "supplementary/acquire_b2_N6.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+
+                  ],
+    "warning":  "Fresh context replaced same-name dense context after dense capture; both builders and all certificate components were separately rebuilt/captured",
+    "operational_status":  "awaiting same-session continuation before B3 rank comparison"
+}

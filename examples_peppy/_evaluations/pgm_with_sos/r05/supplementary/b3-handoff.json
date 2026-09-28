@@ -1,0 +1,69 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Rank constancy confirmed at N4/N6 under fixed exclusions; certificate, full-coordinate coverage and sign checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "selected_horizon":  4,
+    "rank_profile":  [
+                         0,
+                         4,
+                         4,
+                         4,
+                         1
+                     ],
+    "rank_search":  {
+                        "status":  "confirmed",
+                        "boundary_exclusions":  {
+                                                    "left":  1,
+                                                    "right":  1
+                                                },
+                        "rank":  4,
+                        "confirmed_horizons":  [
+                                                   4,
+                                                   6
+                                               ],
+                        "selected_certificate_id":  "de6d064660db34c6b0b36ca349bb8efd96ecfa937480cd1fcca5702c618da1e1",
+                        "recipe_id":  "star_and_consecutive_by_destination_minus_supplied_step_sos",
+                        "rank_convention":  {
+                                                "tolerance":  0.0001,
+                                                "scaling":  "unscaled Gram matrix",
+                                                "coordinate_order":  "setup insertion order"
+                                            },
+                        "unresolved_samples":  [
+
+                                               ],
+                        "evidence_path":  "supplementary/rank_search.json"
+                    },
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "evidence":  [
+                     "state/pgm_b3.json",
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-static-003.json"
+                 ],
+    "own_sources":  [
+                        "supplementary/probe_b3.py",
+                        "supplementary/b3_construct.py",
+                        "supplementary/finish_b3.py",
+                        "state/pgm_b2.json",
+                        "supplementary/N6/pgm_b2.json",
+                        "pgm_example_lyap.ipynb"
+                    ],
+    "commands":  [
+                     "Pinned Python -I -B supplementary/probe_b3.py 6",
+                     "Pinned Python -I -B supplementary/finish_b3.py",
+                     "Approved static adapter on setup, notebook and certificates helper"
+                 ],
+    "incidents":  "Notebook import ordering and dynamic replay namespace type diagnostics repaired in own sources; failed checks retained",
+    "approved_sources_added":  [
+
+                               ],
+    "source_manifest":  "certificate source hashes and static evidence",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "next_block_not_started":  true
+}

@@ -1,0 +1,25 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "incomplete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Candidate scan and sparse basis search completed; selected numerical sample fails required reconstruction at later indices including endpoint. Return to permitted decomposition/grouping recovery without changing tolerances.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "supplementary/b4-initial-template.json",
+                     "supplementary/b4-scan.json",
+                     "supplementary/b4-sparse-basis-trial.json",
+                     "supplementary/b4-search-console.txt"
+                 ],
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "approved/pepflow/lyapunov_utils.py",
+                              "Own selected B3 source/state and generated trial files"
+                          ],
+    "commands":  [
+                     "Exact-path approved reads",
+                     "Pinned Python -I -B b4_probe.py, b4_scan.py, b4_search.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "unresolved_work":  "B3 recovery, then complete B4 reconstruction and B5"
+}

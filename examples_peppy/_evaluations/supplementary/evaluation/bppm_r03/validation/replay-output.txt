@@ -1,0 +1,94 @@
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage errors: [[5.551115123125783e-17, 1.1102230246251565e-16, 0.0], [0.0, 0.0, 0.0]]
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage errors: [[2.7755575615628914e-17, 5.551115123125783e-17, 0.0], [0.0, 0.0, 0.0]]
+V_1 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_1-x_star
+   grad_h(x_1)
+   sum_grad_f_1_to_1
+   x_0-x_1
+V_2 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_2-x_star
+   grad_h(x_2)
+   sum_grad_f_1_to_2
+   x_0-x_2
+V_3 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_3-x_star
+   grad_h(x_3)
+   sum_grad_f_1_to_3
+   x_0-x_3
+V_4 column-space candidates:
+   x_0-x_star
+   grad_h(x_0)
+   x_4-x_star
+   grad_h(x_4)
+   sum_grad_f_1_to_4
+   x_0-x_4
+k=1, rank 4
+sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_1-x_star', 'grad_h(x_1)']
+zero coefficients: 12/16
+k=2, rank 4
+sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_2-x_star', 'grad_h(x_2)']
+zero coefficients: 12/16
+k=3, rank 4
+sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_3-x_star', 'grad_h(x_3)']
+zero coefficients: 12/16
+k=4, rank 4
+sparse basis: ['x_0-x_star', 'grad_h(x_0)', 'x_4-x_star', 'grad_h(x_4)']
+zero coefficients: 12/16
+k=0: rank 0 basis []
+k=1: rank 4 basis ['x_1-x_star', 'grad_h(x_1)', 'x_0-x_star', 'grad_h(x_0)']; reconstruction residual 4.614898956834533e-16
+<IPython.core.display.Math object>
+k=2: rank 4 basis ['x_2-x_star', 'grad_h(x_2)', 'x_0-x_star', 'grad_h(x_0)']; reconstruction residual 3.017291636902652e-10
+<IPython.core.display.Math object>
+k=3: rank 4 basis ['x_3-x_star', 'grad_h(x_3)', 'x_0-x_star', 'grad_h(x_0)']; reconstruction residual 3.9675930584679124e-10
+<IPython.core.display.Math object>
+k=4: rank 4 basis ['x_4-x_star', 'grad_h(x_4)', 'x_0-x_star', 'grad_h(x_0)']; reconstruction residual 4.379526879941559e-10
+<IPython.core.display.Math object>
+Coefficient candidate residuals: {'0': 0.0, '1': 9.744258178123744e-11, '2': 8.807418683254298e-11, '3': 9.435913161937037e-11, '4': 9.169723313995348e-11}
+k=0 full component residuals: {'gram': 0.0, 'function': 0.0, 'offset': 0.0}
+function terms: [] offset: 0
+k=1 full component residuals: {'gram': 1.7694179454963432e-16, 'function': 1.948850525401724e-10, 'offset': 0.0}
+function terms: ['1/4*(f(x_1)-f(x_star))', '1/(alpha*4)*(h(x_0)-h(x_1))'] offset: 0
+k=2 full component residuals: {'gram': 1.1122677778807599e-10, 'function': 4.6029713374196035e-10, 'offset': 0.0}
+function terms: ['2/4*(f(x_2)-f(x_star))', '1/(alpha*4)*(h(x_0)-h(x_2))'] offset: 0
+k=3 full component residuals: {'gram': 1.7671719643175265e-10, 'function': 7.162344051181435e-10, 'offset': 0.0}
+function terms: ['3/4*(f(x_3)-f(x_star))', '1/(alpha*4)*(h(x_0)-h(x_3))'] offset: 0
+k=4 full component residuals: {'gram': 1.7671719643175265e-10, 'function': 8.89814000260003e-10, 'offset': 0.0}
+function terms: ['4/4*(f(x_4)-f(x_star))', '1/(alpha*4)*(h(x_0)-h(x_4))'] offset: 0
+Exact local multiplier solution: {mu_f: k/N, mu_forward: k/(N*alpha), mu_reverse: (k + 1)/(N*alpha), mu_star: 1/N}
+Step Gram residual:
+<IPython.core.display.Math object>
+Step function residual: Matrix([[0], [0], [0], [0], [0], [0], [0]])
+Step offset residual: 0
+Base Gram residual:
+<IPython.core.display.Math object>
+Base function residual: Matrix([[0], [0], [0], [0], [0]])
+Base offset residual: 0
+Boundary Gram residual:
+<IPython.core.display.Math object>
+Boundary function residual: Matrix([[0], [0], [0], [0], [0]])
+Boundary offset residual: 0
+Signs: all local multipliers nonnegative for integer k>=0, N>=1, alpha>0; initial and terminal multipliers positive.
+Domain: interior steps 1<=k<N, separate base k=0; N=1 uses base and terminal only. R>=0; no division by R.
+Normalization: V0=0, VN<=0, initial_residual<=0, terminal_residual=-D_h(x_star,x_N)<=0 imply gap<=R/(alpha*N).

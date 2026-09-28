@@ -1,0 +1,31 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_confirmation_pending",
+    "next_block":  "B2",
+    "entry_exit_reason":  "First horizon certificate/grouping verified; a second coherent horizon certificate is required for rank confirmation",
+    "run_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  4,
+    "selected_horizon":  6,
+    "preserve_selected_certificate":  true,
+    "evidence":  [
+                     "supplementary/b3-observation-N6.json",
+                     "supplementary/b3-probe-N6-output.txt"
+                 ],
+    "generated_source":  "supplementary/b3_probe.py",
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "state/feg_b2.json",
+                              "feg_setup.py",
+                              "supplementary/helpers/certificate_tools.py",
+                              "approved framework files listed in saved certificate source hashes"
+                          ],
+    "commands":  [
+                     "Get-Content B3 workflow and missing ranges",
+                     "apply_patch supplementary/b3_probe.py",
+                     "python -I -B supplementary/bootstrap.py supplementary/b3_probe.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "unresolved_work":  "Second-horizon certificate and recomputed rank/coverage confirmation; B3 notebook update and gates; B4-B5",
+    "deadline_utc":  "2026-09-23T17:15:53.692276+00:00"
+}

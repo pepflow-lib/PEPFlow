@@ -1,0 +1,30 @@
+{
+  "command": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+    "-I",
+    "-B",
+    "-m",
+    "nbconvert",
+    "--to",
+    "notebook",
+    "--execute",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r05\\bppm_example_lyap.ipynb",
+    "--output",
+    "bppm_example_lyap.ipynb",
+    "--output-dir",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r05",
+    "--ExecutePreprocessor.kernel_name=bppm-owned",
+    "--ExecutePreprocessor.timeout=120"
+  ],
+  "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r05",
+  "started_utc": "2026-09-23T23:23:10.801399+00:00",
+  "finished_utc": "2026-09-23T23:23:25.520891+00:00",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "[NbConvertApp] Converting notebook C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r05\\bppm_example_lyap.ipynb to notebook\nC:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n[NbConvertApp] WARNING | No handler found for comm target 'dash'\n[NbConvertApp] Writing 139843 bytes to C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r05\\bppm_example_lyap.ipynb\n",
+  "clean_kernel": true,
+  "notebook_sha256": "52f27a4cc4192211d3704cf8260f16ea9dc31a5fee73c7acc71ef1a4a9f272dd",
+  "code_cells": 31,
+  "markdown_source_check": "passed",
+  "rendered_review": "omitted_by_evaluation_policy"
+}

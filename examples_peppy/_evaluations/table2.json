@@ -1,0 +1,251 @@
+{
+  "campaign_id": "20260923T140754Z_paper5_pgm_sos_6x5_isolation1",
+  "attempts": 30,
+  "blocks": 150,
+  "aggregation": "All five attempts per condition; sample standard deviation (n - 1).",
+  "token_accounting": "Input plus output; repeated context included; cached input and reasoning are subsets.",
+  "cost_scope": "Original generation and review only. Post hoc review, preparation, and controller costs excluded.",
+  "rows": [
+    {
+      "condition_id": "ogm",
+      "label": "OGM",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 5,
+      "block_minutes": {
+        "B1": {
+          "mean": 7.720589133333333,
+          "sample_sd": 0.7673952346436513
+        },
+        "B2": {
+          "mean": 11.342700963333334,
+          "sample_sd": 1.7910292145241995
+        },
+        "B3": {
+          "mean": 6.793390783333333,
+          "sample_sd": 0.8236459494185444
+        },
+        "B4": {
+          "mean": 7.80033419,
+          "sample_sd": 1.6187743898672557
+        },
+        "B5": {
+          "mean": 12.499452616666666,
+          "sample_sd": 1.665310376080332
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 11.4567074,
+        "sample_sd": 2.3846040037476453
+      }
+    },
+    {
+      "condition_id": "bppm",
+      "label": "BPPM",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 4,
+      "block_minutes": {
+        "B1": {
+          "mean": 7.439103553333333,
+          "sample_sd": 1.0549857167941497
+        },
+        "B2": {
+          "mean": 10.688354143333333,
+          "sample_sd": 2.6055376893003794
+        },
+        "B3": {
+          "mean": 8.098858643333333,
+          "sample_sd": 1.33922285784036
+        },
+        "B4": {
+          "mean": 6.8325396,
+          "sample_sd": 1.175238066620412
+        },
+        "B5": {
+          "mean": 9.530143636666667,
+          "sample_sd": 2.1122465413284264
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 9.864727,
+        "sample_sd": 1.319056413560277
+      }
+    },
+    {
+      "condition_id": "feg",
+      "label": "FEG",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 4,
+      "block_minutes": {
+        "B1": {
+          "mean": 7.444535896666667,
+          "sample_sd": 0.7825186761332754
+        },
+        "B2": {
+          "mean": 11.054861453333332,
+          "sample_sd": 1.4857669217588514
+        },
+        "B3": {
+          "mean": 7.16090747,
+          "sample_sd": 1.026868212802987
+        },
+        "B4": {
+          "mean": 5.569873806666666,
+          "sample_sd": 0.4496001068740108
+        },
+        "B5": {
+          "mean": 9.18716637,
+          "sample_sd": 1.4078016848526893
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 10.730567800000001,
+        "sample_sd": 1.1106001165940418
+      }
+    },
+    {
+      "condition_id": "dual_feg",
+      "label": "Dual-FEG",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 5,
+      "block_minutes": {
+        "B1": {
+          "mean": 7.55077126,
+          "sample_sd": 0.2861571717723154
+        },
+        "B2": {
+          "mean": 13.120276650000001,
+          "sample_sd": 2.842892219643336
+        },
+        "B3": {
+          "mean": 7.43391698,
+          "sample_sd": 0.6534987639664315
+        },
+        "B4": {
+          "mean": 7.375723069999999,
+          "sample_sd": 1.669777866376333
+        },
+        "B5": {
+          "mean": 11.16240253,
+          "sample_sd": 0.5339482945803918
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 12.4896442,
+        "sample_sd": 1.7173226352117703
+      }
+    },
+    {
+      "condition_id": "pgm_without_sos",
+      "label": "PGM without supplied SOS",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 4,
+      "block_minutes": {
+        "B1": {
+          "mean": 7.13781359,
+          "sample_sd": 0.8559924334171625
+        },
+        "B2": {
+          "mean": 10.522825243333333,
+          "sample_sd": 1.5101516492216522
+        },
+        "B3": {
+          "mean": 11.299254153333333,
+          "sample_sd": 4.189191712935163
+        },
+        "B4": {
+          "mean": 8.0066375,
+          "sample_sd": 1.4255655577938657
+        },
+        "B5": {
+          "mean": 23.48313686,
+          "sample_sd": 4.685034237439955
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 15.7268508,
+        "sample_sd": 2.2126621817192746
+      }
+    },
+    {
+      "condition_id": "pgm_with_sos",
+      "label": "PGM with supplied SOS",
+      "attempts": 5,
+      "mathematical_verdict_counts": {
+        "PASS": 5,
+        "FAIL": 0,
+        "REVIEW": 0,
+        "NOT_EVALUATED": 0
+      },
+      "original_complete_delivery": 5,
+      "block_minutes": {
+        "B1": {
+          "mean": 6.850540196666667,
+          "sample_sd": 1.0169030321679864
+        },
+        "B2": {
+          "mean": 12.684803776666667,
+          "sample_sd": 0.7185485489289692
+        },
+        "B3": {
+          "mean": 13.579982176666666,
+          "sample_sd": 2.312003952678069
+        },
+        "B4": {
+          "mean": 10.213703416666668,
+          "sample_sd": 1.1055370209471256
+        },
+        "B5": {
+          "mean": 14.57491003,
+          "sample_sd": 3.6610388991702285
+        }
+      },
+      "generation_tokens_millions": {
+        "mean": 15.4260504,
+        "sample_sd": 0.9597876815553015
+      }
+    }
+  ],
+  "totals": {
+    "generation_seconds": 88247.852908,
+    "generation_tokens": 378472738,
+    "review_seconds": 10331.868015,
+    "review_tokens": 43668800,
+    "original_complete_delivery": 27,
+    "posthoc_mathematical_pass": 30
+  },
+  "source_sha256": {
+    "supplementary/runs.csv": "876483e4d64fd3a0eb9cec6d01766284a4e3dbf57f4e3a9805c92d88d7186e92",
+    "supplementary/blocks.csv": "43cb7bc1d708d2de52f94c1395a187d70ec36d4c47b71cf285bc200d0956d9e0",
+    "posthoc_20260924T024014Z/assessment.json": "2b686303560017faabff8aa5d6eaa24ef3b6d6a42867c55329a67680b7b109be"
+  }
+}

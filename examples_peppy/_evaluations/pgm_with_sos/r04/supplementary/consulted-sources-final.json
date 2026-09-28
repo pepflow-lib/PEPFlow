@@ -1,0 +1,55 @@
+﻿{
+    "access_control":  "instruction_only",
+    "preflight_record":  "supplementary/preflight-consulted-sources.json",
+    "phase_records":  [
+                          "supplementary/b1-handoff.json",
+                          "supplementary/b2-handoff.json",
+                          "supplementary/b3-revisit-handoff.json",
+                          "supplementary/b2-N6-handoff.json",
+                          "supplementary/b3-handoff.json",
+                          "supplementary/b4-revisit-handoff.json",
+                          "supplementary/b3-terminal-handoff.json",
+                          "supplementary/b4-certificate-revisit-handoff.json",
+                          "supplementary/b2-refined-handoff.json",
+                          "supplementary/b3-refined-handoff.json",
+                          "supplementary/b4-handoff.json"
+                      ],
+    "final_block_direct_approved_reads":  [
+                                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+                                              "supplementary/approved/pepflow/expression_manager.py",
+                                              "supplementary/approved/pepflow/parameter.py"
+                                          ],
+    "final_block_own_generated_sources":  [
+                                              "state/pgm_b4.json",
+                                              "supplementary/b5_symbolic_cells.py",
+                                              "supplementary/b5_symbolic_probe.py",
+                                              "supplementary/b5_sign_cells.py",
+                                              "supplementary/prepare_b5.py",
+                                              "supplementary/execute_final.py",
+                                              "supplementary/audit_b5.py",
+                                              "supplementary/finalize_b5.py",
+                                              "pgm_example_lyap.ipynb",
+                                              "supplementary/b5-static-001.json"
+                                          ],
+    "commands_and_outputs":  "Actual tool invocations preserved in session trace; executable own scripts and per-phase logs record the workflows; immutable adapter JSON records actual subprocess argv, return codes, version/source hashes and import origins.",
+    "final_evidence":  [
+                           "supplementary/b5-symbolic-probe.log",
+                           "supplementary/b5-static-001.json",
+                           "supplementary/b5-final-execution.log",
+                           "supplementary/b5-content-audit.log",
+                           "supplementary/pgm_example_lyap_checklist.md",
+                           "state/pgm_b5.json",
+                           "supplementary/final-handoff.json"
+                       ],
+    "generic_framework_imports":  "Exact approved pepflow files, with source hashes retained in certificate and static evidence; pinned dependencies and interpreter standard library used.",
+    "supplied_assistance":  "Fixed PGM SOS supplied in own approved/input.md; used and verified as declared assistance.",
+    "prohibited_sources_used":  false,
+    "prohibited_material_observed":  false,
+    "actual_unapproved_content_exposure_observed":  false,
+    "operational_boundary_observation":  "One failed process launch used a mistyped nonexistent working directory; CreateProcess failed before any requested program ran. It exposed no file contents. Recorded in B4 handoff.",
+    "audit_limit":  "Instruction-only restrictions; no exhaustive OS access tracing and no claim of OS-enforced read isolation. The worker declaration is limited to available source and tool evidence.",
+    "external_resources_consulted":  [
+
+                                     ],
+    "agents_spawned":  0
+}

@@ -1,0 +1,34 @@
+{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Repeated basis search and all-index full-component reconstruction passed on recovered B3 partial sums",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate":  "state/pgm_b4.json",
+    "checks":  [
+                   "supplementary/b4-scan-002.json",
+                   "supplementary/b4-finalize-output.txt",
+                   "supplementary/b4-notebook-002-output.txt",
+                   "supplementary/b4-static-002.json"
+               ],
+    "sources":  "Approved lyap-vectors workflow and lyapunov_utils.py previously read; own B3 state and generated scan, basis, extraction, structure and notebook files",
+    "commands":  [
+                     "Pinned Python -I -B scan_b4.py",
+                     "Pinned Python -I -B finalize_b4.py",
+                     "Pinned Python -I -B update_b4_notebook.py",
+                     "Pinned Python -I -B execute_notebook.py",
+                     "Pinned Python -I -B run_static.py b4-static-002.json"
+                 ],
+    "incidents":  [
+                      "Markdown carriage-return escape found after initial execution; repaired source and reran checks.",
+                      "Initial static check identified statement style and invariant dict annotation diagnostics; repaired notebook source, reran fresh kernel and static checks."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem audit",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "unresolved_work":  "B5 analytic coefficient functions, exact local step/base/terminal identities and final theorem",
+    "deadline_utc":  "2026-09-23T16:12:00.406449+00:00"
+}

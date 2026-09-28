@@ -1,0 +1,40 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete_recovery",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Same-certificate polar-aligned PSD decomposition verified, N4/N6 rank pattern reconfirmed, notebook and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/pgm_b3.json",
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-static-004.json"
+                 ],
+    "rejected_trial":  "Last-piece-only correction failed PSD tolerance; evidence supplementary/b3-correction-output.txt",
+    "accepted_trial":  "Polar-aligned supplied square factors, discarding numerical slack eigenvalues \u003c= frozen PSD tolerance; full-coordinate reconstruction residual below 3e-9",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "own_sources":  [
+                        "supplementary/probe_b3_correction.py",
+                        "supplementary/probe_b3_polar.py",
+                        "supplementary/b3_construct.py",
+                        "supplementary/probe_b3.py",
+                        "supplementary/finish_b3.py",
+                        "state/pgm_b2.json",
+                        "supplementary/N6/pgm_b2.json"
+                    ],
+    "commands":  [
+                     "Pinned Python -I -B on own correction and polar probes",
+                     "Pinned Python -I -B supplementary/probe_b3.py for N4/N6",
+                     "Pinned Python -I -B supplementary/finish_b3.py",
+                     "Approved static adapter"
+                 ],
+    "approved_sources_added":  [
+
+                               ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "next_block_not_started":  true
+}

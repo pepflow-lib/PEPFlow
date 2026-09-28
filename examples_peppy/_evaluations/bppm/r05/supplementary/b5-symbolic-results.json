@@ -1,0 +1,74 @@
+{
+  "exact_results": {
+    "Step": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        9,
+        9
+      ],
+      "function_count": 7
+    },
+    "Closed-form coefficient structure": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        9,
+        9
+      ],
+      "function_count": 7
+    },
+    "Initial step": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        6,
+        6
+      ],
+      "function_count": 5
+    },
+    "Initial value V_0": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        6,
+        6
+      ],
+      "function_count": 5
+    },
+    "Initial radius normalization": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        6,
+        6
+      ],
+      "function_count": 5
+    },
+    "Terminal bound": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        7,
+        7
+      ],
+      "function_count": 5
+    }
+  },
+  "proof_checks": {
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "signs": true,
+    "domain": true,
+    "normalization": true
+  },
+  "structure_verified": true,
+  "domain": "alpha>0; R>=0; integer N>=1; integer 0<=k<N"
+}

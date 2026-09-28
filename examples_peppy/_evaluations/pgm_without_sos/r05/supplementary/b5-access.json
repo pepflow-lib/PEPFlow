@@ -1,0 +1,41 @@
+{
+  "current_block": "B5",
+  "consulted_approved_files": [
+    "dispatch.md",
+    "input.md",
+    "worker-protocol.md",
+    "allowlist.json",
+    "settings.json",
+    "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "plugins/pepflow-workflows/references/output-layout.md",
+    "pepflow/parameter.py",
+    "pepflow/expression_manager.py",
+    "pepflow/scalar.py",
+    "pepflow/math_expression.py",
+    "pepflow/ipython_utils.py"
+  ],
+  "consulted_own_files": "Selected setup, notebook, B1-B4 states, own B2/B3/B4 verification helpers and samples, B5 exploratory scripts/results, checklist, and prior own access/handoff records.",
+  "source_hash_reads": "Exact selected certificate inventory, replayed unchanged in the notebook.",
+  "commands": [
+    "Pinned Python -I -B exact rational Schur exploration N=4,6,8",
+    "Pinned Python -I -B symbolic recurrence and square derivation",
+    "Pinned Python -I -B selected B4 replay and closed formula comparison",
+    "Pinned Python -I -B symbolic PEPFlow step/base/terminal/N=1 checks",
+    "Pinned ruff format --isolated own B5 notebook-cell source",
+    "Frozen static adapter b5-static001.json then b5-static002.json",
+    "Pinned Python -I -B -m jupyter nbconvert --execute with private pgm-owned kernel"
+  ],
+  "access_control": "instruction_only",
+  "prohibited_exposure_observed": false,
+  "external_resources": [],
+  "incidents": [
+    "Own workdir typo omitted paper5 in two attempted commands; CreateProcess error 267 before process creation. Corrected to assigned own root; no read occurred.",
+    "Own display code passed a list to MatrixWithNames, producing AttributeError. Changed own code to ndarray.",
+    "Framework labeled MatrixWithNames path converts to float; symbolic closed-coefficient display failed TypeError. Used supported ndarray input with precision=0, without changing framework.",
+    "Own standalone symbolic simplification was slow after early substitution. Interrupted only own sessions and changed own verifier to simplify before recurrence substitution. Exact identities subsequently passed in b5-symbolic005.txt.",
+    "An own stdin bootstrap used __file__ incorrectly and could not import owned_runtime. No alternate source imported. Subsequent bootstrap uses own script path."
+  ],
+  "audit_limit": "No exhaustive OS tracing; claims concern actual observed tools and approved source bootstrap.",
+  "original_deadline_utc": "2026-09-23T23:46:05.983486+00:00"
+}

@@ -1,0 +1,488 @@
+{
+  "attempt_id": "pgm_without_sos_r03",
+  "mathematical_verdict": "PASS",
+  "eligible": true,
+  "access_status": "recovered",
+  "access_reason": "Own host-call records and submitted access/static records show scoped approved-source and own-artifact reads. Routine staging/path-length, lint/type and symbolic-API failures were repaired within the same attempt; a mistyped workdir failed before execution. Preflight and required source checks were rerun successfully. No concrete prohibited-answer exposure or disqualifying generic-source substitution was found in the inspected records. This is an instruction-only, nonexhaustive audit, not certification of all possible reads.",
+  "final_reason": "The submitted finite-product Lyapunov certificate proves h(x_N)-h(x_star)<=L||x_0-x_star||^2/(4N)<=LR^2/(4N) for all integer N>=1. The general step, separate base/terminal and N=1 identities pass independent exact expansion; the supplied sign argument makes the potential nonincreasing.",
+  "final_evidence_refs": [
+    "pgm_without_sos/r03/pgm_example_lyap.ipynb#52b4381f",
+    "pgm_without_sos/r03/pgm_example_lyap.ipynb#bb4ae8e2",
+    "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.json",
+    "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+  ],
+  "submitted_theorem": "For convex L-smooth f and closed proper convex g, proximal gradient with step 1/L satisfies h(x_N)-h(x_star)<=LR^2/(4N) for every integer N>=1 whenever ||x_0-x_star||^2<=R^2.",
+  "target_scope_comparison": "Matches the exact target: prescribed algorithm, last-iterate composite objective gap, arbitrary finite-dimensional real Euclidean space, L>0, R>=0 and every integer N>=1. General L is retained analytically, the radius enters only through the final inequality, and no strengthened structural assumption is used.",
+  "verification_method": "Read only this frozen submission and its approved generic resources. Verified all 181 frozen file hashes. Fresh isolated Python -I -B replayed the submitted setup, full saved-certificate checks, both horizon groupings, actual basis search and all-index reconstruction, with runtime paths redirected into this review directory. Separately transcribed the submitted analytic formulas into an independent SymPy coefficient audit; no missing lemma or coefficient was supplied. Solver runs, full clean-kernel notebook execution and static tools were inspected from frozen logs, not rerun. No browser/rendering/export or outside mathematical source was used.",
+  "workflow_complete": true,
+  "notebook_path": "pgm_without_sos/r03/pgm_example_lyap.ipynb",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The implementation matches proximal gradient with step 1/L, squared-radius initialization and the last composite objective gap. All seven prescribed numerical samples and the rate-comparison plot are present. N=6,7 explicitly retain optimal_inaccurate status as numerical discovery evidence.",
+      "required_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed N=1..7 sweep and rate comparison",
+        "Visible setup, numerical results and plot"
+      ],
+      "passed_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed N=1..7 sweep and rate comparison",
+        "Visible setup, numerical results and plot"
+      ],
+      "checks": [
+        {
+          "name": "Algorithm, assumptions, metric and normalization",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Smooth convex f; convex g; h-stationarity at x_star; x_next=prox_g/L(x-grad f/L); initial radius is R**2; metric h(x_N)-h(x_star).",
+          "evidence_ref": "pgm_without_sos/r03/pgm_setup.py"
+        },
+        {
+          "name": "Prescribed N=1..7 sweep and rate comparison",
+          "status": "PASS",
+          "tolerance_domain": "L=R=1; discovery evidence, not an all-horizon proof",
+          "observed_result": {
+            "samples": [
+              {
+                "N": 1,
+                "opt_value": 0.25000000431910757,
+                "status": "optimal",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 2,
+                "opt_value": 0.12499999766566457,
+                "status": "optimal",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 3,
+                "opt_value": 0.0833333327868809,
+                "status": "optimal",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 4,
+                "opt_value": 0.06249999907262903,
+                "status": "optimal",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 5,
+                "opt_value": 0.04999999951378083,
+                "status": "optimal",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 6,
+                "opt_value": 0.04166666248812821,
+                "status": "optimal_inaccurate",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              },
+              {
+                "N": 7,
+                "opt_value": 0.03571428428419599,
+                "status": "optimal_inaccurate",
+                "solver_options": {
+                  "solver": "CLARABEL"
+                }
+              }
+            ],
+            "maximum_absolute_error_to_1_over_4N": 4.31910757159315e-09
+          },
+          "evidence_ref": "pgm_without_sos/r03/supplementary/sweep.json"
+        },
+        {
+          "name": "Visible setup, numerical results and plot",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Inspected setup cell and saved numerical comparison with embedded image/png output; static and execution evidence present.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#2c18bea7"
+        }
+      ],
+      "evidence_refs": [
+        "pgm_without_sos/r03/state/pgm_b1.json",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#d13b250e",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#2c18bea7"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Complete saved certificates at N=4 and N=6 were replayed without solving again. The identity, signs, PSD and S reconstruction pass the frozen tolerances. Initial multiplier/S formula search is documented; global analytic full-PEP proof is explicitly not claimed.",
+      "required_checks": [
+        "Certificate coherence and complete scalar identity",
+        "N=4 numerical measurements",
+        "N=6 numerical measurements",
+        "Initial closed-form search and notebook evidence"
+      ],
+      "passed_checks": [
+        "Certificate coherence and complete scalar identity",
+        "N=4 numerical measurements",
+        "N=6 numerical measurements",
+        "Initial closed-form search and notebook evidence"
+      ],
+      "checks": [
+        {
+          "name": "Certificate coherence and complete scalar identity",
+          "status": "PASS",
+          "tolerance_domain": "identity atol=1e-5, rtol=0; dual/PSD tolerance=1e-6; S reconstruction atol=1e-4, rtol=1e-5",
+          "observed_result": "Fresh replay verified certificate hashes, all named constraint metadata and duals, coordinate ordering, normalization, Gram/function/offset identity, and decomposition against the same certificate.",
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.txt"
+        },
+        {
+          "name": "N=4 numerical measurements",
+          "status": "PASS",
+          "tolerance_domain": "Saved measurements inspected; certificate inequalities also freshly replayed",
+          "observed_result": {
+            "gram_max_abs": 5.288635973599298e-09,
+            "function_max_abs": 1.619709921740764e-08,
+            "offset_abs": 3.165652122383289e-09,
+            "S_reconstruction_max_abs": 5.551115123125783e-16,
+            "dense_relaxed_gap": 2.33833112595061e-10,
+            "minimum_scalar_dual": 0.06250000200444804,
+            "minimum_S_eigenvalue": 2.198704578845148e-09
+          },
+          "evidence_ref": "pgm_without_sos/r03/supplementary/b2-check-output.txt"
+        },
+        {
+          "name": "N=6 numerical measurements",
+          "status": "PASS",
+          "tolerance_domain": "Saved measurements inspected; selected sparse solve optimal; dense N=6 optimal_inaccurate disclosed",
+          "observed_result": {
+            "gram_max_abs": 1.3405496712692866e-09,
+            "function_max_abs": 3.5555411947996163e-09,
+            "offset_abs": 2.502414109262219e-10,
+            "S_reconstruction_max_abs": 8.881784197001252e-16,
+            "dense_relaxed_gap": 4.33282452971806e-09,
+            "minimum_scalar_dual": 0.04166666707119415,
+            "minimum_S_eigenvalue": 4.284221854177548e-10
+          },
+          "evidence_ref": "pgm_without_sos/r03/supplementary/b2-N6-check-output.txt"
+        },
+        {
+          "name": "Initial closed-form search and notebook evidence",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Visible forward cumulative multiplier candidate; N=4 multiplier error 3.9466171285473806e-6 and S error 3.135478371496525e-6; unresolved global analytic PSD status preserved.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#39777061"
+        }
+      ],
+      "evidence_refs": [
+        "pgm_without_sos/r03/state/pgm_b2.json",
+        "pgm_without_sos/r03/supplementary/pgm_b2_N6.json",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.txt",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#39777061"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The same reverse-LDL/latest-gradient assignment gives rank four on all retained interior indices at N=4 and N=6. Endpoint exclusions are fixed at one on each end. All residual families and S pieces are covered, with nonpositive residual and subtracted PSD sign conventions.",
+      "required_checks": [
+        "Decomposition, coverage and every increment",
+        "Cross-horizon rank and credible singular values",
+        "Visible partial-sum construction"
+      ],
+      "passed_checks": [
+        "Decomposition, coverage and every increment",
+        "Cross-horizon rank and credible singular values",
+        "Visible partial-sum construction"
+      ],
+      "checks": [
+        {
+          "name": "Decomposition, coverage and every increment",
+          "status": "PASS",
+          "tolerance_domain": "coverage/increments atol=1e-5, rtol=0; decomposition atol=1e-4, rtol=1e-5",
+          "observed_result": "Fresh execution rechecked all decomposition pieces PSD at tolerance 1e-6, coverage and each increment in Gram, function and offset components. N=4 coverage=5.551115123125783e-17; N=6 coverage=7.632783294297951e-17; S-piece reconstruction=1.1102230246251565e-16 at both horizons.",
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.txt"
+        },
+        {
+          "name": "Cross-horizon rank and credible singular values",
+          "status": "PASS",
+          "tolerance_domain": "Absolute rank tolerance=1e-4, no coordinate scaling; fresh assertion excludes singular values between 1e-5 and 1e-3 on retained indices",
+          "observed_result": {
+            "rank_profiles": {
+              "4": [
+                0,
+                4,
+                4,
+                4,
+                1
+              ],
+              "6": [
+                0,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+              ]
+            },
+            "recipe": "reverse_ldl_latest_gradient_step",
+            "exclusions": {
+              "left": 1,
+              "right": 1
+            },
+            "retained_counts": {
+              "4": 3,
+              "6": 5
+            },
+            "boundary_leftovers": []
+          },
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+        },
+        {
+          "name": "Visible partial-sum construction",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Notebook visibly constructs weighted residuals, S pieces, assignments, cumulative sums and all-component checks; saved rank-search evidence includes singular spectra and unsuccessful initial recipe history.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#3f7d5d27"
+        }
+      ],
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#3f7d5d27",
+        "pgm_without_sos/r03/supplementary/rank_search.json",
+        "pgm_without_sos/r03/supplementary/b3-initial-trials.json",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh replay of the actual candidate scan, sparse basis search, symmetric coefficient extraction and full-potential assembly passed for every required index k=0,...,4, including both endpoints.",
+      "required_checks": [
+        "Actual basis search and independence",
+        "Symmetric quadratic reconstruction at all required indices",
+        "Full expression including function values and offsets",
+        "Visible assembly and endpoints"
+      ],
+      "passed_checks": [
+        "Actual basis search and independence",
+        "Symmetric quadratic reconstruction at all required indices",
+        "Full expression including function values and offsets",
+        "Visible assembly and endpoints"
+      ],
+      "checks": [
+        {
+          "name": "Actual basis search and independence",
+          "status": "PASS",
+          "tolerance_domain": "basis zero_tol=1e-6, indep_tol=1e-7, span_tol=1e-5; exploratory column scan atol=rtol=1e-4",
+          "observed_result": "Fresh replay finds four independent interior vectors with template d_0,d_k,grad f(x_k)-grad f(x_star),grad f(x_star); empty initial basis and one-vector terminal basis. Search outputs retain alternative sparse bases and zero counts.",
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.txt"
+        },
+        {
+          "name": "Symmetric quadratic reconstruction at all required indices",
+          "status": "PASS",
+          "tolerance_domain": "Frobenius residual <=1e-5*max(1, target Frobenius norm)",
+          "observed_result": {
+            "0": 0.0,
+            "1": 3.815820970395539e-09,
+            "2": 5.664479829792867e-09,
+            "3": 6.784154729520922e-09,
+            "4": 2.2564463722019296e-08
+          },
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+        },
+        {
+          "name": "Full expression including function values and offsets",
+          "status": "PASS",
+          "tolerance_domain": "Fresh residuals also satisfy the stricter frozen Lyapunov component atol=rtol=1e-5; submitted full-assembly assertion used atol=1e-4, rtol=1e-5",
+          "observed_result": {
+            "0": {
+              "gram": 0.0,
+              "function": 0.0,
+              "offset": 0.0
+            },
+            "1": {
+              "gram": 1.4050423168682213e-09,
+              "function": 1.942890293094024e-16,
+              "offset": 0.0
+            },
+            "2": {
+              "gram": 1.6381470763215944e-09,
+              "function": 3.2394197324592255e-09,
+              "offset": 0.0
+            },
+            "3": {
+              "gram": 1.6217279949493069e-09,
+              "function": 6.478839353896149e-09,
+              "offset": 0.0
+            },
+            "4": {
+              "gram": 5.288635973599298e-09,
+              "function": 9.718259308399979e-09,
+              "offset": 0.0
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+        },
+        {
+          "name": "Visible assembly and endpoints",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Basis, coefficient matrices and V_k_structure assembly are visible notebook code; all five indices have stored outputs and fresh replay results.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#ccc7c313"
+        }
+      ],
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#555014d6",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#8a709058",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#566026a9",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#6fb2ff99",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#ccc7c313",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The submitted explicit finite-product potential and local SOS identities establish the exact rate for every N>=1. Independent exact expansion verifies the general step, base, terminal and N=1 identities; the submitted positive-denominator argument and residual signs imply decrease and the exact terminal normalization.",
+      "required_checks": [
+        "Defined coefficients and transfer-product identity",
+        "Generic step, base, terminal and small-horizon identities",
+        "Signs, domains and decrease",
+        "Initial and terminal links and exact target",
+        "Self-contained notebook, execution, static checks and checklist"
+      ],
+      "passed_checks": [
+        "Defined coefficients and transfer-product identity",
+        "Generic step, base, terminal and small-horizon identities",
+        "Signs, domains and decrease",
+        "Initial and terminal links and exact target",
+        "Self-contained notebook, execution, static checks and checklist"
+      ],
+      "checks": [
+        {
+          "name": "Defined coefficients and transfer-product identity",
+          "status": "PASS",
+          "tolerance_domain": "Symbolic k,N and U; reparameterization m=2N-k only",
+          "observed_result": "Every coefficient is defined by the stated 2x2 matrix product; empty product gives T_(N-1)=N-1, and the j=0 first row gives T_0=0. Fresh symbolic ratio-law check is exactly zero.",
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.json"
+        },
+        {
+          "name": "Generic step, base, terminal and small-horizon identities",
+          "status": "PASS",
+          "tolerance_domain": "Exact rational symbolic arithmetic; 55 constant/linear/quadratic derivative checks per identity, with symbolic N,L,U and generic k where applicable",
+          "observed_result": {
+            "generic_step": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "initial_N_ge_2": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "terminal_N_ge_2": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "N_eq_1": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "matrix_product_ratio": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "a_difference": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            },
+            "b_difference": {
+              "coefficient_count": 55,
+              "nonzero_coefficients": [],
+              "passed": true
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.json"
+        },
+        {
+          "name": "Signs, domains and decrease",
+          "status": "PASS",
+          "tolerance_domain": "N>=2 and 0<=k<=N-2 for local coefficients; N=1 separately; L>0",
+          "observed_result": "Inspected submitted argument: for j>=0 and m_j>1 the transfer first row is nonnegative and second row strictly positive. Thus v_k>0, T_k>=0; H,D,A,B>0. All interpolation weights are nonnegative and Q_k,Q_end are sums of nonnegative squares. Nonpositive interpolation residuals therefore give V_(k+1)<=V_k.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#bb4ae8e2"
+        },
+        {
+          "name": "Initial and terminal links and exact target",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "V_0=0, V_N=h(x_N)-h(x_star)-L||x_0-x_star||^2/(4N). Hence V_N<=0 and the initial radius yields LR^2/(4N). No g(x_0) evaluation or division by R is required; N=2 has no interior step and both boundary identities apply.",
+          "evidence_ref": "pgm_without_sos/r03/pgm_example_lyap.ipynb#52b4381f"
+        },
+        {
+          "name": "Self-contained notebook, execution, static checks and checklist",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Inspected all 20 executed code-cell counts and absence of stored errors, proof-critical source and saved exact outputs; final clean-kernel nbconvert execution log and source_ruff/source_ty return codes 0. Final edits were confined to Markdown by final_markdown_audit.py; checklist hash equals frozen notebook. Rendering is not a gate.",
+          "evidence_ref": "pgm_without_sos/r03/supplementary/pgm_example_lyap_checklist.md"
+        }
+      ],
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#52b4381f",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#bb4ae8e2",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#a895ac2f",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#f50faaf0",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#b600eb98",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#9542bab3",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#f8789bdd",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.py",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.json",
+        "pgm_without_sos/r03/supplementary/b5-static-001.json",
+        "pgm_without_sos/r03/supplementary/b5-final-notebook-output.txt"
+      ],
+      "failure_code": null
+    }
+  ],
+  "review_started_at": "2026-09-23T23:58:30.707771+00:00",
+  "review_stopped_at": "2026-09-24T00:07:26.594518+00:00",
+  "limitations": [
+    "N=6 and N=7 discovery sweep and dense N=6 carry optimal_inaccurate statuses; selected sparse certificates are optimal and pass numerical checks. These observations do not substitute for the analytic proof.",
+    "The B4 submitted full-expression assertion used 1e-4 absolute tolerance rather than the frozen 1e-5 component tolerance; every actual replayed residual passes the stricter frozen threshold.",
+    "Full notebook execution and static-check success were inspected from saved evidence rather than independently rerun; selected mathematical cells were freshly replayed.",
+    "Instruction-only isolation and available host records do not provide exhaustive OS-level access tracing.",
+    "The first independent symbolic-audit implementation was interrupted for inefficient expansion; the final coefficient-based audit completed exactly. No submitted mathematics was changed."
+  ],
+  "instructions": "Review completed against the frozen schema and rubric; exactly B1 through B5 are assessed. Original submission and approved sources were not modified."
+}

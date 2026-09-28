@@ -1,0 +1,31 @@
+{
+  "current_block": "B4",
+  "completion_status": "complete",
+  "next_block": "B5",
+  "entry_exit_reason": "Interpretable basis and full-component reconstruction verified at every index; notebook/source checks passed.",
+  "operational_status": "awaiting_same_session_continuation",
+  "maximum_component_error": 2.2138935129589754e-10,
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "coefficient_formula_status": "candidate",
+  "evidence": [
+    "b4-static-002.json",
+    "b4-notebook-execution.json",
+    "b4-reconstruction-002-output.txt"
+  ],
+  "incidents": [
+    "Corrected generated-script string escape syntax before execution.",
+    "One exec launch rejected invalid cwd due to a transcription typo; no command ran or content was read.",
+    "Candidate kernel-value coefficient sign failed its numerical comparison; corrected to -1/(alpha*N) and reran all checks.",
+    "Split three semicolon-separated statements after Ruff diagnostics; final static checks passed."
+  ],
+  "consulted_sources_additional": [
+    "approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+    "approved/pepflow/lyapunov_utils.py",
+    "own B3 sources, certificate, rank evidence and generated B4 code"
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "unresolved_work": "B5 exact step, base, boundary and normalization proof, final notebook verification."
+}

@@ -1,0 +1,50 @@
+﻿{
+    "block":  "B1",
+    "access_control":  "instruction_only",
+    "direct_approved_reads":  [
+                                  "supplementary/approved/dispatch.md",
+                                  "supplementary/approved/input.md",
+                                  "supplementary/approved/worker-protocol.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                  "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                  "supplementary/approved/pepflow/operator.py",
+                                  "supplementary/approved/pepflow/__init__.py",
+                                  "supplementary/approved/pepflow/pep.py",
+                                  "supplementary/approved/pepflow/pep_runner.py",
+                                  "supplementary/approved/pepflow/solver.py",
+                                  "supplementary/approved/pepflow/vector.py"
+                              ],
+    "generated_sources":  [
+                              "dual_feg_setup.py",
+                              "dual_feg_example_lyap.ipynb",
+                              "supplementary/run_b1.py",
+                              "supplementary/notebook_b1.py",
+                              "supplementary/helpers/runtime.py"
+                          ],
+    "command_evidence":  [
+                             "supplementary/b1-sweep-output.txt",
+                             "supplementary/b1-notebook-output.txt",
+                             "supplementary/b1-static-001.json",
+                             "supplementary/preflight-002.json",
+                             "supplementary/b1-static-002.json"
+                         ],
+    "incident":  {
+                     "classification":  "ordinary_operational_error",
+                     "failure":  "Windows path-length failure copying broad supplementary helper root",
+                     "repair":  "Narrow helper root to supplementary/helpers; probe helper path supplementary/helpers/runtime.py",
+                     "resolution":  "Generic preflight and original notebook/setup Ruff and ty checks passed",
+                     "source_changes":  "None to frozen adapter/framework",
+                     "access_observation":  "Copied sources in failure manifest were approved framework or own generated files; no prohibited content observed"
+                 },
+    "prohibited_sources_observed":  false,
+    "observability_limit":  "Instruction-only isolation and resolution probes do not exhaustively trace reads",
+    "notebook_execution":  "passed",
+    "mathematical_generation":  "B1 only",
+    "next_block":  "B2"
+}

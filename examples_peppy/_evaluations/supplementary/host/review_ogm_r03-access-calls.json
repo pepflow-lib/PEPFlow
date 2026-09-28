@@ -1,0 +1,155 @@
+[
+  {
+    "timestamp": "2026-09-24T00:03:56.000Z",
+    "line": 11,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_Ucu51UdWVa1iOb2FcabUvFiF",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/instructions.md'\",\"max_output_tokens\":6000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:03.004Z",
+    "line": 15,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_A4ir5jYAs9asO751oD2zrhHP",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-ChildItem -Force -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03'; Get-ChildItem -Force -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03'\",\"max_output_tokens\":5000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:11.627Z",
+    "line": 19,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_Q2y26YgRuIzeq8ys7ai25NvS",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/input.md','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/review-schema.json','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/settings.json'\",\"max_output_tokens\":11000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:19.941Z",
+    "line": 23,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_d4P0r5DUghJ4bn6coDJYnXUf",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/rubric.md','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/clean-room.md','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/evaluation-operations.md'\",\"max_output_tokens\":20000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:28.839Z",
+    "line": 28,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_H0CVwXVpFJI3OWivr3wfeQQQ",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/approved/plugins/pepflow-workflows/skills' -Filter SKILL.md -Recurse | ForEach-Object { Get-Content -LiteralPath $_.FullName }; Get-Content -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/approved/plugins/pepflow-workflows/optional/localize-n-summation-proof/SKILL.md'\",\"max_output_tokens\":15000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:35.761Z",
+    "line": 32,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_IXjronQUjiaZ7XueeP4oufDc",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/approved/plugins/pepflow-workflows/skills' -Filter workflow.md -Recurse | ForEach-Object { Get-Content -LiteralPath $_.FullName }\",\"max_output_tokens\":26000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:43.990Z",
+    "line": 37,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_z7GPDkIgTV9uVdAU3pVtmlpP",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$n = Get-Content -Raw -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/ogm_example_lyap.ipynb' | ConvertFrom-Json; foreach ($c in $n.cells) { Write-Output ('CELL ' + $c.id + ' ' + $c.cell_type); Write-Output ($c.source -join '') }\",\"max_output_tokens\":25000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:04:57.902Z",
+    "line": 42,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_CxJZyAu8peGQNyS9TutkYxER",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$n = Get-Content -Raw -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/ogm_example_lyap.ipynb' | ConvertFrom-Json; $start=$false; foreach ($c in $n.cells) {if ($c.id -eq '87114f23') {$start=$true}; if ($c.id -eq '67ee6bb7') {$start=$false}; if($start){Write-Output ('CELL '+$c.id); Write-Output ($c.source -join '')}}; Get-Content -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/final-audit.json'\",\"max_output_tokens\":10000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:05:05.836Z",
+    "line": 47,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_zbFks8bHuglmplJLuukbUrfL",
+    "name": "send_message",
+    "arguments": "{\"target\":\"/root\",\"message\":\"gAAAAABqtGkxosXCDqzdT1Aq53scTYlD4HRVaLiAavXQX1I-3u1n41neVenc7Mjg6DaGHJHslXtKdqVdBTybGahSwfix0ZsKm_yrcyN8XyH9AxongKISz4PPvpEo9YeUyoAkPHU8tUqIifymQjYEE8a-FXsKDky8vVe9ZUJjYfij4YBUg6li4ARrZcZClsDdg0rLG3IsNshg6odjz5OsGFHdL6tslq5LWkx0vGPMQ4rKEA_E7zZVaCBKbpXs03YiyIJbKvUDzG-o0RVubIPX-WcVysDYSm2w7AUcFcNaxpt0lXHPx2wrkrmta8h8dxAo-c0lHVJAjQVtPAUpcRSczh3xa_B1RK1eebMU52vZOeCCL0DAcWHNxXNx3BU6y0twepIguSGLlH0KWXjtVZ_gD8NqaE9HPlIlBwYEeXZhv_vf_TPtO_AKh8Q=\"}"
+  },
+  {
+    "timestamp": "2026-09-24T00:05:16.031Z",
+    "line": 52,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_7f3b7q6rZqLa66cp6ZTpMbNr",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/preflight-access-record.json','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/b1-handoff-access.json','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/b5-final-nbconvert-output-002.txt','examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/b5-static-002.json'\",\"max_output_tokens\":5000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:05:44.723Z",
+    "line": 57,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_RnUxv7czQaDN7dkgJZFqcUkB",
+    "name": "exec",
+    "arguments": "text(await tools.apply_patch(\"*** Begin Patch\\n*** Add File: C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/validation/replay.py\\n+import os, sys, json, hashlib, contextlib\\n+from pathlib import Path\\n+root = Path(__file__).resolve().parent\\n+review = root.parent\\n+settings = json.loads((review/'settings.json').read_text())\\n+original = Path(settings['original_submission'])\\n+for key in ['TEMP','TMP','TMPDIR','MPLCONFIGDIR','XDG_CACHE_HOME','JUPYTER_CONFIG_DIR','JUPYTER_RUNTIME_DIR','IPYTHONDIR']:\\n+    dest = root/'runtime'/key\\n+    dest.mkdir(parents=True, exist_ok=True)\\n+    os.environ[key] = str(dest)\\n+sys.path.insert(0,str(original/'supplementary'/'approved'))\\n+nb=json.loads((original/'ogm_example_lyap.ipynb').read_text(encoding='utf-8'))\\n+env={'notebook_dir':original,'Path':Path,'json':json,'sys':sys}\\n+results={'hash_checks':{},'executed_cells':[]}\\n+for name, expected in settings['submission_hashes'].items():\\n+    actual=hashlib.sha256((original/name).read_bytes()).hexdigest()\\n+    assert actual == expected, name\\n+    results['hash_checks'][name]=True\\n+with (root/'replay-output.txt').open('w',encoding='utf-8') as log, contextlib.redirect_stdout(log):\\n+    for cell in nb['cells']:\\n+        if cell['cell_type']!='code' or cell['id'] in ['66681432','a41ab4a7']:\\n+            continue\\n+        print('CELL',cell['id'],flush=True)\\n+        exec(compile(''.join(cell['source']),cell['id'],'exec'),env)\\n+        results['executed_cells'].append(cell['id'])\\n+    results['symbolic']=env['symbolic_results']\\n+    results['b2_N4']=env['revalidate'](env['certificate'])[-1]\\n+    results['b2_N6']=env['revalidate'](env['certificate6'])[-1]\\n+    results['b3']=[env['selected_observation'],env['other_observation']]\\n+    results['b4_quadratic_residuals']=env['coefficient_residuals']\\n+    results['b4_components']=env['component_residuals']\\n+    results['formula_comparisons']=env['formula_comparisons']\\n+results['all_replayed_checks_passed']=True\\n+(root/'replay-results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')\\n+print('All replayed checks passed;',len(results['executed_cells']),'cells.')\\n*** End Patch\"));\ntext(await tools.exec_command({cmd:\"& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B replay.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/validation\",\"yield_time_ms\":1000,\"max_output_tokens\":1000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:06:05.535Z",
+    "line": 63,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_NHCSVthjZ3K9vsbMDTvRG6u1",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03'; $a=Get-Content -Raw -LiteralPath \\\"$p/own-generation-host-access-calls.json\\\" | ConvertFrom-Json; $a | Get-Member -MemberType NoteProperty; $a | Select-Object -First 1 | ConvertTo-Json -Depth 2\",\"max_output_tokens\":2000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:06:16.529Z",
+    "line": 68,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_nAvXb6zWrZitpjSmSTg8UnBx",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03'; $a=Get-Content -Raw -LiteralPath \\\"$p/own-generation-host-access-calls.json\\\" | ConvertFrom-Json; foreach($r in $a){if($r.arguments -match 'Get-Content|\\\\brg\\\\b|Get-ChildItem|read_text|exec_command') { $s=$r.arguments -replace 'C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03','OWN'; if($s.Length -gt 1800){$s=$s.Substring(0,1800)}; Write-Output ($r.line.ToString()+': '+$s)}}\",\"max_output_tokens\":8000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:06:26.290Z",
+    "line": 73,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_lARAFChkiYLOrCCv1hAHQCDt",
+    "name": "exec",
+    "arguments": "text(await tools.write_stdin({session_id:66864,chars:\"\",\"yield_time_ms\":1000,\"max_output_tokens\":1000}));\ntext(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03'; foreach($f in @('state/ogm_b2.json','supplementary/b2-N6-certificate.json')){$j=Get-Content -Raw -LiteralPath \\\"$p/$f\\\" | ConvertFrom-Json; $j.numerical_checks | ConvertTo-Json -Depth 6}; Get-Content -LiteralPath \\\"$p/supplementary/ogm_example_lyap_checklist.md\\\"\",\"max_output_tokens\":3500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:06:40.939Z",
+    "line": 78,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_3DmsVsXkCFFLaAUSRqekJ10n",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/validation'; $r=Get-Content -Raw -LiteralPath \\\"$p/replay-results.json\\\" | ConvertFrom-Json; $r | Select-Object b2_N4,b2_N6,b4_quadratic_residuals,b4_components | ConvertTo-Json -Depth 5; $r.b3 | Select-Object N,rank_profile,coverage_max_abs,rank_credible | ConvertTo-Json -Depth 4; $p2='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03/supplementary/approved/plugins/pepflow-workflows/skills'; rg -n '1e-|tolerance|rtol|atol' \\\"$p2/lyap-vectors/references/workflow.md\\\" \\\"$p2/lyap-define/references/workflow.md\\\" \\\"$p2/pep-full-proof/references/workflow.md\\\"\",\"max_output_tokens\":5000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:06:55.422Z",
+    "line": 83,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_I2Ah7eBhNDjipd2xXdRP425q",
+    "name": "exec",
+    "arguments": "text(await tools.clock__curr_time({}));\ntext(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/ogm/r03'; $s=Get-Content -Raw \\\"$p/supplementary/b1_sweep.json\\\" | ConvertFrom-Json; $s | Select-Object N,opt_value,theta_N,solve_attempts | ConvertTo-Json -Depth 4; $j=Get-Content -Raw \\\"$p/supplementary/b5-static-002.json\\\" | ConvertFrom-Json; $j.commands | Where-Object {$_.label -in @('source_ruff','source_ty')} | Select-Object label,returncode,stdout | ConvertTo-Json; $n=Get-Content -Raw \\\"$p/ogm_example_lyap.ipynb\\\" | ConvertFrom-Json; @($n.cells | Where-Object {$_.cell_type -eq 'code'}) | Select-Object id,execution_count | ConvertTo-Json\",\"max_output_tokens\":2500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:08:28.036Z",
+    "line": 88,
+    "session_id": "01a0d0b9-bad4-71a3-a711-c1184c772de9",
+    "turn_id": "01a0d0b9-bc5b-78f2-9140-c1f51195798c",
+    "call_id": "call_UiylgCCwN5EfYjSOXRy3ZXtq",
+    "name": "exec",
+    "arguments": "text(await tools.apply_patch(\"*** Begin Patch\\n*** Add File: C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/validation/write_review.py\\n+import json, math\\n+from pathlib import Path\\n+from datetime import datetime, timezone\\n+root=Path(__file__).resolve().parent\\n+review=root.parent\\n+settings=json.loads((review/'settings.json').read_text())\\n+original=Path(settings['original_submission'])\\n+replay=json.loads((root/'replay-results.json').read_text())\\n+nb=json.loads((original/'ogm_example_lyap.ipynb').read_text(encoding='utf-8'))\\n+prefix='ogm/r03/'\\n+nref=prefix+'ogm_example_lyap.ipynb'\\n+rr='supplementary/evaluation/ogm_r03/validation/replay-results.json'\\n+def read(p): return json.loads((original/p).read_text(encoding='utf-8-sig'))\\n+def ck(name,result,ref,tol=None): return dict(name=name,status='PASS',tolerance_domain=tol,observed_result=result,evidence_ref=ref)\\n+def block(k,reason,checks,refs):\\n+    return dict(block_id='B'+str(k),reached=True,gate_verdict='PASS',mathematical_checks_passed=True,delivery_checks_passed=True,reason=reason,required_checks=[c['name'] for c in checks],passed_checks=[c['name'] for c in checks],checks=checks,evidence_refs=refs,failure_code=None)\\n+sweep=read('supplementary/b1_sweep.json')\\n+assert [r['N'] for r in sweep]==list(range(1,8))\\n+rows=[]\\n+for r in sweep:\\n+    t=0\\n+    for k in range(r['N']+1): t=(1+math.sqrt(1+(8 if k==r['N'] else 4)*t*t))/2\\n+    candidate=1/(2*t*t)\\n+    assert r['solve_attempts'][-1]['status']=='optimal'\\n+    assert abs(r['opt_value']-candidate)<1e-5\\n+    rows.append(dict(N=r['N'],status='optimal',pep_value=r['opt_value'],candidate=candidate,absolute_error=abs(r['opt_value']-candidate)))\\n+codes=[c for c in nb['cells'] if c['cell_type']=='code']\\n+assert [c['execution_count'] for c in codes]==list(range(1,28))\\n+assert not any(o['output_type']=='error' for c in codes for o in c['outputs'])\\n+plot=next(c for c in codes if c['id']=='a41ab4a7')\\n+assert any('image/png' in o.get('data',{}) for o in plot['outputs'])\\n+static=read('supplementary/b5-static-002.json')\\n+static_results=[{k:c[k] for k in ('label','returncode','stdout')} for c in static['commands'] if c['label'] in ('source_ruff','source_ty')]\\n+assert len(static_results)==2 and all(c['returncode']==0 for c in static_results)\\n+cert4=read('state/ogm_b2.json'); cert6=read('supplementary/b2-N6-certificate.json')\\n+b1=block(1,'The setup and visible notebook implement the supplied OGM, including the special terminal recurrence and R squared radius. All seven saved solves support the exact candidate rate; their status and comparisons were inspected and recomputed without new solves.',[\\n+ck('Algorithm, assumptions, metric and normalization','Matched x/y/z updates, stationary minimizer, L>0, R>=0, metric f(x_N)-f_star and squared radius.',nref+'#7b2ca6e8'),\\n+ck('Prescribed N=1..7 sweep and candidate comparison',rows,prefix+'supplementary/b1_sweep.json','absolute rate error < 1e-5 at L=R=1'),\\n+ck('Visible numerical evidence and saved plot','Printed values and embedded PNG present; plot not rendered in review.',nref+'#a41ab4a7')],[prefix+'ogm_setup.py',prefix+'state/ogm_b1.json',nref])\\n+b2=block(2,'Fresh reconstruction of both coherent certificates passes in Gram, function and constant coordinates; dual signs, PSD, S decomposition, inventory and source hashes pass. Dense/relaxed agreement and initial formula search are inspectable.',[\\n+ck('Complete numerical certificates and dual signs',{'N4':replay['b2_N4'],'N6':replay['b2_N6'],'certificate_id_N4':cert4['certificate_id'],'certificate_id_N6':cert6['certificate_id']},rr,cert4['numerical_checks']['tolerances']),\\n+ck('Dense/relaxed agreement and S reconstruction',{'N4':cert4['numerical_checks']['residuals'],'N6':cert6['numerical_checks']['residuals']},prefix+'state/ogm_b2.json','gap <= 1e-5; S reconstruction atol=1e-4, rtol=1e-5; saved values inspected, decomposition freshly replayed'),\\n+ck('Initial closed-form search','Notebook displays star/forward multiplier and rank-one square candidates and compares with saved certificate; B5 later proves them.',nref+'#fe4c67ab')],[rr,prefix+'state/ogm_b2.json',prefix+'supplementary/b2-N6-certificate.json',nref+'#87114f23'])\\n+b3=block(3,'Fresh partial-sum replay covers every retained interpolation term and the complete PSD block, with terminal interpolation/S and initial radius explicitly reserved. Fixed exclusions (2,0) give rank 4 at horizons 4 and 6 with three and five retained indices.',[\\n+ck('Coverage, increments, rank and singular-value evidence',replay['b3'],rr,'coverage <= 1e-5; rank absolute cutoff 1e-4, no rescaling; no singular values in (1e-5,1e-3)'),\\n+ck('Boundary leftovers and decrease direction','Star and forward-pair nonpositive residuals have positive multipliers; terminal star residual, whole S and radius normalization retained explicitly.',nref+'#d081de56')],[rr,nref+'#d081de56',nref+'#437759cc',prefix+'supplementary/rank_search.json'])\\n+b4=block(4,'Candidate scans and sparse searches were replayed. Independent adopted bases of sizes 0,3,4,4,4 reconstruct every required k=0..4, including full function and offset terms.',[\\n+ck('Candidate scan, actual sparse search and independent bases','Executed cells 6ab0ed7b, bd41d035 and 22d4d24f; rank equals basis size at every index.',rr,'independence 1e-7; zero 1e-6; span 1e-5'),\\n+ck('Quadratic and complete-potential reconstruction',{'quadratic_frobenius_residuals':replay['b4_quadratic_residuals'],'component_residuals':replay['b4_components']},rr,'quadratic <= 1e-5*max(1,Frobenius norm); component atol=1e-4, rtol=1e-5')],[rr,nref+'#bd41d035',nref+'#19cec219',prefix+'state/ogm_b4.json'])\\n+b5=block(5,'The submitted potential, exact symbolic identities and elementary domain/sign argument establish the required rate for every N>=1 and general L,R. All proof-critical code is visible; final saved clean-kernel and static evidence is complete.',[\\n+ck('Generic step and coefficient derivation',replay['symbolic']['step'],nref+'#236274bc','exact symbolic zero in all scalar coordinates; t=theta_k, u=theta_(k+1), rho_(k+1)(u-1)=t^2 includes terminal case'),\\n+ck('Base, reduced basis, terminal, radius and N=1 identities',replay['symbolic'],rr,'exact symbolic zero, no numerical horizon substitution except genuine N=1 case'),\\n+ck('Signs, domains and telescoping implication','theta_0=1; theta_k>1 for k>=1; T>=2; L>0. Positive local/terminal multipliers and nonpositive interpolation residuals yield V_N<=V_0=0. Terminal square has negative sign; radius residual yields L R^2/(2 T^2). No division by R; R=0 included.',nref+'#e5632836'),\\n+ck('Saved clean-kernel execution and static checks',{'code_cells':27,'counts':'1..27','error_outputs':0,'static':static_results},prefix+'supplementary/b5-static-002.json','Saved notebook and nbconvert log inspected; review freshly replayed 25 nonplot code cells, not a new Jupyter run.'),\\n+ck('Self-contained notebook and completion checklist','All 12 checklist items supported by visible definitions, formulas, exact checks and saved outputs; presentation override applies.',prefix+'supplementary/ogm_example_lyap_checklist.md')],[nref+'#4da4fe81',nref+'#236274bc',nref+'#4c38ad14',nref+'#e5632836',rr,prefix+'supplementary/b5-final-nbconvert-output-002.txt'])\\n+result=dict(attempt_id='ogm_r03',mathematical_verdict='PASS',eligible=True,access_status='recovered',access_reason='Inspected available own-generation access calls, preflight and handoff evidence. Observed incidents were attempt-local staging/path-length, command-argument, lint/type and symbolic-context errors, followed by successful checks. No concrete prohibited read or content exposure was found in inspected evidence. Instruction-only controls do not establish exhaustive read isolation.',final_reason='The frozen submission proves f(x_N)-f(x_star) <= L R^2/(2 theta_N^2) for the exact supplied OGM at every integer N>=1. Fresh replay confirms its generic step, base, terminal, normalization and N=1 identities. The submitted sign/domain reasoning gives the correct decrease and terminal upper-bound direction.',final_evidence_refs=[nref+'#4da4fe81',nref+'#b533ccbf',nref+'#e5632836',rr],submitted_theorem='For smooth convex f, L>0, R>=0, N>=1, stationary x_star, z_0=x_0 and ||x_0-x_star||^2<=R^2, the stated terminal-modified OGM satisfies f(x_N)-f(x_star)<=L R^2/(2 theta_N^2).',target_scope_comparison='Exact match of assumptions, update, output iterate, finite-horizon constant and special terminal recurrence. General parameters are retained symbolically; R=0 and N=1 are covered.',verification_method='Inspected frozen source, notebook text/output, state, checklist, solver logs and access evidence. Verified every frozen submission hash. Fresh Python -I -B process replayed 25 submitted nonplot notebook code cells using only this attempt approved package root; rechecked saved certificates, partial sums, searches, reconstruction, coefficient derivation and exact identities. No fresh optimization solves, browser, rendering, export, or new Jupyter execution. Review script keeps mutable cache/temp state in validation and reads the frozen submission without modifying it.',workflow_complete=True,notebook_path=nref,blocks=[b1,b2,b3,b4,b5],review_started_at=settings['review_started_at'],review_stopped_at=datetime.now(timezone.utc).isoformat(),limitations=['Saved solve statuses and clean-kernel execution were inspected, not independently re-solved/relaunched.','Access review uses available logs and instruction-only isolation; no exhaustive OS read tracing.','Rendering and visual review omitted under the frozen presentation override.'],instructions='Exactly B1-B5 assessed from frozen submitted evidence. No missing lemma or coefficient supplied; original submission unchanged.')\\n+(root/'delivery-audit.json').write_text(json.dumps(dict(sweep=rows,saved_static=static_results,saved_code_count=len(codes),frozen_hashes_verified=len(replay['hash_checks'])),indent=2))\\n+(review/'review.json').write_text(json.dumps(result,indent=2),encoding='utf-8')\\n+assert [b['block_id'] for b in result['blocks']]==['B1','B2','B3','B4','B5']\\n+print('Written',review/'review.json')\\n*** End Patch\"));\ntext(await tools.exec_command({cmd:\"& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B write_review.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/ogm_r03/validation\",\"max_output_tokens\":1000}));\n"
+  }
+]

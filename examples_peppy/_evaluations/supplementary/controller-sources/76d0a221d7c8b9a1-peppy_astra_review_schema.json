@@ -1,0 +1,33 @@
+{
+  "attempt_id": "condition_rNN",
+  "mathematical_verdict": "PASS|FAIL|REVIEW|NOT_EVALUATED",
+  "eligible": true,
+  "access_status": "no_incident|recovered|deviation|unresolved|contaminated",
+  "access_reason": "Evidence-based access judgment, distinct from mathematical result",
+  "final_reason": "Concise exact-target conclusion and decisive evidence or missing obligation",
+  "final_evidence_refs": [],
+  "submitted_theorem": "Actual submitted claim, or absent",
+  "target_scope_comparison": "Assumptions, metric, finite-horizon constant, normalization, all N >= 1",
+  "verification_method": "Clearly distinguish inspected saved evidence from fresh checks",
+  "workflow_complete": false,
+  "notebook_path": null,
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "PASS|FAIL|UNRESOLVED|NOT_REACHED|NOT_EVALUATED",
+      "mathematical_checks_passed": null,
+      "delivery_checks_passed": null,
+      "reason": "Actual gate judgment",
+      "required_checks": [],
+      "passed_checks": [],
+      "checks": [{"name": "specific check", "status": "PASS|FAIL|UNRESOLVED", "tolerance_domain": null, "observed_result": null, "evidence_ref": "relative artifact path or notebook cell"}],
+      "evidence_refs": [],
+      "failure_code": null
+    }
+  ],
+  "review_started_at": "UTC ISO",
+  "review_stopped_at": "UTC ISO",
+  "limitations": [],
+  "instructions": "Replace placeholders with actual evidence. Supply exactly B1 through B5. No missing measurement may be fabricated. Do not modify submissions or supply missing essential proof steps."
+}

@@ -1,0 +1,84 @@
+﻿{
+    "current_block":  "B5",
+    "completion_status":  "complete",
+    "next_block":  "none",
+    "entry_exit_reason":  "Exact proof obligations, notebook content audit, static checks and final clean-kernel nbconvert execution passed",
+    "run_status":  "completed",
+    "completed_blocks":  [
+                             "B1",
+                             "B2",
+                             "B3",
+                             "B4",
+                             "B5"
+                         ],
+    "unresolved_work":  [
+
+                        ],
+    "proof_status":  {
+                         "numerical_certificate_verified":  true,
+                         "lyapunov_proof_verified":  true,
+                         "analytic_full_pep_verified":  false,
+                         "required_analytic_full_pep":  false
+                     },
+    "main_notebook":  "feg_example_lyap.ipynb",
+    "final_state":  "state/feg_b5.json",
+    "evidence":  [
+                     "supplementary/b5-symbolic-002-output.txt",
+                     "supplementary/b5-static-002.json",
+                     "supplementary/b5-final-execution-output.txt",
+                     "supplementary/b5-final-audit.json",
+                     "supplementary/feg_example_lyap_checklist.md"
+                 ],
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+                              "supplementary/approved/pepflow/expression_manager.py",
+                              "state/feg_b4.json",
+                              "own symbolic/author/execution/audit scripts",
+                              "own final notebook and earlier block evidence"
+                          ],
+    "commands":  [
+                     "Get-Content B5 workflow and save-state requirements",
+                     "Get-Content own B4 structure and reconstruction fields",
+                     "apply_patch own b5_symbolic.py; run through python -I -B supplementary/bootstrap.py",
+                     "Get-Content approved ExpressionManager constructor after display failure",
+                     "Run symbolic script again after ndarray display repair",
+                     "Author final notebook with own b5_author.py",
+                     "Static adapter b5-static-001; repair dynamic symbolic parameter mappings; b5-static-002 passed",
+                     "python -I -B supplementary/bootstrap.py supplementary/b5_execute.py invokes nbconvert --execute with explicit attempt-owned config and pinned fresh kernel",
+                     "Read final notebook symbolic outputs",
+                     "python -I -B supplementary/bootstrap.py supplementary/b5_close.py audits 12 items and writes B5 state"
+                 ],
+    "incidents":  [
+                      {
+                          "reason":  "One command had a mistyped working directory and process creation failed before reading files",
+                          "repair":  "Used exact attempt directory",
+                          "kind":  "operational"
+                      },
+                      {
+                          "result":  "Symbolic checks passed",
+                          "evidence":  "supplementary/b5-symbolic-output.txt",
+                          "reason":  "Labeled matrix API requires ndarray, not list",
+                          "repair":  "Converted exact SymPy residual matrix to object ndarray",
+                          "kind":  "display_api"
+                      },
+                      {
+                          "result":  "b5-static-002 passed",
+                          "evidence":  "supplementary/b5-static-001.json",
+                          "reason":  "Framework numeric annotation does not describe symbolic parameter mappings",
+                          "repair":  "Explicitly typed dynamic symbolic maps in own script; no check/source/tolerance changes",
+                          "kind":  "typing"
+                      }
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_used_or_encountered":  false,
+    "external_resources":  [
+
+                           ],
+    "audit_limit":  "No exhaustive OS-level read tracing. Consulted-source records, tool output logs, adapter manifests, origins and source hashes document available evidence, not complete enforced isolation.",
+    "presentation_policy":  "evaluation-ancillary-v1",
+    "rendered_inspection_performed":  false,
+    "exports_performed":  false,
+    "dispatch_utc":  "2026-09-23T15:15:53.692276+00:00",
+    "original_deadline_utc":  "2026-09-23T17:15:53.692276+00:00",
+    "provider_token_usage":  null
+}

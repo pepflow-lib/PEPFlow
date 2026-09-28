@@ -1,0 +1,19 @@
+﻿{
+  "current_block":"B2",
+  "completion_status":"complete_additional_horizon",
+  "next_block":"B3",
+  "entry_exit_reason":"Complete N=6 dense and sparse certificates acquired and numerically verified; selected N=4 certificate preserved.",
+  "run_status":"awaiting_continuation",
+  "sample":"supplementary/N6/certificate.json",
+  "selected_sample":"state/bppm_b2.json",
+  "sources":["own b3-revisit-handoff.json", "own B2 acquisition and verification source", "approved/expression_manager.py eval_scalar signature", "allowlisted framework sources for hashes and execution"],
+  "commands":["acquire_N6.py", "recover_N6_verification.py", "update_b2_notebook.py", "save_b2.py", "static adapter: b2-static-003.json"],
+  "incidents":[{"classification":"ordinary verification configuration", "issue":"Optional exact N=6 candidate check initially evaluated rational coefficients in floating-point mode.","repair":"Used eval_scalar(..., sympy_mode=True) and rechecked saved N=6 sample, plus selected N=4 notebook. Both exact sample identities passed; numerical tolerances unchanged; no re-solve."}],
+  "access_control":"instruction_only",
+  "prohibited_content_observed":false,
+  "observability_limit":"Tool-visible record; no exhaustive OS tracing.",
+  "numerical_certificate_verified":true,
+  "analytic_full_pep_verified":false,
+  "lyapunov_proof_verified":false,
+  "deadline_utc":"2026-09-23T17:01:13.976153+00:00"
+}

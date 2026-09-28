@@ -1,0 +1,186 @@
+﻿{
+    "attempt_id":  "pgm_without_sos_r02",
+    "mathematical_verdict":  "NOT_EVALUATED",
+    "eligible":  false,
+    "access_status":  "deviation",
+    "access_reason":  "Concrete generic dependency execution outside the frozen allowlist: b5-nbconvert.log contains a runtime warning from C:/Users/Jack/AppData/Local/Programs/Python/Python313/Lib/site-packages/zmq/_future.py:718 and its executed self._get_loop() source line. The owned execute_b5.py launcher invokes pinned Python -m jupyter nbconvert; the saved converter output confirms the actual downstream dependency route, rather than merely a configured search path. allowlist.json permits installed dependencies only under the repository .venv/Lib/site-packages, and frozen settings.json has source_equivalence_exceptions=[]. The frozen recovery policy does not permit accepting this undeclared generic source route without a predeclared equivalence exception. This establishes access-protocol ineligibility, not exposure to a target answer or mathematical contamination.",
+    "final_reason":  "Excluded from independent mathematical scoring for a confirmed, unexcepted generic-source boundary deviation during final notebook conversion. A substantive exact-target candidate exists; no mathematical failure is inferred from the operational exclusion. B5 delivery also remains incomplete after a final source edit.",
+    "final_evidence_refs":  [
+                                "pgm_without_sos/r02/supplementary/b5-nbconvert.log",
+                                "pgm_without_sos/r02/supplementary/execute_b5.py",
+                                "pgm_without_sos/r02/supplementary/approved/allowlist.json",
+                                "pgm_without_sos/r02/supplementary/approved/settings.json",
+                                "pgm_without_sos/r02/supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                                "pgm_without_sos/r02/supplementary/b5-access-record.json",
+                                "supplementary/evaluation/pgm_without_sos_r02/validation/integrity.json"
+                            ],
+    "submitted_theorem":  "For convex L-smooth f, closed proper convex g, L\u003e0, R\u003e=0, x_star minimizing h=f+g and ||x_0-x_star||\u003c=R, proximal gradient with step 1/L satisfies h(x_N)-h(x_star)\u003c=L R^2/(4N) for every integer N\u003e=1. Explicit interior potential uses t_k=2N-k and beta_k defined by a finite product of 2x2 matrices; separate base, terminal and N=1 identities are supplied.",
+    "target_scope_comparison":  "The stated theorem matches the prescribed assumptions, terminal composite objective metric, 1/(4N) finite-horizon constant, L and R normalization, and all N\u003e=1. Scope matching is an inspection of the submitted claim, not a validity certification.",
+    "verification_method":  "Read frozen instructions, settings, input, rubric, clean-room and operations policy, schema, supplied generic skills, proof statement, setup, notebook section/source excerpts, saved numerical logs and incident evidence. Independently compared all 146 original file SHA-256 hashes with settings.json; all match, as recorded in validation/integrity.json. No mathematical script, solver, kernel, notebook, static analyzer, rendering or export was re-executed. Saved zero-residual and completion claims were not treated as fresh checks. Eligibility adjudicated from the actual runtime warning, owned launcher and predeclared dependency permissions; no outside dependency source was read.",
+    "workflow_complete":  false,
+    "notebook_path":  "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+    "blocks":  [
+                   {
+                       "block_id":  "B1",
+                       "reached":  true,
+                       "gate_verdict":  "NOT_EVALUATED",
+                       "mathematical_checks_passed":  null,
+                       "delivery_checks_passed":  null,
+                       "reason":  "The attempt is ineligible under the frozen source-boundary policy. Reached-stage evidence is preserved, but no independent-success gate is awarded. Setup source encodes proximal gradient with step 1/L, squared-distance initialization and terminal composite gap. Saved sweep has N=1..5 optimal, N=6..7 optimal_inaccurate, values approximately 1/(4N). These observations are retained without awarding an independent-success gate.",
+                       "required_checks":  [
+                                               "Setup, assumptions, metric, normalization; N=1..7 sweep; rate comparison; notebook evidence."
+                                           ],
+                       "passed_checks":  [
+
+                                         ],
+                       "checks":  [
+                                      {
+                                          "name":  "Frozen submitted evidence inspection",
+                                          "status":  "UNRESOLVED",
+                                          "tolerance_domain":  null,
+                                          "observed_result":  "Setup source encodes proximal gradient with step 1/L, squared-distance initialization and terminal composite gap. Saved sweep has N=1..5 optimal, N=6..7 optimal_inaccurate, values approximately 1/(4N). These observations are retained without awarding an independent-success gate.",
+                                          "evidence_ref":  "pgm_without_sos/r02/state/pgm_b1.json"
+                                      }
+                                  ],
+                       "evidence_refs":  [
+                                             "pgm_without_sos/r02/state/pgm_b1.json",
+                                             "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+                                             "pgm_without_sos/r02/supplementary/b5-nbconvert.log"
+                                         ],
+                       "failure_code":  "INELIGIBLE_UNAPPROVED_GENERIC_DEPENDENCY"
+                   },
+                   {
+                       "block_id":  "B2",
+                       "reached":  true,
+                       "gate_verdict":  "NOT_EVALUATED",
+                       "mathematical_checks_passed":  null,
+                       "delivery_checks_passed":  null,
+                       "reason":  "The attempt is ineligible under the frozen source-boundary policy. Reached-stage evidence is preserved, but no independent-success gate is awarded. Saved verification reports N=4 dense/relaxed gap 2.33833112595061e-10; Gram/function/offset residuals 5.288635973599298e-9, 1.619709921740764e-8, 3.165652122383289e-9; S reconstruction 1.1102230246251565e-16; minimum scalar dual 0.06250000200444804 and S eigenvalue 2.198704447512869e-9. Inspected log, not fresh certificate replay.",
+                       "required_checks":  [
+                                               "Coherent dense/relaxed certificate; all-coordinate identities; dual signs and PSD; S reconstruction; initial formula search."
+                                           ],
+                       "passed_checks":  [
+
+                                         ],
+                       "checks":  [
+                                      {
+                                          "name":  "Frozen submitted evidence inspection",
+                                          "status":  "UNRESOLVED",
+                                          "tolerance_domain":  null,
+                                          "observed_result":  "Saved verification reports N=4 dense/relaxed gap 2.33833112595061e-10; Gram/function/offset residuals 5.288635973599298e-9, 1.619709921740764e-8, 3.165652122383289e-9; S reconstruction 1.1102230246251565e-16; minimum scalar dual 0.06250000200444804 and S eigenvalue 2.198704447512869e-9. Inspected log, not fresh certificate replay.",
+                                          "evidence_ref":  "pgm_without_sos/r02/supplementary/b3-certificate-recheck.log"
+                                      }
+                                  ],
+                       "evidence_refs":  [
+                                             "pgm_without_sos/r02/supplementary/b3-certificate-recheck.log",
+                                             "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+                                             "pgm_without_sos/r02/supplementary/b5-nbconvert.log"
+                                         ],
+                       "failure_code":  "INELIGIBLE_UNAPPROVED_GENERIC_DEPENDENCY"
+                   },
+                   {
+                       "block_id":  "B3",
+                       "reached":  true,
+                       "gate_verdict":  "NOT_EVALUATED",
+                       "mathematical_checks_passed":  null,
+                       "delivery_checks_passed":  null,
+                       "reason":  "The attempt is ineligible under the frozen source-boundary policy. Reached-stage evidence is preserved, but no independent-success gate is awarded. Inspected N=4 and N=6 records use reverse_ldl_latest_iterate and absolute unscaled rank tolerance 1e-4. Profiles [0,4,4,4,1] and [0,4,4,4,4,4,1] retain three and five interiors after one endpoint exclusion per end. Saved coverage maxima are 5.551115123125783e-17 and 7.632783294297951e-17. No independent replay performed.",
+                       "required_checks":  [
+                                               "Decomposition signs; complete grouping coverage and increment identities; fixed rank recipe and boundary exclusions at two qualifying horizons."
+                                           ],
+                       "passed_checks":  [
+
+                                         ],
+                       "checks":  [
+                                      {
+                                          "name":  "Frozen submitted evidence inspection",
+                                          "status":  "UNRESOLVED",
+                                          "tolerance_domain":  "Absolute unscaled Gram singular values; rank tolerance 1e-4",
+                                          "observed_result":  "Inspected N=4 and N=6 records use reverse_ldl_latest_iterate and absolute unscaled rank tolerance 1e-4. Profiles [0,4,4,4,1] and [0,4,4,4,4,4,1] retain three and five interiors after one endpoint exclusion per end. Saved coverage maxima are 5.551115123125783e-17 and 7.632783294297951e-17. No independent replay performed.",
+                                          "evidence_ref":  "pgm_without_sos/r02/supplementary/b3-comparison.json"
+                                      }
+                                  ],
+                       "evidence_refs":  [
+                                             "pgm_without_sos/r02/supplementary/b3-comparison.json",
+                                             "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+                                             "pgm_without_sos/r02/supplementary/b5-nbconvert.log"
+                                         ],
+                       "failure_code":  "INELIGIBLE_UNAPPROVED_GENERIC_DEPENDENCY"
+                   },
+                   {
+                       "block_id":  "B4",
+                       "reached":  true,
+                       "gate_verdict":  "NOT_EVALUATED",
+                       "mathematical_checks_passed":  null,
+                       "delivery_checks_passed":  null,
+                       "reason":  "The attempt is ineligible under the frozen source-boundary policy. Reached-stage evidence is preserved, but no independent-success gate is awarded. Saved search log lists 505 candidates, sparse-basis selections, and reconstruction at k=0..4, including both endpoints. Maximum printed quadratic residual 2.256e-8, function residual 4.859e-9, offset 0. Logs inspected, not replayed.",
+                       "required_checks":  [
+                                               "Actual basis search; independence and span; symmetric quadratic reconstruction and complete scalar reconstruction at every required index."
+                                           ],
+                       "passed_checks":  [
+
+                                         ],
+                       "checks":  [
+                                      {
+                                          "name":  "Frozen submitted evidence inspection",
+                                          "status":  "UNRESOLVED",
+                                          "tolerance_domain":  null,
+                                          "observed_result":  "Saved search log lists 505 candidates, sparse-basis selections, and reconstruction at k=0..4, including both endpoints. Maximum printed quadratic residual 2.256e-8, function residual 4.859e-9, offset 0. Logs inspected, not replayed.",
+                                          "evidence_ref":  "pgm_without_sos/r02/supplementary/b4-verification.log"
+                                      }
+                                  ],
+                       "evidence_refs":  [
+                                             "pgm_without_sos/r02/supplementary/b4-verification.log",
+                                             "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+                                             "pgm_without_sos/r02/supplementary/b5-nbconvert.log"
+                                         ],
+                       "failure_code":  "INELIGIBLE_UNAPPROVED_GENERIC_DEPENDENCY"
+                   },
+                   {
+                       "block_id":  "B5",
+                       "reached":  true,
+                       "gate_verdict":  "NOT_EVALUATED",
+                       "mathematical_checks_passed":  null,
+                       "delivery_checks_passed":  false,
+                       "reason":  "The attempt is ineligible under the frozen source-boundary policy. Reached-stage evidence is preserved, but no independent-success gate is awarded. Substantive theorem and explicit potential, finite-product coefficient, interpolation identities and squares are present. Final cell 75 was edited after execution, with final static check and execution not completed. The execution that did occur used the disallowed generic dependency route. Analytic validity is not adjudicated after the concrete eligibility exclusion.",
+                       "required_checks":  [
+                                               "General step/base/terminal identities; coefficients and sign/domain proof; N=1; exact target implication; final static checks, clean-kernel execution and checklist."
+                                           ],
+                       "passed_checks":  [
+
+                                         ],
+                       "checks":  [
+                                      {
+                                          "name":  "Frozen submitted evidence inspection",
+                                          "status":  "UNRESOLVED",
+                                          "tolerance_domain":  null,
+                                          "observed_result":  "Substantive theorem and explicit potential, finite-product coefficient, interpolation identities and squares are present. Final cell 75 was edited after execution, with final static check and execution not completed. The execution that did occur used the disallowed generic dependency route. Analytic validity is not adjudicated after the concrete eligibility exclusion.",
+                                          "evidence_ref":  "pgm_without_sos/r02/supplementary/b5-access-record.json"
+                                      },
+                                      {
+                                          "name":  "Final source static check and clean-kernel execution",
+                                          "status":  "FAIL",
+                                          "tolerance_domain":  null,
+                                          "observed_result":  "Final recurrence-link source edit not rerun; previous conversion consumed unapproved Python313 generic dependency. Checklist explicitly remains incomplete.",
+                                          "evidence_ref":  "pgm_without_sos/r02/supplementary/pgm_example_lyap_checklist.md"
+                                      }
+                                  ],
+                       "evidence_refs":  [
+                                             "pgm_without_sos/r02/supplementary/b5-access-record.json",
+                                             "pgm_without_sos/r02/pgm_example_lyap.ipynb",
+                                             "pgm_without_sos/r02/supplementary/b5-nbconvert.log"
+                                         ],
+                       "failure_code":  "INELIGIBLE_UNAPPROVED_GENERIC_DEPENDENCY"
+                   }
+               ],
+    "review_started_at":  "2026-09-23T23:49:57.559454+00:00",
+    "review_stopped_at":  "2026-09-23T23:53:48.5109724Z",
+    "limitations":  [
+                        "Instruction-only isolation and nonexhaustive access observability do not independently establish contamination. The identified executed dependency is the concrete exclusion basis.",
+                        "No target-specific prohibited material was observed in the reviewed evidence; this is not an exhaustive access-history certification.",
+                        "The substantive analytic candidate was not independently certified or refuted after the operational exclusion. Saved numerical results are reported as inspected observations only.",
+                        "B1-B4 generation completion claims are preserved as reached-stage history and are not replaced with mathematical FAIL judgments.",
+                        "No rendering or visual inspection performed under the evaluation presentation override."
+                    ],
+    "instructions":  "Exactly B1-B5 supplied; original submission remains unmodified; no proof repairs or external mathematical sources used."
+}

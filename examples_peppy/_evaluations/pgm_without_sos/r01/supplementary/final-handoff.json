@@ -1,0 +1,43 @@
+{
+    "current_block":  "B5",
+    "completion_status":  "complete",
+    "next_block":  null,
+    "entry_exit_reason":  "Closed-form coefficients, native exact identities, positive-polynomial square signs, and finite-horizon normalization verified; final static check and fresh nbconvert execution passed.",
+    "operational_status":  "finished",
+    "run_status":  "complete",
+    "completed_blocks":  [
+                             "B1",
+                             "B2",
+                             "B3",
+                             "B4",
+                             "B5"
+                         ],
+    "unresolved_requested_work":  [
+
+                                  ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  true,
+    "require_analytic_full_pep":  false,
+    "unresolved_optional_scope":  "Global analytic lambda/S formula remains unverified; not required on the numerical-discovery path.",
+    "notebook":  "pgm_example_lyap.ipynb",
+    "notebook_sha256":  "eaff34082b79533ac99c272e01816e122e03d16e50b863e6fc08ec2752a4dbe0",
+    "evidence":  [
+                     "state/pgm_b5.json",
+                     "supplementary/b5-static-006.json",
+                     "supplementary/b5-final-notebook-004.txt",
+                     "supplementary/final-audit.json",
+                     "supplementary/pgm_example_lyap_checklist.md"
+                 ],
+    "source_access":  "Only frozen approved generic resources, own case input, and own generated artifacts were consulted. Isolation is instruction-only; no OS enforcement claim. No prohibited source exposure observed.",
+    "presentation":  "evaluation-ancillary-v1: source/output checks performed; no browser, render or image inspection; no PDF/TeX export.",
+    "incidents":  [
+                      "B5 initial static failures: symbolic-expression and undefined-function annotations corrected locally.",
+                      "B5 first execution was started after a pending static check returned failed; no success claimed. Corrected source later passed required static checks before final fresh execution.",
+                      "Symbolic matrix display required numpy arrays and precision=0; corrected without framework edits.",
+                      "Normalization initially compared structurally different equal expressions; changed to exact simplified residual zero.",
+                      "Nonfatal Windows zmq selector-thread warning and dash comm-handler warning retained."
+                  ],
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00",
+    "provider_token_usage":  null
+}

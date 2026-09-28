@@ -1,0 +1,33 @@
+﻿{
+  "current_block": "B1",
+  "completion_status": "complete",
+  "next_block": "B2",
+  "entry_exit_reason": "Initial implementation and sweep complete; required notebook/source checks passed; request boundary reached",
+  "operational_status": "awaiting_same_session_continuation",
+  "deadline_utc": "2026-09-23T21:58:02.889281+00:00",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "access_limit": "No exhaustive OS read audit; tool-visible reads restricted to approved resources and own generated artifacts.",
+  "sources": [
+    "approved dispatch.md, input.md, worker-protocol.md; previously read settings.json, clean-room.md, tool-recovery.md, allowlist.json",
+    "approved pep-implement/SKILL.md and references/workflow.md; shared references/output-layout.md",
+    "approved pep-full-proof, lyap-define, lyap-vectors, lyap-closed-form SKILL.md files, read in order",
+    "approved pepflow/__init__.py, function.py, pep.py, pep_runner.py, parameter.py, solver.py",
+    "approved check_static.py; transitive approved framework source manifests are preserved in adapter evidence",
+    "own setup, runner, helper, notebook-builder, executor, sweep cache, notebook, state and evidence files"
+  ],
+  "commands": [
+    "Get-Content and scoped rg on listed resources",
+    "Pinned python -I -B supplementary/run_b1.py; exact sweep source retained",
+    "Pinned python -I -B supplementary/build_b1_notebook.py",
+    "Pinned adapter from settings with source targets: evidence b1-static-001.json, b1-static-002.json, b1-static-003.json; generic rerun preflight-002.json",
+    "Pinned python -I -B supplementary/execute_b1.py; pinned -I -B fresh kernel; output b1-execution-output.txt",
+    "Get-FileHash on saved notebook; generated checklist and this record"
+  ],
+  "incidents": [
+    {"kind": "operational", "evidence": "b1-static-001.json", "detail": "Windows path length while staging supplementary including approved tree", "repair": "Narrowed own helper layout to supplementary/helpers/runtime.py; no frozen source edits; preflight-002 and static-003 passed"},
+    {"kind": "source_diagnostic", "evidence": "b1-static-002.json", "detail": "E402 and F401 in bootstrap/import notebook cell", "repair": "Separated path bootstrap and imports; asserted runtime root; static-003 passed"},
+    {"kind": "solver_status", "detail": "CLARABEL optimal_inaccurate at N=6,7, retained without changed options; no fallback"}
+  ],
+  "unresolved_work": "B2-B5 are not started; numerical candidate is not yet an analytic proof."
+}

@@ -1,0 +1,43 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "initial_dispatch / required B1 gates passed",
+    "run_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T19:19:03.854618+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing; tool route and declared imports recorded.",
+    "consulted_sources":  [
+                              "approved/dispatch.md",
+                              "approved/input.md",
+                              "approved/worker-protocol.md",
+                              "approved/settings.json",
+                              "approved/clean-room.md",
+                              "approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                              "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                              "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                              "approved/plugins/pepflow-workflows/references/output-layout.md",
+                              "approved/pepflow/operator.py",
+                              "approved/pepflow/pep_runner.py",
+                              "approved/pepflow/__init__.py",
+                              "approved/pepflow/pep.py",
+                              "approved/pepflow/solver.py",
+                              "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                          ],
+    "commands":  "Recorded tool calls: Get-Content and rg only on listed approved files or own generated files; Python -I -B supplementary/b1_sweep.py; Python -I -B supplementary/b1_notebook.py; approved adapter exact pinned executables/options with repaired helper layout supplementary/helpers/runtime.py. Adapter source manifests and exact commands retained in evidence JSON.",
+    "incidents":  [
+                      "b1-static-001: WinError 3 on long staging path; narrowed helper root to supplementary/helpers and moved own runtime.py. Repeated preflight passed in preflight-002.json. No frozen source changes.",
+                      "b1-static-002: Ruff E402/F401 in notebook imports; split bootstrap/import cells and used runtime origin assertion. b1-static-003 passed.",
+                      "N=1 CLARABEL optimal_inaccurate retained; all other sweep statuses optimal. No solver fallback used."
+                  ],
+    "checks":  [
+                   "b1-static-003.json: Ruff and ty passed",
+                   "b1-notebook-execution.json: fresh kernel, source Markdown checks and plot output passed"
+               ],
+    "unresolved_work":  "B2 through B5 remain pending. No theorem claimed."
+}

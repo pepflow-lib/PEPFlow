@@ -1,0 +1,30 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Interpretable independent bases and all-index full-coordinate reconstruction verified",
+    "operational_status":  "awaiting_same_session_continuation",
+    "state":  "state/ogm_b4.json",
+    "evidence":  [
+                     "supplementary/b4-static-003.json",
+                     "supplementary/b4-source-replay.json",
+                     "supplementary/b4-notebook-output-002.txt"
+                 ],
+    "consulted_sources":  [
+                              "Approved lyap-vectors workflow",
+                              "Approved lyapunov_utils.py API sections",
+                              "Approved function.py symbol search",
+                              "Own B3 state and source replay",
+                              "Own candidate search and notebook"
+                          ],
+    "incidents":  [
+                      "Own discovery runner required float conversion of symbolic arrays for NumPy comparisons/norms; repaired without changing mathematical tolerances.",
+                      "Own type annotations and statement formatting repaired after static diagnostics."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "remaining_work":  "B5 exact coefficient derivation, step/base/terminal identities, theorem and final verification",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false
+}

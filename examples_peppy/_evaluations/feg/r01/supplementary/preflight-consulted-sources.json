@@ -1,0 +1,33 @@
+﻿{
+    "access_control":  "instruction_only",
+    "phase":  "preflight_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "invocation":  "Exact settings.json preflight_command array invoked with PowerShell call operator from attempt root; stdout/stderr preserved with Tee-Object.",
+    "command_evidence":  "supplementary/preflight-001.json",
+    "output_log":  "supplementary/preflight-001-output.txt",
+    "tool_operations":  [
+                            "Get-Content preflight-only.md",
+                            "Get-Content allowlist.json",
+                            "Get-Content settings.json clean-room.md tool-recovery.md",
+                            "Get-Content settings.json; execute preflight_command; Tee-Object output; exit LASTEXITCODE",
+                            "Poll owned execution session 68131",
+                            "Get-Content preflight-001.json",
+                            "Write this consulted-source record"
+                        ],
+    "adapter_access_records":  "Evidence sources, commands, configurations, effective_resolution_paths, runtime_import_origins",
+    "prohibited_sources_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "mathematical_generation_started":  false,
+    "obstruction":  null,
+    "audit_limit":  "Instruction-only restrictions; no exhaustive OS read tracing. Evidence establishes observed resolution/import origins, not complete absence of other reads."
+}

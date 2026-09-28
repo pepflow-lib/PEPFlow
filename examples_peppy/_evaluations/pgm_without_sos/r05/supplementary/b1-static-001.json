@@ -1,0 +1,260 @@
+{
+  "schema_version": "peppy-static-isolation-v1",
+  "mode": "check",
+  "started_utc": "2026-09-23T21:50:07.541608+00:00",
+  "commands": [],
+  "status": "operational_error",
+  "access_mode": "instruction_only",
+  "audit_limit": "Resolution probes are not an exhaustive filesystem read audit; the pinned interpreter and its installed startup hooks/dependencies must be reviewed.",
+  "temporary_root": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx",
+  "sources": [
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\constants.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\constants.py",
+      "sha256": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\constraint.py",
+      "sha256": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\dual_interactive_constraint.py",
+      "sha256": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\expression_manager.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\expression_manager.py",
+      "sha256": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\function.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\function.py",
+      "sha256": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\ipython_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\ipython_utils.py",
+      "sha256": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\logging.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\logging.py",
+      "sha256": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\lyapunov_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\lyapunov_utils.py",
+      "sha256": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\math_expression.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\math_expression.py",
+      "sha256": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\operator.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\operator.py",
+      "sha256": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\parameter.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\parameter.py",
+      "sha256": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\pep.py",
+      "sha256": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_context.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\pep_context.py",
+      "sha256": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_result.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\pep_result.py",
+      "sha256": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_runner.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\pep_runner.py",
+      "sha256": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\plot_data.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\plot_data.py",
+      "sha256": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\primal_interactive_constraint.py",
+      "sha256": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\registry.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\registry.py",
+      "sha256": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\scalar.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\scalar.py",
+      "sha256": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\solver.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\solver.py",
+      "sha256": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\utils.py",
+      "sha256": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\vector.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\vector.py",
+      "sha256": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\__init__.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\approved\\pepflow\\__init__.py",
+      "sha256": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\build_b1_notebook.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\build_b1_notebook.py",
+      "sha256": "4ad5c8f11730056723479bb350ded610e74f7b43374dc70b6a805045046469f4"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\run_b1.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\run_b1.py",
+      "sha256": "04b9e640df9e18ffae2802ea1e33b34eb60de8be38747eac048f303a75adff68"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\solve_runtime.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\solve_runtime.py",
+      "sha256": "ea1e76c367ed8ba67241dbe172a24e56251043e9208c0ada9f5831234cd0c31f"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\constants.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\constants.py",
+      "sha256": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\constraint.py",
+      "sha256": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py",
+      "sha256": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\expression_manager.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\expression_manager.py",
+      "sha256": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\function.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\function.py",
+      "sha256": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\ipython_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\ipython_utils.py",
+      "sha256": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\logging.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\logging.py",
+      "sha256": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\lyapunov_utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\lyapunov_utils.py",
+      "sha256": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\math_expression.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\math_expression.py",
+      "sha256": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\operator.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\operator.py",
+      "sha256": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\parameter.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\parameter.py",
+      "sha256": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\pep.py",
+      "sha256": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_context.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\pep_context.py",
+      "sha256": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_result.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\pep_result.py",
+      "sha256": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\pep_runner.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\pep_runner.py",
+      "sha256": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\plot_data.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\plot_data.py",
+      "sha256": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py",
+      "sha256": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\registry.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\registry.py",
+      "sha256": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\scalar.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\scalar.py",
+      "sha256": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\solver.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\solver.py",
+      "sha256": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\utils.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\utils.py",
+      "sha256": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\vector.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\vector.py",
+      "sha256": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    {
+      "source": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\approved\\pepflow\\__init__.py",
+      "staged": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_without_sos\\r05\\supplementary\\.runtime\\static-check-ah6whjlx\\source\\supplementary\\approved\\pepflow\\__init__.py",
+      "sha256": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb"
+    }
+  ],
+  "error": "[WinError 206] The filename or extension is too long: 'C:\\\\Users\\\\Jack\\\\Documents\\\\GitHub\\\\PEPFlow\\\\examples_peppy\\\\_evaluations\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\pgm_without_sos\\\\r05\\\\supplementary\\\\.runtime\\\\static-check-ah6whjlx\\\\source\\\\supplementary\\\\approved\\\\plugins\\\\pepflow-workflows\\\\optional'",
+  "finished_utc": "2026-09-23T21:50:07.817378+00:00",
+  "temporary_scope_removed": true
+}

@@ -1,0 +1,70 @@
+{
+  "proof_checks": {
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "signs": true,
+    "domain": true,
+    "normalization": true
+  },
+  "exact_residuals": {
+    "Interior step (t>=2)": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        7,
+        7
+      ]
+    },
+    "Initial V0=0": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        5,
+        5
+      ]
+    },
+    "Base first step (N>=2)": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        5,
+        5
+      ]
+    },
+    "Last-step identity (N>=2)": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        5,
+        5
+      ]
+    },
+    "Rate and initial-radius normalization": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        4,
+        4
+      ]
+    },
+    "N=1 direct terminal potential": {
+      "gram_zero": true,
+      "function_zero": true,
+      "offset_zero": true,
+      "gram_shape": [
+        3,
+        3
+      ]
+    }
+  },
+  "local_multipliers": {
+    "mu_Lip": "2/t**2",
+    "mu_Mon": "4*L/(t**2 - t)"
+  }
+}

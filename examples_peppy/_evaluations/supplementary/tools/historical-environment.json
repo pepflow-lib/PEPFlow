@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "campaign_id": "20260923T140754Z_paper5_pgm_sos_6x5_isolation1",
+  "kind": "historical_record",
+  "source_revision": "8be0f10af0ff415639447aaeb9fa58a826c81b2a",
+  "python_version": "3.11.13",
+  "python_evidence": "../../pgm_with_sos/r01/supplementary/preflight-001.json",
+  "recorded_packages": {
+    "cvxpy": "1.7.1",
+    "clarabel": "0.11.1",
+    "scs": "3.2.7.post2",
+    "numpy": "2.3.1",
+    "sympy": "1.14.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "nbconvert": "7.17.1",
+    "ipykernel": "7.1.0"
+  },
+  "lockfile": "framework/uv.lock",
+  "locked_versions_for_recorded_packages": {
+    "cvxpy": "1.7.1",
+    "clarabel": "0.11.1",
+    "scs": "3.2.7.post2",
+    "numpy": "2.3.1",
+    "sympy": "1.14.0",
+    "nbformat": null,
+    "nbclient": null,
+    "nbconvert": null,
+    "ipykernel": "7.1.0"
+  },
+  "recorded_packages_absent_from_lock": {
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "nbconvert": "7.17.1"
+  },
+  "other_recorded_tools": {
+    "ruff": {
+      "version": "0.12.4",
+      "evidence": "framework/uv.lock"
+    },
+    "ty": {
+      "version": "0.0.82",
+      "evidence": "campaign manifest tool_executables.ty.path"
+    }
+  },
+  "notes": [
+    "Runtime versions are historical evidence, not a claim of a newly tested environment.",
+    "The historical lock includes regex 2026.9.10; the archived notebook tools listed as absent require separate installation for replay.",
+    "The historical lock allows Python >=3.10; the recorded campaign interpreter was Python 3.11.13."
+  ]
+}

@@ -1,0 +1,39 @@
+﻿{
+    "current_block":  "B2",
+    "access_control":  "instruction_only",
+    "consulted_approved_files":  [
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                                     "pepflow/lyapunov_utils.py",
+                                     "pepflow/pep_context.py",
+                                     "pepflow/function.py",
+                                     "allowlist.json",
+                                     "settings.json"
+                                 ],
+    "own_files_consulted":  [
+                                "state/pgm_b1.json",
+                                "state/pgm_dense.json",
+                                "supplementary/b2_cells.py",
+                                "pgm_example_lyap.ipynb",
+                                "supplementary/pgm_example_lyap_checklist.md"
+                            ],
+    "framework_hash_reads":  "Exact allowlist entries under approved/pepflow, hashes recorded in B2 provenance",
+    "commands":  [
+                     "Scoped Get-Content/rg approved API inspection",
+                     "python -I -B supplementary/b2_dense.py",
+                     "python -I -B supplementary/b2_sparse_trial.py",
+                     "python -I -B supplementary/update_b2_notebook.py",
+                     "check_static.py options then check -- explicit targets, b2-static-001.json",
+                     "python -I -B supplementary/update_b2_notebook.py rerun after type repairs; previous certificate preserved",
+                     "check_static.py same roots and explicit targets: b2-static-002.json"
+                 ],
+    "incidents":  [
+                      "Fresh notebook kernel reported overwritten context name from B1 smoke context; builder/context recreated together and matching references asserted",
+                      "b2-static-001: four ty diagnostics; annotated numeric parameter dictionary and asserted nonmissing multipliers; no tolerance/source changes"
+                  ],
+    "prohibited_exposure_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "audit_limit":  "Instruction-only access control, no exhaustive OS tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:05.983486+00:00"
+}

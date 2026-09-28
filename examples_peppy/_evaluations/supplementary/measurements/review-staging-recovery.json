@@ -1,0 +1,10 @@
+﻿{
+    "event":  "review_staging_recovery",
+    "attempt_id":  "pgm_without_sos_r01",
+    "phase":  "before_review_dispatch",
+    "error":  "Windows WinError 3 while creating deeply nested validation approved-resource directory",
+    "recovery":  "Retained partial staging as pgm_without_sos_r01-preparation-failed-001 and enabled Windows extended paths in controller snapshot copy",
+    "frozen_submission_modified":  false,
+    "review_budget_reset":  false,
+    "note":  "No reviewer had been launched and review_dispatch_at had not been assigned on failed staging. Failed staging wall time remains in overall controller elapsed, not successful per-review staging measurement."
+}

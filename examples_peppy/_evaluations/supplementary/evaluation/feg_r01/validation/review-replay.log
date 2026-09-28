@@ -1,0 +1,247 @@
+
+CELL b1-02
+
+CELL b1-03
+
+CELL b1-04
+
+CELL b1-06
+N=1: 1.9999999956; status=optimal
+N=2: 0.9999999961; status=optimal
+N=3: 0.4444444508; status=optimal
+N=4: 0.2500000070; status=optimal
+N=5: 0.1600000044; status=optimal
+N=6: 0.1111111199; status=optimal
+N=7: 0.0816326587; status=optimal
+N^2 times PEP: [2.0, 4.0, 4.0000001, 4.0000001, 4.0000001, 4.0000003, 4.0000003]
+
+CELL b2-01
+Dense objective: 0.11111111987993266
+Basis: ['x_0', 'x_star', 'A(x_0)', 'A(x_1)', 'A(x_3/2)', 'A(x_2)', 'A(x_5/2)', 'A(x_3)', 'A(x_7/2)', 'A(x_4)', 'A(x_9/2)', 'A(x_5)', 'A(x_11/2)', 'A(x_6)']
+Monotone Operator Inequality entries > 1e-6: 6
+Lipschitz Continuous Inequality entries > 1e-6: 6
+Dense S eigenvalues: [8.39304623e-11 3.12048745e-10 1.29506224e-09 1.48441890e-09
+ 3.74263649e-09 7.48947197e-09 1.01712937e-08 1.98970904e-08
+ 2.28208584e-08 2.54735310e-08 2.89888702e-08 3.77429568e-08
+ 5.92976564e-08 1.22214889e+00]
+
+CELL b2-02
+Dropped constraints: 144 using threshold 1e-6
+Sparse objective: 0.11111111913421273
+Dense/sparse gap: 7.457199302507433e-10
+initial_condition 0.11111112569910349
+A monotone:x_1,x_2 0.22227319498944406
+A monotone:x_2,x_3 0.6668195130842369
+A monotone:x_3,x_4 1.3336389582386639
+A monotone:x_4,x_5 2.2227315150486944
+A monotone:x_5,x_6 3.3340972127835244
+A monotone:x_6,x_star 0.6668194526134993
+A Lipschitz:x_0,x_1 0.05556830706343723
+A Lipschitz:x_2,x_3/2 0.2222731844438772
+A Lipschitz:x_3,x_5/2 0.5001146301473184
+A Lipschitz:x_4,x_7/2 0.8890926343346541
+A Lipschitz:x_5,x_9/2 1.3892071926750234
+A Lipschitz:x_6,x_11/2 2.000458325092437
+Active certificate weights:
+<IPython.core.display.Math object>
+
+CELL b2-04
+Lambda candidate error: 0.0007638794501909629 passes: False
+S candidate error: 0.0004583265227982025 passes: False
+Analytic full PEP verified: False
+
+CELL b2-06
+LDL D diagonal: [1.00045833e+00 7.51153006e-09 2.76501551e-08 7.48731479e-09
+ 3.51615286e-08 6.59481809e-09 2.70457645e-08 5.40293328e-09
+ 1.88429287e-08 4.96182345e-09 1.18374812e-08 2.26313258e-09
+ 9.84068699e-09 9.28986423e-09]
+Reconstruction maximum error: 5.551115123125783e-17
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+True saved S, not the rejected analytic guess:
+<IPython.core.display.Math object>
+
+CELL b2-07
+{'residuals': {'identity_gram_max_abs': 7.512999260122766e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 6.564890756011188e-09, 'dense_relaxed_gap': 7.457199302507433e-10, 'minimum_scalar_inequality_dual': 0.05556830706343723, 'minimum_matrix_inequality_eigenvalue': 0, 'minimum_S_eigenvalue': 7.343470692425838e-10}, 'passed': True}
+<IPython.core.display.Math object>
+Function residual: []
+Offset residual: 6.564890756011188e-09
+
+CELL b3-01
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r01\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+Replayed complete certificate: True
+{'identity_gram_max_abs': 7.512999260122766e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 6.564890756011188e-09, 'dense_relaxed_gap': 0.0, 'minimum_scalar_inequality_dual': 0.05556830706343723, 'minimum_matrix_inequality_eigenvalue': 0, 'minimum_S_eigenvalue': 7.343470692425838e-10}
+
+CELL b3-02
+Complete-S block reconstruction error: 5.551115123125783e-17
+
+CELL b3-03
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+rank V_5: 2
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+
+CELL b3-04
+N=4: rank 2 at 3 retained indices; certificate and coverage checked
+N=6: rank 2 at 5 retained indices; certificate and coverage checked
+Fixed exclusions: (1,1); absolute unscaled rank tolerance: 1e-4
+Selected coverage: True boundary interpolation terms: 1 boundary PSD blocks: 1
+
+CELL b4-01
+Reconstructed B3 data agree; interior 1..N-1, exceptions 0 and N.
+
+CELL b4-03
+Unique nonzero candidates: 342
+V_1 column-space candidates:
+   g_1
+   x_1-x_0
+   A(x_0)
+   (x_0)-(x_3/2)
+   (A(x_0))-(A(x_1))
+   (x_1)-(x_3/2)
+V_2 column-space candidates:
+   g_2
+   x_2-x_0
+   (x_0)-(x_2)
+   (x_0)-(x_5/2)
+   (x_2)-(x_5/2)
+V_3 column-space candidates:
+   g_3
+   x_3-x_0
+   (x_0)-(x_3)
+   (x_0)-(x_7/2)
+   (x_3)-(x_7/2)
+V_4 column-space candidates:
+   g_4
+   x_4-x_0
+   (x_0)-(x_4)
+   (x_0)-(x_9/2)
+   (x_4)-(x_9/2)
+V_5 column-space candidates:
+   g_5
+   x_5-x_0
+   (x_0)-(x_5)
+   (x_0)-(x_11/2)
+   (x_5)-(x_11/2)
+V_6 column-space candidates:
+   g_6
+   x_6-x_0
+   (x_0)-(x_6)
+
+CELL b4-05
+k=1, rank=2 sparse basis: ['x_1-x_0', '(A(x_0))-(A(x_1))']
+zero coefficients: 2/4
+k=2, rank=2 sparse basis: ['x_2-x_0', '(x_2)-(x_5/2)']
+zero coefficients: 2/4
+k=3, rank=2 sparse basis: ['x_3-x_0', '(x_3)-(x_7/2)']
+zero coefficients: 2/4
+k=4, rank=2 sparse basis: ['x_4-x_0', '(x_4)-(x_9/2)']
+zero coefficients: 2/4
+k=5, rank=2 sparse basis: ['x_5-x_0', '(x_5)-(x_11/2)']
+zero coefficients: 2/4
+k=6, rank=2 sparse basis: ['g_6', 'x_6-x_0']
+zero coefficients: 1/4
+
+CELL b4-07
+k=0: rank 0 basis []
+k=1: rank 2 basis ['A(x_1)', 'x_1-x_0']
+k=2: rank 2 basis ['A(x_2)', 'x_2-x_0']
+k=3: rank 2 basis ['A(x_3)', 'x_3-x_0']
+k=4: rank 2 basis ['A(x_4)', 'x_4-x_0']
+k=5: rank 2 basis ['A(x_5)', 'x_5-x_0']
+k=6: rank 2 basis ['A(x_6)', 'x_6-x_0']
+
+CELL b4-09
+k=0: coefficient reconstruction residual 0
+Empty quadratic basis, C shape (0, 0)
+Function coordinates: [] offset: 0.0
+k=1: coefficient reconstruction residual 1.96e-17
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+k=2: coefficient reconstruction residual 1.89e-08
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+k=3: coefficient reconstruction residual 2.58e-08
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+k=4: coefficient reconstruction residual 3.67e-08
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+k=5: coefficient reconstruction residual 4.98e-08
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+k=6: coefficient reconstruction residual 5.51e-08
+<IPython.core.display.Math object>
+Function coordinates: [] offset: 0
+
+CELL b4-10
+Complete expression reconstruction: {'0': {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, '1': {'gram': 1.3877787807814457e-17, 'function': 0.0, 'offset': 0.0}, '2': {'gram': 1.0952467932590082e-08, 'function': 0.0, 'offset': 0.0}, '3': {'gram': 1.5489513477406902e-08, 'function': 0.0, 'offset': 0.0}, '4': {'gram': 2.3334075449632508e-08, 'function': 0.0, 'offset': 0.0}, '5': {'gram': 3.1022639013222886e-08, 'function': 0.0, 'offset': 0.0}, '6': {'gram': 3.1022639013222886e-08, 'function': 0.0, 'offset': 0.0}}
+
+CELL b5-01
+Basis: ['A(x_k)', 'x_k-x_0']
+Unknown coefficient roles: [{'name': 'c_00', 'arguments': ['k', 'N', 'L'], 'role': 'C[0,0]', 'index_domain': '1 <= k <= N'}, {'name': 'c_01', 'arguments': ['k', 'N', 'L'], 'role': 'C[0,1] = C[1,0]', 'index_domain': '1 <= k <= N'}, {'name': 'c_11', 'arguments': ['k', 'N', 'L'], 'role': 'C[1,1]', 'index_domain': '1 <= k <= N'}]
+
+CELL b5-03
+Exact local coefficient solution: {a_plus: a*(k + 1)**2/k**2, b: L*a/k, b_plus: L*a*(k + 1)/k**2, c: 0, c_plus: 0, lambda_local: 2*L*a*(k + 1)/k, mu_local: a*(k + 1)**2/k**2}
+Normalized coefficients: {a: 2*k**2/N**2, a_plus: 2*(k + 1)**2/N**2, b: 2*L*k/N**2, b_plus: 2*L*(k + 1)/N**2, c: 0, c_plus: 0, lambda_local: 4*L*k*(k + 1)/N**2, mu_local: 2*(k + 1)**2/N**2}
+V_k LaTeX: \frac{2 k^{2}}{N^{2}} ||A(x_k)||^2 + \frac{4 L k}{N^{2}} <A(x_k),x_k-x_0>
+
+CELL b5-05
+Positive sample scale relative to the analytic normalization: 1.0002295271418702
+k=1: raw difference 1.28e-05; after common positive scale 1.39e-17
+<IPython.core.display.Math object>
+k=2: raw difference 5.1e-05; after common positive scale 4.38e-08
+<IPython.core.display.Math object>
+k=3: raw difference 0.000115; after common positive scale 1.33e-07
+<IPython.core.display.Math object>
+k=4: raw difference 0.000204; after common positive scale 2.79e-07
+<IPython.core.display.Math object>
+k=5: raw difference 0.000318; after common positive scale 4.84e-07
+<IPython.core.display.Math object>
+k=6: raw difference 0.000458; after common positive scale 7.29e-07
+<IPython.core.display.Math object>
+
+CELL b5-09
+Step Gram residual shape: (5, 5)
+<IPython.core.display.Math object>
+Step function residual: Matrix(0, 0, []) offset: 0
+
+CELL b5-12
+Base Gram residual shape: (3, 3)
+<IPython.core.display.Math object>
+Base function residual: Matrix(0, 0, []) offset: 0
+
+CELL b5-15
+Boundary Gram residual shape: (4, 4)
+<IPython.core.display.Math object>
+Boundary function residual: Matrix(0, 0, []) offset: 0
+
+CELL b5-17
+All active multipliers positive for L>0, N>=1, k>=1; R>=0.
+Step applies for 1<=k<N; N=1 uses only the base and terminal identities.
+Every residual is nonpositive, the square is nonnegative, V_N<=V_0=0, hence ||A(x_N)||Â²<=4LÂ²RÂ²/NÂ².
+Exact local Lyapunov theorem verified; global numerical-certificate formula status remains separate.
+
+N4 REPLAY b3-01
+Replayed complete certificate: True
+{'identity_gram_max_abs': 2.295867374931369e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 2.0003696477033373e-09, 'dense_relaxed_gap': 0.0, 'minimum_scalar_inequality_dual': 0.1250023593930748, 'minimum_matrix_inequality_eigenvalue': 0, 'minimum_S_eigenvalue': 5.774172893935857e-10}
+
+N4 REPLAY b3-02
+Complete-S block reconstruction error: 5.551115123125783e-17
+
+N4 REPLAY b3-03
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)

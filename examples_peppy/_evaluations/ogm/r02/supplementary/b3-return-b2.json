@@ -1,0 +1,38 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_cross_horizon_confirmation",
+    "next_block":  "B2",
+    "entry_exit_reason":  "N=6 rank and full-coordinate coverage passed; acquire coherent N=8 certificate for required second-horizon comparison",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  8,
+    "selected_horizon":  6,
+    "selected_certificate":  "state/ogm_b2.json",
+    "recipe_id":  "star-prefix-forward-chain_whole-S-boundary",
+    "observation":  "supplementary/b3-rank-N6.json",
+    "certificate_recheck":  "supplementary/b3-certificate-recheck.txt",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "consulted_approved_files":  [
+                                     "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+                                 ],
+    "own_sources":  [
+                        "state/ogm_b1.json",
+                        "state/ogm_dense.json",
+                        "state/ogm_b2.json",
+                        "ogm_setup.py",
+                        "supplementary/b2_notebook_cells.py",
+                        "supplementary/b3_notebook_cells.py",
+                        "supplementary/b3_trial.py",
+                        "supplementary/helpers/certificate_tools.py"
+                    ],
+    "import_and_hash_inventory":  "Inherited selected certificate source_hashes rechecked; prior source-access records apply",
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+
+                  ],
+    "unresolved_work":  "Second-horizon certificate and rank confirmation; B3 notebook/state completion, B4 and B5",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

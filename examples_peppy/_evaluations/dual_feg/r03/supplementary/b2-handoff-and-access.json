@@ -1,0 +1,33 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Coherent selected certificate and mandatory initial formula search completed; notebook execution and source checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "source_reads":  [
+                         "state/dual_feg_b1.json",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                         "supplementary/approved/pepflow/lyapunov_utils.py",
+                         "supplementary/approved/pepflow/pep_result.py",
+                         "supplementary/approved/pepflow/ipython_utils.py",
+                         "supplementary/approved/pepflow/expression_manager.py",
+                         "supplementary/approved/allowlist.json"
+                     ],
+    "transitive_source_evidence":  "Selected certificate source_hashes and static evidence sources",
+    "command_evidence":  [
+                             "supplementary/b2-discovery-output.txt",
+                             "supplementary/b2-structured-output.txt",
+                             "supplementary/b2-formula-output.txt",
+                             "supplementary/b2-static-001.json",
+                             "supplementary/b2-static-002.json",
+                             "supplementary/b2-notebook-execution.json"
+                         ],
+    "repair":  "Explicit non-null guard after ty diagnostic; preserved prior source and certificate; reacquired and rechecked selected certificate with final source hashes",
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "access_limit":  "Resolution probes do not exhaustively audit filesystem reads",
+    "deadline_utc":  "2026-09-23T21:04:02.221276+00:00"
+}

@@ -1,0 +1,26 @@
+﻿{
+    "current_block":  "B2",
+    "access_control":  "instruction_only",
+    "consulted_own_files":  [
+                                "supplementary/b2_cells.py",
+                                "state/pgm_b1.json",
+                                "supplementary/b2-n06-dense.json",
+                                "supplementary/b2-n06-certificate.json"
+                            ],
+    "consulted_approved_files":  [
+                                     "allowlist.json"
+                                 ],
+    "source_hash_reads":  "Exact approved framework inventory and own setup/helper source",
+    "commands":  [
+                     "python -I -B supplementary/acquire_n06.py; exact executed source preserved",
+                     "Corrected reused search provenance text for N6 without changing certificate components"
+                 ],
+    "incidents":  [
+                      "Dense CLARABEL optimal_inaccurate preserved; selected sparse solve optimal and all required residual/cone checks passed"
+                  ],
+    "prohibited_exposure_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "audit_limit":  "No exhaustive OS tracing"
+}

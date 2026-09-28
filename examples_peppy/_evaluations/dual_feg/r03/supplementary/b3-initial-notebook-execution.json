@@ -1,0 +1,59 @@
+{
+  "block": "B3-initial",
+  "status": "passed",
+  "kernel": "attempt-kernel",
+  "plot_count": 1,
+  "sha256": "4112774198402f0a5fe9cfb92f4ca699b9b891503febd1bcfd025e5117c93dd7",
+  "streams": [
+    {
+      "cell": 8,
+      "text": "Context built for N=4; metric: |g_4|^2\nInitial normalization: ScalarConstraint(lhs=|x_0-x_star|^2, rhs=R**2, cmp=<Comparator.LE: 'LE'>, name='initial_condition', associated_dual_var_constraints=[])\n"
+    },
+    {
+      "cell": 10,
+      "text": "N=1: 1.9999999892 (optimal)\nN=2: 0.9999998678 (optimal_inaccurate)\nN=3: 0.4444444571 (optimal)\nN=4: 0.2500000046 (optimal)\nN=5: 0.1600000090 (optimal)\nN=6: 0.1111111159 (optimal)\nN=7: 0.0816326561 (optimal)\nN^2 times PEP values: [1.99999999 3.99999947 4.00000011 4.00000007 4.00000022 4.00000017\n 4.00000015]\n"
+    },
+    {
+      "cell": 13,
+      "text": "Dense optimum: 0.2500000046002989\nSelected optimum: 0.24999999957831157\nDense-selected gap: 5.0219873537482584e-09\nBasis: ['x_0', 'x_star', 'g_0', 'h_0', 'g_1', 'h_1', 'g_2', 'h_2', 'g_3', 'h_3', 'g_4']\nDense Monotone Operator Inequality {'A monotone:x_4,x_half_0': 0.33333699736027184, 'A monotone:x_4,x_half_1': 0.666669331538738, 'A monotone:x_4,x_half_2': 2.000010192178649, 'A monotone:x_4,x_half_3': 0.33832427433590306, 'A monotone:x_4,x_star': 0.9999921878524, 'A monotone:x_half_1,x_half_3': 1.8788587531427068e-05, 'A monotone:x_half_2,x_half_3': 5.411008991968012e-05, 'A monotone:x_half_3,x_star': 3.997668662374072e-05}\nDense Lipschitz Continuous Inequality {'A Lipschitz:x_0,x_half_0': 0.12500402900061378, 'A Lipschitz:x_1,x_half_1': 0.22222937551605315, 'A Lipschitz:x_2,x_half_2': 0.5000160737774202, 'A Lipschitz:x_3,x_4': 2.000025672670334, 'A Lipschitz:x_3,x_half_3': 3.864796544611015e-05, 'A Lipschitz:x_4,x_half_3': 0.599664203523733}\nDense S eigenvalues: [1.23331338e-11 3.99169033e-10 7.36160793e-10 1.01372779e-09\n 1.47363162e-09 4.54460773e-09 1.11206614e-08 2.27765382e-08\n 5.99255575e-08 5.60877844e-01 2.13851491e+00]\n"
+    },
+    {
+      "cell": 15,
+      "text": "Retained interpolation constraints: 8\nDropped interpolation constraints: 82\nA Lipschitz:x_0,x_half_0 0.12500276495586313\nA Lipschitz:x_1,x_half_1 0.22222713556378462\nA Lipschitz:x_2,x_half_2 0.5000110541262774\nA Lipschitz:x_3,x_4 2.0000442124963476\nA monotone:x_4,x_half_0 0.3333407032255785\nA monotone:x_4,x_half_1 0.6666814053692469\nA monotone:x_4,x_half_2 2.0000442138148378\nA monotone:x_4,x_star 1.0000221055205096\ninitial_condition 0.2500000005286884\n"
+    },
+    {
+      "cell": 18,
+      "text": "Maximum candidate multiplier error: 4.4213814837767984e-05\nCandidate Monotone Operator Inequality\n"
+    },
+    {
+      "cell": 18,
+      "text": "Candidate Lipschitz Continuous Inequality\n"
+    },
+    {
+      "cell": 21,
+      "text": "Numerical certificate checks:"
+    },
+    {
+      "cell": 21,
+      "text": " {'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0.0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}, 'residuals': {'identity_gram_max_abs': 1.377260850206261e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 9.503768605423346e-10, 'S_reconstruction_max_abs': 5.551115123125783e-17, 'dense_relaxed_gap': 5.0219873537482584e-09, 'conjecture_gap': 4.2168843417123014e-10, 'minimum_scalar_inequality_dual': 0.12500276495586313, 'minimum_S_eigenvalue': 2.6151789612983615e-11, 'minimum_matrix_inequality_eigenvalue': 0.0}, 'passed': True}\nSelected S eigenvalues: [2.61517896e-11 3.45630102e-10 5.19558616e-10 6.09961074e-10\n 7.26055354e-10 7.26055453e-10 1.06931454e-09 1.57100972e-09\n 1.66769911e-09 2.39831664e-09 1.50004421e+00]\nLDL diagonal: [1.00004421e+00 7.26055354e-10 7.16849558e-10 9.87931263e-10\n 6.14220309e-10 8.12164907e-10 6.49316410e-10 1.69832956e-09\n 8.51494320e-11 7.98168502e-10 7.91653208e-10]\n"
+    },
+    {
+      "cell": 21,
+      "text": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r03\\supplementary\\approved\\pepflow\\pep_context.py:172: UserWarning:\n\nThe provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.\n\n"
+    },
+    {
+      "cell": 23,
+      "text": "Candidate square Gram error: 4.421263862464109e-05\n"
+    },
+    {
+      "cell": 23,
+      "text": "N=1: exact Gram/function/offset identity passed\nN=2: exact Gram/function/offset identity passed\nN=3: exact Gram/function/offset identity passed\nN=4: exact Gram/function/offset identity passed\nN=6: exact Gram/function/offset identity passed\n"
+    },
+    {
+      "cell": 29,
+      "text": "rank V_0: 0\n\nrank V_1: 4\nrank V_2: 4\nrank V_3: 4\nrank V_4: 2\nInterior rank is constant at this N: True boundary exclusions: (1, 1)\nFull-coordinate coverage and increments: {'coverage': 1.0706793411134263e-17, 'S_pieces': 0.0, 'increment_0': 0.0, 'increment_1': 5.551115123125783e-17, 'increment_2': 1.3877787807814457e-17, 'increment_3': 0.0}\nSingular values avoid the diagnostic band [0.5e-4, 2e-4]: True\nCross-horizon status: pending a coherent N=6 certificate\n"
+    }
+  ],
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendered_review": false
+}

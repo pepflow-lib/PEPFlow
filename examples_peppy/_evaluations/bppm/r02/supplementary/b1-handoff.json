@@ -1,0 +1,57 @@
+{
+  "current_block": "B1",
+  "completion_status": "complete",
+  "next_block": "B2",
+  "entry_exit_reason": "Initial dispatch; B1 setup, sweep, notebook and checks completed.",
+  "operational_status": "awaiting_same_session_continuation",
+  "dispatch_utc": "2026-09-23T17:08:47.115070+00:00",
+  "deadline_utc": "2026-09-23T19:08:47.115070+00:00",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "consulted_approved_files": [
+    "dispatch.md",
+    "input.md",
+    "worker-protocol.md",
+    "settings.json",
+    "clean-room.md",
+    "allowlist.json",
+    "plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+    "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "plugins/pepflow-workflows/references/output-layout.md",
+    "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "pepflow/__init__.py",
+    "pepflow/function.py",
+    "pepflow/pep_runner.py",
+    "pepflow/pep.py",
+    "pepflow/solver.py",
+    "pepflow/vector.py",
+    "pepflow/pep_context.py",
+    "pepflow/pep_result.py"
+  ],
+  "tool_consumed_sources": "Approved package and dependencies; source manifests, command lines, origins and hashes retained in adapter JSON records. Own generated files read/executed as recorded in transcript and notebook evidence.",
+  "incidents": [
+    {
+      "kind": "operational_path_length",
+      "evidence": "b1-static-001.json",
+      "repair": "Moved own runtime helper to supplementary/helpers; narrower helper root and matching probe path. Generic preflight passed in b1-preflight-002.json."
+    },
+    {
+      "kind": "source_diagnostics",
+      "evidence": "b1-static-003.json",
+      "repair": "Split notebook path bootstrap from imports; explicit typing.cast for framework Parameter/Number annotation mismatch. Repeated sweep after setup source change. No frozen source changes or suppressed diagnostics."
+    }
+  ],
+  "framework_observation": "bregman_prox prose has inconsistent half-factor/typo, but implementation grad_h = h.grad(x_0) - stepsize*grad_u matches the supplied exact update. No source modification.",
+  "checks": {
+    "static": "b1-static-004.json",
+    "execution": "b1-notebook-execution.json",
+    "sweep": "b1-sweep-002-output.txt"
+  },
+  "audit_limit": "Instruction-only controls and available tool records; not exhaustive OS read tracing.",
+  "unresolved_work": "Blocks B2-B5; no analytic theorem yet."
+}

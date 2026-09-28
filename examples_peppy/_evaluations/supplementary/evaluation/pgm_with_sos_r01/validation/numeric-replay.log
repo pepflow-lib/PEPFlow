@@ -1,0 +1,90 @@
+REPLAY CELL 5 7c0623bb
+REPLAY CELL 6 9ccc4882
+Setup built: 6 basis vectors
+REPLAY CELL 10 ca8fd86e
+Dense: 0.04166666248812821 optimal_inaccurate
+Relaxed: 0.04166666682095274 optimal
+Dense-relaxed difference: 4.33282452971806e-09
+Basis: ['x_0', 'x_star', 'grad_f(x_star)', 'grad_f(x_0)', 'grad_g(x_1)', 'grad_f(x_1)', 'grad_g(x_2)', 'grad_f(x_2)', 'grad_g(x_3)', 'grad_f(x_3)', 'grad_g(x_4)', 'grad_f(x_4)', 'grad_g(x_5)', 'grad_f(x_5)', 'grad_g(x_6)', 'grad_f(x_6)']
+f dense active entries: 56 largest: [('f:x_5,x_6', 0.41913550060878635), ('f:x_4,x_6', 0.2948715976629232), ('f:x_star,x_6', 0.2908762167977294), ('f:x_star,x_5', 0.22623466916909332)]
+g dense active entries: 36 largest: [('g:x_star,x_6', 0.3871804723851429), ('g:x_5,x_6', 0.365078394223574), ('g:x_4,x_6', 0.26030259091092595), ('g:x_star,x_5', 0.2038962631200446)]
+Dense S eigenvalues: [1.06558800e-10 5.53475256e-09 5.53475574e-09 4.65329982e-03
+ 6.26695992e-02 8.42979794e-02 1.32363007e-01 1.75727848e-01
+ 1.92095478e-01 2.17547534e-01 2.46353394e-01 2.77419139e-01
+ 2.96114234e-01 3.79484919e-01 5.57314467e-01 2.69883384e+00]
+Dropped constraint count: 74
+initial_condition 0.04166666707119415
+f:x_star,x_0 0.08333403531695897
+f:x_star,x_1 0.09848545231882293
+f:x_star,x_2 0.11817916880831776
+f:x_star,x_3 0.14444477239306433
+f:x_star,x_4 0.18056004048921737
+f:x_star,x_5 0.23214276519649915
+f:x_star,x_6 0.14285376903266067
+f:x_0,x_1 0.083334035316959
+f:x_1,x_2 0.1818194871278475
+f:x_2,x_3 0.2999986554282308
+f:x_3,x_4 0.44444342731336073
+f:x_4,x_5 0.6250034672946435
+f:x_5,x_6 0.8571462319832083
+g:x_star,x_1 0.09091094575748408
+g:x_star,x_2 0.10909006904319496
+g:x_star,x_3 0.1333317420796465
+g:x_star,x_4 0.16666921154986858
+g:x_star,x_5 0.21429332552334693
+g:x_star,x_6 0.2857047090940656
+g:x_1,x_2 0.09091094575748408
+g:x_2,x_3 0.20000101429274456
+g:x_3,x_4 0.3333327558644566
+g:x_4,x_5 0.5000019669063908
+g:x_5,x_6 0.7142952919218033
+REPLAY CELL 12 0ea94cab
+REPLAY CELL 13 d5754358
+Full numerical identity residuals: 9.578144023580926e-06 3.5555411947996163e-09 2.502414109262219e-10
+SOS reconstruction error: 9.577565375673558e-06
+Minimum S eigenvalue: 4.284220948290628e-10
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Exact candidate fixed-N identity: all coordinates are zero
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Candidate multiplier error: 9.577636088997643e-06
+Numerical certificate verified; arbitrary-horizon analytic proof remains pending.
+REPLAY CELL 16 48799cbe
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residual: 4.163336342344337e-17
+Confirming horizon 4 retained indices [1, 2, 3] common rank 4 coverage residual 1.1102230246251565e-16
+Confirming horizon 6 retained indices [1, 2, 3, 4, 5] common rank 4 coverage residual 4.163336342344337e-17
+REPLAY CELL 18 2d12f87c
+Verified same-certificate partial sums; interior indices [1, 2, 3, 4, 5] exceptional indices [0, 6]
+REPLAY CELL 25 e8f87cb1
+REPLAY CELL 27 7301553a
+k=0: rank 0 basis []; residual 0
+Function gap coefficients [f,g]: [0.0, 0.0] ; scalar offset: 0
+k=1: rank 4 basis ['a_star', 'x_0-x_star', 'x_1-x_star', 'a_1-a_star']; residual 1.65e-16
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [0.18181948763578185, 0.09091094575748403] ; scalar offset: 0
+k=2: rank 4 basis ['a_star', 'x_0-x_star', 'x_2-x_star', 'a_2-a_star']; residual 3.83e-16
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [0.29999865619013244, 0.200001014800679] ; scalar offset: 0
+k=3: rank 4 basis ['a_star', 'x_0-x_star', 'x_3-x_star', 'a_3-a_star']; residual 4.5e-16
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [0.44444342832922945, 0.33333275662635814] ; scalar offset: 0
+k=4: rank 4 basis ['a_star', 'x_0-x_star', 'x_4-x_star', 'a_4-a_star']; residual 7.81e-16
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [0.6250034685644795, 0.5000019679222595] ; scalar offset: 0
+k=5: rank 4 basis ['a_star', 'x_0-x_star', 'x_5-x_star', 'a_5-a_star']; residual 4.13e-16
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [0.8571462335070115, 0.714295293191639] ; scalar offset: 0
+k=6: rank 1 basis ['x_0-x_star']; residual 4.77e-09
+<IPython.core.display.Math object>
+Function gap coefficients [f,g]: [1.000000002285705, 1.0000000020317374] ; scalar offset: 0
+All-index full-component reconstruction passed: {'0': {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, '1': {'gram': 8.326672684688674e-17, 'function': 8.326672684688674e-17, 'offset': 0.0}, '2': {'gram': 1.8041124150158794e-16, 'function': 5.079344167491229e-10, 'offset': 0.0}, '3': {'gram': 2.914335439641036e-16, 'function': 5.079345832825766e-10, 'offset': 0.0}, '4': {'gram': 3.608224830031759e-16, 'function': 7.619018749238649e-10, 'offset': 0.0}, '5': {'gram': 3.191891195797325e-16, 'function': 1.0158690555428507e-09, 'offset': 0.0}, '6': {'gram': 1.3405496990248622e-09, 'function': 1.2698362361618365e-09, 'offset': 0.0}}

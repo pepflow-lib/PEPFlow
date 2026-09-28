@@ -1,0 +1,88 @@
+# Evaluation rubric
+
+**Controller/evaluator only. Never dispatch this file to generation workers.** Read this file before dispatch to freeze the target, rubric hashes and review policy. Apply its mathematical assessment only after all `M*K` selected campaign generation attempts have stopped and submitted artifact hashes are frozen. Here `C` is the frozen selected condition list, `M=len(C)` and `K = repetitions` is the uniform positive count. Full-suite default is six conditions with `K=5` (30 attempts); an explicit request to time one named condition defaults to `K=1`. Use protocol `2026-09-20.isolation-recovery-v1` and the [evaluation operations](evaluation-operations.md) presentation override while preserving the mathematical checks below. Evaluate each attempt independently under the same predeclared review policy, without sharing other attempts' proofs or scores or sending corrections back to workers.
+
+## Exact rate targets
+
+Never include this section in generation inputs. After all attempts finish or stop, freeze their artifact hashes and review the actual theorem and argument. Evaluate without sending corrections back to the workers.
+
+| Case | Required guarantee for every integer `N >= 1` |
+| --- | --- |
+| PGM (both `pgm_with_sos` and `pgm_without_sos`) | `h(x_N) - h(x_star) <= L*R^2/(4*N)`, where `h=f+g` |
+| OGM | `f(x_N) - f(x_star) <= L*R^2/(2*theta_N^2)`, using the supplied terminal recurrence |
+| BPPM | `f(x_N) - f(x_star) <= R/(alpha*N)`, with `D_h(x_star,x_0) <= R` |
+| FEG | `||A(x_N)||^2 <= 4*L^2*R^2/N^2` |
+| Dual-FEG | `||A(x_N)||^2 <= 4*L^2*R^2/N^2` |
+
+Both PGM conditions have the identical target, rubric, model/reasoning setting, budgets, and source/skill snapshots; only receipt of the fixed aid differs. Freeze these common settings before dispatch, with no adaptive reasoning ladder by default. Supplied SOS expressions are candidate assistance and earn no automatic block or mathematical PASS; assess the worker's verification and complete argument. An SOS decomposition independently discovered in `pgm_without_sos` is permitted.
+
+Matching only the asymptotic order is insufficient; a stronger proved guarantee that implies the target qualifies.
+
+Bounds stated directly using `||x_0-x_star||^2` or `D_h(x_star,x_0)` are acceptable when the supplied initial condition yields the table. Normalizing `L` or `R` is acceptable if the theorem restores the general parameters correctly. Do not substitute an averaged iterate, another metric, stronger structural assumptions, or only finitely many tested horizons.
+
+Review the actual Lyapunov argument: a defined potential or equivalent telescoping certificate, justified step inequality/identity, valid initial and terminal links, and the sign/domain facts needed to imply the target. Handle any exceptional small horizons explicitly. A theorem that merely asserts the target, a fitted rate, a numerical PEP certificate for sampled horizons, or an unexplained `proof_valid=true` is not enough.
+
+Different potentials, scalings, additive constants, index conventions, bases, dimensions, ranks, multipliers, SOS decompositions, and algebraically equivalent expressions are allowed. Do not require the paper's exact proof structure, a causal-only potential, a prescribed positivity-proof technique, or an independent tightness witness. A horizon-dependent potential involving the terminal iterate can be valid. Do not add these as success criteria.
+
+Notebook execution and state files provide evidence and reproducibility, not a second mathematical scoring objective. Report missing artifacts or execution issues separately. They affect the mathematical verdict only when they reveal a gap or prevent the theorem from being assessed.
+
+## Block assessment
+
+Workers record provisional checks. After generation is frozen, the evaluator assigns final block judgments from the actual artifacts and evidence, using the frozen active skills. Stored booleans and a worker's assertion of success are insufficient. Keep first-completion events and revisit history, but score the final coherent handoff: a later certificate change invalidates dependent evidence until rechecked.
+
+The following specifies the core checks; retain each active block's notebook/evidence requirements as well. A local block judgment is not automatically the conjunction of all preceding block judgments. Preserve prerequisite failures and invalidations explicitly.
+
+| Block | Required evidence for PASS | Detailed measurements |
+| --- | --- | --- |
+| B1: implementation and rate evidence | Setup matches the supplied algorithm, assumptions, indexing, metric and normalization; the prescribed sweep produces valid results; rate inference/comparison and required notebook evidence are recorded. A finite sweep is not an all-horizon theorem. | Required/successful horizons, solve statuses, PEP values, candidate-rate comparisons, input/setup checks. |
+| B2: full-PEP certificate | Complete coherent numerical certificate; dense/relaxed bound agreement; identity checks for Gram, function-value and constant components; required dual signs/PSD; verified reconstruction of S; initial closed-form search documented. | Actual tolerances and residuals, dense/relaxed gap, minimum scalar dual and relevant eigenvalues, S reconstruction error, certificate ID, formula/proof status. |
+| B3: partial sums and rank | Verified decomposition/signs, coverage and increment identities in all scalar components; permitted boundary leftovers identified; constant interior rank at two or more horizons under one recipe and fixed exclusions of at most two indices per end, with at least three retained indices per confirming horizon. | Rank profiles, singular-value/tolerance evidence, boundary rule, tested horizons/recipes, coverage and increment residuals, failed/unavailable samples. |
+| B4: basis and reconstruction | Independent spanning basis for each required quadratic part; symmetric coefficient matrix reconstructs it; the visibly assembled full potential, including function-value and constant terms, reproduces every required V_k, including endpoints/exceptions; actual basis-search evidence is retained. | Required/passing indices, basis sizes and span checks, quadratic reconstruction error, Gram/function/constant residuals per k, failed indices, search calls and sparsity diagnostics. |
+| B5: analytic proof and delivery | General step, base and terminal identities; justified coefficients, signs, domains and exceptional cases; exact target implication; required self-contained notebook evidence, static checks, clean-kernel execution and completion checklist under the evaluation presentation override. Rendering is ancillary and is not a gate. | Proof-obligation judgments and references, unresolved obligations, exact residual checks, sign/domain arguments, notebook execution/static outcomes and any separate ancillary presentation diagnostics. |
+
+Numerical certificate success in B2 does not require a closed-form global lambda/S proof. B4 success does not require fitted closed-form coefficients; those may be resolved in B5. Track these analytic achievements separately. A low rank, sparse matrix, matching rank alone, or a sampled coefficient fit is not a proof or substitute for reconstruction. Do not require the final potential itself to be PSD unless the submitted argument needs that property.
+
+Freeze all applicable tolerances and scaling conventions from the active skills before dispatch, including the B2 identity/PSD/reconstruction and B4 span/reconstruction tolerances. Log the measured values as well as outcomes. Never relax a threshold after observing a failing run to manufacture success. Record any unavoidable protocol deviation separately.
+
+Use underlying `gate_verdict` values `PASS`, `FAIL`, `UNRESOLVED`, `NOT_REACHED`, or `NOT_EVALUATED`. Examples: a demonstrated wrong reconstruction is FAIL; an unverified substantive candidate after review is UNRESOLVED; B4 never entered is NOT_REACHED; a contaminated independent attempt is NOT_EVALUATED. Record separate mathematical-check and delivery-check outcomes so genuine missing notebook content or execution failure can be distinguished from an invalid identity. Under this protocol, missing/unavailable rendering or visual review is not a delivery failure or incomplete workflow condition. Do not automatically propagate legacy rendering-only failure flags; inspect their actual reason while preserving genuine mathematical or execution failures.
+
+## Final mathematical judgment
+
+The evaluator receives the frozen condition-specific case input, evaluator-only exact target from this rubric, the frozen submission and generic validation tools. Do not provide other attempts' proofs, scores, or the paper's proof as a template. Evaluate each attempt independently under the same predeclared policy. Use the detailed rubric below rather than matching text or the paper's chosen potential.
+
+1. **Claim and scope:** Does the actual theorem cover the prescribed algorithm, assumptions, metric, finite-horizon constant, normalization and horizon range?
+2. **Candidate potential:** Are all terms and coefficients defined, including function-value/constant terms, initial/terminal cases and any recurrence data? Are proof-critical dependencies supplied?
+3. **Step identity:** After applying the actual updates, does the claimed increment identity hold for general indices and parameters, in Gram, function-value and constant components? Verify submitted formulas using exact symbolic calculations or the supplied exact argument. Several numeric horizons or saved zero residuals alone do not establish it.
+4. **Decrease:** Do justified signs, domains, denominators and residual conventions imply the claimed Lyapunov decrease or equivalent telescoping relation? An algebraically zero difference does not establish the inequality direction.
+5. **Base and terminal link:** Do the initial condition and terminal relation imply the exact target rate, including small-horizon exceptions? For the usual normalization, verify `metric <= V_N <= V_0 <= target`; accept an explicitly justified equivalent normalization.
+
+Missing necessary sign lemmas, mismatched normalization, or an unsupported step/boundary implication prevents mathematical PASS. Do not demand an unnecessary global full-PEP analytic proof, the same basis/SOS as the paper, or a separate tightness witness.
+
+Final mathematical success is independent of notebook presentation and pipeline completion: a sound submitted proof may receive mathematical PASS despite an incomplete rendering check, while complete-looking block states do not imply mathematical PASS. Preserve the distinction in the block and final columns and the assessment notes.
+
+Use validation copies for re-execution and redirect all writes, including state/helper/temp writes, away from frozen submissions. Independent verification may reconstruct and check the submitted expressions; it must not invent missing coefficients, derive a new essential lemma, or repair the proof. Distinguish observed saved evidence from fresh rechecks. If review is inconclusive, record it as such rather than inventing a mathematical failure or success. Keep adjudication and verdict-change history.
+
+Store `mathematical_verdict` as `PASS`, `FAIL`, `REVIEW`, or `NOT_EVALUATED`, using the definitions below. A failed attempt means the target was not established, not that the target bound is false. Timeout does not decide the verdict by itself: evaluate any proof submitted before cutoff. Confirmed contamination, disqualifying access-protocol deviations, concrete unresolved access eligibility, and preflight/infrastructure preventing meaningful work are NOT_EVALUATED with distinct reasons; do not reclassify ordinary discovery failures or routine instruction-only audit limitations as exclusions.
+
+- `PASS`: the generated theorem and Lyapunov argument establish the target (or a stronger guarantee) under the required scope.
+- `FAIL`: the produced result does not establish the target, including an absent/incomplete theorem at timeout or a remaining mathematical gap.
+- `REVIEW`: a substantive candidate exists, but its mathematical validity cannot be decided from the completed review. Do not count it as a pass.
+- `NOT_EVALUATED`: preflight/infrastructure prevented a meaningful attempt, confirmed prohibited exposure invalidated independence, a confirmed source-boundary deviation was ineligible under the frozen access rules, or a concrete access incident left eligibility unresolved after bounded triage. Record which reason applies and the supporting evidence; a generic-source deviation does not itself establish prohibited-answer exposure. A generic path diagnostic, failed static check, worker declaration, or absence of exhaustive tracing alone does not establish any of these exclusions.
+
+Record protocol and delivery facts separately: `run_status` (`completed`, `timeout`, `stopped_at_horizon_limit`, `needs_guidance`, `error`, `contaminated`, or `not_started`), `completed_blocks`, `artifacts` (`complete` or `partial`), `access_control`, and `assistance`. This frozen campaign has no in-run horizon-approval state. Its resource limit does not alter the mathematical target. A contaminated result never counts as an independent reproduction even if its formula matches the target.
+
+### Access adjudication
+
+Apply the worker-safe [tool recovery policy](tool-recovery.md) to actual incident evidence. Distinguish configured search roots, denied requests, actual generic reads, and exposed or tool-consumed prohibited material. Assess every worker's access claim independently; neither a saved `contaminated` label nor `target_specific_prohibited_content_observed=false` decides eligibility by itself. Verify recorded repairs and required-check outcomes. An undeclared generic read remains a deviation and may be accepted only under the campaign's predeclared narrow permission/equivalence rule.
+
+In the existing access audit record `access_status` as `no_incident`, `recovered`, `deviation`, `unresolved`, or `contaminated`, alongside `eligible`, the evidence and decision reason. `recovered` means the specific incident was resolved, not that all possible access is observable. `deviation` must include the frozen rule supporting eligibility; without that basis it is ineligible, with an explicit access-protocol reason. `unresolved` requires concrete incident evidence, not the routine limits of instruction-based isolation. A stopped unresolved incident has operational status `error` or `timeout`, and is excluded without being labeled confirmed contamination.
+
+Preserve original worker declarations and the real session/deadline/stop history, even when correcting their interpretation. Do not backfill completed blocks, resume a frozen slot, fabricate an unsubmitted proof, or overwrite historical assessments. Record any later adjudication separately under the original campaign's rules; adopting this protocol is not authorization to rescore earlier campaigns. Operational recovery never waives static checks or mathematical proof obligations.
+
+Use the [campaign workflow](workflow.md) for the binary report mapping, fixed denominators, and required supplementary records. Keep detailed verdicts and reasons even when the summary column is binary. Label `pgm_with_sos` attempts as receiving fixed SOS assistance, `pgm_without_sos` attempts as receiving no supplied SOS aid, and every BPPM attempt as receiving its conjectured rate. Record any independently discovered SOS in a no-aid attempt separately from supplied assistance. Keep results grouped by `condition_id`, retaining `case_id=pgm` for both PGM conditions and the matched-round `pair_id`; do not pool their success counts. The campaign has `M*K` attempts and `5*M*K` block rows. It has `P=K` PGM pairs only when both PGM conditions are selected; otherwise `P=0` with null pair IDs and a not-applicable paired comparison. Every selected condition has `K = repetitions` attempts. The default full suite with `K=5` gives 30 attempts, 150 block rows, and five PGM pairs. A pair links the same repetition number only and does not share proof evidence or reviewer conclusions.
+
+## Controller-only historical attribution
+
+This paragraph is historical provenance, not an instruction to retrieve any original artifact. The frozen PGM aid transcribes only the `S_guess1`, `S_guess2`, and `S_guess3` assignments from source cells 35-37 (zero-based) of `examples_peppy/_references/pgm/pgm_example.ipynb`, with iterate/subgradient notation made explicit. Source SHA256 recorded at drafting: `88732e1a7ac4af8282fffbf7758a2d08b39ca4acab41a8152d58e4a225007ea4`. That notebook, its outputs, remainder matrices, multipliers, and surrounding proof cells are not runtime inputs. Use the frozen [case inputs](case-inputs.md); never expand the aid during execution or send this provenance paragraph to workers.
+
+The input distinctions are intentional: `pgm_with_sos` receives fixed SOS assistance; `pgm_without_sos` receives the same PGM assumptions and unknown rate without that aid; BPPM receives its conjectured rate; Dual-FEG receives neither a metric nor a rate. The OGM newly computed gradient step uses `y_{k+1}` consistently, and the special terminal recurrence is preserved. Dual-FEG explicitly includes `z_0=0`. The fixed PGM aid uses the corrected proximal-subgradient identity. No completed examples, paper PDFs, or historical proposal documents are required to execute or assess this skill. Any historical PGM no-aid run is a pilot, not a slot in this campaign; it must not replace a preregistered repetition or supply generation hints.

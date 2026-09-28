@@ -1,0 +1,24 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_certificate",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Requested additional coherent certificate acquired and verified; selected N=4 state retained",
+    "operational_status":  "awaiting_same_session_continuation",
+    "horizon":  6,
+    "certificate":  "supplementary/b2-certificate-N6.json",
+    "dense":  "supplementary/b2-dense-N6.json",
+    "evidence":  "supplementary/b2-N6-static-001.json",
+    "command":  "python -I -B supplementary/acquire_b2_N6.py",
+    "timestamp_utc":  "2026-09-23T22:07:27.6260789Z",
+    "deadline_utc":  "2026-09-23T23:46:53.255961+00:00",
+    "direct_approved_reads":  [
+
+                              ],
+    "own_sources":  "Supplementary acquisition script and existing certificate/runtime/setup helpers",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "incidents":  [
+
+                  ],
+    "unresolved_work":  "B3 cross-horizon comparison and delivery; B4-B5"
+}

@@ -1,0 +1,45 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_second_horizon_required",
+    "next_block":  "B2",
+    "entry_exit_reason":  "N4 selected certificate revalidated; rank and coverage passed; request N6 certificate for cross-horizon confirmation",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "keep_selected_horizon":  4,
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "rank_profile":  [
+                         0,
+                         4,
+                         4,
+                         4,
+                         1
+                     ],
+    "boundary_exclusions":  {
+                                "left":  1,
+                                "right":  1
+                            },
+    "evidence":  "supplementary/b3-rank-N4.json",
+    "approved_sources_added":  [
+                                   "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+                               ],
+    "own_sources":  [
+                        "state/pgm_b2.json",
+                        "supplementary/b3_construct.py",
+                        "supplementary/probe_b3.py",
+                        "supplementary/update_b3_partial.py",
+                        "pgm_example_lyap.ipynb"
+                    ],
+    "commands":  [
+                     "Read approved B3 workflow",
+                     "Pinned Python -I -B supplementary/probe_b3.py",
+                     "Pinned Python -I -B supplementary/update_b3_partial.py"
+                 ],
+    "operational_incident":  "One mistyped workdir failed before process creation; corrected exact own attempt path",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS tracing",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "no_next_block_work_started":  true
+}

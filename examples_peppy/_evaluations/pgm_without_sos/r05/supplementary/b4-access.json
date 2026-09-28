@@ -1,0 +1,32 @@
+﻿{
+    "current_block":  "B4",
+    "consulted_approved_files":  [
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                                     "settings.json"
+                                 ],
+    "consulted_own_files":  [
+                                "state/pgm_b3.json",
+                                "state/pgm_b4.json",
+                                "supplementary/b4_cells.py",
+                                "pgm_example_lyap.ipynb",
+                                "supplementary/pgm_example_lyap_checklist.md"
+                            ],
+    "source_hash_reads":  "Exact selected certificate inventory",
+    "commands":  [
+                     "python -I -B supplementary/b4_scan.py; rich candidate then focused sparse search",
+                     "python -I -B supplementary/run_b4.py",
+                     "python -I -B supplementary/update_b4_notebook.py",
+                     "static adapter b4-static-001.json",
+                     "python -I -B supplementary/replay_b4.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_exposure_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+
+                  ],
+    "audit_limit":  "No exhaustive OS tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:05.983486+00:00"
+}

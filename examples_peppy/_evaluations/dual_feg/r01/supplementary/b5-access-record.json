@@ -1,0 +1,39 @@
+{
+  "current_block": "B5",
+  "access_control": "instruction_only",
+  "approved_direct_reads": [
+    "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "pepflow/expression_manager.py"
+  ],
+  "generated_scripts": [
+    "b5_derive.py",
+    "run_b5_derive.py",
+    "b5_step.py",
+    "b5_base.py",
+    "b5_last.py",
+    "b5_boundary.py",
+    "run_b5_exact.py",
+    "b5_coeff_formula.py",
+    "update_b5_notebook.py",
+    "b5_static_repair.py",
+    "execute_final_notebook.py",
+    "b5_display_repair.py",
+    "finalize_b5.py"
+  ],
+  "incidents": [
+    {
+      "classification": "static_diagnostics",
+      "evidence": "b5-static-001.json",
+      "reason": "Two symbolic parameter dictionaries exceeded the framework numerical-only type annotation.",
+      "repair": "Explicit dict[str, Any] annotations on symbolic mappings; no framework or mathematical change."
+    },
+    {
+      "classification": "notebook_content_gap",
+      "reason": "Labeled true numerical S was not displayed during initial final audit.",
+      "repair": "Added its display and repeated static/final execution checks."
+    }
+  ],
+  "prohibited_sources_used_or_observed": false,
+  "audit_limit": "Instruction-only read restrictions; no exhaustive OS read trace. Actual tool outputs and adapter source manifests retained.",
+  "run_status": "complete"
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "User-requested reporting correction; no new generation or mathematical replay",
+  "recorded_at_utc": "2026-09-24T01:54:40.389826+00:00",
+  "request": "Do not classify generic execution-environment incidents as failed mathematical experiments.",
+  "scope": "Mathematical content, delivery, and historical access eligibility are reported separately. Original submissions, independent reviews, measurements and original protocol remain unchanged.",
+  "original_results_sha256": "95a573492e70f707911d4965c5682dc5b9a9d0ec0d44502f79a123b9d99cd462",
+  "reported_counts": {
+    "registered_attempts": 30,
+    "mathematical_PASS": 28,
+    "mathematical_FAIL": 0,
+    "NOT_EVALUATED": 2
+  },
+  "historical_protocol_eligible_successes": 27,
+  "attempts": {
+    "pgm_without_sos_r02": {
+      "mathematical_verdict": "NOT_EVALUATED",
+      "original_summary_result": "FAIL",
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "reason": "The original reviewer did not complete mathematical verification after a generic runtime incident. Preserve NOT_EVALUATED; do not infer either a failed proof or a verified proof.",
+      "review_file": "supplementary/evaluation/pgm_without_sos_r02/review.json",
+      "review_sha256": "a7606731ddb05b3b63e29f5f4678e724ab0caac24b420093e1400cc0e8aaac4a",
+      "mathematical_review_newly_performed": false
+    },
+    "bppm_r02": {
+      "mathematical_verdict": "PASS",
+      "original_summary_result": "FAIL",
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "reason": "The original independent reviewer explicitly verified the complete theorem and fresh exact identities. Report that established mathematical result while retaining incomplete delivery and the original unresolved access finding.",
+      "review_file": "supplementary/evaluation/bppm_r02/review.json",
+      "review_sha256": "c1d9966ca95e077da4201bd9afd8887f2c649ccc3931310499ebced1f8521283",
+      "mathematical_review_newly_performed": false
+    },
+    "feg_r03": {
+      "mathematical_verdict": "NOT_EVALUATED",
+      "original_summary_result": "FAIL",
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "reason": "The original reviewer did not complete mathematical verification after a generic runtime incident. Preserve NOT_EVALUATED; do not infer either a failed proof or a verified proof.",
+      "review_file": "supplementary/evaluation/feg_r03/review.json",
+      "review_sha256": "c7a149b3cbcd7baa4ea428df77a1028de8274a76a87f1739b54475ccb24b0154",
+      "mathematical_review_newly_performed": false
+    }
+  }
+}

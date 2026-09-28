@@ -1,0 +1,65 @@
+{
+    "current_block":  "B1",
+    "access_control":  "instruction_only",
+    "source_files":  [
+                         "supplementary/approved/dispatch.md",
+                         "supplementary/approved/input.md",
+                         "supplementary/approved/worker-protocol.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                         "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                         "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                         "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+                         "supplementary/approved/pepflow/__init__.py",
+                         "supplementary/approved/pepflow/function.py",
+                         "supplementary/approved/pepflow/pep.py",
+                         "supplementary/approved/pepflow/pep_runner.py",
+                         "supplementary/approved/pepflow/solver.py",
+                         "supplementary/approved/pepflow/parameter.py"
+                     ],
+    "prior_preflight_sources":  "supplementary/preflight-access-record.json",
+    "generated_files_read":  [
+                                 "bppm_setup.py",
+                                 "bppm_example_lyap.ipynb",
+                                 "supplementary/author_b1.py",
+                                 "supplementary/_sweep_tmp.json",
+                                 "state/bppm_b1.json",
+                                 "supplementary/b1-execution.json",
+                                 "supplementary/b1-static-002.json",
+                                 "supplementary/b1-static-003.json"
+                             ],
+    "commands":  [
+                     "Get-Content and targeted rg on listed approved resources",
+                     "apply_patch for generated files",
+                     "python -I -B supplementary/run_b1.py (twice: second required after signature edit)",
+                     "python -I -B supplementary/author_b1.py (three executions after helper/signature edits)",
+                     "approved check_static adapter, exact argv in static evidence commands and tool transcript"
+                 ],
+    "static_evidence":  [
+                            "supplementary/b1-static-001.json",
+                            "supplementary/b1-static-002.json",
+                            "supplementary/b1-static-003.json"
+                        ],
+    "incidents":  [
+                      {
+                          "classification":  "operational",
+                          "evidence":  "b1-static-001.json",
+                          "repair":  "Narrow helper root to supplementary/helpers; generic import and fresh-kernel probe rerun by unchanged adapter",
+                          "issue":  "Windows path length during broad supplementary helper staging"
+                      },
+                      {
+                          "classification":  "source_type_diagnostic",
+                          "evidence":  "b1-static-002.json",
+                          "repair":  "Explicit untyped stepsize argument, supplied by setup; reran sweep and notebook; no framework changes or diagnostic suppression",
+                          "issue":  "Symbolic Parameter default inferred against numbers.Number API annotation"
+                      }
+                  ],
+    "prohibited_content_observed":  false,
+    "audit_limit":  "No exhaustive OS read trace. Approved framework and dependencies imported; static adapter manifests and import origins preserved.",
+    "dispatch_utc":  "2026-09-23T22:34:49.219272+00:00",
+    "deadline_utc":  "2026-09-24T00:34:49.219272+00:00",
+    "usage_tokens":  null
+}

@@ -1,0 +1,313 @@
+{
+  "summary": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 4,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "d94a710ab988275c9ae01f78ba60fa0590f8e45bd758a0b90e384b873c660260",
+    "recipe_id": "adjacent_pairs_terminal_h_and_full_S_boundary",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "none",
+      "coordinate_order": "setup creation order"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "samples": [
+    {
+      "N": 4,
+      "certificate_id": "d94a710ab988275c9ae01f78ba60fa0590f8e45bd758a0b90e384b873c660260",
+      "recipe_id": "adjacent_pairs_terminal_h_and_full_S_boundary",
+      "rank_profile": [
+        0,
+        4,
+        4,
+        4,
+        4
+      ],
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21650635110707653,
+          0.21650635110707653,
+          0.12500000009293427,
+          0.12500000009293427,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2719159685569115,
+          0.2719159685569115,
+          0.14075406267492083,
+          0.14075406267492077,
+          1.0077254377070164e-10,
+          1.0077254214626222e-10,
+          4.923168373095045e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.32224193446618116,
+          0.32224193446618116,
+          0.1454652391294362,
+          0.1454652391294362,
+          1.5462445981099284e-10,
+          1.546244366326192e-10,
+          5.838429391029354e-11,
+          5.83842839001255e-11,
+          2.761266855581916e-18,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3666902491191103,
+          0.36669024911911025,
+          0.14760847316581258,
+          0.14760847316581252,
+          1.6682928860633632e-10,
+          1.6682927892313381e-10,
+          1.0079893751314694e-10,
+          1.0079893468022944e-10,
+          8.301633088449816e-11,
+          8.301632427604498e-11,
+          2.251140669927394e-18,
+          0.0
+        ]
+      ],
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "none",
+        "coordinate_order": "setup creation order"
+      },
+      "coverage_errors": [
+        [
+          2.7755575615628914e-17,
+          5.551115123125783e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "boundary_names": [
+        "h:x_star,x_4"
+      ],
+      "boundary_S": [
+        "S_full"
+      ],
+      "code": {
+        "certificate_check": "import hashlib\nimport json\nimport numpy as np\nimport pepflow as pf\nimport certificate as certificate_api\n\ncertificate_checked = False\ncertificate_keys = ('N_verify','params_json','relaxed_constraints','S_matrix','S_row_names','S_col_names','basis_vectors','basis_scalars','opt_value','tau_sol','tau_name','named_dual_values','constraint_metadata','normalization','certificate_provenance','numerical_checks','numerical_decomposition')\ndigest = hashlib.sha256(json.dumps({key:certificate[key] for key in certificate_keys},sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()\nassert digest == certificate['certificate_id']\nassert certificate['certificate_provenance']['pep_type'] == 'primal'\nfor relative, expected in certificate['certificate_provenance']['source_hashes'].items():\n    source_path = (notebook_dir / relative).resolve()\n    assert source_path.is_relative_to(notebook_dir)\n    assert hashlib.sha256(source_path.read_bytes()).hexdigest() == expected\nassert __import__('pathlib').Path(pf.__file__).resolve() == REPO_ROOT / 'pepflow/__init__.py'\nassert N_int == certificate['N_verify']\nassert params_sp == json.loads(certificate['params_json'])\nassert set(pb.relaxed_constraints) == set(certificate['relaxed_constraints'])\nassert pb.ctx is ctx\nbasis = ctx.basis_vectors()\nbasis_labels = [str(v) for v in basis]\nassert certificate['S_row_names'] == certificate['S_col_names'] == basis_labels\nassert certificate['normalization']['tau_name'] == certificate['tau_name'] == 'initial_condition'\nassert certificate['normalization']['initial_condition'] == 'D_h(x_star,x_0)<=R'\nassert certificate['normalization']['performance_metric'] == 'f(x_N)-f(x_star)'\nassert certificate['normalization']['bound_value'] == certificate['opt_value']\nassert certificate['named_dual_values']['initial_condition'] == certificate['tau_sol']\nrows = certificate_api.inventory(ctx, pb)\nassert len(rows) == len({c.name for c,*_ in rows})\nassert set(certificate['constraint_metadata']) == {c.name for c,*_ in rows}\nweighted_terms = {}\nextra_duals = {}\nfor c, origin, owner, group in rows:\n    assert isinstance(c,pf.ScalarConstraint)\n    expected = dict(origin=origin,owner=owner,group=group,kind='scalar',comparator=c.cmp.value,shape=[],relaxed=c.name in pb.relaxed_constraints)\n    assert expected == certificate['constraint_metadata'][c.name]\n    value = certificate['named_dual_values'][c.name]\n    if value is not None:\n        assert c.cmp.value == 'LE'\n        weighted_terms[c.name] = value*(c.lhs-c.rhs)\n        if origin != 'interpolation' and c.name != 'initial_condition':\n            extra_duals[c.name] = value\nchecks = certificate_api.verify(ctx,pb,params_sp,certificate,certificate['opt_value'])\nassert certificate['closed_form_search']['completed']\nassert abs(certificate['opt_value']-params_sp['R']/(params_sp['alpha']*N_int))<=1e-5\npm = pf.ExpressionManager(ctx,resolve_parameters=params_sp)\nS_array = np.asarray(certificate['S_matrix'],dtype=float)\nS_scalar = sum((float(S_array[i,j])*basis[i]*basis[j] for i,j in np.ndindex(S_array.shape)),pf.Scalar.zero())\ntol = certificate['numerical_checks']['tolerances']\ncertificate_checked = True\n\n",
+        "decomposition": "D = np.asarray(certificate['numerical_decomposition']['D'],dtype=float)\nE = np.asarray(certificate['numerical_decomposition']['ell_coords'],dtype=float)\nassert certificate['numerical_decomposition']['basis_labels'] == basis_labels\nassert np.allclose(E.T @ D @ E,S_array,atol=1e-4,rtol=1e-5)\n# One complete PSD block retains every tiny eigencomponent as a boundary remainder.\nS_piece_terms = {'S_full':S_scalar}\nassert np.linalg.eigvalsh((S_array+S_array.T)/2).min() >= -1e-6\n",
+        "grouping": "grouping_checked = False\nrank_tolerance = 1e-4\nrank_left, rank_right = 1, 1\ngroup_terms = {name:term for name,term in weighted_terms.items() if name != 'initial_condition'}\nterm_assignment = {}\nfor name in group_terms:\n    owner, pair = name.split(':')\n    first, second = pair.split(',')\n    if name == f'h:x_star,x_{N_int}':\n        term_assignment[name] = 'boundary'\n    elif first == 'x_star' and owner == 'f':\n        term_assignment[name] = int(second.split('_')[1])-1\n    else:\n        i,j = int(first.split('_')[1]),int(second.split('_')[1])\n        assert abs(i-j)==1\n        term_assignment[name] = max(i,j)-1\nS_assignment = {'S_full':'boundary'}\nlyap = [pf.Scalar.zero()]\npartial_sum = pf.Scalar.zero()\nfor step in range(N_int):\n    partial_sum += sum((group_terms[name] for name,target in term_assignment.items() if target == step),pf.Scalar.zero())\n    partial_sum -= sum((S_piece_terms[name] for name,target in S_assignment.items() if target == step),pf.Scalar.zero())\n    lyap.append(partial_sum)\nranks, singular_values = [], []\nfor k,Vk in enumerate(lyap):\n    matrix = np.asarray(pm.eval_scalar(Vk).inner_prod_coords,dtype=float)\n    values = np.linalg.svd(matrix,compute_uv=False)\n    singular_values.append(values.tolist())\n    rank = int(np.linalg.matrix_rank(matrix,tol=rank_tolerance))\n    ranks.append(rank)\n    print(f'rank V_{k}: {rank}')\n    if k == 0:\n        print()\nretained = ranks[rank_left:N_int+1-rank_right]\nprint('Interior rank is constant at this N:',len(retained)>=3 and len(set(retained))==1,'boundary exclusions:',(rank_left,rank_right))\nboundary_names = [name for name,target in term_assignment.items() if target=='boundary']\nboundary_S = [name for name,target in S_assignment.items() if target=='boundary']\nassert len(boundary_names)<=1 and len(boundary_S)<=1\nleftover = sum((group_terms[name] for name in boundary_names),pf.Scalar.zero())-sum((S_piece_terms[name] for name in boundary_S),pf.Scalar.zero())\ncoverage = lyap[N_int]+leftover-(sum(group_terms.values(),pf.Scalar.zero())-S_scalar)\ncoverage_errors = []\nfor expression in (coverage,sum(S_piece_terms.values(),pf.Scalar.zero())-S_scalar):\n    value = pm.eval_scalar(expression)\n    errors = [float(np.max(np.abs(np.asarray(coords,dtype=float)),initial=0)) for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset))]\n    coverage_errors.append(errors)\n    assert max(errors)<=1e-5\nfor k in range(N_int):\n    increment = sum((group_terms[name] for name,target in term_assignment.items() if target==k),pf.Scalar.zero())\n    value = pm.eval_scalar(lyap[k+1]-lyap[k]-increment)\n    assert all(np.allclose(np.asarray(coords,dtype=float),0,atol=1e-5,rtol=0) for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset)))\n# Every increment is a sum of nonnegative numerical multipliers times convex residuals <=0.\nassert all(certificate['named_dual_values'][name]>=-1e-6 for name in group_terms)\nassert set(term_assignment)==set(group_terms) and set(S_assignment)==set(S_piece_terms)\ngrouping_checked = True\nrank_credible = all(all(value<rank_tolerance/10 or value>rank_tolerance*10 for value in values) for values in singular_values)\nprint('Full-coordinate coverage errors:',coverage_errors)\n"
+      }
+    },
+    {
+      "N": 6,
+      "certificate_id": "0392cd6080bee31b0461b6b8ef95bac58dd7eae637f5e9307f1fdc6646a0b68f",
+      "recipe_id": "adjacent_pairs_terminal_h_and_full_S_boundary",
+      "rank_profile": [
+        0,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.14433756782377877,
+          0.14433756782377877,
+          0.08333333363723455,
+          0.08333333363723454,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18127731259462818,
+          0.18127731259462818,
+          0.09383604199786291,
+          0.0938360419978629,
+          2.7712792689932685e-10,
+          2.771279197036864e-10,
+          5.17753570371063e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.21482795656665332,
+          0.21482795656665332,
+          0.09697682628153537,
+          0.09697682628153537,
+          3.2816117458850194e-10,
+          3.281611643758646e-10,
+          2.6807131330880623e-10,
+          2.680713111098218e-10,
+          4.119143045396191e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.24446016636803763,
+          0.24446016636803758,
+          0.09840564897301986,
+          0.09840564897301983,
+          3.522614584650024e-10,
+          3.5226145476258645e-10,
+          2.975193744164419e-10,
+          2.975193716240422e-10,
+          2.117666654462883e-10,
+          2.117666612325979e-10,
+          3.4235420079371912e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2710905922860826,
+          0.2710905922860825,
+          0.09921302532263826,
+          0.09921302532263823,
+          3.674391284508878e-10,
+          3.674391254634782e-10,
+          3.205811649953486e-10,
+          3.205811621949893e-10,
+          2.794291928033343e-10,
+          2.794291903555541e-10,
+          1.3103557415845812e-10,
+          1.3103557070868878e-10,
+          3.829375094612576e-18,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.29542535728900093,
+          0.2954253572890009,
+          0.0997300399438619,
+          0.09973003994386188,
+          3.7098404181982465e-10,
+          3.709840199293578e-10,
+          3.2705147777706874e-10,
+          3.2705147492295157e-10,
+          2.831758513768416e-10,
+          2.83175848297915e-10,
+          2.514732695447658e-10,
+          2.51473266066139e-10,
+          1.7532062860519622e-10,
+          1.7532061481473423e-10,
+          6.348865793773221e-18,
+          0.0
+        ]
+      ],
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "none",
+        "coordinate_order": "setup creation order"
+      },
+      "coverage_errors": [
+        [
+          5.551115123125783e-17,
+          1.1102230246251565e-16,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "boundary_names": [
+        "h:x_star,x_6"
+      ],
+      "boundary_S": [
+        "S_full"
+      ],
+      "code": {
+        "certificate_check": "import hashlib\nimport json\nimport numpy as np\nimport pepflow as pf\nimport certificate as certificate_api\n\ncertificate_checked = False\ncertificate_keys = ('N_verify','params_json','relaxed_constraints','S_matrix','S_row_names','S_col_names','basis_vectors','basis_scalars','opt_value','tau_sol','tau_name','named_dual_values','constraint_metadata','normalization','certificate_provenance','numerical_checks','numerical_decomposition')\ndigest = hashlib.sha256(json.dumps({key:certificate[key] for key in certificate_keys},sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()\nassert digest == certificate['certificate_id']\nassert certificate['certificate_provenance']['pep_type'] == 'primal'\nfor relative, expected in certificate['certificate_provenance']['source_hashes'].items():\n    source_path = (notebook_dir / relative).resolve()\n    assert source_path.is_relative_to(notebook_dir)\n    assert hashlib.sha256(source_path.read_bytes()).hexdigest() == expected\nassert __import__('pathlib').Path(pf.__file__).resolve() == REPO_ROOT / 'pepflow/__init__.py'\nassert N_int == certificate['N_verify']\nassert params_sp == json.loads(certificate['params_json'])\nassert set(pb.relaxed_constraints) == set(certificate['relaxed_constraints'])\nassert pb.ctx is ctx\nbasis = ctx.basis_vectors()\nbasis_labels = [str(v) for v in basis]\nassert certificate['S_row_names'] == certificate['S_col_names'] == basis_labels\nassert certificate['normalization']['tau_name'] == certificate['tau_name'] == 'initial_condition'\nassert certificate['normalization']['initial_condition'] == 'D_h(x_star,x_0)<=R'\nassert certificate['normalization']['performance_metric'] == 'f(x_N)-f(x_star)'\nassert certificate['normalization']['bound_value'] == certificate['opt_value']\nassert certificate['named_dual_values']['initial_condition'] == certificate['tau_sol']\nrows = certificate_api.inventory(ctx, pb)\nassert len(rows) == len({c.name for c,*_ in rows})\nassert set(certificate['constraint_metadata']) == {c.name for c,*_ in rows}\nweighted_terms = {}\nextra_duals = {}\nfor c, origin, owner, group in rows:\n    assert isinstance(c,pf.ScalarConstraint)\n    expected = dict(origin=origin,owner=owner,group=group,kind='scalar',comparator=c.cmp.value,shape=[],relaxed=c.name in pb.relaxed_constraints)\n    assert expected == certificate['constraint_metadata'][c.name]\n    value = certificate['named_dual_values'][c.name]\n    if value is not None:\n        assert c.cmp.value == 'LE'\n        weighted_terms[c.name] = value*(c.lhs-c.rhs)\n        if origin != 'interpolation' and c.name != 'initial_condition':\n            extra_duals[c.name] = value\nchecks = certificate_api.verify(ctx,pb,params_sp,certificate,certificate['opt_value'])\nassert certificate['closed_form_search']['completed']\nassert abs(certificate['opt_value']-params_sp['R']/(params_sp['alpha']*N_int))<=1e-5\npm = pf.ExpressionManager(ctx,resolve_parameters=params_sp)\nS_array = np.asarray(certificate['S_matrix'],dtype=float)\nS_scalar = sum((float(S_array[i,j])*basis[i]*basis[j] for i,j in np.ndindex(S_array.shape)),pf.Scalar.zero())\ntol = certificate['numerical_checks']['tolerances']\ncertificate_checked = True\n\n",
+        "decomposition": "D = np.asarray(certificate['numerical_decomposition']['D'],dtype=float)\nE = np.asarray(certificate['numerical_decomposition']['ell_coords'],dtype=float)\nassert certificate['numerical_decomposition']['basis_labels'] == basis_labels\nassert np.allclose(E.T @ D @ E,S_array,atol=1e-4,rtol=1e-5)\n# One complete PSD block retains every tiny eigencomponent as a boundary remainder.\nS_piece_terms = {'S_full':S_scalar}\nassert np.linalg.eigvalsh((S_array+S_array.T)/2).min() >= -1e-6\n",
+        "grouping": "grouping_checked = False\nrank_tolerance = 1e-4\nrank_left, rank_right = 1, 1\ngroup_terms = {name:term for name,term in weighted_terms.items() if name != 'initial_condition'}\nterm_assignment = {}\nfor name in group_terms:\n    owner, pair = name.split(':')\n    first, second = pair.split(',')\n    if name == f'h:x_star,x_{N_int}':\n        term_assignment[name] = 'boundary'\n    elif first == 'x_star' and owner == 'f':\n        term_assignment[name] = int(second.split('_')[1])-1\n    else:\n        i,j = int(first.split('_')[1]),int(second.split('_')[1])\n        assert abs(i-j)==1\n        term_assignment[name] = max(i,j)-1\nS_assignment = {'S_full':'boundary'}\nlyap = [pf.Scalar.zero()]\npartial_sum = pf.Scalar.zero()\nfor step in range(N_int):\n    partial_sum += sum((group_terms[name] for name,target in term_assignment.items() if target == step),pf.Scalar.zero())\n    partial_sum -= sum((S_piece_terms[name] for name,target in S_assignment.items() if target == step),pf.Scalar.zero())\n    lyap.append(partial_sum)\nranks, singular_values = [], []\nfor k,Vk in enumerate(lyap):\n    matrix = np.asarray(pm.eval_scalar(Vk).inner_prod_coords,dtype=float)\n    values = np.linalg.svd(matrix,compute_uv=False)\n    singular_values.append(values.tolist())\n    rank = int(np.linalg.matrix_rank(matrix,tol=rank_tolerance))\n    ranks.append(rank)\n    print(f'rank V_{k}: {rank}')\n    if k == 0:\n        print()\nretained = ranks[rank_left:N_int+1-rank_right]\nprint('Interior rank is constant at this N:',len(retained)>=3 and len(set(retained))==1,'boundary exclusions:',(rank_left,rank_right))\nboundary_names = [name for name,target in term_assignment.items() if target=='boundary']\nboundary_S = [name for name,target in S_assignment.items() if target=='boundary']\nassert len(boundary_names)<=1 and len(boundary_S)<=1\nleftover = sum((group_terms[name] for name in boundary_names),pf.Scalar.zero())-sum((S_piece_terms[name] for name in boundary_S),pf.Scalar.zero())\ncoverage = lyap[N_int]+leftover-(sum(group_terms.values(),pf.Scalar.zero())-S_scalar)\ncoverage_errors = []\nfor expression in (coverage,sum(S_piece_terms.values(),pf.Scalar.zero())-S_scalar):\n    value = pm.eval_scalar(expression)\n    errors = [float(np.max(np.abs(np.asarray(coords,dtype=float)),initial=0)) for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset))]\n    coverage_errors.append(errors)\n    assert max(errors)<=1e-5\nfor k in range(N_int):\n    increment = sum((group_terms[name] for name,target in term_assignment.items() if target==k),pf.Scalar.zero())\n    value = pm.eval_scalar(lyap[k+1]-lyap[k]-increment)\n    assert all(np.allclose(np.asarray(coords,dtype=float),0,atol=1e-5,rtol=0) for coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset)))\n# Every increment is a sum of nonnegative numerical multipliers times convex residuals <=0.\nassert all(certificate['named_dual_values'][name]>=-1e-6 for name in group_terms)\nassert set(term_assignment)==set(group_terms) and set(S_assignment)==set(S_piece_terms)\ngrouping_checked = True\nrank_credible = all(all(value<rank_tolerance/10 or value>rank_tolerance*10 for value in values) for values in singular_values)\nprint('Full-coordinate coverage errors:',coverage_errors)\n"
+      }
+    }
+  ]
+}

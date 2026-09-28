@@ -1,0 +1,44 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_horizon",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Own coherent N6 dense/sparse solves and certificate checks completed using existing recipe",
+    "operational_status":  "awaiting_same_session_continuation",
+    "selected_horizon":  4,
+    "additional_horizon":  6,
+    "certificate_id":  "3d72590b377c99e582aa8a1ef41ab22bd7e61ea2d67ea1f586b91509aaadd1ee",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "evidence":  "supplementary/N6/pgm_b2.json",
+    "executed_check_source":  "supplementary/N6/executed-b2-check-source.py",
+    "residuals":  {
+                      "identity_gram_max_abs":  1.3405496712692866E-09,
+                      "identity_func_max_abs":  3.5555411947996163E-09,
+                      "identity_offset_abs":  2.5024141092622187E-10,
+                      "S_reconstruction_max_abs":  9.5775653756735579E-06,
+                      "candidate_identity_gram_max_abs":  9.5781440234699033E-06,
+                      "dense_relaxed_gap":  4.33282452971806E-09,
+                      "conjecture_gap":  1.5428607696987839E-10,
+                      "minimum_scalar_inequality_dual":  0.04166666707119415,
+                      "minimum_S_eigenvalue":  4.284220948290628E-10,
+                      "minimum_matrix_inequality_eigenvalue":  0.0
+                  },
+    "command":  "Pinned Python -I -B supplementary/acquire_b2_N6.py",
+    "own_sources":  [
+                        "pgm_example_lyap.ipynb",
+                        "supplementary/helpers/certificates.py",
+                        "supplementary/run_b1.py",
+                        "state/pgm_b2.json",
+                        "supplementary/acquire_b2_N6.py"
+                    ],
+    "approved_sources_added":  [
+
+                               ],
+    "source_manifest":  "supplementary/N6/pgm_b2.json certificate_provenance.source_hashes",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "next_block_not_started":  true
+}

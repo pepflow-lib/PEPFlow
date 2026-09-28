@@ -1,0 +1,23 @@
+﻿{
+    "phase":  "preflight_only",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001-output.txt",
+                            "supplementary/preflight-001.json"
+                        ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "invocation":  "Exact settings.json preflight_command via PowerShell call operator, from attempt root",
+    "transitive_source_and_command_evidence":  "supplementary/preflight-001.json",
+    "prohibited_sources_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "audit_limit":  "Instruction-only access restriction; resolution evidence is not an exhaustive filesystem-read audit.",
+    "status":  "passed",
+    "mathematical_generation_started":  false
+}

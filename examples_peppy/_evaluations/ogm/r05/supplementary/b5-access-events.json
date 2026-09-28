@@ -1,0 +1,46 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact proof, full artifact replay, static checks, and final clean-kernel nbconvert execution passed.",
+  "operational_status": "closed",
+  "run_status": "completed",
+  "unresolved_work": [],
+  "timestamp_utc": "2026-09-23T22:32:47.054748+00:00",
+  "deadline_utc": "2026-09-23T23:46:53.255961+00:00",
+  "access_control": "instruction_only",
+  "prohibited_sources_observed": false,
+  "access_limitations": "Instruction-scoped reads; no exhaustive OS read audit or claim about training knowledge.",
+  "approved_reads": [
+    "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "pepflow/utils.py"
+  ],
+  "commands": [
+    "python -I -B supplementary/run_b5.py",
+    "python -I -B supplementary/update_b5_notebook.py",
+    "Reviewed static adapter checks b5-static-001/002/003/004.json",
+    "Pinned python -I -B -m nbconvert --execute; exact argv in execution evidence",
+    "python -I -B supplementary/finalize_replay.py",
+    "python -I -B supplementary/finalize_b5.py"
+  ],
+  "incidents": [
+    "Symbolic coefficient display initially used numeric rounding; fixed own call to precision=0.",
+    "One inline Python repair failed shell quoting before execution; corrected quoting.",
+    "Final replay audit packaged stored source scopes and indentation; independent full replay passed without changing mathematical certificate components.",
+    "Annotated the exec namespace as a heterogeneous dictionary to resolve a replay-audit type diagnostic."
+  ],
+  "source_records": [
+    "preflight-access-record.json",
+    "b1-access-events.json",
+    "b2-access-events.json",
+    "b3-return-b2.json",
+    "b2-N6-events.json",
+    "b3-access-events.json",
+    "b4-access-events.json"
+  ],
+  "notebook": "ogm_example_lyap.ipynb",
+  "state": "state/ogm_b5.json",
+  "provider_token_usage": null,
+  "external_resources": [],
+  "exports": false
+}

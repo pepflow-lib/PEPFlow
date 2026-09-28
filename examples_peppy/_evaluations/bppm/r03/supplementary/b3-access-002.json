@@ -1,0 +1,28 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Rank and coverage confirmed at N=4 and N=6 with fixed recipe and exclusions; selected N=4 state and notebook updated.",
+    "consulted_sources":  [
+                              "own B2 states, generated B3 source and samples",
+                              "previously read approved lyap-define workflow"
+                          ],
+    "commands":  [
+                     "run_b3_N6.py",
+                     "finalize_b3.py",
+                     "update_b3_notebook.py",
+                     "approved adapter b3-static-001.json",
+                     "inspect_b3.py",
+                     "approved adapter b3-static-002.json"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+                      {
+                          "evidence":  "supplementary/b3-static-001.json",
+                          "repair":  "Use module-qualified certificate checker instead of reimporting notebook-defined function names; replayed saved certificates and notebook.",
+                          "kind":  "static_diagnostic"
+                      }
+                  ],
+    "operational_status":  "awaiting same-session continuation"
+}

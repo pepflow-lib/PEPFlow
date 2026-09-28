@@ -1,0 +1,26 @@
+﻿{
+    "stage":  "preflight_only",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "commands":  [
+                     "PowerShell Get-Content of listed approved inputs",
+                     "Exact settings.json preflight_command executed from attempt root through exec_command; stdout preserved in preflight-001-output.txt",
+                     "PowerShell Get-Content and JSON inspection of generated preflight-001.json"
+                 ],
+    "adapter_access_evidence":  "preflight-001.json records adapter commands, staged source hashes, effective roots, versions and origins",
+    "external_resources":  [
+
+                           ],
+    "prohibited_sources_observed":  false,
+    "mathematical_generation_started":  false,
+    "case_packet_accessed":  false,
+    "status":  "passed",
+    "limitations":  "Instruction-only isolation; no exhaustive OS-level read trace. Available tool results show no prohibited content exposure."
+}

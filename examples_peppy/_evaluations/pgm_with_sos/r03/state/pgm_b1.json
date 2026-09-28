@@ -1,0 +1,86 @@
+{
+  "algo_name": "pgm",
+  "problem_type": "composite",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "h(x_N) - h(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "L*R**2/(4*N)",
+  "setup_file": "pgm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.2500000042898382,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 2,
+      "opt_value": 0.1249999976737674,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 3,
+      "opt_value": 0.08333333278310785,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 4,
+      "opt_value": 0.062499999067619785,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 5,
+      "opt_value": 0.04999999951039894,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 6,
+      "opt_value": 0.04166666623272932,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    },
+    {
+      "N": 7,
+      "opt_value": 0.03571428526091193,
+      "status": "optimal",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "failures": [],
+      "solver": "CLARABEL"
+    }
+  ],
+  "N_verify": 4,
+  "assistance": "Fixed PGM SOS aid from approved/input.md; candidate, unverified",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rate_status": "Numerical conjecture; analytic proof pending"
+}

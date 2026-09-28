@@ -1,0 +1,24 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "in_progress",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Selected N=6 certificate reconstruction and partial-sum coverage passed; one-horizon rank observation requires an independent horizon certificate",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_certificate_horizon":  4,
+    "selected_certificate_remains":  6,
+    "new_sample_destination":  "supplementary/b2-certificate-N4.json",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00",
+    "evidence":  "supplementary/b3-rank-N6.json",
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "state/feg_b2.json",
+                              "own generated B3 source and output files"
+                          ],
+    "transitive_sources":  "Exact source hashes in saved certificate; no source outside approved allowlist",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "remaining_obligations":  "Obtain coherent N=4 certificate in B2; return to B3 to check same recipe, confirm rank across horizons, update notebook, run required checks, and save real B3 state"
+}

@@ -1,0 +1,58 @@
+{
+  "block": "B1",
+  "access_control": "instruction_only",
+  "consulted_sources": [
+    "approved/dispatch.md",
+    "approved/input.md",
+    "approved/worker-protocol.md",
+    "approved/settings.json",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "approved/plugins/pepflow-workflows/references/output-layout.md",
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "approved/pepflow/__init__.py",
+    "approved/pepflow/function.py",
+    "approved/pepflow/pep.py",
+    "approved/pepflow/pep_runner.py",
+    "approved/pepflow/solver.py",
+    "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+  ],
+  "own_generated_files_consulted": [
+    "pgm_setup.py",
+    "pgm_example_lyap.ipynb",
+    "supplementary/helpers/runtime.py",
+    "supplementary/run_b1.py",
+    "supplementary/build_b1_notebook.py",
+    "supplementary/_sweep_tmp.json",
+    "state/pgm_b1.json",
+    "supplementary/b1-static-001.json",
+    "supplementary/b1-static-002.json"
+  ],
+  "commands": "Actual tool transcript plus adapter commands stored in evidence JSON; generation scripts preserve executed Python source.",
+  "incidents": [
+    {
+      "kind": "operational_error",
+      "evidence": "b1-static-001.json",
+      "reason": "Windows path length during broad helper staging",
+      "repair": "Narrow helper-root to supplementary/helpers; moved own runtime helper; preflight-002 passed"
+    },
+    {
+      "kind": "source_diagnostic",
+      "evidence": "b1-static-002.json",
+      "reason": "Notebook E402 and unused runtime import",
+      "repair": "Separate bootstrap/import cells and assert helper root; rerun notebook and static checks"
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive filesystem tracing; declarations limited to actual observed tool evidence.",
+  "notebook_checks": {
+    "fresh_kernel_execution": true,
+    "math_delimiters": true,
+    "plot_output_present": true,
+    "visual_inspection": false,
+    "presentation_policy": "evaluation-ancillary-v1"
+  }
+}

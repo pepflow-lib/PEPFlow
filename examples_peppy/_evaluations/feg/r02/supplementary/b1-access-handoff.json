@@ -1,0 +1,54 @@
+{
+  "current_block": "B1",
+  "completion_status": "complete",
+  "next_block": "B2",
+  "entry_exit_reason": "Initial dispatch; setup, rate sweep, notebook and required checks completed.",
+  "operational_status": "awaiting_same_session_continuation",
+  "access_control": "instruction_only",
+  "prohibited_exposure_observed": false,
+  "limitations": "No exhaustive OS access trace; no claim of enforced isolation.",
+  "sources": [
+    "approved/dispatch.md",
+    "approved/input.md",
+    "approved/worker-protocol.md",
+    "approved/plugins/pepflow-workflows/references/output-layout.md",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "approved/pepflow/operator.py",
+    "approved/pepflow/pep_runner.py",
+    "approved/pepflow/__init__.py",
+    "approved/pepflow/pep.py",
+    "approved/pepflow/solver.py",
+    "approved/pepflow/pep_result.py",
+    "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+  ],
+  "commands": [
+    "Python -I -B supplementary/b1_sweep.py",
+    "Python -I -B supplementary/b1_notebook.py (two executions, second splits bootstrap/import cells)",
+    "Approved adapter commands/configuration captured in b1-static-001/002/003.json",
+    "PowerShell exact-file source reads and rg searches; own notebook source/output inspection",
+    "Python -I -B supplementary/b1_review.py"
+  ],
+  "incidents": [
+    {
+      "evidence": "b1-static-001.json",
+      "classification": "operational path-length error",
+      "repair": "Narrow helper root to supplementary/helpers and probe-helper-path to supplementary/helpers/runtime.py; repeated full preflight and checks."
+    },
+    {
+      "evidence": "b1-static-002.json",
+      "classification": "Ruff E402 in notebook bootstrap",
+      "repair": "Separate bootstrap/import cells; fresh execution and static checks passed in b1-static-003.json."
+    }
+  ],
+  "verification": {
+    "fresh_kernel": "b1-notebook-002-console.txt",
+    "static": "b1-static-003.json",
+    "markdown_delimiters": "passed",
+    "plot_output": "image/png present; not visually inspected under evaluation override"
+  }
+}

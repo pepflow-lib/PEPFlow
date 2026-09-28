@@ -1,0 +1,46 @@
+Dense bound: 0.014155967322699733
+Dense active interpolation multipliers: {'initial_condition': 0.014155968094706525, 'f:x_star,z_0': 0.056623869613380166, 'f:x_star,x_1': 0.09161934390604497, 'f:x_star,x_2': 0.12420598633934471, 'f:x_star,x_3': 0.1557038160926967, 'f:x_star,x_4': 0.1865688198769534, 'f:x_star,x_5': 0.21700805234635728, 'f:x_star,x_6': 0.16827013856085296, 'f:z_0,x_1': 0.0566238722534572, 'f:x_1,x_2': 0.1482432174224839, 'f:x_2,x_3': 0.27244920341378354, 'f:x_3,x_4': 0.4281530162880737, 'f:x_4,x_5': 0.6147218317338565, 'f:x_5,x_6': 0.8317812377634222, 'f:x_6,x_5': 5.136461303419693e-05}
+Basis: ['z_0', 'x_star', 'g_0', 'g_1', 'g_2', 'g_3', 'g_4', 'g_5', 'g_6']
+Dense S eigenvalues: [8.39261630e-12 6.82329946e-10 7.43271399e-10 1.62309677e-09
+ 2.20567649e-09 3.39794720e-09 7.70640628e-09 3.37973225e-08
+ 2.88022664e+00]
+Selected bound: 0.014155965831591857 solver: {'api': 'CVXPrimalSolver.build_problem', 'cvxpy_version': '1.7.1', 'effective_name': 'CLARABEL', 'settings': {'solver': 'CLARABEL'}, 'fallback_reason': None}
+Dropped constraints: 43 ; retained star row and forward chain
+All active selected multipliers:
+initial_condition 0.014155965968572517
+f:x_star,z_0 0.05662386392517136
+f:x_star,x_1 0.09161933615492351
+f:x_star,x_2 0.1242059786635415
+f:x_star,x_3 0.1557038093066053
+f:x_star,x_4 0.18656881696392244
+f:x_star,x_5 0.21701669802294762
+f:x_star,x_6 0.16826149773150467
+f:z_0,x_1 0.05662386392772485
+f:x_1,x_2 0.14824319995501414
+f:x_2,x_3 0.27244917849856076
+f:x_3,x_4 0.42815298769867305
+f:x_4,x_5 0.6147218045678934
+f:x_5,x_6 0.8317385025094233
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Candidate lambda max error: 1.244633118790972e-09
+Candidate S max error: 1.2502545665427078e-09
+Formula status: numerical candidates only; analytic all-horizon identities unresolved.
+Reverse LDL diagonal (all factors retained): [5.00000000e-01 1.34512146e-09 1.24288412e-09 9.12945830e-10
+ 1.12320054e-09 3.86411180e-10 2.58603486e-10 8.74089406e-11
+ 3.16908559e-11]
+<IPython.core.display.Math object>
+S reconstruction max error: 5.551115123125783e-17
+<IPython.core.display.Math object>
+Identity Gram/function/offset maxima: 2.169349144764965e-10 7.686165037767978e-10 1.3698065945422222e-10
+Numerical certificate verified; analytic full PEP and Lyapunov proof remain unverified.
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 3
+rank V_3: 3
+rank V_4: 3
+rank V_5: 3
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and step checks passed; only terminal S is left for the boundary argument.

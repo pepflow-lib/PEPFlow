@@ -1,0 +1,27 @@
+{
+  "current_block": "B4",
+  "completion_status": "complete",
+  "next_block": "B5",
+  "entry_exit_reason": "All-index basis and full scalar reconstruction verified; candidate formulas recorded; notebook/static checks passed",
+  "operational_status": "awaiting_same_session_continuation",
+  "state": "state/pgm_b4.json",
+  "static_evidence": "supplementary/b4-static-002.json",
+  "notebook_execution": "supplementary/b4-notebook-console-003.txt",
+  "new_sources": "Own basis_structure.py, finalize/check/update/refresh/close B4 scripts, state and scan outputs; no external sources",
+  "commands": [
+    "check_b4_blend.py",
+    "finalize_b4.py",
+    "update_b4_notebook.py",
+    "refresh_b4_source.py",
+    "execute_notebook.py",
+    "approved check_static.py check (two invocations)"
+  ],
+  "operational_repairs": [
+    "Notebook-builder variable typo repaired before successful update",
+    "Ruff semicolon formatting and ty SymPy expression assertions corrected; mathematical formulas unchanged"
+  ],
+  "access_control": "instruction_only",
+  "access_status": "no_observed_prohibited_exposure",
+  "original_deadline_utc": "2026-09-23T18:17:47.370960+00:00",
+  "unresolved_work": "B5 exact arbitrary-horizon proof and final notebook verification"
+}

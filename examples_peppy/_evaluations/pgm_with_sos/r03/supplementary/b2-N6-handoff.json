@@ -1,0 +1,62 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete",
+  "next_block": "B3",
+  "entry_exit_reason": "N=6 coherent dense/sparse certificates acquired on B3 return; reused candidates verified; notebook and static gates completed",
+  "operational_status": "awaiting_same_session_continuation",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "unresolved_work": "Arbitrary-horizon proof and B3-B5",
+  "certificate_id": "b9cb960124a7299077431d16750ec92ed5a8f83ffb6a47ccebfd026323f7e479",
+  "checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0.0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 1.3405494492246817e-09,
+      "identity_func_max_abs": 3.5555407507104064e-09,
+      "identity_offset_abs": 2.502412929650255e-10,
+      "dense_relaxed_gap": 5.882235601384345e-10,
+      "minimum_scalar_inequality_dual": 0.04166666707119417,
+      "minimum_S_eigenvalue": 4.284222158702693e-10,
+      "minimum_matrix_inequality_eigenvalue": 0.0,
+      "S_reconstruction_max_abs": 9.57756649588859e-06,
+      "aid_identity_gram_max_abs": 9.57814514390698e-06,
+      "aid_identity_func_max_abs": 3.5555407507104064e-09,
+      "aid_identity_offset_abs": 2.502412929650255e-10
+    },
+    "passed": true
+  },
+  "static_evidence": "supplementary/b2-N6-static-001.json",
+  "execution_evidence": "supplementary/b2-N6-notebook-console.txt",
+  "consulted_sources_additional": [
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "approved/pepflow/expression_manager.py",
+    "approved/pepflow/scalar.py",
+    "approved/pepflow/lyapunov_utils.py",
+    "approved/pepflow/parameter.py",
+    "approved/pepflow/__init__.py",
+    "Approved framework exact source hashes through certificates.fingerprint; own generated B1/B2 sources, states, notebook, and logs"
+  ],
+  "commands": [
+    "PowerShell exact-path reads/searches",
+    "Pinned Python -I -B: b2_dense.py, b2_sparse.py, finalize_b2.py, update_b2_notebook.py",
+    "Approved adapter b2-static-001 through 003; source diagnostics preserved",
+    "Pinned Python -I -B supplementary/finish_b2.py"
+  ],
+  "incidents": [
+    "Unused notebook import removed and source checks rerun",
+    "Source hash capture was initially after solve; capture routine corrected to pre/post solve checks and new coherent dense/sparse samples obtained. Initial sample preserved under supplementary/b2-initial-sample",
+    "Nonfatal Jupyter comm/cleanup warnings; notebook cells completed without execution errors"
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive OS-level tracing; adapter evidence and declared source records preserved"
+}

@@ -1,0 +1,67 @@
+Dense bound: 0.04166666248812821 Selected bound: 0.04166666682095274
+Basis: ['x_0', 'x_star', 'grad_f(x_star)', 'grad_f(x_0)', 'grad_g(x_1)', 'grad_f(x_1)', 'grad_g(x_2)', 'grad_f(x_2)', 'grad_g(x_3)', 'grad_f(x_3)', 'grad_g(x_4)', 'grad_f(x_4)', 'grad_g(x_5)', 'grad_f(x_5)', 'grad_g(x_6)', 'grad_f(x_6)']
+f Smooth Convex Function dense nonzero count at 1e-6: 56 largest: [('f:x_5,x_6', 0.419136), ('f:x_4,x_6', 0.294872), ('f:x_star,x_6', 0.290876), ('f:x_star,x_5', 0.226235), ('f:x_star,x_4', 0.151781), ('f:x_3,x_6', 0.143982)]
+g Convex Function dense nonzero count at 1e-6: 36 largest: [('g:x_star,x_6', 0.38718), ('g:x_5,x_6', 0.365078), ('g:x_4,x_6', 0.260303), ('g:x_star,x_5', 0.203896), ('g:x_star,x_4', 0.141176), ('g:x_3,x_4', 0.116918)]
+Dense S eigenvalues: [1.06558800e-10 5.53475256e-09 5.53475574e-09 4.65329982e-03
+ 6.26695992e-02 8.42979794e-02 1.32363007e-01 1.75727848e-01
+ 1.92095478e-01 2.17547534e-01 2.46353394e-01 2.77419139e-01
+ 2.96114234e-01 3.79484919e-01 5.57314467e-01 2.69883384e+00]
+Relaxation: retain star-to-iterate and consecutive forward pairs for both owners.
+Dropped constraints: 74
+initial_condition 0.041666667 1/24
+f:x_star,x_0 0.083334035 1/12
+f:x_star,x_1 0.098485452 13/132
+f:x_star,x_2 0.118179169 13/110
+f:x_star,x_3 0.144444772 13/90
+f:x_star,x_4 0.180560040 13/72
+f:x_star,x_5 0.232142765 13/56
+f:x_star,x_6 0.142853769 1/7
+f:x_0,x_1 0.083334035 1/12
+f:x_1,x_2 0.181819487 2/11
+f:x_2,x_3 0.299998655 3/10
+f:x_3,x_4 0.444443427 4/9
+f:x_4,x_5 0.625003467 5/8
+f:x_5,x_6 0.857146232 6/7
+g:x_star,x_1 0.090910946 1/11
+g:x_star,x_2 0.109090069 6/55
+g:x_star,x_3 0.133331742 2/15
+g:x_star,x_4 0.166669212 1/6
+g:x_star,x_5 0.214293326 3/14
+g:x_star,x_6 0.285704709 2/7
+g:x_1,x_2 0.090910946 1/11
+g:x_2,x_3 0.200001014 1/5
+g:x_3,x_4 0.333332756 1/3
+g:x_4,x_5 0.500001967 1/2
+g:x_5,x_6 0.714295292 5/7
+Candidate lambda max error: 9.577636088997643e-06
+Candidate f multipliers, numerically supported only:
+<IPython.core.display.Math object>
+Candidate g multipliers, numerically supported only:
+<IPython.core.display.Math object>
+Reverse-LDL diagonal: [5.00000000e-01 5.00000001e-01 4.79592802e-01 4.27924754e-01
+ 3.85196141e-01 3.06496401e-01 2.79739006e-01 1.96997768e-01
+ 1.89236893e-01 1.07157559e-01 1.12950786e-01 3.12960457e-02
+ 4.16673686e-02 6.12111175e-09 4.43023936e-10 4.42947988e-10]
+<IPython.core.display.Math object>
+Full D retained, including tiny pivots; off-diagonal maximum: 0.0
+Numerical certificate verified: True
+{
+  "identity_gram_max_abs": 1.3405496712692866e-09,
+  "identity_func_max_abs": 3.5555411947996163e-09,
+  "identity_offset_abs": 2.502414109262219e-10,
+  "S_reconstruction_max_abs": 1.1102230246251565e-16,
+  "dense_relaxed_gap": 4.33282452971806e-09,
+  "conjecture_gap": 1.542860769698784e-10,
+  "minimum_scalar_inequality_dual": 0.04166666707119415,
+  "minimum_S_eigenvalue": 4.284220948290628e-10,
+  "minimum_matrix_inequality_eigenvalue": 0.0
+}
+<IPython.core.display.Math object>
+Candidate S Gram error: 9.577565375451513e-06
+Candidate S scalar/offset: 0.0 0.0
+Candidate S eigenvalues: [-5.06368270e-16  3.15842664e-18  7.55366813e-17  2.71731852e-02
+  4.38988377e-02  6.13396507e-02  1.04775980e-01  1.58458476e-01
+  2.05384498e-01  3.00317165e-01  3.98955160e-01  5.20049375e-01
+  5.49069088e-01  7.60771195e-01  9.75650597e-01  2.30775708e+00]
+Global S positivity and arbitrary-horizon identities remain unresolved; numerical continuation is permitted.
+Saved verified coherent certificate: ae32bbe1dfeb577d3640394d8a639a4bdba1b2ce29d36d68bf7c74117647e5d5

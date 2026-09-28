@@ -1,0 +1,29 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "incomplete_endpoint_reconstruction",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Interior sparse basis found at k1-k3; terminal rank-one basis failed frozen span tolerance, requiring same-certificate decomposition recovery",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  "supplementary/b4-probe-output.txt",
+    "preserved_source":  "supplementary/b4_construct.py",
+    "approved_sources_added":  [
+                                   "plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                                   "pepflow/lyapunov_utils.py"
+                               ],
+    "own_sources":  [
+                        "state/pgm_b3.json",
+                        "supplementary/rank_search.json",
+                        "supplementary/b4_construct.py",
+                        "supplementary/probe_b4.py"
+                    ],
+    "command":  "Pinned Python -I -B supplementary/probe_b4.py",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "b4_state_created":  false,
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "next_block_not_started":  true
+}

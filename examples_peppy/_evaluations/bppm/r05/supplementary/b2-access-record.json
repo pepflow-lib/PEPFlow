@@ -1,0 +1,45 @@
+{
+  "current_block": "B2",
+  "access_control": "instruction_only",
+  "prior_records": [
+    "preflight-access-record.json",
+    "b1-access-record.json"
+  ],
+  "new_approved_reads": [
+    "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "pepflow/pep_result.py",
+    "pepflow/solver.py"
+  ],
+  "framework_source_reads": "Exact allowlisted pepflow files were hashed; paths/hashes in certificate_provenance.source_hashes.",
+  "generated_reads": [
+    "state/bppm_b1.json",
+    "state/bppm_dense.json",
+    "state/bppm_b2.json",
+    "bppm_example_lyap.ipynb",
+    "supplementary/helpers/certificate_tools.py",
+    "supplementary/b2-static-001.json",
+    "supplementary/b2-static-002.json",
+    "supplementary/bppm_example_lyap_checklist.md"
+  ],
+  "commands": [
+    "python -I -B supplementary/run_b2.py",
+    "python -I -B supplementary/relax_b2.py (twice: replacement after helper type repair)",
+    "python -I -B supplementary/author_b2.py (twice)",
+    "python -I -B supplementary/execute_notebook.py B2 (twice)",
+    "approved check_static adapter twice; exact commands recorded in evidence/tool transcript",
+    "python -I -B supplementary/finalize_b2.py"
+  ],
+  "incidents": [
+    {
+      "classification": "source_type_diagnostic",
+      "evidence": "b2-static-001.json",
+      "repair": "Explicit non-null branch before float conversion; no suppression or source substitution. Replaced and rechecked full certificate after helper source changed."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "Instruction-only access; no exhaustive OS read trace.",
+  "certificate_id": "336e435021b5c51e03267ecb7e306c9746c1fd3f1abe059941f0cbe6b380fb8b",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false
+}

@@ -1,0 +1,61 @@
+﻿{
+    "attempt_id":  "ogm_r05",
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; implementation, rate sweep, notebook initialization and required checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "limitations":  "No exhaustive OS read tracing; no rendered visual inspection, as required by evaluation-ancillary-v1",
+    "dispatch_utc":  "2026-09-23T21:46:53.255961+00:00",
+    "deadline_utc":  "2026-09-23T23:46:53.255961+00:00",
+    "completed_utc":  "2026-09-23T21:54:37.2765740Z",
+    "direct_approved_reads":  [
+                                  "dispatch.md",
+                                  "input.md",
+                                  "worker-protocol.md",
+                                  "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                  "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                  "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                  "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                  "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                  "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                  "plugins/pepflow-workflows/references/output-layout.md",
+                                  "pepflow/pep_runner.py",
+                                  "pepflow/parameter.py",
+                                  "pepflow/__init__.py",
+                                  "pepflow/pep.py",
+                                  "pepflow/solver.py",
+                                  "pepflow/function.py",
+                                  "pepflow/vector.py",
+                                  "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                              ],
+    "executed_commands":  [
+                              "python -I -B supplementary/run_b1.py",
+                              "python -I -B supplementary/build_b1.py",
+                              "python -I -B supplementary/execute_notebook.py",
+                              "adapter check using original frozen args: b1-static-001.json",
+                              "adapter preflight with narrowed helpers: preflight-002.json",
+                              "PowerShell argument-array invocation failure: b1-static-002-output.txt",
+                              "adapter check with repaired args: b1-static-003.json"
+                          ],
+    "evidence":  [
+                     "b1_sweep.json",
+                     "b1-sweep-output.txt",
+                     "b1-notebook-execution.txt",
+                     "b1-notebook-execution-002.txt",
+                     "b1-static-001.json",
+                     "preflight-002.json",
+                     "b1-static-003.json"
+                 ],
+    "incidents":  [
+                      "WinError 206 staging broad supplementary helper root; repaired by moving own runtime helper into supplementary/helpers, reran generic preflight and source checks without modifying adapter or approved source.",
+                      "PowerShell JSON array nesting caused malformed invocation before adapter execution; corrected array extraction and preserved output.",
+                      "Jupyter zmq selector-thread warning; notebook execution successful."
+                  ],
+    "external_resources":  [
+
+                           ],
+    "unresolved_work":  "Blocks B2-B5; no analytic proof established"
+}

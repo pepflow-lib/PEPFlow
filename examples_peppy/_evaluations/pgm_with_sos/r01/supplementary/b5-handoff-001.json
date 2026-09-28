@@ -1,0 +1,65 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Closed-form coefficient derivation and exact step/base/terminal/N=1 identities completed; required static checks, clean-kernel nbconvert and final checklist passed.",
+  "operational_status": "final_attempt_closure",
+  "run_status": "completed",
+  "notebook": "pgm_example_lyap.ipynb",
+  "state": "state/pgm_b5.json",
+  "notebook_sha256": "9a5dfed9ed1618e6992b0a4a1b65c201e602bfd8dd90f7989aa1a879fdd2b6e9",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_required_work": [],
+  "unresolved_optional_work": [
+    "Separate global analytic full-PEP formula remains unverified and was not required."
+  ],
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": true,
+  "proof_checks": {
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "signs": true,
+    "domain": true,
+    "normalization": true
+  },
+  "checks": [
+    "supplementary/b5-static-001.json",
+    "supplementary/b5-nbconvert-001-output.txt",
+    "supplementary/pgm_example_lyap_checklist.md"
+  ],
+  "sources": [
+    "Own approved dispatch.md, worker-protocol.md, settings.json, input.md previously read",
+    "Approved lyap-closed-form/SKILL.md and references/workflow.md",
+    "Approved pepflow/expression_manager.py symbolic coefficient API",
+    "Own generated B1-B4 state, scripts, and notebook",
+    "Own B5 generated proof scripts and markdown"
+  ],
+  "commands": [
+    "Pinned Python -I -B supplementary/run_b5_step.py",
+    "Pinned Python -I -B supplementary/run_b5_all.py",
+    "Pinned Python -I -B supplementary/build_b5_notebook.py",
+    "Pinned Python -I -B supplementary/run_static.py b5-static-001.json",
+    "Pinned Python -I -B supplementary/execute_b5_nbconvert.py",
+    "Pinned Python -I -B supplementary/final_audit_b5.py"
+  ],
+  "incidents": [
+    "Initial direct SymPy symbolic coefficients were unsupported by PEPFlow; repaired to native pf.Parameter with resolve_parameters mappings.",
+    "Initial sp.One typo repaired to sp.S.One.",
+    "Nonfatal event-loop/comm and duplicate auxiliary-context label warnings retained in execution evidence."
+  ],
+  "access_control": "instruction_only",
+  "prohibited_sources_observed": false,
+  "audit_limit": "No exhaustive filesystem audit",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendered_inspection_performed": false,
+  "deadline_utc": "2026-09-23T16:12:00.406449+00:00",
+  "token_usage": null
+}

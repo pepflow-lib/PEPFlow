@@ -1,0 +1,19 @@
+"""Required B1 rate sweep, retaining all actually observed results."""
+import json
+from pathlib import Path
+import time
+
+from feg_setup import get_pep_setup
+from solve_tools import solve_setup
+
+results = []
+for n in range(1, 8):
+    started = time.monotonic()
+    ctx, pb, obj = get_pep_setup(n, {"L": 1, "R": 1})
+    assert ctx["x_0"].uid == ctx["x_1/2"].uid
+    result, options = solve_setup(ctx, pb, {"L": 1, "R": 1})
+    item = {"N": n, "opt_value": float(result.opt_value), "status": result.solver_status,
+            "solver_options": options, "seconds": time.monotonic() - started}
+    results.append(item)
+    Path("supplementary/_sweep_tmp.json").write_text(json.dumps(results, indent=2))
+    print(json.dumps(item), flush=True)

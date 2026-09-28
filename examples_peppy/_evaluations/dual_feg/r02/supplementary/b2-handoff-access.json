@@ -1,0 +1,41 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "same-session continuation / full numerical certificate and initial formula search complete",
+    "run_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T19:19:03.854618+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem tracing",
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                              "approved/pepflow/lyapunov_utils.py",
+                              "approved/pepflow/ipython_utils.py",
+                              "approved/pepflow/pep_result.py",
+                              "approved/pepflow/pep_context.py",
+                              "approved/pepflow/utils.py",
+                              "own B1 state and generated B2 files"
+                          ],
+    "executed_scripts":  [
+                             "b2_dense.py",
+                             "b2_relaxed.py",
+                             "b2_sparse.py",
+                             "b2_inspect.py",
+                             "b2_verify.py",
+                             "b2_notebook.py"
+                         ],
+    "command_note":  "All Python execution used pinned interpreter -I -B with own runtime bootstrap; approved check_static adapter commands and staged-source manifests in b2-static-001/002.json. capture hashed allowlisted framework source files; no excluded references inspected.",
+    "checks":  [
+                   "b2-static-002.json passed Ruff/ty and fresh generic import probe",
+                   "b2-notebook-execution.json passed clean-kernel certificate checks and notebook source math checks"
+               ],
+    "incidents":  [
+                      "b2-static-001 type annotation mismatch for integer parameter dictionary; changed own notebook verifier to explicit pf.NUMERICAL_TYPE dictionary of SymPy integers; rerun passed"
+                  ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "unresolved_work":  "B3 rank/grouping, B4 basis, B5 arbitrary-horizon proof",
+    "source_hash_note":  "Setup and certificate-producing helper hashes unchanged since selected solve. Notebook verifier typed parameter change does not alter selected certificate."
+}

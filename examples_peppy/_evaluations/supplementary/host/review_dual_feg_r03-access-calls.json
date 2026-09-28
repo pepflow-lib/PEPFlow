@@ -1,0 +1,155 @@
+[
+  {
+    "timestamp": "2026-09-24T00:09:14.526Z",
+    "line": 11,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_wKe0lHnhXwUGxCAlBQOLub7i",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/instructions.md'\"}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:09:20.861Z",
+    "line": 15,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_SqxYvevRYHYIflU97WIbiwQg",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03' -Recurse -File | Select-Object FullName; Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03' -Force | Select-Object Name,Mode\"}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:09:30.232Z",
+    "line": 19,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_nGnnTmpWOzvfQzp1Wro5LsSW",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03'; Get-ChildItem -LiteralPath $p -File | ForEach-Object {$_.Name}; Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03' -Force | ForEach-Object {$_.Name}; Get-Content -LiteralPath \\\"$p/settings.json\\\",\\\"$p/input.md\\\",\\\"$p/rubric.md\\\",\\\"$p/clean-room.md\\\",\\\"$p/evaluation-operations.md\\\",\\\"$p/review-schema.json\\\"\",\"max_output_tokens\":18000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:09:39.359Z",
+    "line": 23,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_yOmBcTrRmxlLKpaHXf5N1Vp1",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03'; Get-Content -LiteralPath \\\"$p/input.md\\\",\\\"$p/rubric.md\\\",\\\"$p/clean-room.md\\\"\",\"max_output_tokens\":11000}));\ntext(await tools.exec_command({cmd:\"Get-ChildItem -LiteralPath 'examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03/supplementary/approved/plugins' -Recurse -Filter SKILL.md | ForEach-Object { $_.FullName; Get-Content -LiteralPath $_.FullName }\",\"max_output_tokens\":14000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:09:48.580Z",
+    "line": 27,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_FXgp9Xi2Wx4sOIubwOBSovsQ",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; Get-Content -LiteralPath \\\"$p/dual_feg_setup.py\\\",\\\"$p/supplementary/b5_symbolic.py\\\"; $n=Get-Content -Raw -LiteralPath \\\"$p/dual_feg_example_lyap.ipynb\\\"|ConvertFrom-Json; $n.cells | ForEach-Object { 'CELL '+$_.id+' '+$_.cell_type; $_.source -join ''; if($_.outputs){$_.outputs|ConvertTo-Json -Depth 8 -Compress}}\",\"max_output_tokens\":24000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:02.330Z",
+    "line": 32,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_7fvCoPkq7pDO7ONiebFdIf2t",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; $n=Get-Content -Raw -LiteralPath \\\"$p/dual_feg_example_lyap.ipynb\\\"|ConvertFrom-Json; $n.cells | Select-Object -Skip 16 -First 35 | ForEach-Object { 'CELL '+$_.id+' '+$_.cell_type; $_.source -join ''; foreach($o in $_.outputs) {if($o.text){$o.text -join ''}}}; Get-Content -LiteralPath \\\"$p/supplementary/run_b1.py\\\"\",\"max_output_tokens\":15000}));\ntext(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03/supplementary/approved/plugins/pepflow-workflows'; Get-ChildItem -LiteralPath \\\"$p/skills\\\" -Recurse -Filter workflow.md | ForEach-Object { $_.FullName; Get-Content -LiteralPath $_.FullName }\",\"max_output_tokens\":18000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:16.149Z",
+    "line": 37,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_T3LdpUeuzsPXwgVWnHEHm55l",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; Get-Content \\\"$p/supplementary/run_b1.py\\\"; $n=Get-Content -Raw \\\"$p/dual_feg_example_lyap.ipynb\\\"|ConvertFrom-Json; $n.cells | Select-Object -Skip 32 -First 22 | ForEach-Object { 'CELL '+$_.id; $_.source -join ''; foreach($o in $_.outputs) {if($o.text){$o.text -join ''}}}\",\"max_output_tokens\":11500}));\ntext(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; Get-Content \\\"$p/supplementary/approved/settings.json\\\",\\\"$p/supplementary/b5-nbconvert-execution.json\\\",\\\"$p/supplementary/b5-static-001.json\\\",\\\"$p/supplementary/final-closure.json\\\",\\\"$p/supplementary/b1-access-and-recovery.json\\\"\",\"max_output_tokens\":7500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:26.297Z",
+    "line": 42,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_3gTn6bfrtwwCKgd75IxMpT3O",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03'; Get-ChildItem \\\"$p/validation\\\" -Force | Select-Object -ExpandProperty Name; $s=Get-Content -Raw \\\"$p/settings.json\\\"|ConvertFrom-Json; $s.psobject.Properties | Where-Object Name -ne submission_hashes | Format-List; $h=Get-Content -Raw \\\"$p/own-generation-host-access-calls.json\\\"|ConvertFrom-Json; $h | ConvertTo-Json -Depth 4 -Compress\",\"max_output_tokens\":4000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:37.972Z",
+    "line": 47,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_fMBOE0dMaNBvdpjSAn0m0wjm",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; $n=Get-Content -Raw \\\"$p/dual_feg_example_lyap.ipynb\\\"|ConvertFrom-Json; for($i=0;$i -lt $n.cells.Count;$i++){if($n.cells[$i].cell_type -eq 'code'){[string]$i+' '+$n.cells[$i].id+' '+($n.cells[$i].source -join '').Split(\\\"`n\\\")[0]}}; $n.cells | Select-Object -Skip 45 -First 6 | ForEach-Object { 'CELL '+$_.id; $_.source -join ''; foreach($o in $_.outputs) {if($o.text){$o.text -join ''}}}; Get-Content \\\"$p/supplementary/approved/plugins/pepflow-workflows/references/output-layout.md\\\"\",\"max_output_tokens\":7000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:43.750Z",
+    "line": 52,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_Y0MYUZAOpyAzOmdYPfXwZZUw",
+    "name": "send_message",
+    "arguments": "{\"target\":\"/root\",\"message\":\"gAAAAABqtGqD0RG7gD0hpB9zo1mnLkS-i4YzvgT1iQo_jdBqJR6WWOsyjpMREEf4CDi94FSL6DMPZEq3hqQfOKQl-kMiybNsnX6By7R7KIO9cJlwaca750ELokPSmnRbEav17I5F-V_XZHqaXbW9cC4ucitahDquV6Ssu8-FKditpUcFD1j17bYZXbv-mZFeAZ_rFxifpMfLQkukMmWJPx2WMoQw5fViyHG9fl4P8v_rBuV3VVTtCFf_mhLFpcexVnlxHTPzgBN6VtzoYPNxvTT-I2kNSfcSnXiNL5PV20xsbiKgzzRUWKcfnMGlcYkxo1S6WcScxZf6l7CBFULg4RIiRuZrt-shzAsIrP-e546U0WBB_qSVSJcxf9JX1Qv8XGQRUlFNW8DRpkDvHlBs6BT63VLJshZ9QUdQ7GXes8U54gYfNGHnLOE=\"}"
+  },
+  {
+    "timestamp": "2026-09-24T00:10:52.188Z",
+    "line": 57,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_HIk9xSQRSvJ8tKoesHhzGEno",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03'; $n=Get-Content -Raw \\\"$p/dual_feg_example_lyap.ipynb\\\"|ConvertFrom-Json; $n.cells[15].source -join ''; $n.cells[44].source -join ''; Get-Content \\\"$p/supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md\\\" | Select-String -Pattern 'tol|reconstruct|span' -Context 2,3; Get-Content \\\"$p/supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md\\\" | Select-String -Pattern 'tol|leftover|boundary' -Context 2,3\",\"max_output_tokens\":5500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:11:18.331Z",
+    "line": 62,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_aQVwDGsNjt2aO8DkEQrDU0o8",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"@'\\nimport os, sys, json, hashlib, contextlib, time\\nfrom pathlib import Path\\nroot=Path.cwd().resolve()\\nassert root.name=='validation' and root.parent.name=='dual_feg_r03'\\nfor key in ['TEMP','TMP','TMPDIR','IPYTHONDIR','MPLCONFIGDIR','JUPYTER_RUNTIME_DIR','JUPYTER_CONFIG_DIR','XDG_CACHE_HOME']:\\n    p=root/'review_runtime'/key.lower(); p.mkdir(parents=True,exist_ok=True); os.environ[key]=str(p)\\nfor key in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS']: os.environ[key]='1'\\nsys.path[:0]=[str(root/'supplementary/approved'),str(root),str(root/'supplementary')]\\nnb=json.loads((root/'dual_feg_example_lyap.ipynb').read_text(encoding='utf-8'))\\nns={'__name__':'__review__'}\\nexecuted=[]\\nwith (root/'replay-output.txt').open('w',encoding='utf-8') as log, contextlib.redirect_stdout(log), contextlib.redirect_stderr(log):\\n    for i,c in enumerate(nb['cells']):\\n        if c['cell_type']!='code' or i==12: continue\\n        src=''.join(c['source'])\\n        if i==5: src=src.replace('import matplotlib.pyplot as plt','')\\n        print('CELL',i,c['id'],flush=True)\\n        exec(compile(src,f\\\"notebook-cell-{c['id']}\\\",'exec'),ns)\\n        executed.append(c['id'])\\n    results={'executed_cells':executed,'omitted_plot_cell':'81a35430','certificate_N4':ns['checks'],'certificate_N6':ns['checks6'],'rank_samples':[{'N':s['N'],'rank_profile':s['rank_profile'],'coverage_residuals':s['coverage_residuals'],'singular_values':s['singular_values']} for s in ns['rank_samples']],'reconstruction_N4':ns['reconstruction'],'reconstruction_N6':ns['reconstruction6'],'exact_checks':ns['exact_checks']}\\n(root/'replay-results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')\\nprint('PASS',len(executed),'code cells; skipped only plot cell and matplotlib import')\\n'@ | Set-Content -LiteralPath 'replay_review.py' -Encoding UTF8\\n& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B replay_review.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/validation\",\"yield_time_ms\":1000,\"max_output_tokens\":1500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:11:43.059Z",
+    "line": 67,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_b3KNezn74WEaN6YBKFHqvuZk",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03'; $a=Get-Content -Raw \\\"$p/own-generation-host-access-calls.json\\\"|ConvertFrom-Json; $a|ForEach-Object {if($_.arguments -notmatch 'apply_patch'){([string]$_.line)+' '+$_.arguments.Substring(0,[Math]::Min(450,$_.arguments.Length))}}; $orig=(Get-Content -Raw \\\"$p/settings.json\\\"|ConvertFrom-Json).original_submission; foreach($f in @('b5-nbconvert-execution.json','b5-static-001.json')){$j=Get-Content -Raw \\\"$orig/supplementary/$f\\\"|ConvertFrom-Json; $f; $j.psobject.Properties | Where-Object {$_.Name -match 'pass|exit|error|execution|finished|check|sha|plot|command'} | ForEach-Object {$_.Name+': '+($_.Value|ConvertTo-Json -Depth 3 -Compress)}}\",\"max_output_tokens\":5000}));\ntext(await tools.write_stdin({session_id:89166,chars:\"\",\"yield_time_ms\":1000,\"max_output_tokens\":1000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:12:01.072Z",
+    "line": 72,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_RJIR7ZVsz14WZVbepZiiqHLa",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"$p='C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/dual_feg/r03/supplementary'; $j=Get-Content -Raw \\\"$p/b5-nbconvert-execution.json\\\"|ConvertFrom-Json; $j.psobject.Properties|Where-Object Name -ne text_outputs|ForEach-Object {$_.Name+': '+($_.Value|ConvertTo-Json -Depth 2 -Compress)}; $s=Get-Content -Raw \\\"$p/b5-static-001.json\\\"|ConvertFrom-Json; $s.commands|ForEach-Object {$_.label+': '+$_.returncode}; Get-Content \\\"$p/dual_feg_example_lyap_checklist.md\\\"; Get-Content \\\"$p/final_execute.py\\\"\",\"max_output_tokens\":3500}));\ntext(await tools.exec_command({cmd:\"Get-Content -LiteralPath 'replay-results.json' | Select-Object -First 85\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/validation\",\"max_output_tokens\":2500}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:12:25.489Z",
+    "line": 77,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_4Q6jwzNwTqFmUQs1Cfs60ETG",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"@'\\nimport json, hashlib\\nfrom pathlib import Path\\nroot=Path.cwd(); settings=json.loads((root.parent/'settings.json').read_text())\\noriginal=Path(settings['original_submission'])\\nmiss=[]\\nfor rel,digest in settings['submission_hashes'].items():\\n p=original/rel\\n if hashlib.sha256(p.read_bytes()).hexdigest()!=digest: miss.append(rel)\\nnb=json.loads((original/'dual_feg_example_lyap.ipynb').read_text())\\nstatic=json.loads((original/'supplementary/b5-static-001.json').read_text())\\nexecution=json.loads((original/'supplementary/b5-nbconvert-execution.json').read_text())\\nsummary={'frozen_hashes_checked':len(settings['submission_hashes']),'hash_mismatches':miss,'notebook_sha256':hashlib.sha256((original/'dual_feg_example_lyap.ipynb').read_bytes()).hexdigest(),'saved_execution_returncode':execution['returncode'],'saved_execution_hash_matches':execution['sha256']==settings['submission_hashes']['dual_feg_example_lyap.ipynb'],'saved_static_returns':{c['label']:c['returncode'] for c in static['commands']},'notebook_code_cells':sum(c['cell_type']=='code' for c in nb['cells']),'notebook_error_outputs':sum(o.get('output_type')=='error' for c in nb['cells'] for o in c.get('outputs',[])),'notebook_png_outputs':sum('image/png' in o.get('data',{}) for c in nb['cells'] for o in c.get('outputs',[]))}\\nassert not miss and summary['saved_execution_hash_matches']\\n(root/'integrity-delivery.json').write_text(json.dumps(summary,indent=2))\\nprint(json.dumps(summary,indent=2))\\n'@ | Set-Content -LiteralPath 'integrity_review.py' -Encoding UTF8\\n& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B integrity_review.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/validation\",\"max_output_tokens\":2000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:12:38.183Z",
+    "line": 82,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_612awPuU3OIpxcy2G2vQmTjG",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"@'\\nimport json\\nfrom pathlib import Path\\np=Path.cwd().parent\\ncalls=json.loads((p/'own-generation-host-access-calls.json').read_text())\\nfor c in calls:\\n a=c['arguments']\\n if any(x in a for x in ['Get-Content','rg -n','read_text','read_bytes']) and 'apply_patch' not in a:\\n  if c['line']>=182 and c['line']<550:\\n   print(c['line'],a)\\n'@ | Set-Content -LiteralPath access_extract.py -Encoding UTF8\\n& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B access_extract.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/validation\",\"max_output_tokens\":5000}));\n"
+  },
+  {
+    "timestamp": "2026-09-24T00:14:15.947Z",
+    "line": 87,
+    "session_id": "01a0d0be-9c9f-77d2-ad5a-677ea98eca58",
+    "turn_id": "01a0d0be-9e03-7431-8c0f-005977a8f353",
+    "call_id": "call_hugjb33tkeML757hxd0Clait",
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"@'\\nimport json\\nfrom pathlib import Path\\nfrom datetime import datetime, timezone\\nroot=Path.cwd(); cfg=json.loads((root.parent/'settings.json').read_text()); r=json.loads((root/'replay-results.json').read_text()); integ=json.loads((root/'integrity-delivery.json').read_text())\\no='dual_feg/r03/'; v='supplementary/evaluation/dual_feg_r03/validation/'; nb=o+'dual_feg_example_lyap.ipynb'\\ndef ck(name,result,ref,tol=None): return dict(name=name,status='PASS',tolerance_domain=tol,observed_result=result,evidence_ref=ref)\\ndef block(n,reason,checks,refs): return dict(block_id='B'+str(n),reached=True,gate_verdict='PASS',mathematical_checks_passed=True,delivery_checks_passed=True,reason=reason,required_checks=[c['name'] for c in checks],passed_checks=[c['name'] for c in checks],checks=checks,evidence_refs=refs,failure_code=None)\\nb1=block(1,'The supplied recurrence, zero condition, squared radius and final residual are implemented correctly. The saved N=1..7 sweep supports 4/N^2 for N>=2 and a stronger N=1 value; its one inaccurate solver status is disclosed.',[\\nck('Algorithm, assumptions, metric and normalization','Exact rational remaining-horizon ratios; z0=0; A(x_star)=0; ||x0-x_star||^2<=R^2; metric ||A(xN)||^2.',o+'dual_feg_setup.py'),\\nck('Prescribed sweep and rate comparison',{'N':list(range(1,8)),'values':[1.9999999892,.9999998678,.4444444571,.2500000046,.1600000090,.1111111159,.0816326561],'statuses':['optimal','optimal_inaccurate','optimal','optimal','optimal','optimal','optimal'],'interpretation':'N^2 times values approximately 4 for N>=2; N=1 approximately 2; finite numerical evidence only'},o+'supplementary/b1_sweep.json','L=R=1; saved CLARABEL numerical evidence, not an exact theorem'),\\nck('Visible setup, sweep output and comparison plot','Notebook contains recurrence and setup, numerical values, comparison-plot code and one stored PNG output; inspected without rendering.',nb+'#81a35430')],[o+'dual_feg_setup.py',o+'supplementary/b1_sweep.json',nb+'#8ec4fa3d',nb+'#81a35430'])\\nb2=block(2,'Both coherent sparse certificates, selected N=4 and confirming N=6, replay successfully with complete interpolation and normalization inventory, source hashes and coordinate order. Candidate formulas and their initial search are retained.',[\\nck('Complete certificate identity, signs, PSD and S reconstruction at N=4',r['certificate_N4']['residuals'],v+'replay-results.json',r['certificate_N4']['tolerances']),\\nck('Complete certificate identity, signs, PSD and S reconstruction at N=6',r['certificate_N6']['residuals'],v+'replay-results.json',r['certificate_N6']['tolerances']),\\nck('Certificate coherence and initial closed-form search','Replayed certificate IDs, provenance source hashes, inventory/coordinate checks and tau normalization. Candidate multipliers and rank-one square compared; finite exact checks at N=1,2,3,4,6 pass; analytic status was appropriately deferred.',nb+'#5e17bd3b','Candidate comparison atol 1e-4; finite exact checks use symbolic arithmetic')],[o+'state/dual_feg_b2.json',o+'supplementary/b2-N6.json',nb+'#16f7d987',nb+'#b9aec4d8',v+'replay-results.json'])\\nb3=block(3,'The same nonincreasing partial-sum recipe passes coverage and increment checks at N=4 and N=6. Interior rank 4 is confirmed with exactly one index excluded at each end, leaving three and five interior indices.',[\\nck('Full PSD boundary piece, coverage, increment identities and sign direction',[{'N':s['N'],'rank_profile':s['rank_profile'],'residuals':s['coverage_residuals']} for s in r['rank_samples']],v+'replay-results.json','All Gram/function/offset residuals <=1e-5; PSD tolerance 1e-6'),\\nck('Two-horizon rank constancy and credibility','Profiles [0,4,4,4,2] and [0,4,4,4,4,4,2]; same recipe and exclusions (1,1); singular values recorded and none in [5e-5,2e-4].',nb+'#23b75d41','Absolute rank tolerance 1e-4 in unscaled setup Gram coordinates'),\\nck('Permitted leftovers and notebook construction','Every active interpolation term assigned; one terminal-star monotonicity residual and the full numerical PSD remainder retained at boundary; no omitted terms. Visible partial-sum loop and sign argument inspected.',nb+'#b8603ae5')],[nb+'#23b75d41',nb+'#ce33b506',o+'supplementary/rank_search.json',v+'replay-results.json'])\\nb4=block(4,'Actual framework candidate scanning and sparse-subset searches were replayed. The adopted independent bases and symmetric coefficients reconstruct every selected and confirming partial sum, including both endpoints and all scalar components.',[\\nck('Actual basis search and independence','Replayed candidate construction, column-space filtering, sparse basis selection and per-index independence. Basis sizes [0,4,4,4,2] at N=4; analogous rank-four interior and rank-two terminal at N=6.',nb+'#6d91e676',{'column_atol':1e-4,'column_rtol':1e-4,'zero_tol':1e-6,'indep_tol':1e-7,'span_tol':1e-5}),\\nck('Every-index N=4 reconstruction',r['reconstruction_N4'],v+'replay-results.json',r['reconstruction_N4']['tolerances']),\\nck('Every-index N=6 reconstruction',r['reconstruction_N6'],v+'replay-results.json',r['reconstruction_N6']['tolerances']),\\nck('Visible full expression and coefficients','Ordered interior basis [gN,x0-xN,xk-xN,zk], empty initial basis and terminal [gN,x0-xN]; symmetric double-sum convention; function and constant terms absent and checked. Fitted formulas remained candidates until B5.',nb+'#1921e859')],[nb+'#f31b656c',nb+'#6d91e676',nb+'#1921e859',nb+'#51057933',nb+'#b3040b92',v+'replay-results.json'])\\nb5=block(5,'The explicit terminal-anchored potential establishes the exact target for every N>=1. Replayed general symbolic identities, inspected residual signs and domains, and verified the submitted telescoping and normalized boundary implication. Final static and clean-kernel records are supported by the frozen notebook hash and actual outputs.',[\\nck('General exact step, base, terminal and exceptional-horizon identities',r['exact_checks'],v+'replay-results.json','Exact symbolic zero Gram/function/offset residuals; L>0, N positive integer; nonterminal m=q+1>=2'),\\nck('Nonincreasing direction, signs and denominators','M_k and M_star are nonpositive by monotonicity, Q_k by L-Lipschitz continuity; all displayed multipliers positive on their domains; S is a squared norm. V0=0, VN<=0; N=1 checked independently.',nb+'#857f3126'),\\nck('Exact target implication','||gN||^2-4L^2R^2/N^2 = VN+(4L/N)M_star-S+(4L^2/N^2)(||x0-x_star||^2-R^2)<=0. No division by R or residual norm. All N>=1, L>0, R>=0 included.',nb+'#8771e1e5'),\\nck('Self-contained proof and required notebook delivery',{'code_cells':integ['notebook_code_cells'],'errors':integ['notebook_error_outputs'],'plot_outputs':integ['notebook_png_outputs'],'saved_clean_kernel_returncode':0,'execution_hash_matches_frozen_notebook':True,'static_source_ruff':0,'static_source_ty':0,'checklist':'all twelve items covered by visible content; minor malformed index text in row 8 does not hide its actual cell 23 evidence'},v+'integrity-delivery.json'),\\nck('Frozen-source integrity','All 153 frozen manifest hashes match originals; numerical and symbolic source cells replayed in isolated fresh Python process.',v+'integrity-delivery.json')],[nb+'#3407f258',nb+'#03de6805',nb+'#689910cf',nb+'#3f31e4aa',nb+'#56a3a6fd',nb+'#694eadb4',nb+'#f7eebb3f',nb+'#857f3126',o+'supplementary/b5-static-001.json',o+'supplementary/b5-nbconvert-execution.json',o+'supplementary/dual_feg_example_lyap_checklist.md',v+'replay-results.json'])\\nreview=dict(attempt_id='dual_feg_r03',mathematical_verdict='PASS',eligible=True,access_status='recovered',access_reason='The recorded Windows helper-staging path-length error and ordinary typing/configuration issues were repaired within the same attempt; repeated preflight and source checks passed. Inspected own host access-call inventory and source records show own artifacts, approved generic resources and pinned tools, with no concrete prohibited-content incident. The rejected empty patch used a mistyped nonexistent path and supplied no outside mathematical content. Instruction-only isolation and nonexhaustive logs do not prove absence of all exposure.',final_reason='The submitted explicit potential and general exact identities prove ||A(x_N)||^2 <= 4 L^2 R^2/N^2 under the supplied assumptions for every integer N>=1, including the separate N=1 endpoint. Independent replay confirms all numerical and exact checks; no missing essential lemma or coefficient was supplied by review.',final_evidence_refs=[nb+'#3407f258',nb+'#03de6805',nb+'#857f3126',v+'replay-results.json',v+'integrity-delivery.json',o+'supplementary/b1-access-and-recovery.json','supplementary/evaluation/dual_feg_r03/own-generation-host-access-calls.json'],submitted_theorem='For the supplied fixed-horizon Dual-FEG recurrence, monotone L-Lipschitz A, L>0, A(x_star)=0, ||x0-x_star||^2<=R^2, R>=0, z0=0 and alpha=1/L: ||A(x_N)||^2<=4L^2R^2/N^2 for every integer N>=1.',target_scope_comparison='Exact match in assumptions, algorithm, terminal squared operator-residual metric, constant 4, L^2R^2 normalization and all horizons. Terminal-anchored potential is allowed; no stronger structural assumption or averaged iterate is substituted.',verification_method='Inspected input, rubric, operational rules, approved generic skills, setup, all proof-critical notebook cells, numerical state, access and final delivery records. Fresh Python -I -B process in validation replayed 32 of 33 notebook code cells unchanged except removing unused matplotlib import; the plot cell was deliberately omitted under the no-rendering instruction. Replayed saved-certificate identities/PSD/LDL reconstruction, provenance hashes, two-horizon rank/coverage checks, actual basis searches and every-index reconstruction, finite exact certificate tests and all six symbolic proof checks. Solver sweep, Ruff/ty and final nbconvert clean-kernel execution were inspected saved evidence, not newly rerun. The symbolic formulas, sign direction and boundary implication were independently assessed; no proof repairs.',workflow_complete=True,notebook_path=nb,blocks=[b1,b2,b3,b4,b5],review_started_at=cfg['review_started_at'],review_stopped_at=datetime.now(timezone.utc).isoformat(),limitations=['Access control was instruction-only and available host/source records do not exhaustively trace every read or model training exposure.','No fresh solver sweep, Ruff/ty invocation or Jupyter-kernel execution during review; saved records were inspected and all mathematical code was replayed in a fresh isolated Python process.','Saved N=2 sweep solve was optimal_inaccurate; selected N=4 and confirming N=6 certificates were optimal and independently verified.','No browser, rendering, image inspection or exports; these are ancillary under the frozen evaluation override.'],instructions='Exactly B1-B5 assessed against frozen submitted evidence; originals unchanged and evidence references campaign-relative.')\\nassert [x['block_id'] for x in review['blocks']]==['B1','B2','B3','B4','B5']\\n(root.parent/'review.json').write_text(json.dumps(review,indent=2),encoding='utf-8')\\nprint(review['mathematical_verdict'],review['review_stopped_at'])\\n'@ | Set-Content -LiteralPath 'write_review.py' -Encoding UTF8\\n& 'C:/Users/Jack/Documents/GitHub/PEPFlow/.venv/Scripts/python.exe' -I -B write_review.py\",\"workdir\":\"C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/supplementary/evaluation/dual_feg_r03/validation\",\"max_output_tokens\":1000}));\n"
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "N": 4,
+  "certificate_id": "b99c82f986d37fbb743a8502360cfb5fcdca64e0976bed6191852e3b567d0089",
+  "certificate_path": "state/feg_b2.json",
+  "recipe_id": "consecutive_monotone_and_halfstep_lipschitz_terminal_S_v1",
+  "rank_profile": [
+    0,
+    2,
+    2,
+    2,
+    2
+  ],
+  "singular_values": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.2022580661719247,
+      0.07725570677884991,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.6250117839018663,
+      0.12500235637617257,
+      3.0942647446280135e-09,
+      5.826133374383871e-10,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.2940681341608091,
+      0.16904693026976492,
+      4.107470562803903e-09,
+      3.233989661050299e-09,
+      1.2197684463367264e-09,
+      3.5921936483932237e-11,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      2.2119616416230565,
+      0.21192395712005255,
+      6.534103172918246e-09,
+      4.321515839365698e-09,
+      3.225898544598547e-09,
+      1.4854321933950172e-09,
+      8.696736837666481e-11,
+      6.524367600748038e-11,
+      0.0,
+      0.0
+    ]
+  ],
+  "rank_convention": {
+    "tolerance": 0.0001,
+    "scaling": "none; absolute tolerance on original Gram coordinates",
+    "coordinate_order": "setup earlier iterates first"
+  },
+  "rank_credible": true,
+  "certificate_checked": true,
+  "grouping_checked": true,
+  "boundary_exclusions": {
+    "left": 1,
+    "right": 1
+  },
+  "term_assignment": {
+    "A monotone:x_1,x_2": 1,
+    "A monotone:x_2,x_3": 2,
+    "A monotone:x_3,x_4": 3,
+    "A monotone:x_4,x_star": "boundary",
+    "A Lipschitz:x_1,x_1/2": 0,
+    "A Lipschitz:x_1+1/2,x_2": 1,
+    "A Lipschitz:x_2+1/2,x_3": 2,
+    "A Lipschitz:x_3+1/2,x_4": 3
+  },
+  "S_assignment": {
+    "terminal_PSD_remainder": "boundary"
+  }
+}

@@ -1,0 +1,101 @@
+{
+    "algo_name":  "bppm",
+    "problem_type":  "convex_bregman",
+    "obj_tag":  "f",
+    "params_json":  "{\"alpha\": 1, \"R\": 1}",
+    "performance_metric":  "f(x_N)-f(x_star)",
+    "initial_condition":  "D_h(x_star,x_0)\u003c=R",
+    "conjectured_rate":  "R/(alpha*N)",
+    "setup_file":  "bppm_setup.py",
+    "sweep_results":  [
+                          {
+                              "N":  1,
+                              "opt_value":  1.0000000005971532,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  1.0,
+                              "absolute_error":  5.9715321576447877E-10
+                          },
+                          {
+                              "N":  2,
+                              "opt_value":  0.49999999575895004,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.5,
+                              "absolute_error":  4.2410499556666537E-09
+                          },
+                          {
+                              "N":  3,
+                              "opt_value":  0.3333333332789397,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.3333333333333333,
+                              "absolute_error":  5.4393600734670144E-11
+                          },
+                          {
+                              "N":  4,
+                              "opt_value":  0.2499999995235287,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.25,
+                              "absolute_error":  4.7647130685390948E-10
+                          },
+                          {
+                              "N":  5,
+                              "opt_value":  0.19999999989769174,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.2,
+                              "absolute_error":  1.0230827296453526E-10
+                          },
+                          {
+                              "N":  6,
+                              "opt_value":  0.16666666606928843,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.16666666666666666,
+                              "absolute_error":  5.9737823021599468E-10
+                          },
+                          {
+                              "N":  7,
+                              "opt_value":  0.14285714120863235,
+                              "status":  "optimal",
+                              "solver_options":  {
+                                                     "solver":  "CLARABEL"
+                                                 },
+                              "solver_name":  "CLARABEL",
+                              "conjecture":  0.14285714285714285,
+                              "absolute_error":  1.6485104947783213E-09
+                          }
+                      ],
+    "N_verify":  4,
+    "numerical_certificate_verified":  false,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "b1_validation":  {
+                          "presentation_policy":  "evaluation-ancillary-v1",
+                          "notebook_execution":  "supplementary/b1_notebook-003.console.txt",
+                          "maximum_absolute_error":  4.2410499556666537E-09,
+                          "sweep_evidence":  "supplementary/b1_sweep-002.console.txt",
+                          "preflight_evidence":  "supplementary/preflight-002.json",
+                          "static_evidence":  "supplementary/b1-static-003.json"
+                      }
+}

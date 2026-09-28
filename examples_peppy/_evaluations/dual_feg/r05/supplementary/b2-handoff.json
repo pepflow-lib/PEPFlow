@@ -1,0 +1,45 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Dense solve, sparse-pattern solves, coherent selected certificate, initial formula search and complete numerical checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "sources":  [
+                    "B1 consulted-source records",
+                    "approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                    "approved/pepflow/expression_manager.py",
+                    "approved/pepflow/scalar.py",
+                    "approved/pepflow/lyapunov_utils.py",
+                    "approved/pepflow/ipython_utils.py",
+                    "own B1/B2 setup, scripts, notebook and state"
+                ],
+    "executed_scripts":  [
+                             "certificate_capture.py",
+                             "sparse_b2.py",
+                             "sparse_b2_2.py",
+                             "finalize_b2.py",
+                             "update_b2_notebook.py",
+                             "execute_b2_notebook.py",
+                             "fix_b2_types.py"
+                         ],
+    "evidence":  [
+                     "state/dual_feg_dense.json",
+                     "state/dual_feg_relaxed.json",
+                     "state/dual_feg_b2.json",
+                     "supplementary/b2-notebook-inspection.json",
+                     "supplementary/b2-static-001.json",
+                     "supplementary/b2-static-002.json"
+                 ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "incidents":  [
+                      "Expected context-name reuse warning after completed solve during fresh setup reconstruction; no old builder reused.",
+                      "B2-static-001 failed on framework Number typing for integer parameters; switched notebook ExpressionManager parameters to sp.Integer(1), reexecuted notebook and passed b2-static-002."
+                  ],
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "Instruction-only control; tools and resolution probes are not an exhaustive filesystem audit.",
+    "unresolved_work":  "B3-B5; arbitrary-horizon analytic identity and proof",
+    "deadline_utc":  "2026-09-24T00:52:12.648185+00:00"
+}

@@ -1,0 +1,20 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_certificate",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Additional coherent certificate obtained and full-coordinate verification passed",
+    "run_status":  "awaiting_same_session_continuation",
+    "additional_certificate":  "supplementary/b2-N4-certificate.json",
+    "selected_main_certificate":  "state/dual_feg_b2.json",
+    "selected_main_unchanged":  true,
+    "checks":  "Dense/sparse optimum gap, complete scalar inventory, source hashes, Gram/function/offset identity, multiplier signs, PSD and LDL reconstruction passed at frozen tolerances",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "consulted_sources":  [
+                              "own B1/B2 states and generated sources",
+                              "allowlisted generic framework sources loaded by capture"
+                          ],
+    "executed_command":  "Pinned Python -I -B supplementary/b2_additional.py",
+    "warnings":  "Context names were reused with fresh builders; old builders were not reused",
+    "unresolved_work":  "B3 must independently revalidate both certificates and confirm rank/coverage; B4/B5 pending"
+}

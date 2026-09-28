@@ -1,0 +1,16 @@
+def coeff_pattern(k, n, ell):
+    if k == 0:
+        return sp.zeros(0, 0)
+    return sp.Matrix([[2*sp.S(k)**2/sp.S(n)**2, 2*sp.S(k)*ell/sp.S(n)**2],
+                      [2*sp.S(k)*ell/sp.S(n)**2, 0]])
+
+numeric_scale = float(coeff_by_k[1][0,0])*N_int**2/2
+print("Positive sample scale relative to the analytic normalization:",numeric_scale)
+assert numeric_scale > 0
+for index in range(1,N_int+1):
+    exact_C = coeff_pattern(index,N_int,sp.S(1))
+    raw_error = np.max(np.abs(coeff_by_k[index]-np.asarray(exact_C,float)))
+    scale_adjusted_error = np.max(np.abs(coeff_by_k[index]/numeric_scale-np.asarray(exact_C,float)))
+    print(f"k={index}: raw difference {raw_error:.3g}; after common positive scale {scale_adjusted_error:.3g}")
+    assert scale_adjusted_error <= 1e-5
+    pf.pprint_labeled_matrix(np.asarray(exact_C,dtype=object),V_k_basis_labels(index),V_k_basis_labels(index))

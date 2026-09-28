@@ -1,0 +1,52 @@
+{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Complete certificates, same-recipe rank confirmation, coverage and signs verified at two horizons; notebook execution and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "selected_certificate_id":  "ee4c302b97c4d2a6c7ba9a4125a5c6f4c7dc5c640b0fe47f69c0d45576a0b7a9",
+    "rank_search":  {
+                        "status":  "confirmed",
+                        "boundary_exclusions":  {
+                                                    "left":  1,
+                                                    "right":  1
+                                                },
+                        "rank":  4,
+                        "confirmed_horizons":  [
+                                                   6,
+                                                   8
+                                               ],
+                        "selected_certificate_id":  "ee4c302b97c4d2a6c7ba9a4125a5c6f4c7dc5c640b0fe47f69c0d45576a0b7a9",
+                        "recipe_id":  "terminal-star-step-pairs-S-boundary",
+                        "rank_convention":  {
+                                                "absolute_tolerance":  0.0001,
+                                                "scaling":  "none; L=R=1",
+                                                "coordinate_order":  "setup basis order"
+                                            },
+                        "unresolved_samples":  [
+
+                                               ],
+                        "evidence_path":  "supplementary/rank_search.json"
+                    },
+    "evidence":  [
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-notebook-003-output.txt",
+                     "supplementary/b3-static-002.json"
+                 ],
+    "new_approved_sources":  [
+
+                             ],
+    "own_generated_sources":  [
+                                  "supplementary/run_b3.py",
+                                  "supplementary/finalize_b3_notebook.py",
+                                  "supplementary/b3_rank_function.py",
+                                  "supplementary/b3_comparison.py"
+                              ],
+    "commands":  "Pinned Python -I -B N=8 rank replay, final notebook replay, and static adapter. No solver calls in B3.",
+    "operational_repair":  "Made the labeled remainder coordinate assertion explicit to resolve unused-local lint diagnostic; repeated notebook and static checks",
+    "access_control":  "instruction_only",
+    "observed_prohibited_exposure":  false,
+    "audit_limit":  "Resolution probes are not an exhaustive filesystem read audit; the pinned interpreter and its installed startup hooks/dependencies must be reviewed.",
+    "deadline_utc":  "2026-09-23T22:54:22.120435+00:00",
+    "unresolved_work":  "B4 basis and coefficient reconstruction; B5 exact arbitrary-horizon proof"
+}

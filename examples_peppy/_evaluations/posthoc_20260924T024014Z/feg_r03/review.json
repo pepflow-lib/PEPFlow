@@ -1,0 +1,249 @@
+{
+  "attempt_id": "feg_r03",
+  "mathematical_verdict": "PASS",
+  "mathematical_reason": "The submitted explicit Lyapunov function has a verified general nonpositive increment, exact shared-first-step identity and exact terminal square completion. The sign/domain argument yields ||A(x_N)||^2<=4 L^2 R^2/N^2 for every N>=1, including R=0. No mathematical expression or missing argument was repaired.",
+  "submitted_theorem": "For prescribed FEG, monotone L-Lipschitz A with A(x_star)=0, L>0 and ||x_0-x_star||^2<=R^2, R>=0, every integer N>=1 satisfies ||A(x_N)||^2<=4 L^2 R^2/N^2.",
+  "target_scope_comparison": "Exact target, assumptions, algorithm, metric, normalization, and full horizon range match.",
+  "verification_method": {
+    "replayed": "Submitted non-discovery notebook cells in fresh pinned python -I -B process; numerical certificate, saved basis reconstruction, exact symbolic general step/base/terminal; additional saved N6 certificate/grouping.",
+    "inspected": "Own input/rubric/history, submitted generic skills and tolerance guidance, frozen notebook theorem and signs, coefficient derivation, historical sweep/search/static/access/delivery evidence. No external mathematics, other attempt, new solve/search or proof repair."
+  },
+  "mathematical_evidence_refs": [
+    "validation/feg_example_lyap.ipynb#94fe623d",
+    "validation/replay-output.txt",
+    "validation/replay-results.json",
+    "validation/rank6-results.json",
+    "numerical-evidence.json"
+  ],
+  "checks": [
+    {
+      "name": "Claim, algorithm and scope",
+      "status": "PASS",
+      "observed_result": "Prescribed monotone L-Lipschitz FEG updates, root condition and squared last-iterate residual. Shared x_(1/2)=x_0 explicitly checked. N>=1, L>0, R>=0; no stronger structural assumptions.",
+      "evidence_ref": "validation/feg_example_lyap.ipynb#c987c862"
+    },
+    {
+      "name": "Fully defined potential and coefficients",
+      "status": "PASS",
+      "observed_result": "V_0=0; V_k=2 k^2 ||g_k||^2/N^2+4 k L <g_k,x_k-x_0>/N^2 for 1<=k<=N. No function-value or constant terms. Explicit formula sufficient; submitted coefficient recurrence inspected without re-solving.",
+      "evidence_ref": "validation/feg_example_lyap.ipynb#01261db3"
+    },
+    {
+      "name": "General symbolic step",
+      "status": "PASS",
+      "observed_result": "Actual updates substituted with symbolic k,N,L; V_(k+1)-V_k - 2(k+1)^2 I_Lip/N^2 - 4Lk(k+1) I_Mon/N^2 has exactly zero Gram, function and constant components. Fresh submitted-cell replay.",
+      "evidence_ref": "validation/replay-output.txt"
+    },
+    {
+      "name": "Signs and domains",
+      "status": "PASS",
+      "observed_result": "I_Lip<=0 by L-Lipschitzness; I_Mon<=0 by monotonicity. Coefficients 2(k+1)^2/N^2, 4Lk(k+1)/N^2 positive on 1<=k<N. N,k+1,L nonzero. Final zero-point monotonicity residual and initial residual nonpositive; terminal square nonnegative.",
+      "evidence_ref": "validation/feg_example_lyap.ipynb#94fe623d"
+    },
+    {
+      "name": "Initial link",
+      "status": "PASS",
+      "observed_result": "Fresh exact V_1-V_0=(2/N^2)(||g_1-g_0||^2-L^2||x_1-x_0||^2), using x_1=x_0-g_0/L. All scalar components exactly zero; V_0=0.",
+      "evidence_ref": "validation/replay-results.json"
+    },
+    {
+      "name": "Terminal link and normalization",
+      "status": "PASS",
+      "observed_result": "Fresh exact metric-4L^2R^2/N^2=V_N+(4L/N)I_star-S_N+(4L^2/N^2)r_0. Therefore metric-target<=V_N<=V_0=0. Restores general L,R directly, not by unverified scaling.",
+      "evidence_ref": "validation/replay-output.txt"
+    },
+    {
+      "name": "Small horizons and degenerate radius",
+      "status": "PASS",
+      "observed_result": "N=1 uses empty interior range, same base and terminal identities; no division by R, so R=0 included.",
+      "evidence_ref": "validation/feg_example_lyap.ipynb#94fe623d"
+    },
+    {
+      "name": "B1 saved sweep",
+      "status": "PASS",
+      "observed_result": "Seven recorded CLARABEL optimal solves, N=1..7. Values retained in B1 state; N>=2 maximum discrepancy from 4/N^2 is 8.768811288195622e-9. N=1 approximately 2 versus target 4. Sweep inspected, not solved again.",
+      "evidence_ref": "validation/state/feg_b1.json"
+    },
+    {
+      "name": "B2 coherent numerical certificate",
+      "status": "PASS",
+      "observed_result": {
+        "certificate_id": "b99c82f986d37fbb743a8502360cfb5fcdca64e0976bed6191852e3b567d0089",
+        "dense_relaxed_gap": 6.812636343944689e-09,
+        "min_dual": 0.1250023593930748,
+        "min_S_eigenvalue": 5.774172893935857e-10,
+        "S_reconstruction_max": 2.220446049250313e-16,
+        "identity_residuals": {
+          "Gram": 2.295867374931366e-09,
+          "function": 0.0,
+          "constant": 2.0003696477033373e-09
+        },
+        "tolerances": {
+          "tolerances": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0.0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05
+          },
+          "residuals": {
+            "identity_gram_max_abs": 2.295867374931366e-09,
+            "identity_func_max_abs": 0.0,
+            "identity_offset_abs": 2.0003696477033373e-09,
+            "S_reconstruction_max_abs": 2.220446049250313e-16,
+            "dense_relaxed_gap": 6.812636343944689e-09,
+            "minimum_scalar_inequality_dual": 0.1250023593930748,
+            "minimum_S_eigenvalue": 5.774173199614862e-10,
+            "minimum_matrix_inequality_eigenvalue": 0.0,
+            "conjecture_gap": 2.304130219954459e-10
+          },
+          "passed": true
+        }
+      },
+      "evidence_ref": "numerical-evidence.json"
+    },
+    {
+      "name": "B3 partial sums, coverage, increments and rank",
+      "status": "PASS",
+      "observed_result": "Fresh saved-certificate replay at N=4 and N=6; all scalar-component coverage/increment checks pass. Rank 2 on k=1..N-1 with exclusions left=right=1, retaining 3 and 5 indices. Absolute rank tolerance 1e-4, no scaling. Explicit terminal zero-point monotonicity and full PSD remainder retained.",
+      "evidence_ref": "validation/rank6-results.json"
+    },
+    {
+      "name": "B4 bases and full reconstruction",
+      "status": "PASS",
+      "observed_result": "Fresh independence ranks [0,2,2,2,2]; saved symmetric coefficient matrices reconstruct all k=0..4. Maximum Frobenius residual 9.281881235489407e-9; maximum component Gram residual 6.358104487347305e-9; function and offset residuals zero. Search source and historical search output inspected, not rerun.",
+      "evidence_ref": "validation/replay-results.json"
+    },
+    {
+      "name": "Original static checks",
+      "status": "PASS",
+      "observed_result": "Latest b5-static-003: source_ruff=0, source_ty=0; expected missing-module negative probe=1. Earlier failures preserved.",
+      "evidence_ref": "validation/supplementary/b5-static-003.json"
+    },
+    {
+      "name": "Original final execution and checklist",
+      "status": "FAIL",
+      "observed_result": "Original final notebook execution returncode 1 due to symbolic display; final checklist pending. Delivery remains incomplete.",
+      "evidence_ref": "validation/supplementary/closure.json"
+    },
+    {
+      "name": "Fresh validation execution",
+      "status": "PASS",
+      "observed_result": "28 selected code cells passed in fresh isolated pinned Python process; 3 discovery cells inspected and omitted; coefficient extraction replaced by saved coefficient loading; N6 saved certificate and grouping additionally replayed. This is validation-cell replay, not a full nbconvert rerun.",
+      "evidence_ref": "validation/replay-results.json"
+    },
+    {
+      "name": "Original preservation",
+      "status": "PASS",
+      "observed_result": "161 original SHA256 hashes match; validation notebook also matches original hash.",
+      "evidence_ref": "original-hash-verification.json"
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "B1",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Algorithm/setup and saved seven-horizon sweep agree with supplied problem; rate comparison recorded.",
+      "evidence_refs": [
+        "validation/state/feg_b1.json",
+        "validation/replay-output.txt"
+      ]
+    },
+    {
+      "block_id": "B2",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Coherent saved certificate freshly replayed with frozen tolerances; dual signs, PSD, identity, S reconstruction, dense agreement pass. Initial formula-search record inspected.",
+      "evidence_refs": [
+        "numerical-evidence.json",
+        "validation/replay-output.txt"
+      ]
+    },
+    {
+      "block_id": "B3",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Two saved horizons freshly replayed under same grouping recipe; full coverage/increments and rank rule pass.",
+      "evidence_refs": [
+        "validation/rank6-results.json",
+        "validation/replay-results.json"
+      ]
+    },
+    {
+      "block_id": "B4",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Saved bases and coefficients freshly reconstruct all required indices and scalar components; historical search evidence retained.",
+      "evidence_refs": [
+        "validation/replay-results.json",
+        "validation/supplementary/b4-complete-output.txt"
+      ]
+    },
+    {
+      "block_id": "B5",
+      "mathematical_status": "PASS",
+      "delivery_status": "FAIL",
+      "reason": "Submitted exact local Lyapunov proof establishes target; fresh general step/base/terminal replay and sign/domain inspection pass. Original final notebook/checklist delivery failed operationally.",
+      "evidence_refs": [
+        "validation/replay-results.json",
+        "validation/feg_example_lyap.ipynb#94fe623d",
+        "validation/supplementary/closure.json"
+      ]
+    }
+  ],
+  "original_delivery_status": "incomplete",
+  "original_delivery_reason": "Original B5 final execution failed with symbolic-to-float display error after alternate generic nbconvert launcher; checklist pending and original closure completed only B1-B4. Historical records preserved.",
+  "posthoc_validation_execution_status": {
+    "status": "PASS",
+    "scope": "Fresh selected-cell and saved-certificate replay, not full notebook discovery or nbconvert execution.",
+    "executed_cells": 28,
+    "omitted_discovery_cells": 3,
+    "N6_saved_certificate_replayed": true,
+    "evidence_refs": [
+      "validation/replay-results.json",
+      "validation/rank6-results.json"
+    ]
+  },
+  "access_findings": {
+    "generic_operational_incidents": [
+      "Historical Python313 launcher/dependency consumption",
+      "Historical symbolic matrix display failure",
+      "Posthoc long-path inspection failure and missing standalone REPO_ROOT recovery"
+    ],
+    "prohibited_mathematical_exposure": {
+      "status": "not_established",
+      "evidence": [
+        "own-generation-host-access-calls.json",
+        "validation/supplementary/b5-access-incident.json",
+        "validation/supplementary/b5-final-execution.json"
+      ],
+      "reason": "Inspected own host-call/access records show a concrete generic launcher incident, not target mathematical content. No prohibited mathematical exposure established by inspected evidence."
+    },
+    "independence_eligible": true,
+    "limitations": [
+      "Instruction-only isolation and saved host calls are not exhaustive OS read tracing; absence of observed exposure does not prove absence of exposure."
+    ],
+    "decision_basis": "Explicit user override makes generic dependency-path/launcher/display problems operational; historical exclusion is not adopted as a mathematical finding."
+  },
+  "execution_adjustments": [
+    "validation/execution-adjustments.json",
+    "operational-incidents.json"
+  ],
+  "review_started_at": "2026-09-24T02:41:31.334160+00:00",
+  "review_stopped_at": "2026-09-24T02:48:12.182329+00:00",
+  "limitations": [
+    "No solver sweep, parameter search or basis discovery rerun; saved evidence inspected and certificates replayed.",
+    "No complete nbconvert clean-kernel notebook rerun because discovery cells were intentionally excluded; fresh isolated selected-cell replay is separately reported.",
+    "Original delivery remains incomplete; posthoc success does not backfill original block completion.",
+    "No rendering required or performed.",
+    "No claim of an independent all-horizon tightness proof."
+  ],
+  "historical_verdict_change": {
+    "from": "NOT_EVALUATED",
+    "to": "PASS",
+    "reason": "Explicit generic-operational override permits completing mathematical verification; newly replayed identities establish exact target."
+  }
+}

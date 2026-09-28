@@ -1,0 +1,21 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete",
+    "next_block":  "B2",
+    "requested_horizon":  6,
+    "entry_exit_reason":  "Saved N=4 certificate replayed; partial sums and coverage verified. Second coherent horizon required for rank comparison.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  "supplementary/b3-N4-trial.json",
+    "source":  "supplementary/helpers/grouping.py",
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "Own B2 state and sources; approved framework source hashes as previously inventoried"
+                          ],
+    "commands":  [
+                     "Exact-path workflow reads",
+                     "Pinned Python -I -B supplementary/b3_trial.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "unresolved_work":  "Acquire N=6 certificate in B2, resume B3 rank comparison, then B4-B5"
+}

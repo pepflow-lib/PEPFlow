@@ -1,0 +1,36 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Saved-certificate LDL grouping has a promising N=4 interior rank profile; need coherent N=6 certificate for cross-horizon confirmation",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "return_to":  "B3",
+    "selected_certificate_preserved":  "state/pgm_b2.json",
+    "candidate_recipe":  "Assign interpolation terms by destination index, clamped to steps 1..N; assign complete reverse-LDL blocks by latest non-negligible iterate index in factor support, same clamp; V0=0",
+    "rank_profile":  [
+                         0,
+                         4,
+                         4,
+                         4,
+                         1
+                     ],
+    "boundary_exclusions":  {
+                                "left":  1,
+                                "right":  1
+                            },
+    "rank_tolerance":  0.0001,
+    "coverage_status":  "not yet final; rank-only exploratory trials do not complete B3",
+    "evidence":  [
+                     "supplementary/explore_b3.py",
+                     "supplementary/b3-ldl-trials.json",
+                     "supplementary/b3-ldl-trials.txt"
+                 ],
+    "consulted_approved_additions":  [
+                                         "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                                         "pepflow/lyapunov_utils.py"
+                                     ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00"
+}

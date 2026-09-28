@@ -1,0 +1,79 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "B1 setup, seven-horizon sweep, initialized executed notebook, and static gates complete",
+    "run_status":  "awaiting_same_session_continuation",
+    "dispatch_utc":  "2026-09-23T15:15:53.692276+00:00",
+    "deadline_utc":  "2026-09-23T17:15:53.692276+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "consulted_approved_files":  [
+                                     "dispatch.md",
+                                     "input.md",
+                                     "worker-protocol.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                     "plugins/pepflow-workflows/references/output-layout.md",
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                     "pepflow/operator.py",
+                                     "pepflow/pep_runner.py",
+                                     "pepflow/__init__.py",
+                                     "pepflow/pep.py",
+                                     "pepflow/solver.py",
+                                     "pepflow/parameter.py",
+                                     "pepflow/vector.py",
+                                     "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                 ],
+    "commands":  [
+                     "Get-Content approved dispatch/input/protocol and skills listed above",
+                     "Get-Content approved operator, runner, package init",
+                     "rg approved pep/solver/operator/parameter/vector API signatures",
+                     "Get-Content selected pep and operator ranges",
+                     "apply_patch generated setup/bootstrap/solver/sweep/notebook-authoring files",
+                     "python -I -B supplementary/bootstrap.py supplementary/b1_sweep.py (once)",
+                     "python -I -B supplementary/bootstrap.py supplementary/b1_notebook.py (three executions, after source/layout fixes)",
+                     "static adapter invocations preserved in b1-static-001/003/004.json and output logs",
+                     "Get-Content b1-static-003 source diagnostics",
+                     "Move-Item own solver helper to supplementary/helpers; update own helper paths",
+                     "generic preflight retry with repaired-static-args.json, evidence preflight-002.json",
+                     "Get-Content own notebook and B1 state for inspection"
+                 ],
+    "incidents":  [
+                      {
+                          "result":  "preflight-002 passed",
+                          "evidence":  "supplementary/b1-static-001.json",
+                          "reason":  "Windows path length during broad supplementary helper staging",
+                          "repair":  "Narrowed own generated helper directory to supplementary/helpers and reran generic preflight",
+                          "kind":  "operational"
+                      },
+                      {
+                          "result":  "adapter executed",
+                          "evidence":  "supplementary/b1-static-002-output.txt",
+                          "reason":  "PowerShell array wrapping malformed argv before adapter started; no evidence JSON produced",
+                          "repair":  "Typed string array and explicit option index",
+                          "kind":  "operational"
+                      },
+                      {
+                          "result":  "b1-static-004 passed",
+                          "evidence":  "supplementary/b1-static-003.json",
+                          "reason":  "Notebook docstring before imports triggered Ruff E402",
+                          "repair":  "Removed module docstring from notebook definitions cell",
+                          "kind":  "source_diagnostic"
+                      }
+                  ],
+    "evidence":  [
+                     "supplementary/b1-sweep-output.txt",
+                     "supplementary/b1-notebook-003-output.txt",
+                     "supplementary/b1-static-004.json",
+                     "supplementary/feg_example_lyap_checklist.md"
+                 ],
+    "audit_limit":  "Instruction-only isolation, not exhaustive read tracing. Adapter source manifests and runtime origins retained.",
+    "unresolved_work":  "Blocks B2-B5 not started; no theorem established."
+}

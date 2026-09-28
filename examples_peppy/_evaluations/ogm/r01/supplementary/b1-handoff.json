@@ -1,0 +1,47 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial case dispatch; setup, N=1..7 sweep, state, notebook execution and static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "deadline_utc":  "2026-09-23T16:12:13.416403+00:00",
+    "access_control":  "instruction_only",
+    "access_status":  "no prohibited material observed",
+    "sources":  [
+                    "supplementary/approved/dispatch.md",
+                    "supplementary/approved/input.md",
+                    "supplementary/approved/worker-protocol.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                    "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                    "supplementary/approved/pepflow/pep_runner.py",
+                    "supplementary/approved/pepflow/pep.py",
+                    "supplementary/approved/pepflow/solver.py",
+                    "supplementary/approved/pepflow/pep_result.py",
+                    "supplementary/approved/pepflow/parameter.py",
+                    "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                ],
+    "commands":  "Actual exec tool calls: Get-Content and scoped rg on listed files; pinned Python -I -B run_b1_sweep.py, build_b1_notebook.py, inspect_b1.py; adapter argv and complete tool commands preserved in b1-static-001/002/003.json",
+    "generated_reads":  "Own setup, runtime helpers, builders, notebook, sweep/state JSON, and static evidence",
+    "incidents":  [
+                      "Generated script had Windows-1252 encoding; converted to UTF-8; initial failure preserved in b1-notebook-output.txt",
+                      "Adapter helper-root supplementary recursively staged approved tools and hit WinError 206; narrowed generated runtime helper to supplementary/helpers and probe-helper-path supplementary/helpers/runtime.py. Adapter reran generic import/static/fresh-kernel probes and source checks unchanged. Evidence b1-static-001/002/003.json.",
+                      "Notebook import placement caused Ruff E402/F401; separated bootstrap/import cells and displayed runtime root; subsequent Ruff and ty passed."
+                  ],
+    "checks":  [
+                   "N=1..7 CLARABEL defaults all optimal",
+                   "Maximum candidate discrepancy 3.1168371598944145e-9",
+                   "Fresh-kernel notebook execution passed: b1-notebook-output-004.txt",
+                   "Static/import/fresh-kernel adapter checks passed: b1-static-003.json",
+                   "Markdown delimiter/control-character checks and source/output inspection passed"
+               ],
+    "audit_limitations":  "No exhaustive OS read tracing; staging and policy do not enforce OS isolation.",
+    "active_helper_root":  "supplementary/helpers",
+    "active_probe_helper_path":  "supplementary/helpers/runtime.py",
+    "pending":  "B2-B5; conjecture not an analytic theorem",
+    "token_usage":  null
+}

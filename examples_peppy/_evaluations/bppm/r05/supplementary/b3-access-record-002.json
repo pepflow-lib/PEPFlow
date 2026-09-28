@@ -1,0 +1,30 @@
+{
+  "current_block": "B3",
+  "access_control": "instruction_only",
+  "prior_record": "b3-access-record-001.json",
+  "new_approved_reads": [],
+  "generated_reads": [
+    "supplementary/bppm_N6_b2.json",
+    "supplementary/b3-trial-N4.json",
+    "supplementary/b3-trial-N6.json",
+    "supplementary/b3_certificate_check.py",
+    "supplementary/b3_decomposition.py",
+    "supplementary/b3_grouping.py",
+    "state/bppm_b2.json",
+    "state/bppm_b3.json",
+    "bppm_example_lyap.ipynb",
+    "supplementary/b3-static-001.json",
+    "supplementary/bppm_example_lyap_checklist.md"
+  ],
+  "commands": [
+    "python -I -B supplementary/run_b3_trial.py supplementary/bppm_N6_b2.json",
+    "python -I -B supplementary/complete_b3.py",
+    "python -I -B supplementary/execute_notebook.py B3",
+    "approved static adapter; b3-static-001.json",
+    "python -I -B supplementary/finalize_b3.py"
+  ],
+  "source_hash_reads": "Only exact certificate provenance source files",
+  "prohibited_content_observed": false,
+  "incidents": [],
+  "audit_limit": "Instruction-only access; no exhaustive OS read trace."
+}

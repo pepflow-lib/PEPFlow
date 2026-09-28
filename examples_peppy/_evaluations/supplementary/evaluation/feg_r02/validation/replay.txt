@@ -1,0 +1,175 @@
+CELL 4 43744113
+CELL 5 575de5e6
+INFO:matplotlib.font_manager:generated new fontManager
+Framework origin: C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r02\validation\supplementary\approved\pepflow\__init__.py
+CELL 7 c330e2e0
+CELL 9 3b7d17e6
+CELL 10 a8ddca9f
+Shared initial point verified; basis dimension: 14
+CELL 15 fcbba37e
+Dense optimum: 0.1111111198799224
+Monotone Operator Inequality [('A monotone:x_1,x_2', 0.2222140757982034), ('A monotone:x_2,x_3', 0.6666422280347524), ('A monotone:x_3,x_4', 1.3332844302514346), ('A monotone:x_4,x_5', 2.2221406729852102), ('A monotone:x_5,x_6', 3.3332109722237133), ('A monotone:x_6,x_star', 0.6666422102225873)]
+Lipschitz Continuous Inequality [('A Lipschitz:x_1,x_1/2', 0.05555352251871467), ('A Lipschitz:x_1+1/2,x_2', 0.2222140897797158), ('A Lipschitz:x_2+1/2,x_3', 0.499981684440599), ('A Lipschitz:x_3+1/2,x_4', 0.8888562978571343), ('A Lipschitz:x_4+1/2,x_5', 1.3888379335413479), ('A Lipschitz:x_5+1/2,x_6', 1.999926629647873)]
+Dropped constraints: 144
+CELL 17 eedfc093
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r02\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+Dense/selected: 0.1111111198799224 0.11111111913421273 removed: 144
+Basis: ['x_1/2', 'x_star', 'A(x_1/2)', 'A(x_1)', 'A(x_1+1/2)', 'A(x_2)', 'A(x_2+1/2)', 'A(x_3)', 'A(x_3+1/2)', 'A(x_4)', 'A(x_4+1/2)', 'A(x_5)', 'A(x_5+1/2)', 'A(x_6)']
+LDL diagonal: [1.00045833e+00 7.51153006e-09 2.76501551e-08 7.48731479e-09
+ 3.51615286e-08 6.59481809e-09 2.70457645e-08 5.40293328e-09
+ 1.88429287e-08 4.96182345e-09 1.18374812e-08 2.26313258e-09
+ 9.84068699e-09 9.28986423e-09]
+Full certificate checks: {'identity_gram_max_abs': 7.512999260122765e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 6.564890756011188e-09, 'S_reconstruction_max_abs': 5.551115123125783e-17, 'dense_relaxed_gap': 7.457096606877656e-10, 'minimum_scalar_inequality_dual': 0.05556830706343723, 'minimum_S_eigenvalue': 7.343470692425838e-10, 'minimum_matrix_inequality_eigenvalue': 0.0}
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+CELL 19 8be99546
+initial_condition 0.11111112569910349 rational inspection: 1/9
+A monotone:x_1,x_2 0.22227319498944406 rational inspection: 2/9
+A monotone:x_2,x_3 0.6668195130842369 rational inspection: 2/3
+A monotone:x_3,x_4 1.3336389582386639 rational inspection: 1331/998
+A monotone:x_4,x_5 2.2227315150486944 rational inspection: 1936/871
+A monotone:x_5,x_6 3.3340972127835244 rational inspection: 1457/437
+A monotone:x_6,x_star 0.6668194526134993 rational inspection: 2/3
+A Lipschitz:x_1,x_1/2 0.05556830706343723 rational inspection: 1/18
+A Lipschitz:x_1+1/2,x_2 0.2222731844438772 rational inspection: 2/9
+A Lipschitz:x_2+1/2,x_3 0.5001146301473184 rational inspection: 1/2
+A Lipschitz:x_3+1/2,x_4 0.8890926343346541 rational inspection: 481/541
+A Lipschitz:x_4+1/2,x_5 1.3892071926750234 rational inspection: 1210/871
+A Lipschitz:x_5+1/2,x_6 2.000458325092437 rational inspection: 2
+Candidate comparison errors: 0.0007638794501909629 0.0004583265227982025
+Atol=1e-4 matches: False False
+Analytic full-PEP proof: unresolved. Numerical certificate: verified.
+<IPython.core.display.Math object>
+CELL 22 b2-confirm-n8-values
+Confirmation certificate N: 8
+Bound: 0.06250000556044698 status: optimal
+Full-coordinate checks: {'identity_gram_max_abs': 2.3087068836263633e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 3.094291448069164e-09, 'S_reconstruction_max_abs': 1.3877787807814457e-17, 'dense_relaxed_gap': 2.7977467009776547e-09, 'minimum_scalar_inequality_dual': 0.03125669107477911, 'minimum_S_eigenvalue': 4.615231404822175e-11, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Analytic full-PEP verified: False
+CELL 24 d8320418
+CELL 25 68f5dd98
+Numerical certificate checked for this N and parameter sample.
+CELL 26 575dcf62
+CELL 27 2271cc52
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+rank V_5: 2
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and nonincreasing-sign checks passed: [1.1102230246251565e-16, 0.0]
+CELL 28 37742cfa
+Confirmed horizons: [6, 8] common rank: 2
+Fixed boundary exclusions: {'left': 1, 'right': 1} rank tolerance: 0.0001
+N = 6 smallest retained singular value = 0.03434310246249507 largest discarded = 3.1704272588127524e-08
+N = 8 smallest retained singular value = 0.019317697460068974 largest discarded = 9.25479140368595e-09
+CELL 31 74fd7b64
+Selected partial sums and cross-horizon evidence replayed; all indices 0 through 6 retained for reconstruction.
+CELL 33 9675a190
+Deduplicated nonzero candidates: 360
+CELL 34 c33f895e
+V_1 column-space candidates:
+  A(x_1)
+  x_1-x_0
+  A(x_1/2)
+  (x_1/2)-(x_1+1/2)
+  (A(x_1/2))-(A(x_1))
+  (x_1)-(x_1+1/2)
+V_2 column-space candidates:
+  A(x_2)
+  x_2-x_0
+  (x_1/2)-(x_2)
+  (x_1/2)-(x_2+1/2)
+  (x_2)-(x_2+1/2)
+V_3 column-space candidates:
+  A(x_3)
+  x_3-x_0
+  (x_1/2)-(x_3)
+  (x_1/2)-(x_3+1/2)
+  (x_3)-(x_3+1/2)
+V_4 column-space candidates:
+  A(x_4)
+  x_4-x_0
+  (x_1/2)-(x_4)
+  (x_1/2)-(x_4+1/2)
+  (x_4)-(x_4+1/2)
+V_5 column-space candidates:
+  A(x_5)
+  x_5-x_0
+  (x_1/2)-(x_5)
+  (x_1/2)-(x_5+1/2)
+  (x_5)-(x_5+1/2)
+V_6 column-space candidates:
+  A(x_6)
+  x_6-x_0
+  (x_1/2)-(x_6)
+CELL 36 3c46d0ee
+k=1, rank 2: sparse basis: ['x_1-x_0', '(A(x_1/2))-(A(x_1))']
+  zero coefficients: 2/4
+k=2, rank 2: sparse basis: ['x_2-x_0', '(x_2)-(x_2+1/2)']
+  zero coefficients: 2/4
+k=3, rank 2: sparse basis: ['x_3-x_0', '(x_3)-(x_3+1/2)']
+  zero coefficients: 2/4
+k=4, rank 2: sparse basis: ['x_4-x_0', '(x_4)-(x_4+1/2)']
+  zero coefficients: 2/4
+k=5, rank 2: sparse basis: ['x_5-x_0', '(x_5)-(x_5+1/2)']
+  zero coefficients: 2/4
+k=6, rank 2: sparse basis: ['A(x_6)', 'x_6-x_0']
+  zero coefficients: 1/4
+CELL 38 5f24e332
+k=0: rank 0 basis []
+k=1: rank 2 basis ['A(x_1)', 'x_1-x_0']
+k=2: rank 2 basis ['A(x_2)', 'x_2-x_0']
+k=3: rank 2 basis ['A(x_3)', 'x_3-x_0']
+k=4: rank 2 basis ['A(x_4)', 'x_4-x_0']
+k=5: rank 2 basis ['A(x_5)', 'x_5-x_0']
+k=6: rank 2 basis ['A(x_6)', 'x_6-x_0']
+CELL 40 fbb552fd
+k=0: reconstruction residual 0; function coordinates []; offset 0.0
+k=1: reconstruction residual 1.96e-17; function coordinates []; offset 0
+<IPython.core.display.Math object>
+k=2: reconstruction residual 1.89e-08; function coordinates []; offset 0
+<IPython.core.display.Math object>
+k=3: reconstruction residual 2.58e-08; function coordinates []; offset 0
+<IPython.core.display.Math object>
+k=4: reconstruction residual 3.67e-08; function coordinates []; offset 0
+<IPython.core.display.Math object>
+k=5: reconstruction residual 4.98e-08; function coordinates []; offset 0
+<IPython.core.display.Math object>
+k=6: reconstruction residual 5.51e-08; function coordinates []; offset 0
+<IPython.core.display.Math object>
+CELL 41 016247ee
+Every index passes full-expression reconstruction: {'0': {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, '1': {'gram': 1.3877787807814457e-17, 'function': 0.0, 'offset': 0.0}, '2': {'gram': 1.0952467932590082e-08, 'function': 0.0, 'offset': 0.0}, '3': {'gram': 1.5489513477406902e-08, 'function': 0.0, 'offset': 0.0}, '4': {'gram': 2.3334075449632508e-08, 'function': 0.0, 'offset': 0.0}, '5': {'gram': 3.1022639013222886e-08, 'function': 0.0, 'offset': 0.0}, '6': {'gram': 3.1022639013222886e-08, 'function': 0.0, 'offset': 0.0}}
+CELL 44 a412aca3
+B4 input unchanged; complete certificate and numerical structure were rechecked in the preceding cells.
+Exact coefficient functions to derive: ['c00', 'c01', 'c11', 'd00', 'd01', 'd11']
+CELL 46 1e6a3a0e
+Coefficient-equation solution: [{a_k: k**2*nu/(k**2 + 2*k + 1), a_next: nu, b_k: L*k*nu/(k**2 + 2*k + 1), b_next: L*nu/(k + 1), c_k: 0, c_next: 0, mu: 2*L*k*nu/(k + 1)}]
+CELL 50 2ccfd2ac
+Resolved coefficients and local multipliers: {'a_k': 2*k**2/N**2, 'b_k': 2*L*k/N**2, 'c_k': 0, 'a_next': 2*(k + 1)**2/N**2, 'b_next': 2*L*(k + 1)/N**2, 'c_next': 0, 'mu': 4*L*k*(k + 1)/N**2, 'nu': 2*(k + 1)**2/N**2}
+<IPython.core.display.Math object>
+Symbolic step Gram residual: zero; function coordinates: Matrix(0, 0, []) offset: 0
+CELL 51 9641d55d
+<IPython.core.display.Math object>
+k=1: exact/numerical coefficient discrepancy 1.2751508e-05; match at atol=1e-4: True
+k=2: exact/numerical coefficient discrepancy 5.0962222e-05; match at atol=1e-4: True
+k=3: exact/numerical coefficient discrepancy 0.00011463015; match at atol=1e-4: False
+k=4: exact/numerical coefficient discrepancy 0.00020374545; match at atol=1e-4: False
+k=5: exact/numerical coefficient discrepancy 0.00031830379; match at atol=1e-4: False
+k=6: exact/numerical coefficient discrepancy 0.00045832509; match at atol=1e-4: False
+The exact coefficients follow from symbolic equations and boundary normalization; the selected numerical dual has a slightly different scale and is retained unchanged.
+V_k with G=||A(x_k)||^2 and H=<A(x_k),x_k-x_0>: 2*G*k**2/N**2 + 4*H*L*k/N**2
+LaTeX: \frac{2 G k^{2}}{N^{2}} + \frac{4 H L k}{N^{2}}
+CELL 54 adf02347
+<IPython.core.display.Math object>
+Symbolic base Gram residual: zero; function coordinates: Matrix(0, 0, []) offset: 0
+CELL 57 c7a07d2e
+<IPython.core.display.Math object>
+Symbolic boundary Gram residual: zero; function coordinates: Matrix(0, 0, []) offset: 0
+Signs: k>=1, N>=1, L>0; all residual multipliers positive, terminal square subtracted. R>=0.
+Base V1<=0, steps V(k+1)<=V(k), terminal identity implies ||A(xN)||^2<=4 L^2 R^2/N^2, including N=1.

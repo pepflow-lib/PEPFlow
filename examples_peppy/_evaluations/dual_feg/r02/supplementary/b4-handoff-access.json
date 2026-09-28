@@ -1,0 +1,27 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Interpretable basis and all-index coefficient/component reconstruction verified; notebook execution and source checks complete",
+    "run_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "approved/pepflow/lyapunov_utils.py",
+                              "own B3 state and generated B4 files"
+                          ],
+    "checks":  [
+                   "state/dual_feg_b4.json numerical_reconstruction",
+                   "supplementary/b4-notebook-execution.json",
+                   "supplementary/b4-static-002.json"
+               ],
+    "incidents":  [
+                      "b4-static-001 flagged a semicolon and typed dictionary expansion; own generated source repaired to separate statements and explicit named tolerances; repeated checks passed"
+                  ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "coefficient_formula_status":  "candidate",
+    "unresolved_work":  "B5 exact all-horizon identities, parameter scaling, domain signs, theorem, and final notebook review"
+}

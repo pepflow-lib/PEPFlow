@@ -1,0 +1,17 @@
+﻿{
+    "phase":  "preflight only",
+    "access_control":  "instruction_only",
+    "directly_read":  [
+                          "supplementary/approved/preflight-only.md",
+                          "supplementary/approved/allowlist.json",
+                          "supplementary/approved/settings.json",
+                          "supplementary/approved/clean-room.md",
+                          "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                          "supplementary/preflight-001.json"
+                      ],
+    "executed":  "Exact settings.json preflight_command via PowerShell call operator, from attempt root; console preserved in supplementary/preflight-001-console.txt",
+    "transitive_evidence":  "supplementary/preflight-001.json records commands, staged sources with hashes, versions, roots, diagnostics, and runtime import origins",
+    "prohibited_content_observed":  false,
+    "audit_limit":  "Instruction-only isolation; no exhaustive filesystem read audit",
+    "mathematical_generation_started":  false
+}

@@ -1,0 +1,7 @@
+﻿import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent/'helpers'))
+import runtime
+from pgm_setup import get_pep_setup
+notebook_dir = runtime.ROOT
+exec(compile((notebook_dir/'supplementary/b2_notebook_cells.py').read_text(encoding='utf-8-sig'), 'b2_notebook_cells.py','exec'))

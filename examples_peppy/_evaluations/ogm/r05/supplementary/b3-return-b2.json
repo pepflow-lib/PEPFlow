@@ -1,0 +1,29 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_confirmation_required",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Selected sample replay and grouping checks passed. A second horizon requires its own coherent B2 certificate before cross-horizon confirmation.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "retain_selected_horizon":  4,
+    "source_certificate":  "state/ogm_b2.json",
+    "observation":  "supplementary/b3-observation-N4.json",
+    "timestamp_utc":  "2026-09-23T22:05:12.3427919Z",
+    "deadline_utc":  "2026-09-23T23:46:53.255961+00:00",
+    "direct_approved_reads":  [
+                                  "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+                              ],
+    "executed_commands":  [
+                              "python -I -B supplementary/run_b3.py"
+                          ],
+    "generated_source":  [
+                             "supplementary/helpers/partial_sums.py",
+                             "supplementary/run_b3.py"
+                         ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "incidents":  [
+
+                  ],
+    "unresolved_work":  "Second-horizon certificate, cross-horizon confirmation, B3 notebook/state delivery, B4-B5"
+}

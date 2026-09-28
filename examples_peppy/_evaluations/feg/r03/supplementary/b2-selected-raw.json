@@ -1,0 +1,1114 @@
+{
+  "N": 4,
+  "opt_value": 0.250000000230413,
+  "solver_status": "optimal",
+  "attempts": [
+    {
+      "solver": "CLARABEL",
+      "options": {},
+      "status": "optimal"
+    }
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.25000000223078267,
+    "A monotone:x_1,x_1+1/2": null,
+    "A monotone:x_1,x_1/2": null,
+    "A monotone:x_1,x_2": 0.5000094295466974,
+    "A monotone:x_1,x_2+1/2": null,
+    "A monotone:x_1,x_3": null,
+    "A monotone:x_1,x_3+1/2": null,
+    "A monotone:x_1,x_4": null,
+    "A monotone:x_1,x_star": null,
+    "A monotone:x_1+1/2,x_1/2": null,
+    "A monotone:x_1+1/2,x_2": null,
+    "A monotone:x_1+1/2,x_2+1/2": null,
+    "A monotone:x_1+1/2,x_3": null,
+    "A monotone:x_1+1/2,x_3+1/2": null,
+    "A monotone:x_1+1/2,x_4": null,
+    "A monotone:x_1+1/2,x_star": null,
+    "A monotone:x_1/2,x_2": null,
+    "A monotone:x_1/2,x_2+1/2": null,
+    "A monotone:x_1/2,x_3": null,
+    "A monotone:x_1/2,x_3+1/2": null,
+    "A monotone:x_1/2,x_4": null,
+    "A monotone:x_1/2,x_star": null,
+    "A monotone:x_2,x_2+1/2": null,
+    "A monotone:x_2,x_3": 1.50002827331512,
+    "A monotone:x_2,x_3+1/2": null,
+    "A monotone:x_2,x_4": null,
+    "A monotone:x_2,x_star": null,
+    "A monotone:x_2+1/2,x_3": null,
+    "A monotone:x_2+1/2,x_3+1/2": null,
+    "A monotone:x_2+1/2,x_4": null,
+    "A monotone:x_2+1/2,x_star": null,
+    "A monotone:x_3,x_3+1/2": null,
+    "A monotone:x_3,x_4": 3.0000565286933263,
+    "A monotone:x_3,x_star": null,
+    "A monotone:x_3+1/2,x_4": null,
+    "A monotone:x_3+1/2,x_star": null,
+    "A monotone:x_4,x_star": 1.0000188460138035,
+    "A Lipschitz:x_1,x_1+1/2": null,
+    "A Lipschitz:x_1,x_1/2": 0.1250023593930748,
+    "A Lipschitz:x_1,x_2": null,
+    "A Lipschitz:x_1,x_2+1/2": null,
+    "A Lipschitz:x_1,x_3": null,
+    "A Lipschitz:x_1,x_3+1/2": null,
+    "A Lipschitz:x_1,x_4": null,
+    "A Lipschitz:x_1,x_star": null,
+    "A Lipschitz:x_1+1/2,x_1/2": null,
+    "A Lipschitz:x_1+1/2,x_2": 0.5000094275256938,
+    "A Lipschitz:x_1+1/2,x_2+1/2": null,
+    "A Lipschitz:x_1+1/2,x_3": null,
+    "A Lipschitz:x_1+1/2,x_3+1/2": null,
+    "A Lipschitz:x_1+1/2,x_4": null,
+    "A Lipschitz:x_1+1/2,x_star": null,
+    "A Lipschitz:x_1/2,x_2": null,
+    "A Lipschitz:x_1/2,x_2+1/2": null,
+    "A Lipschitz:x_1/2,x_3": null,
+    "A Lipschitz:x_1/2,x_3+1/2": null,
+    "A Lipschitz:x_1/2,x_4": null,
+    "A Lipschitz:x_1/2,x_star": null,
+    "A Lipschitz:x_2,x_2+1/2": null,
+    "A Lipschitz:x_2,x_3": null,
+    "A Lipschitz:x_2,x_3+1/2": null,
+    "A Lipschitz:x_2,x_4": null,
+    "A Lipschitz:x_2,x_star": null,
+    "A Lipschitz:x_2+1/2,x_3": 1.1250212038910445,
+    "A Lipschitz:x_2+1/2,x_3+1/2": null,
+    "A Lipschitz:x_2+1/2,x_4": null,
+    "A Lipschitz:x_2+1/2,x_star": null,
+    "A Lipschitz:x_3,x_3+1/2": null,
+    "A Lipschitz:x_3,x_4": null,
+    "A Lipschitz:x_3,x_star": null,
+    "A Lipschitz:x_3+1/2,x_4": 2.0000376845030043,
+    "A Lipschitz:x_3+1/2,x_star": null,
+    "A Lipschitz:x_4,x_star": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_1,x_1+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_1,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_2+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A monotone:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_3+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A monotone:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Monotone Operator Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1,x_1+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_1+1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_2+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_3": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_2+1/2,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_2+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_3+1/2": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_3+1/2,x_4": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "A Lipschitz:x_3+1/2,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "A Lipschitz:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "A",
+      "group": "Lipschitz Continuous Inequality",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "S_matrix": [
+    [
+      0.2500000027004959,
+      -0.2500000003582889,
+      1.1311333733801757e-11,
+      7.173609641143763e-12,
+      1.593975620369605e-11,
+      6.175041686787078e-12,
+      1.3849298945354546e-11,
+      3.792718932499602e-12,
+      -2.1153789865822367e-11,
+      -0.5000094214328601
+    ],
+    [
+      -0.2500000003582889,
+      0.2500000027004959,
+      -1.1311334745561857e-11,
+      -7.173610061530159e-12,
+      -1.5939757305938327e-11,
+      -6.1750421731483465e-12,
+      -1.3849300184280222e-11,
+      -3.7927193980745e-12,
+      2.1153788949594776e-11,
+      0.5000094214328601
+    ],
+    [
+      1.1311333733801757e-11,
+      -1.1311334745561857e-11,
+      2.256511438719698e-09,
+      -9.460765428031286e-10,
+      -5.730701255817096e-11,
+      -7.701824967518833e-10,
+      -5.08366061399616e-11,
+      -6.570166131032065e-10,
+      -1.000053381929626e-10,
+      1.4040584080186954e-10
+    ],
+    [
+      7.173609641143763e-12,
+      -7.173610061530159e-12,
+      -9.460765428031286e-10,
+      3.3979986336638083e-09,
+      -3.9633652623963394e-10,
+      -9.60610279507238e-12,
+      -3.236014790931874e-11,
+      -1.9521060136383596e-11,
+      -5.763579839120298e-11,
+      7.165859625184499e-12
+    ],
+    [
+      1.593975620369605e-11,
+      -1.5939757305938327e-11,
+      -5.730701255817096e-11,
+      -3.9633652623963394e-10,
+      2.2580061221334177e-09,
+      -7.926166788442945e-10,
+      -3.690547945137933e-11,
+      -1.2727882832294716e-09,
+      -9.489824650454185e-11,
+      2.7414295332894433e-10
+    ],
+    [
+      6.175041686787078e-12,
+      -6.1750421731483465e-12,
+      -7.701824967518833e-10,
+      -9.60610279507238e-12,
+      -7.926166788442945e-10,
+      4.830248182450126e-09,
+      -4.2420015363495487e-10,
+      -1.5745054689327185e-11,
+      -4.4620344451807325e-11,
+      6.168777358066048e-12
+    ],
+    [
+      1.3849298945354546e-11,
+      -1.3849300184280222e-11,
+      -5.08366061399616e-11,
+      -3.236014790931874e-11,
+      -3.690547945137933e-11,
+      -4.2420015363495487e-10,
+      2.295867374931369e-09,
+      -1.2866902632764621e-09,
+      -7.27082569603617e-11,
+      4.011642788422763e-10
+    ],
+    [
+      3.792718932499602e-12,
+      -3.7927193980745e-12,
+      -6.570166131032065e-10,
+      -1.9521060136383596e-11,
+      -1.2727882832294716e-09,
+      -1.5745054689327185e-11,
+      -1.2866902632764621e-09,
+      7.819958371599268e-09,
+      -8.221539719962215e-10,
+      3.785465028510271e-12
+    ],
+    [
+      -2.1153789865822367e-11,
+      2.1153788949594776e-11,
+      -1.000053381929626e-10,
+      -5.763579839120298e-11,
+      -9.489824650454185e-11,
+      -4.4620344451807325e-11,
+      -7.27082569603617e-11,
+      -8.221539719962215e-10,
+      2.1804914197463764e-09,
+      1.5216940937242314e-09
+    ],
+    [
+      -0.5000094214328601,
+      0.5000094214328601,
+      1.4040584080186954e-10,
+      7.165859625184499e-12,
+      2.7414295332894433e-10,
+      6.168777358066048e-12,
+      4.011642788422763e-10,
+      3.785465028510271e-12,
+      1.5216940937242314e-09,
+      1.000037684972719
+    ]
+  ],
+  "S_row_names": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "S_col_names": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "basis_vectors": [
+    "x_1/2",
+    "x_star",
+    "A(x_1/2)",
+    "A(x_1)",
+    "A(x_1+1/2)",
+    "A(x_2)",
+    "A(x_2+1/2)",
+    "A(x_3)",
+    "A(x_3+1/2)",
+    "A(x_4)"
+  ],
+  "lambda_groups": {
+    "Monotone Operator Inequality": {
+      "matrix": [
+        [
+          0.0,
+          0.0,
+          0.5000094295466974,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.50002827331512,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          3.0000565286933263,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0000188460138035
+        ]
+      ],
+      "row_names": [
+        "x_1",
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4"
+      ],
+      "col_names": [
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4",
+        "x_star"
+      ]
+    },
+    "Lipschitz Continuous Inequality": {
+      "matrix": [
+        [
+          0.0,
+          0.1250023593930748,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.5000094275256938,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.1250212038910445,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.0000376845030043,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "row_names": [
+        "x_1",
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4"
+      ],
+      "col_names": [
+        "x_1+1/2",
+        "x_1/2",
+        "x_2",
+        "x_2+1/2",
+        "x_3",
+        "x_3+1/2",
+        "x_4",
+        "x_star"
+      ]
+    }
+  }
+}

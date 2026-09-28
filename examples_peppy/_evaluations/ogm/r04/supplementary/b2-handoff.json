@@ -1,0 +1,56 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Full coherent numerical certificate verified; sparsity and initial lambda/S formula search completed; notebook and source checks passed.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "deadline_utc":  "2026-09-23T21:58:24.306780+00:00",
+    "certificate_id":  "ab2e29ebc1845adb690257e7d5f5d8a41877fc8e464e15bb33405ef4e7f7e48f",
+    "residuals":  {
+                      "identity_gram_max_abs":  1.3834059453543546E-09,
+                      "identity_func_max_abs":  3.610223231476084E-10,
+                      "identity_offset_abs":  9.1412984820626875E-11,
+                      "S_reconstruction_max_abs":  1.4194565522984703E-09,
+                      "dense_relaxed_gap":  3.1553663570882406E-09,
+                      "minimum_scalar_inequality_dual":  0.025583942102815994,
+                      "minimum_S_eigenvalue":  9.771199224236941E-12,
+                      "minimum_matrix_inequality_eigenvalue":  0.0
+                  },
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "unresolved_work":  "B3 rank/coverage; B4 basis; B5 arbitrary-horizon proof.",
+    "access_control":  "instruction_only",
+    "prohibited_material_observed":  false,
+    "new_sources":  [
+                        "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                        "supplementary/approved/pepflow/pep_result.py",
+                        "supplementary/approved/pepflow/lyapunov_utils.py",
+                        "supplementary/approved/pepflow/utils.py",
+                        "supplementary/approved/pepflow/ipython_utils.py",
+                        "supplementary/approved/pepflow/expression_manager.py"
+                    ],
+    "own_sources_and_outputs":  [
+                                    "state/ogm_b1.json",
+                                    "state/ogm_dense.json",
+                                    "supplementary/b2_acquire.py",
+                                    "supplementary/b2_chain.py",
+                                    "supplementary/b2_candidates.py",
+                                    "supplementary/b2-threshold-certificate.json",
+                                    "supplementary/b2-chain-certificate.json",
+                                    "supplementary/b2_notebook_cells.py",
+                                    "supplementary/build_b2_notebook.py",
+                                    "ogm_example_lyap.ipynb",
+                                    "state/ogm_b2.json",
+                                    "state/ogm_relaxed.json",
+                                    "supplementary/b2-static-001.json"
+                                ],
+    "command_evidence":  [
+                             "supplementary/b2-acquire-console.txt",
+                             "supplementary/b2-chain-console.txt",
+                             "supplementary/b2-candidates-console.txt",
+                             "supplementary/b2-notebook-001-console.txt",
+                             "supplementary/b2-static-001-console.txt"
+                         ],
+    "incident":  "One exec request rejected before process creation because of typo in own working-directory path (WinError 267). Retried creation in exact assigned directory. No content read by failed process.",
+    "observability":  "Instruction-only restrictions; no exhaustive OS tracing. Imports use approved framework and installed dependencies; no external resources."
+}

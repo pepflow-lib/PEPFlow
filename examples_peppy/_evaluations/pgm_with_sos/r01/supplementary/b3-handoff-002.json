@@ -1,0 +1,34 @@
+{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Rank constancy confirmed at two horizons with complete coverage and notebook checks",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate":  "state/pgm_b3.json",
+    "checks":  [
+                   "supplementary/rank_N4.json",
+                   "supplementary/rank_N6.json",
+                   "supplementary/rank_search.json",
+                   "supplementary/b3-notebook-output.txt",
+                   "supplementary/b3-static-001.json"
+               ],
+    "sources":  "Approved lyap-define workflow previously read; own N4/N6 certificates and exact executed b3_certificate_check.py, b3_decomposition.py, b3_grouping.py",
+    "commands":  [
+                     "Pinned Python -I -B run_b3.py with own N4 certificate",
+                     "Pinned Python -I -B run_b3.py with selected N6 certificate",
+                     "Pinned Python -I -B finalize_b3.py",
+                     "Pinned Python -I -B update_b3_notebook.py",
+                     "Approved static adapter source checks"
+                 ],
+    "incidents":  [
+
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem audit",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "unresolved_work":  "B4 basis and all-index reconstruction; B5 arbitrary-horizon proof",
+    "deadline_utc":  "2026-09-23T16:12:00.406449+00:00"
+}

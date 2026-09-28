@@ -1,0 +1,35 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Two-horizon rank confirmation, complete coverage, notebook execution, and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "timestamp_utc":  "2026-09-23T22:12:06.3149139Z",
+    "deadline_utc":  "2026-09-23T23:46:53.255961+00:00",
+    "evidence":  [
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-static-002.json",
+                     "supplementary/b3-notebook-execution-002.txt"
+                 ],
+    "commands":  [
+                     "python -I -B supplementary/complete_b3.py",
+                     "python -I -B supplementary/update_b3_notebook.py",
+                     "python -I -B supplementary/execute_notebook.py",
+                     "Reviewed static adapter checks"
+                 ],
+    "direct_approved_reads":  [
+
+                              ],
+    "own_reads":  [
+                      "state/ogm_b2.json",
+                      "supplementary/b2-certificate-N6.json",
+                      "supplementary/helpers/partial_sums.py",
+                      "ogm_example_lyap.ipynb"
+                  ],
+    "incidents":  [
+                      "Removed redundant notebook helper imports that conflicted with the already-visible definitions; reran notebook and static checks."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "unresolved_work":  "Basis/reconstruction B4 and analytic proof B5"
+}

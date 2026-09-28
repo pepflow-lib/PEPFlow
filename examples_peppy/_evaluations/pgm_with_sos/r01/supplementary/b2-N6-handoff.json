@@ -1,0 +1,34 @@
+{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Requested coherent N6 certificate acquired and verified",
+    "operational_status":  "awaiting_same_session_continuation",
+    "N":  6,
+    "certificate":  "state/pgm_b2.json",
+    "preserved_prior_certificate":  "supplementary/certificate_N4.json",
+    "checks":  [
+                   "supplementary/b2-N6-capture-output.txt",
+                   "supplementary/b2-N6-notebook-output.txt",
+                   "supplementary/b2-N6-static-001.json"
+               ],
+    "commands":  [
+                     "Pinned Python -I -B supplementary/inspect_b2.py 6",
+                     "Pinned Python -I -B supplementary/capture_b2.py 6",
+                     "Pinned Python -I -B supplementary/prepare_N6_notebook.py",
+                     "Pinned Python -I -B supplementary/update_b2_notebook.py",
+                     "Approved static adapter check, exact command evidence in b2-N6-static-001.json"
+                 ],
+    "new_external_sources":  [
+
+                             ],
+    "source_record":  "supplementary/b2-access-events.json",
+    "incidents":  [
+                      "Dense N6 solver status optimal_inaccurate preserved; selected sparse N6 status optimal with fixed residual/sign checks passed."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem audit",
+    "unresolved_work":  "B3 N6 reconstruction and cross-horizon confirmation; B4-B5",
+    "deadline_utc":  "2026-09-23T16:12:00.406449+00:00"
+}

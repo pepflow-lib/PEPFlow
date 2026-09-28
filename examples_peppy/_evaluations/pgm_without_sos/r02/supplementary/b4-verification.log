@@ -1,0 +1,87 @@
+Certificate rechecked at N= 4 Gram/function/offset residuals: [5.288635973599298e-09, 1.619709921740764e-08, 3.165652122383289e-09]
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residuals: [5.551115123125783e-17, 0.0, 0.0] maximum increment residual: 5.551115123125783e-17
+Deduplicated nonzero candidates: 505
+V_1 column-space candidates:
+   x_0-x_star
+   x_1-x_star
+   grad_f(x_1)-grad_f(x_star)
+   grad_f(x_star)
+   grad_f(x_1)
+   (x_0-x_star)-(x_1-x_star)
+   (x_0-x_star)-(grad_f(x_1)-grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_1))
+   (x_1-x_star)-(grad_f(x_1)-grad_f(x_star))
+   (x_1-x_star)-(grad_f(x_star))
+   (x_1-x_star)-(grad_f(x_1))
+   (grad_f(x_1)-grad_f(x_star))-(grad_f(x_star))
+V_2 column-space candidates:
+   x_0-x_star
+   x_2-x_star
+   grad_f(x_2)-grad_f(x_star)
+   grad_f(x_star)
+   grad_f(x_2)
+   (x_0-x_star)-(x_2-x_star)
+   (x_0-x_star)-(grad_f(x_2)-grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_2))
+   (x_2-x_star)-(grad_f(x_2)-grad_f(x_star))
+   (x_2-x_star)-(grad_f(x_star))
+   (x_2-x_star)-(grad_f(x_2))
+   (grad_f(x_2)-grad_f(x_star))-(grad_f(x_star))
+V_3 column-space candidates:
+   x_0-x_star
+   x_3-x_star
+   grad_f(x_3)-grad_f(x_star)
+   grad_f(x_star)
+   grad_f(x_3)
+   (x_0-x_star)-(x_3-x_star)
+   (x_0-x_star)-(grad_f(x_3)-grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_star))
+   (x_0-x_star)-(grad_f(x_3))
+   (x_3-x_star)-(grad_f(x_3)-grad_f(x_star))
+   (x_3-x_star)-(grad_f(x_star))
+   (x_3-x_star)-(grad_f(x_3))
+   (grad_f(x_3)-grad_f(x_star))-(grad_f(x_star))
+V_4 column-space candidates:
+   x_0-x_star
+k=1, rank=4
+sparse basis: ['x_0-x_star', 'x_1-x_star', 'grad_f(x_1)-grad_f(x_star)', 'grad_f(x_star)']
+zero coefficients: 9 / 16
+k=2, rank=4
+sparse basis: ['x_0-x_star', 'x_2-x_star', 'grad_f(x_2)-grad_f(x_star)', 'grad_f(x_2)']
+zero coefficients: 11 / 16
+k=3, rank=4
+sparse basis: ['x_0-x_star', 'x_3-x_star', 'grad_f(x_3)-grad_f(x_star)', 'grad_f(x_3)']
+zero coefficients: 11 / 16
+k=4, rank=1
+sparse basis: ['x_0-x_star']
+zero coefficients: 0 / 1
+k=0: rank 0 basis []
+k=1: rank 4 basis ['x_0-x_star', 'x_1-x_star', 'grad_f(x_1)-grad_f(x_star)', 'grad_f(x_1)']
+k=2: rank 4 basis ['x_0-x_star', 'x_2-x_star', 'grad_f(x_2)-grad_f(x_star)', 'grad_f(x_2)']
+k=3: rank 4 basis ['x_0-x_star', 'x_3-x_star', 'grad_f(x_3)-grad_f(x_star)', 'grad_f(x_3)']
+k=4: rank 1 basis ['x_0-x_star']
+k=0: quadratic reconstruction residual 0.000e+00; function residual 0.000e+00; offset 0.0
+<IPython.core.display.Math object>
+Function coefficients for f(x_k)-f_star, g(x_k)-g_star: [0.0, 0.0]
+k=1: quadratic reconstruction residual 3.816e-09; function residual 1.943e-16; offset 0.0
+<IPython.core.display.Math object>
+Function coefficients for f(x_k)-f_star, g(x_k)-g_star: [0.28571570994905643, 0.14285465744375878]
+k=2: quadratic reconstruction residual 5.664e-09; function residual 3.239e-09; offset 0.0
+<IPython.core.display.Math object>
+Function coefficients for f(x_k)-f_star, g(x_k)-g_star: [0.5000031362840807, 0.3333347945370776]
+k=3: quadratic reconstruction residual 6.784e-09; function residual 3.239e-09; offset 0.0
+<IPython.core.display.Math object>
+Function coefficients for f(x_k)-f_star, g(x_k)-g_star: [0.8000019972551591, 0.6000031407670074]
+k=4: quadratic reconstruction residual 2.256e-08; function residual 4.859e-09; offset 0.0
+<IPython.core.display.Math object>
+Function coefficients for f(x_k)-f_star, g(x_k)-g_star: [1.0000000113379695, 1.000000009718259]
+Full-component reconstruction passed for all indices 0 through 4

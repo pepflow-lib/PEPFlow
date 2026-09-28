@@ -1,0 +1,39 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Consistent interior and endpoint bases, coefficient extraction and complete expression reconstruction verified at every required index; notebook execution, stored-source replay and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/pgm_b4.json",
+                     "supplementary/b4-static-001.json",
+                     "supplementary/b4-saved-replay.json"
+                 ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "coefficient_formula_status":  "unresolved",
+    "approved_sources_added":  [
+
+                               ],
+    "own_sources":  [
+                        "supplementary/b4_construct.py",
+                        "supplementary/b4_structure.py",
+                        "supplementary/finish_b4.py",
+                        "supplementary/verify_b4_saved.py",
+                        "state/pgm_b3.json",
+                        "state/pgm_b4.json",
+                        "pgm_example_lyap.ipynb"
+                    ],
+    "commands":  [
+                     "Pinned Python -I -B supplementary/probe_b4.py",
+                     "Pinned Python -I -B supplementary/finish_b4.py",
+                     "Approved static adapter",
+                     "Pinned Python -I -B supplementary/verify_b4_saved.py"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "next_block_not_started":  true
+}

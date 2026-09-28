@@ -1,0 +1,25 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Consistent basis, every-index independence and full-component reconstruction verified; candidate formulas compared across horizons; notebook and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "evidence":  [
+                     "state/dual_feg_b4.json",
+                     "supplementary/b4-scan.json",
+                     "supplementary/b4-notebook-inspection.json",
+                     "supplementary/b4-static-001.json"
+                 ],
+    "sources":  [
+                    "approved B4 workflow and lyapunov_utils.py",
+                    "own B3 state, replay code, rank evidence",
+                    "scan_b4.py, finalize_b4.py, update_b4_notebook.py, execute_b4_notebook.py"
+                ],
+    "incidents":  [
+                      "Initial candidate scan encountered stale current-context registration after B3 replay; explicitly selected the reconstructed context, then reran successfully without solving or changing certificate."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "unresolved_work":  "B5 exact arbitrary-horizon step, base, terminal, sign and normalization proof",
+    "deadline_utc":  "2026-09-24T00:52:12.648185+00:00"
+}

@@ -1,0 +1,89 @@
+REPLAY CELL d13b250e
+PASS d13b250e
+REPLAY CELL 3f7d5d27
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and step identities: {'coverage': 5.551115123125783e-17, 'S pieces': 1.1102230246251565e-16}
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and step identities: {'coverage': 7.632783294297951e-17, 'S pieces': 1.1102230246251565e-16}
+Cross-horizon interior rank confirmed: 4 at N=4 and N=6; exclude V_0 and V_N; absolute tolerance 1e-4, no coordinate scaling.
+PASS 3f7d5d27
+REPLAY CELL 689d6a15
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and step identities: {'coverage': 5.551115123125783e-17, 'S pieces': 1.1102230246251565e-16}
+Selected certificate and all partial sums revalidated; interior indices 1..N-1, endpoints checked separately.
+PASS 689d6a15
+REPLAY CELL 555014d6
+V_1 column-space candidates:
+   grad_f_star
+   d_0
+   d_1
+   p_1
+   grad_f_1
+   anchor_0-anchor_1
+V_2 column-space candidates:
+   grad_f_star
+   d_0
+   d_2
+   p_2
+   grad_f_2
+   anchor_0-anchor_2
+V_3 column-space candidates:
+   grad_f_star
+   d_0
+   d_3
+   p_3
+   grad_f_3
+   anchor_0-anchor_3
+PASS 555014d6
+REPLAY CELL 8a709058
+k=1, rank 4; sparse basis: ['grad_f_star', 'd_0', 'd_1', 'p_1']
+zero coefficients: 9/16
+k=2, rank 4; sparse basis: ['d_0', 'd_2', 'p_2', 'grad_f_2']
+zero coefficients: 11/16
+k=3, rank 4; sparse basis: ['d_0', 'd_3', 'p_3', 'grad_f_3']
+zero coefficients: 11/16
+PASS 8a709058
+REPLAY CELL 566026a9
+k=0: rank 0 basis []
+k=1: rank 4 basis ['x_0-x_star', 'x_k-x_star', 'grad_f(x_k)-grad_f(x_star)', 'grad_f(x_star)']
+k=2: rank 4 basis ['x_0-x_star', 'x_k-x_star', 'grad_f(x_k)-grad_f(x_star)', 'grad_f(x_star)']
+k=3: rank 4 basis ['x_0-x_star', 'x_k-x_star', 'grad_f(x_k)-grad_f(x_star)', 'grad_f(x_star)']
+k=4: rank 1 basis ['x_0-x_star']
+PASS 566026a9
+REPLAY CELL 6fb2ff99
+k=0: quadratic reconstruction residual 0; function-gap coefficients [0.0, 0.0]; offset 0
+k=1: quadratic reconstruction residual 3.82e-09; function-gap coefficients [0.2857157099490564, 0.1428546574437588]; offset 0
+<IPython.core.display.Math object>
+k=2: quadratic reconstruction residual 5.66e-09; function-gap coefficients [0.5000031379037906, 0.3333347945370778]; offset 0
+<IPython.core.display.Math object>
+k=3: quadratic reconstruction residual 6.78e-09; function-gap coefficients [0.8000020004945791, 0.6000031423867178]; offset 0
+<IPython.core.display.Math object>
+k=4: quadratic reconstruction residual 2.26e-08; function-gap coefficients [1.0000000161970992, 1.0000000129576798]; offset 0
+<IPython.core.display.Math object>
+PASS 6fb2ff99
+REPLAY CELL ccc7c313
+All-index full-expression reconstruction: {'0': {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, '1': {'gram': 1.4050423168682213e-09, 'function': 1.942890293094024e-16, 'offset': 0.0}, '2': {'gram': 1.6381470763215944e-09, 'function': 3.2394197324592255e-09, 'offset': 0.0}, '3': {'gram': 1.6217279949493069e-09, 'function': 6.478839353896149e-09, 'offset': 0.0}, '4': {'gram': 5.288635973599298e-09, 'function': 9.718259308399979e-09, 'offset': 0.0}}
+PASS ccc7c313

@@ -1,0 +1,37 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete",
+  "next_block": "B3",
+  "entry_exit_reason": "Verified complete sparse numerical certificate and completed initial formula search; notebook/source/clean-kernel checks passed.",
+  "operational_status": "awaiting_same_session_continuation",
+  "certificate_id": "ea1d173611c1450af3a74e79028287f58bdaf35783fcb790138ebbffa9dfea6e",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "consulted_sources_additional": [
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "approved/pepflow/constraint.py",
+    "approved/pepflow/expression_manager.py",
+    "approved/pepflow/pep_context.py",
+    "approved/allowlist.json",
+    "approved package files read for provenance hashes (exact allowlist)"
+  ],
+  "generated_sources_consulted": "Own B1/B2 setup, state, notebook, helpers and evidence only.",
+  "incidents": [
+    {
+      "kind": "typing_diagnostic",
+      "evidence": "b2-static-001.json",
+      "repair": "Explicit numeric-dictionary cast and SymPy integer arguments; b2-static-002.json passed."
+    }
+  ],
+  "provenance_note": "Selected solve refreshed after helper typing repair and expansion of source fingerprints; original solve summary remains in b2-selected-output.txt. Numerical values were identical. Earlier full selected JSON was overwritten during this same-N repair; preserve full samples before future replacements.",
+  "checks": {
+    "static": "b2-static-002.json",
+    "execution": "b2-notebook-execution.json",
+    "certificate": "../state/bppm_b2.json"
+  },
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive OS access tracing; approved staging manifests and worker tool records retained.",
+  "unresolved_work": "B3-B5, including multi-horizon rank evidence and exact arbitrary-horizon Lyapunov proof."
+}

@@ -1,0 +1,19 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Derived-lambda dual refinement passed complete checks at N4 and N6; dependent B3 construction invalidated pending replay",
+    "operational_status":  "awaiting_same_session_continuation",
+    "state":  "state/pgm_b2.json",
+    "other_horizon":  "supplementary/b2-N6-certificate.json",
+    "static_evidence":  "supplementary/b2-static-003.json",
+    "execution_log":  "supplementary/b2-refined-build.log",
+    "provenance":  "dual; all original residuals scalar LE, no original equalities; same certificate identity sign directly verified",
+    "new_approved_reads":  [
+                               "pepflow/solver.py",
+                               "pepflow/constraint.py"
+                           ],
+    "access_control":  "instruction_only",
+    "prohibited_material_observed":  false,
+    "unresolved_work":  "B3 revalidation, B4 reconstruction, B5 proof"
+}

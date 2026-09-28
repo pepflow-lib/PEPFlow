@@ -1,0 +1,3179 @@
+{
+  "assessed_at": "2026-09-24T02:51:36.041668+00:00",
+  "user_authorized_posthoc": true,
+  "original_protocol": "2026-09-20.isolation-recovery-v1",
+  "assessment_policy": "User-authorized post hoc separation of mathematical validity, delivery completion, and actual prohibited mathematical exposure. Generic dependency-path and display issues are operational. Frozen mathematical criteria unchanged.",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "preserved_completed_mathematical_reviews": 28,
+  "fresh_mathematical_reviews": 2,
+  "attempts": [
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "condition_id": "pgm_without_sos",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_without_sos_r01\\review.json",
+      "historical_review_sha256": "d3141328d4c0091b049a6389efe81a84299b1d020e41148e3cdbb7ae20bcbb0e",
+      "original_generation_seconds": 4489.938965,
+      "original_generation_tokens": 18528806,
+      "original_review_seconds": 315.760666,
+      "original_review_tokens": 1387960,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected approved-resource/preflight records and screened 152 own-generation access calls; no concrete prohibited-source access or exposure was identified. All 169 frozen artifact hashes match. Earlier static/execution errors are ordinary local recovery, not access incidents. Instruction-only controls and incomplete tracing do not prove exhaustive absence of exposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The frozen submitted Lyapunov argument establishes h(x_N)-h(x_star)<=L*R^2/(4*N) for every integer N>=1 under the prescribed composite-convex PGM assumptions. Generic exact identities, the polynomial sign lemma, separate N=1 identity and endpoint normalization all verify; no missing essential proof step was supplied by the reviewer.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_without_sos_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "condition_id": "pgm_with_sos",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_with_sos_r01\\review.json",
+      "historical_review_sha256": "28e04e2c0eeec6c07adc6636066a00d7067e426a58203bfd5286b2f1751367e5",
+      "original_generation_seconds": 3699.434551,
+      "original_generation_tokens": 15485145,
+      "original_review_seconds": 493.314416,
+      "original_review_tokens": 2478935,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-generation access calls, approved resource/settings records, runtime origins and static reports show no concrete prohibited-source exposure or undeclared generic-source substitution. Ordinary path-length, import/style, numerical-mode and symbolic API errors were repaired within the attempt. The intentional missing-module probe is expected, not prohibited exposure. Controls are instruction-only and do not establish exhaustive read observability.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted nonincreasing potential and explicit local residual/SOS identity establish h(x_N)-h(x_star)<=L||x_0-x_star||^2/(4N)<=LR^2/(4N) for all integer N>=1. Fresh exact verification passes generic interior, first-step, terminal and N=1 identities; all necessary signs and boundary normalization are supplied.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_with_sos_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "condition_id": "ogm",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\ogm_r01\\review.json",
+      "historical_review_sha256": "51bd6256834f1cfc029929dafbfa1f3977658155d282f3bdcd706b8daac798b7",
+      "original_generation_seconds": 2826.887597,
+      "original_generation_tokens": 11208229,
+      "original_review_seconds": 312.751643,
+      "original_review_tokens": 1332872,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-generation calls, handoff incident records and static manifests show attempt-owned and approved generic reads. The B1 recursive helper staging/path-length error was repaired by narrowing helper roots; subsequent import/static/fresh-kernel probes passed. Other encoding/writer/type failures were ordinary generated-code repairs. No concrete prohibited exposure or unapproved generic-source read was identified. Instruction-only isolation and lack of exhaustive OS tracing remain limitations, not ineligibility evidence.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted local Lyapunov proof establishes the exact OGM bound for every N>=1, preserving the special terminal recurrence. Replayed symbolic base/ordinary/terminal/small-horizon identities vanish in every scalar component; justified signs and the terminal square imply the claimed rate.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\ogm_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "condition_id": "bppm",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\bppm_r01\\review.json",
+      "historical_review_sha256": "27c8eea40ac176cdf901e15e900852163bac5f465e4999c7acb4630b3e8fd287",
+      "original_generation_seconds": 2954.183847,
+      "original_generation_tokens": 11288122,
+      "original_review_seconds": 311.396416,
+      "original_review_tokens": 1419212,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Recorded path-length staging, annotation/static and encoding incidents were ordinary same-session operational errors with inspected successful repairs. Own host-call screening and source/access records show no concrete prohibited exposure or unresolved access incident. Instruction-only controls and incomplete OS visibility do not establish contamination.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted nonincreasing potential, exact general step and base identities, justified nonnegative residual multipliers, and exact terminal relation prove f(x_N)-f(x_star)<=R/(alpha*N) for all integer N>=1, alpha>0 and R>=0. Fresh replay confirms the submitted symbolic identities without adding proof steps.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\bppm_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "feg_r01",
+      "condition_id": "feg",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\feg_r01\\review.json",
+      "historical_review_sha256": "1cab5589d6265b909f0cb96bc04d6ebdbd12695db3b98da04fdc982f23e574e3",
+      "original_generation_seconds": 2512.049724,
+      "original_generation_tokens": 10145053,
+      "original_review_seconds": 453.188658,
+      "original_review_tokens": 2383166,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Observed access records show own attempt files and approved generic resources. Ordinary helper-staging/path-length, PowerShell argument, source-typing and display API incidents were repaired within the same attempt; later preflight/static/execution evidence passes. No concrete prohibited-content exposure or unresolved access incident was found. This is an evidence-limited judgment under instruction-only isolation, not an exhaustive absence-of-read certificate.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted normalized potential and exact base, generic step and terminal identities establish ||A(x_N)||^2 <= 4 L^2 R^2/N^2 for every integer N>=1 under exactly the given assumptions. Fresh exact replay verifies all three identities; inspected sign/domain and terminal reasoning completes the proof without an added lemma or coefficient. B1-B5 evidence is coherent and passes its local gates.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\feg_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "condition_id": "dual_feg",
+      "repetition": 1,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\dual_feg_r01\\review.json",
+      "historical_review_sha256": "ade4768e730a26093b8b70ee7771037a913e30d970a222ee1d705f109c5a6b07",
+      "original_generation_seconds": 2855.134661,
+      "original_generation_tokens": 12233599,
+      "original_review_seconds": 246.98181,
+      "original_review_tokens": 931549,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own host access-call excerpts, source records and static-tool evidence support attempt-scoped access. Recorded Windows helper staging, argv and static diagnostics were repaired within the same attempt; final required checks passed. No concrete prohibited read or exposure was identified. Instruction-only visibility does not establish exhaustive absence of exposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The fully specified horizon-dependent potential has the submitted exact step, base, final-step and performance-boundary identities, with the correct nonincreasing signs. Fresh symbolic replay verifies them, including N=1 and general L,R. Hence ||A(x_N)||^2 <= 4 L^2 R^2/N^2 for every integer N>=1.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\dual_feg_r01\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "condition_id": "pgm_with_sos",
+      "repetition": 2,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_with_sos_r02\\review.json",
+      "historical_review_sha256": "f0e00b872fcd583d9f2b2fb4b78de37aceb37c0647962b41466e1e754073ad3f",
+      "original_generation_seconds": 3174.19704,
+      "original_generation_tokens": 14362048,
+      "original_review_seconds": 338.769997,
+      "original_review_tokens": 1496692,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own access record, approved-origin/static evidence and 96 recorded host access calls show no concrete prohibited exposure or unapproved source substitution. Ordinary staging/lint/type repairs are recorded and followed by passing checks. Instruction-only isolation and incomplete OS visibility are retained as limitations, not exclusions.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted all-horizon Lyapunov argument proves h(x_N)-h(x_star)<=L||x_0-x_star||^2/(4N)<=LR^2/(4N). Fresh exact replay passes general step, base, terminal and N=1 identities; inspected signs and normalization complete the implication. All five block gates pass on inspectable evidence.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_with_sos_r02\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "condition_id": "pgm_without_sos",
+      "repetition": 2,
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "original_generation_status": "error",
+      "original_delivery_status": "INCOMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_without_sos_r02\\review.json",
+      "historical_review_sha256": "a7606731ddb05b3b63e29f5f4678e724ab0caac24b420093e1400cc0e8aaac4a",
+      "original_generation_seconds": 3563.839521,
+      "original_generation_tokens": 15011464,
+      "original_review_seconds": 230.951518,
+      "original_review_tokens": 859019,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "generic_operational_incidents": [
+          {
+            "incident": "Original python -m jupyter nbconvert dispatcher consumed Python313 zmq dependency outside the original generic allowlist",
+            "evidence_refs": [
+              "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-nbconvert.log",
+              "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-access-record.json"
+            ],
+            "adjudication": "Operational only under explicit user override; not mathematical FAIL or independence exclusion."
+          },
+          {
+            "incident": "First selective validation harness omitted existing f/g bindings; later PowerShell warning stream mislabeled execution status",
+            "evidence_refs": [
+              "validation/selected-replay.log",
+              "validation/selected-replay-second.log",
+              "validation/execution-status.json"
+            ],
+            "adjudication": "Recovered in validation only; final direct process returncode 0."
+          }
+        ],
+        "prohibited_mathematical_exposure": {
+          "status": "not_established",
+          "evidence_refs": [
+            "own-generation-host-access-calls.json",
+            "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-access-record.json",
+            "historical-review.json"
+          ],
+          "reason": "Reviewed incident concerns generic dependency execution. Screened own host-access-call record for other-attempt/target-reference/external-source routes; no concrete prohibited mathematical exposure established. This is not an exhaustive access-history certification."
+        },
+        "independence_eligible": true,
+        "limitations": [
+          "Instruction-only isolation and nonexhaustive access telemetry do not prove absence of exposure."
+        ]
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The actual submitted finite-product Lyapunov proof establishes the exact terminal objective bound LR^2/(4N) for every integer N>=1. Fresh symbolic replay verifies general step, base, terminal, N=1, normalization, coefficient-map and square-completion identities; inspected submitted sign/domain arguments justify decrease. No mathematical repair supplied.",
+      "basis": "Fresh missing mathematical verification; original generation not resumed",
+      "assessment": "posthoc_20260924T024014Z\\pgm_without_sos_r02\\review.json",
+      "posthoc_validation_execution_status": {
+        "status": "PASS",
+        "mode": "fresh standalone selected notebook cells and saved certificate replay",
+        "returncode": 0,
+        "evidence_ref": "validation/execution-status.json",
+        "full_notebook_nbconvert": "not rerun; prohibited discovery/search cells intentionally omitted"
+      },
+      "execution_adjustments": "execution-adjustments.json"
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "condition_id": "ogm",
+      "repetition": 2,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\ogm_r02\\review.json",
+      "historical_review_sha256": "e35b0adece64c177f1b6238ddce1159f2341174c2bc5bf153928a9d20080246b",
+      "original_generation_seconds": 2932.726354,
+      "original_generation_tokens": 11463665,
+      "original_review_seconds": 392.082694,
+      "original_review_tokens": 1443982,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-generation access calls, approved-origin/preflight records and handoffs show own/approved resources and pinned dependencies, with no concrete prohibited exposure. B1 Windows path-length helper staging and PowerShell argument construction were repaired within own files; repeated preflight and required source checks passed. Later type/lint/serialization fixes did not alter frozen sources. Recovered refers to these documented operational incidents, not exhaustive access observability.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted explicit Lyapunov potential and exact generic base/interior/terminal identities establish f(x_N)-f(x_star)<=L R^2/(2 theta_N^2) for all N>=1 under precisely the input assumptions, preserving the special terminal recurrence and covering N=1 and R=0. Fresh replay confirms all symbolic identities and numerical B2-B4 gates.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\ogm_r02\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "condition_id": "bppm",
+      "repetition": 2,
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "original_generation_status": "error",
+      "original_delivery_status": "INCOMPLETE",
+      "historical_review": "supplementary\\evaluation\\bppm_r02\\review.json",
+      "historical_review_sha256": "c1d9966ca95e077da4201bd9afd8887f2c649ccc3931310499ebced1f8521283",
+      "original_generation_seconds": 2406.13693,
+      "original_generation_tokens": 8836279,
+      "original_review_seconds": 265.760955,
+      "original_review_tokens": 1232784,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "operational_deviation",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Concrete final nbconvert stderr identifies zmq/_future.py executing under C:/Users/Jack/AppData/Local/Programs/Python/Python313/Lib/site-packages, outside the frozen .venv dependency root. This is an executing-runtime warning, not merely a configured search path. The frozen allowlist and settings supply no equivalence exception. Saved bounded triage pins the kernel but does not establish the dispatcher's executable/import origin; the successful return code does not resolve this incident. No prohibited mathematical exposure is established. The exclusion follows concrete unresolved eligibility, not instruction-only observability limits or the worker label alone.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure.",
+        "posthoc_reason": "Generic launcher provenance concern is operational; historical evidence establishes no prohibited mathematical exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The preserved independent review established the exact R/(alpha*N) target using the supplied potential, general step, base, terminal and sign/domain arguments. Its saved fresh symbolic audit has exact zero residuals. The historical NOT_EVALUATED label coupled this completed verification to generic-runtime eligibility; that operational issue is separated here.",
+      "historical_review_reason": "The inspected submitted Lyapunov proof and fresh exact identity audit establish the specified R/(alpha*N) guarantee on mathematical content. The attempt cannot receive independent-success credit because the final launcher incident leaves access eligibility unresolved under frozen rules. Final checklist completion also remains missing, separately from the proof.",
+      "basis": "Preserved completed mathematical review; post hoc removal of generic-runtime eligibility coupling",
+      "assessment": "posthoc_20260924T024014Z\\bppm_r02-adjudication.md",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "feg_r02",
+      "condition_id": "feg",
+      "repetition": 2,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\feg_r02\\review.json",
+      "historical_review_sha256": "beee4f509927c2d46f0c089afed4a33098d6a1a1b402d6e1fd3e7edc99731d0e",
+      "original_generation_seconds": 2434.585951,
+      "original_generation_tokens": 11422883,
+      "original_review_seconds": 336.084259,
+      "original_review_tokens": 1741686,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available scoped host calls, approved runtime/source-origin records, handoffs and closure show ordinary helper-path, static typing/import-order, failed-launch and display-conversion incidents followed by successful same-attempt checks. No concrete prohibited-source exposure or unresolved access incident was found. This is an instruction-only audit, not a claim of exhaustive OS tracing.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted nonincreasing potential, exact general step identity, shared-half-step base case and terminal square identity prove ||A(x_N)||^2 <= 4 L^2 R^2/N^2 for every integer N>=1. All five block gates pass on inspected evidence and the stated fresh replays.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\feg_r02\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "condition_id": "dual_feg",
+      "repetition": 2,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\dual_feg_r02\\review.json",
+      "historical_review_sha256": "207a6acb44c159a04da7a9d0a347ace52d0cb1ca1d2a653b1ae7f992ab353065",
+      "original_generation_seconds": 2456.597382,
+      "original_generation_tokens": 10102183,
+      "original_review_seconds": 343.983994,
+      "original_review_tokens": 1238951,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected own generation access-call records, preflight/static resolution records, and handoff/closure incident logs. Observed reads are own artifacts and approved generic resources; no concrete prohibited exposure found. B1 staging/helper-layout and generated-source diagnostics were repaired in the same session with repeat preflight/static checks. Later type/display repairs passed final checks. These routine repairs do not invalidate eligibility. Instruction-only controls do not certify exhaustive OS reads. A disclosed BLAS environment-order issue has unknown historical thread counts and does not supply mathematical assistance.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The explicit horizon-dependent potential has exact valid step, base, final-step and N=1 identities. Positive coefficients times nonpositive Lipschitz/monotonicity residuals yield VN<=0; the submitted boundary square-completion and radius condition imply ||A(xN)||^2<=4L^2R^2/N^2 for every integer N>=1.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\dual_feg_r02\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "condition_id": "pgm_without_sos",
+      "repetition": 3,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_without_sos_r03\\review.json",
+      "historical_review_sha256": "f250c14d08ab9663d31f0f7b07d84ed4a9d2011e81e220b0bed3ec4b8eb676c6",
+      "original_generation_seconds": 2977.889485,
+      "original_generation_tokens": 12550894,
+      "original_review_seconds": 535.886747,
+      "original_review_tokens": 2024194,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own host-call records and submitted access/static records show scoped approved-source and own-artifact reads. Routine staging/path-length, lint/type and symbolic-API failures were repaired within the same attempt; a mistyped workdir failed before execution. Preflight and required source checks were rerun successfully. No concrete prohibited-answer exposure or disqualifying generic-source substitution was found in the inspected records. This is an instruction-only, nonexhaustive audit, not certification of all possible reads.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted finite-product Lyapunov certificate proves h(x_N)-h(x_star)<=L||x_0-x_star||^2/(4N)<=LR^2/(4N) for all integer N>=1. The general step, separate base/terminal and N=1 identities pass independent exact expansion; the supplied sign argument makes the potential nonincreasing.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_without_sos_r03\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "condition_id": "pgm_with_sos",
+      "repetition": 3,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_with_sos_r03\\review.json",
+      "historical_review_sha256": "b3798b3dc84e04dc67958cdde97052bbdfc4e1a4a6387e2afa44c53f600610ff",
+      "original_generation_seconds": 3581.372224,
+      "original_generation_tokens": 16965039,
+      "original_review_seconds": 441.391579,
+      "original_review_tokens": 1837301,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-generation host call records, preflight/import-origin records, source hashes and worker access records show no concrete prohibited-content exposure or disqualifying source read. Kernel/path-length/lint/type failures were ordinary operational errors with successful rechecks, not access incidents. The unused mistyped path string in host call 111 performed no operation. Controls were instruction-only and logs are not an exhaustive OS read audit. Fixed SOS assistance was authorized and declared. Evidence: supplementary/evaluation/pgm_with_sos_r03/own-generation-host-access-calls.json; pgm_with_sos/r03/supplementary/preflight-access-record.json; pgm_with_sos/r03/supplementary/b1-handoff.json; pgm_with_sos/r03/supplementary/b5-handoff.json.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted nonincreasing piecewise Lyapunov potential proves h(x_N)-h(x_star)<=L||x0-x_star||^2/(4N)<=LR^2/(4N) for all N>=1. Exact general interior/base/terminal/N=1 identities pass both submitted-code replay and independent polynomial expansion; coefficient signs and endpoint links complete the argument. All B1-B5 final gates pass.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_with_sos_r03\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "condition_id": "ogm",
+      "repetition": 3,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\ogm_r03\\review.json",
+      "historical_review_sha256": "2a1094f4ff7026f3b85914360383a3042f82f2a2cc996ac03d2cb7f25d628f84",
+      "original_generation_seconds": 2768.986096,
+      "original_generation_tokens": 9412280,
+      "original_review_seconds": 291.33151,
+      "original_review_tokens": 1125231,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected available own-generation access calls, preflight and handoff evidence. Observed incidents were attempt-local staging/path-length, command-argument, lint/type and symbolic-context errors, followed by successful checks. No concrete prohibited read or content exposure was found in inspected evidence. Instruction-only controls do not establish exhaustive read isolation.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The frozen submission proves f(x_N)-f(x_star) <= L R^2/(2 theta_N^2) for the exact supplied OGM at every integer N>=1. Fresh replay confirms its generic step, base, terminal, normalization and N=1 identities. The submitted sign/domain reasoning gives the correct decrease and terminal upper-bound direction.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\ogm_r03\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "condition_id": "bppm",
+      "repetition": 3,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\bppm_r03\\review.json",
+      "historical_review_sha256": "05ab6592f04aa9e86fd5866bfbb3f6a0d209d109b96222ecb7259d927d536a03",
+      "original_generation_seconds": 2116.645236,
+      "original_generation_tokens": 9454560,
+      "original_review_seconds": 330.436548,
+      "original_review_tokens": 1330461,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own generation access-call log and access/static records show approved generic sources and own artifacts. Documented long-path staging, local typing, and mistyped-working-directory incidents were repaired within the attempt and required checks passed. No concrete prohibited exposure or unapproved source substitution was found in inspected evidence. Instruction-only controls and incomplete dependency/OS tracing remain limits, not exclusion grounds.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted nonincreasing V_k=k/N*(f(x_k)-f(x_star))+(D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N), V_0=0, has valid exact step/base identities and nonnegative residual multipliers. Its submitted terminal identity gives f(x_N)-f(x_star)<=R/(alpha*N) for all integer N>=1, alpha>0 and R>=0.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\bppm_r03\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "feg_r03",
+      "condition_id": "feg",
+      "repetition": 3,
+      "historical_mathematical_verdict": "NOT_EVALUATED",
+      "historical_eligible": false,
+      "original_generation_status": "error",
+      "original_delivery_status": "incomplete",
+      "historical_review": "supplementary\\evaluation\\feg_r03\\review.json",
+      "historical_review_sha256": "c7a149b3cbcd7baa4ea428df77a1028de8274a76a87f1739b54475ccb24b0154",
+      "original_generation_seconds": 2263.396822,
+      "original_generation_tokens": 9151839,
+      "original_review_seconds": 165.850009,
+      "original_review_tokens": 675437,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "generic_operational_incidents": [
+          "Historical Python313 launcher/dependency consumption",
+          "Historical symbolic matrix display failure",
+          "Posthoc long-path inspection failure and missing standalone REPO_ROOT recovery"
+        ],
+        "prohibited_mathematical_exposure": {
+          "status": "not_established",
+          "evidence": [
+            "own-generation-host-access-calls.json",
+            "validation/supplementary/b5-access-incident.json",
+            "validation/supplementary/b5-final-execution.json"
+          ],
+          "reason": "Inspected own host-call/access records show a concrete generic launcher incident, not target mathematical content. No prohibited mathematical exposure established by inspected evidence."
+        },
+        "independence_eligible": true,
+        "limitations": [
+          "Instruction-only isolation and saved host calls are not exhaustive OS read tracing; absence of observed exposure does not prove absence of exposure."
+        ],
+        "decision_basis": "Explicit user override makes generic dependency-path/launcher/display problems operational; historical exclusion is not adopted as a mathematical finding."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted explicit Lyapunov function has a verified general nonpositive increment, exact shared-first-step identity and exact terminal square completion. The sign/domain argument yields ||A(x_N)||^2<=4 L^2 R^2/N^2 for every N>=1, including R=0. No mathematical expression or missing argument was repaired.",
+      "basis": "Fresh missing mathematical verification; original generation not resumed",
+      "assessment": "posthoc_20260924T024014Z\\feg_r03\\review.json",
+      "posthoc_validation_execution_status": {
+        "status": "PASS",
+        "scope": "Fresh selected-cell and saved-certificate replay, not full notebook discovery or nbconvert execution.",
+        "executed_cells": 28,
+        "omitted_discovery_cells": 3,
+        "N6_saved_certificate_replayed": true,
+        "evidence_refs": [
+          "validation/replay-results.json",
+          "validation/rank6-results.json"
+        ]
+      },
+      "execution_adjustments": [
+        "validation/execution-adjustments.json",
+        "operational-incidents.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "condition_id": "dual_feg",
+      "repetition": 3,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\dual_feg_r03\\review.json",
+      "historical_review_sha256": "18dacdee8d7c80835b5c51c288efc8df7bff62d85015195fe1a988ece69449a4",
+      "original_generation_seconds": 3094.873724,
+      "original_generation_tokens": 12030760,
+      "original_review_seconds": 316.406413,
+      "original_review_tokens": 1459333,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "The recorded Windows helper-staging path-length error and ordinary typing/configuration issues were repaired within the same attempt; repeated preflight and source checks passed. Inspected own host access-call inventory and source records show own artifacts, approved generic resources and pinned tools, with no concrete prohibited-content incident. The rejected empty patch used a mistyped nonexistent path and supplied no outside mathematical content. Instruction-only isolation and nonexhaustive logs do not prove absence of all exposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted explicit potential and general exact identities prove ||A(x_N)||^2 <= 4 L^2 R^2/N^2 under the supplied assumptions for every integer N>=1, including the separate N=1 endpoint. Independent replay confirms all numerical and exact checks; no missing essential lemma or coefficient was supplied by review.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\dual_feg_r03\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "condition_id": "pgm_with_sos",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_with_sos_r04\\review.json",
+      "historical_review_sha256": "7b2c10c2bd9ded39bddd6888108319ffef42cdf3c470235ebec6c066c8297aac",
+      "original_generation_seconds": 3233.613452,
+      "original_generation_tokens": 15296976,
+      "original_review_seconds": 268.106372,
+      "original_review_tokens": 999734,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected own source records, scoped host access calls and static import origins. Ordinary helper/import/static recovery and a mistyped nonexistent working directory were recorded, then checks passed from the assigned scope. No concrete prohibited-content exposure identified in inspected evidence. Instruction-only controls do not prove exhaustive access isolation. Evidence: pgm_with_sos/r04/supplementary/consulted-sources-final.json; pgm_with_sos/r04/supplementary/b4-handoff.json; supplementary/evaluation/pgm_with_sos_r04/own-generation-host-access-calls.json.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The explicit submitted Lyapunov sequence satisfies exact general step, base, terminal and N=1 identities. Verified signs give V_N<=0 and hence h(x_N)-h(x_star)<=L R^2/(4N) for every N>=1 under the supplied assumptions.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_with_sos_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "condition_id": "pgm_without_sos",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_without_sos_r04\\review.json",
+      "historical_review_sha256": "e57bff82a885848ddd091779854504c1e768fb738f69859f0892eb54422503d2",
+      "original_generation_seconds": 3262.496719,
+      "original_generation_tokens": 16791487,
+      "original_review_seconds": 389.588721,
+      "original_review_tokens": 1613230,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "No concrete prohibited exposure or unapproved source read found in inspected source records and 112 available host access calls. Textual absolute-path scan found no root outside this attempt and the pinned interpreter environment. Ordinary path-length/lint issues were repaired in-session and final checks passed; they do not establish a source-boundary incident. Instruction-only controls do not provide exhaustive filesystem observability.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted horizon-dependent Lyapunov proof establishes h(x_N)-h(x_star)<=L*R^2/(4N) for every integer N>=1 under the required assumptions. Explicit finite-product coefficients, all-coordinate exact identities, justified positive quadratic blocks and interpolation multipliers, separate N=1 identity, and terminal normalization are supplied and verified.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_without_sos_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "condition_id": "ogm",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\ogm_r04\\review.json",
+      "historical_review_sha256": "684ec3a5a76af9d60e513ffbd8fd02ad9f852b3f780cec1155a5c046dc7fb5b4",
+      "original_generation_seconds": 2552.73922,
+      "original_generation_tokens": 9780897,
+      "original_review_seconds": 396.104639,
+      "original_review_tokens": 1994842,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own input, approved generic resources, original artifacts, preflight/static route evidence and own generation host access calls inspected. No concrete prohibited-source exposure or unapproved-read incident found. Earlier long-path staging, import/style/type and symbolic-API errors were ordinary tooling problems repaired within the same attempt; final checks passed. Instruction-only controls and nonexhaustive logs do not certify every possible read.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The explicit nonincreasing potential and exact initialization/interior/special-terminal identities establish V_N<=0. Its terminal square and radius identity imply f(x_N)-f(x_star)<=L R^2/(2 theta_N^2), with the supplied terminal recurrence, for all N>=1 including N=1 and R=0. Independent replay confirmed all five symbolic identities and the numerical certificate/rank/reconstruction checks.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\ogm_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "condition_id": "bppm",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\bppm_r04\\review.json",
+      "historical_review_sha256": "aac4f072807823561c9c114a341d673312e32c49bb4d8700892408c5a1e9c881",
+      "original_generation_seconds": 2231.019132,
+      "original_generation_tokens": 8510807,
+      "original_review_seconds": 335.134372,
+      "original_review_tokens": 1220442,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-host tool calls, consulted-source records and static/preflight reports show attempt-owned files, approved generic sources and pinned dependencies. Recorded path-length staging, import/type diagnostics and audit-parser errors were repaired in the same attempt; no concrete prohibited exposure was identified. Final static checks passed. Instruction-only isolation and nonexhaustive source tracing limit this conclusion; they are not evidence of contamination.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The explicit potential V_k=(D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N)+(k/N)(f(x_k)-f(x_star)) has the submitted exact nonpositive-residual increment. With V_0=0 and the exact terminal identity it proves f(x_N)-f(x_star)<=R/(alpha*N) for every integer N>=1, alpha>0 and R>=0 under the supplied assumptions. All seven exact symbolic identities and numerical B2-B4 checks replayed successfully.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\bppm_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "feg_r04",
+      "condition_id": "feg",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\feg_r04\\review.json",
+      "historical_review_sha256": "e86a3aa8e1264eff1aa4279cc3c5151050ed046a9593e33c3abb6adde6cfad69",
+      "original_generation_seconds": 2456.846766,
+      "original_generation_tokens": 11984186,
+      "original_review_seconds": 358.65732,
+      "original_review_tokens": 1571130,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected own preflight/access records, final handoff, and available scoped host access-call evidence. No concrete prohibited exposure or unresolved source-boundary incident identified. Recorded typing, indexing and notebook-check repairs concern own artifacts. Instruction-only controls and incomplete filesystem observability do not establish contamination.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted potential has the correct nonincreasing direction, exact generic step/base/terminal identities and elementary sign/domain justifications. Its terminal identity proves ||A(x_N)||^2 <= 4 L^2 R^2/N^2 for all N>=1, including N=1 and R=0. Fresh replay validates its algebra and B2-B4 numerical checks.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\feg_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "condition_id": "dual_feg",
+      "repetition": 4,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\dual_feg_r04\\review.json",
+      "historical_review_sha256": "92d7f8f1733e3f2ad573f929cec1383bb30b2173a20f555f6e64160b187db79f",
+      "original_generation_seconds": 2992.510565,
+      "original_generation_tokens": 13330815,
+      "original_review_seconds": 388.325219,
+      "original_review_tokens": 1912028,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own-attempt host calls, preflight and handoffs show approved/own source use and same-session operational repairs. The recorded Windows static-helper path failure and initial exploratory cache-environment omission were corrected before definitive checks. No concrete prohibited mathematical exposure or unapproved source read is established. Instruction-only controls and incomplete filesystem visibility are explicitly not treated as proof of either contamination or exhaustive nonexposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted terminal-dependent potential has exact general step and endpoint identities with correctly signed residuals. V_N<=V_0=0 and the verified metric/radius boundary identity imply precisely ||A(x_N)||^2<=4L^2R^2/N^2 for every N>=1, including N=1 and R=0.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\dual_feg_r04\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "condition_id": "pgm_without_sos",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_without_sos_r05\\review.json",
+      "historical_review_sha256": "82104d9479c4e221a3fdfa698a329ace0397a2183b0d332ab5f246966e9be5c3",
+      "original_generation_seconds": 3840.735514,
+      "original_generation_tokens": 15751603,
+      "original_review_seconds": 344.403222,
+      "original_review_tokens": 1221804,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Available own host access calls and per-block records support approved-source/own-artifact use. Ordinary static-staging, lint, context, display and path-typo failures were repaired in the same attempt and final checks succeeded. No concrete prohibited exposure or unapproved generic-source read was found. Controls were instruction-only, not exhaustive OS tracing.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted explicit finite-product Lyapunov certificate establishes h(x_N)-h(x_star) <= LR^2/(4N) for every N>=1. Fresh replay verifies the generic step/base/terminal identities and N=1 exactly; the submitted positive-domain argument gives the required signs and valid normalization.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_without_sos_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "condition_id": "pgm_with_sos",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\pgm_with_sos_r05\\review.json",
+      "historical_review_sha256": "385b8daf50d6e4e9f98c3ec34e9de0d213311cfc0204ca26b23ee824d3c389e4",
+      "original_generation_seconds": 3682.564612,
+      "original_generation_tokens": 15021044,
+      "original_review_seconds": 349.117708,
+      "original_review_tokens": 1310224,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Inspected own preflight/access and handoff records plus available host access calls. Recorded recursive helper-staging WinError 206 and later local typing/import issues were repaired within the same attempt; final source/static checks passed with own approved framework origins. No concrete prohibited exposure or unresolved access incident found in the reviewed evidence. Controls and tracing are instruction-only, not exhaustive.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted all-horizon Lyapunov proof establishes h(x_N)-h(x_star)<=LR^2/(4N) under the supplied assumptions. Fresh replay gives exact zero step/base/terminal/N=1/normalization residuals; coefficient signs and nonincreasing direction are justified. Numerical B1-B4 evidence and final delivery also pass.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\pgm_with_sos_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "condition_id": "ogm",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\ogm_r05\\review.json",
+      "historical_review_sha256": "b62db676b9f6103ea0b6c03a4a0cd78dbc3ca4707447f879a71a41e522f03b3d",
+      "original_generation_seconds": 2765.601039,
+      "original_generation_tokens": 15418466,
+      "original_review_seconds": 301.28271,
+      "original_review_tokens": 1078459,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Observed incidents are ordinary helper-layout/path-length, quoting, type-check and stored-source packaging issues. Recorded preflight and final checks demonstrate their recovery. The available attempt-scoped access records and host-call material inspected show no concrete prohibited-content exposure. Instruction-only controls and incomplete OS-level visibility do not establish contamination.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted Lyapunov proof establishes f(x_N)-f(x_star)<=L R^2/(2 theta_N^2) for every integer N>=1 with the prescribed special terminal recurrence. All essential identities are supplied and pass exact replay; signs and endpoints give the claimed bound without additional assumptions.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\ogm_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "condition_id": "bppm",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\bppm_r05\\review.json",
+      "historical_review_sha256": "91bbb31ba0fe14834cdeebb3df1749d6605c1782d2cf7cbf13d4202d17f17e32",
+      "original_generation_seconds": 3068.714728,
+      "original_generation_tokens": 11233867,
+      "original_review_seconds": 380.816708,
+      "original_review_tokens": 1433428,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Own generation calls and incident record show an accidental empty-file creation at a mistyped outside-attempt path at 23:14:53Z, followed by deletion of that same file and newly created empty directories at 23:15:30Z. No outside source content was retrieved by that incident. This is a recovered write-boundary incident, not an unapproved generic-source read or mathematical exposure; the frozen read-equivalence restriction is therefore not being waived. Ordinary typing diagnostics were repaired and required checks rerun. Available records reveal no disqualifying source exposure. Instruction-only controls do not establish exhaustive absence of exposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted potential V_k=[alpha*k*(f(x_k)-f(x_star))+D_h(x_star,x_k)-D_h(x_star,x_0)]/(alpha*N) is fully defined. Its general step identity, separate initial identity and symbolic terminal identity replay exactly in all scalar components. Convexity and the stated positive denominators give V_N<=V_0=0 and gap_N-R/(alpha*N)<=V_N. Thus the exact target holds for every integer N>=1, including N=1, with unsquared R.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\bppm_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "feg_r05",
+      "condition_id": "feg",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\feg_r05\\review.json",
+      "historical_review_sha256": "0ed295abd1a61a17866d730fd0c75c9b50e2bd9f3605bc952dd226d9cd0fc261",
+      "original_generation_seconds": 2458.324236,
+      "original_generation_tokens": 10948878,
+      "original_review_seconds": 377.659984,
+      "original_review_tokens": 1297135,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "recovered",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Reviewed own available host access-call evidence, access record, preflight repair and final static origin/results. Recorded path-length, generated-source diagnostics and failed nonexistent-working-directory launch were repaired in the same attempt; no concrete prohibited-content exposure is evidenced. All 143 frozen artifact hashes match. Instruction-only controls and incomplete OS tracing limit this judgment; they are not evidence of contamination.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The self-contained submitted Lyapunov proof establishes ||A(x_N)||^2 <= 4 L^2 R^2/N^2 for every integer N>=1 under exactly the supplied assumptions. Fresh exact replay verifies the general step, base and terminal identities; inspected signs and domains complete the implication.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\feg_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "condition_id": "dual_feg",
+      "repetition": 5,
+      "historical_mathematical_verdict": "PASS",
+      "historical_eligible": true,
+      "original_generation_status": "completed",
+      "original_delivery_status": "COMPLETE",
+      "historical_review": "supplementary\\evaluation\\dual_feg_r05\\review.json",
+      "historical_review_sha256": "5d83a3c6756febe662895890b2f5eec31c554d91da50c01f4e14a5092e747b77",
+      "original_generation_seconds": 2593.810815,
+      "original_generation_tokens": 14750864,
+      "original_review_seconds": 320.341208,
+      "original_review_tokens": 1617579,
+      "mathematical_criteria": "Frozen exact-target and B1-B5 mathematical criteria; no threshold or target changes",
+      "access_findings": {
+        "status": "no_incident",
+        "prohibited_mathematical_exposure": "not_established",
+        "independence_eligible": true,
+        "historical_evidence": "Scoped generation access calls, declared sources, preflight resolution evidence and closure show own artifacts and approved generic resources; no concrete prohibited-content exposure or unapproved source read was identified. Ordinary path-length, typing and display failures were repaired within the attempt. Instruction-only controls and nonexhaustive logs do not establish exhaustive absence of exposure.",
+        "limitation": "Instruction-only controls and available logs do not certify absence of every possible exposure."
+      },
+      "mathematical_verdict": "PASS",
+      "mathematical_reason": "The submitted potential and exact interior, initial, final-step and metric-boundary identities establish ||A(x_N)||^2 <= 4 L^2 ||x_0-x_star||^2/N^2 <= 4 L^2 R^2/N^2 for every integer N>=1. The symbolic identities were freshly replayed; the submitted sign/domain reasoning is valid and covers N=1 and R=0.",
+      "basis": "Preserved completed independent mathematical review",
+      "assessment": "supplementary\\evaluation\\dual_feg_r05\\review.json",
+      "posthoc_validation_execution_status": "NOT_RERUN"
+    }
+  ],
+  "blocks": [
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup encodes the prescribed PGM update, composite stationarity, squared-distance initial condition, and last-iterate objective gap; the complete seven-horizon sweep and comparison plot are present.",
+      "evidence_refs": [
+        "pgm_without_sos/r01/state/pgm_b1.json",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#de4adc52",
+        "pgm_without_sos/r01/supplementary/sweep.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay validates the coherent selected numerical certificates at N=4 and N=6, including complete dual inventory, component identities, signs, PSD and S reconstruction; initial rational formula search is visible.",
+      "evidence_refs": [
+        "pgm_without_sos/r01/state/pgm_b2.json",
+        "pgm_without_sos/r01/supplementary/b2_n6.json",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#d3ece9c9",
+        "supplementary/evaluation/pgm_without_sos_r01/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "One submitted congruence-based PSD decomposition and forward-destination grouping reproduce the saved certificates at two horizons; rank 4 is constant at all retained interior indices.",
+      "evidence_refs": [
+        "pgm_without_sos/r01/state/pgm_b3.json",
+        "pgm_without_sos/r01/supplementary/rank_search.json",
+        "supplementary/evaluation/pgm_without_sos_r01/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Sparse basis search and independent basis checks replay successfully; the assembled quadratic, function and constant terms reconstruct every required V_k at N=4, including k=0 and k=4.",
+      "evidence_refs": [
+        "pgm_without_sos/r01/state/pgm_b4.json",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#ba468f78",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#b92a570a",
+        "supplementary/evaluation/pgm_without_sos_r01/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted self-contained potential, exact step/base/terminal/N=1 identities and positive-polynomial sign argument establish the exact all-horizon target. Final static and clean-kernel evidence is present.",
+      "evidence_refs": [
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#c276c803",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#49059621",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#0338c85f",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#b958dd7d",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#a1269f73",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#4f9fff4f",
+        "pgm_without_sos/r01/pgm_example_lyap.ipynb#82f44c14",
+        "pgm_without_sos/r01/supplementary/b5-final-notebook-004.txt",
+        "supplementary/evaluation/pgm_without_sos_r01/validation/replay_results.json",
+        "supplementary/evaluation/pgm_without_sos_r01/validation/audit_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup implements the prescribed proximal-gradient recursion, stationarity, squared-radius condition and final composite objective gap. All seven prescribed horizons have recorded finite solves and rate comparisons; inaccurate statuses are disclosed.",
+      "evidence_refs": [
+        "pgm_with_sos/r01/pgm_setup.py",
+        "pgm_with_sos/r01/supplementary/b1-sweep-output.txt",
+        "pgm_with_sos/r01/supplementary/b1-sweep-resume-output.txt",
+        "pgm_with_sos/r01/supplementary/b1-access-events.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A single coherent N=6 relaxed certificate is identified by a reproducible hash and checked against the dense solve. Saved numerical duals, the original S, interpolation inventory and candidate SOS all satisfy the frozen tolerances. Initial coefficient search is documented; general full-PEP analytic status is explicitly unclaimed.",
+      "evidence_refs": [
+        "pgm_with_sos/r01/state/pgm_b2.json",
+        "pgm_with_sos/r01/state/pgm_dense.json",
+        "supplementary/evaluation/pgm_with_sos_r01/validation/numeric-replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Submitted per-step PSD allocations reconstruct the saved S and produce the same rank-four interior recipe at N=4 and N=6, with fixed exclusions (1,1) and three/five retained indices. All residual families and normalization placement are explicit. N=6 was freshly replayed; N=4 source, allocation, spectrum and executed output were inspected.",
+      "evidence_refs": [
+        "pgm_with_sos/r01/supplementary/rank_search.json",
+        "pgm_with_sos/r01/supplementary/rank_N4.json",
+        "pgm_with_sos/r01/supplementary/rank_N6.json",
+        "pgm_with_sos/r01/supplementary/b3-psd-allocation-N4.json",
+        "supplementary/evaluation/pgm_with_sos_r01/validation/numeric-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "An independent four-vector interior basis and explicit initial/terminal bases reconstruct every N=6 partial sum. The visibly assembled full potential includes both function gaps and the zero offset. Actual sparse basis-search source and results are retained. The submitted full-component guard uses 1e-4 rather than frozen 1e-5, but fresh checks of unchanged coefficients pass the stricter frozen tolerance at all indices.",
+      "evidence_refs": [
+        "pgm_with_sos/r01/state/pgm_b4.json",
+        "pgm_with_sos/r01/supplementary/b4-scan-002.json",
+        "supplementary/evaluation/pgm_with_sos_r01/validation/numeric-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted local Lyapunov argument establishes the exact target for every N>=1. Independent rational-polynomial checks give zero for every Gram monomial and function coefficient in the interior, first-step, terminal and N=1 identities. Positive denominators and nonnegative residual weights justify decrease; V0=0 and VN=hgap-L||d0||^2/(4N) supply the exact normalization. Required proof content, saved clean-kernel execution, static checks and source diagnostics are inspectable.",
+      "evidence_refs": [
+        "pgm_with_sos/r01/pgm_example_lyap.ipynb#be7b4bab",
+        "pgm_with_sos/r01/pgm_example_lyap.ipynb#91536d07",
+        "pgm_with_sos/r01/supplementary/b5-nbconvert-001-output.txt",
+        "pgm_with_sos/r01/supplementary/b5-static-001.json",
+        "pgm_with_sos/r01/supplementary/pgm_example_lyap_checklist.md",
+        "supplementary/evaluation/pgm_with_sos_r01/validation/check_exact.py",
+        "supplementary/evaluation/pgm_with_sos_r01/validation/exact-results.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup implements the supplied OGM recurrence and metric, including the special terminal theta; the saved seven-horizon sweep and visible notebook evidence support the inferred rate.",
+      "evidence_refs": [
+        "ogm/r01/ogm_setup.py",
+        "ogm/r01/state/ogm_b1.json",
+        "ogm/r01/ogm_example_lyap.ipynb#3d8ee33e"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Both complete sparse certificates replay successfully. Numerical full-PEP validity is established; the separate global analytic table proof is explicitly unclaimed.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r01/validation/reviewer-replay.json",
+        "ogm/r01/state/ogm_b2.json",
+        "ogm/r01/ogm_example_lyap.ipynb#9a0307c5"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted grouping covers all weighted terms, reserves the nonnegative square for the terminal link, and confirms rank 3 at two horizons under one fixed recipe.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r01/validation/reviewer-replay.json",
+        "ogm/r01/supplementary/b3_grouping.py",
+        "ogm/r01/supplementary/b3-rank-N4.json",
+        "ogm/r01/supplementary/b3-rank-N6.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The selected basis and symmetric coefficients reconstruct every required N=4 partial sum, including k=0 and k=N, with all function and constant components retained.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r01/validation/reviewer-replay.json",
+        "ogm/r01/supplementary/b4-scan-output.txt",
+        "ogm/r01/ogm_example_lyap.ipynb#28d109b9"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The fully defined potential, exact general identities, nonpositive interpolation residuals and positive multipliers yield the exact target for every N>=1. Delivery evidence meets the frozen presentation override.",
+      "evidence_refs": [
+        "ogm/r01/ogm_example_lyap.ipynb#09e71bd4",
+        "ogm/r01/ogm_example_lyap.ipynb#0d090ef5",
+        "ogm/r01/ogm_example_lyap.ipynb#762fa73d",
+        "supplementary/evaluation/ogm_r01/validation/reviewer-replay.json",
+        "supplementary/evaluation/ogm_r01/validation/reviewer-audit.json",
+        "ogm/r01/supplementary/b5-static-001.json",
+        "ogm/r01/supplementary/b5-nbconvert-evidence.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup uses the prescribed Bregman proximal update, Bregman radius R, and final objective gap. Saved N=1..7 results and rate comparison are complete; their numerical status is kept separate from the theorem.",
+      "evidence_refs": [
+        "bppm/r01/bppm_setup.py",
+        "bppm/r01/supplementary/b1-sweep.json",
+        "bppm/r01/bppm_example_lyap.ipynb#4666f2d1",
+        "supplementary/evaluation/bppm_r01/validation/review-artifact-audit.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete selected numerical certificate was reconstructed and checked against its own frozen source hashes and all constraints; dense/relaxed agreement, signs, S reconstruction, and initial candidate search pass.",
+      "evidence_refs": [
+        "bppm/r01/state/bppm_b2.json",
+        "bppm/r01/bppm_example_lyap.ipynb#435c6034",
+        "supplementary/evaluation/bppm_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same consecutive-edge grouping has verified coverage and nonpositive increments at N=4 and N=6. One terminal h residual and the complete numerical S are explicit boundary leftovers.",
+      "evidence_refs": [
+        "bppm/r01/bppm_example_lyap.ipynb#8a508400",
+        "bppm/r01/bppm_example_lyap.ipynb#2d14274b",
+        "bppm/r01/supplementary/b3-observation-N4.json",
+        "bppm/r01/supplementary/b3-observation-N6.json",
+        "supplementary/evaluation/bppm_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate-vector and sparse subset searches replayed. Independent selected bases and symmetric matrices reproduce the complete potential at every selected index 0..4, including both endpoints.",
+      "evidence_refs": [
+        "bppm/r01/bppm_example_lyap.ipynb#0436df0c",
+        "bppm/r01/bppm_example_lyap.ipynb#9ca4af50",
+        "bppm/r01/bppm_example_lyap.ipynb#f7af2fb8",
+        "supplementary/evaluation/bppm_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted exact local Lyapunov proof establishes the required finite-horizon bound with general alpha>0, R>=0 and every integer N>=1. All proof-critical identities and sign implications are present; saved delivery checks also pass.",
+      "evidence_refs": [
+        "bppm/r01/bppm_example_lyap.ipynb#16088153",
+        "bppm/r01/bppm_example_lyap.ipynb#31a67515",
+        "supplementary/evaluation/bppm_r01/validation/review-replay.json",
+        "supplementary/evaluation/bppm_r01/validation/review-artifact-audit.json",
+        "bppm/r01/supplementary/b5-static-002.json",
+        "bppm/r01/supplementary/b5-final-execution-console.txt",
+        "bppm/r01/supplementary/bppm_example_lyap_checklist.md"
+      ]
+    },
+    {
+      "attempt_id": "feg_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implementation matches the given FEG updates, operator assumptions, shared first half iterate, radius-squared normalization and terminal residual. The seven-horizon sweep and comparison plot are present; its candidate is explicitly distinguished from the theorem.",
+      "evidence_refs": [
+        "feg/r01/feg_setup.py",
+        "feg/r01/state/feg_b1.json",
+        "feg/r01/feg_example_lyap.ipynb#b1-06",
+        "feg/r01/supplementary/b1-sweep-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "feg_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A complete coherent selected numerical certificate at N=6 and preserved N=4 sample pass full scalar-component, sign, PSD and reconstruction checks. The rejected lambda/S guesses are documented and never substituted for the numerical certificate.",
+      "evidence_refs": [
+        "feg/r01/state/feg_b2.json",
+        "feg/r01/state/feg_dense.json",
+        "feg/r01/feg_example_lyap.ipynb#b2-07",
+        "feg/r01/feg_example_lyap.ipynb#b2-04",
+        "supplementary/evaluation/feg_r01/validation/review-replay.log"
+      ]
+    },
+    {
+      "attempt_id": "feg_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same adjacent-full/Lipschitz recipe, with the complete PSD S block and one monotonicity residual at the boundary, has complete coverage and decreasing partial sums. Rank two is confirmed at horizons 4 and 6 under fixed (1,1) exclusions.",
+      "evidence_refs": [
+        "feg/r01/feg_example_lyap.ipynb#b3-01",
+        "feg/r01/feg_example_lyap.ipynb#b3-03",
+        "feg/r01/supplementary/rank_search.json",
+        "supplementary/evaluation/feg_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual sparse-basis search and adopted-basis independence were replayed. The basis [A(x_k),x_k-x_0], with empty basis at k=0, reconstructs every required partial sum at the selected N=6, including the terminal index and every scalar component.",
+      "evidence_refs": [
+        "feg/r01/feg_example_lyap.ipynb#b4-05",
+        "feg/r01/feg_example_lyap.ipynb#b4-07",
+        "feg/r01/feg_example_lyap.ipynb#b4-09",
+        "feg/r01/feg_example_lyap.ipynb#b4-10",
+        "feg/r01/state/feg_b4.json",
+        "supplementary/evaluation/feg_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted self-contained proof establishes the exact target for all integer N>=1 and all prescribed L,R. Generic step, base and terminal identities were freshly replayed exactly; all necessary signs, domains and small-horizon implications are supplied. Required saved static and clean-kernel execution evidence passes.",
+      "evidence_refs": [
+        "feg/r01/feg_example_lyap.ipynb#proof-01",
+        "feg/r01/feg_example_lyap.ipynb#proof-02",
+        "feg/r01/feg_example_lyap.ipynb#b5-03",
+        "feg/r01/feg_example_lyap.ipynb#b5-09",
+        "feg/r01/feg_example_lyap.ipynb#b5-12",
+        "feg/r01/feg_example_lyap.ipynb#b5-15",
+        "feg/r01/supplementary/b5-static-002.json",
+        "feg/r01/supplementary/b5-final-execution-output.txt",
+        "feg/r01/supplementary/feg_example_lyap_checklist.md",
+        "supplementary/evaluation/feg_r01/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implemented updates, zero point, z_0, R-squared radius constraint and final squared residual match the input. All seven prescribed sweep results are present and support the proposed bound; N=1 is explicitly reported as optimal_inaccurate.",
+      "evidence_refs": [
+        "dual_feg/r01/state/dual_feg_b1.json",
+        "dual_feg/r01/dual_feg_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A coherent N=6 numerical certificate and separate N=8 certificate pass full-coordinate identities, dual cones, dense/relaxed agreement and S factor reconstruction. Initial formula search is documented; global analytic certificate is correctly left unclaimed.",
+      "evidence_refs": [
+        "dual_feg/r01/state/dual_feg_b2.json",
+        "dual_feg/r01/dual_feg_example_lyap.ipynb#ed433fc9",
+        "supplementary/evaluation/dual_feg_r01/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted grouping adds nonpositive weighted interpolation residuals, keeps the monotonicity/root term and the whole PSD remainder at the boundary, and covers the complete certificate. Rank four is confirmed with the same recipe and one exclusion at each end for N=6 and N=8.",
+      "evidence_refs": [
+        "dual_feg/r01/supplementary/b3-trial-n6.json",
+        "dual_feg/r01/supplementary/b3-trial-n8.json",
+        "supplementary/evaluation/dual_feg_r01/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate filtering and sparse subset search are present and replayed. The adopted independent four-vector interior basis and separate endpoint bases reconstruct every required full scalar expression at N=6.",
+      "evidence_refs": [
+        "dual_feg/r01/supplementary/b4-scan.json",
+        "dual_feg/r01/dual_feg_example_lyap.ipynb#457bce45",
+        "supplementary/evaluation/dual_feg_r01/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r01",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted local Lyapunov proof establishes the exact guarantee for all N>=1. General symbolic identities, initial value, final step and N=1, terminal normalization, signs and domains are all valid. Delivery evidence is complete under the rendering override.",
+      "evidence_refs": [
+        "dual_feg/r01/dual_feg_example_lyap.ipynb#893393ba",
+        "dual_feg/r01/dual_feg_example_lyap.ipynb#a55133d2",
+        "dual_feg/r01/supplementary/b5-static-003.json",
+        "dual_feg/r01/supplementary/dual_feg_example_lyap_checklist.md",
+        "supplementary/evaluation/dual_feg_r01/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup implements the prescribed composite proximal gradient update, R-squared constraint and last-iterate objective. All seven required sweep samples and rate comparison are present, with inaccurate solver statuses disclosed.",
+      "evidence_refs": [
+        "pgm_with_sos/r02/pgm_setup.py",
+        "pgm_with_sos/r02/state/pgm_b1.json",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#c3306f76"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay verifies the coherent selected N=4 certificate and supplied-SOS reconstruction against the saved dense bound. The initial rational multiplier search is documented; the final arbitrary-horizon certificate is established separately in B5.",
+      "evidence_refs": [
+        "supplementary/evaluation/pgm_with_sos_r02/validation/replay-results.json",
+        "pgm_with_sos/r02/state/pgm_b2.json",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#133eda6a"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay confirms the same fixed blend recipe at N=4 and N=6, all-component coverage and increment checks, and rank four at every retained index. Earlier failed canonical/polar trials remain disclosed and are superseded by the rechecked blend.",
+      "evidence_refs": [
+        "supplementary/evaluation/pgm_with_sos_r02/validation/replay-results.json",
+        "pgm_with_sos/r02/supplementary/rank_search.json",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#111f6540"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay reconstructs every selected-horizon potential k=0..4 with independent bases, symmetric coefficients, function terms and offsets. The actual candidate and sparse-basis searches are visible; no analytic claim is inferred merely from fitted coefficients.",
+      "evidence_refs": [
+        "supplementary/evaluation/pgm_with_sos_r02/validation/replay-results.json",
+        "pgm_with_sos/r02/supplementary/b4-candidate-scan.json",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#a0229c6a",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#64e5ec70",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#91479593"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r02",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted explicit potential, independently replayed symbolic identities, justified signs and endpoint definitions establish the exact target for every N>=1. The SOS aid is explicitly supplied assistance and is verified with one copy per step. The analytic proof uses the original exact SOS, not the numerical factor blend.",
+      "evidence_refs": [
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#47ab9b3d",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#25db181a",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#00cb398c",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#a5299f9e",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#27045ef0",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#5674450d",
+        "pgm_with_sos/r02/pgm_example_lyap.ipynb#738c7672",
+        "supplementary/evaluation/pgm_with_sos_r02/validation/supplementary/b5-exact-checks.json",
+        "supplementary/evaluation/pgm_with_sos_r02/validation/delivery-audit.json",
+        "pgm_with_sos/r02/supplementary/pgm_example_lyap_checklist.md"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "block_id": "B1",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Inspected matching setup and complete prescribed diagnostic sweep/rate comparison. N=6,7 optimal_inaccurate are disclosed and retained as a numerical limitation; they are not certified exact PEP optima or the basis of the final theorem.",
+      "evidence_refs": [
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/state/pgm_b1.json",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "block_id": "B2",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh coherent numerical certificate replay passes all-coordinate, cone, source/order and decomposition checks; saved dense-gap and actual initial formula-search evidence inspected. No global analytic S claim.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "block_id": "B3",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh saved-certificate replay verifies nonpositive increment construction, all-coordinate coverage, signs and the same rank 4 at N=4 and N=6 with fixed endpoint exclusions and sufficient retained indices.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "block_id": "B4",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh replay checks submitted saved independent bases and coefficient matrices at every index including endpoints. Historical actual basis search inspected, never rerun.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "block_id": "B5",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "INCOMPLETE",
+      "gate_verdict": "UNRESOLVED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": false,
+      "reason": "Submitted complete finite-product potential and all generic/boundary/N=1 identities and square-completion link freshly verified. Submitted signs imply the exact target. Original final source did not receive final static/nbconvert/checklist completion.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implemented updates, special terminal coefficient, stationary optimum, squared radius and final function gap match the input. The complete prescribed sweep and visible notebook evidence support the correctly labeled candidate rate.",
+      "evidence_refs": [
+        "ogm/r02/ogm_setup.py",
+        "ogm/r02/state/ogm_b1.json",
+        "ogm/r02/ogm_example_lyap.ipynb#b1-evidence",
+        "supplementary/evaluation/ogm_r02/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The selected N=6 certificate is coherent, fully inventoried and freshly reconstructs the performance identity; the independent N=8 certificate also passes. Dense agreement, scalar signs, PSD and retained LDL reconstruction meet the frozen thresholds. Initial analytic candidates are documented without claiming a global analytic proof.",
+      "evidence_refs": [
+        "ogm/r02/state/ogm_b2.json",
+        "ogm/r02/state/ogm_dense.json",
+        "ogm/r02/ogm_example_lyap.ipynb#b2-certificate-check",
+        "supplementary/evaluation/ogm_r02/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same signed star-prefix/forward-chain recipe has constant interior rank three at N=6 and N=8. Whole S is a verified PSD terminal leftover. Complete scalar-component coverage and every increment replay successfully.",
+      "evidence_refs": [
+        "ogm/r02/state/ogm_b3.json",
+        "ogm/r02/supplementary/rank_search.json",
+        "ogm/r02/ogm_example_lyap.ipynb#b3-partial-sums",
+        "supplementary/evaluation/ogm_r02/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "At every selected index k=0,...,6, independent bases and symmetric coefficient matrices reproduce the quadratic part and full potential, including gap and zero constant terms. The empty initial basis and terminal two-vector basis are explicitly handled. Actual candidate search replayed.",
+      "evidence_refs": [
+        "ogm/r02/state/ogm_b4.json",
+        "ogm/r02/ogm_example_lyap.ipynb#b4-search",
+        "ogm/r02/ogm_example_lyap.ipynb#b4-extract",
+        "supplementary/evaluation/ogm_r02/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r02",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The self-contained theorem establishes the exact all-horizon target. Generic symbolic identities follow the actual updates and both coefficient recurrences; analytic positivity and interpolation signs give decrease. Base, terminal normalization and N=1 are explicit, and no division by R excludes R=0.",
+      "evidence_refs": [
+        "ogm/r02/ogm_example_lyap.ipynb#proof-theorem",
+        "ogm/r02/ogm_example_lyap.ipynb#proof-outline",
+        "ogm/r02/ogm_example_lyap.ipynb#b5-domain",
+        "ogm/r02/supplementary/b5-static-002.json",
+        "ogm/r02/supplementary/b5-nbconvert-final-output.txt",
+        "ogm/r02/supplementary/ogm_example_lyap_checklist.md",
+        "supplementary/evaluation/ogm_r02/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "block_id": "B1",
+      "historical_gate_verdict": "NOT_EVALUATED",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "B1 substantive mathematical and content checks pass by inspection. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#f6b761bf",
+        "bppm/r02/bppm_example_lyap.ipynb#9fbadbd0",
+        "bppm/r02/bppm_example_lyap.ipynb#3021dc9b",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "block_id": "B2",
+      "historical_gate_verdict": "NOT_EVALUATED",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "B2 numerical obligations and documented formula search are supported by inspected executable checks and saved outputs. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#cde89e7b",
+        "bppm/r02/bppm_example_lyap.ipynb#f6e33693",
+        "bppm/r02/bppm_example_lyap.ipynb#64993b7a",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "block_id": "B3",
+      "historical_gate_verdict": "NOT_EVALUATED",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "B3 saved cross-horizon observations and visible grouping verify the required structure; these are finite-sample results. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#201e3fc1",
+        "bppm/r02/supplementary/b3-comparison-002-output.txt",
+        "bppm/r02/supplementary/b3-N6-observation.json",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "block_id": "B4",
+      "historical_gate_verdict": "NOT_EVALUATED",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "B4 search, independence and complete reconstruction are supported at every required index. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#2cd51e0f",
+        "bppm/r02/bppm_example_lyap.ipynb#e55bba16",
+        "bppm/r02/bppm_example_lyap.ipynb#34588167",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r02",
+      "block_id": "B5",
+      "historical_gate_verdict": "NOT_EVALUATED",
+      "mathematical_status": "PASS",
+      "delivery_status": "INCOMPLETE",
+      "reason": "B5 analytic obligations pass inspection and fresh exact checks. Final delivery remains incomplete and access eligibility unresolved. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "evidence_refs": [
+        "supplementary/evaluation/bppm_r02/validation/symbolic-audit.json",
+        "bppm/r02/bppm_example_lyap.ipynb#50a28846",
+        "bppm/r02/bppm_example_lyap.ipynb#e763b3c9",
+        "bppm/r02/supplementary/b5-static-001.json",
+        "bppm/r02/supplementary/b5-nbconvert-execution.json",
+        "bppm/r02/supplementary/bppm_example_lyap_checklist.md",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r02",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup implements the exact supplied recurrence, shared initial half-step, monotone Lipschitz operator, squared radius and terminal residual. Saved seven-horizon sweep and rate comparison are valid numerical discovery evidence.",
+      "evidence_refs": [
+        "feg/r02/feg_setup.py",
+        "feg/r02/supplementary/b1-sweep-console.txt",
+        "feg/r02/feg_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "feg_r02",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Complete same-solve certificate passes freshly reconstructed inventory, signs, PSD, all scalar components and reverse LDL checks. Initial global formula guesses were tested and honestly left unresolved; global analytic lambda/S formulas are not a B2 gate.",
+      "evidence_refs": [
+        "feg/r02/feg_example_lyap.ipynb",
+        "feg/r02/state/feg_b2.json",
+        "supplementary/evaluation/feg_r02/validation/replay.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r02",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same residual-grouping recipe covers all retained contributions at N=6 and N=8. Every increment has the correct nonincreasing sign, and the full S plus terminal root monotonicity are explicitly justified boundary leftovers. Interior rank two is well separated at both horizons.",
+      "evidence_refs": [
+        "feg/r02/supplementary/rank_search.json",
+        "supplementary/evaluation/feg_r02/validation/replay.txt",
+        "supplementary/evaluation/feg_r02/validation/n8-replay.json",
+        "feg/r02/feg_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "feg_r02",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay confirms actual candidate filtering and sparse-basis search, independent adopted basis [A(x_k),x_k-x_0], symmetric coefficient matrices and full-expression reconstruction at every k=0..6. Both endpoints are included and function/constant components are zero.",
+      "evidence_refs": [
+        "feg/r02/feg_example_lyap.ipynb",
+        "feg/r02/state/feg_b4.json",
+        "supplementary/evaluation/feg_r02/validation/replay.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r02",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted exact Lyapunov argument establishes the target under the full supplied scope. Fresh replay derives the stated coefficient family and verifies general step, base and terminal identities exactly in all scalar components. The explicit residual signs prove V_N<=0 and the terminal identity implies the exact rate, including N=1 and R=0.",
+      "evidence_refs": [
+        "feg/r02/feg_example_lyap.ipynb",
+        "supplementary/evaluation/feg_r02/validation/replay.json",
+        "feg/r02/supplementary/b5-final-nbconvert-002-console.txt",
+        "feg/r02/supplementary/feg_example_lyap_checklist.md",
+        "supplementary/evaluation/feg_r02/validation/hash-check.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The visible setup implements all three supplied recurrences, z0=0, zero-point and radius assumptions, and terminal squared operator residual. The saved N=1..7 sweep supports the inferred uniform rate; N=1 numerical inaccuracy is disclosed and is not used as an analytic proof.",
+      "evidence_refs": [
+        "dual_feg/r02/dual_feg_example_lyap.ipynb",
+        "dual_feg/r02/state/dual_feg_b1.json",
+        "dual_feg/r02/dual_feg_setup.py"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A coherent structural relaxation at N=6 is fully numerically certified and agrees with the dense solve. Fresh replay validates saved multipliers, all scalar coordinates, signs, PSD and numerical S decomposition. The initial closed-form search is documented; arbitrary-horizon global lambda/S proof is separately unclaimed.",
+      "evidence_refs": [
+        "dual_feg/r02/state/dual_feg_b2.json",
+        "dual_feg/r02/state/dual_feg_dense.json",
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#7c7681fb",
+        "supplementary/evaluation/dual_feg_r02/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Freshly replayed certificate and grouping checks at N=4 and N=6 give rank four at every retained interior index under the same forward-step recipe. Only terminal monotonicity and the whole PSD S remain as boundary contributions; normalization is reserved for the boundary.",
+      "evidence_refs": [
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#beb981ea",
+        "dual_feg/r02/supplementary/b3-rank-N4.json",
+        "dual_feg/r02/supplementary/b3-rank-N6.json",
+        "supplementary/evaluation/dual_feg_r02/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay performs actual candidate filtering and sparse-basis search, verifies the adopted basis independence and spans, and reconstructs every V_k at N=6 including both endpoints. Function and offset terms are explicitly checked as zero.",
+      "evidence_refs": [
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#edfd5b58",
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#a606e742",
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#3a36351e",
+        "supplementary/evaluation/dual_feg_r02/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r02",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted potential and identities establish the exact target for all integer N>=1. Generic-index algebra, parameter scaling, base, last step, N=1 and final square-completion are verified; the signs imply VN<=V0=0 and the claimed bound. Saved static and clean-kernel evidence is corroborated by the final executed notebook and a fresh mathematical-cell replay.",
+      "evidence_refs": [
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#8bc65544",
+        "dual_feg/r02/dual_feg_example_lyap.ipynb#19b11c59",
+        "supplementary/evaluation/dual_feg_r02/validation/independent-exact.json",
+        "supplementary/evaluation/dual_feg_r02/validation/replay-results.json",
+        "supplementary/evaluation/dual_feg_r02/validation/integrity-delivery.json",
+        "dual_feg/r02/supplementary/b5-static-003.json",
+        "dual_feg/r02/supplementary/b5-final-nbconvert-output-002.txt",
+        "dual_feg/r02/supplementary/dual_feg_example_lyap_checklist.md"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implementation matches proximal gradient with step 1/L, squared-radius initialization and the last composite objective gap. All seven prescribed numerical samples and the rate-comparison plot are present. N=6,7 explicitly retain optimal_inaccurate status as numerical discovery evidence.",
+      "evidence_refs": [
+        "pgm_without_sos/r03/state/pgm_b1.json",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#d13b250e",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#2c18bea7"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Complete saved certificates at N=4 and N=6 were replayed without solving again. The identity, signs, PSD and S reconstruction pass the frozen tolerances. Initial multiplier/S formula search is documented; global analytic full-PEP proof is explicitly not claimed.",
+      "evidence_refs": [
+        "pgm_without_sos/r03/state/pgm_b2.json",
+        "pgm_without_sos/r03/supplementary/pgm_b2_N6.json",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.txt",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#39777061"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same reverse-LDL/latest-gradient assignment gives rank four on all retained interior indices at N=4 and N=6. Endpoint exclusions are fixed at one on each end. All residual families and S pieces are covered, with nonpositive residual and subtracted PSD sign conventions.",
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#3f7d5d27",
+        "pgm_without_sos/r03/supplementary/rank_search.json",
+        "pgm_without_sos/r03/supplementary/b3-initial-trials.json",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay of the actual candidate scan, sparse basis search, symmetric coefficient extraction and full-potential assembly passed for every required index k=0,...,4, including both endpoints.",
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#555014d6",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#8a709058",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#566026a9",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#6fb2ff99",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#ccc7c313",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/numeric-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r03",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted explicit finite-product potential and local SOS identities establish the exact rate for every N>=1. Independent exact expansion verifies the general step, base, terminal and N=1 identities; the submitted positive-denominator argument and residual signs imply decrease and the exact terminal normalization.",
+      "evidence_refs": [
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#52b4381f",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#bb4ae8e2",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#a895ac2f",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#f50faaf0",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#b600eb98",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#9542bab3",
+        "pgm_without_sos/r03/pgm_example_lyap.ipynb#f8789bdd",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.py",
+        "supplementary/evaluation/pgm_without_sos_r03/validation/exact_audit.json",
+        "pgm_without_sos/r03/supplementary/b5-static-001.json",
+        "pgm_without_sos/r03/supplementary/b5-final-notebook-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the supplied proximal-gradient iteration and composite terminal objective. All seven prescribed saved solves are optimal and agree with the inferred 1/(4N) rate; required notebook content and plot output are present.",
+      "evidence_refs": [
+        "pgm_with_sos/r03/state/pgm_b1.json",
+        "pgm_with_sos/r03/supplementary/run_b1.py",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#00c610c4",
+        "pgm_with_sos/r03/supplementary/b1-static-003.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A coherent selected N=4 sparse certificate preserves the dense bound, passes all scalar-coordinate and sign/PSD checks, and reconstructs the supplied SOS at scale one. Initial multiplier-formula search is documented and checked. These are numerical certificate results, not an all-horizon global certificate claim.",
+      "evidence_refs": [
+        "pgm_with_sos/r03/state/pgm_b2.json",
+        "pgm_with_sos/r03/state/pgm_dense.json",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#03852b9e",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#dacc9668",
+        "supplementary/evaluation/pgm_with_sos_r03/validation/review-replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same forward/minimizer-pair grouping with transported SOS pieces gives rank four at N=4 and N=6, with fixed endpoint exclusions (1,1). Each horizon uses its own coherent certificate. All terms are covered, with only the initial-condition normalization reserved for the boundary argument.",
+      "evidence_refs": [
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#7f4ef12e",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#ac2aa77b",
+        "pgm_with_sos/r03/state/pgm_b3.json",
+        "pgm_with_sos/r03/supplementary/N6-selected/pgm_b2.json",
+        "supplementary/evaluation/pgm_with_sos_r03/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate scan and sparse basis search replayed. The selected independent basis reconstructs every required V_k at k=0,1,2,3,4, including full function-value and constant terms and both endpoint exceptions.",
+      "evidence_refs": [
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#222353c0",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#a237245e",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#efc34935",
+        "pgm_with_sos/r03/state/pgm_b4.json",
+        "pgm_with_sos/r03/supplementary/b4-reconstruction.json",
+        "supplementary/evaluation/pgm_with_sos_r03/validation/review-replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r03",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted piecewise potential and local interpolation/SOS identities establish the exact target for every integer N>=1. General symbolic identities were replayed and independently expanded without adding proof terms. Sign, domain, normalization and telescoping arguments are valid. Required delivery evidence is present.",
+      "evidence_refs": [
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#3bb1190b",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#e7a67364",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#71bba802",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#516e962f",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#b95d2a2e",
+        "pgm_with_sos/r03/pgm_example_lyap.ipynb#72f025ac",
+        "supplementary/evaluation/pgm_with_sos_r03/validation/review-independent-symbolic.json",
+        "supplementary/evaluation/pgm_with_sos_r03/validation/review-replay.json",
+        "pgm_with_sos/r03/supplementary/b5-static-002.json",
+        "pgm_with_sos/r03/supplementary/b5-nbconvert-001.log",
+        "pgm_with_sos/r03/supplementary/pgm_example_lyap_checklist.md"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup and visible notebook implement the supplied OGM, including the special terminal recurrence and R squared radius. All seven saved solves support the exact candidate rate; their status and comparisons were inspected and recomputed without new solves.",
+      "evidence_refs": [
+        "ogm/r03/ogm_setup.py",
+        "ogm/r03/state/ogm_b1.json",
+        "ogm/r03/ogm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh reconstruction of both coherent certificates passes in Gram, function and constant coordinates; dual signs, PSD, S decomposition, inventory and source hashes pass. Dense/relaxed agreement and initial formula search are inspectable.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/state/ogm_b2.json",
+        "ogm/r03/supplementary/b2-N6-certificate.json",
+        "ogm/r03/ogm_example_lyap.ipynb#87114f23"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh partial-sum replay covers every retained interpolation term and the complete PSD block, with terminal interpolation/S and initial radius explicitly reserved. Fixed exclusions (2,0) give rank 4 at horizons 4 and 6 with three and five retained indices.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/ogm_example_lyap.ipynb#d081de56",
+        "ogm/r03/ogm_example_lyap.ipynb#437759cc",
+        "ogm/r03/supplementary/rank_search.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Candidate scans and sparse searches were replayed. Independent adopted bases of sizes 0,3,4,4,4 reconstruct every required k=0..4, including full function and offset terms.",
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/ogm_example_lyap.ipynb#bd41d035",
+        "ogm/r03/ogm_example_lyap.ipynb#19cec219",
+        "ogm/r03/state/ogm_b4.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r03",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted potential, exact symbolic identities and elementary domain/sign argument establish the required rate for every N>=1 and general L,R. All proof-critical code is visible; final saved clean-kernel and static evidence is complete.",
+      "evidence_refs": [
+        "ogm/r03/ogm_example_lyap.ipynb#4da4fe81",
+        "ogm/r03/ogm_example_lyap.ipynb#236274bc",
+        "ogm/r03/ogm_example_lyap.ipynb#4c38ad14",
+        "ogm/r03/ogm_example_lyap.ipynb#e5632836",
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/supplementary/b5-final-nbconvert-output-002.txt"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup matches Bregman proximal point, last-iterate gap and D_h radius R; the complete required sweep and comparison are recorded.",
+      "evidence_refs": [
+        "bppm/r03/state/bppm_b1.json",
+        "bppm/r03/bppm_example_lyap.ipynb#cb3e7230",
+        "bppm/r03/bppm_example_lyap.ipynb#ddbc4781"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete coherent selected numerical certificate replays successfully; dense agreement, all scalar components, signs and S reconstruction pass.",
+      "evidence_refs": [
+        "supplementary/evaluation/bppm_r03/validation/replay-results.json",
+        "bppm/r03/state/bppm_b2.json",
+        "bppm/r03/bppm_example_lyap.ipynb#decb6376"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted common grouping has complete coverage and signed increments. Replayed N=4 and N=6 both have interior rank 4 with fixed exclusions (1,1).",
+      "evidence_refs": [
+        "supplementary/evaluation/bppm_r03/validation/replay-results.json",
+        "bppm/r03/supplementary/rank_search.json",
+        "bppm/r03/bppm_example_lyap.ipynb#c64e38bb"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay confirms the actual candidate scan/search, independent four-vector bases, symmetric coefficient reconstruction, and full potential at all k=0..4.",
+      "evidence_refs": [
+        "supplementary/evaluation/bppm_r03/validation/replay-results.json",
+        "bppm/r03/bppm_example_lyap.ipynb#72009ad5",
+        "bppm/r03/bppm_example_lyap.ipynb#0d69d08d"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r03",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The supplied exact local proof establishes the requested theorem. Step/base/boundary identities replay to exact zero, signs give decrease, and the initial/terminal links yield R/(alpha N). Required delivery evidence is present.",
+      "evidence_refs": [
+        "bppm/r03/bppm_example_lyap.ipynb#87a831bb",
+        "bppm/r03/bppm_example_lyap.ipynb#75d035a2",
+        "bppm/r03/bppm_example_lyap.ipynb#6d382711",
+        "bppm/r03/bppm_example_lyap.ipynb#3a148bfd",
+        "bppm/r03/supplementary/b5-final-nbconvert-console.txt",
+        "bppm/r03/supplementary/bppm_example_lyap_checklist.md",
+        "supplementary/evaluation/bppm_r03/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r03",
+      "block_id": "B1",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Algorithm/setup and saved seven-horizon sweep agree with supplied problem; rate comparison recorded.",
+      "evidence_refs": [
+        "validation/state/feg_b1.json",
+        "validation/replay-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "feg_r03",
+      "block_id": "B2",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Coherent saved certificate freshly replayed with frozen tolerances; dual signs, PSD, identity, S reconstruction, dense agreement pass. Initial formula-search record inspected.",
+      "evidence_refs": [
+        "numerical-evidence.json",
+        "validation/replay-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "feg_r03",
+      "block_id": "B3",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Two saved horizons freshly replayed under same grouping recipe; full coverage/increments and rank rule pass.",
+      "evidence_refs": [
+        "validation/rank6-results.json",
+        "validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r03",
+      "block_id": "B4",
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "reason": "Saved bases and coefficients freshly reconstruct all required indices and scalar components; historical search evidence retained.",
+      "evidence_refs": [
+        "validation/replay-results.json",
+        "validation/supplementary/b4-complete-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "feg_r03",
+      "block_id": "B5",
+      "mathematical_status": "PASS",
+      "delivery_status": "FAIL",
+      "reason": "Submitted exact local Lyapunov proof establishes target; fresh general step/base/terminal replay and sign/domain inspection pass. Original final notebook/checklist delivery failed operationally.",
+      "evidence_refs": [
+        "validation/replay-results.json",
+        "validation/feg_example_lyap.ipynb#94fe623d",
+        "validation/supplementary/closure.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The supplied recurrence, zero condition, squared radius and final residual are implemented correctly. The saved N=1..7 sweep supports 4/N^2 for N>=2 and a stronger N=1 value; its one inaccurate solver status is disclosed.",
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_setup.py",
+        "dual_feg/r03/supplementary/b1_sweep.json",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#8ec4fa3d",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#81a35430"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Both coherent sparse certificates, selected N=4 and confirming N=6, replay successfully with complete interpolation and normalization inventory, source hashes and coordinate order. Candidate formulas and their initial search are retained.",
+      "evidence_refs": [
+        "dual_feg/r03/state/dual_feg_b2.json",
+        "dual_feg/r03/supplementary/b2-N6.json",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#16f7d987",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#b9aec4d8",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same nonincreasing partial-sum recipe passes coverage and increment checks at N=4 and N=6. Interior rank 4 is confirmed with exactly one index excluded at each end, leaving three and five interior indices.",
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#23b75d41",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#ce33b506",
+        "dual_feg/r03/supplementary/rank_search.json",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual framework candidate scanning and sparse-subset searches were replayed. The adopted independent bases and symmetric coefficients reconstruct every selected and confirming partial sum, including both endpoints and all scalar components.",
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#f31b656c",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#6d91e676",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#1921e859",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#51057933",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#b3040b92",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r03",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The explicit terminal-anchored potential establishes the exact target for every N>=1. Replayed general symbolic identities, inspected residual signs and domains, and verified the submitted telescoping and normalized boundary implication. Final static and clean-kernel records are supported by the frozen notebook hash and actual outputs.",
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#3407f258",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#03de6805",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#689910cf",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#3f31e4aa",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#56a3a6fd",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#694eadb4",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#f7eebb3f",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#857f3126",
+        "dual_feg/r03/supplementary/b5-static-001.json",
+        "dual_feg/r03/supplementary/b5-nbconvert-execution.json",
+        "dual_feg/r03/supplementary/dual_feg_example_lyap_checklist.md",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the supplied proximal-gradient recursion, squared-radius initial condition and last-iterate composite objective; all seven prescribed sweep samples support the candidate rate.",
+      "evidence_refs": [
+        "pgm_with_sos/r04/state/pgm_b1.json",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#0cf9100b"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Final refined coherent dual certificate and the supplied SOS pass complete numerical verification. The aid normalization is one; lambda formulas are documented as candidates at discovery and proved later.",
+      "evidence_refs": [
+        "pgm_with_sos/r04/state/pgm_b2.json",
+        "pgm_with_sos/r04/state/pgm_selected_raw.json",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#592c7ed9",
+        "supplementary/evaluation/pgm_with_sos_r04/validation/review_replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same forward optimizer/consecutive grouping with all three supplied squares covers the complete certificate and has constant interior rank at two horizons after refinement. No terminal leftovers are omitted.",
+      "evidence_refs": [
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#b2faa91f",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#8603276b",
+        "pgm_with_sos/r04/supplementary/b2-N6-certificate.json",
+        "supplementary/evaluation/pgm_with_sos_r04/validation/review_replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Independent selected bases and symmetric coefficient matrices reconstruct every partial sum k=0,...,4 including function coordinates and constants. Actual candidate scan and sparsity search are inspectable.",
+      "evidence_refs": [
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#c747d144",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#ab155749",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#05cc8a45",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#0f27e138",
+        "supplementary/evaluation/pgm_with_sos_r04/validation/review_replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted explicit potential and supplied-square residual identities establish the exact target at arbitrary N. Every necessary multiplier and square coefficient has a direct valid sign argument. Base, terminal, N=1 and R=0 are covered.",
+      "evidence_refs": [
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#730cf5b4",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#864738cf",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#e5719f7f",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#35b985d5",
+        "pgm_with_sos/r04/pgm_example_lyap.ipynb#bc6805ed",
+        "pgm_with_sos/r04/supplementary/b5-final-execution.log",
+        "pgm_with_sos/r04/supplementary/pgm_example_lyap_checklist.md",
+        "supplementary/evaluation/pgm_with_sos_r04/validation/review_replay.log"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the required proximal-gradient update, sum stationarity, squared-radius constraint and last-iterate composite gap. All seven prescribed sweep results and the comparison plot are present.",
+      "evidence_refs": [
+        "pgm_without_sos/r04/state/pgm_b1.json",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#f7ebb014",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#a16fc29b"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The selected complete N=4 certificate, its source/coordinate inventory and decomposition replay successfully. Dense/relaxed bounds agree, and the initial formula search is visible. Global analytic full-PEP positivity is correctly left unclaimed.",
+      "evidence_refs": [
+        "pgm_without_sos/r04/state/pgm_b2.json",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#e7b477d3",
+        "supplementary/evaluation/pgm_without_sos_r04/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same reverse-LDL/latest-iterate grouping reconstructs all terms and increments at N=4 and N=6. Each confirming horizon has at least three retained rank-four indices with fixed one-index exclusions at both ends.",
+      "evidence_refs": [
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#3b471409",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#d4d8e853",
+        "pgm_without_sos/r04/supplementary/rank_search.json",
+        "supplementary/evaluation/pgm_without_sos_r04/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The adopted independent basis and symmetric matrices reconstruct the quadratic and full scalar potential at every required index k=0..4. Actual candidate filtering and sparsity search are present and replayed.",
+      "evidence_refs": [
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#f2b7c5e8",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#24883291",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#a0adaf5c",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#b2700e8f",
+        "supplementary/evaluation/pgm_without_sos_r04/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The finite transfer product defines every beta coefficient and satisfies the submitted recurrence. Exact symbolic replay verifies every local identity; the supplied sign/domain proof yields V_N<=V_0=0 and the exact target for all N>=1, including N=1 and N=2.",
+      "evidence_refs": [
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#94b7f70f",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#b29d06bd",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#41c81074",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#f93defbc",
+        "pgm_without_sos/r04/pgm_example_lyap.ipynb#4a6f6f3f",
+        "pgm_without_sos/r04/supplementary/b5-final-execution.json",
+        "pgm_without_sos/r04/supplementary/b5-static-002.json",
+        "pgm_without_sos/r04/supplementary/pgm_example_lyap_checklist.md",
+        "supplementary/evaluation/pgm_without_sos_r04/validation/replay_results.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup and visible notebook encode exactly the prescribed OGM updates, terminal theta recurrence, stationary optimum, squared-radius initial condition and final objective gap. The required seven-horizon acquisition and rate comparison are present.",
+      "evidence_refs": [
+        "ogm/r04/ogm_setup.py",
+        "ogm/r04/supplementary/b1-sweep-console.txt",
+        "ogm/r04/ogm_example_lyap.ipynb#cf43013d"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete selected N=4 certificate is coherent and all coordinate, sign, PSD, bound-agreement and direct S-reconstruction checks replayed successfully. Initial lambda/S formula search is documented separately from analytic proof.",
+      "evidence_refs": [
+        "ogm/r04/ogm_example_lyap.ipynb#280011a1",
+        "supplementary/evaluation/ogm_r04/validation/replay-results.json",
+        "ogm/r04/ogm_example_lyap.ipynb#aea43019",
+        "ogm/r04/supplementary/b2-chain-certificate.json",
+        "ogm/r04/supplementary/b2_acquire.py"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same forward-chain/optimizer-row grouping and positive terminal-square boundary recipe has full scalar coverage and constant interior rank three at N=4 and N=6. Both horizons were replayed against their own complete saved certificate.",
+      "evidence_refs": [
+        "ogm/r04/ogm_example_lyap.ipynb#b1b64787",
+        "supplementary/evaluation/ogm_r04/validation/replay-results.json",
+        "ogm/r04/ogm_example_lyap.ipynb#7c40f0ce",
+        "ogm/r04/supplementary/b3-observation-N4.json",
+        "ogm/r04/supplementary/b3-observation-N6.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate generation, filtering and sparse-basis search replayed; independent bases and symmetric coefficients reconstruct every required index 0..4, including function and constant components and both endpoints.",
+      "evidence_refs": [
+        "ogm/r04/ogm_example_lyap.ipynb#6d6d3347",
+        "supplementary/evaluation/ogm_r04/validation/replay-results.json",
+        "ogm/r04/ogm_example_lyap.ipynb#d42cb4c1"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted self-contained proof establishes the exact target for every N>=1. Five generic exact identities replayed with zero Gram/function/offset residuals, and the supplied interpolation/sign/domain and boundary reasoning justifies the inequality direction. Required delivery evidence is inspectable.",
+      "evidence_refs": [
+        "ogm/r04/ogm_example_lyap.ipynb#da7dca00",
+        "supplementary/evaluation/ogm_r04/validation/replay-results.json",
+        "ogm/r04/ogm_example_lyap.ipynb#cdcf5c6a",
+        "ogm/r04/ogm_example_lyap.ipynb#896c79b8",
+        "supplementary/evaluation/ogm_r04/validation/integrity-delivery.json",
+        "ogm/r04/supplementary/b5-static-001.json",
+        "ogm/r04/supplementary/b5-final-execution.json",
+        "ogm/r04/supplementary/ogm_example_lyap_checklist.md",
+        "ogm/r04/ogm_example_lyap.ipynb#3207e95e"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements exact Bregman proximal updates, initial divergence <= R, and last-iterate objective gap. All seven required saved sweep solves are optimal and support the supplied candidate rate; notebook contains the setup and saved numerical evidence.",
+      "evidence_refs": [
+        "bppm/r04/bppm_setup.py",
+        "bppm/r04/supplementary/b1_sweep-002.console.txt",
+        "bppm/r04/bppm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Replayed the complete saved N=4 and N=6 certificates with their own coordinate inventories, source hashes, multipliers and S. Full scalar identities, dual signs, PSD, eigendecomposition reconstruction and dense/relaxed agreement pass. Initial formula search is documented; global analytic lambda/S verification is explicitly not claimed.",
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#c039912f",
+        "bppm/r04/bppm_example_lyap.ipynb#ee1fb963",
+        "supplementary/evaluation/bppm_r04/validation/replay.log",
+        "bppm/r04/state/bppm_dense.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted grouping assigns every active interpolation term and the entire numerical S, with one terminal h residual and one terminal PSD block. Full-coordinate coverage and increments replay successfully. A single fixed recipe has rank 4 at N=4 and N=6 with fixed one-index exclusions at each end, leaving three and five interior indices.",
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#552381d0",
+        "bppm/r04/bppm_example_lyap.ipynb#bfb3f708",
+        "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Replayed candidate filtering, the actual sparsity search, independence tests and symmetric coefficient extraction for all nonzero indices. The assembled quadratic, function and constant expression reconstructs V_k for every k=0..4, including both endpoints.",
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#07ce1939",
+        "bppm/r04/bppm_example_lyap.ipynb#f3a7f8e0",
+        "supplementary/evaluation/bppm_r04/validation/replay.log"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted all-horizon proof establishes the exact target. Its generic step, coefficient structure, initial, first-step and terminal identities replay exactly in all scalar components. Convex residuals are nonpositive and every coefficient is nonnegative; V0=0 gives VN<=0, and the terminal identity gives metric<=R/(alpha N). N=1 and R=0 are covered. Required saved static and clean-kernel execution evidence is present.",
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#04fed141",
+        "bppm/r04/bppm_example_lyap.ipynb#36310e94",
+        "bppm/r04/bppm_example_lyap.ipynb#b7276a21",
+        "bppm/r04/bppm_example_lyap.ipynb#a8b4a071",
+        "bppm/r04/supplementary/b5_nbconvert.console.txt",
+        "bppm/r04/supplementary/bppm_example_lyap_checklist.md",
+        "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the supplied FEG recurrence with one shared initial half-step, squared-radius initialization and final squared operator residual. All seven saved solves are optimal; the candidate is correctly labeled numerical evidence.",
+      "evidence_refs": [
+        "feg/r04/feg_setup.py",
+        "feg/r04/state/feg_b1.json",
+        "feg/r04/feg_example_lyap.ipynb#10cc4d03"
+      ]
+    },
+    {
+      "attempt_id": "feg_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The coherent selected N6 certificate reconstructs all constraints, Gram/function/constant components and S within frozen tolerances. The initial formula search is explicit and distinguishes its numerical mismatch from proof status.",
+      "evidence_refs": [
+        "supplementary/evaluation/feg_r04/validation/replay-results.json",
+        "feg/r04/feg_example_lyap.ipynb#a9d3f288",
+        "feg/r04/state/feg_b2.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same nonincreasing partial-sum recipe, with whole S and final zero-point monotonicity kept at the boundary, passes full-coordinate coverage and increment checks at N4 and N6. Fixed exclusions remove only V0 and VN.",
+      "evidence_refs": [
+        "supplementary/evaluation/feg_r04/validation/replay-results.json",
+        "feg/r04/feg_example_lyap.ipynb#9788f06b",
+        "feg/r04/supplementary/b3-rank-confirmed-N4.json",
+        "feg/r04/supplementary/b3-rank-confirmed-N6.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The actual 348-vector scan and sparse searches are retained and replayed. The common basis [A(x_k),x_k-x_0] is independent and reconstructs every required Vk, including empty V0 and terminal V6.",
+      "evidence_refs": [
+        "supplementary/evaluation/feg_r04/validation/replay-results.json",
+        "feg/r04/feg_example_lyap.ipynb#ce0ae73b",
+        "feg/r04/feg_example_lyap.ipynb#5537f246",
+        "feg/r04/supplementary/b4-search-evidence.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete submitted arbitrary-horizon Lyapunov argument establishes exactly 4 L^2 R^2/N^2. Exact symbolic replay confirms step, base and terminal identities, and the displayed elementary signs imply decrease and the claimed bound.",
+      "evidence_refs": [
+        "supplementary/evaluation/feg_r04/validation/replay-results.json",
+        "feg/r04/feg_example_lyap.ipynb#10b9b0a5",
+        "feg/r04/feg_example_lyap.ipynb#f0bee20b",
+        "feg/r04/feg_example_lyap.ipynb#dc01176f",
+        "feg/r04/feg_example_lyap.ipynb#5dd131dc",
+        "feg/r04/supplementary/b5-static-002.json",
+        "feg/r04/supplementary/b5-final-execution.json",
+        "feg/r04/supplementary/feg_example_lyap_checklist.md",
+        "supplementary/evaluation/feg_r04/validation/inspection-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implementation agrees with all three updates, zero initial auxiliary vector, root/radius assumptions, and terminal squared residual. The required saved seven-horizon sweep supports the proposed rate; it is correctly distinguished from the theorem.",
+      "evidence_refs": [
+        "dual_feg/r04/dual_feg_setup.py",
+        "dual_feg/r04/state/dual_feg_b1.json",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b1-00",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b1-10",
+        "supplementary/evaluation/dual_feg_r04/validation/audit-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A coherent complete N=6 numerical certificate passes fresh inventory, provenance, coordinate identity, sign and decomposition checks. N=8 independently passes the same checks. Dense/relaxed agreement and the initial formula search are inspectable saved evidence.",
+      "evidence_refs": [
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b2-03",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b2n8-01",
+        "dual_feg/r04/state/dual_feg_b2.json",
+        "dual_feg/r04/supplementary/n8/dual_feg_b2.json",
+        "supplementary/evaluation/dual_feg_r04/validation/replay-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same grouping retains every contribution and one terminal monotonicity plus one PSD S boundary remainder. Fresh replay confirms constant interior rank four at two horizons with fixed one-index exclusions at each end.",
+      "evidence_refs": [
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b3-00",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b3-01",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b3-02",
+        "supplementary/evaluation/dual_feg_r04/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh execution of the actual candidate scan and anchored sparsity search succeeds. The adopted independent basis reconstructs all seven required partial sums, including both endpoints and zero function/constant terms.",
+      "evidence_refs": [
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b4-03",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b4-05",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b4-09",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b4-11",
+        "supplementary/evaluation/dual_feg_r04/validation/replay-results.json",
+        "supplementary/evaluation/dual_feg_r04/validation/audit-results.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r04",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The self-contained submitted Lyapunov argument establishes the exact target for arbitrary L>0, R>=0 and every N>=1. Generic exact checks and all boundary cases passed fresh replay; saved static and clean-kernel notebook evidence establish delivery under the presentation override.",
+      "evidence_refs": [
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-top-01",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-top-02",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-04",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-07",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-10",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-13",
+        "dual_feg/r04/dual_feg_example_lyap.ipynb#b5-14",
+        "dual_feg/r04/supplementary/b5-static-001.json",
+        "dual_feg/r04/supplementary/b5-nbconvert-001-output.txt",
+        "dual_feg/r04/supplementary/dual_feg_example_lyap_checklist.md",
+        "supplementary/evaluation/dual_feg_r04/validation/replay-results.json",
+        "supplementary/evaluation/dual_feg_r04/validation/audit-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The setup and visible notebook implement the prescribed proximal-gradient iteration and terminal composite gap. The required seven-horizon sweep and rate comparison are saved; nonoptimal statuses are disclosed.",
+      "evidence_refs": [
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb",
+        "pgm_without_sos/r05/state/pgm_b1.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete selected N=4 certificate and the additional N=6 certificate replay successfully from their own saved components. Initial closed-form search is documented; a global analytic lambda/S proof is unnecessary for this numerical gate.",
+      "evidence_refs": [
+        "pgm_without_sos/r05/state/pgm_b2.json",
+        "pgm_without_sos/r05/supplementary/b2-n06-certificate.json",
+        "supplementary/evaluation/pgm_without_sos_r05/validation/replay-results.json",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#37b688e5"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted reverse-LDL assignment covers all interpolation and square terms and yields nonincreasing partial sums. Fresh checks reproduce rank five at all retained indices of N=4 and N=6 under the same fixed exclusions.",
+      "evidence_refs": [
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#d6911df6",
+        "pgm_without_sos/r05/supplementary/rank_search.json",
+        "supplementary/evaluation/pgm_without_sos_r05/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Candidate-vector and sparse-basis searches are visible and were replayed. Independent bases and symmetric coefficient matrices reconstruct the complete potential at all five required indices, including the empty initial basis and one-vector terminal basis.",
+      "evidence_refs": [
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#a87d3404",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#eaa9578b",
+        "supplementary/evaluation/pgm_without_sos_r05/validation/replay-results.json"
+      ]
+    },
+    {
+      "attempt_id": "pgm_without_sos_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The explicit finite transfer product defines every coefficient. Exact generic symbolic identities and the positive-domain argument prove decrease, base and terminal links and the exceptional horizon, establishing the target. Required notebook delivery evidence is inspectable.",
+      "evidence_refs": [
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#212610df",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#bf7107b4",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#e930ea72",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#5c8fdf91",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#2502d199",
+        "pgm_without_sos/r05/pgm_example_lyap.ipynb#100980e3",
+        "pgm_without_sos/r05/supplementary/b5-final-execute.txt",
+        "pgm_without_sos/r05/supplementary/pgm_example_lyap_checklist.md",
+        "supplementary/evaluation/pgm_without_sos_r05/validation/replay-output.txt"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the prescribed composite proximal-gradient update, squared-radius constraint and terminal objective. All seven prescribed sweep results and rate comparison are present; inaccurate statuses are disclosed.",
+      "evidence_refs": [
+        "pgm_with_sos/r05/state/pgm_b1.json",
+        "pgm_with_sos/r05/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Replayed the complete selected N=4 certificate with both function families and the initial constraint; dense/sparse agreement, signs, PSD and supplied-SOS reconstruction satisfy frozen tolerances. Initial multiplier search and exact fixed-horizon verification are visible.",
+      "evidence_refs": [
+        "pgm_with_sos/r05/state/pgm_b2.json",
+        "pgm_with_sos/r05/state/pgm_dense.json",
+        "supplementary/evaluation/pgm_with_sos_r05/validation/review_replay.txt"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The final polar-aligned decomposition reconstructs the same saved slack, has nonnegative square weights, and covers all assigned terms. The same destination-index recipe has interior rank 4 at N=4 and N=6 with one endpoint excluded at either end.",
+      "evidence_refs": [
+        "pgm_with_sos/r05/supplementary/rank_search.json",
+        "pgm_with_sos/r05/pgm_example_lyap.ipynb#f1559a4e",
+        "supplementary/evaluation/pgm_with_sos_r05/validation/review_replay.txt"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Independent bases and symmetric coefficient matrices reconstruct the full potential at every required k=0..4, including the empty initial basis and one-vector terminal basis. Saved actual candidate scan and sparse search outputs were inspected.",
+      "evidence_refs": [
+        "pgm_with_sos/r05/state/pgm_b4.json",
+        "pgm_with_sos/r05/supplementary/b4-basis-probe.json",
+        "supplementary/evaluation/pgm_with_sos_r05/validation/review_replay.txt"
+      ]
+    },
+    {
+      "attempt_id": "pgm_with_sos_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted explicit potential, local residual identities, justified signs and endpoint normalization prove the exact target for all N>=1. Fresh symbolic replay confirms every component, including the distinct N=1 case. Saved final clean-kernel execution and static records support delivery.",
+      "evidence_refs": [
+        "pgm_with_sos/r05/pgm_example_lyap.ipynb#efb01070",
+        "pgm_with_sos/r05/pgm_example_lyap.ipynb#5e2501c9",
+        "pgm_with_sos/r05/supplementary/b5-static-002.json",
+        "pgm_with_sos/r05/supplementary/pgm_example_lyap_checklist.md",
+        "supplementary/evaluation/pgm_with_sos_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup implements the supplied OGM updates, special terminal recurrence, stationary optimum, squared-radius initial condition and final function gap. Saved N=1..7 sweep supports the inferred exact constant; the notebook contains the numerical values and comparison plot.",
+      "evidence_refs": [
+        "ogm/r05/ogm_setup.py",
+        "ogm/r05/state/ogm_b1.json",
+        "ogm/r05/ogm_example_lyap.ipynb#d80a5995"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "A complete same-solve certificate at selected N=4 passes fresh all-component identity, cone, dense/relaxed agreement and LDL reconstruction checks. The N=6 confirming certificate passes the same checks. Initial lambda and S formula search is documented and numerically compared.",
+      "evidence_refs": [
+        "ogm/r05/state/ogm_b2.json",
+        "ogm/r05/state/ogm_dense.json",
+        "ogm/r05/supplementary/b2-certificate-N6.json",
+        "ogm/r05/ogm_example_lyap.ipynb#3f16d4bb",
+        "supplementary/evaluation/ogm_r05/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay confirms complete chronological grouping with the full PSD slack assigned to the final increment, no omitted contributions, all-component coverage and increment identities, and rank 3 across two horizons with the same fixed endpoint exclusions.",
+      "evidence_refs": [
+        "ogm/r05/supplementary/rank_search.json",
+        "ogm/r05/ogm_example_lyap.ipynb#6680e948",
+        "ogm/r05/ogm_example_lyap.ipynb#0298e489",
+        "supplementary/evaluation/ogm_r05/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh execution of the submitted candidate scan and sparse-basis search confirms independent spanning bases and full potential reconstruction at every selected-horizon index, including V_0 and V_4. Function gaps and offsets are assembled explicitly.",
+      "evidence_refs": [
+        "ogm/r05/state/ogm_b4.json",
+        "ogm/r05/ogm_example_lyap.ipynb#c0654881",
+        "supplementary/evaluation/ogm_r05/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "ogm_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The self-contained proof establishes the exact target for all N>=1. Fresh symbolic replay gives zero Gram, function and offset residuals for ordinary step, base, special terminal and N=1 identities. Positive-root theta values, positive L and nonnegative squares justify the decrease direction and exact normalization. Saved static checks and clean-kernel execution satisfy delivery requirements under the presentation override.",
+      "evidence_refs": [
+        "ogm/r05/ogm_example_lyap.ipynb#4340683f",
+        "ogm/r05/ogm_example_lyap.ipynb#51a4da61",
+        "ogm/r05/ogm_example_lyap.ipynb#82c74a95",
+        "ogm/r05/ogm_example_lyap.ipynb#40af562b",
+        "ogm/r05/ogm_example_lyap.ipynb#367b58a1",
+        "ogm/r05/supplementary/ogm_example_lyap_checklist.md",
+        "supplementary/evaluation/ogm_r05/validation/review-replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Setup and notebook encode the prescribed problem; the saved seven-horizon sweep supports the supplied rate and the notebook contains executable setup, numerical comparison and saved plot evidence.",
+      "evidence_refs": [
+        "bppm/r05/state/bppm_b1.json",
+        "bppm/r05/bppm_example_lyap.ipynb#bba9c83c",
+        "bppm/r05/bppm_example_lyap.ipynb#395c40ef",
+        "supplementary/evaluation/bppm_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The coherent N=4 certificate and separate N=6 certificate include both function families, initial dual and retained S; complete identities, signs and decomposition reconstruction pass. The initial closed-form search is documented without promoting a finite-sample formula check to a global proof.",
+      "evidence_refs": [
+        "bppm/r05/state/bppm_b2.json",
+        "bppm/r05/state/bppm_dense.json",
+        "bppm/r05/supplementary/bppm_N6_b2.json",
+        "bppm/r05/bppm_example_lyap.ipynb#8a7841bf",
+        "supplementary/evaluation/bppm_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same adjacent-step recipe covers every non-initial certificate term, retaining the complete S and one terminal h residual as explicit boundary leftovers. Freshly reconstructed N=4 and N=6 profiles give constant interior rank four with fixed one-index exclusions at each end.",
+      "evidence_refs": [
+        "bppm/r05/supplementary/rank_search.json",
+        "bppm/r05/bppm_example_lyap.ipynb#909ce927",
+        "bppm/r05/supplementary/b3_grouping.py",
+        "supplementary/evaluation/bppm_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate filtering and sparse basis search were replayed. The selected empty basis at k=0 and [x_star-x_0,x_star-x_k,q_0,q_k] at k=1..4 are independent and reconstruct every required quadratic and full scalar potential, including the terminal index.",
+      "evidence_refs": [
+        "bppm/r05/state/bppm_b4.json",
+        "bppm/r05/bppm_example_lyap.ipynb#0344e11a",
+        "bppm/r05/bppm_example_lyap.ipynb#fb494198",
+        "bppm/r05/bppm_example_lyap.ipynb#f2e75bdc",
+        "supplementary/evaluation/bppm_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "bppm_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The notebook contains a self-contained general Lyapunov proof with explicit residual definitions, all multipliers, exact symbolic step/base/terminal checks, valid convexity signs and the exact target implication. Saved final static and clean-kernel execution evidence match the frozen notebook.",
+      "evidence_refs": [
+        "bppm/r05/bppm_example_lyap.ipynb#28375462",
+        "bppm/r05/bppm_example_lyap.ipynb#d9c9dbb8",
+        "bppm/r05/bppm_example_lyap.ipynb#e2e70622",
+        "bppm/r05/bppm_example_lyap.ipynb#15321138",
+        "bppm/r05/bppm_example_lyap.ipynb#27dd99b9",
+        "bppm/r05/supplementary/b5-static-002.json",
+        "bppm/r05/supplementary/b5-nbconvert-execution.json",
+        "bppm/r05/supplementary/bppm_example_lyap_checklist.md",
+        "supplementary/evaluation/bppm_r05/validation/review_replay.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The implementation matches both updates, the shared first half-point, monotone Lipschitz assumptions, initial radius and terminal squared residual. The prescribed seven-horizon sweep and candidate-rate comparison are present.",
+      "evidence_refs": [
+        "feg/r05/feg_setup.py",
+        "feg/r05/supplementary/sweep.py",
+        "feg/r05/supplementary/sweep-console.txt",
+        "feg/r05/feg_example_lyap.ipynb#c93ebca5",
+        "feg/r05/supplementary/b1-static-003.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay of both coherent saved certificates passes every full-coordinate identity, sign, PSD and S reconstruction check. Dense/relaxed agreement and a substantive unsuccessful initial closed-form search are documented.",
+      "evidence_refs": [
+        "feg/r05/feg_example_lyap.ipynb#6f2490f2",
+        "feg/r05/feg_example_lyap.ipynb#b2a9cce7",
+        "feg/r05/state/feg_b2.json",
+        "feg/r05/supplementary/feg_certificate_N8.json",
+        "supplementary/evaluation/feg_r05/validation/replay-results.json",
+        "feg/r05/supplementary/b2-static-002.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay confirms complete grouping and increment identities, PSD remainder assigned to the boundary, and common interior rank 2 at horizons 6 and 8 under one fixed recipe.",
+      "evidence_refs": [
+        "feg/r05/feg_example_lyap.ipynb#e41a11dd",
+        "feg/r05/feg_example_lyap.ipynb#964227d1",
+        "feg/r05/supplementary/rank_N6.json",
+        "feg/r05/supplementary/rank_N8.json",
+        "supplementary/evaluation/feg_r05/validation/replay-results.json",
+        "feg/r05/supplementary/b3-static-002.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Fresh replay of the visible candidate scan and sparse-basis search passes. The adopted [A(x_k), x_k-x0] basis is independent and reconstructs all indices 0..6, including the empty initial basis and terminal case.",
+      "evidence_refs": [
+        "feg/r05/feg_example_lyap.ipynb#26e40313",
+        "feg/r05/feg_example_lyap.ipynb#48bee351",
+        "feg/r05/feg_example_lyap.ipynb#c79f7358",
+        "feg/r05/feg_example_lyap.ipynb#52385add",
+        "supplementary/evaluation/feg_r05/validation/replay-results.json",
+        "feg/r05/supplementary/b4-static-002.json"
+      ]
+    },
+    {
+      "attempt_id": "feg_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The submitted general Lyapunov proof establishes the exact target. Its coefficient derivation and step/base/terminal identities replay exactly, and the stated elementary sign and domain arguments justify the inequality direction and every horizon.",
+      "evidence_refs": [
+        "feg/r05/feg_example_lyap.ipynb#92ad8abe",
+        "feg/r05/feg_example_lyap.ipynb#2d37164e",
+        "feg/r05/feg_example_lyap.ipynb#0245d885",
+        "feg/r05/feg_example_lyap.ipynb#40fd13e7",
+        "feg/r05/feg_example_lyap.ipynb#941e1458",
+        "feg/r05/feg_example_lyap.ipynb#3d5d8359",
+        "feg/r05/feg_example_lyap.ipynb#4952ebf5",
+        "supplementary/evaluation/feg_r05/validation/replay-results.json",
+        "feg/r05/supplementary/b5-static-001.json",
+        "feg/r05/supplementary/final-nbconvert-console.txt",
+        "feg/r05/supplementary/feg_example_lyap_checklist.md"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "block_id": "B1",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Implementation matches every supplied recurrence and initial condition. The seven-horizon discovery sweep and rate comparison are present, with N=1's inaccurate status explicitly disclosed; this is numerical discovery evidence, not the universal proof.",
+      "evidence_refs": [
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#185ccb8d",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#9f2f85a5",
+        "dual_feg/r05/state/dual_feg_b1.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "block_id": "B2",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The selected N=6 sparse certificate is coherent, includes all retained scalar duals and the complete S, and passes fresh component/sign/PSD/reconstruction checks. Initial lambda/S formula search is documented without claiming universal full-PEP proof.",
+      "evidence_refs": [
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#c424d600",
+        "supplementary/evaluation/dual_feg_r05/validation/replay.json",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#aa235abb",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#bfe44151",
+        "dual_feg/r05/state/dual_feg_b2.json",
+        "supplementary/evaluation/dual_feg_r05/validation/replay.log"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "block_id": "B3",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The same forward Lipschitz/terminal-monotonicity grouping retains whole S and terminal-star monotonicity at the boundary. Coverage and increments pass in every scalar component, and interior rank four is freshly confirmed at N=6 and N=8.",
+      "evidence_refs": [
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#a721aaa4",
+        "supplementary/evaluation/dual_feg_r05/validation/replay.json",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#59b6abfe",
+        "dual_feg/r05/supplementary/rank_N6.json",
+        "dual_feg/r05/supplementary/rank_N8.json"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "block_id": "B4",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "Actual candidate filtering and sparse-basis search are visible and replay successfully. The adopted basis is independent and reconstructs every selected partial sum, including V_0 and V_N, with all nonquadratic components retained.",
+      "evidence_refs": [
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#895bd265",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#dc53e87a",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#53132baf",
+        "supplementary/evaluation/dual_feg_r05/validation/replay.log"
+      ]
+    },
+    {
+      "attempt_id": "dual_feg_r05",
+      "block_id": "B5",
+      "historical_gate_verdict": "PASS",
+      "mathematical_status": "PASS",
+      "delivery_status": "COMPLETE",
+      "reason": "The complete submitted theorem is valid. Fresh exact component checks establish the generic interior recursion, zero initial potential, nonsingular final-step identity and exact boundary square completion. Positive multipliers and nonpositive monotonicity/Lipschitz residuals imply the required direction and rate.",
+      "evidence_refs": [
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#76c36d51",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#6199a679",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#8a0671b6",
+        "dual_feg/r05/supplementary/dual_feg_example_lyap_checklist.md",
+        "dual_feg/r05/supplementary/b5-execution-final.json",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#300df1c9",
+        "dual_feg/r05/dual_feg_example_lyap.ipynb#06b04a0a",
+        "dual_feg/r05/supplementary/b5-static-002.json",
+        "supplementary/evaluation/dual_feg_r05/validation/replay.json"
+      ]
+    }
+  ],
+  "mathematical_counts": {
+    "PASS": 30
+  },
+  "additional_verification_costs": [
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "session_id": "01a0d14a-cd83-7920-a67c-c9096ad890f9",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "dispatch_at": "2026-09-24T02:42:07.228219+00:00",
+      "stopped_at": "2026-09-24T02:50:20.962175+00:00",
+      "wall_seconds": 493.733956,
+      "token_components_observed": {
+        "input_tokens": 1738844,
+        "cached_input_tokens": 1646464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9820,
+        "reasoning_output_tokens": 982,
+        "total_tokens": 1748664
+      },
+      "tokens_total": 1748664,
+      "usage_status": "complete",
+      "host_evidence": "posthoc_20260924T024014Z\\host\\ph_pgm_without_sos_r02.json"
+    },
+    {
+      "attempt_id": "feg_r03",
+      "session_id": "01a0d14a-9309-7821-b450-4134dbcc2397",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "dispatch_at": "2026-09-24T02:41:31.334160+00:00",
+      "stopped_at": "2026-09-24T02:48:12.182329+00:00",
+      "wall_seconds": 400.848169,
+      "token_components_observed": {
+        "input_tokens": 1389545,
+        "cached_input_tokens": 1300480,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 8270,
+        "reasoning_output_tokens": 637,
+        "total_tokens": 1397815
+      },
+      "tokens_total": 1397815,
+      "usage_status": "complete",
+      "host_evidence": "posthoc_20260924T024014Z\\host\\ph_feg_r03.json"
+    }
+  ],
+  "additional_controller_cost": {
+    "started_at": "2026-09-24T02:38:12.460Z",
+    "observed_at": "2026-09-24T02:51:30.424379+00:00",
+    "token_components_observed_delta": {
+      "input_tokens": 3964435,
+      "cached_input_tokens": 3915392,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 13742,
+      "reasoning_output_tokens": 3044,
+      "total_tokens": 3978177
+    },
+    "usage_status": "partial",
+    "scope": "Current post hoc controller turn through latest collection; includes preparation, orchestration and reporting; final response is outside snapshot."
+  },
+  "original_records_unchanged": true,
+  "original_delivery_not_backfilled": true
+}

@@ -1,0 +1,23 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_requires_second_horizon",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Revalidated selected N=6 certificate; grouping and coverage passed; a second coherent certificate is required for cross-horizon rank confirmation",
+    "run_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  4,
+    "selected_horizon":  6,
+    "preserve_selected_main_certificate":  true,
+    "recipe":  "Use same structural relaxation recorded in selected B2; store complete additional N=4 certificate in supplementary; retain N=6 main state",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "own B2 certificate/source files",
+                              "own B3 generated files"
+                          ],
+    "executed_commands":  [
+                              "python -I -B supplementary/b3_prepare.py",
+                              "python -I -B supplementary/b3_trial.py"
+                          ],
+    "unresolved_work":  "Cross-horizon rank confirmation, B3 state and notebook completion; B4/B5 remain pending"
+}

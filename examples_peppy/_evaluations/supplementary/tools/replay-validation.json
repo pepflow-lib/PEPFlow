@@ -1,0 +1,2756 @@
+{
+  "schema_version": 3,
+  "validation_date": "2026-09-28",
+  "campaign_id": "20260923T140754Z_paper5_pgm_sos_6x5_isolation1",
+  "report_scope": "Saved-code execution and source checks for the consolidated experimental supplementary; separate from historical mathematical reviews and generation costs.",
+  "completion_semantics": "All units selected by a given plan executed; completed is not a mathematical PASS verdict.",
+  "report_derivation": "Author-machine paths and tracebacks omitted; provenance failure paths made trial-relative. Source hashes and executed-unit records are retained.",
+  "tool_sha256": {
+    "replay.py": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+    "replay_support.py": "02693261c45b36e772ef5d480ab6299c7f61bad01f5e463d5727bdac852df1f5",
+    "audit_archive.py": "7bba0609fd3fd367b9fc2d7fe5e5d82903f546c78679ab4b976f1a91eedcd225",
+    "shared_storage.py": "696a530c9d0c1fde27414c9afb9e0b3c8217478e1f6b88f02c6655e119325231"
+  },
+  "file_manifests": {
+    "publication-manifest.json": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+    "shared-files.json": "4e082abf9bca71e6c66f3303f0e8dd8e3a1bf6609cdf02e30f18c9949257526b"
+  },
+  "storage_verification": {
+    "common_python_sources": 23,
+    "reconstructible_trial_files": 690,
+    "all_trial_bytes_match_preconsolidation_backup": true,
+    "omitted_copy_bytes": 11020680,
+    "primary_notebooks_byte_unchanged": 30,
+    "table2_json_unchanged": true
+  },
+  "source_validation": {
+    "framework_files_exact": 39,
+    "historical_mapped_differences": 854,
+    "historical_protocol_differences": 6,
+    "all_historical_sources_exact": false
+  },
+  "tool_tests": {
+    "run": 48,
+    "passed": 48
+  },
+  "restoration_validation": {
+    "active_map_entries_verified": 5019,
+    "fresh_restorations": [
+      {
+        "scope": "bppm_r01",
+        "restored_files": 190,
+        "mapped_entries": 180,
+        "byte_mismatches": 0
+      },
+      {
+        "scope": "feg_r03",
+        "restored_files": 168,
+        "mapped_entries": 147,
+        "byte_mismatches": 0
+      },
+      {
+        "scope": "pgm_without_sos_r02",
+        "restored_files": 152,
+        "mapped_entries": 132,
+        "byte_mismatches": 0
+      }
+    ],
+    "shared_manifest_sha256": "4e082abf9bca71e6c66f3303f0e8dd8e3a1bf6609cdf02e30f18c9949257526b",
+    "publication_manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220"
+  },
+  "symbolic_replay": {
+    "started_utc": "20260928T171053_961887Z",
+    "command": "python examples_peppy/_evaluations/supplementary/tools/replay.py --r01 --proof-only --use-imported-sources --timeout 180",
+    "environment": "replay-environment-win-py311.txt",
+    "input_summary_sha256": "d7cf265a368074672adbcf997368e1e0a5b61fc01d292e5672e28d0d5c72f0c0",
+    "trials": [
+      {
+        "trial": "bppm/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 36,
+            "id": "1d24a99d",
+            "segment": {
+              "sha256": "25a03c055af148c0cc8024cad63703db76353d0869a698e6c4a855be3af3844b",
+              "execute_lines": [
+                [
+                  1,
+                  4
+                ],
+                [
+                  13,
+                  95
+                ]
+              ],
+              "excluded_lines": [
+                [
+                  5,
+                  12
+                ]
+              ],
+              "reason": "Exclude saved numerical certificate linkage; retain complete symbolic derivation and its assertions."
+            },
+            "source_sha256": "39db61bd670ccc671e71f967f4dce2f1c376ef202ed1f1e26d1b3e486a2145a4"
+          },
+          {
+            "index": 40,
+            "id": "22825051",
+            "source_sha256": "6a0f1083f0006c6b411bb66c8deaad42e6403d67eb31a5db77b911f531254c38"
+          },
+          {
+            "index": 43,
+            "id": "c4b49ec5",
+            "source_sha256": "a838fd6819eb94e520e9b7f892eeefebce71d4001de354314b4a9df594fd85f2"
+          },
+          {
+            "index": 46,
+            "id": "e1056de2",
+            "source_sha256": "c14b08bdc681ec1c6710ce510485f90b5e5f4ebcb17f7fa8720cf9f058b4c28f"
+          },
+          {
+            "index": 48,
+            "id": "f5f719fb",
+            "source_sha256": "6556a4bed54d3b0c5e07e9baa1cbcc8ca715cf4db30628946b3d75d4b7cb54e2"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "5147cf6065ca24652a9f292667ac29fff73e54a19f4ac8f846f20598409d76e0",
+        "proof_scope": "Original symbolic derivation segment and whole step/base/boundary/sign/domain/normalization cells. Numerical-to-symbolic linkage assertions in the excluded prelude are not claimed.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "6981b247",
+          "40276be3",
+          "5f0b8877",
+          "c21c2aa1",
+          "4666f2d1",
+          "424b28e7",
+          "435c6034",
+          "f15f284d",
+          "cbda04d1",
+          "8a508400",
+          "2d14274b",
+          "1095f4fe",
+          "ba40f5a0",
+          "ceb05507",
+          "0436df0c",
+          "36bbadc4",
+          "9ca4af50",
+          "f7af2fb8",
+          "5310314e"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "notebook_check_values": {
+          "proof_checks": {
+            "step": true,
+            "base": true,
+            "boundary": true,
+            "signs": true,
+            "domain": true,
+            "normalization": true
+          },
+          "exact_identity_evidence": {
+            "Step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Base V0": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Base first step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "N=1 base": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "N=1, R=0 boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            }
+          }
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 32.719,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 54,
+          "accepted_inventory_records": 54
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "dual_feg/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 35,
+            "id": "ea083026",
+            "segment": {
+              "sha256": "42f544258342aa8fdfbe20681bf0a5258b681fdbc2019b1668d7f882ffbd500c",
+              "execute_lines": [
+                [
+                  1,
+                  5
+                ],
+                [
+                  13,
+                  72
+                ]
+              ],
+              "excluded_lines": [
+                [
+                  6,
+                  12
+                ]
+              ],
+              "reason": "Exclude saved numerical certificate linkage; retain complete symbolic derivation and its assertions."
+            },
+            "source_sha256": "a2a4feff4fb25b2e36c606d4d0ca83f9f114d5aa21805b83b01a03c769fa965a"
+          },
+          {
+            "index": 41,
+            "id": "b5549301",
+            "source_sha256": "70e5e4da23f6cb137ce303205cb8d3b0e017104c0418f2cf0ec0a5fb9b33e1cf"
+          },
+          {
+            "index": 44,
+            "id": "1440d348",
+            "source_sha256": "274ea87ea9ea10b22f9a519f71b0f8322a8ac14535c4a932edb0316debef2a8f"
+          },
+          {
+            "index": 47,
+            "id": "9d1cebb7",
+            "source_sha256": "2db8cdafd628beda55012333e9098118d144a53d078352c36f23c801a1b25faf"
+          },
+          {
+            "index": 50,
+            "id": "f306ab06",
+            "source_sha256": "50c279937f8ff1cab759c5d5b7f0c423d11d0ae490e67a403d3eff626ade2a24"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "0625ad3cc7385701607f607e938d68b067e1c9cb954d825e49cd2ba698a3845c",
+        "proof_scope": "Original symbolic derivation segment and whole step/base/last/boundary/sign cells. Numerical-to-symbolic linkage assertions in the excluded prelude are not claimed.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "5295c414",
+          "cd947222",
+          "8baab298",
+          "8e240dae",
+          "9b7030aa",
+          "30f066e3",
+          "6b367175",
+          "ed433fc9",
+          "67f93ff3",
+          "383c804f",
+          "a3e549af",
+          "fa84940f",
+          "4d7fc32e",
+          "631f1cbb",
+          "9f072e0c",
+          "fbad1dcb",
+          "beb376b7",
+          "f71fd732",
+          "ff804d17",
+          "457bce45",
+          "904e44a3"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "notebook_check_values": {
+          "proof_checks": {
+            "step": true,
+            "base": true,
+            "last_step": true,
+            "small_horizon": true,
+            "boundary": true,
+            "signs": true,
+            "domain": true,
+            "normalization": true
+          }
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 30.625,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 44,
+          "accepted_inventory_records": 44
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "feg/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [],
+        "executed_scripts": [
+          {
+            "script": "supplementary/b5_symbolic.py",
+            "source_sha256": "b4c0234ad02cd998c746a2e287968db61ffbfc410498ae20b3ca8e837a7b0dc9"
+          }
+        ],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "fe15bc6600066cc09ca57ba4802e9210a2a2e7be1da4ea1be03df3d8da3c3c64",
+        "proof_scope": "Original trial proof script: coefficient derivation, exact step/base/boundary identities and positivity assertions.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "b1-02",
+          "b1-03",
+          "b1-04",
+          "b1-06",
+          "b2-01",
+          "b2-02",
+          "b2-04",
+          "b2-06",
+          "b2-07",
+          "b3-01",
+          "b3-02",
+          "b3-03",
+          "b3-04",
+          "b4-01",
+          "b4-03",
+          "b4-05",
+          "b4-07",
+          "b4-09",
+          "b4-10",
+          "b5-01",
+          "b5-03",
+          "b5-05",
+          "b5-09",
+          "b5-12",
+          "b5-15",
+          "b5-17"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "notebook_check_values": {
+          "step_verified": true,
+          "base_verified": true,
+          "boundary_verified": true
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 27.407,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 43,
+          "accepted_inventory_records": 43
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "ogm/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 42,
+            "id": "1153c85d",
+            "source_sha256": "fb801d51e1090521a57f1bae7483d828b45b45dd94b9b755fca78128b6e9f896"
+          },
+          {
+            "index": 45,
+            "id": "47c6b3f0",
+            "source_sha256": "e25189f4e9776673cfcc28e1fe8f57e1cc9058f2d70fcc6c2f31565ad090919e"
+          },
+          {
+            "index": 48,
+            "id": "bb293e6b",
+            "source_sha256": "813a8c700f1b5fc0c2a5cfaade99b44469d951584315f3a536211951ee4d7c93"
+          },
+          {
+            "index": 51,
+            "id": "b47d8d28",
+            "source_sha256": "69171914b5b321e9eb730d8cda56dcaf24358f1f5de8e0fc973ab82a11e32606"
+          },
+          {
+            "index": 54,
+            "id": "a039499d",
+            "source_sha256": "4ad8bf541cf7488e98cd6acfd6b82330c650fd56e583b6b5a1a7bcc0490bde9e"
+          },
+          {
+            "index": 57,
+            "id": "c69af3c9",
+            "segment": {
+              "sha256": "7940eefea81e346493e545fe4443f74c5497d6714602360402e785d2ba4b7c53",
+              "execute_lines": [
+                [
+                  1,
+                  3
+                ]
+              ],
+              "excluded_lines": [
+                [
+                  4,
+                  5
+                ]
+              ],
+              "reason": "Exclude final narrative claim about earlier numerical verification; keep all symbolic assertions."
+            },
+            "source_sha256": "f92869f21630047fea2c912196c735f34c74d46816d2582bb4b65fe3539f6b0c"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "80d2b9066d9aaeda4d197c214502580c38afcfb1b6287f166d4ce90ee5b5f540",
+        "proof_scope": "Original notebook cells and documented final-cell segment: symbolic step/base/terminal/boundary/N=1/normalization identities. Sign rationale remains prose, not a newly executed sign proof.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "47c3fa52",
+          "5bc76262",
+          "d83d6688",
+          "c02bf32e",
+          "3d8ee33e",
+          "7906de10",
+          "efd30ddb",
+          "9a0307c5",
+          "67f84660",
+          "bcfb7ff0",
+          "c772a49b",
+          "91cd9ae4",
+          "bd6bfbf4",
+          "a751301c",
+          "89eac8c2",
+          "00cc68c3",
+          "c67e10d5",
+          "09e27f4e",
+          "b31cfbef",
+          "28d109b9",
+          "757b594f",
+          "8f27b1e7"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "notebook_check_values": {
+          "symbolic_results": {
+            "step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "base": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "terminal_step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "N1": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "normalization": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            }
+          }
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 31.782,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 50,
+          "accepted_inventory_records": 50
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "pgm_with_sos/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 32,
+            "id": "f328347c",
+            "source_sha256": "6fdd1ede4f69327c520975a3daa5234d2ced7eaff59d152dbe9840835bd3fc12"
+          },
+          {
+            "index": 35,
+            "id": "91536d07",
+            "source_sha256": "8fcc8e337a4340f18eaef644783e9b3c44d0600afb689b197244de264269c194"
+          },
+          {
+            "index": 38,
+            "id": "8d3ad687",
+            "source_sha256": "8b9ea61cb9d82650d0fe5b8f9cca524b553aed3250539a9fe03c7746fa3e4009"
+          },
+          {
+            "index": 41,
+            "id": "7d21d817",
+            "source_sha256": "bfecca57df512bbc28dad448be71fcf7a830a73b686e4d208844200c879b1e91"
+          },
+          {
+            "index": 44,
+            "id": "cfc42b56",
+            "source_sha256": "ed59004613fb66c0324bc4c0f253be16e16bd653660c9ff1116188f1e6d7bedf"
+          },
+          {
+            "index": 47,
+            "id": "52c0fd4a",
+            "source_sha256": "b968b97af6ca741272cfe15c3219e7cf7a3b51074aebf49802b81f2f683d42bc"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "616cba2c79c447c0347850f0fcd1d51edbf5f5209bd11bb9a3c6ffb18b3723e7",
+        "proof_scope": "Original whole notebook cells: exact coefficient derivation and step/base/terminal/N=1 identities. Signs/domain remain the notebook prose; no saved signs=True flag is used.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "d74a0b9d",
+          "7c0623bb",
+          "9ccc4882",
+          "8bdcd5c5",
+          "ca8fd86e",
+          "0ea94cab",
+          "d5754358",
+          "48799cbe",
+          "2d12f87c",
+          "48090599",
+          "d85cdd72",
+          "bee20667",
+          "e8f87cb1",
+          "7301553a",
+          "c68d5f43",
+          "09a5e28f",
+          "ff8a8584"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "notebook_check_values": {
+          "step_verified": true,
+          "base_verified": true,
+          "boundary_verified": true
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 40.218,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 57,
+          "accepted_inventory_records": 57
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "pgm_without_sos/r01",
+        "mode": "reviewed original symbolic proof units only",
+        "optimization_allowed": false,
+        "executed_cells": [],
+        "executed_scripts": [
+          {
+            "script": "supplementary/verify_b5_native.py",
+            "source_sha256": "91fccc9eaf1e0c7c552bd3803095db4f2537a19e9c64856d88fa5308989ae208"
+          },
+          {
+            "script": "supplementary/b5_signs.py",
+            "source_sha256": "e150e06126cf47a8eaaadde0a1d28cb3184baaff3291060c3628711961e94bef"
+          }
+        ],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "adab61b32a22264ac27bf38c8437311a4bbd1d594a438dbfcef189993846507a",
+        "proof_scope": "Original trial proof scripts: step/base/terminal/N=1 component identities, exact SOS polynomial positivity identities and saved-matrix checks.",
+        "excluded_scope": "Full notebook execution, discovery, original numerical certificate provenance and numerical-to-symbolic linkage are not established by this mode.",
+        "excluded_code_cell_ids": [
+          "39d3e5db",
+          "c2ee3ae1",
+          "590de497",
+          "de4adc52",
+          "81b2883f",
+          "c098c8e5",
+          "9bba19c5",
+          "288261ff",
+          "54fd5d3f",
+          "0ecbf44e",
+          "d3ece9c9",
+          "7aa21284",
+          "6c793bf3",
+          "3dd48c12",
+          "6d99c0ad",
+          "5f25bb46",
+          "f7048dd8",
+          "18f2e8f8",
+          "1fd0cb06",
+          "ba468f78",
+          "8e08091e",
+          "b92a570a",
+          "5360c50f",
+          "c53333d3",
+          "8953f074",
+          "2e32d3fe",
+          "0338c85f",
+          "b958dd7d",
+          "a1269f73",
+          "4f9fff4f",
+          "82f44c14",
+          "13d1fdba",
+          "e254b308"
+        ],
+        "completion_scope": "Symbolic identity replay completed; see proof_scope and excluded_scope",
+        "exit_code": 0,
+        "elapsed_seconds": 37.344,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 53,
+          "accepted_inventory_records": 53
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      }
+    ]
+  },
+  "full_notebook_diagnostic": {
+    "started_utc": "20260928T171100_823418Z",
+    "command": "python examples_peppy/_evaluations/supplementary/tools/replay.py --r01 --use-imported-sources --timeout 180",
+    "environment": "replay-environment-win-py311.txt",
+    "input_summary_sha256": "6d10d5929b34a5460852f6eb79f64bcb4e202dced995e3d97c57e7f2c0eeb60a",
+    "trials": [
+      {
+        "trial": "bppm/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "6981b247",
+            "source_sha256": "a5914cc2e9268e85cc13ca2c1e106812ee9aa8a2fd94c18dbd6e74b1350aa76d"
+          },
+          {
+            "index": 5,
+            "id": "40276be3",
+            "source_sha256": "e09a5b665ba8ee5ed023ad94890f1a9c9ad8a5902715bd9f6faf288698065a85"
+          },
+          {
+            "index": 7,
+            "id": "5f0b8877",
+            "source_sha256": "73eb970be71b9788465981bd373d7a5d10598e50df3f2b2b56d434355a8993af"
+          },
+          {
+            "index": 9,
+            "id": "c21c2aa1",
+            "source_sha256": "94e2f51dcf38c978d2d1e568545c3214aa02fed51dad51e64b3c4c8c3c54a918"
+          },
+          {
+            "index": 11,
+            "id": "4666f2d1",
+            "source_sha256": "94e883c2e871c3c70ed38c16d25633461ac7d1bcaf85a04a61f354e6f353ff2a"
+          },
+          {
+            "index": 14,
+            "id": "424b28e7",
+            "source_sha256": "44b3bd72400d1335abfb910e303492cbdfa6967be0ca2b28dbcdfc695e2e6e80"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "failed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "5147cf6065ca24652a9f292667ac29fff73e54a19f4ac8f846f20598409d76e0",
+        "current_cell": {
+          "index": 15,
+          "id": "435c6034"
+        },
+        "error_type": "AssertionError",
+        "exit_code": 1,
+        "elapsed_seconds": 28.656,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 54,
+          "accepted_inventory_records": 54
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ],
+        "provenance_hash_failures": [
+          {
+            "path": "bppm_setup.py",
+            "expected": "6d56011517c9fc58118609610064c84b4459e126777db5c6ba8ae0cf57f401f8",
+            "actual": "09ec8977cd6d8bb539dbcbb3ea32571ef8feafb3504bcf7b3b5e020cfcb1fa07"
+          }
+        ],
+        "failure_classification": "original_notebook_source_hash_check"
+      },
+      {
+        "trial": "dual_feg/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "5295c414",
+            "source_sha256": "8df2f4d18da6ff28469c13befc8c3505e276a3772b4dd53d6c203fbe37df2ce7"
+          },
+          {
+            "index": 5,
+            "id": "cd947222",
+            "source_sha256": "ef49adf742bbf8f28365375d3b5656fe697e72f05c88bb455a41c15c3b0c5284"
+          },
+          {
+            "index": 6,
+            "id": "8baab298",
+            "source_sha256": "b83c60c034b5bf6a26e77a8f95af157e7bc5e1925745f4ae2af72fd730038103"
+          },
+          {
+            "index": 7,
+            "id": "8e240dae",
+            "source_sha256": "dd8939578846b04a75357ab30f3ab728c05f01c72ec3a2b44cd34e7309ea66b3"
+          },
+          {
+            "index": 9,
+            "id": "9b7030aa",
+            "source_sha256": "5abe472857e33a626658441d76c84422a03230d547da377589494c252da43294"
+          },
+          {
+            "index": 11,
+            "id": "30f066e3",
+            "source_sha256": "ab7a98a90ba8807843116d171ca3677ea3e98186506969256e002f93e092fd35"
+          },
+          {
+            "index": 12,
+            "id": "6b367175",
+            "source_sha256": "ad5834e183e0538e8672dd18746ed7f43654cee11a929cbb8a7c2271e042fb7e"
+          },
+          {
+            "index": 14,
+            "id": "ed433fc9",
+            "source_sha256": "9f47db7f23e40376e70ef94ce1d21e7787b39a0d53d60026b07d23576f3dcdbd"
+          },
+          {
+            "index": 16,
+            "id": "67f93ff3",
+            "source_sha256": "9dcae1c8d4deabd888a261b8fea41a6bc8ea389c7d0cbc63bdf08abe656d39c3"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "failed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "0625ad3cc7385701607f607e938d68b067e1c9cb954d825e49cd2ba698a3845c",
+        "current_cell": {
+          "index": 17,
+          "id": "383c804f"
+        },
+        "error_type": "ValueError",
+        "exit_code": 1,
+        "elapsed_seconds": 29.516,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 44,
+          "accepted_inventory_records": 44
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ],
+        "provenance_hash_failures": [
+          {
+            "path": "dual_feg_setup.py",
+            "expected": "e85aeabe4d7a5b3836da9124e5fdce3bbc2ecfbf5faed26a443011819839e7a8",
+            "actual": "47b5afea45b1e5697242cebca09b56e0ba2eb157c1a629a473ed6efe726acb59"
+          },
+          {
+            "path": "supplementary/helpers/certificate.py",
+            "expected": "4a456c618c1a086d73f2aae9647df5fe3d7c03b2fe3319b5e4f482bd301ec318",
+            "actual": "5376b7127aaa043c4045627303742368d984f2d5f74244928f7a86cdc00c8473"
+          }
+        ],
+        "failure_classification": "original_notebook_source_hash_check"
+      },
+      {
+        "trial": "feg/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "b1-02",
+            "source_sha256": "da335bfda229d07a8f585fcd28532629586d6ceb599762e5604c8bdc6b436902"
+          },
+          {
+            "index": 5,
+            "id": "b1-03",
+            "source_sha256": "ac0f634b5efe492599c2ce86e292f4cdba8bd4bcccb4a2612533afb1f3bc435d"
+          },
+          {
+            "index": 6,
+            "id": "b1-04",
+            "source_sha256": "ae29989718f05a7b53a95d00de83fb33819f759dab5d8b651851e5e58da05c04"
+          },
+          {
+            "index": 8,
+            "id": "b1-06",
+            "source_sha256": "6205d90a47931dd972b88d13ffc48ffd9192996930008b0349101f256138d421"
+          },
+          {
+            "index": 10,
+            "id": "b2-01",
+            "source_sha256": "63a48d915c7b4d2cf19b88f123c348942feffb55bf92051749eeb2de614f85d6"
+          },
+          {
+            "index": 11,
+            "id": "b2-02",
+            "source_sha256": "b2bb5bce0ce05739225b1fb7e7bbd5c726c85b30e7b00ca7b8685d039044761a"
+          },
+          {
+            "index": 13,
+            "id": "b2-04",
+            "source_sha256": "1aa4a3aa185bdec714e55d114d537753c79d5b31324447e43ef58bc03a0069b0"
+          },
+          {
+            "index": 15,
+            "id": "b2-06",
+            "source_sha256": "c78cbc5d15959e60fe598620b484d499efc8c8cbcd5aaa50c37fe71c123b4edb"
+          },
+          {
+            "index": 16,
+            "id": "b2-07",
+            "source_sha256": "054629fed313de1d80370ab700e6719976f9bf7f2bb845ea10169ce897a80e76"
+          },
+          {
+            "index": 19,
+            "id": "b3-01",
+            "source_sha256": "5f030a1e0c5fe94da0ad0755940db5dfcadcea307ead9ccb7e652c41235e97b0"
+          },
+          {
+            "index": 20,
+            "id": "b3-02",
+            "source_sha256": "0580660e103163a9dde8258adecb0900a5936875d7aaa6e704b67f491d08b515"
+          },
+          {
+            "index": 21,
+            "id": "b3-03",
+            "source_sha256": "c6021d652d3f4283636fb46412b1d655760180c18929c41f84db99cd7658d0ad"
+          },
+          {
+            "index": 22,
+            "id": "b3-04",
+            "source_sha256": "625a96b73010ed3d33f672c57d57933549323b4e5f2edbac1667438f5ef4e79f"
+          },
+          {
+            "index": 24,
+            "id": "b4-01",
+            "source_sha256": "03b40959f7655a6f93c545a0799534a9e314d0d25adedfad28e24f6194b29ec7"
+          },
+          {
+            "index": 26,
+            "id": "b4-03",
+            "source_sha256": "f10bd9e0ca5fde2c24c3289d7540e93f0450d0d5ae61a15191f2d94fa752ce95"
+          },
+          {
+            "index": 28,
+            "id": "b4-05",
+            "source_sha256": "e8e0b3c8880c1da30d53314113d2a4a38526e1145b8d82c2548e60f52d720237"
+          },
+          {
+            "index": 30,
+            "id": "b4-07",
+            "source_sha256": "e8a21646ea2b4530a852d34bdb86c37b04ff2bdbdde5581ccaeb3bf213b25a59"
+          },
+          {
+            "index": 32,
+            "id": "b4-09",
+            "source_sha256": "a435d136e415b7cb50384ae0f3912e5865abdbb58a96888b4ef5e0b69b07c19c"
+          },
+          {
+            "index": 33,
+            "id": "b4-10",
+            "source_sha256": "cb6aa83d9a488533b8a0af94628e9646bdb2a8e342f4185e3d1ea5911f89be4f"
+          },
+          {
+            "index": 36,
+            "id": "b5-01",
+            "source_sha256": "a5c2d0cf4ba8bfec8eaabe21bd6f638bc07e3be4b3d168ce2399edad8be4fd85"
+          },
+          {
+            "index": 38,
+            "id": "b5-03",
+            "source_sha256": "86ce2e0cbae127fc941d9115af5997185a6d4f97b3a843b09587808177f1eaf6"
+          },
+          {
+            "index": 40,
+            "id": "b5-05",
+            "source_sha256": "792ad48bae7569e007a8f47997014069063c502997bf04c69f76d230cfadcb4e"
+          },
+          {
+            "index": 44,
+            "id": "b5-09",
+            "source_sha256": "0318b87881befd5d70c267bc7bd954d4ba2c4b6caa29f03a2b5bee275af1ba78"
+          },
+          {
+            "index": 47,
+            "id": "b5-12",
+            "source_sha256": "4f1d1e75d72d22b05c25d6e66b8256ad81b34d90947881369dd6fc85f8f3932a"
+          },
+          {
+            "index": 50,
+            "id": "b5-15",
+            "source_sha256": "934aa551626f9351cadaad33003f0709935b5395b29058b72f57c75ade5f32ac"
+          },
+          {
+            "index": 52,
+            "id": "b5-17",
+            "source_sha256": "0b4df97d66c7e360b711218d2dac00b03fd5b2d26ed7dbee990db00eccff66c8"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "completed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "fe15bc6600066cc09ca57ba4802e9210a2a2e7be1da4ea1be03df3d8da3c3c64",
+        "completion_scope": "Every notebook code cell executed; this is not an independent proof audit",
+        "notebook_check_values": {
+          "step_verified": true,
+          "base_verified": true,
+          "boundary_verified": true,
+          "certificate_checked": true,
+          "grouping_checked": true
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 35.359,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 43,
+          "accepted_inventory_records": 43
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ]
+      },
+      {
+        "trial": "ogm/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "47c3fa52",
+            "source_sha256": "a409be7e50739ecbf4b1ae7908dfc1d3589acd4e54ef4c76657e553ea1ed15de"
+          },
+          {
+            "index": 5,
+            "id": "5bc76262",
+            "source_sha256": "e870a7c385c8a134438896451ca2df8bbbfd16f7ee3c0e1bd799d27865eef327"
+          },
+          {
+            "index": 7,
+            "id": "d83d6688",
+            "source_sha256": "39aa5356211d973235ffa3bf80dc9c6035341205b9b2e1391f12dfc2ee303b77"
+          },
+          {
+            "index": 9,
+            "id": "c02bf32e",
+            "source_sha256": "515cfa04138020f0c359d319e1ff136807d5f38fdd2ed5800f997d9849accf9c"
+          },
+          {
+            "index": 11,
+            "id": "3d8ee33e",
+            "source_sha256": "16d9b77fd3fd09ca2ff2053ef771956945aa378379770d55f6ff32ca0c9173ec"
+          },
+          {
+            "index": 14,
+            "id": "7906de10",
+            "source_sha256": "6909000193a8da83dd2a6f9c55cb3cf7972147f1a947dc532207d6bd53e01fd8"
+          },
+          {
+            "index": 16,
+            "id": "efd30ddb",
+            "source_sha256": "d5db6b7ec98d54439be49464a014606305abf89eb2916b6f6a8acdf9dcc9c5c0"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "failed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "80d2b9066d9aaeda4d197c214502580c38afcfb1b6287f166d4ce90ee5b5f540",
+        "current_cell": {
+          "index": 17,
+          "id": "9a0307c5"
+        },
+        "error_type": "AssertionError",
+        "exit_code": 1,
+        "elapsed_seconds": 33.391,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 50,
+          "accepted_inventory_records": 50
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ],
+        "provenance_hash_failures": [
+          {
+            "path": "ogm_setup.py",
+            "expected": "c57790ee636953f01fe432be269cc9b4dfb9d03e9d85793e13a82e20be080e89",
+            "actual": "47d129dfca4e79a1da969224205b6f8c1a2f91d3947410774922db8237f07c7c"
+          },
+          {
+            "path": "supplementary/helpers/certificate_checks.py",
+            "expected": "aa7b88ccff6563875b80102c27a21ce2420ea5b4f77940a70250cc51a890e796",
+            "actual": "95a09339a5a64f5830a3fcae5a9814dad558595c3258214f591ca009832d5b98"
+          }
+        ],
+        "failure_classification": "original_notebook_source_hash_check"
+      },
+      {
+        "trial": "pgm_with_sos/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "d74a0b9d",
+            "source_sha256": "f719a26e23e5db2325638ea63a327902e275f8e0534bf85f12c34f73b37b7e8f"
+          },
+          {
+            "index": 5,
+            "id": "7c0623bb",
+            "source_sha256": "b4b92ea63696964b6f16dad093f05cb0437ee211817f6c5b7868b6daabe2a248"
+          },
+          {
+            "index": 6,
+            "id": "9ccc4882",
+            "source_sha256": "d9e2e16ff0923abd1c6b685cbd82821a96a1a5a5ae4d4569d74733fe5bb87459"
+          },
+          {
+            "index": 8,
+            "id": "8bdcd5c5",
+            "source_sha256": "3e7af648c66b565836ba6ec0bbf365ff3f46cea8117655bba02d693f56857781"
+          },
+          {
+            "index": 10,
+            "id": "ca8fd86e",
+            "source_sha256": "8c6a8027ec021e764e3ab80cef57572b15dbc139bbbc0322991ecce4025e9e9c"
+          },
+          {
+            "index": 12,
+            "id": "0ea94cab",
+            "source_sha256": "0daf47de97a9703b82a55881589e7459a6ac0b083754e8a377b7fe0c7f74ed5b"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "failed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "616cba2c79c447c0347850f0fcd1d51edbf5f5209bd11bb9a3c6ffb18b3723e7",
+        "current_cell": {
+          "index": 13,
+          "id": "d5754358"
+        },
+        "error_type": "AssertionError",
+        "exit_code": 1,
+        "elapsed_seconds": 32.688,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 57,
+          "accepted_inventory_records": 57
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ],
+        "provenance_hash_failures": [
+          {
+            "path": "pgm_setup.py",
+            "expected": "638f5a2d6e49eecf130b9813d733cf9caea032786cdbce8309376940088e5baa",
+            "actual": "c0b316f2295cecaad735bad8ddf5a65f2173d007b2971088b54f5fa3dfbf0651"
+          },
+          {
+            "path": "supplementary/helpers/candidates.py",
+            "expected": "adb5cd4a23be64ea1b53633f51d0962c7c16ddcfe6f1e8e2a27785a4e4e2069a",
+            "actual": "9b532854c6b8578b1a572e45417a22054b61afc01b48b3ccf9e457596d19f8f0"
+          }
+        ],
+        "failure_classification": "original_notebook_source_hash_check"
+      },
+      {
+        "trial": "pgm_without_sos/r01",
+        "mode": "all notebook code cells, sequentially",
+        "optimization_allowed": false,
+        "executed_cells": [
+          {
+            "index": 4,
+            "id": "39d3e5db",
+            "source_sha256": "56cba9cca8667f3bbb37038a5deb1e2ff1913206d1e9cf634207fd0f63ed5504"
+          },
+          {
+            "index": 5,
+            "id": "c2ee3ae1",
+            "source_sha256": "a0ea0b1c1f2e32651a165c2f9d7a9ae4b0c42c9c9552cb4462551a123adc17a2"
+          },
+          {
+            "index": 7,
+            "id": "590de497",
+            "source_sha256": "b6544216c32c9715d176fe0ebe1e5496de9f05c9262001c4aa78ff0803f256a6"
+          },
+          {
+            "index": 9,
+            "id": "de4adc52",
+            "source_sha256": "493a44e5e44b54743e41b42ff758fe80a882cc9e59d8420dcf791381f97dbe45"
+          },
+          {
+            "index": 11,
+            "id": "81b2883f",
+            "source_sha256": "fbaefeaffaaf47ef7beadbdd958b51ed5e969ed7c155a0457311167653f304d8"
+          },
+          {
+            "index": 13,
+            "id": "c098c8e5",
+            "source_sha256": "4d5aee5b2e3195737072d1185a8a1e5f3a41e912f09bdba2c48cae4c73278c1e"
+          },
+          {
+            "index": 14,
+            "id": "9bba19c5",
+            "source_sha256": "e1d98f377073d7e933646c79303d579743f0599ea510d1c678d3cafdfa0d252d"
+          },
+          {
+            "index": 15,
+            "id": "288261ff",
+            "source_sha256": "9be81d7748d9a43b435110691666e902f1a54b8957a6dc7b2499988ed28793c8"
+          },
+          {
+            "index": 17,
+            "id": "54fd5d3f",
+            "source_sha256": "e5d866e91c997cbc22975e945a1c6ec4ae45b658dff972aa9134110959a33e72"
+          },
+          {
+            "index": 19,
+            "id": "0ecbf44e",
+            "source_sha256": "2923933801ab2267a5e9a2868d4963332bd10373641df1e32cee026b3eec2fa4"
+          },
+          {
+            "index": 21,
+            "id": "d3ece9c9",
+            "source_sha256": "c5d26c782370c62d75ede567b4da4daf367b563eb982210a6ebbc2c5fbc72c5f"
+          },
+          {
+            "index": 22,
+            "id": "7aa21284",
+            "source_sha256": "e7ac1df0f72ec111e80b7302d3a1568a4b8065aa85d0787289d19566a436bdc2"
+          },
+          {
+            "index": 24,
+            "id": "6c793bf3",
+            "source_sha256": "0db988ea2f0dd367ce26ce68649de6d40a2bb4a8551320c67296f97fd243c2fe"
+          },
+          {
+            "index": 25,
+            "id": "3dd48c12",
+            "source_sha256": "8a8647b4d12421cee71c3f6739d425401f2b8afbffbd81fb86d335924719fb03"
+          }
+        ],
+        "executed_scripts": [],
+        "solver_calls": [],
+        "status": "failed",
+        "environment": {
+          "python": "3.11.14 (main, Dec  9 2025, 18:59:10) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-10-10.0.26200-SP0",
+          "packages": {
+            "numpy": "2.3.1",
+            "sympy": "1.14.0",
+            "scipy": "1.16.1",
+            "cvxpy": "1.7.1",
+            "clarabel": "0.11.1",
+            "scs": "3.2.7.post2",
+            "matplotlib": "3.10.3"
+          }
+        },
+        "runner_sha256": "a78c1f0606958a2df106b6eb915bc1fba6750b569a0b9237f86815ebcfd11d13",
+        "notebook_sha256": "adab61b32a22264ac27bf38c8437311a4bbd1d594a438dbfcef189993846507a",
+        "current_cell": {
+          "index": 26,
+          "id": "6d99c0ad"
+        },
+        "error_type": "AssertionError",
+        "exit_code": 1,
+        "elapsed_seconds": 32.141,
+        "publication_normalization": {
+          "manifest_sha256": "d20396fe8e652064cac888f102d70eaa417ea8171e6fbfb59ff74a27e107c220",
+          "verified_file_count": 1562,
+          "verified_trial_files": 53,
+          "accepted_inventory_records": 53
+        },
+        "materialized_shared_files": [
+          {
+            "path": "supplementary/approved/pepflow/__init__.py",
+            "canonical": "supplementary/tools/framework/pepflow/__init__.py",
+            "sha256": "24f34e15e6376a0e969e5397467b62a5382909ab5cf697f0628bd1fb09090e0f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constants.py",
+            "canonical": "supplementary/tools/framework/pepflow/constants.py",
+            "sha256": "3dcb075498dc0b10b23f2f3b2fb9eab4f8ddb6fd87d2f5478a7cfe75d95c9ea3"
+          },
+          {
+            "path": "supplementary/approved/pepflow/constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/constraint.py",
+            "sha256": "144895bc0d7ce2dba0bf638b264f90bf1944279a770ce573b0394c307ce459df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/dual_interactive_constraint.py",
+            "sha256": "e2b279e2c8a26ef69a2706e4d915cb2ae3b105df2dbcb2c6cb570fc519dff2df"
+          },
+          {
+            "path": "supplementary/approved/pepflow/expression_manager.py",
+            "canonical": "supplementary/tools/framework/pepflow/expression_manager.py",
+            "sha256": "151c46cc1c8358cf2a4553b4143c436275fe5fb8c3c152c9c330e3b2b0c80363"
+          },
+          {
+            "path": "supplementary/approved/pepflow/function.py",
+            "canonical": "supplementary/tools/framework/pepflow/function.py",
+            "sha256": "720980c5e6155b0a4b0c02a3afe54a4344a878cc0b8a0ce0a9ca40b900e26978"
+          },
+          {
+            "path": "supplementary/approved/pepflow/ipython_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/ipython_utils.py",
+            "sha256": "aa4e9f7c29b457a83bca28e91b3d087306be9024dfa5aaea9153f8c435dbddac"
+          },
+          {
+            "path": "supplementary/approved/pepflow/logging.py",
+            "canonical": "supplementary/tools/framework/pepflow/logging.py",
+            "sha256": "84dde0902a0972f6368a0875004978974094c965df33d5fc9f9895e11e1babee"
+          },
+          {
+            "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/lyapunov_utils.py",
+            "sha256": "b17e212e3ca689a7505f17434947813f909f5773e3aabe5acc3fa50da07ba1c6"
+          },
+          {
+            "path": "supplementary/approved/pepflow/math_expression.py",
+            "canonical": "supplementary/tools/framework/pepflow/math_expression.py",
+            "sha256": "9ec3a0ff9016bda3c7103f83007d38d54ce46055675b6db733ed415a5d7bbe05"
+          },
+          {
+            "path": "supplementary/approved/pepflow/operator.py",
+            "canonical": "supplementary/tools/framework/pepflow/operator.py",
+            "sha256": "483a178521dda198cf68779f4fbe6531e67b7e79663af22cb408ef1a2ab2eb0a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/parameter.py",
+            "canonical": "supplementary/tools/framework/pepflow/parameter.py",
+            "sha256": "b2523851f9b177247208a7de7dffe3f18309518adc5670763fd3b13fa595fd0e"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep.py",
+            "sha256": "ad9a6dde6c16b713687afa17eceedae5f40d949cb6e5112f75ac67f18768fc7c"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_context.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_context.py",
+            "sha256": "ba77f2d18b9dea6d06f6b84e957695c339f0f90006842d3d4e426e8c0beb666b"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_result.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_result.py",
+            "sha256": "d9b7483406780fb3276332ee914df2ef11c95eaa8b8b716d29bce37f0859f059"
+          },
+          {
+            "path": "supplementary/approved/pepflow/pep_runner.py",
+            "canonical": "supplementary/tools/framework/pepflow/pep_runner.py",
+            "sha256": "76a60803b838ed80adb3c14143a88c44579a3615cb103fb32b03397d54684ca4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/plot_data.py",
+            "canonical": "supplementary/tools/framework/pepflow/plot_data.py",
+            "sha256": "0ae94b9eced181f3e81eb559b8b5349160dae0a14641521a65d73831f22e9e5a"
+          },
+          {
+            "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+            "canonical": "supplementary/tools/framework/pepflow/primal_interactive_constraint.py",
+            "sha256": "b406f962f18bb24322ce8cdf83de8fb306537ffaeba0724a31cbf14a57a53588"
+          },
+          {
+            "path": "supplementary/approved/pepflow/registry.py",
+            "canonical": "supplementary/tools/framework/pepflow/registry.py",
+            "sha256": "677bbb3cab7c4c228a644fd4d4787172ed8053a961a482d47faf8bc9f607ce3f"
+          },
+          {
+            "path": "supplementary/approved/pepflow/scalar.py",
+            "canonical": "supplementary/tools/framework/pepflow/scalar.py",
+            "sha256": "3b80d5a622d4c8187db84facfedb0c307a2e7d4ee4867ea89be1daaf906cc2c2"
+          },
+          {
+            "path": "supplementary/approved/pepflow/solver.py",
+            "canonical": "supplementary/tools/framework/pepflow/solver.py",
+            "sha256": "a32afb6272d28199578783286ff4a18f8e084447b7d55bf1c05d7ffe2c7cee73"
+          },
+          {
+            "path": "supplementary/approved/pepflow/utils.py",
+            "canonical": "supplementary/tools/framework/pepflow/utils.py",
+            "sha256": "8daa7e849ebbbc35e9b87be329e889b5303a463496539c00e3e57544ab736bc4"
+          },
+          {
+            "path": "supplementary/approved/pepflow/vector.py",
+            "canonical": "supplementary/tools/framework/pepflow/vector.py",
+            "sha256": "05b7760c350ab55c9cf2f7ee1aed39ddb301733575330c542e86a17c7f5f7d9d"
+          }
+        ],
+        "provenance_hash_failures": [
+          {
+            "path": "supplementary/h/runtime.py",
+            "expected": "8d187d769eeddb42c256d229647a1a491f5c13428246d8662c8e9e93c93ab89e",
+            "actual": "a284ed870ce1e5dc988f389789f2c7af6afd7323a52ca3fc4e42aea6f200bd91"
+          }
+        ],
+        "failure_classification": "original_notebook_source_hash_check"
+      }
+    ]
+  },
+  "limits": [
+    "Only the first repetition of each condition was freshly executed. Other repetitions retain historical reviews.",
+    "Symbolic-only plans do not establish numerical provenance or numerical-to-symbolic linkage.",
+    "BPPM and Dual FEG omit documented numerical-linkage preludes; OGM omits final numerical-success prose.",
+    "OGM and PGM with SOS sign/domain prose has not been converted into an executable proof.",
+    "No AI generation, new optimization solve, timing replication or cross-platform execution was performed."
+  ]
+}

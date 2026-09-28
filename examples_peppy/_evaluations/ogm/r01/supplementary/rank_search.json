@@ -1,0 +1,205 @@
+{
+  "summary": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 3,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "4ef9b52774c4120391c4efb7b8c57f732f6cafde1d7f057876e08dded5d63b43",
+    "recipe_id": "star-through-k-consecutive-through-k-terminal-square-boundary",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "unscaled Gram coordinates",
+      "coordinate_order": "x0,xstar,g0,...,gN"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "samples": [
+    {
+      "N": 6,
+      "certificate_id": "6b1937816aaedd595098d88c9364bbc9d4227b9d9a15f8695b5cc20f667fe373",
+      "certificate_path": "supplementary/ogm_b2_N6.json",
+      "recipe_id": "star-through-k-consecutive-through-k-terminal-square-boundary",
+      "rank_profile": [
+        0,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2
+      ],
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "unscaled Gram coordinates",
+        "coordinate_order": "x0,xstar,g0,...,gN"
+      },
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18745759275464116,
+          0.04140140757687357,
+          0.015310721209995317,
+          1.9949203929080354e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.4394427894069044,
+          0.0740796900452223,
+          0.024271446202371254,
+          9.524640507461277e-11,
+          1.7586943151598097e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.8464373927093768,
+          0.12843289817092232,
+          0.026611758459502304,
+          2.6208397356523984e-10,
+          6.53846578671721e-11,
+          1.465981612860445e-19,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.4398159910142416,
+          0.19956358128820242,
+          0.02742227854973579,
+          1.214960233452356e-09,
+          1.3942462268007547e-10,
+          5.636706653738806e-11,
+          3.98959244130019e-18,
+          0.0,
+          0.0
+        ],
+        [
+          2.25014762395647,
+          0.28630388697801096,
+          0.02778345309854506,
+          1.6602424670466274e-09,
+          4.960197133212404e-10,
+          8.61029199995735e-11,
+          4.41430461732678e-11,
+          8.608318159393963e-18,
+          0.0
+        ],
+        [
+          2.879965849387599,
+          0.028036316546762162,
+          2.7929915008302597e-09,
+          1.151829872588761e-09,
+          4.3645761643304914e-10,
+          2.0415620847749772e-10,
+          7.681289998565648e-11,
+          3.851342237332355e-11,
+          1.1942316054344196e-17
+        ]
+      ],
+      "coverage_residual": [
+        1.2502545665427078e-09,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "N": 4,
+      "certificate_id": "4ef9b52774c4120391c4efb7b8c57f732f6cafde1d7f057876e08dded5d63b43",
+      "certificate_path": "state/ogm_b2.json",
+      "recipe_id": "star-through-k-consecutive-through-k-terminal-square-boundary",
+      "rank_profile": [
+        0,
+        3,
+        3,
+        3,
+        2
+      ],
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "unscaled Gram coordinates",
+        "coordinate_order": "x0,xstar,g0,...,gN"
+      },
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.33879031713117796,
+          0.07482436862135322,
+          0.027670920212149563,
+          3.1918726328930094e-18,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7942007574513335,
+          0.1338835168983362,
+          0.043865552919892734,
+          9.836369286595191e-11,
+          7.991803341593735e-18,
+          0.0,
+          0.0
+        ],
+        [
+          1.529758220600306,
+          0.2321155524153707,
+          0.04809517695859755,
+          1.1975133575184511e-10,
+          3.954620647374927e-11,
+          3.189436680039341e-17,
+          0.0
+        ],
+        [
+          2.186443713236729,
+          0.0499978185047961,
+          6.02695578813399e-10,
+          1.3344041780880617e-10,
+          7.137216602773202e-11,
+          1.5594247416323515e-11,
+          4.196373678336762e-17
+        ]
+      ],
+      "coverage_residual": [
+        3.6414127269068786e-10,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

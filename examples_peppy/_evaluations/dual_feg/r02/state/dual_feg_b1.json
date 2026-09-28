@@ -1,0 +1,84 @@
+{
+  "algo_name": "dual_feg",
+  "problem_type": "monotone_operator",
+  "obj_tag": "A",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "||A(x_N)||^2",
+  "initial_condition": "A(x_star)=0; ||x_0-x_star||^2 <= R^2; z_0=0",
+  "conjectured_rate": "4*L**2*R**2/N**2",
+  "setup_file": "dual_feg_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 1.9999999320609343,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal_inaccurate",
+      "failures": []
+    },
+    {
+      "N": 2,
+      "opt_value": 0.9999999976822601,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    },
+    {
+      "N": 3,
+      "opt_value": 0.4444444511806735,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    },
+    {
+      "N": 4,
+      "opt_value": 0.2500000015206379,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    },
+    {
+      "N": 5,
+      "opt_value": 0.16000000340875187,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    },
+    {
+      "N": 6,
+      "opt_value": 0.11111111362413659,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    },
+    {
+      "N": 7,
+      "opt_value": 0.08163265589366478,
+      "solver": "CLARABEL",
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    }
+  ],
+  "N_verify": 6,
+  "rate_note": "N=2..7 match 4/N^2; N=1 gives approximately 2 with optimal_inaccurate status. The uniform conjecture is an upper bound, not equality at N=1."
+}

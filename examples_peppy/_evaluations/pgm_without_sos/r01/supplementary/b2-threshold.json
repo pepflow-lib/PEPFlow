@@ -1,0 +1,1335 @@
+{
+  "opt_value": 0.062499999789223736,
+  "tau_sol": 0.0625000019323287,
+  "tau_name": "initial_condition",
+  "relaxed_constraints": [
+    "g:x_1,x_star",
+    "g:x_2,x_star",
+    "g:x_3,x_star",
+    "g:x_4,x_star"
+  ],
+  "S_matrix": [
+    [
+      0.06250000219280354,
+      -0.06250000078278066,
+      3.50987682305655e-05,
+      -0.0514199030509367,
+      -0.05901528090299663,
+      -0.05410383074903325,
+      -0.07674184336420756,
+      -0.07914873459085224,
+      -0.12185742969832453,
+      -0.13478492568739903,
+      -0.24238544603459475,
+      -0.18057770469013484
+    ],
+    [
+      -0.06250000078278066,
+      0.06250000219280354,
+      -3.509876823056635e-05,
+      0.0514199030509367,
+      0.05901528090299663,
+      0.05410383074903325,
+      0.07674184336420756,
+      0.07914873459085224,
+      0.12185742969832453,
+      0.13478492568739903,
+      0.24238544603459475,
+      0.18057770469013484
+    ],
+    [
+      3.50987682305655e-05,
+      -3.509876823056635e-05,
+      0.5000701989461289,
+      -0.05145500181914065,
+      -3.0341203122674154e-05,
+      -0.05413417195208049,
+      -2.487775515657243e-05,
+      -0.07917361234593336,
+      -1.8199543323609644e-05,
+      -0.1348031252306472,
+      -1.012585696067671e-05,
+      -0.18058783054702007
+    ],
+    [
+      -0.0514199030509367,
+      0.0514199030509367,
+      -0.05145500181914065,
+      0.10283980751144449,
+      0.02092001481909545,
+      0.016008564665198094,
+      0.05187554361331393,
+      0.05428243484002453,
+      0.10527511778262409,
+      0.11820261377176451,
+      0.23326754588975904,
+      0.17145980454536502
+    ],
+    [
+      -0.05901528090299663,
+      0.05901528090299663,
+      -3.0341203122674154e-05,
+      0.02092001481909545,
+      0.11803056321555165,
+      0.05359522872551962,
+      0.028026173174737528,
+      0.07238112200401325,
+      0.09582274027475043,
+      0.13541207831666213,
+      0.230243297030141,
+      0.1898446696231432
+    ],
+    [
+      -0.05410383074903325,
+      0.05410383074903325,
+      -0.05413417195208049,
+      0.016008564665198094,
+      0.05359522872551962,
+      0.20462179923963136,
+      0.04708139316361408,
+      0.007121722814627824,
+      0.0978764155822469,
+      0.09507744829119638,
+      0.2342570805844279,
+      0.1641147564070986
+    ],
+    [
+      -0.07674184336420756,
+      0.07674184336420756,
+      -2.487775515657243e-05,
+      0.05187554361331393,
+      0.028026173174737528,
+      0.04708139316361408,
+      0.2767509649629318,
+      0.10834200183595746,
+      0.07639835470686153,
+      0.1751111319866739,
+      0.23275927322874462,
+      0.23154957181900537
+    ],
+    [
+      -0.07914873459085224,
+      0.07914873459085224,
+      -0.07917361234593336,
+      0.05428243484002453,
+      0.07238112200401325,
+      0.007121722814627824,
+      0.10834200183595746,
+      0.36459368489241956,
+      0.14025583415751144,
+      0.09818845842087028,
+      0.3121800452974606,
+      0.18814631608282473
+    ],
+    [
+      -0.12185742969832453,
+      0.12185742969832453,
+      -1.8199543323609644e-05,
+      0.10527511778262409,
+      0.09582274027475043,
+      0.0978764155822469,
+      0.07639835470686153,
+      0.14025583415751144,
+      0.4888124580001114,
+      0.2466151098030027,
+      0.3138255655303397,
+      0.38485483932012676
+    ],
+    [
+      -0.13478492568739903,
+      0.13478492568739903,
+      -0.1348031252306472,
+      0.11820261377176451,
+      0.13541207831666213,
+      0.09507744829119638,
+      0.1751111319866739,
+      0.09818845842087028,
+      0.2466151098030027,
+      0.5767456920225228,
+      0.5210878126615339,
+      0.32481504690204477
+    ],
+    [
+      -0.24238544603459475,
+      0.24238544603459475,
+      -1.012585696067671e-05,
+      0.23326754588975904,
+      0.230243297030141,
+      0.2342570805844279,
+      0.23275927322874462,
+      0.3121800452974606,
+      0.3138255655303397,
+      0.5210878126615339,
+      1.1622552115690086,
+      0.6383009873721537
+    ],
+    [
+      -0.18057770469013484,
+      0.18057770469013484,
+      -0.18058783054702007,
+      0.17145980454536502,
+      0.1898446696231432,
+      0.1641147564070986,
+      0.23154957181900537,
+      0.18814631608282473,
+      0.38485483932012676,
+      0.32481504690204477,
+      0.6383009873721537,
+      0.7766019761539766
+    ]
+  ],
+  "S_row_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "S_col_names": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_vectors": [
+    "x_0",
+    "x_star",
+    "grad_f(x_star)",
+    "grad_f(x_0)",
+    "grad_g(x_1)",
+    "grad_f(x_1)",
+    "grad_g(x_2)",
+    "grad_f(x_2)",
+    "grad_g(x_3)",
+    "grad_f(x_3)",
+    "grad_g(x_4)",
+    "grad_f(x_4)"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "g(x_star)",
+    "f(x_0)",
+    "g(x_1)",
+    "f(x_1)",
+    "g(x_2)",
+    "f(x_2)",
+    "g(x_3)",
+    "f(x_3)",
+    "g(x_4)",
+    "f(x_4)"
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.0625000019323287,
+    "f:x_star,x_0": 0.10283980772687867,
+    "f:x_star,x_1": 0.10820766312307176,
+    "f:x_star,x_2": 0.15829747080670972,
+    "f:x_star,x_3": 0.26956985299980335,
+    "f:x_star,x_4": 0.361155411005275,
+    "f:x_0,x_star": 9.51675535410681e-06,
+    "f:x_0,x_1": 0.09641413795702602,
+    "f:x_0,x_2": 0.038534155298605814,
+    "f:x_0,x_3": 0.025538604892569546,
+    "f:x_0,x_4": 0.01853393149115502,
+    "f:x_1,x_star": 1.0928520972901074e-05,
+    "f:x_1,x_0": 0.026457934291056865,
+    "f:x_1,x_2": 0.167762062252633,
+    "f:x_1,x_3": 0.1095692520998417,
+    "f:x_1,x_4": 0.08340980601676509,
+    "f:x_2,x_star": 1.33580487066232e-05,
+    "f:x_2,x_0": 0.016567977295427094,
+    "f:x_2,x_1": 0.07763462079112109,
+    "f:x_2,x_3": 0.1720679871208618,
+    "f:x_2,x_4": 0.30661053662728355,
+    "f:x_3,x_star": 1.6148997766563505e-05,
+    "f:x_3,x_0": 0.0149288251667701,
+    "f:x_3,x_1": 0.05349373325278807,
+    "f:x_3,x_2": 0.12149427842800471,
+    "f:x_3,x_4": 0.5068922977290904,
+    "f:x_4,x_star": 2.0253338899910174e-05,
+    "f:x_4,x_0": 0.018235801914598136,
+    "f:x_4,x_1": 0.05145982805724526,
+    "f:x_4,x_2": 0.08680651309751741,
+    "f:x_4,x_3": 0.12007958646131818,
+    "g:x_star,x_1": 0.11803056343098209,
+    "g:x_star,x_2": 0.15348368835340395,
+    "g:x_star,x_3": 0.24371486102163795,
+    "g:x_star,x_4": 0.48477089369417853,
+    "g:x_1,x_star": null,
+    "g:x_1,x_2": 0.12326727844999899,
+    "g:x_1,x_3": 0.056991531452951355,
+    "g:x_1,x_4": 0.03520309715702551,
+    "g:x_2,x_star": null,
+    "g:x_2,x_1": 0.04536196315683355,
+    "g:x_2,x_3": 0.18810606899108412,
+    "g:x_2,x_4": 0.1911926160913781,
+    "g:x_3,x_star": null,
+    "g:x_3,x_1": 0.02778508246328121,
+    "g:x_3,x_2": 0.0934542402922007,
+    "g:x_3,x_4": 0.4510886097169865,
+    "g:x_4,x_star": null,
+    "g:x_4,x_1": 0.024284299633945673,
+    "g:x_4,x_2": 0.05445544276872314,
+    "g:x_4,x_3": 0.08351547263186958
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_0,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_3,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "g:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "g:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "g",
+      "group": "Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    }
+  },
+  "certificate_provenance": {
+    "solve_id": "6cb8fee0-9703-49e0-8e47-d3f884c81a95",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "solver": {
+      "options": {
+        "solver": "CLARABEL"
+      },
+      "status": "optimal",
+      "failures": []
+    }
+  },
+  "numerical_decomposition": {
+    "method": "reverse_ldl",
+    "D": [
+      [
+        0.7766019761539766,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.6376259124034273,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.33961614370428617,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.2759790439256553,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2620944197441244,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.16909552728270863,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.13628425567626015,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1458634421305806,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0072002040137586765,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.409869227440852e-08,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0297680173108583e-09,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        8.893541033948701e-10
+      ]
+    ],
+    "ell_coords": [
+      [
+        -0.232522849844425,
+        0.232522849844425,
+        -0.2325358885144209,
+        0.22078208633269011,
+        0.24445555825562662,
+        0.2113241550322293,
+        0.2981573301753949,
+        0.2422686548064114,
+        0.49556252898823644,
+        0.41825163581304586,
+        0.8219152242352753,
+        1.0
+      ],
+      [
+        -0.1473683543351024,
+        0.1473683543351024,
+        0.23276620114420787,
+        0.14482178404803256,
+        0.11638026526753277,
+        0.15584163353276506,
+        0.06656748755011342,
+        0.2470723360839968,
+        -0.003909009936716834,
+        0.3985367840434749,
+        1.0,
+        0.0
+      ],
+      [
+        -0.06421704484246353,
+        0.06421704484246353,
+        -0.34869339755343814,
+        0.02852496212239911,
+        0.0778378384794187,
+        -0.038766957859619894,
+        0.18064273554915933,
+        -0.1274657336171968,
+        0.25511829363419536,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.09846141565564383,
+        0.09846141565564383,
+        0.4357799132362759,
+        0.06593095390740016,
+        -0.01707063233695979,
+        0.07353668128248542,
+        -0.1950666900831155,
+        0.21261511977260564,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.03505039941849759,
+        0.03505039941849759,
+        -0.4302186069791052,
+        -0.04847835998858893,
+        0.04740432212397601,
+        -0.24106778296652026,
+        0.23283091844728293,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.09384186401807486,
+        0.09384186401807486,
+        0.6803515651026143,
+        -0.0037596747656247864,
+        -0.24899680245852,
+        0.07441128900917747,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.00866307484060449,
+        0.00866307484060449,
+        -0.647756371555072,
+        -0.28318710711104744,
+        0.0690565022346127,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.06696499292126395,
+        0.06696499292126395,
+        1.0,
+        -0.46387983998957283,
+        0.5361200986056259,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.1249987865968322,
+        0.1249987865968322,
+        0.0,
+        1.0,
+        0.9999990847883697,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.07499379132097402,
+        0.07499379132097402,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.36926264219981236,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "basis_labels": [
+      "x_0",
+      "x_star",
+      "grad_f(x_star)",
+      "grad_f(x_0)",
+      "grad_g(x_1)",
+      "grad_f(x_1)",
+      "grad_g(x_2)",
+      "grad_f(x_2)",
+      "grad_g(x_3)",
+      "grad_f(x_3)",
+      "grad_g(x_4)",
+      "grad_f(x_4)"
+    ]
+  },
+  "all_lambda_groups": {
+    "f:default": {
+      "matrix": [
+        [
+          0.0,
+          0.09641413795702602,
+          0.038534155298605814,
+          0.025538604892569546,
+          0.01853393149115502,
+          9.51675535410681e-06
+        ],
+        [
+          0.026457934291056865,
+          0.0,
+          0.167762062252633,
+          0.1095692520998417,
+          0.08340980601676509,
+          1.0928520972901074e-05
+        ],
+        [
+          0.016567977295427094,
+          0.07763462079112109,
+          0.0,
+          0.1720679871208618,
+          0.30661053662728355,
+          1.33580487066232e-05
+        ],
+        [
+          0.0149288251667701,
+          0.05349373325278807,
+          0.12149427842800471,
+          0.0,
+          0.5068922977290904,
+          1.6148997766563505e-05
+        ],
+        [
+          0.018235801914598136,
+          0.05145982805724526,
+          0.08680651309751741,
+          0.12007958646131818,
+          0.0,
+          2.0253338899910174e-05
+        ],
+        [
+          0.10283980772687867,
+          0.10820766312307176,
+          0.15829747080670972,
+          0.26956985299980335,
+          0.361155411005275,
+          0.0
+        ]
+      ],
+      "row_names": [
+        "x_0",
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ],
+      "col_names": [
+        "x_0",
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ]
+    },
+    "g:default": {
+      "matrix": [
+        [
+          0.0,
+          0.12326727844999899,
+          0.056991531452951355,
+          0.03520309715702551,
+          0.0
+        ],
+        [
+          0.04536196315683355,
+          0.0,
+          0.18810606899108412,
+          0.1911926160913781,
+          0.0
+        ],
+        [
+          0.02778508246328121,
+          0.0934542402922007,
+          0.0,
+          0.4510886097169865,
+          0.0
+        ],
+        [
+          0.024284299633945673,
+          0.05445544276872314,
+          0.08351547263186958,
+          0.0,
+          0.0
+        ],
+        [
+          0.11803056343098209,
+          0.15348368835340395,
+          0.24371486102163795,
+          0.48477089369417853,
+          0.0
+        ]
+      ],
+      "row_names": [
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ],
+      "col_names": [
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ]
+    }
+  },
+  "lambda_groups": {
+    "f:default": {
+      "matrix": [
+        [
+          0.0,
+          0.09641413795702602,
+          0.038534155298605814,
+          0.025538604892569546,
+          0.01853393149115502,
+          9.51675535410681e-06
+        ],
+        [
+          0.026457934291056865,
+          0.0,
+          0.167762062252633,
+          0.1095692520998417,
+          0.08340980601676509,
+          1.0928520972901074e-05
+        ],
+        [
+          0.016567977295427094,
+          0.07763462079112109,
+          0.0,
+          0.1720679871208618,
+          0.30661053662728355,
+          1.33580487066232e-05
+        ],
+        [
+          0.0149288251667701,
+          0.05349373325278807,
+          0.12149427842800471,
+          0.0,
+          0.5068922977290904,
+          1.6148997766563505e-05
+        ],
+        [
+          0.018235801914598136,
+          0.05145982805724526,
+          0.08680651309751741,
+          0.12007958646131818,
+          0.0,
+          2.0253338899910174e-05
+        ],
+        [
+          0.10283980772687867,
+          0.10820766312307176,
+          0.15829747080670972,
+          0.26956985299980335,
+          0.361155411005275,
+          0.0
+        ]
+      ],
+      "row_names": [
+        "x_0",
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ],
+      "col_names": [
+        "x_0",
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_star"
+      ]
+    }
+  },
+  "dense_opt_value": 0.06249999907262903,
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 6.71559741149963e-09,
+      "identity_func_max_abs": 6.500202598402893e-09,
+      "identity_offset_abs": 2.1431049643250155e-09,
+      "S_reconstruction_max_abs": 1.1102230246251565e-16,
+      "dense_relaxed_gap": 7.165947071841039e-10,
+      "minimum_scalar_inequality_dual": 9.51675535410681e-06,
+      "minimum_S_eigenvalue": 6.042041056320474e-10,
+      "minimum_matrix_inequality_eigenvalue": 0.0
+    },
+    "passed": true
+  }
+}

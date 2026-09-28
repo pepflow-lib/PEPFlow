@@ -1,0 +1,44 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Coherent dense and sparse certificates acquired, initial formula search performed, numerical identity and notebook gates passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "timestamp_utc":  "2026-09-23T22:02:48.7996500Z",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "direct_approved_reads":  [
+                                  "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                                  "pepflow/lyapunov_utils.py",
+                                  "pepflow/pep_result.py",
+                                  "pepflow/expression_manager.py",
+                                  "pepflow/ipython_utils.py"
+                              ],
+    "generated_files_consulted":  [
+                                      "state/ogm_b1.json",
+                                      "state/ogm_dense.json",
+                                      "state/ogm_b2.json",
+                                      "state/ogm_relaxed.json",
+                                      "supplementary/helpers/certificate.py",
+                                      "ogm_example_lyap.ipynb",
+                                      "supplementary/b2-static-001.json",
+                                      "supplementary/ogm_example_lyap_checklist.md"
+                                  ],
+    "commands":  [
+                     "python -I -B supplementary/run_b2.py",
+                     "python -I -B supplementary/select_b2.py",
+                     "python -I -B supplementary/update_b2_notebook.py",
+                     "python -I -B supplementary/execute_notebook.py",
+                     "reviewed static adapter checks, evidence b2-static-001.json and b2-static-002.json"
+                 ],
+    "incidents":  [
+                      "Type checker rejected literal integer parameter dictionary against framework Number annotation; own callers now parse existing params_json, same values.",
+                      "PowerShell notebook rewrite added UTF-8 BOM; removed BOM and reran clean-kernel execution successfully.",
+                      "Context name overwrite warning on rebuild; every rebuilt builder belongs to its corresponding new context."
+                  ],
+    "verification_evidence":  "supplementary/b2-static-002.json",
+    "notebook_evidence":  "supplementary/b2-notebook-execution-003.txt",
+    "unresolved_work":  "B3-B5 and analytic proof obligations",
+    "timing_usage":  "Provider token usage unavailable",
+    "deadline_utc":  "2026-09-23T23:46:53.255961+00:00"
+}

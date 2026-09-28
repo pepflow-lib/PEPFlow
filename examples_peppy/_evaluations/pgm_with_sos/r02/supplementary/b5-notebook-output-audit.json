@@ -1,0 +1,458 @@
+[
+  {
+    "index": 0,
+    "type": "markdown",
+    "first_line": "# Proximal gradient method: convergence and Lyapunov discovery",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 1,
+    "type": "markdown",
+    "first_line": "## Proof Statement",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 2,
+    "type": "markdown",
+    "first_line": "### Theorem",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 3,
+    "type": "markdown",
+    "first_line": "### Proof outline",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 4,
+    "type": "code",
+    "first_line": "from pathlib import Path",
+    "execution_count": 1,
+    "stream": "Approved framework: C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\approved\\pepflow\\__init__.py\n",
+    "display_count": 0
+  },
+  {
+    "index": 5,
+    "type": "markdown",
+    "first_line": "## Functions, algorithm, and PEP setup",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 6,
+    "type": "code",
+    "first_line": "\"\"\"PGM with step 1/L; composite objective gap and initial squared radius R**2.\"\"\"",
+    "execution_count": 2,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 7,
+    "type": "code",
+    "first_line": "ctx, pb, objective_function = get_pep_setup(4, {\"L\": 1, \"R\": 1})",
+    "execution_count": 3,
+    "stream": "Created PGM context for N=4 with smooth and convex interpolation groups.\n",
+    "display_count": 0
+  },
+  {
+    "index": 8,
+    "type": "markdown",
+    "first_line": "## Numerical evidence",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 9,
+    "type": "code",
+    "first_line": "b1 = json.loads((notebook_dir / \"state\" / \"pgm_b1.json\").read_text())",
+    "execution_count": 4,
+    "stream": "N=1: PEP=0.2500000043; 1/PEP=3.9999999; status=optimal\nN=2: PEP=0.1249999977; 1/PEP=8.0000001; status=optimal\nN=3: PEP=0.0833333328; 1/PEP=12.0000001; status=optimal\nN=4: PEP=0.0624999991; 1/PEP=16.0000002; status=optimal\nN=5: PEP=0.0499999995; 1/PEP=20.0000002; status=optimal\nN=6: PEP=0.0416666625; 1/PEP=24.0000024; status=optimal_inaccurate\nN=7: PEP=0.0357142843; 1/PEP=28.0000011; status=optimal_inaccurate\nMaximum absolute candidate discrepancy: 4.31910757159315e-09\n",
+    "display_count": 1
+  },
+  {
+    "index": 10,
+    "type": "markdown",
+    "first_line": "The reciprocal values are approximately $4N$, suggesting",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 11,
+    "type": "markdown",
+    "first_line": "## Dense and relaxed proof solves",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 12,
+    "type": "code",
+    "first_line": "import numpy as np",
+    "execution_count": 5,
+    "stream": "Warning: function or operator with tag h has been created before.\nDense bound: 0.06249999907262903 selected bound: 0.062499998838795916\nDense/selected difference: 2.33833112595061e-10\nSelected basis: ['x_0', 'x_star', 'grad_f(x_star)', 'grad_f(x_0)', 'grad_g(x_1)', 'grad_f(x_1)', 'grad_g(x_2)', 'grad_f(x_2)', 'grad_g(x_3)', 'grad_f(x_3)', 'grad_g(x_4)', 'grad_f(x_4)']\nDense Gram rank (absolute tolerance 1e-4): 9\nf dense active entries: 30 range: 5.409618907060255e-06 0.5082073393968127\nf selected active entries:\n  f:x_star,x_0 0.1250000524780983\n  f:x_star,x_1 0.16071565747095803\n  f:x_star,x_2 0.21428742795473416\n  f:x_star,x_3 0.29999886259078856\n  f:x_star,x_4 0.1999980157025201\n  f:x_0,x_1 0.1250000524780985\n  f:x_1,x_2 0.2857157067096368\n  f:x_2,x_3 0.5000031314249512\n  f:x_3,x_4 0.8000019907763198\ng dense active entries: 16 range: 0.02438302471159363 0.48363863763526893\ng selected active entries:\n  g:x_star,x_1 0.1428546574437588\n  g:x_star,x_2 0.190480137093319\n  g:x_star,x_3 0.26666834784964005\n  g:x_star,x_4 0.39999687057096195\n  g:x_1,x_2 0.14285465744375864\n  g:x_2,x_3 0.3333347912976577\n  g:x_3,x_4 0.6000031359078778\nC:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\approved\\pepflow\\function.py:167: UserWarning:\n\nWarning: function or operator with tag f has been created before.\n\nC:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\approved\\pepflow\\function.py:167: UserWarning:\n\nWarning: function or operator with tag g has been created before.\n\n",
+    "display_count": 0
+  },
+  {
+    "index": 13,
+    "type": "markdown",
+    "first_line": "## Lambda and S verification",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 14,
+    "type": "code",
+    "first_line": "def lambda_candidate(owner, left, right, N):",
+    "execution_count": 6,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 15,
+    "type": "code",
+    "first_line": "TOL = b2[\"numerical_checks\"][\"tolerances\"]",
+    "execution_count": 7,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 16,
+    "type": "code",
+    "first_line": "checks, ctx, pb, numerical_residual = verify(b2, dense[\"opt_value\"], b2[\"numerical_decomposition\"])",
+    "execution_count": 8,
+    "stream": "Complete numerical certificate:C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r02\\supplementary\\approved\\pepflow\\pep_context.py:172: UserWarning:\n\nThe provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.\n\n {'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0.0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}, 'residuals': {'identity_gram_max_abs': 5.288635973599298e-09, 'identity_func_max_abs': 1.619709921740764e-08, 'identity_offset_abs': 3.165652122383289e-09, 'S_reconstruction_max_abs': 3.135478371496525e-06, 'dense_relaxed_gap': 2.33833112595061e-10, 'minimum_scalar_inequality_dual': 0.06250000200444804, 'minimum_S_eigenvalue': 2.198704447512869e-09, 'minimum_matrix_inequality_eigenvalue': 0.0, 'candidate_rate_gap': 1.161204084276779e-09}, 'passed': True}\nFunction residual: [1.61970992174076e-8 1.29576798180153e-8 1.94289029309402e-16\n -1.66533453693773e-16 -3.23941973245923e-9 -3.23941995450383e-9\n -3.23941973245923e-9 -3.23941995450383e-9 -3.23941995450383e-9\n -6.47883968696306e-9 -6.47883990900766e-9]\nOffset residual: 3.16565212238329e-9\nAt the B2 handoff: numerical certificate verified; analytic proofs were still pending.\n",
+    "display_count": 1
+  },
+  {
+    "index": 17,
+    "type": "code",
+    "first_line": "N = b2[\"N\"]",
+    "execution_count": 9,
+    "stream": "f candidate weights:\ng candidate weights:\nMaximum candidate multiplier discrepancy: 3.9466171285473806e-06\nSOS reconstruction residual: 3.135478371496525e-06\nExact candidate identity at N=4: all Gram, function and offset coordinates vanish.\nThis finite-horizon exact check does not prove the all-horizon formula.\n",
+    "display_count": 4
+  },
+  {
+    "index": 18,
+    "type": "markdown",
+    "first_line": "### Initial closed-form search and B2 conclusion",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 19,
+    "type": "markdown",
+    "first_line": "### Additional B2 certificate for cross-horizon confirmation",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 20,
+    "type": "code",
+    "first_line": "b2_n6 = json.loads((notebook_dir / \"supplementary/b2-n6-certificate.json\").read_text())",
+    "execution_count": 10,
+    "stream": "N=6 candidate multiplier discrepancy: 9.577636088997643e-06\nN=6 certificate checks: {'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0.0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}, 'residuals': {'identity_gram_max_abs': 1.3405496712692866e-09, 'identity_func_max_abs': 3.5555411947996163e-09, 'identity_offset_abs': 2.502414109262219e-10, 'S_reconstruction_max_abs': 9.577565375673558e-06, 'dense_relaxed_gap': 4.33282452971806e-09, 'minimum_scalar_inequality_dual': 0.04166666707119415, 'minimum_S_eigenvalue': 4.284220948290628e-10, 'minimum_matrix_inequality_eigenvalue': 0.0, 'candidate_rate_gap': 1.542860769698784e-10}, 'passed': True}\nDense status: optimal_inaccurate\nSelected status: optimal\n",
+    "display_count": 0
+  },
+  {
+    "index": 21,
+    "type": "markdown",
+    "first_line": "## Partial-sum Lyapunov construction and rank profile",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 22,
+    "type": "code",
+    "first_line": "import hashlib",
+    "execution_count": 11,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 23,
+    "type": "code",
+    "first_line": "from scipy.linalg import polar",
+    "execution_count": 12,
+    "stream": "rank V_0: 0\n\nrank V_1: 4\nrank V_2: 4\nrank V_3: 4\nrank V_4: 1\nInterior rank is constant at this N: True boundary exclusions: (1, 1)\nFull-coordinate coverage residual: 2.1948348596784184e-06\nMaximum increment residual: 5.551115123125783e-17\nBoundary interpolation/S leftovers: none; omitted terms: none.\n",
+    "display_count": 0
+  },
+  {
+    "index": 24,
+    "type": "code",
+    "first_line": "confirmation_trial = construct(b2_n6, variant=\"blend-3/10\")",
+    "execution_count": 13,
+    "stream": "Common interior rank 4 confirmed at horizons 4 and 6.\nFixed exclusions: V_0 and V_N. Absolute singular-value threshold: 1e-4; native coordinates, no rescaling.\nN=4: smallest retained singular value=0.03429; largest discarded=2.56e-06; coverage residual=2.195e-06\nN=6: smallest retained singular value=0.02135; largest discarded=2.518e-06; coverage residual=6.704e-06\nRank agreement is finite-sample evidence; basis reconstruction and analytic proof remain pending.\n",
+    "display_count": 0
+  },
+  {
+    "index": 25,
+    "type": "markdown",
+    "first_line": "## Identify the vectors composing the Lyapunov function",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 26,
+    "type": "code",
+    "first_line": "b4 = json.loads((notebook_dir / \"state/pgm_b4.json\").read_text())",
+    "execution_count": 14,
+    "stream": "Selected B3 partial sums replayed at all indices; rank profile: [0, 4, 4, 4, 1]\n",
+    "display_count": 0
+  },
+  {
+    "index": 27,
+    "type": "markdown",
+    "first_line": "### Candidate-vector scan",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 28,
+    "type": "code",
+    "first_line": "from itertools import combinations",
+    "execution_count": 15,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 29,
+    "type": "code",
+    "first_line": "spanning_by_k={}",
+    "execution_count": 16,
+    "stream": "V_1 column-space candidates:\n   x_0-x_star\n   x_1-x_star\n   a_1\n   a_1-a_star\n   grad_f(x_star)\n   (x_0)-(x_1)\n   (x_star)-(x_0)\n   (x_star)-(x_1)\n   (grad_f(x_star))-(grad_f(x_1))\nV_2 column-space candidates:\n   x_0-x_star\n   x_2-x_star\n   a_2\n   a_2-a_star\n   grad_f(x_star)\n   (x_0)-(x_2)\n   (x_star)-(x_0)\n   (x_star)-(x_2)\n   (grad_f(x_star))-(grad_f(x_2))\nV_3 column-space candidates:\n   x_0-x_star\n   x_3-x_star\n   a_3\n   a_3-a_star\n   grad_f(x_star)\n   (x_0)-(x_3)\n   (x_star)-(x_0)\n   (x_star)-(x_3)\n   (grad_f(x_star))-(grad_f(x_3))\nV_4 column-space candidates:\n   x_0-x_star\n   (x_star)-(x_0)\n",
+    "display_count": 0
+  },
+  {
+    "index": 30,
+    "type": "markdown",
+    "first_line": "### Selected basis pattern",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 31,
+    "type": "code",
+    "first_line": "sparse_basis_by_k={}",
+    "execution_count": 17,
+    "stream": "k=1: rank 4; sparse basis: ['x_0-x_star', 'x_1-x_star', 'a_1', 'a_1-a_star']\nzero coefficients: 11/16\nk=2: rank 4; sparse basis: ['x_0-x_star', 'x_2-x_star', 'a_2', 'a_2-a_star']\nzero coefficients: 8/16\nk=3: rank 4; sparse basis: ['x_0-x_star', 'x_3-x_star', 'a_3', 'a_3-a_star']\nzero coefficients: 8/16\nk=4: rank 1; sparse basis: ['x_0-x_star']\nzero coefficients: 0/1\nk=0: rank 0 basis []\nk=1: rank 4 basis ['x_0-x_star', 'x_1-x_star', 'a_1', 'a_1-a_star']\nk=2: rank 4 basis ['x_0-x_star', 'x_2-x_star', 'a_2', 'a_2-a_star']\nk=3: rank 4 basis ['x_0-x_star', 'x_3-x_star', 'a_3', 'a_3-a_star']\nk=4: rank 1 basis ['x_0-x_star']\n",
+    "display_count": 0
+  },
+  {
+    "index": 32,
+    "type": "markdown",
+    "first_line": "### Coefficient matrices",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 33,
+    "type": "code",
+    "first_line": "def coeff_pattern(k,N,L=sp.S.One):",
+    "execution_count": 18,
+    "stream": "k=0: quadratic Frobenius residual=0\nEmpty 0-by-0 quadratic matrix.\nCoefficients of f-gap and g-gap: [0.0, 0.0] offset: 0.0\nFull-component residuals: {'gram': 0.0, 'function': 0.0, 'offset': 0.0}\nCandidate matrix maximum discrepancy: 0.0\nk=1: quadratic Frobenius residual=2.7773934e-06\nCandidate coefficient matrix:\nCoefficients of f-gap and g-gap: [0.28571570994905643, 0.14285465744375878] offset: 0.0\nFull-component residuals: {'gram': 9.319036194041508e-07, 'function': 1.942890293094024e-16, 'offset': 0.0}\nCandidate matrix maximum discrepancy: 8.507986118330702e-07\nk=2: quadratic Frobenius residual=7.0812774e-06\nCandidate coefficient matrix:\nCoefficients of f-gap and g-gap: [0.5000031362840807, 0.3333347945370776] offset: 0.0\nFull-component residuals: {'gram': 2.2688944016913126e-06, 'function': 3.2394197324592255e-09, 'offset': 0.0}\nCandidate matrix maximum discrepancy: 2.6821891751932503e-06\nk=3: quadratic Frobenius residual=9.7320989e-06\nCandidate coefficient matrix:\nCoefficients of f-gap and g-gap: [0.8000019972551591, 0.6000031407670074] offset: 0.0\nFull-component residuals: {'gram': 2.533734985182834e-06, 'function': 3.239420065526133e-09, 'offset': 0.0}\nCandidate matrix maximum discrepancy: 2.525779377725042e-06\nk=4: quadratic Frobenius residual=9.2184297e-06\nCandidate coefficient matrix:\nCoefficients of f-gap and g-gap: [1.0000000113379695, 1.000000009718259] offset: 0.0\nFull-component residuals: {'gram': 2.1985037859523215e-06, 'function': 4.859129765222292e-09, 'offset': 0.0}\nCandidate matrix maximum discrepancy: 3.3563518631041234e-10\n",
+    "display_count": 8
+  },
+  {
+    "index": 34,
+    "type": "markdown",
+    "first_line": "### Block 4 conclusion",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 35,
+    "type": "markdown",
+    "first_line": "## Closed-form derivation and exact verification",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 36,
+    "type": "markdown",
+    "first_line": "The sparse coefficient pattern from B4 fixes the candidate $\\Phi_{k}$ displayed in the theorem. The adjacent interpolation weights are $\\alpha_i=i/(2N+1-i)$ and $\\beta_i=(i-1)/(2N+1-i)$; their differences generate the star weights in the interior. The base and terminal coefficients are fixed by $V_{0}=0$ and $V_{N}=h(x_N)-h(x_\\star)-L\\|d_0\\|^2/(4N)$. We now substitute these candidates into the actual proximal-gradient recurrence and verify all coordinates exactly, with independent base and terminal contexts. No coefficient fitting or numerical blending is used in these symbolic identities.",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 37,
+    "type": "code",
+    "first_line": "assert b4[\"numerical_reconstruction\"][\"certificate_id\"] == b4[\"certificate_id\"]",
+    "execution_count": 19,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 38,
+    "type": "code",
+    "first_line": "# Exact recurrence relations for the candidate interpolation coefficients.",
+    "execution_count": 20,
+    "stream": "Interior star increments and terminal coefficient corrections verified exactly.\n",
+    "display_count": 0
+  },
+  {
+    "index": 39,
+    "type": "markdown",
+    "first_line": "## Symbolic Step Recursion Verification",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 40,
+    "type": "markdown",
+    "first_line": "For $1\\leq k\\leq N-2$, the equation checked is",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 41,
+    "type": "code",
+    "first_line": "ctx_symbolic = pf.PEPContext(\"step\").set_as_current()",
+    "execution_count": 21,
+    "stream": "Interior step, 1 <= k <= N-2 exact zero: True coordinates: (7, 7) (6, 1)\nFunction-coordinate residual: Matrix([[0], [0], [0], [0], [0], [0]])\nOffset residual: 0\n",
+    "display_count": 1
+  },
+  {
+    "index": 42,
+    "type": "markdown",
+    "first_line": "## Base Case and Boundary Symbolic Verification",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 43,
+    "type": "markdown",
+    "first_line": "For $N\\geq2$, the initial equation is",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 44,
+    "type": "code",
+    "first_line": "ctx_symbolic = pf.PEPContext(\"base\").set_as_current()",
+    "execution_count": 22,
+    "stream": "Base, N >= 2 exact zero: True coordinates: (6, 6) (5, 1)\nFunction-coordinate residual: Matrix([[0], [0], [0], [0], [0]])\nOffset residual: 0\n",
+    "display_count": 1
+  },
+  {
+    "index": 45,
+    "type": "markdown",
+    "first_line": "### Boundary Identity Symbolic Verification",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 46,
+    "type": "markdown",
+    "first_line": "For $N\\geq2$, the terminal equation is",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 47,
+    "type": "code",
+    "first_line": "ctx_symbolic = pf.PEPContext(\"boundary\").set_as_current()",
+    "execution_count": 23,
+    "stream": "Final step, N >= 2 exact zero: True coordinates: (7, 7) (6, 1)\nFunction-coordinate residual: Matrix([[0], [0], [0], [0], [0], [0]])\nOffset residual: 0\n",
+    "display_count": 1
+  },
+  {
+    "index": 48,
+    "type": "markdown",
+    "first_line": "### Exceptional one-step horizon",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 49,
+    "type": "markdown",
+    "first_line": "At $N=1$, verify the separate identity",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 50,
+    "type": "code",
+    "first_line": "ctx_symbolic = pf.PEPContext(\"one\").set_as_current()",
+    "execution_count": 24,
+    "stream": "Exceptional N=1 exact zero: True coordinates: (6, 6) (5, 1)\nFunction-coordinate residual: Matrix([[0], [0], [0], [0], [0]])\nOffset residual: 0\n",
+    "display_count": 1
+  },
+  {
+    "index": 51,
+    "type": "markdown",
+    "first_line": "### Signs, domains, normalization, and full-PEP identity",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 52,
+    "type": "markdown",
+    "first_line": "For $1\\leq i\\leq N$, every denominator in the residual multipliers and SOS coefficients is positive because $L>0$, $2N-i\\geq N\\geq1$, and $2N+1-i\\geq N+1$. The only possibly zero numerator is $i-1$, which is nonnegative. Thus all residual multipliers are nonnegative and $S_i\\geq0$. Smooth-convex and convex interpolation make their residuals nonpositive, so the exact identities imply $V_i\\leq V_{i-1}$. No positivity of $V_i$ is assumed or required.",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 53,
+    "type": "code",
+    "first_line": "Rpar = pf.Parameter(\"R\")",
+    "execution_count": 25,
+    "stream": "Radius normalization exact zero: True coordinates: (7, 7) (5, 1)\nFunction-coordinate residual: Matrix([[0], [0], [0], [0], [0]])\nOffset residual: 0\nExact base, step, terminal, N=1 and radius identities all pass.\nSign argument: nonpositive interpolation residuals, nonnegative multipliers and subtracted SOS imply V_i <= V_(i-1).\nTherefore h(x_N)-h(x_star) <= L ||x_0-x_star||^2/(4N) <= L R^2/(4N).\nSumming the local identities gives the complete global candidate certificate for arbitrary N.\n",
+    "display_count": 1
+  },
+  {
+    "index": 54,
+    "type": "markdown",
+    "first_line": "### Sharpness",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 55,
+    "type": "markdown",
+    "first_line": "For $R>0$, take the one-dimensional instance $f(x)=0$ and $g(x)=c|x|$, with $c=LR/(2N)$ and $x_0=R$. The proximal step subtracts $c/L=R/(2N)$ while the iterate is positive, so $x_k=R(1-k/(2N))$ for $0\\leq k\\leq N$. Therefore $x_N=R/2$, $x_\\star=0$, and $h(x_N)-h(x_\\star)=LR^2/(4N)$. This admissible instance attains the bound. At $R=0$, the initial point is a minimizer and the bound is zero.",
+    "execution_count": null,
+    "stream": "",
+    "display_count": 0
+  },
+  {
+    "index": 56,
+    "type": "code",
+    "first_line": "sharp_c = L_symbolic*R_symbolic/(2*N_symbolic)",
+    "execution_count": 26,
+    "stream": "Sharp example objective matches the theorem constant exactly.\n",
+    "display_count": 0
+  }
+]

@@ -1,0 +1,45 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Requested additional-horizon coherent sparse certificate acquired and verified; original selected certificate preserved",
+    "operational_status":  "awaiting_same_session_continuation",
+    "additional_certificate":  "supplementary/b2_n6.json",
+    "certificate_id":  "13e0293f4dae9182c6bb354da2292ff6932d6afea584e0301d5c65cdffb66c70",
+    "numerical_checks":  {
+                             "tolerances":  {
+                                                "identity_atol":  1E-05,
+                                                "identity_rtol":  0,
+                                                "reconstruction_atol":  0.0001,
+                                                "reconstruction_rtol":  1E-05,
+                                                "dual_tol":  1E-06,
+                                                "psd_tol":  1E-06,
+                                                "dense_opt_atol":  1E-05
+                                            },
+                             "residuals":  {
+                                               "identity_gram_max_abs":  1.3405496712692866E-09,
+                                               "identity_func_max_abs":  3.5555411947996163E-09,
+                                               "identity_offset_abs":  2.5024141092622187E-10,
+                                               "S_reconstruction_max_abs":  1.1102230246251565E-16,
+                                               "dense_relaxed_gap":  4.33282452971806E-09,
+                                               "minimum_scalar_inequality_dual":  0.04166666707119415,
+                                               "minimum_S_eigenvalue":  4.284220948290628E-10,
+                                               "minimum_matrix_inequality_eigenvalue":  0.0
+                                           },
+                             "passed":  true
+                         },
+    "dense_status":  "optimal_inaccurate",
+    "selected_status":  "optimal",
+    "diagnosis":  "Dense objective agrees with selected sparse optimal solve within 4.34e-9; dense status retained without promotion",
+    "incidents":  [
+                      "UTF-8 BOM in own recovery JSON; explicitly decoded utf-8-sig and reran successfully before any solve occurred in the failed invocation",
+                      "Static type inference on heterogeneous dictionaries and exec namespace repaired with explicit Any annotations; checks passed on second invocation."
+                  ],
+    "evidence":  [
+                     "supplementary/b2-n6-acquisition-002.txt",
+                     "supplementary/b2-n6-static-002.json"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00"
+}

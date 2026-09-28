@@ -1,0 +1,201 @@
+CELL 7b2ca6e8
+CELL c806306e
+CELL b6dba424
+Dense optimum: 0.025583945166769366
+Selected optimum: 0.02558394201140301
+Basis: ['z_0', 'x_star', 'grad_f(z_0)', 'grad_f(x_1)', 'grad_f(x_2)', 'grad_f(x_3)', 'grad_f(x_4)']
+Dense S eigenvalues: [4.43037711e-10 2.01474034e-09 2.83740725e-09 6.02787447e-09
+ 1.38597835e-08 3.94637036e-08 2.18759661e+00]
+Removed constraints: ['f:z_0,x_star', 'f:z_0,x_2', 'f:z_0,x_3', 'f:z_0,x_4', 'f:x_1,x_star', 'f:x_1,z_0', 'f:x_1,x_3', 'f:x_1,x_4', 'f:x_2,x_star', 'f:x_2,z_0', 'f:x_2,x_1', 'f:x_2,x_4', 'f:x_3,x_star', 'f:x_3,z_0', 'f:x_3,x_1', 'f:x_3,x_2', 'f:x_4,x_star', 'f:x_4,z_0', 'f:x_4,x_1', 'f:x_4,x_2', 'f:x_4,x_3']
+Preserved gap: 3.1553663570882406e-09
+initial_condition 0.025583942102815994
+f:x_star,z_0 0.10233576842211013
+f:x_star,x_1 0.16558275132843417
+f:x_star,x_2 0.22447627951908947
+f:x_star,x_3 0.28140200905783536
+f:x_star,x_4 0.2262031920335532
+f:z_0,x_1 0.10233576842240312
+f:x_1,x_2 0.2679185196742483
+f:x_2,x_3 0.4923947991252491
+f:x_3,x_4 0.7737968081214347
+CELL fe4c67ab
+Selected numerical S matrix:
+<IPython.core.display.Math object>
+Retained spectral coefficients: [9.77129401e-12 7.14079466e-11 9.10559427e-11 1.61675374e-10
+ 2.19394545e-10 6.69759949e-10 2.18761378e+00]
+S reconstruction error: 7.771561172376096e-16
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Initial search: {'completed': True, 'references_reviewed': ['Own B1 setup and dense/sparse certificates only; external examples excluded by clean-room policy'], 'attempts': [{'method': 'Compare star multipliers to 2 theta_k/theta_N^2 and terminal 1/theta_N; consecutive multipliers to 2 theta_k^2/theta_N^2', 'max_error': 3.6926295354788863e-10}, {'method': 'Inspect rank-one S and compare squared z_N-x_star-theta_N grad f(x_N)/L with coefficient L/(2 theta_N^2)', 'gram_max_error': 3.6414127269068786e-10, 'function_and_offset_zero': True}], 'unresolved_components': ['arbitrary-horizon analytic certificate identity']}
+CELL 556fab12
+<IPython.core.display.Math object>
+Function residual: [3.61022323147608e-10 2.92987856198579e-13 -7.65890129095226e-11
+ -6.80886458326313e-11 -6.16496853567128e-11 -1.54988022416092e-10]
+Offset residual: 9.14129848206269e-11
+Numerical certificate checks: {'identity_gram_max_abs': 1.280334727127297e-10, 'identity_func_max_abs': 3.610223231476084e-10, 'identity_offset_abs': 9.141298482062687e-11, 'minimum_S_eigenvalue': 9.771199224236941e-12, 'minimum_scalar_inequality_dual': 0.025583942102815994, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Numerical certificate verified: True
+Analytic full PEP verified: False
+Lyapunov proof verified: False
+CELL c052c996
+N=6 full-coordinate residuals: {'identity_gram_max_abs': 2.169349144764965e-10, 'identity_func_max_abs': 7.686165037767978e-10, 'identity_offset_abs': 1.3698065945422222e-10, 'minimum_S_eigenvalue': 1.5523331706932335e-11, 'minimum_scalar_inequality_dual': 0.014155965968572517, 'minimum_matrix_inequality_eigenvalue': 0.0}
+N=6 dense-relaxed gap: 1.4911078760615482e-09
+N=6 candidate comparisons: {'N': 6, 'lambda_error': 1.244633118790972e-09, 'S_error': 1.2502545665427078e-09}
+CELL 87114f23
+CELL d081de56
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+Interior rank is constant at this N: True boundary exclusions: (2, 0)
+CELL 437759cc
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 4
+Interior rank is constant at this N: True boundary exclusions: (2, 0)
+Horizon 4 coverage residual 1.1102230246251565e-16
+Horizon 6 coverage residual 1.1102230246251565e-16
+Confirmed common rank: 4; horizons: 4, 6; exclusions: (2,0); absolute tolerance: 1e-4
+Selected boundary contributions: ['f:x_star,x_4'] ['terminal_S']
+CELL 3b4a11d8
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+Interior rank is constant at this N: True boundary exclusions: (2, 0)
+Selected rank profile: [0, 3, 4, 4, 4] ; retained k=2,...,N; exceptions k=0,1
+CELL 6ab0ed7b
+V_1 column-space candidates:
+   x_0-x_star
+   g_0
+   x_1-x_star
+   z_1-x_star
+   g_1
+   z_1-x_1
+   y_1-x_star
+   x_1-x_0
+   x_2-x_star
+   z_2-x_star
+   z_2-x_2
+   y_2-x_star
+   x_2-x_1
+V_2 column-space candidates:
+   x_0-x_star
+   g_0
+   x_1-x_star
+   z_1-x_star
+   g_1
+   z_1-x_1
+   y_1-x_star
+   x_1-x_0
+   x_2-x_star
+   z_2-x_star
+   g_2
+   z_2-x_2
+   y_2-x_star
+   x_2-x_1
+   x_3-x_star
+   z_3-x_star
+   z_3-x_3
+   y_3-x_star
+   x_3-x_2
+V_3 column-space candidates:
+   x_0-x_star
+   x_3-x_star
+   z_3-x_star
+   g_3
+   z_3-x_3
+   y_3-x_star
+   x_4-x_star
+   z_4-x_star
+   z_4-x_4
+   y_4-x_star
+   x_4-x_3
+V_4 column-space candidates:
+   x_0-x_star
+   x_4-x_star
+   z_4-x_star
+   g_4
+   z_4-x_4
+   y_4-x_star
+CELL bd41d035
+k=1: rank 3; sparse basis: ['x_0-x_star', 'x_1-x_star', 'z_2-x_star']
+zero coefficients: 4/9
+k=2: rank 4; sparse basis: ['x_0-x_star', 'x_2-x_star', 'g_2', 'z_3-x_star']
+zero coefficients: 11/16
+k=3: rank 4; sparse basis: ['x_0-x_star', 'x_3-x_star', 'g_3', 'z_4-x_star']
+zero coefficients: 11/16
+k=4: rank 4; sparse basis: ['x_0-x_star', 'z_4-x_star', 'g_4', 'z_4-x_4']
+zero coefficients: 11/16
+CELL 22d4d24f
+k=0: rank 0 basis []
+k=1: rank 3 basis ['x_0-x_star', 'z_1-x_star', 'g_1']
+k=2: rank 4 basis ['x_0-x_star', 'z_2-x_star', 'x_2-x_star', 'g_2']
+k=3: rank 4 basis ['x_0-x_star', 'z_3-x_star', 'x_3-x_star', 'g_3']
+k=4: rank 4 basis ['x_0-x_star', 'z_4-x_star', 'x_4-x_star', 'g_4']
+CELL 0c3bda52
+k=0, quadratic reconstruction residual 0.000e+00
+Coefficients of f(x_j)-f_star, j=0,...,k: [0.0]
+Residual f_star gauge coefficient: 0.0 ; offset: 0.0
+k=1, quadratic reconstruction residual 1.068e-16
+<IPython.core.display.Math object>
+Coefficients of f(x_j)-f_star, j=0,...,k: [-2.929878561985788e-13, 0.10233576842240312]
+Residual f_star gauge coefficient: 0.0 ; offset: 0
+k=2, quadratic reconstruction residual 7.897e-17
+<IPython.core.display.Math object>
+Coefficients of f(x_j)-f_star, j=0,...,k: [-2.929878561985788e-13, 7.658899903173477e-11, 0.2679185196742483]
+Residual f_star gauge coefficient: 0.0 ; offset: 0
+k=3, quadratic reconstruction residual 1.398e-10
+<IPython.core.display.Math object>
+Coefficients of f(x_j)-f_star, j=0,...,k: [-2.929878561985788e-13, 7.658899903173477e-11, 6.80886458326313e-11, 0.4923947991252491]
+Residual f_star gauge coefficient: -5.551115123125783e-17 ; offset: 0
+k=4, quadratic reconstruction residual 3.059e-10
+<IPython.core.display.Math object>
+Coefficients of f(x_j)-f_star, j=0,...,k: [-2.929878561985788e-13, 7.658899903173477e-11, 6.80886458326313e-11, 6.164974086786401e-11, 0.7737968081214347]
+Residual f_star gauge coefficient: -1.1102230246251565e-16 ; offset: 0
+CELL 19cec219
+Full-coordinate reconstruction: {0: {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, 1: {'gram': 6.938893903907228e-17, 'function': 0.0, 'offset': 0.0}, 2: {'gram': 2.7755575615628914e-17, 'function': 0.0, 'offset': 0.0}, 3: {'gram': 6.628866899838215e-11, 'function': 0.0, 'offset': 0.0}, 4: {'gram': 1.8858697936607882e-10, 'function': 1.1102230246251565e-16, 'offset': 0.0}}
+CELL 9da44fc8
+Selected certificate: 940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3
+Discovery coefficient formula status: unresolved
+CELL 0e55bbc3
+CELL 2a5f9072
+Derived normalized constants: {a: 1/2, b: 2, c: 1, d: 2, m: 2, n: 2}
+CELL 236274bc
+<IPython.core.display.Math object>
+Generic step function residual: Matrix([[0, 0, 0]]) offset: 0
+CELL 7d86c46d
+<IPython.core.display.Math object>
+Base step function residual: Matrix([[0, 0, 0]]) offset: 0
+CELL 168954d0
+<IPython.core.display.Math object>
+Three-vector initial basis function residual: Matrix([[0, 0, 0]]) offset: 0
+CELL 4c38ad14
+<IPython.core.display.Math object>
+Terminal identity function residual: Matrix([[0, 0]]) offset: 0
+CELL cc639b29
+<IPython.core.display.Math object>
+Radius normalization function residual: Matrix([[0, 0]]) offset: 0
+CELL 51eb14ae
+<IPython.core.display.Math object>
+N=1 terminal identity function residual: Matrix([[0, 0, 0]]) offset: 0
+All exact identities passed.
+CELL db2215fe
+k=0: closed-form coefficient residual 0.000e+00
+k=1: closed-form coefficient residual 1.113e-10
+<IPython.core.display.Math object>
+k=2: closed-form coefficient residual 4.591e-10
+<IPython.core.display.Math object>
+k=3: closed-form coefficient residual 1.846e-10
+<IPython.core.display.Math object>
+k=4: closed-form coefficient residual 2.119e-10
+<IPython.core.display.Math object>
+Full potential comparisons at N=4,6: [{'N': 4, 'k': 0, 'gram': 0.0, 'function': 0.0, 'offset': 0.0}, {'N': 4, 'k': 1, 'gram': 2.225278017409238e-10, 'function': 2.2267429566902308e-10, 'offset': 0.0}, {'N': 4, 'k': 2, 'gram': 3.00822089460695e-10, 'function': 3.388236358148333e-10, 'offset': 0.0}, {'N': 4, 'k': 3, 'gram': 4.033072764642043e-10, 'function': 5.136476799449952e-10, 'offset': 0.0}, {'N': 4, 'k': 4, 'gram': 4.033072764642043e-10, 'function': 3.912955515161798e-10, 'offset': 0.0}, {'N': 6, 'k': 0, 'gram': 0.0, 'function': 0.0, 'offset': 0.0}, {'N': 6, 'k': 1, 'gram': 4.735732153648975e-10, 'function': 4.748499579654286e-10, 'offset': 0.0}, {'N': 6, 'k': 2, 'gram': 9.248718180199234e-10, 'function': 9.861354233198227e-10, 'offset': 0.0}, {'N': 6, 'k': 3, 'gram': 1.3046305702424377e-09, 'function': 1.48970874525034e-09, 'offset': 0.0}, {'N': 6, 'k': 4, 'gram': 1.3046305702424377e-09, 'function': 1.4294361805333722e-09, 'offset': 0.0}, {'N': 6, 'k': 5, 'gram': 1.3046305702424377e-09, 'function': 1.415632611134754e-09, 'offset': 0.0}, {'N': 6, 'k': 6, 'gram': 1.3046305702424377e-09, 'function': 1.088322099107586e-09, 'offset': 0.0}]

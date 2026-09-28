@@ -1,0 +1,38 @@
+﻿{
+    "current_block":  "B3",
+    "consulted_approved_files":  [
+                                     "settings.json"
+                                 ],
+    "consulted_own_files":  [
+                                "supplementary/explore_b3.py",
+                                "supplementary/b2-n06-certificate.json",
+                                "supplementary/b3-n04-observation.json",
+                                "supplementary/b3-n06-observation.json",
+                                "state/pgm_b2.json",
+                                "supplementary/b3_certificate_check.py",
+                                "supplementary/b3_decomposition.py",
+                                "supplementary/b3_grouping.py",
+                                "supplementary/b3_save.py",
+                                "pgm_example_lyap.ipynb",
+                                "supplementary/pgm_example_lyap_checklist.md"
+                            ],
+    "commands":  [
+                     "python -I -B supplementary/explore_b3_n06.py",
+                     "python -I -B supplementary/update_b3_notebook.py",
+                     "static adapter b3-static-001.json",
+                     "Notebook rebuild/reexecution after unused import removal and idempotence repair",
+                     "Static adapter retries b3-static-002.json and b3-static-003.json"
+                 ],
+    "source_hash_reads":  "Exact selected certificate source inventory",
+    "access_control":  "instruction_only",
+    "prohibited_exposure_observed":  false,
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+                      "b3-static-001: unused PSDConstraint import removed",
+                      "b3-notebook-002 and b3-static-002: repeated updater inserted duplicate save guard, causing IndentationError; updater made idempotent, saved certificates unchanged; b3-notebook-003 passes"
+                  ],
+    "audit_limit":  "No exhaustive OS tracing",
+    "original_deadline_utc":  "2026-09-23T23:46:05.983486+00:00"
+}

@@ -1,0 +1,44 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete",
+  "next_block": "B3",
+  "entry_exit_reason": "Dense and sparse coherent certificates, initial closed-form search, complete numerical checks, notebook and static checks passed.",
+  "run_status": "awaiting_continuation",
+  "access_control": "instruction_only",
+  "sources": [
+    "state/bppm_b1.json",
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "approved/pepflow/pep_result.py",
+    "approved/pepflow/expression_manager.py",
+    "approved/pepflow/constraint.py",
+    "approved/pepflow/vector.py",
+    "approved/pepflow/ipython_utils.py",
+    "approved/allowlist.json",
+    "all allowlisted pepflow Python files read by source-hash capture; frozen adapter source manifests record staged imports",
+    "own generated setup, helper, certificate and notebook files"
+  ],
+  "commands": [
+    "run_b2_dense.py",
+    "run_b2_relaxed.py",
+    "update_b2_notebook.py (two saved execution logs)",
+    "save_b2.py (two saved validation logs)",
+    "static adapter checks b2-static-001.json and b2-static-002.json (exact argv/evidence retained)",
+    "finalize_b2.py"
+  ],
+  "incidents": [
+    {
+      "classification": "source diagnostics",
+      "evidence": "b2-static-001.json",
+      "repair": "Explicit numeric dictionary annotations and checked non-None dual branch; b2-static-002 passed."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "observability_limit": "Instruction-only boundary; no exhaustive OS tracing.",
+  "certificate_id": "3d6864e4ccad8806be8f6ae7199535b87bb5895cfe9dd43256a49afaea78553b",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "unresolved_work": "B3-B5 not started; arbitrary-horizon analytic proof remains open.",
+  "deadline_utc": "2026-09-23T17:01:13.976153+00:00",
+  "usage": null
+}

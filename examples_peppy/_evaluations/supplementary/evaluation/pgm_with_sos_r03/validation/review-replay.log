@@ -1,0 +1,239 @@
+CELL 4 b99eab62
+CELL 5 e98865db
+CELL 6 dbd739d3
+INFO:matplotlib.font_manager:generated new fontManager
+CELL 7 90b40e16
+CELL 8 67e640c0
+CELL 10 00c610c4
+N=1: 0.2500000043 (optimal, CLARABEL)
+N=2: 0.1249999977 (optimal, CLARABEL)
+N=3: 0.0833333328 (optimal, CLARABEL)
+N=4: 0.0624999991 (optimal, CLARABEL)
+N=5: 0.0499999995 (optimal, CLARABEL)
+N=6: 0.0416666662 (optimal, CLARABEL)
+N=7: 0.0357142853 (optimal, CLARABEL)
+Inverse values: [ 3.99999993  8.00000015 12.00000008 16.00000024 20.0000002  24.00000025
+ 28.00000036]
+Maximum absolute discrepancy: 4.289838206883445e-09
+CELL 13 739f0241
+Dense objective: 0.062499999067619785
+Selected objective: 0.06249999883880585
+Dense-relaxed gap: 2.2881393307860876e-10
+Basis: ['x_star', 'grad_f(x_star)', 'x_0', 'grad_f(x_0)', 'grad_g(x_1)', 'grad_f(x_1)', 'grad_g(x_2)', 'grad_f(x_2)', 'grad_g(x_3)', 'grad_f(x_3)', 'grad_g(x_4)', 'grad_f(x_4)']
+Dense active group f count 30 range (5.411455892081596e-06, 0.507301258841541)
+Selected f [('f:x_star,x_0', 0.12500005247782897), ('f:x_star,x_1', 0.16071565747002725), ('f:x_star,x_2', 0.21428742795543826), ('f:x_star,x_3', 0.29999886259289454), ('f:x_star,x_4', 0.19999801570087924), ('f:x_0,x_1', 0.12500005247782917), ('f:x_1,x_2', 0.2857157067084429), ('f:x_2,x_3', 0.5000031314244675), ('f:x_3,x_4', 0.8000019907779483)]
+Dense active group g count 16 range (0.02437831623960572, 0.4836133487723516)
+Selected g [('g:x_star,x_1', 0.14285465744382342), ('g:x_star,x_2', 0.19048013709241893), ('g:x_star,x_3', 0.26666834785004034), ('g:x_star,x_4', 0.39999687057137245), ('g:x_1,x_2', 0.14285465744382322), ('g:x_2,x_3', 0.33333479129682836), ('g:x_3,x_4', 0.6000031359074549)]
+Dense S eigenvalues: [3.88721484e-11 1.64717680e-09 1.64721774e-09 1.01783667e-02
+ 1.09667262e-01 1.51111405e-01 2.49783008e-01 2.93089969e-01
+ 3.48894889e-01 4.16144944e-01 5.78730520e-01 2.54200537e+00]
+Selected solver: {'status': 'optimal', 'options': {'solver': 'CLARABEL'}, 'failures': [], 'solver': 'CLARABEL'}
+CELL 15 848658a0
+CELL 16 03852b9e
+Candidate lambda f
+<IPython.core.display.Math object>
+Candidate lambda g
+<IPython.core.display.Math object>
+Candidate multiplier max error: 3.946616228461819e-06
+CELL 18 dacc9668
+Direct S reconstruction error: 3.1354779496117757e-06
+<IPython.core.display.Math object>
+Saved S complete numerical residuals: {'identity_gram_max_abs': 5.288625870569774e-09, 'identity_func_max_abs': 1.6197068353207555e-08, 'identity_offset_abs': 3.1656414087311013e-09, 'dense_relaxed_gap': 2.2881393307860876e-10, 'minimum_scalar_inequality_dual': 0.06250000200444726, 'minimum_S_eigenvalue': 2.1987056779571475e-09, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Using direct SOS: Gram, function, offset: 3.1391468687802515e-06 1.6197068353207555e-08 3.1656414087311013e-09
+<IPython.core.display.Math object>
+Exact candidate identity at N = 4 : all coordinates zero
+Numerical certificate verified; analytic full-PEP and Lyapunov proof remain pending.
+CELL 21 d1e721d9
+CELL 22 7f4ef12e
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\pgm_with_sos_r03\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Coverage maximum residual: 2.455664407057119e-15
+Maximum step identity residual: 5.551115123125783e-17
+CELL 24 ac2aa77b
+Confirming horizons: [6, 4]
+Fixed boundary exclusions: (1, 1)
+Common interior rank: 4
+Coverage errors: [1.8318679906315083e-15, 2.455664407057119e-15]
+No singular values between 0.5e-4 and 2e-4 at either horizon.
+CELL 27 c8512ebe
+Selected rank profile: [0, 4, 4, 4, 1]
+CELL 29 222353c0
+CELL 30 6c881ef2
+V_1 column-space candidates:
+   grad_f(x_star)
+   grad_f(x_1)
+   d_0
+   d_1
+   a_star-a_1
+   x_star-x_0
+   grad_f(x_star)-d_0
+   grad_f(x_star)-d_1
+   grad_g(x_1)-a_star-a_0
+   grad_f(x_1)-d_0
+   grad_f(x_1)-d_1
+   grad_f(x_1)-a_star-a_1
+   d_0-d_1
+   d_0-a_star-a_1
+   d_1-a_star-a_1
+V_2 column-space candidates:
+   grad_f(x_star)
+   grad_f(x_2)
+   d_0
+   d_2
+   a_star-a_2
+   x_star-x_0
+   grad_f(x_star)-d_0
+   grad_f(x_star)-d_2
+   grad_f(x_2)-d_0
+   grad_f(x_2)-d_2
+   grad_f(x_2)-a_star-a_2
+   d_0-d_2
+   d_0-a_star-a_2
+   d_2-a_star-a_2
+V_3 column-space candidates:
+   grad_f(x_star)
+   grad_f(x_3)
+   d_0
+   d_3
+   a_star-a_3
+   x_star-x_0
+   grad_f(x_star)-d_0
+   grad_f(x_star)-d_3
+   grad_f(x_3)-d_0
+   grad_f(x_3)-d_3
+   grad_f(x_3)-a_star-a_3
+   d_0-d_3
+   d_0-a_star-a_3
+   d_3-a_star-a_3
+V_4 column-space candidates:
+   d_0
+   x_star-x_0
+CELL 32 22fa5cb8
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\pgm_with_sos_r03\validation\supplementary\approved\pepflow\lyapunov_utils.py:396: UserWarning:
+
+Exhaustive subset search may be slow: checking 1365 subsets.
+
+k=1: rank 4
+  sparse basis: ['grad_f(x_1)', 'd_0', 'd_1', 'a_star-a_1']
+  zero coefficients: 11/16
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\pgm_with_sos_r03\validation\supplementary\approved\pepflow\lyapunov_utils.py:396: UserWarning:
+
+Exhaustive subset search may be slow: checking 1001 subsets.
+
+k=2: rank 4
+  sparse basis: ['grad_f(x_2)', 'd_0', 'd_2', 'a_star-a_2']
+  zero coefficients: 11/16
+k=3: rank 4
+  sparse basis: ['grad_f(x_3)', 'd_0', 'd_3', 'a_star-a_3']
+  zero coefficients: 11/16
+k=4: rank 1
+  sparse basis: ['d_0']
+  zero coefficients: 0/1
+CELL 34 a237245e
+k=0: rank 0 basis []
+k=1: rank 4 basis ['d_0', 'd_k', 'a_k', 'a_star-a_k']
+k=2: rank 4 basis ['d_0', 'd_k', 'a_k', 'a_star-a_k']
+k=3: rank 4 basis ['d_0', 'd_k', 'a_k', 'a_star-a_k']
+k=4: rank 1 basis ['d_0']
+CELL 36 efc34935
+k=0: quadratic reconstruction 0.0; component errors [0.0, 0.0, 0.0]
+Empty quadratic basis and 0 by 0 coefficient matrix.
+f(x_k)-f_star coefficient: 0.0 g(x_k)-g_star coefficient: 0.0 offset: 0.0
+k=1: quadratic reconstruction 2.5853570035824044e-06; component errors [9.303775426871043e-07, 2.220446049250313e-16, 0.0]
+<IPython.core.display.Math object>
+f(x_k)-f_star coefficient: 0.2857157099478562 g(x_k)-g_star coefficient: 0.1428546574438234 offset: 0
+k=2: quadratic reconstruction 3.0687068234436253e-06; component errors [1.0371954519950337e-06, 3.239413570721439e-09, 0.0]
+<IPython.core.display.Math object>
+f(x_k)-f_star coefficient: 0.5000031362835876 g(x_k)-g_star coefficient: 0.33333479453624215 offset: 0
+k=3: quadratic reconstruction 4.24622775681413e-06; component errors [1.2351840320267446e-06, 3.239413792766044e-09, 0.0]
+<IPython.core.display.Math object>
+f(x_k)-f_star coefficient: 0.8000019972567753 g(x_k)-g_star coefficient: 0.6000031407665755 offset: 0
+k=4: quadratic reconstruction 2.2564416671293152e-08; component errors [5.288625939958713e-09, 4.859120883438095e-09, 0.0]
+<IPython.core.display.Math object>
+f(x_k)-f_star coefficient: 1.0000000113379475 g(x_k)-g_star coefficient: 1.0000000097182409 offset: 0
+CELL 39 c4cdbaa5
+Analytic unknown count: 13
+CELL 40 3bb1190b
+CELL 41 b04d3c9b
+Scalar coefficient equations: 55
+Unknown coefficients: 24
+Unfixed symbols: ['new_c00', 'new_c03', 'new_c33']
+old_c00 = new_c00
+old_c01 = 0
+old_c02 = new_c03
+old_c03 = new_c03
+old_c11 = -L*(-N + k)/(-2*N + k)**2
+old_c12 = 1/(2*(-2*N + k))
+old_c13 = 0
+old_c22 = (-4*L*N*new_c33 + 2*L*k*new_c33 + 2*L*new_c33 + 1)/(2*L*(-2*N + k + 1))
+old_c23 = (-4*L*N*new_c33 + 2*L*k*new_c33 + 2*L*new_c33 + 1)/(2*L*(-2*N + k + 1))
+old_c33 = (8*L*N**2*new_c33 - 8*L*N*k*new_c33 - 4*L*N*new_c33 + 2*L*k**2*new_c33 + 2*L*k*new_c33 - 1)/(2*L*(-2*N + k)*(-2*N + k + 1))
+old_p = -(k + 1)/(-2*N + k)
+old_q = -k/(-2*N + k)
+new_c00 = new_c00
+new_c01 = 0
+new_c02 = new_c03
+new_c03 = new_c03
+new_c11 = -L*(-N + k + 1)/(-2*N + k + 1)**2
+new_c12 = 1/(2*(-2*N + k + 1))
+new_c13 = 0
+new_c22 = (-4*L*N*new_c33 + 2*L*k*new_c33 + 2*L*new_c33 + 1)/(2*L*(-2*N + k + 1))
+new_c23 = (-4*L*N*new_c33 + 2*L*k*new_c33 + 2*L*new_c33 + 1)/(2*L*(-2*N + k + 1))
+new_c33 = new_c33
+new_p = -(k + 2)/(-2*N + k + 1)
+new_q = -(k + 1)/(-2*N + k + 1)
+Chosen coefficient formulas satisfy every equation exactly.
+CELL 43 2cf731da
+Base normalization fixes the three constant additions: [{A_gauge: 0, B_gauge: 0, C_gauge: 0}]
+CELL 45 02ef1396
+Coefficient error: 0.0 function-gap error: 0.0
+Numerical coefficients, k = 1
+<IPython.core.display.Math object>
+Closed-form coefficients, k = 1
+<IPython.core.display.Math object>
+Coefficient error: 9.988210330491576e-07 function-gap error: 2.485413319458507e-06
+Numerical coefficients, k = 2
+<IPython.core.display.Math object>
+Closed-form coefficients, k = 2
+<IPython.core.display.Math object>
+Coefficient error: 1.085655770491356e-06 function-gap error: 3.1362835876125317e-06
+Numerical coefficients, k = 3
+<IPython.core.display.Math object>
+Closed-form coefficients, k = 3
+<IPython.core.display.Math object>
+Coefficient error: 6.107526822517623e-07 function-gap error: 3.1407665754823455e-06
+Numerical coefficients, k = 4
+<IPython.core.display.Math object>
+Closed-form coefficients, k = 4
+<IPython.core.display.Math object>
+Coefficient error: 1.1187848703020364e-09 function-gap error: 1.133794746976946e-08
+CELL 49 e7a67364
+Interior step Gram residual:
+<IPython.core.display.Math object>
+Interior step function residual: Matrix([[0, 0, 0, 0, 0, 0]]) offset: 0
+CELL 52 71bba802
+Base Gram residual:
+<IPython.core.display.Math object>
+Base function residual: Matrix([[0, 0, 0, 0, 0]]) offset: 0
+CELL 55 516e962f
+Boundary Gram residual:
+<IPython.core.display.Math object>
+Boundary function residual: Matrix([[0, 0, 0, 0, 0, 0]]) offset: 0
+CELL 58 b95d2a2e
+N=1 Gram residual:
+<IPython.core.display.Math object>
+N=1 function residual: Matrix([[0, 0, 0, 0, 0]]) offset: 0
+CELL 60 8a9bb66c
+Exact step/base/boundary/N=1 identities verified in all scalar coordinates.
+By the stated domain signs, each increment is nonpositive.
+Theorem: h(x_N)-h(x_star) <= L*R**2/(4*N)
+LaTeX theorem: h(x_{N})-h(x_{\star})\leq\frac{LR^{2}}{4N}

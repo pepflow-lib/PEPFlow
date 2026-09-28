@@ -1,0 +1,347 @@
+{
+  "hash_count": 135,
+  "hash_failures": [],
+  "notebook_sha256": "aaa76fa4c97a57d0ce072c020dbe62436d980b0751872ed770c0d39a569dd6da",
+  "code_cells": 26,
+  "execution_counts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "error_outputs": 0,
+  "plot_output_present": true,
+  "static_commands": [
+    {
+      "label": "clean_kernel_import_probe",
+      "returncode": 0,
+      "stdout": "[\"{\\\"helper\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\examples_peppy\\\\\\\\_evaluations\\\\\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\\\\\feg\\\\\\\\r01\\\\\\\\supplementary\\\\\\\\.runtime\\\\\\\\static-check-d0auic77\\\\\\\\probe\\\\\\\\supplementary\\\\\\\\helpers\\\\\\\\runtime.py\\\", \\\"framework\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\examples_peppy\\\\\\\\_evaluations\\\\\\\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\\\\\\\feg\\\\\\\\r01\\\\\\\\supplementary\\\\\\\\.runtime\\\\\\\\static-check-d0auic77\\\\\\\\approved\\\\\\\\pepflow\\\\\\\\__init__.py\\\", \\\"dependency\\\": \\\"C:\\\\\\\\Users\\\\\\\\Jack\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\PEPFlow\\\\\\\\.venv\\\\\\\\Lib\\\\\\\\site-packages\\\\\\\\numpy\\\\\\\\__init__.py\\\"}\\n\"]\n"
+    },
+    {
+      "label": "source_ruff",
+      "returncode": 0,
+      "stdout": "All checks passed!\n"
+    },
+    {
+      "label": "source_ty",
+      "returncode": 0,
+      "stdout": "All checks passed!\n"
+    }
+  ],
+  "checklist_hash_matches": true,
+  "certificates": {
+    "6": {
+      "certificate_id": "6b34bdab3aa9bb7895790dafa53335f286123d5d577eb3057573e6b87fb16459",
+      "objective": 0.11111111913421273,
+      "dense_objective": 0.11111111987993266,
+      "dense_relaxed_gap": 7.457199302507433e-10,
+      "numerical_checks": {
+        "residuals": {
+          "identity_gram_max_abs": 7.512999260122766e-09,
+          "identity_func_max_abs": 0.0,
+          "identity_offset_abs": 6.564890756011188e-09,
+          "dense_relaxed_gap": 7.457199302507433e-10,
+          "minimum_scalar_inequality_dual": 0.05556830706343723,
+          "minimum_matrix_inequality_eigenvalue": 0,
+          "minimum_S_eigenvalue": 7.343470692425838e-10,
+          "S_reconstruction_max_abs": 5.551115123125783e-17
+        },
+        "passed": true,
+        "tolerances": {
+          "identity_atol": 1e-05,
+          "identity_rtol": 0,
+          "reconstruction_atol": 0.0001,
+          "reconstruction_rtol": 1e-05,
+          "dual_tol": 1e-06,
+          "psd_tol": 1e-06,
+          "dense_opt_atol": 1e-05
+        }
+      }
+    },
+    "4": {
+      "certificate_id": "3a313d8fa3f3283221811f3107db588a03e243c918867593814cb90065e83b18",
+      "objective": 0.250000000230413,
+      "dense_objective": 0.2500000070427094,
+      "dense_relaxed_gap": 6.812296393654549e-09,
+      "numerical_checks": {
+        "residuals": {
+          "identity_gram_max_abs": 2.295867374931369e-09,
+          "identity_func_max_abs": 0.0,
+          "identity_offset_abs": 2.0003696477033373e-09,
+          "dense_relaxed_gap": 6.812296393654549e-09,
+          "minimum_scalar_inequality_dual": 0.1250023593930748,
+          "minimum_matrix_inequality_eigenvalue": 0,
+          "minimum_S_eigenvalue": 5.774172893935857e-10,
+          "S_reconstruction_max_abs": 5.551115123125783e-17
+        },
+        "passed": true,
+        "tolerances": {
+          "identity_atol": 1e-05,
+          "identity_rtol": 0,
+          "reconstruction_atol": 0.0001,
+          "reconstruction_rtol": 1e-05,
+          "dual_tol": 1e-06,
+          "psd_tol": 1e-06,
+          "dense_opt_atol": 1e-05
+        }
+      }
+    }
+  },
+  "rank_summary": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 2,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "6b34bdab3aa9bb7895790dafa53335f286123d5d577eb3057573e6b87fb16459",
+    "recipe_id": "adjacent_full_plus_lip_complete_S_boundary",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "absolute, unscaled original basis",
+      "coordinate_order": "setup basis order"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "rank_margins": [
+    {
+      "N": 4,
+      "keys": [
+        "N",
+        "certificate_id",
+        "certificate_path",
+        "recipe_id",
+        "rank_profile",
+        "singular_values",
+        "rank_convention",
+        "rank_credible",
+        "certificate_checked",
+        "grouping_checked",
+        "term_assignment",
+        "S_assignment",
+        "certificate_residuals"
+      ],
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.2022580661719247,
+          0.07725570677884991,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6250117839018663,
+          0.12500235637617257,
+          3.0942647446280135e-09,
+          5.826133374383871e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.2940681341608091,
+          0.16904693026976492,
+          4.107470562803903e-09,
+          3.233989661050299e-09,
+          1.2197684463367264e-09,
+          3.5921936483932237e-11,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.2119616416230565,
+          0.21192395712005255,
+          6.534103172918246e-09,
+          4.321515839365698e-09,
+          3.225898544598547e-09,
+          1.4854321933950172e-09,
+          8.696736837666481e-11,
+          6.524367600748038e-11,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "N": 6,
+      "keys": [
+        "N",
+        "certificate_id",
+        "certificate_path",
+        "recipe_id",
+        "rank_profile",
+        "singular_values",
+        "rank_convention",
+        "rank_credible",
+        "certificate_checked",
+        "grouping_checked",
+        "term_assignment",
+        "S_assignment",
+        "certificate_residuals"
+      ],
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.08991140952593231,
+          0.03434310246249507,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.27784147791845487,
+          0.05556829347457873,
+          1.2945919457839654e-08,
+          1.993450495365096e-09,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5752624065239965,
+          0.07514777637667862,
+          1.7943410240212425e-08,
+          1.4195226575376501e-08,
+          5.218957873037852e-09,
+          4.776969687315422e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9833008730381418,
+          0.09420823870348856,
+          2.4192268641713043e-08,
+          1.8730663993588986e-08,
+          1.4134635850085113e-08,
+          6.4437984717963456e-09,
+          6.573538544782295e-10,
+          1.803585803147333e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5022576421123208,
+          0.11305044943729818,
+          3.1704272588127524e-08,
+          2.5119524941208254e-08,
+          1.879894145979322e-08,
+          1.4134417631305089e-08,
+          7.190058781327413e-09,
+          1.060347034498432e-09,
+          6.799309720845033e-10,
+          2.8123069956914418e-11,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          2.132241227854306,
+          0.13178290276187019,
+          3.270140116425167e-08,
+          2.552496262679296e-08,
+          2.271523053891827e-08,
+          1.8805593539323618e-08,
+          1.413453005489922e-08,
+          7.734942772083254e-09,
+          1.9314877765855915e-09,
+          6.855023429356189e-10,
+          2.3705083410181764e-10,
+          2.209583613184417e-11,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ]
+}

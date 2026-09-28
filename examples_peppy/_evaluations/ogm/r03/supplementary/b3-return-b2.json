@@ -1,0 +1,30 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "N=4 partial sums verified; same-recipe cross-horizon confirmation requires a complete N=6 certificate",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "selected_horizon":  4,
+    "recipe_id":  "star-and-forward-pair-whole-S-boundary",
+    "boundary_exclusions":  {
+                                "left":  2,
+                                "right":  0
+                            },
+    "rank_profile":  [
+                         0,
+                         3,
+                         4,
+                         4,
+                         4
+                     ],
+    "evidence":  "supplementary/b3-N4-observation.json",
+    "additional_consulted_sources":  [
+                                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                                         "Own B2 state and helper source",
+                                         "Exact source hashes listed in own B2 provenance"
+                                     ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "remaining_work":  "B3 needs cross-horizon confirmation; B4-B5 unstarted"
+}

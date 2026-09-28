@@ -1,0 +1,33 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Interpretable basis and complete numerical reconstruction at every index; formulas retained as candidates.",
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "supplementary/approved/pepflow/lyapunov_utils.py",
+                              "own B3 and generated sources"
+                          ],
+    "commands":  [
+                     "run_b4.py",
+                     "update_b4_notebook.py",
+                     "approved adapter b4-static-001.json",
+                     "inspect_b4.py",
+                     "approved adapter b4-static-002.json"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+                      {
+                          "kind":  "operational",
+                          "reason":  "Initial source-search command had a mistyped nonexistent working directory; process creation failed with code 267 before reads; corrected to own attempt directory."
+                      },
+                      {
+                          "evidence":  "supplementary/b4-static-001.json",
+                          "repair":  "Added an explicit Function assertion inside the basis function; reexecuted numerical reconstruction and notebook.",
+                          "kind":  "static_diagnostic"
+                      }
+                  ],
+    "operational_status":  "awaiting same-session continuation"
+}

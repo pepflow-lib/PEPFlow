@@ -1,0 +1,631 @@
+{
+  "attempt_id": "ogm_r03",
+  "mathematical_verdict": "PASS",
+  "eligible": true,
+  "access_status": "recovered",
+  "access_reason": "Inspected available own-generation access calls, preflight and handoff evidence. Observed incidents were attempt-local staging/path-length, command-argument, lint/type and symbolic-context errors, followed by successful checks. No concrete prohibited read or content exposure was found in inspected evidence. Instruction-only controls do not establish exhaustive read isolation.",
+  "final_reason": "The frozen submission proves f(x_N)-f(x_star) <= L R^2/(2 theta_N^2) for the exact supplied OGM at every integer N>=1. Fresh replay confirms its generic step, base, terminal, normalization and N=1 identities. The submitted sign/domain reasoning gives the correct decrease and terminal upper-bound direction.",
+  "final_evidence_refs": [
+    "ogm/r03/ogm_example_lyap.ipynb#4da4fe81",
+    "ogm/r03/ogm_example_lyap.ipynb#b533ccbf",
+    "ogm/r03/ogm_example_lyap.ipynb#e5632836",
+    "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+  ],
+  "submitted_theorem": "For smooth convex f, L>0, R>=0, N>=1, stationary x_star, z_0=x_0 and ||x_0-x_star||^2<=R^2, the stated terminal-modified OGM satisfies f(x_N)-f(x_star)<=L R^2/(2 theta_N^2).",
+  "target_scope_comparison": "Exact match of assumptions, update, output iterate, finite-horizon constant and special terminal recurrence. General parameters are retained symbolically; R=0 and N=1 are covered.",
+  "verification_method": "Inspected frozen source, notebook text/output, state, checklist, solver logs and access evidence. Verified every frozen submission hash. Fresh Python -I -B process replayed 25 submitted nonplot notebook code cells using only this attempt approved package root; rechecked saved certificates, partial sums, searches, reconstruction, coefficient derivation and exact identities. No fresh optimization solves, browser, rendering, export, or new Jupyter execution. Review script keeps mutable cache/temp state in validation and reads the frozen submission without modifying it.",
+  "workflow_complete": true,
+  "notebook_path": "ogm/r03/ogm_example_lyap.ipynb",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The setup and visible notebook implement the supplied OGM, including the special terminal recurrence and R squared radius. All seven saved solves support the exact candidate rate; their status and comparisons were inspected and recomputed without new solves.",
+      "required_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed N=1..7 sweep and candidate comparison",
+        "Visible numerical evidence and saved plot"
+      ],
+      "passed_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed N=1..7 sweep and candidate comparison",
+        "Visible numerical evidence and saved plot"
+      ],
+      "checks": [
+        {
+          "name": "Algorithm, assumptions, metric and normalization",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Matched x/y/z updates, stationary minimizer, L>0, R>=0, metric f(x_N)-f_star and squared radius.",
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#7b2ca6e8"
+        },
+        {
+          "name": "Prescribed N=1..7 sweep and candidate comparison",
+          "status": "PASS",
+          "tolerance_domain": "absolute rate error < 1e-5 at L=R=1",
+          "observed_result": [
+            {
+              "N": 1,
+              "status": "optimal",
+              "pep_value": 0.12499999967511367,
+              "candidate": 0.125,
+              "absolute_error": 3.2488632617511115e-10
+            },
+            {
+              "N": 2,
+              "status": "optimal",
+              "pep_value": 0.06189418309675962,
+              "candidate": 0.06189418239776468,
+              "absolute_error": 6.98994938319597e-10
+            },
+            {
+              "N": 3,
+              "status": "optimal",
+              "pep_value": 0.03769239858737249,
+              "candidate": 0.03769239720788239,
+              "absolute_error": 1.3794901054797748e-09
+            },
+            {
+              "N": 4,
+              "status": "optimal",
+              "pep_value": 0.025583945166769366,
+              "candidate": 0.025583942049932206,
+              "absolute_error": 3.1168371598944145e-09
+            },
+            {
+              "N": 5,
+              "status": "optimal",
+              "pep_value": 0.018588139751366063,
+              "candidate": 0.01858813666365106,
+              "absolute_error": 3.0877150038188805e-09
+            },
+            {
+              "N": 6,
+              "status": "optimal",
+              "pep_value": 0.014155967322699733,
+              "candidate": 0.014155965863218723,
+              "absolute_error": 1.459481010004926e-09
+            },
+            {
+              "N": 7,
+              "status": "optimal",
+              "pep_value": 0.011160419511615859,
+              "candidate": 0.01116041688775744,
+              "absolute_error": 2.623858418732139e-09
+            }
+          ],
+          "evidence_ref": "ogm/r03/supplementary/b1_sweep.json"
+        },
+        {
+          "name": "Visible numerical evidence and saved plot",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Printed values and embedded PNG present; plot not rendered in review.",
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#a41ab4a7"
+        }
+      ],
+      "evidence_refs": [
+        "ogm/r03/ogm_setup.py",
+        "ogm/r03/state/ogm_b1.json",
+        "ogm/r03/ogm_example_lyap.ipynb"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh reconstruction of both coherent certificates passes in Gram, function and constant coordinates; dual signs, PSD, S decomposition, inventory and source hashes pass. Dense/relaxed agreement and initial formula search are inspectable.",
+      "required_checks": [
+        "Complete numerical certificates and dual signs",
+        "Dense/relaxed agreement and S reconstruction",
+        "Initial closed-form search"
+      ],
+      "passed_checks": [
+        "Complete numerical certificates and dual signs",
+        "Dense/relaxed agreement and S reconstruction",
+        "Initial closed-form search"
+      ],
+      "checks": [
+        {
+          "name": "Complete numerical certificates and dual signs",
+          "status": "PASS",
+          "tolerance_domain": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05,
+            "rank_tolerance": 0.0001,
+            "lyapunov_component_atol": 1e-05,
+            "lyapunov_component_rtol": 1e-05,
+            "basis_zero_tol": 1e-06,
+            "basis_indep_tol": 1e-07,
+            "basis_span_tol": 1e-05
+          },
+          "observed_result": {
+            "N4": {
+              "identity_gram_max_abs": 1.280334727127297e-10,
+              "identity_func_max_abs": 3.610223231476084e-10,
+              "identity_offset_abs": 9.141298482062687e-11,
+              "minimum_S_eigenvalue": 9.771199224236941e-12,
+              "minimum_scalar_inequality_dual": 0.025583942102815994,
+              "minimum_matrix_inequality_eigenvalue": 0.0
+            },
+            "N6": {
+              "identity_gram_max_abs": 2.169349144764965e-10,
+              "identity_func_max_abs": 7.686165037767978e-10,
+              "identity_offset_abs": 1.3698065945422222e-10,
+              "minimum_S_eigenvalue": 1.5523331706932335e-11,
+              "minimum_scalar_inequality_dual": 0.014155965968572517,
+              "minimum_matrix_inequality_eigenvalue": 0.0
+            },
+            "certificate_id_N4": "940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3",
+            "certificate_id_N6": "4bfe7f7af343519edc29dc31709dc605e18dbea267267aa002ff3662b8dfee1b"
+          },
+          "evidence_ref": "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Dense/relaxed agreement and S reconstruction",
+          "status": "PASS",
+          "tolerance_domain": "gap <= 1e-5; S reconstruction atol=1e-4, rtol=1e-5; saved values inspected, decomposition freshly replayed",
+          "observed_result": {
+            "N4": {
+              "identity_gram_max_abs": 1.280334727127297e-10,
+              "identity_func_max_abs": 3.610223231476084e-10,
+              "identity_offset_abs": 9.141298482062687e-11,
+              "minimum_S_eigenvalue": 9.771199224236941e-12,
+              "minimum_scalar_inequality_dual": 0.025583942102815994,
+              "minimum_matrix_inequality_eigenvalue": 0.0,
+              "S_reconstruction_max_abs": 7.771561172376096e-16,
+              "dense_relaxed_gap": 3.1553663570882406e-09
+            },
+            "N6": {
+              "identity_gram_max_abs": 2.169349144764965e-10,
+              "identity_func_max_abs": 7.686165037767978e-10,
+              "identity_offset_abs": 1.3698065945422222e-10,
+              "minimum_S_eigenvalue": 1.5523331706932335e-11,
+              "minimum_scalar_inequality_dual": 0.014155965968572517,
+              "minimum_matrix_inequality_eigenvalue": 0.0,
+              "S_reconstruction_max_abs": 3.3306690738754696e-16,
+              "dense_relaxed_gap": 1.4911078760615482e-09
+            }
+          },
+          "evidence_ref": "ogm/r03/state/ogm_b2.json"
+        },
+        {
+          "name": "Initial closed-form search",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Notebook displays star/forward multiplier and rank-one square candidates and compares with saved certificate; B5 later proves them.",
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#fe4c67ab"
+        }
+      ],
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/state/ogm_b2.json",
+        "ogm/r03/supplementary/b2-N6-certificate.json",
+        "ogm/r03/ogm_example_lyap.ipynb#87114f23"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh partial-sum replay covers every retained interpolation term and the complete PSD block, with terminal interpolation/S and initial radius explicitly reserved. Fixed exclusions (2,0) give rank 4 at horizons 4 and 6 with three and five retained indices.",
+      "required_checks": [
+        "Coverage, increments, rank and singular-value evidence",
+        "Boundary leftovers and decrease direction"
+      ],
+      "passed_checks": [
+        "Coverage, increments, rank and singular-value evidence",
+        "Boundary leftovers and decrease direction"
+      ],
+      "checks": [
+        {
+          "name": "Coverage, increments, rank and singular-value evidence",
+          "status": "PASS",
+          "tolerance_domain": "coverage <= 1e-5; rank absolute cutoff 1e-4, no rescaling; no singular values in (1e-5,1e-3)",
+          "observed_result": [
+            {
+              "N": 4,
+              "certificate_id": "940896fd569271d858d63987a4289ba6f7d7b733debdcf3232c45c0ce16341c3",
+              "recipe_id": "star-and-forward-pair-whole-S-boundary",
+              "rank_profile": [
+                0,
+                3,
+                4,
+                4,
+                4
+              ],
+              "singular_values": [
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.14803256864291756,
+                  0.045366833621922634,
+                  0.03989574963138203,
+                  6.598516929409005e-18,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.46236074991755716,
+                  0.11721034622363398,
+                  0.05950200320091821,
+                  0.015855544968349514,
+                  8.36357915110816e-18,
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.02144937043815,
+                  0.21797061546704438,
+                  0.09700655081630091,
+                  0.03356694830492119,
+                  7.27451376078343e-11,
+                  2.524697102456058e-17,
+                  0.0
+                ],
+                [
+                  1.8002282190854733,
+                  0.3647787332414442,
+                  0.10205147124445825,
+                  0.039611181690455674,
+                  9.708603613494853e-11,
+                  1.7980570187490333e-11,
+                  3.5977085151895434e-17
+                ]
+              ],
+              "rank_convention": {
+                "tolerance": 0.0001,
+                "scaling": "absolute, no rescaling",
+                "coordinate_order": "setup basis creation order"
+              },
+              "rank_credible": true,
+              "certificate_checked": true,
+              "grouping_checked": true,
+              "coverage_max_abs": 1.1102230246251565e-16
+            },
+            {
+              "N": 6,
+              "certificate_id": "4bfe7f7af343519edc29dc31709dc605e18dbea267267aa002ff3662b8dfee1b",
+              "recipe_id": "star-and-forward-pair-whole-S-boundary",
+              "rank_profile": [
+                0,
+                3,
+                4,
+                4,
+                4,
+                4,
+                4
+              ],
+              "singular_values": [
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.08190856581926513,
+                  0.025102126591906634,
+                  0.02207489652086124,
+                  1.4139679139846815e-18,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25583090413080434,
+                  0.06485418335973138,
+                  0.03292332074277733,
+                  0.008773102824971967,
+                  5.0181474789534586e-18,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5651827403577022,
+                  0.12060630064640222,
+                  0.05367513032733441,
+                  0.018573078990025586,
+                  6.63735420260572e-11,
+                  4.435928847659111e-19,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.0413830097222445,
+                  0.195919106007319,
+                  0.09453233512376379,
+                  0.02322405671020413,
+                  1.5299308826840248e-10,
+                  5.650485300642351e-11,
+                  4.988091796942416e-18,
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.7151509127065416,
+                  0.2932806330419098,
+                  0.15561150668970997,
+                  0.02526810272084166,
+                  6.096598547270944e-10,
+                  1.5155012890817574e-10,
+                  5.5838806125712e-11,
+                  6.95348975783846e-18,
+                  0.0
+                ],
+                [
+                  2.512999684438653,
+                  0.4150319877623089,
+                  0.13408421006025598,
+                  0.0261486749443586,
+                  1.0180004450151114e-09,
+                  3.150278932907045e-10,
+                  9.646040792893646e-11,
+                  5.0009093248855313e-11,
+                  1.1049249265456459e-17
+                ]
+              ],
+              "rank_convention": {
+                "tolerance": 0.0001,
+                "scaling": "absolute, no rescaling",
+                "coordinate_order": "setup basis creation order"
+              },
+              "rank_credible": true,
+              "certificate_checked": true,
+              "grouping_checked": true,
+              "coverage_max_abs": 1.1102230246251565e-16
+            }
+          ],
+          "evidence_ref": "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Boundary leftovers and decrease direction",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Star and forward-pair nonpositive residuals have positive multipliers; terminal star residual, whole S and radius normalization retained explicitly.",
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#d081de56"
+        }
+      ],
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/ogm_example_lyap.ipynb#d081de56",
+        "ogm/r03/ogm_example_lyap.ipynb#437759cc",
+        "ogm/r03/supplementary/rank_search.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Candidate scans and sparse searches were replayed. Independent adopted bases of sizes 0,3,4,4,4 reconstruct every required k=0..4, including full function and offset terms.",
+      "required_checks": [
+        "Candidate scan, actual sparse search and independent bases",
+        "Quadratic and complete-potential reconstruction"
+      ],
+      "passed_checks": [
+        "Candidate scan, actual sparse search and independent bases",
+        "Quadratic and complete-potential reconstruction"
+      ],
+      "checks": [
+        {
+          "name": "Candidate scan, actual sparse search and independent bases",
+          "status": "PASS",
+          "tolerance_domain": "independence 1e-7; zero 1e-6; span 1e-5",
+          "observed_result": "Executed cells 6ab0ed7b, bd41d035 and 22d4d24f; rank equals basis size at every index.",
+          "evidence_ref": "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Quadratic and complete-potential reconstruction",
+          "status": "PASS",
+          "tolerance_domain": "quadratic <= 1e-5*max(1,Frobenius norm); component atol=1e-4, rtol=1e-5",
+          "observed_result": {
+            "quadratic_frobenius_residuals": {
+              "0": 0.0,
+              "1": 1.0682291383637863e-16,
+              "2": 7.896803474405452e-17,
+              "3": 1.3979280975567532e-10,
+              "4": 3.0588779024846866e-10
+            },
+            "component_residuals": {
+              "0": {
+                "gram": 0.0,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "1": {
+                "gram": 6.938893903907228e-17,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "2": {
+                "gram": 2.7755575615628914e-17,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "3": {
+                "gram": 6.628866899838215e-11,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "4": {
+                "gram": 1.8858697936607882e-10,
+                "function": 1.1102230246251565e-16,
+                "offset": 0.0
+              }
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+        }
+      ],
+      "evidence_refs": [
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/ogm_example_lyap.ipynb#bd41d035",
+        "ogm/r03/ogm_example_lyap.ipynb#19cec219",
+        "ogm/r03/state/ogm_b4.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The submitted potential, exact symbolic identities and elementary domain/sign argument establish the required rate for every N>=1 and general L,R. All proof-critical code is visible; final saved clean-kernel and static evidence is complete.",
+      "required_checks": [
+        "Generic step and coefficient derivation",
+        "Base, reduced basis, terminal, radius and N=1 identities",
+        "Signs, domains and telescoping implication",
+        "Saved clean-kernel execution and static checks",
+        "Self-contained notebook and completion checklist"
+      ],
+      "passed_checks": [
+        "Generic step and coefficient derivation",
+        "Base, reduced basis, terminal, radius and N=1 identities",
+        "Signs, domains and telescoping implication",
+        "Saved clean-kernel execution and static checks",
+        "Self-contained notebook and completion checklist"
+      ],
+      "checks": [
+        {
+          "name": "Generic step and coefficient derivation",
+          "status": "PASS",
+          "tolerance_domain": "exact symbolic zero in all scalar coordinates; t=theta_k, u=theta_(k+1), rho_(k+1)(u-1)=t^2 includes terminal case",
+          "observed_result": {
+            "gram_zero": true,
+            "function_zero": true,
+            "offset_zero": true
+          },
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#236274bc"
+        },
+        {
+          "name": "Base, reduced basis, terminal, radius and N=1 identities",
+          "status": "PASS",
+          "tolerance_domain": "exact symbolic zero, no numerical horizon substitution except genuine N=1 case",
+          "observed_result": {
+            "step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "base": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "first_basis": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "normalization": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "N1": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/ogm_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Signs, domains and telescoping implication",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "theta_0=1; theta_k>1 for k>=1; T>=2; L>0. Positive local/terminal multipliers and nonpositive interpolation residuals yield V_N<=V_0=0. Terminal square has negative sign; radius residual yields L R^2/(2 T^2). No division by R; R=0 included.",
+          "evidence_ref": "ogm/r03/ogm_example_lyap.ipynb#e5632836"
+        },
+        {
+          "name": "Saved clean-kernel execution and static checks",
+          "status": "PASS",
+          "tolerance_domain": "Saved notebook and nbconvert log inspected; review freshly replayed 25 nonplot code cells, not a new Jupyter run.",
+          "observed_result": {
+            "code_cells": 27,
+            "counts": "1..27",
+            "error_outputs": 0,
+            "static": [
+              {
+                "label": "source_ruff",
+                "returncode": 0,
+                "stdout": "All checks passed!\n"
+              },
+              {
+                "label": "source_ty",
+                "returncode": 0,
+                "stdout": "All checks passed!\n"
+              }
+            ]
+          },
+          "evidence_ref": "ogm/r03/supplementary/b5-static-002.json"
+        },
+        {
+          "name": "Self-contained notebook and completion checklist",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "All 12 checklist items supported by visible definitions, formulas, exact checks and saved outputs; presentation override applies.",
+          "evidence_ref": "ogm/r03/supplementary/ogm_example_lyap_checklist.md"
+        }
+      ],
+      "evidence_refs": [
+        "ogm/r03/ogm_example_lyap.ipynb#4da4fe81",
+        "ogm/r03/ogm_example_lyap.ipynb#236274bc",
+        "ogm/r03/ogm_example_lyap.ipynb#4c38ad14",
+        "ogm/r03/ogm_example_lyap.ipynb#e5632836",
+        "supplementary/evaluation/ogm_r03/validation/replay-results.json",
+        "ogm/r03/supplementary/b5-final-nbconvert-output-002.txt"
+      ],
+      "failure_code": null
+    }
+  ],
+  "review_started_at": "2026-09-24T00:03:40.311628+00:00",
+  "review_stopped_at": "2026-09-24T00:08:31.643138+00:00",
+  "limitations": [
+    "Saved solve statuses and clean-kernel execution were inspected, not independently re-solved/relaunched.",
+    "Access review uses available logs and instruction-only isolation; no exhaustive OS read tracing.",
+    "Rendering and visual review omitted under the frozen presentation override."
+  ],
+  "instructions": "Exactly B1-B5 assessed from frozen submitted evidence. No missing lemma or coefficient supplied; original submission unchanged."
+}

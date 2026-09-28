@@ -1,0 +1,40 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; numerical sweep, notebook execution, and required static checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "deadline_utc":  "2026-09-23T20:02:47.999904+00:00",
+    "access_control":  "instruction_only",
+    "sources_since_preflight":  [
+                                    "approved/dispatch.md",
+                                    "approved/input.md",
+                                    "approved/worker-protocol.md",
+                                    "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                    "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                    "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                    "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                    "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                    "approved/plugins/pepflow-workflows/references/output-layout.md",
+                                    "approved/pepflow/pep.py",
+                                    "approved/pepflow/pep_runner.py",
+                                    "approved/pepflow/solver.py",
+                                    "approved/pepflow/__init__.py",
+                                    "approved/pepflow/pep_result.py",
+                                    "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                ],
+    "commands":  "Get-Content and rg restricted to named approved files; apply_patch own generated files; pinned Python -I -B run_b1.py and build_b1_notebook.py; approved static adapter commands with own explicit targets; generated evidence JSON inspection",
+    "runtime_sources":  "Approved pepflow and pinned installed dependencies; adapter manifests record staged framework hashes",
+    "incidents":  [
+                      "b1-static-001: Windows path-length error copying broad supplementary helper root. Narrowed helper root to supplementary/helpers; generic preflight-002 passed. Frozen adapter/source unchanged.",
+                      "b1-static-002-output: PowerShell nested-array argument error; immutable preflight evidence overwrite was refused. Corrected array handling and used a new evidence path.",
+                      "b1-static-003: notebook E402 caused by leading string and numeric type diagnostic. Removed notebook string and used sympy.Integer parameters; repeated sweep and clean kernel.",
+                      "Notebook execution issued a nonfatal Windows zmq selector-thread warning."
+                  ],
+    "final_static_evidence":  "supplementary/b1-static-004.json",
+    "execution_evidence":  "supplementary/b1-notebook-output-002.txt",
+    "prohibited_sources_observed":  false,
+    "observation_limits":  "Instruction-only read isolation; no exhaustive OS read trace",
+    "remaining_work":  "B2-B5 remain unstarted"
+}

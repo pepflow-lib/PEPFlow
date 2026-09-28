@@ -1,0 +1,1170 @@
+{
+  "algo_name": "ogm",
+  "problem_type": "smooth_convex",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N)-f(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "L*R**2/(2*theta_N**2)",
+  "setup_file": "ogm_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.12499999967511367,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 2.0,
+      "candidate_rate": 0.125,
+      "absolute_error": 3.2488632617511115e-10
+    },
+    {
+      "N": 2,
+      "opt_value": 0.06189418309675962,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 2.8422356793243053,
+      "candidate_rate": 0.06189418239776468,
+      "absolute_error": 6.98994938319597e-10
+    },
+    {
+      "N": 3,
+      "opt_value": 0.03769239858737249,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 3.6421524705465673,
+      "candidate_rate": 0.03769239720788239,
+      "absolute_error": 1.3794901054797748e-09
+    },
+    {
+      "N": 4,
+      "opt_value": 0.025583945166769366,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 4.420804104823752,
+      "candidate_rate": 0.025583942049932206,
+      "absolute_error": 3.1168371598944145e-09
+    },
+    {
+      "N": 5,
+      "opt_value": 0.018588139751366063,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 5.1864127202260875,
+      "candidate_rate": 0.01858813666365106,
+      "absolute_error": 3.0877150038188805e-09
+    },
+    {
+      "N": 6,
+      "opt_value": 0.014155967322699733,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 5.943130256071122,
+      "candidate_rate": 0.014155965863218723,
+      "absolute_error": 1.459481010004926e-09
+    },
+    {
+      "N": 7,
+      "opt_value": 0.011160419511615859,
+      "status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failure": null,
+      "theta_N": 6.693369391494984,
+      "candidate_rate": 0.01116041688775744,
+      "absolute_error": 2.623858418732139e-09
+    }
+  ],
+  "N_verify": 4,
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "N": 4,
+  "opt_value": 0.02558394201140301,
+  "tau_sol": 0.025583942102815994,
+  "tau_name": "initial_condition",
+  "S_matrix": [
+    [
+      0.025583942125486776,
+      -0.02558394203443089,
+      -0.051167884162480186,
+      -0.0827913756261482,
+      -0.11223813972575983,
+      -0.14070100449794443,
+      -0.11310159598754355
+    ],
+    [
+      -0.02558394203443089,
+      0.025583942125486776,
+      0.051167884162480186,
+      0.0827913756261482,
+      0.11223813972575983,
+      0.14070100449794443,
+      0.11310159598754355
+    ],
+    [
+      -0.051167884162480186,
+      0.051167884162480186,
+      0.10233576841714351,
+      0.16558275128367222,
+      0.2244762794541883,
+      0.2814020090188292,
+      0.22620319198069894
+    ],
+    [
+      -0.0827913756261482,
+      0.0827913756261482,
+      0.16558275128367222,
+      0.26791851966924857,
+      0.36321024983956784,
+      0.4553180151900309,
+      0.3660044530135003
+    ],
+    [
+      -0.11223813972575983,
+      0.11223813972575983,
+      0.2244762794541883,
+      0.36321024983956784,
+      0.4923947991201274,
+      0.6172629289661759,
+      0.49618282848114037
+    ],
+    [
+      -0.14070100449794443,
+      0.14070100449794443,
+      0.2814020090188292,
+      0.4553180151900309,
+      0.6172629289661759,
+      0.7737968081162088,
+      0.6220115786002921
+    ],
+    [
+      -0.11310159598754355,
+      0.11310159598754355,
+      0.22620319198069894,
+      0.3660044530135003,
+      0.49618282848114037,
+      0.6220115786002921,
+      0.5000000000910773
+    ]
+  ],
+  "S_row_names": [
+    "z_0",
+    "x_star",
+    "g_0",
+    "g_1",
+    "g_2",
+    "g_3",
+    "g_4"
+  ],
+  "S_col_names": [
+    "z_0",
+    "x_star",
+    "g_0",
+    "g_1",
+    "g_2",
+    "g_3",
+    "g_4"
+  ],
+  "lambda_matrix": [
+    [
+      0.0,
+      0.2679185196742483,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.4923947991252491,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.7737968081214347,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.16558275132843417,
+      0.22447627951908947,
+      0.28140200905783536,
+      0.2262031920335532,
+      0.0,
+      0.10233576842211013
+    ],
+    [
+      0.10233576842240312,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "lambda_row_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star",
+    "z_0"
+  ],
+  "lambda_col_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_star",
+    "z_0"
+  ],
+  "basis_vectors": [
+    "z_0",
+    "x_star",
+    "g_0",
+    "g_1",
+    "g_2",
+    "g_3",
+    "g_4"
+  ],
+  "basis_scalars": [
+    "f(x_star)",
+    "f(z_0)",
+    "f(x_1)",
+    "f(x_2)",
+    "f(x_3)",
+    "f(x_4)"
+  ],
+  "named_dual_values": {
+    "initial_condition": 0.025583942102815994,
+    "f:x_star,z_0": 0.10233576842211013,
+    "f:x_star,x_1": 0.16558275132843417,
+    "f:x_star,x_2": 0.22447627951908947,
+    "f:x_star,x_3": 0.28140200905783536,
+    "f:x_star,x_4": 0.2262031920335532,
+    "f:z_0,x_star": null,
+    "f:z_0,x_1": 0.10233576842240312,
+    "f:z_0,x_2": null,
+    "f:z_0,x_3": null,
+    "f:z_0,x_4": null,
+    "f:x_1,x_star": null,
+    "f:x_1,z_0": null,
+    "f:x_1,x_2": 0.2679185196742483,
+    "f:x_1,x_3": null,
+    "f:x_1,x_4": null,
+    "f:x_2,x_star": null,
+    "f:x_2,z_0": null,
+    "f:x_2,x_1": null,
+    "f:x_2,x_3": 0.4923947991252491,
+    "f:x_2,x_4": null,
+    "f:x_3,x_star": null,
+    "f:x_3,z_0": null,
+    "f:x_3,x_1": null,
+    "f:x_3,x_2": null,
+    "f:x_3,x_4": 0.7737968081214347,
+    "f:x_4,x_star": null,
+    "f:x_4,z_0": null,
+    "f:x_4,x_1": null,
+    "f:x_4,x_2": null,
+    "f:x_4,x_3": null
+  },
+  "constraint_metadata": {
+    "initial_condition": {
+      "origin": "initial",
+      "owner": null,
+      "group": null,
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_star,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:z_0,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:z_0,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:z_0,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_1,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_1,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_2,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_2,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_3,x_4": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": false
+    },
+    "f:x_4,x_star": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,z_0": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_1": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_2": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    },
+    "f:x_4,x_3": {
+      "origin": "interpolation",
+      "owner": "f",
+      "group": "Smooth Convex Function",
+      "kind": "scalar",
+      "comparator": "LE",
+      "shape": [],
+      "relaxed": true
+    }
+  },
+  "relaxed_constraints": [
+    "f:z_0,x_star",
+    "f:z_0,x_2",
+    "f:z_0,x_3",
+    "f:z_0,x_4",
+    "f:x_1,x_star",
+    "f:x_1,z_0",
+    "f:x_1,x_3",
+    "f:x_1,x_4",
+    "f:x_2,x_star",
+    "f:x_2,z_0",
+    "f:x_2,x_1",
+    "f:x_2,x_4",
+    "f:x_3,x_star",
+    "f:x_3,z_0",
+    "f:x_3,x_1",
+    "f:x_3,x_2",
+    "f:x_4,x_star",
+    "f:x_4,z_0",
+    "f:x_4,x_1",
+    "f:x_4,x_2",
+    "f:x_4,x_3"
+  ],
+  "certificate_provenance": {
+    "solve_id": "73b2731e-8b8a-4c4c-aaa5-028d388c6af4",
+    "pep_type": "primal",
+    "solver_status": "optimal",
+    "source_hashes": {
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\ogm_setup.py": "658d6917b06cc0b08884885d833414320cebdc6e4dc0ec366c0875864e73622b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\__init__.py": "4674297c96244a4b5abe5e62ded59fc3de76793162b83fc4055f565d57b0fbdb",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\constants.py": "778c8fd44b0685c2abde081448bf30f26e4253d702b3a25617491ff13613f0bf",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\constraint.py": "76f766180a5cdc0b4370fbd4ccd65fd4e086a0143ab35be89859a8e192180254",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\dual_interactive_constraint.py": "65d7a531fcae9e8b3ce8a2c4fac5d8e18b7bbcb4b15a02f0f7b966915d2f5a31",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\expression_manager.py": "3b983bf87c234a6c36abfedc6a2f39e374e41546d9f087ce2d9a9ea9a56b76dd",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\function.py": "cb3b4c58283784ae6c84a9c80292fea35f5a9bd2b47cd32eaa3ff83a064b702b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\ipython_utils.py": "a53200a620027b0cbeb0382106be01e282899a409294e76f8d1bae1b8e65dde2",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\logging.py": "5d2bfc1969ab7d0f2e2dbb6d37fd5e6dad19e18f42b8f447b7d53355365a5664",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\lyapunov_utils.py": "3e838ede38a1690b123dc68e631bf4852b3f82abeae7c034843da4b5b449df5f",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\math_expression.py": "8bf3801eb52cd94a95dbbe030b1cf00a5da1ad7457cd8043b66b702ec16f7ffa",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\operator.py": "d7c3a6889e09be650112506814020b457d735797ff36ea34df2c1473ec353932",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\parameter.py": "1d4c43ff206f696819d0ef29cced40be270d20e04d7d3abc4d11e295b4883b85",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\pep.py": "f01c7280101eded580e9ac4c52ba9694edd547945e08136eb99e2e7a183a99a3",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\pep_context.py": "f29a43d09930501602509ea6236c7d1cbf31d8c15e7bf6637d513da6255361d0",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\pep_result.py": "aaf6864cd7a9b63c32c4c4ea1ab5612cf4b0cf49462f57956f1a8edab77f51b7",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\pep_runner.py": "75803e2d66d2dfe85fc7addfc4f1ddcd5cee5e3319d887b53743811be7bda16a",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\plot_data.py": "8364400075d9b6936695ca34ad126d5e88db3b076371dfbeeb3952253b7835e7",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\primal_interactive_constraint.py": "290bf39201fd0567ca552c834090077eb751fc44fc326eb327de3854f4255d79",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\registry.py": "1fc5dfe4dcb2c86ae1870186fe0405a52c55fdfae61809f4b98ba65ec4b148c2",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\scalar.py": "0d2d90a2aa9be6d3e137460d7959bc55f9140d1016f06d48660529a80a729306",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\solver.py": "3e78c564b5519f02e85813006d948247ba6fa7ad5f4bfbe2405cec8aa97f46b6",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\utils.py": "b2f8878664bb6cdfb84d12ad98cc02762b252f56026155f3eea039ab519d4a3b",
+      "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\ogm\\r04\\supplementary\\approved\\pepflow\\vector.py": "531e405d3a1c1b223fd90a01d110c2f1ec3432ec42008c8141400b9d02a1b9a4"
+    },
+    "solver": {
+      "api": "CVXPrimalSolver.build_problem",
+      "effective_name": "CLARABEL",
+      "settings": {
+        "solver": "CLARABEL"
+      },
+      "failure": null
+    }
+  },
+  "normalization": {
+    "tau_name": "initial_condition",
+    "initial_condition": "||x_0-x_star||^2 <= R^2",
+    "performance_metric": "f(x_N)-f(x_star)",
+    "bound_value": 0.02558394201140301,
+    "bound_formula": "L*R**2/(2*theta_N**2)"
+  },
+  "numerical_checks": {
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0.0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    },
+    "residuals": {
+      "identity_gram_max_abs": 1.3834059453543546e-09,
+      "identity_func_max_abs": 3.610223231476084e-10,
+      "identity_offset_abs": 9.141298482062687e-11,
+      "S_reconstruction_max_abs": 1.4194565522984703e-09,
+      "dense_relaxed_gap": 3.1553663570882406e-09,
+      "minimum_scalar_inequality_dual": 0.025583942102815994,
+      "minimum_S_eigenvalue": 9.771199224236941e-12,
+      "minimum_matrix_inequality_eigenvalue": 0.0
+    },
+    "passed": true
+  },
+  "numerical_decomposition": {
+    "method": "direct",
+    "D": [
+      [
+        0.025583942102815994
+      ]
+    ],
+    "ell_coords": [
+      [
+        1.0,
+        -1.0,
+        -2.0,
+        -3.23606797749979,
+        -4.387054170662108,
+        -5.49958268024089,
+        -4.420804104823752
+      ]
+    ],
+    "basis_labels": [
+      "z_0",
+      "x_star",
+      "g_0",
+      "g_1",
+      "g_2",
+      "g_3",
+      "g_4"
+    ],
+    "factor_expression": "z_N-x_star-theta_N/L*g_N",
+    "omission_note": "Small numerical remainder is omitted only after full S reconstruction and certificate coordinate checks."
+  },
+  "closed_form_search": {
+    "completed": true,
+    "references_reviewed": [
+      "Own input and approved generic framework only; target reference examples excluded by clean-room rules."
+    ],
+    "attempts": [
+      {
+        "method": "Scale optimizer-row multipliers by theta_N^2 and compare with 2 theta_i, terminal theta_N; compare consecutive multipliers with 2 theta_i^2.",
+        "outcome": "candidate",
+        "max_error": 3.6926295354788863e-10
+      },
+      {
+        "method": "Rank-one S suggests shifted z_N; test q=z_N-x_star-theta_N/L*g_N and L/(2 theta_N^2) q^2.",
+        "outcome": "candidate",
+        "max_error": 3.6414127269068786e-10
+      }
+    ],
+    "unresolved_components": [
+      "arbitrary-horizon analytic verification of lambda and S identity"
+    ]
+  },
+  "formula_status": {
+    "lambda": "candidate",
+    "S": "candidate"
+  },
+  "lamb_code": "def lamb(ri, ci, theta, N):\n    points = ['z_0'] + [f'x_{k}' for k in range(1, N+1)]\n    if ri == 'x_star' and ci in points:\n        j = points.index(ci)\n        return 2*theta[j]/theta[N]**2 if j<N else 1/theta[N]\n    if ri in points[:-1] and ci == points[points.index(ri)+1]:\n        i = points.index(ri)\n        return 2*theta[i]**2/theta[N]**2\n    return 0\n",
+  "S_code": "def S_guess(ctx, theta, N, L):\n    q = ctx[f'z_{N}']-ctx['x_star']-theta[N]/L*ctx[f'g_{N}']\n    return L/(2*theta[N]**2)*q**2\n",
+  "S_decomp_type": "direct",
+  "require_analytic_full_pep": false,
+  "proof_valid": true,
+  "certificate_id": "ab2e29ebc1845adb690257e7d5f5d8a41877fc8e464e15bb33405ef4e7f7e48f",
+  "rank_profile": [
+    0,
+    3,
+    3,
+    3,
+    2
+  ],
+  "rank_search": {
+    "status": "confirmed",
+    "boundary_exclusions": {
+      "left": 1,
+      "right": 1
+    },
+    "rank": 3,
+    "confirmed_horizons": [
+      4,
+      6
+    ],
+    "selected_certificate_id": "ab2e29ebc1845adb690257e7d5f5d8a41877fc8e464e15bb33405ef4e7f7e48f",
+    "recipe_id": "forward_chain_star_cumulative_terminal_square_boundary",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "absolute; no rescaling",
+      "coordinate_order": "setup context basis order"
+    },
+    "unresolved_samples": [],
+    "evidence_path": "supplementary/rank_search.json"
+  },
+  "lyap_inner_prod_coords": [
+    [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.13395925987541865,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        -0.11223813975954473,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.11223813975954473,
+        0.0,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.22447627952377983,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.3632102499574664,
+        0.0,
+        0.0
+      ],
+      [
+        -0.11223813975954473,
+        0.11223813975954473,
+        0.22447627952377983,
+        0.3632102499574664,
+        0.24619739959666886,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        -0.11223813975954473,
+        -0.14070100452891768,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.11223813975954473,
+        0.14070100452891768,
+        0.0
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.22447627952377983,
+        0.2814020090798807,
+        0.0
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.3632102499574664,
+        0.4553180152871389,
+        0.0
+      ],
+      [
+        -0.11223813975954473,
+        0.11223813975954473,
+        0.22447627952377983,
+        0.3632102499574664,
+        0.4923947991592934,
+        0.6172629290942093,
+        0.0
+      ],
+      [
+        -0.14070100452891768,
+        0.14070100452891768,
+        0.2814020090798807,
+        0.4553180152871389,
+        0.6172629290942093,
+        0.3868984040915422,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        -0.051167884211055066,
+        -0.08279137566421708,
+        -0.11223813975954473,
+        -0.14070100452891768,
+        -0.1131015960167766
+      ],
+      [
+        0.0,
+        0.0,
+        0.051167884211055066,
+        0.08279137566421708,
+        0.11223813975954473,
+        0.14070100452891768,
+        0.1131015960167766
+      ],
+      [
+        -0.051167884211055066,
+        0.051167884211055066,
+        0.10233576842225663,
+        0.16558275137500583,
+        0.22447627952377983,
+        0.2814020090798807,
+        0.22620319203787337
+      ],
+      [
+        -0.08279137566421708,
+        0.08279137566421708,
+        0.16558275137500583,
+        0.26791851971254277,
+        0.3632102499574664,
+        0.4553180152871389,
+        0.3660044530992991
+      ],
+      [
+        -0.11223813975954473,
+        0.11223813975954473,
+        0.22447627952377983,
+        0.3632102499574664,
+        0.4923947991592934,
+        0.6172629290942093,
+        0.49618282858434587
+      ],
+      [
+        -0.14070100452891768,
+        0.14070100452891768,
+        0.2814020090798807,
+        0.4553180152871389,
+        0.6172629290942093,
+        0.7737968081522595,
+        0.6220115787084503
+      ],
+      [
+        -0.1131015960167766,
+        0.1131015960167766,
+        0.22620319203787337,
+        0.3660044530992991,
+        0.49618282858434587,
+        0.6220115787084503,
+        0.500000000077494
+      ]
+    ]
+  ],
+  "lyap_func_coords": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.2679185197505443,
+      -2.929878561985788e-13,
+      0.2679185197508373,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.4923947992696338,
+      -2.929878561985788e-13,
+      7.658901290952258e-11,
+      0.49239479919333773,
+      0.0,
+      0.0
+    ],
+    [
+      -0.7737968083274691,
+      -2.929878561985788e-13,
+      7.658901290952258e-11,
+      6.80886458326313e-11,
+      0.7737968081830844,
+      0.0
+    ],
+    [
+      -1.0000000003610223,
+      -2.929878561985788e-13,
+      7.658901290952258e-11,
+      6.80886458326313e-11,
+      6.164968535671278e-11,
+      1.000000000154988
+    ]
+  ],
+  "lyap_offsets": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "certificate_check_code": "import hashlib\nimport json\nfrom pathlib import Path\nimport numpy as np\nimport sympy as sp\nimport pepflow as pf\nfrom pepflow.constraint import ScalarConstraint\nfrom pepflow.operator import LinearOperatorTranspose\nfrom pepflow.pep_result import MatrixWithNames\nfrom pepflow.utils import name_to_vector_tuple\n\ncertificate_checked = False\nif not certificate.get(\"numerical_certificate_verified\", False):\n    raise ValueError(\"Recover or verify the complete numerical certificate in Block 2\")\nif not certificate.get(\"closed_form_search\", {}).get(\"completed\", False):\n    raise ValueError(\"Complete or recover Block 2's initial closed-form attempt\")\ncertificate_keys = (\n    \"N_verify\", \"params_json\", \"relaxed_constraints\",\n    \"S_matrix\", \"S_row_names\", \"S_col_names\", \"basis_vectors\", \"basis_scalars\",\n    \"opt_value\", \"tau_sol\", \"tau_name\", \"named_dual_values\", \"constraint_metadata\",\n    \"normalization\", \"certificate_provenance\", \"numerical_checks\",\n    \"numerical_decomposition\",\n)\npayload = {key: certificate[key] for key in certificate_keys}\ndigest = hashlib.sha256(json.dumps(\n    payload, sort_keys=True, separators=(\",\", \":\"), allow_nan=False\n).encode(\"utf-8\")).hexdigest()\nif digest != certificate[\"certificate_id\"]:\n    raise ValueError(\"Certificate components changed; recover one coherent certificate\")\nprovenance = certificate[\"certificate_provenance\"]\nif provenance[\"pep_type\"] != \"primal\":\n    raise ValueError(\"Recover and verify the certificate's actual dual sign convention\")\nfor relative_path, expected_hash in provenance[\"source_hashes\"].items():\n    source_path = (REPO_ROOT / relative_path).resolve()\n    if source_path != notebook_dir / \"ogm_setup.py\" and str(source_path) not in json.loads((REPO_ROOT / \"allowlist.json\").read_text())[\"exact_read_files\"]:\n        raise ValueError(\"Certificate source path must stay in the selected repository\")\n    if hashlib.sha256(source_path.read_bytes()).hexdigest() != expected_hash:\n        raise ValueError(f\"Certificate source changed: {relative_path}\")\nif not Path(pf.__file__).resolve().is_relative_to(REPO_ROOT):\n    raise ValueError(\"The imported PEPFlow source is not the selected repository\")\nif N_int != certificate[\"N_verify\"]:\n    raise ValueError(\"Certificate horizon differs from the rebuilt setup\")\nsaved_params = json.loads(certificate[\"params_json\"])\nexpected_params = {\n    key: (sp.Rational(value) if isinstance(value, str) else\n          sp.nsimplify(value, rational=True, tolerance=1e-9)\n          if isinstance(value, float) else sp.S(value))\n    for key, value in saved_params.items()\n}\nif params_sp != expected_params:\n    raise ValueError(\"Certificate parameters differ from the rebuilt setup\")\nif not certificate[\"numerical_checks\"][\"passed\"]:\n    raise ValueError(\"Block 2 numerical checks did not pass\")\ntol = certificate[\"numerical_checks\"][\"tolerances\"]\n\nrecords = [(c, \"initial\", None, None) for c in pb.init_conditions]\nowners = list(ctx.func_to_triplets) + [\n    owner for owner in ctx.oper_to_duplets\n    if not isinstance(owner, LinearOperatorTranspose)\n]\nfor owner in owners:\n    data = ctx.get_constraint_data(owner)\n    for group, family in data.sc_dict.items():\n        records.extend((c, \"interpolation\", str(owner), str(group)) for c in family)\n    records.extend((c, \"interpolation\", str(owner), str(group))\n                   for group, c in data.psd_dict.items())\nconstraints_by_name = {c.name: c for c, _, _, _ in records}\nif len(constraints_by_name) != len(records):\n    raise ValueError(\"Constraint names must identify one unique contribution\")\nsaved_meta = certificate[\"constraint_metadata\"]\nsaved_duals = certificate[\"named_dual_values\"]\nif set(constraints_by_name) != set(saved_meta) or set(saved_duals) != set(saved_meta):\n    raise ValueError(\"The saved certificate does not cover the rebuilt constraints\")\nrelaxed = set(certificate[\"relaxed_constraints\"])\nif set(pb.relaxed_constraints) != relaxed or not relaxed.issubset(constraints_by_name):\n    raise ValueError(\"The selected relaxation differs from the saved certificate\")\nif pb.ctx is not ctx:\n    raise ValueError(\"The builder and expression context differ\")\nbasis = list(ctx.basis_vectors())\nbasis_labels = [repr(v) for v in basis]\nscalar_labels = [repr(v) for v in ctx.basis_scalars()]\nif basis_labels != certificate[\"basis_vectors\"] or scalar_labels != certificate[\"basis_scalars\"]:\n    raise ValueError(\"Certificate coordinate order differs from the rebuilt context\")\nif certificate[\"S_row_names\"] != basis_labels or certificate[\"S_col_names\"] != basis_labels:\n    raise ValueError(\"S labels do not match the rebuilt basis\")\nS_array = np.asarray(certificate[\"S_matrix\"], dtype=float)\nif S_array.shape != (len(basis), len(basis)) or not np.all(np.isfinite(S_array)):\n    raise ValueError(\"Invalid S shape or entries\")\nif not np.allclose(S_array, S_array.T, atol=tol[\"psd_tol\"], rtol=0):\n    raise ValueError(\"S is not numerically symmetric\")\nif len(basis) and np.linalg.eigvalsh((S_array + S_array.T) / 2).min() < -tol[\"psd_tol\"]:\n    raise ValueError(\"S failed the recorded PSD tolerance\")\nS_sol = MatrixWithNames(S_array, basis_labels, basis_labels)\npm = pf.ExpressionManager(ctx, resolve_parameters=params_sp)\nS_scalar = sum((float(S_array[i, j]) * basis[i] * basis[j]\n                for i, j in np.ndindex(S_array.shape)), pf.Scalar.zero())\n\nweighted_terms = {}\ninterpolation_terms = {}\ninterpolation_pairs = {}\nextra_terms = {}\nextra_duals = {}\nfor constraint, origin, owner, group in records:\n    name = constraint.name\n    kind = \"scalar\" if isinstance(constraint, ScalarConstraint) else \"psd\"\n    residual = constraint.lhs - constraint.rhs\n    shape = [] if kind == \"scalar\" else list(np.shape(residual))\n    expected_meta = dict(origin=origin, owner=owner, group=group, kind=kind,\n                         comparator=constraint.cmp.value, shape=shape,\n                         relaxed=name in relaxed)\n    if any(saved_meta[name].get(key) != value for key, value in expected_meta.items()):\n        raise ValueError(f\"Constraint metadata changed: {name}\")\n    value = saved_duals[name]\n    if name in relaxed:\n        if value is not None:\n            raise ValueError(f\"A relaxed constraint must have no retained multiplier: {name}\")\n        continue\n    if value is None:\n        raise ValueError(f\"Missing unrelaxed dual: {name}\")\n    dual = np.asarray(value, dtype=float)\n    if list(dual.shape) != shape or not np.all(np.isfinite(dual)):\n        raise ValueError(f\"Invalid saved dual: {name}\")\n    # Normalize inequalities to residual <= 0; primal equality duals keep their sign.\n    if constraint.cmp.name in (\"GE\", \"SEQ\"):\n        residual = -residual\n    if kind == \"scalar\":\n        if constraint.cmp.name != \"EQ\" and float(dual) < -tol[\"dual_tol\"]:\n            raise ValueError(f\"Negative inequality multiplier: {name}\")\n        contribution = pf.Scalar.zero() + float(dual) * residual\n    else:\n        if constraint.cmp.name != \"EQ\" and not np.allclose(dual, dual.T, atol=tol[\"psd_tol\"], rtol=0):\n            raise ValueError(f\"Nonsymmetric matrix dual: {name}\")\n        if constraint.cmp.name != \"EQ\" and dual.size and np.linalg.eigvalsh((dual + dual.T) / 2).min() < -tol[\"psd_tol\"]:\n            raise ValueError(f\"Matrix dual is not PSD: {name}\")\n        contribution = sum((float(dual[i, j]) * residual[j, i]\n                            for i, j in np.ndindex(dual.shape)), pf.Scalar.zero())\n    weighted_terms[name] = contribution\n    if origin == \"interpolation\" and kind == \"scalar\":\n        interpolation_terms[name] = contribution\n        try:\n            interpolation_pairs[name] = name_to_vector_tuple(name)\n        except (ValueError, IndexError):\n            interpolation_pairs[name] = None  # Assign this term explicitly when grouping.\n    elif name != certificate[\"tau_name\"]:\n        extra_terms[name] = contribution\n        extra_duals[name] = value\n\ntau_name = certificate[\"tau_name\"]\nif (tau_name not in weighted_terms or saved_meta[tau_name][\"origin\"] != \"initial\"\n        or saved_meta[tau_name][\"kind\"] != \"scalar\" or tau_name in relaxed\n        or certificate[\"normalization\"][\"tau_name\"] != tau_name):\n    raise ValueError(\"Missing or inconsistent bound normalization constraint\")\nif not np.allclose(saved_duals[tau_name], certificate[\"tau_sol\"], atol=tol[\"dual_tol\"], rtol=0):\n    raise ValueError(\"The saved normalization dual is inconsistent\")\nif not np.isfinite(certificate[\"opt_value\"]) or not np.allclose(\n    certificate[\"normalization\"][\"bound_value\"], certificate[\"opt_value\"],\n    atol=tol[\"identity_atol\"], rtol=tol[\"identity_rtol\"]\n):\n    raise ValueError(\"The saved bound/normalization is inconsistent\")\ncertificate_diff = (pb.performance_metric - float(certificate[\"opt_value\"])\n                    - sum(weighted_terms.values(), pf.Scalar.zero()) + S_scalar)\nevaluated_diff = pm.eval_scalar(certificate_diff)\nfor label, coords in (\n    (\"Gram\", evaluated_diff.inner_prod_coords),\n    (\"function\", evaluated_diff.func_coords),\n    (\"offset\", np.asarray(evaluated_diff.offset)),\n):\n    if not np.allclose(np.asarray(coords, dtype=float), 0,\n                       atol=tol[\"identity_atol\"], rtol=tol[\"identity_rtol\"]):\n        raise ValueError(f\"Numerical certificate {label} identity failed\")\ndecomposition = certificate[\"numerical_decomposition\"]\nD_saved = np.asarray(decomposition[\"D\"], dtype=float)\nE_saved = np.asarray(decomposition[\"ell_coords\"], dtype=float)\nif decomposition[\"basis_labels\"] != basis_labels or E_saved.ndim != 2:\n    raise ValueError(\"Numerical S decomposition basis differs\")\nif E_saved.shape[1] != len(basis) or D_saved.shape != (E_saved.shape[0], E_saved.shape[0]):\n    raise ValueError(\"Numerical S decomposition shape differs\")\nif not np.all(np.isfinite(D_saved)) or not np.all(np.isfinite(E_saved)):\n    raise ValueError(\"Numerical S decomposition contains nonfinite values\")\nif not np.allclose(E_saved.T @ D_saved @ E_saved, S_array,\n                   atol=tol[\"reconstruction_atol\"], rtol=tol[\"reconstruction_rtol\"]):\n    raise ValueError(\"Numerical S decomposition does not reconstruct this certificate\")\ncertificate_checked = True\nprint(\"Numerical certificate checked for this N and parameter sample.\")\n\n",
+  "decomposition_code": "D = np.asarray(certificate['numerical_decomposition']['D'], dtype=float)\nE = np.asarray(certificate['numerical_decomposition']['ell_coords'], dtype=float)\nassert D.shape == (1,1)\nassert D[0,0] >= 0\nell = [sum((float(coef)*v for coef,v in zip(E[0], basis)), pf.Vector.zero())]\nS_piece_terms = {'terminal_square':float(D[0,0])*ell[0]**2}\nvalue = pm.eval_scalar(S_piece_terms['terminal_square']-S_scalar)\nfor coords in (value.inner_prod_coords,value.func_coords,np.asarray(value.offset)):\n    assert np.allclose(np.asarray(coords,dtype=float),0,atol=tol['identity_atol'],rtol=0)\n",
+  "grouping_code": "grouping_checked = False\nrank_tolerance = 1e-4\nrank_left, rank_right = 1,1\ngroup_terms = {name:term for name,term in weighted_terms.items() if name != tau_name}\nterm_assignment = {}\nfor name in group_terms:\n    left_tag,right_tag = name.split(':')[1].split(',')\n    j = 0 if right_tag=='z_0' else int(right_tag.split('_')[1])\n    if left_tag=='x_star' and j==0:\n        term_assignment[name] = -1\n    elif left_tag=='x_star' or left_tag==('z_0' if j==1 else f'x_{j-1}'):\n        term_assignment[name] = j-1\n    else:\n        raise ValueError(f'Unassigned term {name}')\nS_assignment = {'terminal_square':'boundary'}\nassert set(term_assignment)==set(group_terms)\nlyap = [pf.Scalar.zero()]\npartial_sum = sum((term for name,term in group_terms.items() if term_assignment[name]==-1),pf.Scalar.zero())\nfor step in range(N_int):\n    partial_sum += sum((term for name,term in group_terms.items() if term_assignment[name]==step),pf.Scalar.zero())\n    partial_sum -= sum((term for name,term in S_piece_terms.items() if S_assignment[name]==step),pf.Scalar.zero())\n    lyap.append(partial_sum)\nranks,singular_values = [],[]\nfor k,Vk in enumerate(lyap):\n    M = np.asarray(pm.eval_scalar(Vk).inner_prod_coords,dtype=float)\n    ranks.append(int(np.linalg.matrix_rank(M,tol=rank_tolerance)))\n    singular_values.append(np.linalg.svd(M,compute_uv=False).tolist())\n    print(f'rank V_{k}: {ranks[-1]}')\n    if k==0:\n        print()\nretained = ranks[rank_left:N_int+1-rank_right]\nprint('Interior rank is constant at this N:',len(retained)>=3 and len(set(retained))==1,'boundary exclusions:',(rank_left,rank_right))\nboundary_names = [name for name,step in term_assignment.items() if step=='boundary']\nboundary_S = [name for name,step in S_assignment.items() if step=='boundary']\nassert len(boundary_names)<=1 and len(boundary_S)<=1\nleftover = sum((group_terms[name] for name in boundary_names),pf.Scalar.zero())-sum((S_piece_terms[name] for name in boundary_S),pf.Scalar.zero())\ncoverage_diff = lyap[N_int]+leftover-(sum(group_terms.values(),pf.Scalar.zero())-S_scalar)\ncoverage_residuals = {}\nfor label,expression in [('coverage',coverage_diff),('S_pieces',sum(S_piece_terms.values(),pf.Scalar.zero())-S_scalar)]:\n    ev = pm.eval_scalar(expression)\n    maxima = [float(np.max(np.abs(np.asarray(coords,dtype=float)),initial=0)) for coords in (ev.inner_prod_coords,ev.func_coords,np.asarray(ev.offset))]\n    coverage_residuals[label] = maxima\n    assert max(maxima)<=tol['identity_atol']\nfor name,piece in S_piece_terms.items():\n    ev = pm.eval_scalar(piece)\n    assert np.allclose(ev.func_coords,0,atol=1e-5,rtol=0)\n    assert abs(float(ev.offset))<=1e-5\n    assert np.linalg.eigvalsh(np.asarray(ev.inner_prod_coords,dtype=float)).min()>=-1e-6\nfor k in range(N_int):\n    assigned = {-1,0} if k==0 else {k}\n    increment = sum((group_terms[name] for name,step in term_assignment.items() if step in assigned),pf.Scalar.zero())-sum((S_piece_terms[name] for name,step in S_assignment.items() if step in assigned),pf.Scalar.zero())\n    ev = pm.eval_scalar(lyap[k+1]-lyap[k]-increment)\n    for coords in (ev.inner_prod_coords,ev.func_coords,np.asarray(ev.offset)):\n        assert np.allclose(np.asarray(coords,dtype=float),0,atol=1e-5,rtol=0)\n# Each weighted interpolation residual is <=0 and each subtracted square >=0.\n# Hence V_{k+1}<=V_k, including all three initial interpolation contributions.\ngrouping_checked = True\nprint('Coverage residuals:',coverage_residuals)\n# Singular values are retained in supplementary evidence, without a notebook dump.\n\n",
+  "extra_duals": {},
+  "rank_tolerance": 0.0001,
+  "reconstruction_tolerance": 0.0001,
+  "reconstruction_rtol": 1e-05,
+  "grouping_coverage": {
+    "constraint_assignment": {
+      "f:x_star,z_0": -1,
+      "f:x_star,x_1": 0,
+      "f:x_star,x_2": 1,
+      "f:x_star,x_3": 2,
+      "f:x_star,x_4": 3,
+      "f:z_0,x_1": 0,
+      "f:x_1,x_2": 1,
+      "f:x_2,x_3": 2,
+      "f:x_3,x_4": 3
+    },
+    "S_assignment": {
+      "terminal_square": "boundary"
+    },
+    "normalization_constraint": "initial_condition",
+    "boundary_constraints": [],
+    "boundary_S": [
+      "terminal_square"
+    ],
+    "omitted_constraints": [],
+    "checked": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Recovered B4 terminal span failure by PSD-preserving congruence of the analytic decomposition to the unchanged saved S; numerical construction and rank gates passed.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "notebook_sha256":  "dbc465d42c664bae0c85bd2532ef9cbcbbdd20a427a6d0b07a766a851ccf47f5",
+    "evidence":  [
+                     "b3-congruence-notebook-001.txt",
+                     "b3-congruence-static-002.json",
+                     "rank_search.json",
+                     "../state/pgm_b3.json"
+                 ],
+    "incidents":  [
+                      "Direct terminal correction failed PSD and was rejected; evidence b3-correction-probe.json.",
+                      "First static invocation omitted own pgm_setup.py from target staging; second invocation includes it without source or tolerance changes."
+                  ],
+    "source_access":  "Own generated files and approved dispatch/input/settings only during this recovery continuation; instruction-only isolation, no OS enforcement claim.",
+    "unresolved_work":  [
+                            "B4 basis reidentification and coefficient reconstruction",
+                            "B5 final visible exact proof and closure"
+                        ],
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00"
+}

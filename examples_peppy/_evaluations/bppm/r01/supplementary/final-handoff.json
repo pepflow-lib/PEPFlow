@@ -1,0 +1,50 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": "closure",
+  "entry_exit_reason": "All five blocks completed; exact local Lyapunov proof, required static checks, fresh nbconvert execution and twelve-item saved-notebook audit passed.",
+  "run_status": "complete",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_required_work": [],
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": true,
+  "analytic_full_pep_note": "Separate global analytic certificate not asserted and not required; exact local Lyapunov theorem established.",
+  "artifacts": [
+    "bppm_setup.py",
+    "bppm_example_lyap.ipynb",
+    "state/bppm_b1.json",
+    "state/bppm_b2.json",
+    "state/bppm_b3.json",
+    "state/bppm_b4.json",
+    "state/bppm_b5.json"
+  ],
+  "notebook_sha256": "6335778846aa3879d9445cf98e50ebc21162ae14139cd268ffd2fd12a12d4fbf",
+  "checks": [
+    "supplementary/b5-static-002.json",
+    "supplementary/b5-final-execution-command.json",
+    "supplementary/b5-final-execution-console.txt",
+    "supplementary/bppm_example_lyap_checklist.md"
+  ],
+  "B5_incidents": [
+    {
+      "classification": "type diagnostic",
+      "issue": "SymPy undefined function callable stub mismatch",
+      "repair": "Annotated dynamic symbolic function factory result; ty passed without weakening checks."
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "access_log": "supplementary/consulted-sources.json",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendered_review_performed": false,
+  "deadline_utc": "2026-09-23T17:01:13.976153+00:00",
+  "closed_utc": "2026-09-23T15:50:17.087037+00:00",
+  "token_usage": null
+}

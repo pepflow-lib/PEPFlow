@@ -1,0 +1,30 @@
+﻿k,N,Lsym,U=k_symbol,N_symbol,L_symbol,U_symbol
+m,H,D,T,r,c,A,B=local_coefficients(k,N,U)
+Lpar=P('L_symbolic')
+f_step=pf.SmoothConvexFunction(is_basis=True,tags=['f_{step}'],L=Lpar)
+g_step=pf.ConvexFunction(is_basis=True,tags=['g_{step}'])
+h_step=f_step+g_step
+ctx_step=pf.PEPContext('symbolic_step_final').set_as_current()
+star=h_step.set_stationary_point('x_{star}')
+x=pf.Vector(is_basis=True,tags=['x_{k}'])
+y=g_step.prox(x-f_step.grad(x)/Lpar,1/Lpar,tag='x_{k+1}')
+g_step(x)
+f_step(y)
+d=x-star
+p=(f_step.grad(x)-f_step.grad(star))/Lpar
+z=(f_step.grad(y)-f_step.grad(star))/Lpar
+q=(g_step.grad(y)+f_step.grad(star))/Lpar
+w=q-P('inv_m')*d
+Vcur=P('alpha')*d**2-P('inv_m')*d*f_step.grad(x)-P('t_current')*(f_step.grad(x)-f_step.grad(star))**2+P('a_current')*(f_step(x)-f_step(star))+P('b_current')*(g_step(x)-g_step(star))
+Vnext=P('alpha_next')*(y-star)**2-P('inv_m_next')*(y-star)*f_step.grad(y)-P('t_next')*(f_step.grad(y)-f_step.grad(star))**2+P('a_next')*(f_step(y)-f_step(star))+P('b_next')*(g_step(y)-g_step(star))
+Ifstar=f_step(y)-f_step(star)+f_step.grad(y)*(star-y)+(f_step.grad(star)-f_step.grad(y))**2/(2*Lpar)
+Ifpair=f_step(y)-f_step(x)+f_step.grad(y)*(x-y)+(f_step.grad(x)-f_step.grad(y))**2/(2*Lpar)
+Igstar=g_step(y)-g_step(star)+g_step.grad(y)*(star-y)
+Igpair=g_step(y)-g_step(x)+g_step.grad(y)*(x-y)
+Q=Lpar*(P('A')*(z+P('r')*(w+P('inv_m')*p))**2+P('B')*(w+P('c')*p)**2)
+LHS=Vnext-Vcur
+RHS=(P('a_next')-P('a_current'))*Ifstar+P('a_current')*Ifpair+(P('b_next')-P('b_current'))*Igstar+P('b_current')*Igpair-Q
+params_step: dict[str,Any]={'L_symbolic':Lsym,'alpha':Lsym*(N-k)/m**2,'alpha_next':Lsym*(N-k-1)/(m-1)**2,'inv_m':1/m,'inv_m_next':1/(m-1),'t_current':T/(2*Lsym*m**2),'t_next':U/(2*Lsym*(m-1)**2),'a_current':(k+1)/m,'b_current':k/m,'a_next':(k+2)/(m-1),'b_next':(k+1)/(m-1),'A':A,'B':B,'r':r,'c':c}
+pm_step=pf.ExpressionManager(ctx_step,resolve_parameters=params_step)
+diff=LHS-RHS
+step_verified=exact_check('Step, 1<=k<=N-2',diff,pm_step,ctx_step)

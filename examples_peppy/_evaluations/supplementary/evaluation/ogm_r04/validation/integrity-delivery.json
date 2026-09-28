@@ -1,0 +1,628 @@
+{
+  "frozen_hash_count": 146,
+  "frozen_hashes_unchanged": true,
+  "notebook_cells": 64,
+  "code_cells": 32,
+  "execution_counts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "error_outputs": [],
+  "embedded_png_count": 1,
+  "checks": [
+    {
+      "path": "ogm_example_lyap.ipynb",
+      "match": true
+    },
+    {
+      "path": "ogm_setup.py",
+      "match": true
+    },
+    {
+      "path": "state/ogm_b1.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_b2.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_b3.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_b4.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_b5.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_dense.json",
+      "match": true
+    },
+    {
+      "path": "state/ogm_relaxed.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/acquire_b2_N6.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-handoff.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-notebook-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-notebook-003-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-notebook-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-002.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-003-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-static-003.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b1-sweep-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-acquire-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-candidates-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-chain-certificate.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-chain-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-handoff-N6.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-handoff.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-N6-chain-certificate.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-N6-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-N6-dense.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-N6-verified.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-notebook-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-static-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-static-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2-threshold-certificate.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2_acquire.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2_candidates.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2_chain.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2_N6_verified_source.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b2_notebook_cells.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-handoff-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-handoff-002.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-notebook-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-notebook-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-observation-N4-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-observation-N4.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-observation-N6-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-observation-N6.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-static-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-static-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-static-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3-static-002.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3_certificate_check.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3_decomposition.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3_grouping.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3_rank_assess.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b3_save.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-exploration-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-exploration-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-handoff.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-notebook-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-notebook-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-static-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-static-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-static-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4-static-002.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4_cells.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b4_save.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-audit-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-final-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-final-execution.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-handoff.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-static-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-static-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-symbolic-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-symbolic-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5-symbolic-003-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5_proof_outline.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5_symbolic_cells.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/b5_theorem.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/build_b1_notebook.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/build_b2_notebook.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/build_b3_notebook.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/build_b4_notebook.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/build_b5_notebook.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/final_audit.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/final_execute.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/ogm_example_lyap_checklist.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/preflight-001-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/preflight-001.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/preflight-002-console.txt",
+      "match": true
+    },
+    {
+      "path": "supplementary/preflight-002.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/preflight-access-record.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/prepare_b3.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/prepare_b3_assessment.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/rank_search.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/run_b1_sweep.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/run_b3_observation.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/run_b4.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/run_b5_symbolic.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/_sweep_tmp.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/allowlist.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/clean-room.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/dispatch.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/input.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/preflight-only.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/settings.json",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/worker-protocol.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/constants.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/constraint.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/dual_interactive_constraint.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/expression_manager.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/function.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/ipython_utils.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/logging.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/lyapunov_utils.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/math_expression.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/operator.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/parameter.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/pep.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/pep_context.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/pep_result.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/pep_runner.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/plot_data.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/primal_interactive_constraint.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/registry.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/scalar.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/solver.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/utils.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/vector.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/pepflow/__init__.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/optional/localize-n-summation-proof/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+      "match": true
+    },
+    {
+      "path": "supplementary/helpers/runtime.py",
+      "match": true
+    }
+  ]
+}

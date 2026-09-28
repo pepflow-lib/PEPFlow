@@ -1,0 +1,26 @@
+{
+  "current_block": "B3",
+  "completion_status": "incomplete",
+  "next_block": "B2",
+  "requested_N": 6,
+  "entry_exit_reason": "Promising N4 rank and complete coverage; second-horizon coherent certificate required",
+  "operational_status": "awaiting_same_session_continuation",
+  "sources": [
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+    "state/pgm_b2.json",
+    "pgm_example_lyap.ipynb",
+    "supplementary/b3_certificate_check.py",
+    "supplementary/b3_decomposition.py",
+    "supplementary/b3_grouping.py"
+  ],
+  "commands": [
+    "Pinned Python -I -B supplementary/run_b3.py",
+    "Pinned Python -I -B supplementary/update_b3_pending.py"
+  ],
+  "access_control": "instruction_only",
+  "prohibited_sources_observed": false,
+  "audit_limit": "No exhaustive filesystem read audit",
+  "evidence": "supplementary/rank_N4.json",
+  "unresolved_work": "Cross-horizon rank confirmation; B4-B5",
+  "deadline_utc": "2026-09-23T16:12:00.406449+00:00"
+}

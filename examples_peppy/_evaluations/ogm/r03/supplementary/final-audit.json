@@ -1,0 +1,46 @@
+{
+  "run_status": "completed",
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact step/base/boundary and sign/domain/normalization obligations established; final static, clean-kernel and content checks passed",
+  "operational_status": "stopped_completed",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_work": [],
+  "notebook_sha256": "44a82dbc9876ae6a302f3ec27091a96cc1a065899417d68a5449cd758e071ab2",
+  "code_cells_executed": 27,
+  "access_control": "instruction_only",
+  "prohibited_sources_observed": false,
+  "access_status": "no_observed_prohibited_exposure",
+  "limitations": "Instruction-only isolation and available tool logs; no exhaustive OS read tracing or claim about model training knowledge. No rendering performed under the frozen presentation policy.",
+  "consulted_source_records": [
+    "preflight-access-record.json",
+    "b1-handoff-access.json",
+    "b2-handoff-access.json",
+    "b3-return-b2.json",
+    "b2-N6-handoff.json",
+    "b3-handoff-access.json",
+    "b4-handoff-access.json"
+  ],
+  "additional_consulted_sources": [
+    "Approved lyap-closed-form workflow",
+    "Approved function.py interpolation implementation",
+    "Approved parameter.py evaluation implementation",
+    "Approved expression_manager.py symbolic evaluation implementation",
+    "Own symbolic, notebook, state and static evidence files"
+  ],
+  "commands": "Pinned Python -I -B run_b5_symbolic.py; own notebook preparation/refinement; reviewed static adapter check; pinned Python -I -B -m nbconvert --execute twice; own output inspection and closure audit",
+  "incidents": [
+    "Initial N=1 check used the prior global context; selected the owned base context explicitly and reran every symbolic check successfully. No frozen source changed.",
+    "Earlier operational/static repairs remain recorded in existing handoffs; no mathematical criterion relaxed."
+  ],
+  "finished_utc": "2026-09-23T18:48:50.626814+00:00",
+  "original_deadline_utc": "2026-09-23T20:02:47.999904+00:00",
+  "token_usage": null
+}

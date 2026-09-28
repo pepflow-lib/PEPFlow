@@ -1,0 +1,29 @@
+{
+    "current_block":  "B3",
+    "access_control":  "instruction_only",
+    "new_approved_reads":  [
+                               "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+                           ],
+    "generated_reads":  [
+                            "state/bppm_b2.json",
+                            "bppm_setup.py",
+                            "supplementary/b3_certificate_check.py",
+                            "supplementary/b3_decomposition.py",
+                            "supplementary/b3_grouping.py",
+                            "supplementary/b3-trial-N4.json",
+                            "bppm_example_lyap.ipynb",
+                            "supplementary/bppm_example_lyap_checklist.md"
+                        ],
+    "source_hash_reads":  "Exact listed certificate provenance files only",
+    "commands":  [
+                     "python -I -B supplementary/run_b3_trial.py",
+                     "python -I -B supplementary/author_b3_trial.py",
+                     "python -I -B supplementary/execute_notebook.py B3"
+                 ],
+    "evidence":  "supplementary/b3-trial-N4.json",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+
+                  ],
+    "audit_limit":  "Instruction-only restriction; no exhaustive OS read trace."
+}

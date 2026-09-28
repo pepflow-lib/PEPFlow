@@ -1,0 +1,28 @@
+{
+  "command": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+    "-I",
+    "-B",
+    "-m",
+    "nbconvert",
+    "--to",
+    "notebook",
+    "--execute",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\pgm_example_lyap.ipynb",
+    "--inplace",
+    "--ExecutePreprocessor.kernel_name=attempt-pgm",
+    "--ExecutePreprocessor.timeout=180"
+  ],
+  "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05",
+  "started_utc": "2026-09-23T22:41:02.300949+00:00",
+  "finished_utc": "2026-09-23T22:41:31.261459+00:00",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "[NbConvertApp] Converting notebook C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\pgm_example_lyap.ipynb to notebook\nC:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n[NbConvertApp] WARNING | No handler found for comm target 'dash'\n[NbConvertApp] Writing 169357 bytes to C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\pgm_example_lyap.ipynb\n",
+  "source_notebook_sha256": "b375b3c1db5fa704e60bb7808611200e68948bc2c326f65be6ddbc24b08420b1",
+  "executed_notebook_sha256": "9965b44c9a30fa68d32016b951c7fefa69105c01d41d92feec3ee119405e20f8",
+  "kernel": "attempt-pgm",
+  "isolation": "instruction_only",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendering_performed": false
+}

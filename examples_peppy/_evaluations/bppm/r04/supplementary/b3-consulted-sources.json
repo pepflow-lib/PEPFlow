@@ -1,0 +1,20 @@
+﻿{
+    "incidents":  [
+
+                  ],
+    "audit_limit":  "No exhaustive OS filesystem tracing.",
+    "access_control":  "instruction_only",
+    "commands":  "prepare_b3.py extracted generic approved verification snippets; run_b3.py reconstructed selected state without solving; console retained.",
+    "prohibited_content_observed":  false,
+    "phase":  "B3",
+    "approved_sources":  [
+                             "plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+                         ],
+    "generated_sources":  [
+                              "supplementary/b3_check.py",
+                              "supplementary/b3_decomposition.py",
+                              "supplementary/b3_grouping.py",
+                              "supplementary/b3_coverage.py",
+                              "supplementary/run_b3.py"
+                          ]
+}

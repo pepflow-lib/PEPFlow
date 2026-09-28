@@ -1,0 +1,18 @@
+﻿{
+  "current_block": "B3",
+  "completion_status": "incomplete_requires_additional_horizon",
+  "next_block": "B2",
+  "entry_exit_reason": "Selected N=4 certificate and full-coordinate grouping checks passed; a second horizon is required for rank confirmation.",
+  "run_status": "awaiting_continuation",
+  "requested_horizon": 6,
+  "keep_selected_horizon": 4,
+  "request": "Acquire a complete N=6 certificate under the same consecutive-edge sparsity recipe and original tolerances; preserve it under supplementary without replacing selected N=4 state. Return to B3 after acquisition and verification.",
+  "recipe_id": "consecutive_all_owners_terminal_h_and_full_S_boundary",
+  "evidence": "supplementary/b3-observation-N4.json",
+  "sources": ["approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md", "own state/bppm_b2.json", "approved framework sources read by saved provenance hash validation", "own generated b3_certificate_check.py, b3_decomposition.py, b3_grouping.py, b3_coverage.py"],
+  "commands": ["prepare_b3_sources.py", "run_b3_selected.py"],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "observability_limit": "Tool-visible record only; no exhaustive OS read trace.",
+  "deadline_utc": "2026-09-23T17:01:13.976153+00:00"
+}

@@ -1,0 +1,52 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact arbitrary-horizon Lyapunov proof and required final notebook checks completed",
+  "operational_status": "closed",
+  "run_status": "success",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_required_work": [],
+  "optional_unverified_work": [
+    "Universal global full-PEP multiplier-table formula not separately certified."
+  ],
+  "access_control": "instruction_only",
+  "prohibited_sources_observed": false,
+  "access_audit_limit": "Source declarations, approved adapter resolution evidence and tool logs are not an exhaustive filesystem read audit.",
+  "consulted_source_records": [
+    "preflight-access-record.json",
+    "b1-handoff.json",
+    "b2-handoff.json",
+    "b3-revisit-b2.json",
+    "b2-N8-handoff.json",
+    "b3-handoff.json",
+    "b4-handoff.json"
+  ],
+  "additional_sources": [
+    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "approved/pepflow/expression_manager.py",
+    "own B4 state and evidence",
+    "verify_b5_symbolic.py",
+    "b5-cell-sources.json",
+    "update_b5_notebook.py",
+    "execute_b5_notebook.py",
+    "execute_b5_final.py",
+    "fix_b5_display.py",
+    "finish_b5.py"
+  ],
+  "external_resources": [],
+  "integrity_exceptions": [],
+  "operational_incidents": "See earlier handoff records. B5 first nbconvert execution failed at symbolic matrix formatting; changed generated display precision to zero, retained b5-execution.json, repeated static checks and full clean-kernel nbconvert successfully. No frozen-source edits.",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "rendered_review_performed": false,
+  "final_notebook_sha256": "0fa0f1eb429ab3c3f080b46c76e4eda913a0ef2937fe826296ab126b8f3684fd",
+  "deadline_utc": "2026-09-24T00:52:12.648185+00:00",
+  "closed_utc": "2026-09-23T23:35:04.686301+00:00",
+  "provider_token_usage": null
+}

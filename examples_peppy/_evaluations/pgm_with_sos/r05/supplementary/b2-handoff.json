@@ -1,0 +1,68 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Dense solve, sparse certificate, initial formula search, supplied SOS comparison, full-coordinate checks and notebook execution completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T23:46:30.668388+00:00",
+    "certificate_id":  "de6d064660db34c6b0b36ca349bb8efd96ecfa937480cd1fcca5702c618da1e1",
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "residuals":  {
+                      "identity_gram_max_abs":  5.2886359735992983E-09,
+                      "identity_func_max_abs":  1.619709921740764E-08,
+                      "identity_offset_abs":  3.165652122383289E-09,
+                      "S_reconstruction_max_abs":  3.1354783714965251E-06,
+                      "candidate_identity_gram_max_abs":  3.1391472977704282E-06,
+                      "dense_relaxed_gap":  2.33833112595061E-10,
+                      "conjecture_gap":  1.161204084276779E-09,
+                      "minimum_scalar_inequality_dual":  0.06250000200444804,
+                      "minimum_S_eigenvalue":  2.1987044475128689E-09,
+                      "minimum_matrix_inequality_eigenvalue":  0.0
+                  },
+    "approved_sources_added":  [
+                                   "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                                   "pepflow/solver.py",
+                                   "pepflow/pep_result.py",
+                                   "pepflow/expression_manager.py"
+                               ],
+    "transitive_source_manifest":  "state/pgm_b2.json certificate_provenance.source_hashes; approved/static-check evidence sources",
+    "own_files_consulted":  [
+                                "state/pgm_b1.json",
+                                "state/pgm_dense.json",
+                                "state/pgm_b2.json",
+                                "pgm_example_lyap.ipynb",
+                                "supplementary/run_b1.py",
+                                "supplementary/probe_b2.py",
+                                "supplementary/probe_b2_sparse.py",
+                                "supplementary/helpers/certificates.py",
+                                "supplementary/update_b2_notebook.py",
+                                "supplementary/b2-sparse-candidate.json",
+                                "supplementary/b2-static-001.json",
+                                "supplementary/b2-static-002.json"
+                            ],
+    "commands":  [
+                     "Pinned Python -I -B supplementary/probe_b2.py",
+                     "Pinned Python -I -B supplementary/probe_b2_sparse.py",
+                     "Pinned Python -I -B supplementary/update_b2_notebook.py",
+                     "Approved adapter check of setup, notebook and certificates helper; exact subprocess commands in static evidence"
+                 ],
+    "incidents":  [
+                      "Notebook display argument repaired from SymPy matrix to NumPy array",
+                      "Recorded Ruff E731 and ty scalar typing errors repaired in own source; sparse certificate reacquired to retain before/after source hashes"
+                  ],
+    "evidence":  [
+                     "supplementary/b2-static-001.json",
+                     "supplementary/b2-static-002.json",
+                     "supplementary/b2-notebook-001-output.txt",
+                     "supplementary/b2-notebook-003-output.txt"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing",
+    "supplied_assistance":  "Fixed SOS aid, scale 1, verified at N=4 against own selected certificate",
+    "unresolved_work":  "B3-B5 and arbitrary-horizon analytic proof",
+    "presentation_policy":  "evaluation-ancillary-v1",
+    "rendering_performed":  false
+}

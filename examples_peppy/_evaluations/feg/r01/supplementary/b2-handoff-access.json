@@ -1,0 +1,54 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Dense solve, sparse solve, coherent certificate verification, initial formula search, notebook execution and static checks complete",
+    "run_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "approved_sources":  [
+                             "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                             "pepflow/lyapunov_utils.py",
+                             "pepflow/pep_result.py",
+                             "pepflow/expression_manager.py",
+                             "pepflow/scalar.py",
+                             "pepflow/ipython_utils.py",
+                             "pepflow/pep_context.py"
+                         ],
+    "commands":  [
+                     "Get-Content B1 state and B2 workflow",
+                     "rg exact approved API files; Get-Content selected LDL/scalar/display sections",
+                     "apply_patch own certificate_tools, b2_dense, b2_sparse, b2_notebook files",
+                     "python -I -B supplementary/bootstrap.py supplementary/b2_dense.py",
+                     "python -I -B supplementary/bootstrap.py supplementary/b2_sparse.py",
+                     "python -I -B supplementary/bootstrap.py supplementary/b2_notebook.py (twice after formatting/type fixes)",
+                     "static adapter b2-static-001 then b2-static-002; exact commands retained in evidence JSON"
+                 ],
+    "checks":  [
+                   "Full Gram/function/offset numerical identity",
+                   "All scalar multiplier signs and S PSD",
+                   "Complete reverse-LDL reconstruction",
+                   "Dense/sparse objective preservation",
+                   "Candidate lambda/S comparisons: failed fixed candidate tolerance, explicitly unresolved",
+                   "Fresh-kernel notebook execution",
+                   "Ruff and ty"
+               ],
+    "incidents":  [
+                      {
+                          "evidence":  "supplementary/b2-static-001.json",
+                          "result":  "rerun b2-static-002",
+                          "repair":  "Replaced assigned lambda with def; used SymPy numeric parameters to satisfy framework type annotation",
+                          "kind":  "source_diagnostics"
+                      }
+                  ],
+    "evidence":  [
+                     "state/feg_dense.json",
+                     "state/feg_relaxed.json",
+                     "state/feg_b2.json",
+                     "supplementary/b2-sparse-output.txt",
+                     "supplementary/b2-notebook-002-output.txt",
+                     "supplementary/b2-static-002.json"
+                 ],
+    "unresolved_work":  "Analytic formulas/proofs unresolved; B3-B5 unstarted.",
+    "audit_limit":  "Instruction-only access restrictions, not exhaustive filesystem tracing."
+}

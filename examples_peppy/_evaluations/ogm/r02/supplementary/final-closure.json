@@ -1,0 +1,67 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "Exact proof, all notebook gates and final audit complete",
+  "operational_status": "closed",
+  "run_status": "completed",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "mathematical_obligations_unresolved": [],
+  "separate_analytic_full_pep_status": "unverified; not a required separate objective",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": true,
+  "notebook": "ogm_example_lyap.ipynb",
+  "state": "state/ogm_b5.json",
+  "notebook_sha256": "96476335014518f5dce2103dfe69dbf8b7e89a40040dad99efbb9fe25f23fa78",
+  "static_evidence": "supplementary/b5-static-002.json",
+  "execution_evidence": "supplementary/b5-nbconvert-final-output.txt",
+  "access_control": "instruction_only",
+  "access_status": "no_prohibited_source_observed",
+  "audit_limit": "Resolution/source records and tool transcript do not constitute exhaustive OS filesystem-read tracing; no claim about model training knowledge.",
+  "consulted_approved_files": [
+    "plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "pepflow/function.py",
+    "pepflow/expression_manager.py",
+    "pepflow/utils.py",
+    "pepflow/parameter.py",
+    "settings.json"
+  ],
+  "own_sources": [
+    "state/ogm_b4.json",
+    "ogm_example_lyap.ipynb",
+    "supplementary/b5_notebook_cells.py",
+    "supplementary/b5_exact.py",
+    "supplementary/author_b5.py",
+    "supplementary/close_b5.py",
+    "supplementary/b5-exact-evidence.json",
+    "supplementary/b5-static-001.json",
+    "supplementary/b5-static-002.json",
+    "supplementary/.runtime/nbconvert_config.py"
+  ],
+  "previous_access_records": [
+    "supplementary/preflight-access-001.json",
+    "supplementary/b1-handoff.json",
+    "supplementary/b2-handoff.json",
+    "supplementary/b3-return-b2.json",
+    "supplementary/b2-N8-handoff.json",
+    "supplementary/b3-handoff.json",
+    "supplementary/b4-handoff.json"
+  ],
+  "imported_sources": "Exact framework hashes in selected certificate provenance; pinned dependencies/interpreter origins in preflight evidence",
+  "external_resources": [],
+  "incidents": [
+    "Notebook source scan caught an escaped form-feed in draft LaTeX before saving; corrected and rescanned.",
+    "B5 static checker required an explicit heterogeneous proof-results dictionary annotation; corrected without changing mathematics.",
+    "Final nbconvert emitted nonfatal Windows ZMQ and Dash comm warnings; all cells executed successfully."
+  ],
+  "deadline_utc": "2026-09-23T18:18:16.664646+00:00",
+  "finished_utc": "2026-09-23T17:06:49.886984+00:00",
+  "tokens": null
+}

@@ -1,0 +1,227 @@
+{
+  "attempt_id": "pgm_without_sos_r02",
+  "mathematical_verdict": "PASS",
+  "mathematical_reason": "The actual submitted finite-product Lyapunov proof establishes the exact terminal objective bound LR^2/(4N) for every integer N>=1. Fresh symbolic replay verifies general step, base, terminal, N=1, normalization, coefficient-map and square-completion identities; inspected submitted sign/domain arguments justify decrease. No mathematical repair supplied.",
+  "submitted_theorem": "For convex L-smooth f and closed proper convex g, proximal gradient x_(k+1)=prox_(g/L)(x_k-grad f(x_k)/L), xstar minimizing f+g and ||x0-xstar||<=R, satisfies h(xN)-h(xstar)<=LR^2/(4N), for L>0, R>=0 and every integer N>=1.",
+  "target_scope_comparison": "Exact match: prescribed algorithm, assumptions, terminal composite objective metric, constant 1/4, general L/R and all horizons; no averaging or extra structural assumptions.",
+  "verification_method": "Fresh pinned-Python replay of submitted symbolic helper and actual final notebook cells; saved N=4/N=6 certificate and rank reconstruction; saved B4 bases/coefficients reconstruction without search. Inspected B1 sweep, dense gaps, initial formula search, B4 search logs, theorem/sign text, generic skills and historical/access records. No solver/discovery, external mathematical sources or other attempts accessed.",
+  "mathematical_evidence_refs": [
+    "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5_proof.md",
+    "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb",
+    "validation/selected-replay-final.log",
+    "validation/symbolic-first.log",
+    "validation/original-integrity.json"
+  ],
+  "checks": [
+    {
+      "name": "Scope and complete potential",
+      "status": "PASS",
+      "observed_result": "Submitted theorem and setup match convex L-smooth f, closed proper convex g, 1/L proximal step, terminal h-gap, L>0, R>=0, all integers N>=1. Interior potential, endpoint potentials, finite matrix product and seed are fully specified; no g(x0) value needed.",
+      "evidence_ref": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5_proof.md"
+    },
+    {
+      "name": "Generic symbolic identities",
+      "status": "PASS",
+      "observed_result": "Actual notebook cells 67,69,71,73 replay: step/base/boundary/normalization/N=1 Gram, function and offset residuals exactly zero (assertions execute over every entry). Symbols k,N,L,c remain generic; this is not sampled-horizon verification.",
+      "evidence_ref": "validation/selected-replay-final.log"
+    },
+    {
+      "name": "Coefficient product and square completion",
+      "status": "PASS",
+      "observed_result": "Cells 58,63,75 replay: first-factor product identity=0; beta_recurrence(0,N,c)=0; recurrence matches finite-product transfer map; positive-factor delta identity=0; final-pivot coefficient residual=0; homogeneous quadratic Gram/Hessian square identity is the 3x3 zero matrix.",
+      "evidence_ref": "validation/selected-replay-final.log"
+    },
+    {
+      "name": "Signs and domains inspected",
+      "status": "PASS",
+      "observed_result": "On interior/base domains k>=0, t=2N-k>1, c>=0 and L>0, a>0 and displayed delta numerator strictly positive. Product matrices for j>=1 have positive entries; seed denominator 1 and positive beta_(N-1) for N>=2 imply nonvanishing positive Q_k and beta_k>=0. Every displayed multiplier is nonnegative and interpolation residual nonpositive; squared slacks are subtracted. This is the submitted sign argument, checked against its formulas.",
+      "evidence_ref": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5_proof.md"
+    },
+    {
+      "name": "Endpoints and small horizons",
+      "status": "PASS",
+      "observed_result": "V0=0; VN=h(xN)-h(xstar)-L||u0||^2/(4N); base, terminal and N=1 identities replay exactly. N=2 uses empty coefficient product and no interior steps. No division by R, so R=0 is included. These links yield h-gap <= L||u0||^2/(4N) <= LR^2/(4N).",
+      "evidence_ref": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5_proof.md"
+    },
+    {
+      "name": "B1 saved sweep inspected",
+      "status": "PASS",
+      "observed_result": "N=1..7 values 0.25000000431910757, 0.12499999766566457, 0.0833333327868809, 0.06249999907262903, 0.04999999951378083, 0.04166666248812821, 0.03571428428419599. N=1..5 optimal; N=6,7 optimal_inaccurate explicitly disclosed in notebook. Diagnostic agreement with 1/(4N); no sweep rerun or all-horizon inference.",
+      "evidence_ref": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/state/pgm_b1.json"
+    },
+    {
+      "name": "B2 saved certificates freshly replayed",
+      "status": "PASS",
+      "observed_result": "N=4 Gram/function/offset maxima [5.288635973599298e-9,1.619709921740764e-8,3.165652122383289e-9]; N=6 [1.3405496712692866e-9,3.5555411947996163e-9,2.502414109262219e-10]. Coherent IDs, source hashes, all constraint inventory/coordinate order, dual signs, S PSD and saved decomposition reconstruction assertions pass at original tolerances.",
+      "evidence_ref": "validation/selected-replay-final.log"
+    },
+    {
+      "name": "B2 inspected dense gaps and initial search",
+      "status": "PASS",
+      "observed_result": "Saved N=4/N=6 dense-relaxed gaps 2.33833112595061e-10 / 4.33282452971806e-9, below 1e-5. S reconstruction 1.1102230246251565e-16 at both; minimum scalar duals .06250000200444804/.04166666707119415; minimum S eigenvalues 2.198704447512869e-9/4.284220948290628e-10. Initial fraction recognition and exact candidate residual search documented; global analytic S proof remains unverified, not needed for final local proof.",
+      "evidence_ref": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/state/pgm_b2.json"
+    },
+    {
+      "name": "B3 two-horizon rank and coverage replay",
+      "status": "PASS",
+      "observed_result": "Same reverse-LDL/latest-iterate recipe: N=4 [0,4,4,4,1], N=6 [0,4,4,4,4,4,1], absolute rank cutoff 1e-4, exclusions (1,1), retaining 3 and 5 interior indices. Rank credibility, PSD piece signs, all-coordinate increments and coverage checked. Coverage Gram maxima 5.551115123125783e-17 and 7.632783294297951e-17; function/offset zero; increment max 5.551115123125783e-17.",
+      "evidence_ref": "validation/selected-replay-final.log"
+    },
+    {
+      "name": "B4 saved basis/matrix reconstruction replay",
+      "status": "PASS",
+      "observed_result": "Every index 0..4: saved basis independently spans required rank; saved symmetric coefficient matrices used without search. Maximum full-component Gram residual 5.288635966660404e-9, function 4.859129765222292e-9, offset 0; original component atol1e-4/rtol1e-5. Exact closed-form comparison maximum 3.1423867178359544e-6 <1e-4. Historical actual 505-candidate sparse search inspected separately.",
+      "evidence_ref": "validation/selected-replay-final.log"
+    },
+    {
+      "name": "Fresh validation execution",
+      "status": "PASS",
+      "observed_result": "Pinned Python -I -B selected final notebook cells completed with returncode 0; final recurrence-link assertion executed. This is standalone clean-process selected-cell verification, not full notebook delivery completion. A first harness NameError and PowerShell warning handling preserved and operationally corrected.",
+      "evidence_ref": "validation/execution-status.json"
+    },
+    {
+      "name": "Original immutable submission",
+      "status": "PASS",
+      "observed_result": "All 146 original file hashes match frozen submission-hashes.json, including notebook hash cf038b19fe4904f9363f711a4e8b5af0f1bec313059de5b4a77acf575b95c0b6.",
+      "evidence_ref": "validation/original-integrity.json"
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Inspected matching setup and complete prescribed diagnostic sweep/rate comparison. N=6,7 optimal_inaccurate are disclosed and retained as a numerical limitation; they are not certified exact PEP optima or the basis of the final theorem.",
+      "evidence_refs": [
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/state/pgm_b1.json",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh coherent numerical certificate replay passes all-coordinate, cone, source/order and decomposition checks; saved dense-gap and actual initial formula-search evidence inspected. No global analytic S claim.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh saved-certificate replay verifies nonpositive increment construction, all-coordinate coverage, signs and the same rank 4 at N=4 and N=6 with fixed endpoint exclusions and sufficient retained indices.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "PASS",
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Fresh replay checks submitted saved independent bases and coefficient matrices at every index including endpoints. Historical actual basis search inspected, never rerun.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "mathematical_status": "PASS",
+      "delivery_status": "INCOMPLETE",
+      "gate_verdict": "UNRESOLVED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": false,
+      "reason": "Submitted complete finite-product potential and all generic/boundary/N=1 identities and square-completion link freshly verified. Submitted signs imply the exact target. Original final source did not receive final static/nbconvert/checklist completion.",
+      "evidence_refs": [
+        "validation/selected-replay-final.log",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb"
+      ]
+    }
+  ],
+  "original_delivery_status": "INCOMPLETE",
+  "original_delivery_reason": "Generation stopped for generic nbconvert dependency route. Notebook executed before the final cell75 edit; final edit lacked final static/execution/audit completion. Original state and checklist preserved; no retroactive completion claimed.",
+  "posthoc_validation_execution_status": {
+    "status": "PASS",
+    "mode": "fresh standalone selected notebook cells and saved certificate replay",
+    "returncode": 0,
+    "evidence_ref": "validation/execution-status.json",
+    "full_notebook_nbconvert": "not rerun; prohibited discovery/search cells intentionally omitted"
+  },
+  "access_findings": {
+    "generic_operational_incidents": [
+      {
+        "incident": "Original python -m jupyter nbconvert dispatcher consumed Python313 zmq dependency outside the original generic allowlist",
+        "evidence_refs": [
+          "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-nbconvert.log",
+          "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-access-record.json"
+        ],
+        "adjudication": "Operational only under explicit user override; not mathematical FAIL or independence exclusion."
+      },
+      {
+        "incident": "First selective validation harness omitted existing f/g bindings; later PowerShell warning stream mislabeled execution status",
+        "evidence_refs": [
+          "validation/selected-replay.log",
+          "validation/selected-replay-second.log",
+          "validation/execution-status.json"
+        ],
+        "adjudication": "Recovered in validation only; final direct process returncode 0."
+      }
+    ],
+    "prohibited_mathematical_exposure": {
+      "status": "not_established",
+      "evidence_refs": [
+        "own-generation-host-access-calls.json",
+        "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5-access-record.json",
+        "historical-review.json"
+      ],
+      "reason": "Reviewed incident concerns generic dependency execution. Screened own host-access-call record for other-attempt/target-reference/external-source routes; no concrete prohibited mathematical exposure established. This is not an exhaustive access-history certification."
+    },
+    "independence_eligible": true,
+    "limitations": [
+      "Instruction-only isolation and nonexhaustive access telemetry do not prove absence of exposure."
+    ]
+  },
+  "execution_adjustments": "execution-adjustments.json",
+  "review_started_at": "2026-09-24T02:42:07.228219+00:00",
+  "review_stopped_at": "2026-09-24T02:50:20.962175+00:00",
+  "limitations": [
+    "B1 N=6,7 sweep outcomes remain optimal_inaccurate; no new solve permitted or performed.",
+    "B1 sweep and historical basis-search evidence inspected, not regenerated.",
+    "No all-horizon global full-PEP S proof asserted; the submitted local proof suffices.",
+    "Posthoc verification did not rerun full nbconvert/static delivery pipeline or rendering. Original final delivery remains incomplete.",
+    "Access review is limited to supplied own-attempt records; no exhaustive filesystem tracing."
+  ],
+  "eligible": true,
+  "access_status": "recovered",
+  "access_reason": "User override treats historical generic dependency route as operational; prohibited target mathematical exposure not established.",
+  "workflow_complete": false,
+  "notebook_path": "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb",
+  "final_reason": "The actual submitted finite-product Lyapunov proof establishes the exact terminal objective bound LR^2/(4N) for every integer N>=1. Fresh symbolic replay verifies general step, base, terminal, N=1, normalization, coefficient-map and square-completion identities; inspected submitted sign/domain arguments justify decrease. No mathematical repair supplied.",
+  "final_evidence_refs": [
+    "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/supplementary/b5_proof.md",
+    "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_without_sos/r02/pgm_example_lyap.ipynb",
+    "validation/selected-replay-final.log",
+    "validation/symbolic-first.log",
+    "validation/original-integrity.json"
+  ]
+}

@@ -1,0 +1,58 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; setup, one seven-horizon sweep, notebook, fresh execution and static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "exhaustive_read_audit":  false,
+    "consulted_approved_files":  [
+                                     "dispatch.md",
+                                     "input.md",
+                                     "worker-protocol.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                     "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                     "plugins/pepflow-workflows/references/output-layout.md",
+                                     "pepflow/function.py",
+                                     "pepflow/pep.py",
+                                     "pepflow/pep_runner.py",
+                                     "pepflow/pep_result.py",
+                                     "pepflow/solver.py",
+                                     "pepflow/__init__.py",
+                                     "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                 ],
+    "commands":  [
+                     "run_b1.py via pinned python -I -B",
+                     "build_b1.py via pinned python -I -B",
+                     "execute_notebook.py via pinned python -I -B twice",
+                     "Static adapter exact nested commands preserved in b1-static-001/002/003.json and preflight-002.json",
+                     "PowerShell scoped reads/writes and notebook-output inspection in worker tool transcript"
+                 ],
+    "incidents":  [
+                      "JavaScript wrapper parse error before any writes; corrected quoting.",
+                      "Static 001 WinError 206 copying broad supplementary helper directory; narrowed own helper root to supplementary/h and repeated generic preflight successfully. No prohibited content observed.",
+                      "Static 002 Ruff E402 import placement diagnostics; split notebook path setup/import cells and placed runner imports inside main; static 003 passed."
+                  ],
+    "evidence":  [
+                     "supplementary/sweep.json",
+                     "supplementary/b1-sweep-output.txt",
+                     "supplementary/b1-notebook-execution-002.txt",
+                     "supplementary/preflight-002.json",
+                     "supplementary/b1-static-003.json"
+                 ],
+    "checks":  {
+                   "rendered_review":  "omitted_by_presentation_policy",
+                   "static":  "passed",
+                   "fresh_kernel":  "passed",
+                   "markdown_source":  "checked for intended dollar delimiters and control escapes",
+                   "max_rate_residual":  4.31910757159315E-09
+               },
+    "unresolved_work":  "B2-B5 proof obligations",
+    "usage":  null
+}

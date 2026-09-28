@@ -1,0 +1,41 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete",
+  "next_block": "B3",
+  "entry_exit_reason": "Coherent sparse numerical certificate, initial formula search and notebook checks completed",
+  "operational_status": "awaiting_same_session_continuation",
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "certificate_id": "821a5c291600c9aa1dfdbc0724d5f7d85fd5a1f7026cd8cd8aadb2b7df5a19e5",
+  "state": "state/pgm_b2.json",
+  "static_evidence": "supplementary/b2-static-002.json",
+  "access_control": "instruction_only",
+  "access_status": "no_observed_prohibited_exposure",
+  "audit_limit": "No exhaustive filesystem read tracing",
+  "supplied_assistance": "Fixed own-input SOS verified numerically against selected certificate; normalization 1",
+  "new_approved_sources_consulted": [
+    "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "pepflow/expression_manager.py",
+    "pepflow/parameter.py",
+    "pepflow/lyapunov_utils.py",
+    "pepflow/ipython_utils.py"
+  ],
+  "other_sources": "Previously recorded approved framework files and own generated B1/B2 scripts, notebook and state",
+  "commands": [
+    "run_b2_dense.py",
+    "run_b2_sparse.py",
+    "check_b2_candidates.py",
+    "finalize_b2.py (four invocations preserved)",
+    "update_b2_notebook.py",
+    "execute_notebook.py (two invocations)",
+    "check_static.py check (two evidence files)"
+  ],
+  "operational_repairs": [
+    "Exact candidate check initially used numerical evaluation mode; sympy_mode=True established exact fixed-N identity",
+    "Ruff named-function correction and ty numeric type corrections; original acquisition source archived with original hash; solve components unchanged"
+  ],
+  "unresolved_work": "All-horizon proof and Blocks 3-5",
+  "original_deadline_utc": "2026-09-23T18:17:47.370960+00:00",
+  "usage_tokens": null
+}

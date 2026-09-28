@@ -1,0 +1,26 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "N=4 grouping verified with rank profile [0,4,4,4,4]; acquire a separate complete N=6 certificate for required cross-horizon confirmation",
+    "requested_horizon":  6,
+    "preserve_selected_horizon":  4,
+    "construction_recipe":  "adjacent_pairs_terminal_h_and_full_S_boundary",
+    "boundary_exclusions":  {
+                                "left":  1,
+                                "right":  1
+                            },
+    "evidence":  "supplementary/b3-sample-N4.json",
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "state/bppm_b2.json",
+                              "own generated certificate/source files"
+                          ],
+    "access_control":  "instruction_only",
+    "prohibited_content_observed":  false,
+    "incidents":  [
+
+                  ],
+    "operational_status":  "awaiting same-session continuation before any N=6 solve"
+}

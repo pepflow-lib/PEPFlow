@@ -1,0 +1,200 @@
+REPLAY CELL 5 4de8fa31
+REPLAY CELL 7 e99bb2e7
+REPLAY CELL 9 ded975ad
+REPLAY CELL 11 c93ebca5
+N=1: 1.9999999956; optimal
+N=2: 0.9999999964; optimal
+N=3: 0.4444444508; optimal
+N=4: 0.2500000070; optimal
+N=5: 0.1600000044; optimal
+N=6: 0.1111111199; optimal
+N=7: 0.0816326585; optimal
+First-half alias and candidate-rate numerical checks passed.
+REPLAY CELL 14 f9dcb250
+Dense objective: 0.11111111987991691
+Selected objective: 0.11111111913421273
+Basis: ['x_0', 'x_star', 'A(x_0)', 'A(x_1)', 'A(x_1+1/2)', 'A(x_2)', 'A(x_2+1/2)', 'A(x_3)', 'A(x_3+1/2)', 'A(x_4)', 'A(x_4+1/2)', 'A(x_5)', 'A(x_5+1/2)', 'A(x_6)']
+Monotone Operator Inequality significant entries: 6
+Lipschitz Continuous Inequality significant entries: 6
+Dense S eigenvalues: [8.39304405e-11 3.12048790e-10 1.29506311e-09 1.48441766e-09
+ 3.74263384e-09 7.48946495e-09 1.01712929e-08 1.98970887e-08
+ 2.28208611e-08 2.54735437e-08 2.89888638e-08 3.77429491e-08
+ 5.92976464e-08 1.22214889e+00]
+Dropped constraints: 144 ; objective preserved.
+initial_condition 0.11111112569910349
+A monotone:x_1,x_2 0.22227319498944406
+A monotone:x_2,x_3 0.6668195130842369
+A monotone:x_3,x_4 1.3336389582386639
+A monotone:x_4,x_5 2.2227315150486944
+A monotone:x_5,x_6 3.3340972127835244
+A monotone:x_6,x_star 0.6668194526134993
+A Lipschitz:x_0,x_1 0.05556830706343723
+A Lipschitz:x_1+1/2,x_2 0.2222731844438772
+A Lipschitz:x_2+1/2,x_3 0.5001146301473184
+A Lipschitz:x_3+1/2,x_4 0.8890926343346541
+A Lipschitz:x_4+1/2,x_5 1.3892071926750234
+A Lipschitz:x_5+1/2,x_6 2.000458325092437
+REPLAY CELL 16 6f2490f2
+REPLAY CELL 17 b2a9cce7
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r05\validation\supplementary\approved\pepflow\pep_context.py:217: UserWarning:
+
+The given tag x_0 was already associated with a Vector or Scalar in this PEPContext ctx_6. You can no longer access the old object by x_0.
+
+{'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}, 'residuals': {'identity_gram_max_abs': 7.512999260122766e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 6.564890756011188e-09, 'S_reconstruction_max_abs': 5.551115123125783e-17, 'dense_relaxed_gap': 7.457041789615815e-10, 'minimum_scalar_inequality_dual': 0.05556830706343723, 'minimum_S_eigenvalue': 7.343470692425838e-10, 'minimum_matrix_inequality_eigenvalue': 0.0}, 'passed': True}
+<IPython.core.display.Math object>
+LDL diagonal: [1.00045833e+00 7.51153006e-09 2.76501551e-08 7.48731479e-09
+ 3.51615286e-08 6.59481809e-09 2.70457645e-08 5.40293328e-09
+ 1.88429287e-08 4.96182345e-09 1.18374812e-08 2.26313258e-09
+ 9.84068699e-09 9.28986423e-09]
+Off-diagonal LDL max: 0.0
+<IPython.core.display.Math object>
+Function residual: [] offset: 6.56489075601119e-9
+<IPython.core.display.Math object>
+REPLAY CELL 19 560d2999
+<IPython.core.display.Math object>
+Lambda candidate error: 0.0007638794501909629
+S candidate error: 0.0004583265227982025
+Candidate S function/constant components: [] 0.0
+Numerical certificate verified: True
+Analytic full-PEP verified: False; Lyapunov proof verified: False
+REPLAY CELL 21 b7afd230
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r05\validation\supplementary\approved\pepflow\pep_context.py:217: UserWarning:
+
+The given tag x_0 was already associated with a Vector or Scalar in this PEPContext ctx_8. You can no longer access the old object by x_0.
+
+N=8 dense/relaxed objectives: 0.06250000276866949 0.06250000556044698
+N=8 complete certificate checks: {'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}, 'residuals': {'identity_gram_max_abs': 2.3087068836263637e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 3.094291448069164e-09, 'S_reconstruction_max_abs': 1.3877787807814457e-17, 'dense_relaxed_gap': 2.791777489741243e-09, 'minimum_scalar_inequality_dual': 0.03125669107477911, 'minimum_S_eigenvalue': 4.615231404822175e-11, 'minimum_matrix_inequality_eigenvalue': 0.0}, 'passed': True}
+Separate sample certificate ID: e77ed56a5cd634001da6bd98608e6b1b6a6cad86729f729d4feff8288d16496f
+REPLAY CELL 23 e41a11dd
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\feg_r05\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+rank V_5: 2
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+REPLAY CELL 24 964227d1
+Confirmed common interior rank: 2; horizons: 6,8; exclusions: (1,1); absolute tolerance: 1e-4.
+Full-coordinate coverage residuals: 1.1102230246251565e-16 1.8439029168146863e-16
+Boundary: one terminal monotonicity term and the complete PSD S block; no omitted terms.
+Numerical certificate/grouping verified; analytic theorem remains pending.
+REPLAY CELL 26 32690af6
+Warning: operator with tag A has been created before.
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+rank V_5: 2
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+REPLAY CELL 28 b4b60997
+Distinct nonzero candidates: 323
+REPLAY CELL 29 151cee14
+V_1 column-space candidates:
+   g_1
+   q_1
+   (x_0)-(x_1+1/2)
+   (A(x_0))-(A(x_1))
+   (x_1)-(x_1+1/2)
+V_2 column-space candidates:
+   g_2
+   q_2
+   (x_0)-(x_2+1/2)
+   (x_2)-(x_2+1/2)
+V_3 column-space candidates:
+   g_3
+   q_3
+   (x_0)-(x_3+1/2)
+   (x_3)-(x_3+1/2)
+V_4 column-space candidates:
+   g_4
+   q_4
+   (x_0)-(x_4+1/2)
+   (x_4)-(x_4+1/2)
+V_5 column-space candidates:
+   g_5
+   q_5
+   (x_0)-(x_5+1/2)
+   (x_5)-(x_5+1/2)
+V_6 column-space candidates:
+   g_6
+   q_6
+REPLAY CELL 31 26e40313
+k=1, rank 2; sparse basis: ['q_1', '(A(x_0))-(A(x_1))']; zero coefficients: 2/4
+k=2, rank 2; sparse basis: ['q_2', '(x_2)-(x_2+1/2)']; zero coefficients: 2/4
+k=3, rank 2; sparse basis: ['q_3', '(x_3)-(x_3+1/2)']; zero coefficients: 2/4
+k=4, rank 2; sparse basis: ['q_4', '(x_4)-(x_4+1/2)']; zero coefficients: 2/4
+k=5, rank 2; sparse basis: ['q_5', '(x_5)-(x_5+1/2)']; zero coefficients: 2/4
+k=6, rank 2; sparse basis: ['g_6', 'q_6']; zero coefficients: 1/4
+REPLAY CELL 33 48bee351
+k=0: rank 0 basis []
+k=1: rank 2 basis ['g_1', 'q_1']
+k=2: rank 2 basis ['g_2', 'q_2']
+k=3: rank 2 basis ['g_3', 'q_3']
+k=4: rank 2 basis ['g_4', 'q_4']
+k=5: rank 2 basis ['g_5', 'q_5']
+k=6: rank 2 basis ['g_6', 'q_6']
+REPLAY CELL 35 c79f7358
+k=0: reconstruction residual 0; function terms []; offset 0.0
+k=1: reconstruction residual 1.96e-17; function terms []; offset 0
+<IPython.core.display.Math object>
+k=2: reconstruction residual 1.89e-08; function terms []; offset 0
+<IPython.core.display.Math object>
+k=3: reconstruction residual 2.58e-08; function terms []; offset 0
+<IPython.core.display.Math object>
+k=4: reconstruction residual 3.67e-08; function terms []; offset 0
+<IPython.core.display.Math object>
+k=5: reconstruction residual 4.98e-08; function terms []; offset 0
+<IPython.core.display.Math object>
+k=6: reconstruction residual 5.51e-08; function terms []; offset 0
+<IPython.core.display.Math object>
+REPLAY CELL 36 52385add
+All indices 0..N independently reconstructed in every scalar component.
+REPLAY CELL 39 6d1e1fa7
+REPLAY CELL 40 30411cd2
+REPLAY CELL 41 0245d885
+Coefficient equations give: {a_next: (a*k**2 + 2*a*k + a)/k**2, b: L*a/k, b_next: (L*a*k + L*a)/k**2, c: 0, c_next: 0, u: (a*k**2 + 2*a*k + a)/k**2, v: (2*L*a*k + 2*L*a)/k}
+a_(k+1)/(k+1)^2 = a_k/k^2. Choose a_1=1: a_k=k^2, b_k=L*k, c_k=0.
+REPLAY CELL 43 80201435
+k= 1 coefficient comparison after positive scalar normalization: 2.220446049250313e-16
+<IPython.core.display.Math object>
+k= 2 coefficient comparison after positive scalar normalization: 7.883967327870778e-07
+<IPython.core.display.Math object>
+k= 3 coefficient comparison after positive scalar normalization: 2.4010739885227395e-06
+<IPython.core.display.Math object>
+k= 4 coefficient comparison after positive scalar normalization: 5.015095046800866e-06
+<IPython.core.display.Math object>
+k= 5 coefficient comparison after positive scalar normalization: 8.708397519541222e-06
+<IPython.core.display.Math object>
+k= 6 coefficient comparison after positive scalar normalization: 1.3122431504086762e-05
+<IPython.core.display.Math object>
+The final potential U is normalized by a_1=1; the numerical partial sums have a positive solver-dependent scale.
+REPLAY CELL 47 40fd13e7
+<IPython.core.display.Math object>
+Step function residual: Matrix(0, 0, []) constant residual: 0
+Step all scalar components exactly zero.
+REPLAY CELL 50 941e1458
+<IPython.core.display.Math object>
+Base U_1-U_0=Lip(x_0,x_1) function residual: Matrix(0, 0, []) constant residual: 0
+Base U_1-U_0=Lip(x_0,x_1) all scalar components exactly zero.
+REPLAY CELL 53 3d5d8359
+<IPython.core.display.Math object>
+Boundary function residual: Matrix(0, 0, []) constant residual: 0
+Boundary all scalar components exactly zero.
+REPLAY CELL 55 f79e1a59
+For integer k>=1, N>=1 and L>0, all residual multipliers are nonnegative and denominators are nonzero.
+U_1<=0, U_(k+1)<=U_k, and terminal RHS<=0; hence N^2 ||A(x_N)||^2 <= 4 L^2 ||x_0-x_star||^2 <= 4 L^2 R^2.
+N=1 uses only base and boundary; R=0 is covered without dividing by R.
+REPLAY CELL 56 81a26c8b
+V_k = k^2 ||A(x_k)||^2 + 2 k L <A(x_k), x_k-x_0>; V_0=0
+\|A(x_N)\|^2 \le \frac{4L^2R^2}{N^2},\qquad N\ge1.
+Numerical certificate verified: True; analytic full-PEP formula verified: False; analytic Lyapunov proof verified: True
+REPLAY COMPLETED

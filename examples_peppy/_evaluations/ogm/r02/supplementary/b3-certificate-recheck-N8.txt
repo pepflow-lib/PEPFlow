@@ -1,0 +1,40 @@
+Dense bound: 0.009036080494328046
+Dense active interpolation multipliers: {'initial_condition': 0.009036080939872432, 'f:x_star,z_0': 0.0361443221052332, 'f:x_star,x_1': 0.05848274070046868, 'f:x_star,x_2': 0.07928354630823098, 'f:x_star,x_3': 0.09938933733969518, 'f:x_star,x_4': 0.11909118146369016, 'f:x_star,x_5': 0.13852676345057027, 'f:x_star,x_6': 0.15777278936559477, 'f:x_star,x_7': 0.17686963740504083, 'f:x_star,x_8': 0.13443970178346007, 'f:z_0,x_1': 0.03614432393645168, 'f:x_1,x_2': 0.09462706587303224, 'f:x_2,x_3': 0.17391061281567177, 'f:x_3,x_4': 0.27329994955381154, 'f:x_4,x_5': 0.3923911286514023, 'f:x_5,x_6': 0.5309178880734451, 'f:x_6,x_7': 0.6886906737224755, 'f:x_7,x_8': 0.8656122119937523, 'f:x_8,x_7': 5.190671757448973e-05}
+Basis: ['z_0', 'x_star', 'g_0', 'g_1', 'g_2', 'g_3', 'g_4', 'g_5', 'g_6', 'g_7', 'g_8']
+Dense S eigenvalues: [1.47036798e-11 3.84070046e-10 4.14029889e-10 6.71593072e-10
+ 8.84704715e-10 1.44951601e-09 2.10983078e-09 3.35388200e-09
+ 6.67865539e-09 4.23595137e-08 3.57360459e+00]
+Selected bound: 0.009036079407158712 solver: {'api': 'CVXPrimalSolver.build_problem', 'cvxpy_version': '1.7.1', 'effective_name': 'CLARABEL', 'settings': {'solver': 'CLARABEL'}, 'fallback_reason': None}
+Dropped constraints: 73 ; retained star row and forward chain
+All active selected multipliers:
+initial_condition 0.009036079552000174
+f:x_star,z_0 0.036144318217748675
+f:x_star,x_1 0.0584827350870986
+f:x_star,x_2 0.07928354002698206
+f:x_star,x_3 0.09938933120062213
+f:x_star,x_4 0.11909117732280552
+f:x_star,x_5 0.138526761583946
+f:x_star,x_6 0.15777279044718542
+f:x_star,x_7 0.17687661814273906
+f:x_star,x_8 0.13443272887711397
+f:z_0,x_1 0.036144318217940195
+f:x_1,x_2 0.0946270531805386
+f:x_2,x_3 0.17391059308955198
+f:x_3,x_4 0.27329992418605126
+f:x_4,x_5 0.39239110141383193
+f:x_5,x_6 0.530917862909205
+f:x_6,x_7 0.6886906532743969
+f:x_7,x_8 0.8655672713488984
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Candidate lambda max error: 2.1447286724374237e-09
+Candidate S max error: 2.1629674162859658e-09
+Formula status: numerical candidates only; analytic all-horizon identities unresolved.
+Reverse LDL diagonal (all factors retained): [5.00000000e-01 1.83570503e-09 1.58702266e-09 1.87971843e-09
+ 1.53001563e-09 1.12251385e-09 1.55530656e-09 7.09610455e-10
+ 2.98030811e-10 1.07807347e-10 8.11456046e-11]
+<IPython.core.display.Math object>
+S reconstruction max error: 1.1102230246251565e-16
+<IPython.core.display.Math object>
+Identity Gram/function/offset maxima: 2.1350088363902842e-10 9.062413042215667e-10 1.4484146174109647e-10
+Numerical certificate verified; analytic full PEP and Lyapunov proof remain unverified.

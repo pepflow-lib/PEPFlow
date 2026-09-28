@@ -1,0 +1,37 @@
+{
+  "current_block": "B1",
+  "consulted_sources": [
+    "supplementary/approved/dispatch.md",
+    "supplementary/approved/input.md",
+    "supplementary/approved/worker-protocol.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+    "supplementary/approved/pepflow/function.py",
+    "supplementary/approved/pepflow/pep_runner.py",
+    "supplementary/approved/pepflow/__init__.py",
+    "supplementary/approved/pepflow/pep.py",
+    "supplementary/approved/pepflow/solver.py",
+    "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+  ],
+  "commands": "Actual tools recorded reads, scoped rg, setup creation, run_b1.py twice (setup mechanical correction), build_b1_notebook.py twice, adapter b1-static-001 through 003 and inspect_b1.py.",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "external_resources": [],
+  "incidents": [
+    {
+      "kind": "operational",
+      "evidence": "b1-static-001.json",
+      "reason": "Windows long staging path copying broad supplementary helper root",
+      "repair": "Narrowed helper root to supplementary/helpers and moved own runtime helper; check mode repeats generic preflight."
+    },
+    {
+      "kind": "static_diagnostic",
+      "evidence": "b1-static-002.json",
+      "reason": "numbers.Number annotation does not accept inferred literal integer default",
+      "repair": "Removed unnecessary default, keeping alpha required; rebuilt and reran checks."
+    }
+  ],
+  "framework_note": "bregman_prox docstring has factor/argument typos; implemented relation grad_h = h.grad(x_0)-stepsize*grad_u matches packet. Frozen source unchanged.",
+  "audit_limit": "Resolution evidence and tool logs are not exhaustive filesystem access tracing."
+}

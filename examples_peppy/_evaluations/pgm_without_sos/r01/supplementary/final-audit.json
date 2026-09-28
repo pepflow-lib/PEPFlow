@@ -1,0 +1,31 @@
+{
+  "notebook_sha256": "eaff34082b79533ac99c272e01816e122e03d16e50b863e6fc08ec2752a4dbe0",
+  "code_cells_executed": 33,
+  "png_outputs_retained": 1,
+  "error_outputs": [],
+  "proof_checks": {
+    "signs": true,
+    "domain": true,
+    "step": true,
+    "base": true,
+    "boundary": true,
+    "N1": true,
+    "normalization": true
+  },
+  "key_text_outputs": {
+    "44": "Residual quadratic with unresolved gradient coefficients:\nChosen gradient coefficients solve the exact residual-square equations.\nNative coefficient equations: [Eq(-(-32*N**4*t(k, N) + 32*N**4*t(k + 1, N) + 64*N**3*k*t(k, N) - 64*N**3*k*t(k + 1, N) + 32*N**3*t(k, N) - 32*N**3*t(k + 1, N) - 48*N**2*k**2*t(k, N) + 48*N**2*k**2*t(k + 1, N) - 48*N**2*k*t(k, N) + 48*N**2*k*t(k + 1, N) - 8*N**2*t(k, N) + 8*N**2*t(k + 1, N) - 4*N**2 + 16*N*k**3*t(k, N) - 16*N*k**3*t(k + 1, N) + 24*N*k**2*t(k, N) - 24*N*k**2*t(k + 1, N) + 8*N*k*t(k, N) - 8*N*k*t(k + 1, N) - 2*k**4*t(k, N) + 2*k**4*t(k + 1, N) - 4*k**3*t(k, N) + 4*k**3*t(k + 1, N) - 2*k**2*t(k, N) + 2*k**2*t(k + 1, N) + k**2 + k)/(2*L*(-2*N + k)**2*(-2*N + k + 1)**2), 0), Eq(-(8*N**2*t(k, N) - 8*N*k*t(k, N) + 2*k**2*t(k, N) - k)/(2*L*(-2*N + k)**2), 0), Eq((8*N**2*t(k + 1, N) - 8*N*k*t(k + 1, N) - 8*N*t(k + 1, N) + 2*k**2*t(k + 1, N) + 4*k*t(k + 1, N) - k + 2*t(k + 1, N) - 1)/(2*L*(-2*N + k + 1)**2), 0), Eq(-(8*N**2*t(k, N) - 8*N*k*t(k, N) + 2*k**2*t(k, N) - k)/(2*L*(-2*N + k)**2), 0), Eq((8*N**2*t(k, N) - 8*N*k*t(k, N) + 2*k**2*t(k, N) - k)/(2*L*(-2*N + k)**2), 0), Eq((8*N**2*t(k + 1, N) - 8*N*k*t(k + 1, N) - 8*N*t(k + 1, N) + 2*k**2*t(k + 1, N) + 4*k*t(k + 1, N) - k + 2*t(k + 1, N) - 1)/(2*L*(-2*N + k + 1)**2), 0), Eq(-(8*N**2*t(k + 1, N) - 8*N*k*t(k + 1, N) - 8*N*t(k + 1, N) + 2*k**2*t(k + 1, N) + 4*k*t(k + 1, N) - k + 2*t(k + 1, N) - 1)/(2*L*(-2*N + k + 1)**2), 0)]\n",
+    "45": "Coefficient comparison 0 {'quadratic': 0.0, 'function': 0.0}\nClosed coefficient matrix 1\nCoefficient comparison 1 {'quadratic': 9.988215563662303e-07, 'function': 2.485413384073487e-06}\nClosed coefficient matrix 2\nCoefficient comparison 2 {'quadratic': 8.135780706700069e-07, 'function': 3.136284080662577e-06}\nClosed coefficient matrix 3\nCoefficient comparison 3 {'quadratic': 7.894255195547691e-07, 'function': 3.1407670074701244e-06}\nClosed coefficient matrix 4\nCoefficient comparison 4 {'quadratic': 1.1187838988568899e-09, 'function': 1.1337969452185348e-08}\n",
+    "49": "alpha = (k**2 + 2*k*n + 4*k + 4*n + 3)/(2*(k + 2*n + 1)**2)\n\\frac{k^{2} + 2 k n + 4 k + 4 n + 3}{2 \\left(k + 2 n + 1\\right)^{2}}\nbeta = (k**4 + 4*k**3*n + 8*k**3 + 4*k**2*n**2 + 22*k**2*n + 18*k**2 + 12*k*n**2 + 28*k*n + 16*k + 4*n**2 + 10*n + 5)/(2*(k + 2*n + 1)**2*(k**2 + 2*k*n + 4*k + 4*n + 3))\n\\frac{k^{4} + 4 k^{3} n + 8 k^{3} + 4 k^{2} n^{2} + 22 k^{2} n + 18 k^{2} + 12 k n^{2} + 28 k n + 16 k + 4 n^{2} + 10 n + 5}{2 \\left(k + 2 n + 1\\right)^{2} \\left(k^{2} + 2 k n + 4 k + 4 n + 3\\right)}\ngamma = k*(k**4 + 5*k**3*n + 3*k**3 + 8*k**2*n**2 + 13*k**2*n + 3*k**2 + 4*k*n**3 + 16*k*n**2 + 13*k*n + k + 4*n**3 + 10*n**2 + 5*n)/((k + 2*n + 2)**2*(k**4 + 4*k**3*n + 8*k**3 + 4*k**2*n**2 + 22*k**2*n + 18*k**2 + 12*k*n**2 + 28*k*n + 16*k + 4*n**2 + 10*n + 5))\n\\frac{k \\left(k^{4} + 5 k^{3} n + 3 k^{3} + 8 k^{2} n^{2} + 13 k^{2} n + 3 k^{2} + 4 k n^{3} + 16 k n^{2} + 13 k n + k + 4 n^{3} + 10 n^{2} + 5 n\\right)}{\\left(k + 2 n + 2\\right)^{2} \\left(k^{4} + 4 k^{3} n + 8 k^{3} + 4 k^{2} n^{2} + 22 k^{2} n + 18 k^{2} + 12 k n^{2} + 28 k n + 16 k + 4 n^{2} + 10 n + 5\\right)}\nFor L>0, integer N>=1, all used residual multipliers and square weights are nonnegative; denominators are nonzero.\n",
+    "52": "step function residual: Matrix([[0], [0], [0], [0], [0], [0]])\nstep constant residual: 0\nstep: exact identity passed in all scalar components.\n",
+    "55": "base function residual: Matrix([[0], [0], [0], [0], [0], [0]])\nbase constant residual: 0\nbase: exact identity passed in all scalar components.\n",
+    "58": "terminal function residual: Matrix([[0], [0], [0], [0], [0], [0]])\nterminal constant residual: 0\nterminal: exact identity passed in all scalar components.\n",
+    "61": "N1 function residual: Matrix([[0], [0], [0], [0], [0], [0]])\nN1 constant residual: 0\nN1: exact identity passed in all scalar components.\n",
+    "63": "V_N <= V_0 = 0; D=||x0-star||^2 <= R^2 gives h(x_N)-h(x_star) <= L R^2/(4N).\n\\forall N\\in\\mathbb{N}_{\\ge1},\\quad h(x_N)-h(x_\\star)\\le\\frac{LR^2}{4N}.\nNumerical full certificate verified; global analytic lambda/S status remains unresolved; analytic Lyapunov proof verified.\n",
+    "64": "V0=0; for 1<=k<N: -L||x0-star||^2/(4N)+L(N-k)||xk-star||^2/(2N-k)^2-<xk-star,grad f(xk)>/(2N-k)-k||grad f(xk)-grad f(star)||^2/(2L(2N-k)^2)+(k+1)(f(xk)-f(star))/(2N-k)+k(g(xk)-g(star))/(2N-k); VN=h(xN)-h(star)-L||x0-star||^2/(4N).\nAll exact proof gates passed; Block 5 state saved.\n"
+  },
+  "markdown_source_checks": "passed",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "visual_review": "not performed; prohibited by evaluation override",
+  "access_control": "instruction_only",
+  "prohibited_source_reads_observed": false
+}

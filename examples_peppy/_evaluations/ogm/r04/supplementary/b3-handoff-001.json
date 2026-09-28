@@ -1,0 +1,28 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_requires_second_horizon",
+    "next_block":  "B2",
+    "entry_exit_reason":  "N4 saved certificate revalidated; partial sums and coverage verified; interior rank 3 at all three retained indices. Need coherent N6 certificate before second-horizon confirmation.",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "selected_horizon":  4,
+    "recipe_id":  "forward_chain_star_cumulative_terminal_square_boundary",
+    "boundary_exclusions":  {
+                                "left":  1,
+                                "right":  1
+                            },
+    "next_certificate_relaxation":  "Same optimizer-row plus consecutive-forward interpolation pattern as selected N4 certificate.",
+    "evidence":  "supplementary/b3-observation-N4.json",
+    "source_files":  [
+                         "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                         "supplementary/b3_certificate_check.py",
+                         "supplementary/b3_decomposition.py",
+                         "supplementary/b3_grouping.py",
+                         "supplementary/run_b3_observation.py"
+                     ],
+    "source_record_note":  "Certificate checker copied from approved generic workflow and adapted only source-root validation to exact allowlist plus own setup. Executed source retained for later notebook and B3 state.",
+    "deadline_utc":  "2026-09-23T21:58:24.306780+00:00",
+    "access_control":  "instruction_only",
+    "prohibited_material_observed":  false,
+    "unresolved_work":  "Second-horizon rank confirmation; B3 notebook/state completion; B4-B5."
+}

@@ -1,0 +1,195 @@
+CELL 421b3dde
+CELL 6d900a56
+CELL 5cbfb4c7
+CELL 818091de
+N=1: 1.9999999321; optimal_inaccurate; N^2 value=1.9999999321
+N=2: 0.9999999977; optimal; N^2 value=3.9999999907
+N=3: 0.4444444512; optimal; N^2 value=4.0000000606
+N=4: 0.2500000015; optimal; N^2 value=4.0000000243
+N=5: 0.1600000034; optimal; N^2 value=4.0000000852
+N=6: 0.1111111136; optimal; N^2 value=4.0000000905
+N=7: 0.0816326559; optimal; N^2 value=4.0000001388
+Setup reconstruction available: 7 basis vectors
+CELL 1f8cd003
+Dense objective: 0.11111111362413659 basis: ['x_0', 'x_star', 'g_0', 'h_0', 'g_1', 'h_1', 'g_2', 'h_2', 'g_3', 'h_3', 'g_4', 'h_4', 'g_5', 'h_5', 'g_6']
+Monotone Operator Inequality active count: 13
+[('A monotone:x_6,x_star', 0.6666277784084684), ('A monotone:x_6,y_0', 0.13332569958931756), ('A monotone:x_6,y_1', 0.19998701512125716), ('A monotone:x_6,y_2', 0.3333098711409026), ('A monotone:x_6,y_3', 0.6666366868202113), ('A monotone:x_6,y_4', 1.9999350220695538), ('A monotone:x_6,y_5', 0.22599304360369404), ('A monotone:x_star,y_5', 3.898518484268299e-05), ('A monotone:y_0,y_5', 7.659908858993752e-06), ('A monotone:y_1,y_5', 1.3018407055245164e-05), ('A monotone:y_2,y_5', 2.350932120072067e-05), ('A monotone:y_3,y_5', 3.0070853273386462e-05), ('A monotone:y_4,y_5', 6.524296972965166e-05)]
+Lipschitz Continuous Inequality active count: 8
+[('A Lipschitz:x_0,y_0', 0.055555568994121986), ('A Lipschitz:x_1,y_1', 0.08000001871723995), ('A Lipschitz:x_2,y_2', 0.12500002369537433), ('A Lipschitz:x_3,y_3', 0.22222225573517132), ('A Lipschitz:x_4,y_4', 0.5000000629702696), ('A Lipschitz:x_5,x_6', 1.9999329727117232), ('A Lipschitz:x_5,y_5', 6.730908141310188e-05), ('A Lipschitz:x_6,y_5', 0.5469806649803577)]
+Dense S eigenvalues: [5.90575991e-11 1.06821637e-10 3.06901138e-10 3.30330560e-10
+ 5.00366888e-10 7.49017551e-10 1.58523562e-09 2.28570617e-09
+ 5.11028308e-09 6.10006678e-09 1.50585502e-08 2.58591595e-08
+ 6.06578168e-08 4.15798012e-01 1.90038585e+00]
+Threshold attempt gap: 6.299388788377769e-11
+Selected structural relaxation: {'method': 'terminal monotonicity to star and y_0..y_(N-2); Lipschitz x_k,y_k for k<N-1 and x_(N-1),x_N', 'dense_gap': 3.0603526796069147e-09}
+Dropped constraints: 170
+initial_condition 0.11111111125524588 near 1/9
+A monotone:x_6,x_star 0.6666599903256867 near 2/3
+A monotone:x_6,y_0 0.13333199921480385 near 2/15
+A monotone:x_6,y_1 0.19999799827626924 near 1/5
+A monotone:x_6,y_2 0.33332999648908773 near 1/3
+A monotone:x_6,y_3 0.66665999185545 near 2/3
+A monotone:x_6,y_4 1.999979974101578 near 2
+A Lipschitz:x_0,y_0 0.05555500006895933 near 1/18
+A Lipschitz:x_1,y_1 0.07999919973152603 near 2/25
+A Lipschitz:x_2,y_2 0.12499874906739333 near 1/8
+A Lipschitz:x_3,y_3 0.22221999769377546 near 2/9
+A Lipschitz:x_4,y_4 0.4999949938986065 near 1/2
+A Lipschitz:x_5,x_6 1.9999799729384788 near 2
+CELL 7c7681fb
+Complete numerical certificate: {'identity_gram_max_abs': 1.866268550956371e-09, 'identity_func_max_abs': 0.0, 'identity_offset_abs': 6.914619710141068e-10, 'S_reconstruction_max_abs': 2.7755575615628914e-17, 'dense_relaxed_gap': 3.0603526796069147e-09, 'minimum_scalar_inequality_dual': 0.05555500006895933, 'minimum_S_eigenvalue': 1.1837591864454828e-10, 'minimum_matrix_inequality_eigenvalue': 0.0}
+Function and offset residuals: [] 6.91461971014107e-10
+Lambda candidate error: 2.0027061521155076e-05 S candidate error: 2.002695544300881e-05 fixed-N candidate identity: 8.326672684688674e-17
+Numerical reverse-LDL diagonal (all entries retained): [9.99979973e-01 5.66428127e-10 4.80638875e-10 4.90625555e-10
+ 5.39407243e-10 7.43139197e-10 5.04717637e-10 7.14136984e-10
+ 4.95109854e-10 7.70385297e-10 4.76556282e-10 7.14925983e-10
+ 4.66926385e-10 6.33269125e-10 6.26214116e-10]
+Analytic full-PEP proof: unresolved for arbitrary N; candidate identities above are fixed-N checks.
+CELL 4514549d
+Candidate group: Monotone Operator Inequality
+<IPython.core.display.Math object>
+Candidate group: Lipschitz Continuous Inequality
+<IPython.core.display.Math object>
+Initial closed-form search: {'completed': True, 'references_reviewed': ['Own dense and sparse certificates; no pre-existing mathematical references authorized'], 'attempts': [{'method': 'Inspect rational fractions of terminal monotonicity and per-step Lipschitz multipliers', 'candidate': '4/[t(t-1)], 4/N, 2/t^2 at L=1', 'max_abs_error': 2.0027061521155076e-05}, {'method': 'Inspect rank-one S and coordinates', 'candidate': '||(2/N)(x0-xstar)-gN||^2 at L=1', 'max_abs_error': 2.002695544300881e-05, 'fixed_N_identity_residual': 8.326672684688674e-17}], 'unresolved_components': ['arbitrary-horizon and parameter-domain proof of candidate lambda/S']}
+Selected numerical S:
+CELL 308d9027
+CELL 4b314d75
+Numerical certificate checked for this N and parameter sample.
+CELL 6bd18830
+CELL beb981ea
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residual: 8.867120650477239e-17
+CELL 26ea32db
+Horizon 4 retained indices (1, 3) common rank 4 coverage max 2.6387601006957575e-16
+Horizon 6 retained indices (1, 5) common rank 4 coverage max 8.867120650477239e-17
+Fixed exclusions: (1,1); absolute threshold 1e-4; no matrix rescaling.
+Finite-sample rank evidence only. Analytic full-PEP and Lyapunov proofs remain unresolved.
+CELL a6678f66
+CELL 80b2f523
+V_1 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+   g_0
+   z_1
+   x_1-x_0
+   x_1-x_N
+   h_0
+   y_0-x_N
+V_2 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+   z_2
+   x_2-x_0
+   x_2-x_N
+V_3 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+   z_3
+   x_3-x_0
+   x_3-x_N
+V_4 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+   z_4
+   x_4-x_0
+   x_4-x_N
+V_5 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+   z_5
+   x_5-x_0
+   x_5-x_N
+   g_5
+V_6 column-space candidates:
+   g_6
+   x_N-x_0
+   x_0-x_N
+CELL edfd5b58
+k=1, rank=4: sparse basis: ['g_6', 'z_1', 'x_1-x_N', 'y_0-x_N']; zero coefficients: 11/16
+k=2, rank=4: sparse basis: ['g_6', 'x_N-x_0', 'z_2', 'x_2-x_N']; zero coefficients: 7/16
+k=3, rank=4: sparse basis: ['g_6', 'x_N-x_0', 'z_3', 'x_3-x_N']; zero coefficients: 7/16
+k=4, rank=4: sparse basis: ['g_6', 'x_N-x_0', 'z_4', 'x_4-x_N']; zero coefficients: 7/16
+k=5, rank=4: sparse basis: ['g_6', 'x_N-x_0', 'x_5-x_N', 'g_5']; zero coefficients: 10/16
+k=6, rank=2: sparse basis: ['g_6', 'x_N-x_0']; zero coefficients: 1/4
+CELL e4d0109f
+CELL a606e742
+k=0: rank 0 basis []; reconstruction residual 0.000e+00
+Function coordinates: absent; offset: 0.0
+k=1: rank 4 basis ['g_N', 'z_1', 'x_1-x_0', 'x_N-x_0']; reconstruction residual 4.848e-16
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+k=2: rank 4 basis ['g_N', 'z_2', 'x_2-x_0', 'x_N-x_0']; reconstruction residual 8.422e-10
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+k=3: rank 4 basis ['g_N', 'z_3', 'x_3-x_0', 'x_N-x_0']; reconstruction residual 1.246e-09
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+k=4: rank 4 basis ['g_N', 'z_4', 'x_4-x_0', 'x_N-x_0']; reconstruction residual 1.694e-09
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+k=5: rank 4 basis ['g_N', 'z_5', 'x_5-x_0', 'x_N-x_0']; reconstruction residual 2.162e-09
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+k=6: rank 2 basis ['g_N', 'x_N-x_0']; reconstruction residual 3.274e-09
+<IPython.core.display.Math object>
+Function coordinates: absent; offset: 0
+CELL 888802c7
+k=0: normalized coefficient candidate error 0.000e+00
+k=1: normalized coefficient candidate error 2.017e-05
+k=2: normalized coefficient candidate error 2.009e-05
+k=3: normalized coefficient candidate error 2.005e-05
+k=4: normalized coefficient candidate error 2.004e-05
+k=5: normalized coefficient candidate error 2.003e-05
+k=6: normalized coefficient candidate error 2.003e-05
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+CELL 3a36351e
+Full-expression reconstruction passed at all indices, including both endpoints.
+CELL ea2ed6f6
+CELL 09c24b8c
+Derived local multipliers: [{mu_Lip: 2/t**2, mu_Mon: 4*L/(t**2 - t)}]
+<IPython.core.display.Math object>
+Interior step (t>=2) function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+<IPython.core.display.Math object>
+General-L coefficient representation function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+CELL 37b8240b
+<IPython.core.display.Math object>
+Initial V0=0 function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+<IPython.core.display.Math object>
+Base first step (N>=2) function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+CELL 6c6df5cf
+<IPython.core.display.Math object>
+Last-step identity (N>=2) function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+CELL 134f2761
+<IPython.core.display.Math object>
+Rate and initial-radius normalization function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+CELL 7c1c059c
+<IPython.core.display.Math object>
+N=1 direct terminal potential function residual: Matrix(0, 0, []) offset residual: 0 exact zero: True
+Exact proof obligations: {'step': True, 'base': True, 'boundary': True, 'signs': True, 'domain': True, 'normalization': True}
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residual: 2.6387601006957575e-16

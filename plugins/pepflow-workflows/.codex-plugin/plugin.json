@@ -5,7 +5,7 @@
   "author": {
     "name": "Anonymous"
   },
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "keywords": [
     "pepflow",
     "performance-estimation",
@@ -26,7 +26,7 @@
     "defaultPrompt": [
       "Use pep-implement to create a PEPFlow setup for this algorithm.",
       "Use pep-full-proof for the implemented algorithm.",
-      "Use lyap-analyze after pep-analyze to discover a Lyapunov function."
+      "Use lyap-define, then lyap-vectors, then lyap-closed-form to construct and verify a Lyapunov proof."
     ]
   }
 }

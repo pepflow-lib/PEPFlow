@@ -1,0 +1,14 @@
+# Preserve imported experimental records and their recorded byte hashes.
+examples_peppy/_evaluations/** -text
+
+# Keep reproduction-tool/report bytes stable across checkouts.
+examples_peppy/_evaluations/supplementary/tools/*.py text eol=lf
+examples_peppy/_evaluations/supplementary/tools/*.json text eol=lf
+examples_peppy/_evaluations/supplementary/tools/*.md text eol=lf
+examples_peppy/_evaluations/supplementary/tools/*.txt text eol=lf
+examples_peppy/_evaluations/supplementary/tools/tests/*.py text eol=lf
+
+examples_peppy/_evaluations/README.md text eol=lf
+examples_peppy/_evaluations/attempts.md text eol=lf
+examples_peppy/_evaluations/table2.md text eol=lf
+examples_peppy/_evaluations/table2.json text eol=lf

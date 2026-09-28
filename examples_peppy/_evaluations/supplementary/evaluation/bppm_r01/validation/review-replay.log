@@ -1,0 +1,221 @@
+REPLAY CELL 4 6981b247
+REPLAY CELL 5 40276be3
+Framework: C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\bppm_r01\validation\supplementary\approved\pepflow\__init__.py
+REPLAY CELL 7 5f0b8877
+REPLAY CELL 9 c21c2aa1
+REPLAY CELL 14 424b28e7
+Dense bound: 0.249999999673264
+Selected sparse bound: 0.24999999998895409
+Basis: ['x_0', 'x_star', 'x_1', 'grad_f(x_1)', 'grad_h(x_0)', 'x_2', 'grad_f(x_2)', 'x_3', 'grad_f(x_3)', 'x_4', 'grad_f(x_4)', 'grad_h(x_star)']
+Dense active groups (threshold 1e-6 used for display/sparsity proposal):
+f [('f:x_star,x_1', 0.2500000001689168), ('f:x_star,x_2', 0.2500000004016963), ('f:x_star,x_3', 0.25000000047968607), ('f:x_star,x_4', 0.250000000624397), ('f:x_1,x_2', 0.1369405681700336), ('f:x_1,x_3', 0.07321261054556437), ('f:x_1,x_4', 0.03984682136016044), ('f:x_2,x_3', 0.25273758087457177), ('f:x_2,x_4', 0.1342029879166301), ('f:x_3,x_4', 0.5759501909772722)]
+h [('h:x_1,x_0', 0.24999999971102999), ('h:x_1,x_2', 0.063727957934551), ('h:x_1,x_3', 0.03336578927728938), ('h:x_1,x_4', 0.039846821401737224), ('h:x_2,x_1', 0.3869405679419204), ('h:x_2,x_3', 0.1185345933147731), ('h:x_2,x_4', 0.13420298789083407), ('h:x_3,x_2', 0.5759501912582775), ('h:x_3,x_4', 0.5759501910039166), ('h:x_4,x_3', 1.0000000000425648), ('h:x_star,x_4', 0.2500000005081774)]
+Selected active multipliers: {'initial_condition': 0.250000000194885, 'f:x_star,x_1': 0.25000000017685203, 'f:x_star,x_2': 0.25000000028344505, 'f:x_star,x_3': 0.25000000025593727, 'f:x_star,x_4': 0.2500000001735796, 'f:x_1,x_2': 0.2500000001768519, 'f:x_2,x_3': 0.5000000002378435, 'f:x_3,x_4': 0.7500000002713274, 'h:x_1,x_0': 0.25000000019488505, 'h:x_1,x_2': 0.25000000013443113, 'h:x_2,x_1': 0.5000000001068626, 'h:x_2,x_3': 0.5000000003342693, 'h:x_3,x_2': 0.7500000003067007, 'h:x_3,x_4': 0.7500000002243119, 'h:x_4,x_3': 1.0000000001967435, 'h:x_star,x_4': 0.25000000019488483}
+Dropped constraints: ['f:x_1,x_star', 'f:x_1,x_3', 'f:x_1,x_4', 'f:x_2,x_star', 'f:x_2,x_1', 'f:x_2,x_4', 'f:x_3,x_star', 'f:x_3,x_1', 'f:x_3,x_2', 'f:x_4,x_star', 'f:x_4,x_1', 'f:x_4,x_2', 'f:x_4,x_3', 'h:x_0,x_1', 'h:x_0,x_2', 'h:x_0,x_3', 'h:x_0,x_4', 'h:x_0,x_star', 'h:x_1,x_3', 'h:x_1,x_4', 'h:x_1,x_star', 'h:x_2,x_0', 'h:x_2,x_4', 'h:x_2,x_star', 'h:x_3,x_0', 'h:x_3,x_1', 'h:x_3,x_star', 'h:x_4,x_0', 'h:x_4,x_1', 'h:x_4,x_2', 'h:x_4,x_star', 'h:x_star,x_0', 'h:x_star,x_1', 'h:x_star,x_2', 'h:x_star,x_3']
+REPLAY CELL 15 435c6034
+Numerical certificate residuals: {'identity_gram_max_abs': 1.9250558545089167e-10, 'identity_func_max_abs': 8.89814000260003e-10, 'identity_offset_abs': 2.0593091121234863e-10, 'S_reconstruction_max_abs': 2.8836072065850606e-25, 'dense_relaxed_gap': 3.1569008518417263e-10, 'minimum_scalar_inequality_dual': 0.25000000013443113, 'minimum_S_eigenvalue': 9.285150418730223e-11, 'minimum_matrix_inequality_eigenvalue': 0.0}
+<IPython.core.display.Math object>
+Function residuals: [ 8.89814000e-10 -1.11022302e-16 -5.55111512e-17  2.22453500e-10
+ -2.22453389e-10  1.11022302e-16 -2.22453389e-10 -2.22044605e-16
+ -4.44907000e-10 -2.22453223e-10 -1.66533454e-16]
+Offset residual: 2.0593091121234863e-10
+S factor eigenvalues: [9.28515042e-11 1.60776742e-10 1.75347014e-10 1.86972248e-10
+ 1.92505548e-10 1.92505569e-10 1.92505571e-10 1.92505593e-10
+ 1.98038865e-10 2.09664092e-10 2.24234369e-10 2.92159639e-10]
+<IPython.core.display.Math object>
+f candidate multipliers:
+<IPython.core.display.Math object>
+h candidate multipliers:
+<IPython.core.display.Math object>
+Candidate lambda maximum discrepancy: 3.34269278923216e-10
+Candidate S=0 maximum discrepancy: 1.925055854508916e-10
+Exact candidate identity at N=4, alpha=R=1: all coordinates zero.
+Analytic full-PEP status: candidate; arbitrary horizon and parameter proof not yet asserted.
+REPLAY CELL 17 f15f284d
+REPLAY CELL 18 cbda04d1
+Numerical certificate checked for this N and parameter sample.
+REPLAY CELL 19 8a508400
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+REPLAY CELL 20 2d14274b
+lyap[4] rank: 4
+Coverage checked with all scalar components and explicit boundary leftovers.
+REPLAY CELL 21 1095f4fe
+N=4: 3 retained indices, common rank 4, full-coordinate coverage checked.
+N=6: 5 retained indices, common rank 4, full-coordinate coverage checked.
+Fixed boundary exclusions: (1, 1) ; absolute rank tolerance: 0.0001
+REPLAY CELL 23 ba40f5a0
+Selected certificate and all saved partial-sum coordinates revalidated; interior indices: [1, 2, 3] exceptions: [0, 4]
+REPLAY CELL 25 ceb05507
+Distinct nonzero candidates: 220
+V_1 column-space candidates:
+   p_0=x_0-x_star
+   grad_h(x_0)
+   p_1=x_1-x_star
+   grad_h(x_1)
+   grad_f(x_1)
+   (p_0=x_0-x_star)-(grad_h(x_0))
+   (p_0=x_0-x_star)-(p_1=x_1-x_star)
+   (p_0=x_0-x_star)-(grad_h(x_1))
+   (p_0=x_0-x_star)-(grad_f(x_1))
+   (grad_h(x_0))-(p_1=x_1-x_star)
+   (p_1=x_1-x_star)-(grad_h(x_1))
+   (p_1=x_1-x_star)-(grad_f(x_1))
+   (p_1=x_1-x_star)-(grad_h(x_0))
+   (grad_h(x_1))-(grad_f(x_1))
+   (grad_h(x_1))-(grad_h(x_0))
+   (x_star)-(x_1)
+   (grad_f(x_1))-(grad_h(x_0))
+V_2 column-space candidates:
+   p_0=x_0-x_star
+   grad_h(x_0)
+   p_2=x_2-x_star
+   grad_h(x_2)
+   (p_0=x_0-x_star)-(grad_h(x_0))
+   (p_0=x_0-x_star)-(p_2=x_2-x_star)
+   (p_0=x_0-x_star)-(grad_h(x_2))
+   (grad_h(x_0))-(p_2=x_2-x_star)
+   (grad_h(x_0))-(grad_h(x_2))
+   (p_2=x_2-x_star)-(grad_h(x_2))
+   (p_2=x_2-x_star)-(grad_h(x_0))
+   (grad_h(x_2))-(grad_h(x_0))
+   (x_star)-(x_2)
+V_3 column-space candidates:
+   p_0=x_0-x_star
+   grad_h(x_0)
+   p_3=x_3-x_star
+   grad_h(x_3)
+   (p_0=x_0-x_star)-(grad_h(x_0))
+   (p_0=x_0-x_star)-(p_3=x_3-x_star)
+   (p_0=x_0-x_star)-(grad_h(x_3))
+   (grad_h(x_0))-(p_3=x_3-x_star)
+   (grad_h(x_0))-(grad_h(x_3))
+   (p_3=x_3-x_star)-(grad_h(x_3))
+   (p_3=x_3-x_star)-(grad_h(x_0))
+   (grad_h(x_3))-(grad_h(x_0))
+   (x_star)-(x_3)
+V_4 column-space candidates:
+   p_0=x_0-x_star
+   grad_h(x_0)
+   p_4=x_4-x_star
+   grad_h(x_4)
+   (p_0=x_0-x_star)-(grad_h(x_0))
+   (p_0=x_0-x_star)-(p_4=x_4-x_star)
+   (p_0=x_0-x_star)-(grad_h(x_4))
+   (grad_h(x_0))-(p_4=x_4-x_star)
+   (grad_h(x_0))-(grad_h(x_4))
+   (p_4=x_4-x_star)-(grad_h(x_4))
+   (p_4=x_4-x_star)-(grad_h(x_0))
+   (grad_h(x_4))-(grad_h(x_0))
+   (x_star)-(x_4)
+REPLAY CELL 27 0436df0c
+k=1, rank=4
+  sparse basis: ['p_0=x_0-x_star', 'grad_h(x_0)', 'p_1=x_1-x_star', 'grad_h(x_1)']
+  zero coefficients: 12 / 16
+k=2, rank=4
+  sparse basis: ['p_0=x_0-x_star', 'grad_h(x_0)', 'p_2=x_2-x_star', 'grad_h(x_2)']
+  zero coefficients: 12 / 16
+k=3, rank=4
+  sparse basis: ['p_0=x_0-x_star', 'grad_h(x_0)', 'p_3=x_3-x_star', 'grad_h(x_3)']
+  zero coefficients: 12 / 16
+k=4, rank=4
+  sparse basis: ['p_0=x_0-x_star', 'grad_h(x_0)', 'p_4=x_4-x_star', 'grad_h(x_4)']
+  zero coefficients: 12 / 16
+REPLAY CELL 29 36bbadc4
+k=0: rank 0 basis []
+k=1: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_1-x_star', 'grad_h(x_1)']
+k=2: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_2-x_star', 'grad_h(x_2)']
+k=3: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_3-x_star', 'grad_h(x_3)']
+k=4: rank 4 basis ['x_0-x_star', 'grad_h(x_0)', 'x_4-x_star', 'grad_h(x_4)']
+REPLAY CELL 31 9ca4af50
+k=0: quadratic reconstruction residual=0.000e+00
+  function coefficients [f(x_k)-f_star, h(x_0)-h(x_k)]: [0.0, 0.0]
+  offset: 0.0
+k=1: quadratic reconstruction residual=2.376e-16
+<IPython.core.display.Math object>
+  function coefficients [f(x_k)-f_star, h(x_0)-h(x_k)]: [0.250000000176852, 0.250000000194885]
+  offset: 0.0
+k=2: quadratic reconstruction residual=3.017e-10
+<IPython.core.display.Math object>
+  function coefficients [f(x_k)-f_star, h(x_0)-h(x_k)]: [0.5000000004602968, 0.25000000008365825]
+  offset: 0.0
+k=3: quadratic reconstruction residual=3.968e-10
+<IPython.core.display.Math object>
+  function coefficients [f(x_k)-f_star, h(x_0)-h(x_k)]: [0.7500000006050074, 0.2500000000836582]
+  offset: 0.0
+k=4: quadratic reconstruction residual=4.380e-10
+<IPython.core.display.Math object>
+  function coefficients [f(x_k)-f_star, h(x_0)-h(x_k)]: [1.0000000006673602, 0.2500000000836583]
+  offset: 0.0
+REPLAY CELL 32 f7af2fb8
+k=0: full-expression reconstruction {'gram': 0.0, 'function': 0.0, 'offset': 0.0}
+k=1: full-expression reconstruction {'gram': 1.1102230246251565e-16, 'function': 5.551115123125783e-17, 'offset': 0.0}
+k=2: full-expression reconstruction {'gram': 1.1122677778807599e-10, 'function': 2.2245355557615198e-10, 'offset': 0.0}
+k=3: full-expression reconstruction {'gram': 1.7671719643175265e-10, 'function': 2.2245355557615198e-10, 'offset': 0.0}
+k=4: full-expression reconstruction {'gram': 1.7671719643175265e-10, 'function': 2.2245383313190814e-10, 'offset': 0.0}
+REPLAY CELL 33 5310314e
+k=0: candidate formula errors {'quadratic': 0.0, 'function': 0.0, 'offset': 0.0}
+k=1: candidate formula errors {'quadratic': 9.744247075893497e-11, 'function': 1.9488499702902118e-10, 'offset': 0.0}
+k=2: candidate formula errors {'quadratic': 8.807432561042106e-11, 'function': 4.6029680067505296e-10, 'offset': 0.0}
+k=3: candidate formula errors {'quadratic': 9.43591871305216e-11, 'function': 6.05007377529887e-10, 'offset': 0.0}
+k=4: candidate formula errors {'quadratic': 9.16970943620754e-11, 'function': 6.673601671280949e-10, 'offset': 0.0}
+Coefficient formulas are finite-sample candidates, not an analytic proof.
+<IPython.core.display.Math object>
+REPLAY CELL 36 1d24a99d
+Exact local coefficient equations give: {A_next: A_current + B*alpha, mu_back: (A_current + B*alpha)/alpha, mu_f: A_current, mu_forward: A_current/alpha, mu_star: B*alpha}
+With A(0)=0 and A(N)=1: A(k)= k/N B= 1/(N*alpha)
+REPLAY CELL 40 22825051
+Step Gram residual:
+<IPython.core.display.Math object>
+Step function residual:
+<IPython.core.display.Math object>
+Step offset residual: 0
+REPLAY CELL 43 c4b49ec5
+Base V0 Gram residual:
+<IPython.core.display.Math object>
+Base V0 function residual:
+<IPython.core.display.Math object>
+Base V0 offset residual: 0
+Base first step Gram residual:
+<IPython.core.display.Math object>
+Base first step function residual:
+<IPython.core.display.Math object>
+Base first step offset residual: 0
+N=1 base Gram residual:
+<IPython.core.display.Math object>
+N=1 base function residual:
+<IPython.core.display.Math object>
+N=1 base offset residual: 0
+REPLAY CELL 46 e1056de2
+Boundary Gram residual:
+<IPython.core.display.Math object>
+Boundary function residual:
+<IPython.core.display.Math object>
+Boundary offset residual: 0
+N=1, R=0 boundary Gram residual:
+<IPython.core.display.Math object>
+N=1, R=0 boundary function residual:
+<IPython.core.display.Math object>
+N=1, R=0 boundary offset residual: 0
+REPLAY CELL 48 f5f719fb
+Signs: all local and boundary multipliers are nonnegative on the stated domain.
+Direction: V_(k+1) <= V_k, V_0=0, and gap - R/(alpha*N) <= V_N <= 0.
+N=1 uses the verified base step; R=0 needs no division by R.
+Analytic Lyapunov proof verified. Global full-PEP formula remains separately uncertified.
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 4
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+lyap[6] rank: 4
+Coverage checked with all scalar components and explicit boundary leftovers.

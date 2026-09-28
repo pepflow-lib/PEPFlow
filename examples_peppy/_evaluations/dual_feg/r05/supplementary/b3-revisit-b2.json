@@ -1,0 +1,24 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete_pending_second_horizon",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Selected N=6 certificate revalidated and grouping/coverage checked; second horizon required for rank confirmation",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  8,
+    "requested_recipe":  "Same sparse constraint recipe recorded in selected B2 state",
+    "selected_certificate_path":  "state/dual_feg_b2.json",
+    "evidence":  "supplementary/rank_N6.json",
+    "executed_source":  "supplementary/group_b3.py",
+    "boundary_exclusions":  {
+                                "left":  1,
+                                "right":  1
+                            },
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "consulted_sources":  [
+                              "approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                              "B2 state and provenance sources",
+                              "own group_b3.py and rank_N6.json"
+                          ],
+    "deadline_utc":  "2026-09-24T00:52:12.648185+00:00"
+}

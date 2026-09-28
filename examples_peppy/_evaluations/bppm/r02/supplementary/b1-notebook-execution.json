@@ -1,0 +1,98 @@
+[
+  {
+    "cell": 2,
+    "execution_count": 1,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 3,
+    "execution_count": 2,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 5,
+    "execution_count": 3,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 7,
+    "execution_count": 4,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Built four exact Bregman proximal steps.\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 9,
+    "execution_count": 5,
+    "output_types": [
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "N=1: PEP=1.0000000006; conjecture=1.0000000000; status=optimal\nN=2: PEP=0.4999999958; conjecture=0.5000000000; status=optimal\nN=3: PEP=0.3333333333; conjecture=0.3333333333; status=optimal\nN=4: PEP=0.2499999995; conjecture=0.2500000000; status=optimal\nN=5: PEP=0.1999999999; conjecture=0.2000000000; status=optimal\nN=6: PEP=0.1666666661; conjecture=0.1666666667; status=optimal\nN=7: PEP=0.1428571412; conjecture=0.1428571429; status=optimal\nMaximum absolute discrepancy: 4.241e-09 (tolerance 1e-5)\n"
+    ],
+    "has_plot": true
+  },
+  {
+    "cell": 12,
+    "execution_count": 6,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Dense optimum: 0.24999999952352878\nSelected optimum: 0.24999999998930553\nGap: 4.657767505023003e-10\nBasis vectors: ['x_0', 'x_star', 'grad_f(x_0)', 'x_1', 'grad_f(x_1)', 'grad_h(x_0)', 'x_2', 'grad_f(x_2)', 'x_3', 'grad_f(x_3)', 'x_4', 'grad_f(x_4)', 'grad_h(x_star)']\nDense active f {'f:x_star,x_1': 0.25, 'f:x_star,x_2': 0.25, 'f:x_star,x_3': 0.25, 'f:x_star,x_4': 0.25, 'f:x_1,x_2': 0.13709, 'f:x_1,x_3': 0.0731308, 'f:x_1,x_4': 0.0397792, 'f:x_2,x_3': 0.2545141, 'f:x_2,x_4': 0.1325759, 'f:x_3,x_4': 0.5776448}\nDense active h {'h:x_1,x_0': 0.25, 'h:x_1,x_2': 0.0639592, 'h:x_1,x_3': 0.0333515, 'h:x_1,x_4': 0.0397792, 'h:x_2,x_1': 0.38709, 'h:x_2,x_3': 0.1219381, 'h:x_2,x_4': 0.1325759, 'h:x_3,x_2': 0.5776448, 'h:x_3,x_4': 0.5776448, 'h:x_4,x_3': 1.0, 'h:x_star,x_4': 0.25}\nDense S eigenvalues: [6.73444585e-11 1.48067933e-10 1.81493172e-10 2.12551060e-10\n 2.65038681e-10 2.89441110e-10 2.89441189e-10 2.89441326e-10\n 3.13843010e-10 3.66331960e-10 3.97390490e-10 4.30815845e-10\n 5.11542621e-10]\nDropped constraints: 45\ninitial_condition 0.2500000001939169\nf:x_star,x_1 0.2500000001760963\nf:x_star,x_2 0.250000000282091\nf:x_star,x_3 0.2500000002545696\nf:x_star,x_4 0.2500000001727983\nf:x_1,x_2 0.25000000017609625\nf:x_2,x_3 0.5000000002367986\nf:x_3,x_4 0.7500000002699794\nh:x_1,x_0 0.250000000193917\nh:x_1,x_2 0.25000000013372914\nh:x_2,x_1 0.5000000001062573\nh:x_2,x_3 0.500000000332877\nh:x_3,x_2 0.750000000305405\nh:x_3,x_4 0.7500000002230197\nh:x_4,x_3 1.0000000001955478\nh:x_star,x_4 0.2500000001939167\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 14,
+    "execution_count": 7,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "Candidate lambda discrepancy: 3.328769482280336e-10\nCandidate lambda for f\n",
+      "Candidate lambda for h\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 16,
+    "execution_count": 8,
+    "output_types": [
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "All numerical diagonal coefficients: [9.19249767e-11 1.59475714e-10 1.74155231e-10 1.85651418e-10\n 1.91197122e-10 1.91197146e-10 1.91197148e-10 1.91197148e-10\n 1.91197173e-10 1.96742851e-10 2.08239028e-10 2.22918550e-10\n 2.90469323e-10]\nS reconstruction discrepancy: 4.652890945610781e-25\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 18,
+    "execution_count": 9,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream"
+    ],
+    "text": [
+      "Numerical certificate checks: {'passed': True, 'residuals': {'identity_gram_max_abs': 1.9119716428583832e-10, 'identity_func_max_abs': 8.855551847375409e-10, 'identity_offset_abs': 2.046113556364304e-10, 'S_reconstruction_max_abs': 4.652890945610781e-25, 'dense_relaxed_gap': 4.657767505023003e-10, 'minimum_scalar_inequality_dual': 0.25000000013372914, 'minimum_S_eigenvalue': 9.192497669950171e-11, 'minimum_matrix_inequality_eigenvalue': 0.0, 'conjectured_rate_error': 1.0694473084882361e-11}, 'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}}\n",
+      "Function residual: [ 8.85555185e-10  0.00000000e+00 -5.55111512e-17 -1.11022302e-16\n  2.21388796e-10 -2.21388685e-10  1.11022302e-16 -2.21388796e-10\n  0.00000000e+00 -4.42777592e-10 -2.21388630e-10 -1.66533454e-16]\nConstant residual: 2.04611355636430e-10\nFixed-N exact candidate identity: all coordinates zero.\nNumerical certificate verified: True; analytic full-PEP verified: False; Lyapunov proof verified: False.\n"
+    ],
+    "has_plot": false
+  }
+]

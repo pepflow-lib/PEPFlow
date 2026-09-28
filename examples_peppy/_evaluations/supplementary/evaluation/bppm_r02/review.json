@@ -1,0 +1,329 @@
+{
+  "attempt_id": "bppm_r02",
+  "mathematical_verdict": "NOT_EVALUATED",
+  "eligible": false,
+  "access_status": "unresolved",
+  "access_reason": "Concrete final nbconvert stderr identifies zmq/_future.py executing under C:/Users/Jack/AppData/Local/Programs/Python/Python313/Lib/site-packages, outside the frozen .venv dependency root. This is an executing-runtime warning, not merely a configured search path. The frozen allowlist and settings supply no equivalence exception. Saved bounded triage pins the kernel but does not establish the dispatcher's executable/import origin; the successful return code does not resolve this incident. No prohibited mathematical exposure is established. The exclusion follows concrete unresolved eligibility, not instruction-only observability limits or the worker label alone.",
+  "final_reason": "The inspected submitted Lyapunov proof and fresh exact identity audit establish the specified R/(alpha*N) guarantee on mathematical content. The attempt cannot receive independent-success credit because the final launcher incident leaves access eligibility unresolved under frozen rules. Final checklist completion also remains missing, separately from the proof.",
+  "final_evidence_refs": [
+    "bppm/r02/bppm_example_lyap.ipynb#2eda95ec",
+    "bppm/r02/bppm_example_lyap.ipynb#e763b3c9",
+    "bppm/r02/bppm_example_lyap.ipynb#50a28846",
+    "supplementary/evaluation/bppm_r02/validation/symbolic-audit.json",
+    "bppm/r02/supplementary/b5-nbconvert-execution.json",
+    "bppm/r02/supplementary/b5-launch-access-incident.json",
+    "bppm/r02/supplementary/approved/allowlist.json",
+    "bppm/r02/supplementary/approved/settings.json",
+    "bppm/r02/supplementary/bppm_example_lyap_checklist.md"
+  ],
+  "submitted_theorem": "For alpha>0, R>=0, integer N>=1, the prescribed exact Bregman proximal iterates with D_h(x_star,x_0)<=R satisfy 0<=f(x_N)-f(x_star)<=R/(alpha*N). V_k=k/N*(f(x_k)-f(x_star))+(D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N), 0<=k<=N, is nonincreasing with V_0=0.",
+  "target_scope_comparison": "Matches supplied convex differentiable Bregman setting, exact proximal updates, terminal function-gap metric, R rather than R^2 normalization, fixed arbitrary alpha>0, and every integer N>=1. Convexity supplies residual signs, minimization supplies nonnegative gap; R=0 and N=1 are included without singular divisions.",
+  "verification_method": "Inspected frozen notebook sources and saved outputs, setup, numerical block/check records, rank observations, source/static/execution evidence, frozen dependency allowlist, and launcher incident/triage. Freshly recomputed SHA-256 for all settings-listed submitted artifacts: no mismatches. Independently expanded the submitted generic step, four-vector, base and terminal identities in pinned Python -I -B with SymPy from the validation directory: exact zero residuals. Bilinear coordinatewise cancellation establishes the identities in arbitrary finite dimension. No numerical solver, full notebook execution, static tool or historical launcher was rerun; saved numerical/static results are explicitly inspection evidence.",
+  "workflow_complete": false,
+  "notebook_path": "bppm/r02/bppm_example_lyap.ipynb",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "NOT_EVALUATED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "B1 substantive mathematical and content checks pass by inspection. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "required_checks": [
+        "Algorithm, assumptions, indexing and metric",
+        "Prescribed rate sweep and candidate comparison",
+        "Notebook evidence"
+      ],
+      "passed_checks": [
+        "Algorithm, assumptions, indexing and metric",
+        "Prescribed rate sweep and candidate comparison",
+        "Notebook evidence"
+      ],
+      "checks": [
+        {
+          "name": "Algorithm, assumptions, indexing and metric",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Visible exact f.bregman_prox recursion; D_h(x_star,x_0)<=R; metric f(x_N)-f(x_star); no smoothness or strong-convexity strengthening.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#f6b761bf"
+        },
+        {
+          "name": "Prescribed rate sweep and candidate comparison",
+          "status": "PASS",
+          "tolerance_domain": "absolute 1e-5",
+          "observed_result": "Saved N=1..7 solves all optimal; values approximately 1,1/2,1/3,1/4,1/5,1/6,1/7; maximum rate discrepancy 4.241e-9 at alpha=R=1.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#9fbadbd0"
+        },
+        {
+          "name": "Notebook evidence",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Title, assumptions, algorithm, setup, numerical values, comparison plot output and explicit numerical-only qualification are present.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#3021dc9b"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#f6b761bf",
+        "bppm/r02/bppm_example_lyap.ipynb#9fbadbd0",
+        "bppm/r02/bppm_example_lyap.ipynb#3021dc9b",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ],
+      "failure_code": "ACCESS_ELIGIBILITY_UNRESOLVED"
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "gate_verdict": "NOT_EVALUATED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "B2 numerical obligations and documented formula search are supported by inspected executable checks and saved outputs. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "required_checks": [
+        "Coherent full certificate and dense/relaxed agreement",
+        "Full scalar identity components",
+        "Dual signs, PSD and S reconstruction",
+        "Initial closed-form search"
+      ],
+      "passed_checks": [
+        "Coherent full certificate and dense/relaxed agreement",
+        "Full scalar identity components",
+        "Dual signs, PSD and S reconstruction",
+        "Initial closed-form search"
+      ],
+      "checks": [
+        {
+          "name": "Coherent full certificate and dense/relaxed agreement",
+          "status": "PASS",
+          "tolerance_domain": "dense gap <1e-5",
+          "observed_result": "Complete named dual inventory, both convex interpolation owners, normalization, S and source provenance are carried together; dense 0.24999999952352878, relaxed 0.24999999998930553; gap 4.657767505e-10.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#cde89e7b"
+        },
+        {
+          "name": "Full scalar identity components",
+          "status": "PASS",
+          "tolerance_domain": "absolute 1e-5; rtol 0",
+          "observed_result": "Saved Gram max 1.911971643e-10; function max 8.855551847e-10; offset 2.046113556e-10; checker visibly reconstructs every active residual and S.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#cde89e7b"
+        },
+        {
+          "name": "Dual signs, PSD and S reconstruction",
+          "status": "PASS",
+          "tolerance_domain": "dual/PSD -1e-6; reconstruction atol 1e-4, rtol 1e-5",
+          "observed_result": "Minimum scalar inequality dual 0.25000000013372914; minimum S eigenvalue 9.192497670e-11; E.T D E reconstruction error 4.652890946e-25; no matrix interpolation families.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#f6e33693"
+        },
+        {
+          "name": "Initial closed-form search",
+          "status": "PASS",
+          "tolerance_domain": "candidate atol 1e-4",
+          "observed_result": "Candidates for every retained multiplier and S=0 compared to numerical certificate; max lambda discrepancy 3.328769482e-10; selected numerical S retained, global formula proof explicitly distinguished.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#64993b7a"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#cde89e7b",
+        "bppm/r02/bppm_example_lyap.ipynb#f6e33693",
+        "bppm/r02/bppm_example_lyap.ipynb#64993b7a",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ],
+      "failure_code": "ACCESS_ELIGIBILITY_UNRESOLVED"
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "gate_verdict": "NOT_EVALUATED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "B3 saved cross-horizon observations and visible grouping verify the required structure; these are finite-sample results. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "required_checks": [
+        "Grouping, signs, decomposition and complete coverage",
+        "Same interior rank at two horizons",
+        "Rank credibility and second-horizon coverage"
+      ],
+      "passed_checks": [
+        "Grouping, signs, decomposition and complete coverage",
+        "Same interior rank at two horizons",
+        "Rank credibility and second-horizon coverage"
+      ],
+      "checks": [
+        {
+          "name": "Grouping, signs, decomposition and complete coverage",
+          "status": "PASS",
+          "tolerance_domain": "component atol 1e-5; PSD -1e-6",
+          "observed_result": "Every nonnormalization term assigned; terminal h residual and entire numerical S reserved as boundary terms. Saved N=4 coverage Gram max 5.551115123e-17, function/offset zero; increments checked in all components.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#201e3fc1"
+        },
+        {
+          "name": "Same interior rank at two horizons",
+          "status": "PASS",
+          "tolerance_domain": "absolute rank tolerance 1e-4 in unscaled setup Gram coordinates",
+          "observed_result": "N=4 profile [0,4,4,4,4], N=6 [0,4,4,4,4,4,4], common recipe and exclusions (1,1), respectively 3 and 5 retained indices.",
+          "evidence_ref": "bppm/r02/supplementary/b3-comparison-002-output.txt"
+        },
+        {
+          "name": "Rank credibility and second-horizon coverage",
+          "status": "PASS",
+          "tolerance_domain": "rank 1e-4; component 1e-5",
+          "observed_result": "N=6 smallest significant singular value 0.08333333363543198; largest negligible 3.690661709e-10. Coverage Gram 2.775557562e-17, function 5.551115123e-17, offset zero; increments at most 5.551115123e-17.",
+          "evidence_ref": "bppm/r02/supplementary/b3-N6-observation.json"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#201e3fc1",
+        "bppm/r02/supplementary/b3-comparison-002-output.txt",
+        "bppm/r02/supplementary/b3-N6-observation.json",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ],
+      "failure_code": "ACCESS_ELIGIBILITY_UNRESOLVED"
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "gate_verdict": "NOT_EVALUATED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "B4 search, independence and complete reconstruction are supported at every required index. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "required_checks": [
+        "Actual basis search and independence",
+        "Every-index quadratic reconstruction",
+        "Visible full potential reconstruction",
+        "Coefficient interpretation"
+      ],
+      "passed_checks": [
+        "Actual basis search and independence",
+        "Every-index quadratic reconstruction",
+        "Visible full potential reconstruction",
+        "Coefficient interpretation"
+      ],
+      "checks": [
+        {
+          "name": "Actual basis search and independence",
+          "status": "PASS",
+          "tolerance_domain": "basis zero 1e-6, independence 1e-7, span 1e-5",
+          "observed_result": "Visible candidate scan and sparse-basis search execute at k=1..4, each returns four vectors with 12/16 zero coefficients. Fixed q_k,p_k,r_k,t basis has rank four; k=0 uses empty basis.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#2cd51e0f"
+        },
+        {
+          "name": "Every-index quadratic reconstruction",
+          "status": "PASS",
+          "tolerance_domain": "span 1e-5",
+          "observed_result": "All required indices k=0..4, including endpoints, checked; max Frobenius discrepancy 4.359764572e-10.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#e55bba16"
+        },
+        {
+          "name": "Visible full potential reconstruction",
+          "status": "PASS",
+          "tolerance_domain": "submitted component check 1e-4; observed errors also below 1e-5",
+          "observed_result": "Quadratic plus fitted function gaps and zero offset assembled visibly; max Gram component 1.759650203e-10, function component 2.213893513e-10, offset zero across every required index.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#e55bba16"
+        },
+        {
+          "name": "Coefficient interpretation",
+          "status": "PASS",
+          "tolerance_domain": "candidate atol 1e-4",
+          "observed_result": "Candidate symmetric off-diagonal coefficients 1/(2 alpha N); function coefficients k/N and -1/(alpha N); candidate fit explicitly not substituted for an all-horizon proof.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#34588167"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r02/bppm_example_lyap.ipynb#2cd51e0f",
+        "bppm/r02/bppm_example_lyap.ipynb#e55bba16",
+        "bppm/r02/bppm_example_lyap.ipynb#34588167",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ],
+      "failure_code": "ACCESS_ELIGIBILITY_UNRESOLVED"
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "gate_verdict": "NOT_EVALUATED",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": false,
+      "reason": "B5 analytic obligations pass inspection and fresh exact checks. Final delivery remains incomplete and access eligibility unresolved. No independent block credit is assigned because attempt access eligibility remains unresolved.",
+      "required_checks": [
+        "General submitted step and coefficient identity",
+        "Base, terminal and exact target implication",
+        "Signs, domain and exceptional cases",
+        "Self-contained proof-critical notebook content",
+        "Required static checks",
+        "Final notebook execution provenance",
+        "Final completion checklist"
+      ],
+      "passed_checks": [
+        "General submitted step and coefficient identity",
+        "Base, terminal and exact target implication",
+        "Signs, domain and exceptional cases",
+        "Self-contained proof-critical notebook content",
+        "Required static checks"
+      ],
+      "checks": [
+        {
+          "name": "General submitted step and coefficient identity",
+          "status": "PASS",
+          "tolerance_domain": "exact symbolic identities",
+          "observed_result": "Fresh exact expansion gives zero for the generic step and four-vector identities using grad h(next)=grad h(previous)-alpha grad f(next). Notebook itself contains actual PEPFlow coordinate checks rather than stored flags.",
+          "evidence_ref": "supplementary/evaluation/bppm_r02/validation/symbolic-audit.json"
+        },
+        {
+          "name": "Base, terminal and exact target implication",
+          "status": "PASS",
+          "tolerance_domain": "symbolic alpha,N,R; N>=1, alpha>0, R>=0",
+          "observed_result": "Fresh base and terminal residuals are zero. V0=0; terminal gap-target=VN+(D0-R)/(alpha*N)-D_N/(alpha*N). This combines with decrease and convexity to prove the exact target.",
+          "evidence_ref": "supplementary/evaluation/bppm_r02/validation/symbolic-audit.json"
+        },
+        {
+          "name": "Signs, domain and exceptional cases",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "All four local weights are nonnegative for j>=1; every convex residual is nonpositive; alpha*N>0. First-step j-1 terms vanish. R=0 and N=1 covered. No unsupported matrix positivity lemma is needed.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#50a28846"
+        },
+        {
+          "name": "Self-contained proof-critical notebook content",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Theorem states V_k; proof outline includes all four residuals and terminal identity. Separate actual symbolic step/base/boundary cells and saved zero-coordinate outputs are present.",
+          "evidence_ref": "bppm/r02/bppm_example_lyap.ipynb#e763b3c9"
+        },
+        {
+          "name": "Required static checks",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Saved final source Ruff and ty checks both return 0 with All checks passed. Deliberately unresolved import probe returns expected 1 separately.",
+          "evidence_ref": "bppm/r02/supplementary/b5-static-001.json"
+        },
+        {
+          "name": "Final notebook execution provenance",
+          "status": "UNRESOLVED",
+          "tolerance_domain": null,
+          "observed_result": "Saved nbconvert returns 0 and writes executed notebook, but executing Python313 zmq warning lies outside frozen dependency root; dispatch host origin remains unresolved.",
+          "evidence_ref": "bppm/r02/supplementary/b5-nbconvert-execution.json"
+        },
+        {
+          "name": "Final completion checklist",
+          "status": "FAIL",
+          "tolerance_domain": null,
+          "observed_result": "All twelve rows are pending after final edits; header explicitly says final audit stopped. This is unfinished final content audit, not merely omitted rendering.",
+          "evidence_ref": "bppm/r02/supplementary/bppm_example_lyap_checklist.md"
+        }
+      ],
+      "evidence_refs": [
+        "supplementary/evaluation/bppm_r02/validation/symbolic-audit.json",
+        "bppm/r02/bppm_example_lyap.ipynb#50a28846",
+        "bppm/r02/bppm_example_lyap.ipynb#e763b3c9",
+        "bppm/r02/supplementary/b5-static-001.json",
+        "bppm/r02/supplementary/b5-nbconvert-execution.json",
+        "bppm/r02/supplementary/bppm_example_lyap_checklist.md",
+        "bppm/r02/supplementary/b5-launch-access-incident.json"
+      ],
+      "failure_code": "ACCESS_ELIGIBILITY_UNRESOLVED"
+    }
+  ],
+  "review_started_at": "2026-09-23T23:53:26.239045+00:00",
+  "review_stopped_at": "2026-09-23T23:57:52Z",
+  "limitations": [
+    "No fresh numerical solve, complete notebook execution or static rerun; their recorded source and outputs were inspected.",
+    "Runtime warning provides concrete provenance concern, but available frozen logs do not conclusively identify historical dispatcher imports. No excluded runtime source was opened to investigate.",
+    "Instruction-only isolation and available logs cannot establish absence of every possible read; that general limitation is not the reason for exclusion.",
+    "No rendering, browser, export, proof repair, other attempts or outside mathematical sources used."
+  ]
+}

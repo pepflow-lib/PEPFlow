@@ -1,0 +1,20 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_certificate",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Acquired coherent N=6 sparse certificate using existing recipe; candidate formulas and complete numerical identity reverified",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate_path":  "supplementary/ogm_b2_N6.json",
+    "selected_main_N":  4,
+    "checks":  [
+                   "supplementary/b2-N6-output.txt",
+                   "supplementary/b2-N6-notebook-output-002.txt",
+                   "supplementary/b2-N6-static-002.json"
+               ],
+    "sources":  "Own setup, helper modules, selected B2 state and B1 sweep plus approved transitive framework imports; no new reference sources",
+    "incidents":  "Framework warns on replacing named contexts; each builder was reconstructed with its own current context and certificate reverified; no stale builder reused; Notebook duplicate import flagged by Ruff and removed; final checks rerun.",
+    "access_control":  "instruction_only",
+    "access_status":  "no prohibited content observed",
+    "unresolved":  "B3 cross-horizon rank comparison; B4/B5",
+    "deadline_utc":  "2026-09-23T16:12:13.416403+00:00"
+}

@@ -1,0 +1,38 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete_additional_horizon",
+  "next_block": "B3",
+  "entry_exit_reason": "Acquired and verified coherent dense/sparse N=6 certificate under unchanged solver policy and sparsity recipe. N=4 remains selected.",
+  "operational_status": "awaiting_same_session_continuation",
+  "sample": "samples/N6/bppm_b2.json",
+  "certificate_id": "4aaa92d889e75c4fafa688a9e155abc6fea7cefa6eb2c844308bfabe38e88cdc",
+  "checks": {
+    "passed": true,
+    "residuals": {
+      "identity_gram_max_abs": 5.104187257737623e-10,
+      "identity_func_max_abs": 3.5669678322136633e-09,
+      "identity_offset_abs": 7.105981636446046e-10,
+      "S_reconstruction_max_abs": 7.237830359838992e-25,
+      "dense_relaxed_gap": 4.145392917820345e-10,
+      "minimum_scalar_inequality_dual": 0.16666666705118394,
+      "minimum_S_eigenvalue": 2.928462002068769e-10,
+      "minimum_matrix_inequality_eigenvalue": 0.0,
+      "conjectured_rate_error": 1.82839021700687e-10
+    },
+    "tolerances": {
+      "identity_atol": 1e-05,
+      "identity_rtol": 0,
+      "reconstruction_atol": 0.0001,
+      "reconstruction_rtol": 1e-05,
+      "dual_tol": 1e-06,
+      "psd_tol": 1e-06,
+      "dense_opt_atol": 1e-05
+    }
+  },
+  "source_changes": false,
+  "notebook_status": "Selected N=4 notebook retained; N=6 comparison belongs to resumed B3.",
+  "consulted_sources": "Own selected certificate, setup, helpers; fingerprinted approved sources for hashes only.",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "remaining_work": "B3 cross-horizon comparison and notebook/state completion, then B4-B5."
+}

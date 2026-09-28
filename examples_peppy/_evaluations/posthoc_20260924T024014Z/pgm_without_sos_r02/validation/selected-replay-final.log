@@ -1,0 +1,114 @@
+REPLAY CELL 37
+REPLAY CELL 38
+Certificate rechecked at N= 4 Gram/function/offset residuals: [5.288635973599298e-09, 1.619709921740764e-08, 3.165652122383289e-09]
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residuals: [5.551115123125783e-17, 0.0, 0.0] maximum increment residual: 5.551115123125783e-17
+Certificate rechecked at N= 6 Gram/function/offset residuals: [1.3405496712692866e-09, 3.5555411947996163e-09, 2.502414109262219e-10]
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residuals: [7.632783294297951e-17, 0.0, 0.0] maximum increment residual: 5.551115123125783e-17
+Confirmed horizons: [4, 6]
+Common interior rank: 4 ; fixed exclusions: (1, 1) ; absolute tolerance: 0.0001
+REPLAY CELL 41
+C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\posthoc_20260924T024014Z\pgm_without_sos_r02\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+Certificate rechecked at N= 4 Gram/function/offset residuals: [5.288635973599298e-09, 1.619709921740764e-08, 3.165652122383289e-09]
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residuals: [5.551115123125783e-17, 0.0, 0.0] maximum increment residual: 5.551115123125783e-17
+Selected partial sums rechecked with all scalar components.
+REPLAY CELL 49
+k=0: rank 0 basis []
+k=1: rank 4 basis ['x_0-x_star', 'x_1-x_star', 'grad_f(x_1)-grad_f(x_star)', 'grad_f(x_1)']
+k=2: rank 4 basis ['x_0-x_star', 'x_2-x_star', 'grad_f(x_2)-grad_f(x_star)', 'grad_f(x_2)']
+k=3: rank 4 basis ['x_0-x_star', 'x_3-x_star', 'grad_f(x_3)-grad_f(x_star)', 'grad_f(x_3)']
+k=4: rank 1 basis ['x_0-x_star']
+REPLAY CELL 53
+Full-component reconstruction passed for all indices 0 through 4
+B4 saved coefficient reconstruction: {'0': {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, '1': {'gram': 1.4050423168682213e-09, 'function': 1.942890293094024e-16, 'offset': 0.0}, '2': {'gram': 1.6381470763215944e-09, 'function': 3.2394197324592255e-09, 'offset': 0.0}, '3': {'gram': 1.621727988010413e-09, 'function': 3.239420065526133e-09, 'offset': 0.0}, '4': {'gram': 5.288635966660404e-09, 'function': 4.859129765222292e-09, 'offset': 0.0}}
+REPLAY CELL 56
+Discovery structure: {'quadratic_convention': 'V_quadratic = sum_{i,j} C_ij * <v_i,v_j>; symmetric C; off-diagonal entries counted twice', 'interior': {'index_domain': '1 <= k <= N-1; left=1,right=1', 'basis_labels': ['x_0-x_star', 'x_k-x_star', 'grad_f(x_k)-grad_f(x_star)', 'grad_f(x_k)'], 'quadratic_coefficients': {'0,0': 'c_00(k,N,L)', '0,1': 'c_01(k,N,L)', '0,2': 'c_02(k,N,L)', '0,3': 'c_03(k,N,L)', '1,1': 'c_11(k,N,L)', '1,2': 'c_12(k,N,L)', '1,3': 'c_13(k,N,L)', '2,2': 'c_22(k,N,L)', '2,3': 'c_23(k,N,L)', '3,3': 'c_33(k,N,L)'}}, 'initial': {'index_domain': 'k=0', 'basis_labels': [], 'quadratic_coefficients': {}, 'value': '0'}, 'terminal': {'index_domain': 'k=N', 'basis_labels': ['x_0-x_star'], 'quadratic_coefficients': {'0,0': 'c_terminal(N,L)'}}, 'function_terms': [{'index_domain': '1 <= k <= N-1', 'expression': 'f(x_k)-f(x_star)', 'coefficient': 'alpha(k,N,L)'}, {'index_domain': '1 <= k <= N-1', 'expression': 'g(x_k)-g(x_star)', 'coefficient': 'beta(k,N,L)'}, {'index_domain': 'k=N', 'expression': 'f(x_N)-f(x_star)', 'coefficient': 'alpha_terminal(N,L)'}, {'index_domain': 'k=N', 'expression': 'g(x_N)-g(x_star)', 'coefficient': 'beta_terminal(N,L)'}], 'constant_terms': []}
+Unknown coefficients to resolve: [{'name': 'c_00', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[0,0] = interior.C[0,0]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_01', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[0,1] = interior.C[1,0]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_02', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[0,2] = interior.C[2,0]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_03', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[0,3] = interior.C[3,0]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_11', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[1,1] = interior.C[1,1]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_12', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[1,2] = interior.C[2,1]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_13', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[1,3] = interior.C[3,1]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_22', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[2,2] = interior.C[2,2]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_23', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[2,3] = interior.C[3,2]', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_33', 'arguments': ['k', 'N', 'L'], 'role': 'interior.C[3,3] = interior.C[3,3]', 'index_domain': '1 <= k <= N-1'}, {'name': 'alpha', 'arguments': ['k', 'N', 'L'], 'role': 'coefficient of f(x_k)-f_star', 'index_domain': '1 <= k <= N-1'}, {'name': 'beta', 'arguments': ['k', 'N', 'L'], 'role': 'coefficient of g(x_k)-g_star', 'index_domain': '1 <= k <= N-1'}, {'name': 'c_terminal', 'arguments': ['N', 'L'], 'role': 'terminal quadratic coefficient', 'index_domain': 'k=N'}, {'name': 'alpha_terminal', 'arguments': ['N', 'L'], 'role': 'terminal f-gap coefficient', 'index_domain': 'k=N'}, {'name': 'beta_terminal', 'arguments': ['N', 'L'], 'role': 'terminal g-gap coefficient', 'index_domain': 'k=N'}]
+Global analytic full-PEP status: False
+REPLAY CELL 58
+Finite-product first-factor identity: 0 ; beta_0=0
+Exact discovered coefficients at N=4: [166/4851, 105/1676, 3/50]
+REPLAY CELL 60
+Closed coefficient matrix at k= 0 ; complete scalar residuals: {'gram': 0.0, 'function': 0.0, 'offset': 0.0}
+<IPython.core.display.Math object>
+Exact function coefficients: 0 0
+Closed coefficient matrix at k= 1 ; complete scalar residuals: {'gram': 1.1014061171502054e-06, 'function': 2.4854133840457315e-06, 'offset': 0.0}
+<IPython.core.display.Math object>
+Exact function coefficients: 2/7 1/7
+Closed coefficient matrix at k= 2 ; complete scalar residuals: {'gram': 5.174096913557191e-07, 'function': 3.1379037905843177e-06, 'offset': 0.0}
+<IPython.core.display.Math object>
+Exact function coefficients: 1/2 1/3
+Closed coefficient matrix at k= 3 ; complete scalar residuals: {'gram': 6.556353728398578e-07, 'function': 3.1423867178359544e-06, 'offset': 0.0}
+<IPython.core.display.Math object>
+Exact function coefficients: 4/5 3/5
+Closed coefficient matrix at k= 4 ; complete scalar residuals: {'gram': 5.288635966660404e-09, 'function': 1.619709921740764e-08, 'offset': 0.0}
+<IPython.core.display.Math object>
+Exact function coefficients: 1 1
+True selected certificate S:
+<IPython.core.display.Math object>
+REPLAY CELL 63
+Schur complement positive-factor identity: 0
+REPLAY CELL 65
+REPLAY CELL 67
+Step coordinates extracted; simplifying
+Step Gram residual:
+<IPython.core.display.Math object>
+Step function residual: [0, 0, 0, 0, 0, 0] constant residual: 0
+REPLAY CELL 69
+Base coordinates extracted; simplifying
+Base Gram residual:
+<IPython.core.display.Math object>
+Base function residual: [0, 0, 0, 0, 0] constant residual: 0
+REPLAY CELL 71
+Boundary coordinates extracted; simplifying
+Boundary Gram residual:
+<IPython.core.display.Math object>
+Boundary function residual: [0, 0, 0, 0, 0, 0] constant residual: 0
+Normalization coordinates extracted; simplifying
+Normalization Gram residual:
+<IPython.core.display.Math object>
+Normalization function residual: [0, 0, 0, 0, 0, 0] constant residual: 0
+REPLAY CELL 73
+N=1 coordinates extracted; simplifying
+N=1 Gram residual:
+<IPython.core.display.Math object>
+N=1 function residual: [0, 0, 0, 0, 0] constant residual: 0
+REPLAY CELL 75
+Solved final-pivot equation for beta_k: k*(k + 1)*(t - 1)*(2*c*t**2 - 2*c*t + k + t + 1)/(2*t**2*(4*c*k*t**2 - 6*c*k*t + 2*c*k + 2*c*t**2 - 2*c*t + k**2*t + 3*k*t + t + 1))
+checking coefficient
+0
+generic Gram square identity Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+REPLAY CELL 77
+Exact proof checks: {'step': True, 'base': True, 'boundary': True, 'signs': True, 'domain': True, 'normalization': True}
+Domain: integer N>=1, L>0, R>=0. All local denominators are positive on their stated ranges.
+I_f,I_g<=0; every multiplier>=0; every slack>=0. Thus V_N<=...<=V_1<=V_0=0.
+Convergence theorem: h(x_N)-h(x_star) <= L*R**2/(4*N).
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Numerical certificate verified; analytic global full-PEP formula remains unverified; analytic local Lyapunov proof verified.
+REPLAY COMPLETE; no solve or basis search

@@ -1,0 +1,593 @@
+{
+  "attempt_id": "dual_feg_r03",
+  "mathematical_verdict": "PASS",
+  "eligible": true,
+  "access_status": "recovered",
+  "access_reason": "The recorded Windows helper-staging path-length error and ordinary typing/configuration issues were repaired within the same attempt; repeated preflight and source checks passed. Inspected own host access-call inventory and source records show own artifacts, approved generic resources and pinned tools, with no concrete prohibited-content incident. The rejected empty patch used a mistyped nonexistent path and supplied no outside mathematical content. Instruction-only isolation and nonexhaustive logs do not prove absence of all exposure.",
+  "final_reason": "The submitted explicit potential and general exact identities prove ||A(x_N)||^2 <= 4 L^2 R^2/N^2 under the supplied assumptions for every integer N>=1, including the separate N=1 endpoint. Independent replay confirms all numerical and exact checks; no missing essential lemma or coefficient was supplied by review.",
+  "final_evidence_refs": [
+    "dual_feg/r03/dual_feg_example_lyap.ipynb#3407f258",
+    "dual_feg/r03/dual_feg_example_lyap.ipynb#03de6805",
+    "dual_feg/r03/dual_feg_example_lyap.ipynb#857f3126",
+    "supplementary/evaluation/dual_feg_r03/validation/replay-results.json",
+    "supplementary/evaluation/dual_feg_r03/validation/integrity-delivery.json",
+    "dual_feg/r03/supplementary/b1-access-and-recovery.json",
+    "supplementary/evaluation/dual_feg_r03/own-generation-host-access-calls.json"
+  ],
+  "submitted_theorem": "For the supplied fixed-horizon Dual-FEG recurrence, monotone L-Lipschitz A, L>0, A(x_star)=0, ||x0-x_star||^2<=R^2, R>=0, z0=0 and alpha=1/L: ||A(x_N)||^2<=4L^2R^2/N^2 for every integer N>=1.",
+  "target_scope_comparison": "Exact match in assumptions, algorithm, terminal squared operator-residual metric, constant 4, L^2R^2 normalization and all horizons. Terminal-anchored potential is allowed; no stronger structural assumption or averaged iterate is substituted.",
+  "verification_method": "Inspected input, rubric, operational rules, approved generic skills, setup, all proof-critical notebook cells, numerical state, access and final delivery records. Fresh Python -I -B process in validation replayed 32 of 33 notebook code cells unchanged except removing unused matplotlib import; the plot cell was deliberately omitted under the no-rendering instruction. Replayed saved-certificate identities/PSD/LDL reconstruction, provenance hashes, two-horizon rank/coverage checks, actual basis searches and every-index reconstruction, finite exact certificate tests and all six symbolic proof checks. Solver sweep, Ruff/ty and final nbconvert clean-kernel execution were inspected saved evidence, not newly rerun. The symbolic formulas, sign direction and boundary implication were independently assessed; no proof repairs.",
+  "workflow_complete": true,
+  "notebook_path": "dual_feg/r03/dual_feg_example_lyap.ipynb",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The supplied recurrence, zero condition, squared radius and final residual are implemented correctly. The saved N=1..7 sweep supports 4/N^2 for N>=2 and a stronger N=1 value; its one inaccurate solver status is disclosed.",
+      "required_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed sweep and rate comparison",
+        "Visible setup, sweep output and comparison plot"
+      ],
+      "passed_checks": [
+        "Algorithm, assumptions, metric and normalization",
+        "Prescribed sweep and rate comparison",
+        "Visible setup, sweep output and comparison plot"
+      ],
+      "checks": [
+        {
+          "name": "Algorithm, assumptions, metric and normalization",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Exact rational remaining-horizon ratios; z0=0; A(x_star)=0; ||x0-x_star||^2<=R^2; metric ||A(xN)||^2.",
+          "evidence_ref": "dual_feg/r03/dual_feg_setup.py"
+        },
+        {
+          "name": "Prescribed sweep and rate comparison",
+          "status": "PASS",
+          "tolerance_domain": "L=R=1; saved CLARABEL numerical evidence, not an exact theorem",
+          "observed_result": {
+            "N": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "values": [
+              1.9999999892,
+              0.9999998678,
+              0.4444444571,
+              0.2500000046,
+              0.160000009,
+              0.1111111159,
+              0.0816326561
+            ],
+            "statuses": [
+              "optimal",
+              "optimal_inaccurate",
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal"
+            ],
+            "interpretation": "N^2 times values approximately 4 for N>=2; N=1 approximately 2; finite numerical evidence only"
+          },
+          "evidence_ref": "dual_feg/r03/supplementary/b1_sweep.json"
+        },
+        {
+          "name": "Visible setup, sweep output and comparison plot",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Notebook contains recurrence and setup, numerical values, comparison-plot code and one stored PNG output; inspected without rendering.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#81a35430"
+        }
+      ],
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_setup.py",
+        "dual_feg/r03/supplementary/b1_sweep.json",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#8ec4fa3d",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#81a35430"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Both coherent sparse certificates, selected N=4 and confirming N=6, replay successfully with complete interpolation and normalization inventory, source hashes and coordinate order. Candidate formulas and their initial search are retained.",
+      "required_checks": [
+        "Complete certificate identity, signs, PSD and S reconstruction at N=4",
+        "Complete certificate identity, signs, PSD and S reconstruction at N=6",
+        "Certificate coherence and initial closed-form search"
+      ],
+      "passed_checks": [
+        "Complete certificate identity, signs, PSD and S reconstruction at N=4",
+        "Complete certificate identity, signs, PSD and S reconstruction at N=6",
+        "Certificate coherence and initial closed-form search"
+      ],
+      "checks": [
+        {
+          "name": "Complete certificate identity, signs, PSD and S reconstruction at N=4",
+          "status": "PASS",
+          "tolerance_domain": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0.0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05
+          },
+          "observed_result": {
+            "identity_gram_max_abs": 1.377260850206261e-09,
+            "identity_func_max_abs": 0.0,
+            "identity_offset_abs": 9.503768605423346e-10,
+            "S_reconstruction_max_abs": 5.551115123125783e-17,
+            "dense_relaxed_gap": 5.0219873537482584e-09,
+            "conjecture_gap": 4.2168843417123014e-10,
+            "minimum_scalar_inequality_dual": 0.12500276495586313,
+            "minimum_S_eigenvalue": 2.6151789612983615e-11,
+            "minimum_matrix_inequality_eigenvalue": 0.0
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Complete certificate identity, signs, PSD and S reconstruction at N=6",
+          "status": "PASS",
+          "tolerance_domain": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0.0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05
+          },
+          "observed_result": {
+            "identity_gram_max_abs": 1.8649519168148035e-09,
+            "identity_func_max_abs": 0.0,
+            "identity_offset_abs": 6.90246582113474e-10,
+            "S_reconstruction_max_abs": 1.3877787807814457e-17,
+            "dense_relaxed_gap": 5.306183686881738e-09,
+            "conjecture_gap": 5.434306060703165e-10,
+            "minimum_scalar_inequality_dual": 0.055554999917130206,
+            "minimum_S_eigenvalue": 1.1840123684563205e-10,
+            "minimum_matrix_inequality_eigenvalue": 0.0
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Certificate coherence and initial closed-form search",
+          "status": "PASS",
+          "tolerance_domain": "Candidate comparison atol 1e-4; finite exact checks use symbolic arithmetic",
+          "observed_result": "Replayed certificate IDs, provenance source hashes, inventory/coordinate checks and tau normalization. Candidate multipliers and rank-one square compared; finite exact checks at N=1,2,3,4,6 pass; analytic status was appropriately deferred.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#5e17bd3b"
+        }
+      ],
+      "evidence_refs": [
+        "dual_feg/r03/state/dual_feg_b2.json",
+        "dual_feg/r03/supplementary/b2-N6.json",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#16f7d987",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#b9aec4d8",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The same nonincreasing partial-sum recipe passes coverage and increment checks at N=4 and N=6. Interior rank 4 is confirmed with exactly one index excluded at each end, leaving three and five interior indices.",
+      "required_checks": [
+        "Full PSD boundary piece, coverage, increment identities and sign direction",
+        "Two-horizon rank constancy and credibility",
+        "Permitted leftovers and notebook construction"
+      ],
+      "passed_checks": [
+        "Full PSD boundary piece, coverage, increment identities and sign direction",
+        "Two-horizon rank constancy and credibility",
+        "Permitted leftovers and notebook construction"
+      ],
+      "checks": [
+        {
+          "name": "Full PSD boundary piece, coverage, increment identities and sign direction",
+          "status": "PASS",
+          "tolerance_domain": "All Gram/function/offset residuals <=1e-5; PSD tolerance 1e-6",
+          "observed_result": [
+            {
+              "N": 4,
+              "rank_profile": [
+                0,
+                4,
+                4,
+                4,
+                2
+              ],
+              "residuals": {
+                "coverage": 1.0706793411134263e-17,
+                "S_pieces": 0.0,
+                "increment_0": 0.0,
+                "increment_1": 5.551115123125783e-17,
+                "increment_2": 1.3877787807814457e-17,
+                "increment_3": 0.0
+              }
+            },
+            {
+              "N": 6,
+              "rank_profile": [
+                0,
+                4,
+                4,
+                4,
+                4,
+                4,
+                2
+              ],
+              "residuals": {
+                "coverage": 1.1943212429363586e-17,
+                "S_pieces": 0.0,
+                "increment_0": 0.0,
+                "increment_1": 1.3877787807814457e-17,
+                "increment_2": 3.469446951953614e-18,
+                "increment_3": 5.551115123125783e-17,
+                "increment_4": 1.1102230246251565e-16,
+                "increment_5": 0.0
+              }
+            }
+          ],
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Two-horizon rank constancy and credibility",
+          "status": "PASS",
+          "tolerance_domain": "Absolute rank tolerance 1e-4 in unscaled setup Gram coordinates",
+          "observed_result": "Profiles [0,4,4,4,2] and [0,4,4,4,4,4,2]; same recipe and exclusions (1,1); singular values recorded and none in [5e-5,2e-4].",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#23b75d41"
+        },
+        {
+          "name": "Permitted leftovers and notebook construction",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Every active interpolation term assigned; one terminal-star monotonicity residual and the full numerical PSD remainder retained at boundary; no omitted terms. Visible partial-sum loop and sign argument inspected.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#b8603ae5"
+        }
+      ],
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#23b75d41",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#ce33b506",
+        "dual_feg/r03/supplementary/rank_search.json",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Actual framework candidate scanning and sparse-subset searches were replayed. The adopted independent bases and symmetric coefficients reconstruct every selected and confirming partial sum, including both endpoints and all scalar components.",
+      "required_checks": [
+        "Actual basis search and independence",
+        "Every-index N=4 reconstruction",
+        "Every-index N=6 reconstruction",
+        "Visible full expression and coefficients"
+      ],
+      "passed_checks": [
+        "Actual basis search and independence",
+        "Every-index N=4 reconstruction",
+        "Every-index N=6 reconstruction",
+        "Visible full expression and coefficients"
+      ],
+      "checks": [
+        {
+          "name": "Actual basis search and independence",
+          "status": "PASS",
+          "tolerance_domain": {
+            "column_atol": 0.0001,
+            "column_rtol": 0.0001,
+            "zero_tol": 1e-06,
+            "indep_tol": 1e-07,
+            "span_tol": 1e-05
+          },
+          "observed_result": "Replayed candidate construction, column-space filtering, sparse basis selection and per-index independence. Basis sizes [0,4,4,4,2] at N=4; analogous rank-four interior and rank-two terminal at N=6.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#6d91e676"
+        },
+        {
+          "name": "Every-index N=4 reconstruction",
+          "status": "PASS",
+          "tolerance_domain": {
+            "indep_tol": 1e-07,
+            "span_tol": 1e-05,
+            "component_atol": 0.0001,
+            "component_rtol": 1e-05
+          },
+          "observed_result": {
+            "certificate_id": "54be6de5a79a91c98605dd0e690d5fd0dd56f0b83618148855ba9bb33aefb458",
+            "required_indices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "quadratic_residuals": {
+              "0": 0.0,
+              "1": 5.775973716233656e-16,
+              "2": 2.1712568106401946e-09,
+              "3": 2.6197879269155525e-09,
+              "4": 3.5596443010781266e-09
+            },
+            "component_residuals": {
+              "0": {
+                "gram": 0.0,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "1": {
+                "gram": 2.42861286636753e-16,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "2": {
+                "gram": 1.323120869811678e-09,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "3": {
+                "gram": 1.3554841849644506e-09,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "4": {
+                "gram": 1.3254494883125478e-09,
+                "function": 0.0,
+                "offset": 0.0
+              }
+            },
+            "tolerances": {
+              "indep_tol": 1e-07,
+              "span_tol": 1e-05,
+              "component_atol": 0.0001,
+              "component_rtol": 1e-05
+            },
+            "passed": true
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Every-index N=6 reconstruction",
+          "status": "PASS",
+          "tolerance_domain": {
+            "indep_tol": 1e-07,
+            "span_tol": 1e-05,
+            "component_atol": 0.0001,
+            "component_rtol": 1e-05
+          },
+          "observed_result": {
+            "certificate_id": "825a7443e18af72192041f74fd330bd48f5a91873f865b1e22a5f64295166b7f",
+            "required_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "quadratic_residuals": {
+              "0": 0.0,
+              "1": 2.1042203829566175e-16,
+              "2": 8.420654338598386e-10,
+              "3": 1.245414275745644e-09,
+              "4": 1.692875969722412e-09,
+              "5": 2.1602673290467504e-09,
+              "6": 3.2706191516623884e-09
+            },
+            "component_residuals": {
+              "0": {
+                "gram": 0.0,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "1": {
+                "gram": 1.1102230246251565e-16,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "2": {
+                "gram": 4.294343491917374e-10,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "3": {
+                "gram": 4.734765773894978e-10,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "4": {
+                "gram": 4.991284677235974e-10,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "5": {
+                "gram": 5.086810686213972e-10,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "6": {
+                "gram": 9.343177898024635e-10,
+                "function": 0.0,
+                "offset": 0.0
+              }
+            },
+            "tolerances": {
+              "indep_tol": 1e-07,
+              "span_tol": 1e-05,
+              "component_atol": 0.0001,
+              "component_rtol": 1e-05
+            },
+            "passed": true
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Visible full expression and coefficients",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Ordered interior basis [gN,x0-xN,xk-xN,zk], empty initial basis and terminal [gN,x0-xN]; symmetric double-sum convention; function and constant terms absent and checked. Fitted formulas remained candidates until B5.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#1921e859"
+        }
+      ],
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#f31b656c",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#6d91e676",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#1921e859",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#51057933",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#b3040b92",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The explicit terminal-anchored potential establishes the exact target for every N>=1. Replayed general symbolic identities, inspected residual signs and domains, and verified the submitted telescoping and normalized boundary implication. Final static and clean-kernel records are supported by the frozen notebook hash and actual outputs.",
+      "required_checks": [
+        "General exact step, base, terminal and exceptional-horizon identities",
+        "Nonincreasing direction, signs and denominators",
+        "Exact target implication",
+        "Self-contained proof and required notebook delivery",
+        "Frozen-source integrity"
+      ],
+      "passed_checks": [
+        "General exact step, base, terminal and exceptional-horizon identities",
+        "Nonincreasing direction, signs and denominators",
+        "Exact target implication",
+        "Self-contained proof and required notebook delivery",
+        "Frozen-source integrity"
+      ],
+      "checks": [
+        {
+          "name": "General exact step, base, terminal and exceptional-horizon identities",
+          "status": "PASS",
+          "tolerance_domain": "Exact symbolic zero Gram/function/offset residuals; L>0, N positive integer; nonterminal m=q+1>=2",
+          "observed_result": {
+            "step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 7
+            },
+            "base_zero": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 5
+            },
+            "base": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 5
+            },
+            "terminal_step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 5
+            },
+            "N1": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 3
+            },
+            "boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true,
+              "dimension": 4
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+        },
+        {
+          "name": "Nonincreasing direction, signs and denominators",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "M_k and M_star are nonpositive by monotonicity, Q_k by L-Lipschitz continuity; all displayed multipliers positive on their domains; S is a squared norm. V0=0, VN<=0; N=1 checked independently.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#857f3126"
+        },
+        {
+          "name": "Exact target implication",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "||gN||^2-4L^2R^2/N^2 = VN+(4L/N)M_star-S+(4L^2/N^2)(||x0-x_star||^2-R^2)<=0. No division by R or residual norm. All N>=1, L>0, R>=0 included.",
+          "evidence_ref": "dual_feg/r03/dual_feg_example_lyap.ipynb#8771e1e5"
+        },
+        {
+          "name": "Self-contained proof and required notebook delivery",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": {
+            "code_cells": 33,
+            "errors": 0,
+            "plot_outputs": 1,
+            "saved_clean_kernel_returncode": 0,
+            "execution_hash_matches_frozen_notebook": true,
+            "static_source_ruff": 0,
+            "static_source_ty": 0,
+            "checklist": "all twelve items covered by visible content; minor malformed index text in row 8 does not hide its actual cell 23 evidence"
+          },
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/integrity-delivery.json"
+        },
+        {
+          "name": "Frozen-source integrity",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "All 153 frozen manifest hashes match originals; numerical and symbolic source cells replayed in isolated fresh Python process.",
+          "evidence_ref": "supplementary/evaluation/dual_feg_r03/validation/integrity-delivery.json"
+        }
+      ],
+      "evidence_refs": [
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#3407f258",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#03de6805",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#689910cf",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#3f31e4aa",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#56a3a6fd",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#694eadb4",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#f7eebb3f",
+        "dual_feg/r03/dual_feg_example_lyap.ipynb#857f3126",
+        "dual_feg/r03/supplementary/b5-static-001.json",
+        "dual_feg/r03/supplementary/b5-nbconvert-execution.json",
+        "dual_feg/r03/supplementary/dual_feg_example_lyap_checklist.md",
+        "supplementary/evaluation/dual_feg_r03/validation/replay-results.json"
+      ],
+      "failure_code": null
+    }
+  ],
+  "review_started_at": "2026-09-24T00:09:00.967516+00:00",
+  "review_stopped_at": "2026-09-24T00:14:17.373929+00:00",
+  "limitations": [
+    "Access control was instruction-only and available host/source records do not exhaustively trace every read or model training exposure.",
+    "No fresh solver sweep, Ruff/ty invocation or Jupyter-kernel execution during review; saved records were inspected and all mathematical code was replayed in a fresh isolated Python process.",
+    "Saved N=2 sweep solve was optimal_inaccurate; selected N=4 and confirming N=6 certificates were optimal and independently verified.",
+    "No browser, rendering, image inspection or exports; these are ancillary under the frozen evaluation override."
+  ],
+  "instructions": "Exactly B1-B5 assessed against frozen submitted evidence; originals unchanged and evidence references campaign-relative."
+}

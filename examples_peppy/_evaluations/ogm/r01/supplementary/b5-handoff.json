@@ -1,0 +1,54 @@
+{
+  "attempt_id": "ogm_r01",
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "entry_exit_reason": "All analytic identities, signs, domain, endpoint and normalization obligations completed; required final static and nbconvert execution passed; all twelve notebook requirements inspected.",
+  "run_status": "success",
+  "operational_status": "closed",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_required_work": [],
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": true,
+  "analytic_full_pep_note": "Separate global table proof was not required and is not claimed.",
+  "notebook": "ogm_example_lyap.ipynb",
+  "notebook_sha256": "55b3515f90ca678c87e006e79c32674b5e9ec7623a7235758c21cad5192654d8",
+  "state": "state/ogm_b5.json",
+  "checks": [
+    "supplementary/b5-symbolic-output.txt",
+    "supplementary/b5-static-001.json",
+    "supplementary/b5-nbconvert-evidence.json",
+    "supplementary/b5-final-markdown-evidence.json"
+  ],
+  "access_control": "instruction_only",
+  "prohibited_sources_used_or_encountered": false,
+  "access_declaration": "No prohibited source use or exposure observed in this attempt; exact approved files and own generated artifacts only.",
+  "observability_limits": "No exhaustive OS read tracing; declaration and tool logs are not OS enforcement or proof about model training.",
+  "new_consulted_sources": [
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/references/workflow.md",
+    "Own B4 state, native symbolic scripts, theorem/proof text, final notebook and validation records"
+  ],
+  "consulted_source_record_chain": [
+    "supplementary/preflight-access.json",
+    "supplementary/b1-handoff.json",
+    "supplementary/b2-handoff.json",
+    "supplementary/b3-handoff-to-b2.json",
+    "supplementary/b2-N6-handoff.json",
+    "supplementary/b3-handoff.json",
+    "supplementary/b4-handoff.json"
+  ],
+  "command_records": "Actual tool transcript and per-command stdout/evidence files preserve read/execute history; adapter manifests enumerate staged approved sources and pinned tools. No external resources consulted.",
+  "integrity_exceptions": [],
+  "operational_repairs": "Earlier encoding, path-length, notebook writer, import and static typing failures were repaired only in attempt-owned files; preserved in earlier handoff/evidence records.",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "token_usage": null,
+  "finished_utc": "2026-09-23T14:57:50.024367+00:00",
+  "original_deadline_utc": "2026-09-23T16:12:13.416403+00:00"
+}

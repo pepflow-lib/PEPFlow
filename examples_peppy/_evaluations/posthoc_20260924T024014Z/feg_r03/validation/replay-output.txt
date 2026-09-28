@@ -1,0 +1,137 @@
+REPLAY CELL 9a11736a
+REPLAY CELL b6a6e911
+Approved framework: \\?\C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\posthoc_20260924T024014Z\feg_r03\validation\supplementary\approved\pepflow\__init__.py
+REPLAY CELL 3b66b50f
+REPLAY CELL beb06dce
+REPLAY CELL 9af9b3d3
+Shared first half-step confirmed; squared residual and R² normalization encoded.
+REPLAY CELL 534d6338
+N=1: 1.9999999956 (optimal)
+N=2: 0.9999999961 (optimal)
+N=3: 0.4444444508 (optimal)
+N=4: 0.2500000070 (optimal)
+N=5: 0.1600000044 (optimal)
+N=6: 0.1111111199 (optimal)
+N=7: 0.0816326585 (optimal)
+Maximum residual for N >= 2: 8.768811288195622e-09
+REPLAY CELL 6632cf00
+Dense optimum: 0.25000000704304937
+Selected sparse optimum: 0.250000000230413
+Basis: ['x_1/2', 'x_star', 'A(x_1/2)', 'A(x_1)', 'A(x_1+1/2)', 'A(x_2)', 'A(x_2+1/2)', 'A(x_3)', 'A(x_3+1/2)', 'A(x_4)']
+Dropped constraints: 64
+Monotone Operator Inequality active dense entries: 4
+Lipschitz Continuous Inequality active dense entries: 4
+Preserved optimum and conjectured normalization confirmed.
+Dense group: Monotone Operator Inequality
+Matrix display omitted; mathematical checks retained
+Dense group: Lipschitz Continuous Inequality
+Matrix display omitted; mathematical checks retained
+Selected relaxed group: Monotone Operator Inequality
+Matrix display omitted; mathematical checks retained
+Selected relaxed group: Lipschitz Continuous Inequality
+Matrix display omitted; mathematical checks retained
+REPLAY CELL 87d7d123
+initial_condition 0.25000000223078267
+A monotone:x_1,x_2 0.5000094295466974
+A monotone:x_2,x_3 1.50002827331512
+A monotone:x_3,x_4 3.0000565286933263
+A monotone:x_4,x_star 1.0000188460138035
+A Lipschitz:x_1,x_1/2 0.1250023593930748
+A Lipschitz:x_1+1/2,x_2 0.5000094275256938
+A Lipschitz:x_2+1/2,x_3 1.1250212038910445
+A Lipschitz:x_3+1/2,x_4 2.0000376845030043
+Numerical rank of S at absolute tolerance 1e-4: 1
+REPLAY CELL df6739e8
+REPLAY CELL cb401788
+Certificate inventory, source hashes, coordinates and identity hash confirmed.
+REPLAY CELL cf28d6b7
+Full direct eigenfactor weights: [5.77417320e-10 1.38766896e-09 2.08203033e-09 2.30985611e-09
+ 2.34220718e-09 2.75172856e-09 3.82713909e-09 5.23195489e-09
+ 8.53925284e-09 1.50003769e+00]
+Reconstruction maximum residual: 2.220446049250313e-16
+Candidate lambda discrepancy: 5.6528693326285406e-05
+Candidate S discrepancy: 3.7684972719054244e-05
+True selected numerical S:
+Matrix display omitted; mathematical checks retained
+Matrix display omitted; mathematical checks retained
+REPLAY CELL e3995429
+Matrix display omitted; mathematical checks retained
+Identity residuals: {'Gram': 2.295867374931366e-09, 'function': 0.0, 'constant': 2.0003696477033373e-09}
+Numerical certificate verified; analytic full-PEP and Lyapunov proof remain unproved.
+Initial closed-form search: {'completed': True, 'references_reviewed': ['Own input and approved generic operator API; no target references authorized'], 'attempts': [{'component': 'lambda', 'method': 'Rational inspection of all sparse groups: k(k+1), (k+1)^2 and terminal factors', 'maximum_sample_difference': 5.6528693326285406e-05, 'comparison_atol': 0.0001, 'passed': True}, {'component': 'S', 'method': 'Inspect rank-one dominant eigenspace and compare square ||(2L/N)(x0-xstar)-A(xN)||^2', 'maximum_sample_difference': 3.7684972719054244e-05, 'comparison_atol': 0.0001, 'passed': True}, {'component': 'joint', 'method': 'Reassemble candidate finite-N certificate', 'sample_identity_max_abs': 1.6653345369377348e-16}], 'unresolved_components': ['All-horizon validity of candidate lambda and S identities']}
+Candidate joint sample residual: 1.6653345369377348e-16
+REPLAY CELL 8a88eeea
+\\?\C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\posthoc_20260924T024014Z\feg_r03\validation\supplementary\approved\pepflow\pep_context.py:172: UserWarning:
+
+The provided name was already used. The older PEPContext will be overwritten. PEPBuilders constructed with the older PEPContext should be remade.
+
+REPLAY CELL aa9e92b9
+Numerical certificate checked for this N and parameter sample.
+REPLAY CELL 5a10230d
+REPLAY CELL 59721ae2
+rank V_0: 0
+
+rank V_1: 2
+rank V_2: 2
+rank V_3: 2
+rank V_4: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+lyap[4] rank: 2
+Coverage checked with all scalar components and explicit boundary leftovers.
+REPLAY CELL 98f9526a
+Confirmed horizon: 6 retained indices: [1, 2, 3, 4, 5] common rank: 2
+Confirmed horizon: 4 retained indices: [1, 2, 3] common rank: 2
+Absolute rank tolerance: 0.0001 scaling: none
+Terminal leftovers: one zero-point monotonicity inequality and one full PSD block; no omissions.
+Analytic full-PEP and Lyapunov proofs remain unresolved.
+REPLAY CELL 266415e0
+Selected partial sums rechecked; endpoints included in reconstruction.
+REPLAY CELL 6a1cac35
+REPLAY CELL cbb931fe
+k=0: rank 0 basis []; reconstruction residual 0.000e+00
+Function terms: none; scalar offset: 0
+k=1: rank 2 basis ['g_1', 'x_1-x_0']; reconstruction residual 3.925e-17
+Matrix display omitted; mathematical checks retained
+Function terms: none; scalar offset: 0
+k=2: rank 2 basis ['g_2', 'x_2-x_0']; reconstruction residual 4.247e-09
+Matrix display omitted; mathematical checks retained
+Function terms: none; scalar offset: 0
+k=3: rank 2 basis ['g_3', 'x_3-x_0']; reconstruction residual 5.910e-09
+Matrix display omitted; mathematical checks retained
+Function terms: none; scalar offset: 0
+k=4: rank 2 basis ['g_4', 'x_4-x_0']; reconstruction residual 9.282e-09
+Matrix display omitted; mathematical checks retained
+Function terms: none; scalar offset: 0
+REPLAY CELL 0b6ec879
+Candidate coefficient discrepancy k=0: 0.000e+00
+Candidate coefficient discrepancy k=1: 2.359e-06
+Candidate coefficient discrepancy k=2: 9.428e-06
+Candidate coefficient discrepancy k=3: 2.120e-05
+Candidate coefficient discrepancy k=4: 3.768e-05
+Candidate coefficient matrices:
+Matrix display omitted; mathematical checks retained
+Matrix display omitted; mathematical checks retained
+Matrix display omitted; mathematical checks retained
+Matrix display omitted; mathematical checks retained
+REPLAY CELL 6b230c38
+Full-component reconstruction passed at all indices: [0, 1, 2, 3, 4]
+REPLAY CELL 25deb1ee
+Reusing unchanged numerical structure, with reconstruction checked above.
+REPLAY CELL 8fc32cd4
+REPLAY CELL 3f0658ac
+REPLAY CELL be6a9268
+Matrix display omitted; mathematical checks retained
+Step function residual: Matrix(0, 0, []) constant residual: 0
+Step all components exactly zero
+REPLAY CELL 2716c436
+Matrix display omitted; mathematical checks retained
+Base function residual: Matrix(0, 0, []) constant residual: 0
+Base all components exactly zero
+REPLAY CELL 0044cd3d
+Matrix display omitted; mathematical checks retained
+Boundary function residual: Matrix(0, 0, []) constant residual: 0
+Boundary all components exactly zero
+Positive multipliers and nonzero denominators certified for k>=1,N>=1,L>0; R>=0.
+Base V1<=V0=0, steps V(k+1)<=Vk, boundary metric-target<=VN, hence metric<=4 L^2 R^2/N^2.
+For N=1 the interior step range is empty; the same base and terminal identities apply.
+ALL SELECTED CELLS PASSED

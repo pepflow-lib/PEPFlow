@@ -1,0 +1,73 @@
+{
+  "attempt_id": "pgm_without_sos_r02",
+  "current_block": "B5",
+  "completion_status": "incomplete",
+  "next_block": null,
+  "run_status": "error",
+  "operational_status": "stopped",
+  "recorded_utc": "2026-09-23T17:17:20.345112+00:00",
+  "entry_exit_reason": "Final nbconvert dispatcher used unapproved Python313 installed dependencies. Frozen allowlist restricts installed dependencies to pinned .venv and provides no source-equivalence exception; continuation prohibited by generic tool-recovery policy.",
+  "access_control": "instruction_only",
+  "access_status": "confirmed_unapproved_generic_dependency_read",
+  "eligible": false,
+  "prohibited_mathematical_content_observed": false,
+  "incident": {
+    "command": [
+      "pinned python.exe",
+      "-I",
+      "-B",
+      "-m",
+      "jupyter",
+      "nbconvert",
+      "--to",
+      "notebook",
+      "--execute",
+      "pgm_example_lyap.ipynb",
+      "--ExecutePreprocessor.kernel_name=pgm-private"
+    ],
+    "owned_launcher": "supplementary/execute_b5.py",
+    "evidence": "supplementary/b5-nbconvert.log",
+    "observed_dependency_path": "C:/Users/Jack/AppData/Local/Programs/Python/Python313/Lib/site-packages/zmq/_future.py",
+    "observed_result": "nbconvert exit 0; all notebook code completed. Parent conversion process used Python313 dependency; private notebook kernel argv remained pinned.",
+    "distinction": "Confirmed generic dependency route deviation; no target-specific prohibited source or answer observed. Not classified as mathematical contamination.",
+    "triage": [
+      "Stopped suspect route; no active owned jobs",
+      "Read own log, approved recovery policy, allowlist and settings only",
+      "Allowlist installed_dependencies=.venv/Lib/site-packages; source_equivalence_exceptions=[]",
+      "No permitted evidence can establish predeclared exception; no further execution or mathematical work"
+    ],
+    "repair_not_executed": "Would call pinned python -I -B -m nbconvert directly; cannot retroactively cure eligibility or continue absent predeclared equivalence rule"
+  },
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "B5_evidence": {
+    "standalone_symbolic_checks": "Step, base, boundary, normalization, N=1 all exact zero; generic Gram square completion exact zero.",
+    "notebook_execution": "78-cell notebook executed successfully through nbconvert before final small source edit; execution route is ineligible.",
+    "postexecution_edit": "One symbolic recurrence-link assertion and printed elimination formula added to cell 75; this edit has not undergone required static check and final execution.",
+    "last_static": "supplementary/b5-static-002.json passed before final cell75 edit",
+    "current_notebook_sha256": "cf038b19fe4904f9363f711a4e8b5af0f1bec313059de5b4a77acf575b95c0b6"
+  },
+  "unresolved_work": [
+    "Eligible pinned final notebook execution",
+    "Static check after latest cell75 edit",
+    "Final twelve-item delivery audit"
+  ],
+  "consulted_sources": [
+    "Own generated B1-B5 notebook, scripts, state, and logs",
+    "Approved lyap-closed-form SKILL.md and references/workflow.md",
+    "Approved dispatch.md, worker-protocol.md, clean-room.md, settings.json, preflight-only.md, allowlist.json",
+    "Approved optional/with-clean-room/references/tool-recovery.md",
+    "Previously recorded approved framework and skills"
+  ],
+  "ordinary_incidents": [
+    "Nested rational symbolic expansion was slow; owned sessions interrupted, modular exact square completion succeeded",
+    "Initial B5 lint failed on lambda, semicolons, import placement; fixed and B5 static002 passed",
+    "Attempted reads of nonexistent own b4-access.json and approved/tool-recovery.md yielded no content; exact existing paths then used"
+  ],
+  "audit_limit": "Instruction-only isolation; no exhaustive filesystem tracing. Dependency read is evidenced by the actual conversion warning path.",
+  "original_deadline_utc": "2026-09-23T18:18:03.767479+00:00"
+}

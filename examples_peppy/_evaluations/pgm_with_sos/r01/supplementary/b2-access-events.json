@@ -1,0 +1,50 @@
+{
+    "current_block":  "B2",
+    "completion_status":  "complete",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Coherent sparse numerical certificate, initial formula search, notebook and static checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "additional_sources":  [
+                               "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+                               "supplementary/approved/pepflow/expression_manager.py",
+                               "supplementary/approved/pepflow/scalar.py",
+                               "supplementary/approved/pepflow/ipython_utils.py",
+                               "supplementary/approved/pepflow/parameter.py"
+                           ],
+    "inherited_source_record":  "supplementary/b1-access-events.json",
+    "own_artifacts_consulted":  [
+                                    "state/pgm_b1.json",
+                                    "state/pgm_dense.json",
+                                    "state/pgm_b2.json",
+                                    "state/pgm_relaxed.json",
+                                    "pgm_example_lyap.ipynb",
+                                    "supplementary/inspect_b2.py",
+                                    "supplementary/sparse_b2.py",
+                                    "supplementary/capture_b2.py",
+                                    "supplementary/helpers/candidates.py",
+                                    "supplementary/update_b2_notebook.py",
+                                    "supplementary/b2-static-001.json",
+                                    "supplementary/b2-static-002.json"
+                                ],
+    "commands":  "Pinned Python -I -B for inspect_b2.py, sparse_b2.py, capture_b2.py and update_b2_notebook.py; approved adapter source checks. Full outputs in b2-*-output.txt and commands in b2-static-*.json.",
+    "incidents":  [
+                      "Initial exact fixed-N test used numerical ExpressionManager mode and encountered 1.11e-16 roundoff. Preserved diagnostic; final notebook uses explicit sympy_mode=True and SymPy parameters and verifies exact zeros.",
+                      "Initial B2 static check found ordinary import ordering, lambda style, and broad numeric annotation diagnostics; fixed notebook source; second check passed.",
+                      "One shell call had a mistyped nonexistent working directory and did not launch; immediately corrected, no resource read."
+                  ],
+    "numerical_certificate_verified":  true,
+    "analytic_full_pep_verified":  false,
+    "lyapunov_proof_verified":  false,
+    "supplied_assistance":  "Fixed PGM SOS aid verified against selected numerical S, normalization 1; not imposed as solver constraint",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem read audit",
+    "checks":  {
+                   "static":  "supplementary/b2-static-002.json",
+                   "notebook":  "supplementary/b2-notebook-002-output.txt",
+                   "exact_check":  "All fixed-N Gram/function/offset coordinates simplify to zero in notebook",
+                   "certificate":  "state/pgm_b2.json"
+               },
+    "unresolved_work":  "B3-B5 and arbitrary-horizon analytic obligations",
+    "deadline_utc":  "2026-09-23T16:12:00.406449+00:00"
+}

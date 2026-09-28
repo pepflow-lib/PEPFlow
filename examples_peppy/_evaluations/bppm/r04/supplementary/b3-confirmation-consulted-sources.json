@@ -1,0 +1,23 @@
+{
+  "phase": "B3_confirmation",
+  "new_external_sources": [],
+  "own_sources": [
+    "supplementary/run_b3_N6.py",
+    "supplementary/b3_rank_N6.json",
+    "supplementary/finalize_b3.py",
+    "supplementary/b3_assess.py",
+    "supplementary/update_b3_notebook.py",
+    "supplementary/inspect_b3.py",
+    "state/bppm_b3.json"
+  ],
+  "checks": [
+    "supplementary/b3_N6.console.txt",
+    "supplementary/b3_finalization.console.txt",
+    "supplementary/b3_notebook.console.txt",
+    "supplementary/b3-static-001.json"
+  ],
+  "access_control": "instruction_only",
+  "incidents": [],
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive OS tracing."
+}

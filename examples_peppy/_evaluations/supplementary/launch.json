@@ -1,0 +1,68 @@
+{
+  "controller_only": true,
+  "campaign": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1",
+  "queues": [
+    {
+      "repetition": 1,
+      "repetition_id": "r01",
+      "queue": [
+        "pgm_without_sos",
+        "pgm_with_sos",
+        "ogm",
+        "bppm",
+        "feg",
+        "dual_feg"
+      ]
+    },
+    {
+      "repetition": 2,
+      "repetition_id": "r02",
+      "queue": [
+        "pgm_with_sos",
+        "pgm_without_sos",
+        "ogm",
+        "bppm",
+        "feg",
+        "dual_feg"
+      ]
+    },
+    {
+      "repetition": 3,
+      "repetition_id": "r03",
+      "queue": [
+        "pgm_without_sos",
+        "pgm_with_sos",
+        "ogm",
+        "bppm",
+        "feg",
+        "dual_feg"
+      ]
+    },
+    {
+      "repetition": 4,
+      "repetition_id": "r04",
+      "queue": [
+        "pgm_with_sos",
+        "pgm_without_sos",
+        "ogm",
+        "bppm",
+        "feg",
+        "dual_feg"
+      ]
+    },
+    {
+      "repetition": 5,
+      "repetition_id": "r05",
+      "queue": [
+        "pgm_without_sos",
+        "pgm_with_sos",
+        "ogm",
+        "bppm",
+        "feg",
+        "dual_feg"
+      ]
+    }
+  ],
+  "instructions": "For each available slot spawn fresh fork_turns=none gpt-6-astra medium with only its preflight instruction path. Verify actual-worker evidence passed before copying controller-held packet to approved/input.md. Send its frozen dispatch text, packet path, host dispatch time and deadline in the SAME session. Register session/request boundaries and original deadline. Subsequent handoffs ONLY fixed continuation. Fill free slots immediately; enforce round barrier. All 30 generation stops precede independent review.",
+  "continuation": "Proceed with the next step under the existing case instructions."
+}

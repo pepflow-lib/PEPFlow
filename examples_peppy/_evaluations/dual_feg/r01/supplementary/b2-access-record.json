@@ -1,0 +1,39 @@
+{
+  "current_block": "B2",
+  "access_control": "instruction_only",
+  "approved_direct_reads": [
+    "plugins/pepflow-workflows/skills/pep-full-proof/references/workflow.md",
+    "pepflow/lyapunov_utils.py",
+    "pepflow/expression_manager.py",
+    "pepflow/pep_context.py",
+    "pepflow/pep_result.py",
+    "pepflow/solver.py"
+  ],
+  "own_generated_inputs": [
+    "state/dual_feg_b1.json",
+    "state/dual_feg_dense.json",
+    "supplementary/b2_sparse_candidate.json"
+  ],
+  "scripts": [
+    "supplementary/helpers/certificate.py",
+    "supplementary/b2_dense.py",
+    "supplementary/b2_sparse.py",
+    "supplementary/b2_finalize.py",
+    "supplementary/b2_certificate_cells.py",
+    "supplementary/update_b2_notebook.py",
+    "supplementary/review_b2.py"
+  ],
+  "incidents": [
+    {
+      "classification": "operational_error",
+      "reason": "One tool invocation rejected before execution due to mistyped own cwd; corrected to authorized attempt path."
+    },
+    {
+      "classification": "static_diagnostics",
+      "evidence": "b2-static-001.json",
+      "repair": "Removed redundant/unused notebook imports, used SymPy Integer solve parameters and explicit optional-dual guards. Reacquired complete certificates and reran checks."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "audit_limit": "Instruction-only restrictions, no exhaustive OS read tracing. Commands and outputs preserved by actual tools and evidence files."
+}

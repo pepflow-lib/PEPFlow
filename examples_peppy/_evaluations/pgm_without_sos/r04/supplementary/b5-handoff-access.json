@@ -1,0 +1,46 @@
+{
+  "current_block": "B5",
+  "completion_status": "complete",
+  "next_block": null,
+  "run_status": "completed",
+  "entry_exit_reason": "All required mathematical, notebook, static and clean-kernel gates completed before original deadline",
+  "operational_status": "closed",
+  "finished_utc": "2026-09-23T20:52:02.853489+00:00",
+  "original_deadline_utc": "2026-09-23T21:58:02.889281+00:00",
+  "completed_blocks": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "unresolved_work": [],
+  "numerical_certificate_verified": true,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": true,
+  "analytic_scope": "Completed local Lyapunov theorem; no separate global analytic full-PEP claim was required or made.",
+  "sources_added": [
+    "approved lyap-closed-form/references/workflow.md",
+    "approved pepflow/scalar.py and utils.py",
+    "own B5 derivation, proof and validation artifacts"
+  ],
+  "commands": [
+    "Pinned python -I -B derive_b5.py, simplify_b5.py, local_blocks_b5.py, verify_b5.py, finalize_b5.py, repair_b5_source.py, final_execute.py, audit_final.py, close_attempt.py",
+    "Pinned approved adapter b5-static-001.json and b5-static-002.json; exact subprocess nbconvert command in b5-final-execution.json"
+  ],
+  "incidents": [
+    {
+      "kind": "static_lint",
+      "evidence": "b5-static-001.json",
+      "repair": "Split four semicolon-separated assignments; static-002 passed; final clean execution followed"
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "access_status": "no_prohibited_exposure_observed",
+  "audit_limit": "No exhaustive OS read tracing; see consulted-sources.json.",
+  "presentation_policy": "evaluation-ancillary-v1",
+  "notebook": "pgm_example_lyap.ipynb",
+  "final_state": "state/pgm_b5.json",
+  "notebook_sha256": "910087c97115f663c2292c16ae8bf9e137862444295343769300891c5434cd26"
+}

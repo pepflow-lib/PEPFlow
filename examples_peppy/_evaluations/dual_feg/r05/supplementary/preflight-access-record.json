@@ -1,0 +1,25 @@
+﻿{
+    "phase":  "preflight_only",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "command_record":  "Exact outer invocation is settings.json preflight_command; actual subprocess commands, source hashes, outputs and import origins are in preflight-001.json. Reads used PowerShell Get-Content; this record uses ConvertTo-Json and Set-Content.",
+    "adapter_consulted_sources":  "See preflight-001.json sources, commands, python_environment and configurations",
+    "external_resources":  [
+
+                           ],
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "audit_limit":  "Instruction-only access restriction; resolution probes and available tool logs are not an exhaustive filesystem audit.",
+    "status":  "passed",
+    "mathematical_generation_started":  false
+}

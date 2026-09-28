@@ -1,0 +1,46 @@
+﻿{
+    "phase":  "B5 final notebook delivery",
+    "observed_utc":  "2026-09-23T17:48:38.9762350Z",
+    "classification":  "unresolved_possible_unapproved_generic_runtime_read",
+    "access_status":  "unresolved",
+    "eligible":  false,
+    "access_control":  "instruction_only",
+    "evidence":  "supplementary/b5-nbconvert-execution.json",
+    "observation":  "The final python -I -B -m jupyter nbconvert command emitted a zmq runtime warning naming C:/Users/Jack/AppData/Local/Programs/Python/Python313/Lib/site-packages/zmq/_future.py, outside the allowed pinned .venv dependencies.",
+    "distinction":  "This is an executing-runtime warning source, not merely a configured search root. No target-specific content was observed. The dispatcher host executable/import origins were not captured, so actual generic source consumption cannot be conclusively resolved from the available attempt artifacts.",
+    "final_command":  [
+                          "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                          "-I",
+                          "-B",
+                          "-m",
+                          "jupyter",
+                          "nbconvert",
+                          "--to",
+                          "notebook",
+                          "--execute",
+                          "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r02\\bppm_example_lyap.ipynb",
+                          "--output",
+                          "bppm_example_lyap.ipynb",
+                          "--output-dir",
+                          "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\bppm\\r02",
+                          "--ExecutePreprocessor.kernel_name=bppm-r02",
+                          "--ExecutePreprocessor.timeout=120"
+                      ],
+    "kernel_argv":  [
+                        "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                        "-I",
+                        "-B",
+                        "-m",
+                        "ipykernel_launcher",
+                        "-f",
+                        "{connection_file}"
+                    ],
+    "frozen_source_equivalence_exceptions":  [
+
+                                             ],
+    "triage":  "Inspected only own command record, own kernel spec, approved settings and own preflight environment evidence. The kernel spec is pinned; the nbconvert host route remains unresolved. No external path was opened. No frozen equivalence rule applies.",
+    "resolution":  "Stopped without independent-success claim. A safe rerun would not establish the access history of the earlier launcher.",
+    "mathematical_work_suspended":  true,
+    "prohibited_mathematical_content_observed":  false,
+    "confirmed_contamination":  false
+}

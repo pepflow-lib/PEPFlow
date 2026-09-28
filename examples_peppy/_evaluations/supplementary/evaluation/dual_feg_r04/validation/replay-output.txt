@@ -1,0 +1,249 @@
+REPLAY b1-02
+REPLAY b1-03
+Framework origin: C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\dual_feg_r04\validation\supplementary\approved\pepflow\__init__.py
+REPLAY b1-05
+REPLAY b1-07
+REPLAY b1-08
+Setup constructed; terminal metric: |A(x_2)|^2
+REPLAY b3-01
+REPLAY b3-02
+Selected N=6 sample:
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Coverage and step identity maximum residual: 1.1102230246251565e-16
+Confirming N=8 sample:
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 4
+rank V_7: 4
+rank V_8: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Coverage and step identity maximum residual: 1.9186659324882298e-16
+Confirmed interior rank: 4 at horizons: [6, 8] fixed exclusions: (1, 1) absolute tolerance: 0.0001
+Every N=6 and N=8 retained singular value is outside the ambiguity band [0.5e-4,2e-4].
+REPLAY b4-01
+Numerical certificate checked for this N and parameter sample.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 4
+rank V_5: 4
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Coverage and step identity maximum residual: 1.1102230246251565e-16
+Selected partial sums replayed, all coordinates agree, fixed exclusions: {'left': 1, 'right': 1}
+REPLAY b4-03
+Unique nonzero candidates: 843
+V_1 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    z_1
+    x_1-x_N
+    A(x_0)
+    A(x_0_half)
+    (A(x_6))-(x_0-x_N)
+    (A(x_6))-(z_1)
+    (A(x_6))-(x_1-x_N)
+    (A(x_6))-(A(x_0))
+    (A(x_6))-(A(x_0_half))
+    (z_0)-(x_0-x_N)
+    (z_0)-(z_1)
+    (z_0)-(x_1-x_N)
+    (z_0)-(A(x_0))
+    (z_0)-(A(x_0_half))
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(z_1)
+    (x_0-x_N)-(x_1-x_N)
+    (x_0-x_N)-(A(x_0))
+    (x_0-x_N)-(A(x_0_half))
+    (x_0-x_N)-(A(x_6))
+    (z_1)-(x_1-x_N)
+    (z_1)-(A(x_0))
+    (z_1)-(A(x_0_half))
+    (z_1)-(A(x_6))
+    (x_1-x_N)-(A(x_0))
+    (x_1-x_N)-(A(x_0_half))
+    (x_1-x_N)-(A(x_6))
+    (x_1)-(x_0)
+    (A(x_0))-(A(x_0_half))
+    (A(x_0))-(A(x_6))
+    (A(x_0_half))-(A(x_6))
+V_2 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    z_2
+    x_2-x_N
+    (A(x_6))-(x_0-x_N)
+    (A(x_6))-(z_2)
+    (A(x_6))-(x_2-x_N)
+    (z_0)-(x_0-x_N)
+    (z_0)-(z_2)
+    (z_0)-(x_2-x_N)
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(z_2)
+    (x_0-x_N)-(x_2-x_N)
+    (x_0-x_N)-(A(x_6))
+    (z_2)-(x_2-x_N)
+    (z_2)-(A(x_6))
+    (x_2-x_N)-(A(x_6))
+    (x_2)-(x_0)
+V_3 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    z_3
+    x_3-x_N
+    (A(x_6))-(x_0-x_N)
+    (A(x_6))-(z_3)
+    (A(x_6))-(x_3-x_N)
+    (z_0)-(x_0-x_N)
+    (z_0)-(z_3)
+    (z_0)-(x_3-x_N)
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(z_3)
+    (x_0-x_N)-(x_3-x_N)
+    (x_0-x_N)-(A(x_6))
+    (z_3)-(x_3-x_N)
+    (z_3)-(A(x_6))
+    (x_3-x_N)-(A(x_6))
+    (x_3)-(x_0)
+V_4 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    z_4
+    x_4-x_N
+    (A(x_6))-(x_0-x_N)
+    (A(x_6))-(z_4)
+    (A(x_6))-(x_4-x_N)
+    (z_0)-(x_0-x_N)
+    (z_0)-(z_4)
+    (z_0)-(x_4-x_N)
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(z_4)
+    (x_0-x_N)-(x_4-x_N)
+    (x_0-x_N)-(A(x_6))
+    (z_4)-(x_4-x_N)
+    (z_4)-(A(x_6))
+    (x_4-x_N)-(A(x_6))
+    (x_4)-(x_0)
+V_5 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    z_5
+    x_5-x_N
+    A(x_5)
+    (A(x_6))-(x_0-x_N)
+    (A(x_6))-(z_5)
+    (A(x_6))-(x_5-x_N)
+    (A(x_6))-(A(x_5))
+    (z_0)-(x_0-x_N)
+    (z_0)-(z_5)
+    (z_0)-(x_5-x_N)
+    (z_0)-(A(x_5))
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(z_5)
+    (x_0-x_N)-(x_5-x_N)
+    (x_0-x_N)-(A(x_5))
+    (x_0-x_N)-(A(x_6))
+    (z_4)-(A(x_4_half))
+    (z_5)-(A(x_5))
+    (z_5)-(A(x_6))
+    (x_5-x_N)-(A(x_6))
+    (x_5)-(x_0)
+    (A(x_5))-(A(x_6))
+V_6 column-space candidates:
+    A(x_6)
+    x_0-x_N
+    (A(x_6))-(x_0-x_N)
+    (z_0)-(x_0-x_N)
+    (z_0)-(A(x_6))
+    (x_0-x_N)-(A(x_6))
+REPLAY b4-05
+k=1, rank=4: sparse basis: ['A(x_6)', 'x_0-x_N', 'z_1', '(x_0-x_N)-(A(x_0))']
+zero coefficients: 9/16
+k=2, rank=4: sparse basis: ['A(x_6)', 'x_0-x_N', 'z_2', 'x_2-x_N']
+zero coefficients: 7/16
+k=3, rank=4: sparse basis: ['A(x_6)', 'x_0-x_N', 'z_3', 'x_3-x_N']
+zero coefficients: 7/16
+k=4, rank=4: sparse basis: ['A(x_6)', 'x_0-x_N', 'z_4', '(z_4)-(x_4-x_N)']
+zero coefficients: 8/16
+k=5, rank=4: sparse basis: ['A(x_6)', 'x_0-x_N', 'x_5-x_N', '(A(x_6))-(A(x_5))']
+zero coefficients: 11/16
+k=6, rank=2: sparse basis: ['A(x_6)', 'x_0-x_N']
+zero coefficients: 1/4
+REPLAY b4-07
+REPLAY b4-09
+k=0: rank 0 basis []; reconstruction residual 0.000e+00
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=1: rank 4 basis ['A(x_N)', 'x_0-x_N', 'x_1-x_N', 'z_1']; reconstruction residual 2.104e-16
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=2: rank 4 basis ['A(x_N)', 'x_0-x_N', 'x_2-x_N', 'z_2']; reconstruction residual 8.421e-10
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=3: rank 4 basis ['A(x_N)', 'x_0-x_N', 'x_3-x_N', 'z_3']; reconstruction residual 1.245e-09
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=4: rank 4 basis ['A(x_N)', 'x_0-x_N', 'x_4-x_N', 'z_4']; reconstruction residual 1.693e-09
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=5: rank 4 basis ['A(x_N)', 'x_0-x_N', 'x_5-x_N', 'z_5']; reconstruction residual 2.160e-09
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+k=6: rank 2 basis ['A(x_N)', 'x_0-x_N']; reconstruction residual 3.271e-09
+<IPython.core.display.Math object>
+Function-value terms: none; offset: 0.0
+REPLAY b4-11
+k=0: candidate coefficient maximum error 0.000e+00
+<IPython.core.display.Math object>
+k=1: candidate coefficient maximum error 2.017e-05
+<IPython.core.display.Math object>
+k=2: candidate coefficient maximum error 2.009e-05
+<IPython.core.display.Math object>
+k=3: candidate coefficient maximum error 2.005e-05
+<IPython.core.display.Math object>
+k=4: candidate coefficient maximum error 2.004e-05
+<IPython.core.display.Math object>
+k=5: candidate coefficient maximum error 2.003e-05
+<IPython.core.display.Math object>
+k=6: candidate coefficient maximum error 2.003e-05
+<IPython.core.display.Math object>
+All required indices, including initial and terminal cases, reconstructed in every scalar component.
+REPLAY b5-01
+REPLAY b5-04
+Derived local multiplier solution: {mu_lip: 2/t**2, mu_mon: 4*L/(t**2 - t)}
+<IPython.core.display.Math object>
+Interior step (t=N-k>=2) function coordinates: [] offset: 0 all components exactly zero: True
+REPLAY b5-07
+<IPython.core.display.Math object>
+Base V_0=0 for every N>=1 function coordinates: [] offset: 0 all components exactly zero: True
+<IPython.core.display.Math object>
+Actual first-step identity (N>=2) function coordinates: [] offset: 0 all components exactly zero: True
+REPLAY b5-10
+<IPython.core.display.Math object>
+Last step t=1 function coordinates: [] offset: 0 all components exactly zero: True
+<IPython.core.display.Math object>
+Exceptional horizon N=1 function coordinates: [] offset: 0 all components exactly zero: True
+REPLAY b5-13
+<IPython.core.display.Math object>
+Terminal metric and normalization function coordinates: [] offset: 0 all components exactly zero: True
+REPLAY b5-15
+All required multipliers are positive on their stated domains; no vanishing denominators remain.
+Monotonicity and Lipschitz residuals are nonpositive; squared remainder is nonnegative.
+Therefore V_N <= V_0 = 0 and ||A(x_N)||^2 <= 4 L^2 R^2 / N^2 for every integer N>=1.

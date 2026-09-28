@@ -1,0 +1,49 @@
+﻿{
+    "phase":  "preflight_only",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "adapter_command":  [
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                            "-I",
+                            "-B",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\plugins\\pepflow-workflows\\optional\\with-clean-room\\scripts\\check_static.py",
+                            "--python",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+                            "--ruff",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\ruff.exe",
+                            "--ty",
+                            "C:\\Users\\Jack\\AppData\\Local\\uv\\cache\\archive-v0\\VWo92b0BJr6Q4_o3qIBeK\\ty-0.0.82.data\\scripts\\ty.exe",
+                            "--attempt-root",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05",
+                            "--approved-package",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\approved\\pepflow",
+                            "--helper-root",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary",
+                            "--probe-helper-path",
+                            "supplementary/runtime.py",
+                            "--evidence",
+                            "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\pgm_with_sos\\r05\\supplementary\\preflight-001.json",
+                            "--expect-ty-version",
+                            "0.0.82",
+                            "--timeout",
+                            "120",
+                            "preflight"
+                        ],
+    "command_cwd":  "C:/Users/Jack/Documents/GitHub/PEPFlow/examples_peppy/_evaluations/20260923T140754Z_paper5_pgm_sos_6x5_isolation1/pgm_with_sos/r05",
+    "adapter_source_and_subprocess_reads":  "See preflight-001.json sources, commands, configurations, origins and environment records",
+    "external_resources":  [
+
+                           ],
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "Instruction-only isolation; tool evidence is not an exhaustive OS read audit.",
+    "status":  "passed",
+    "mathematical_generation_started":  false,
+    "operational_obstruction":  null
+}

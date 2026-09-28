@@ -1,0 +1,31 @@
+{
+  "current_block": "B2",
+  "completion_status": "complete_confirmation_certificate",
+  "next_block": "B3",
+  "entry_exit_reason": "Acquired coherent N8 dense/relaxed certificate with preserved optimum, full checks and decomposition; selected N6 remains unchanged.",
+  "operational_status": "awaiting_same_session_continuation",
+  "confirmation_certificate": "supplementary/N8/feg_b2.json",
+  "sources": [
+    "Own prior B2 scripts and states",
+    "Exact approved framework paths hashed in certificate"
+  ],
+  "commands": [
+    "Python -I -B supplementary/b2_acquire8.py",
+    "Python -I -B supplementary/b2_finalize8.py",
+    "Python -I -B supplementary/b2_notebook8.py",
+    "Python -I -B supplementary/execute_notebook.py",
+    "Approved static adapter b2-N8-static-001.json"
+  ],
+  "incidents": [
+    {
+      "classification": "PowerShell script execution disabled",
+      "action": "Returned to original inline argv invocation; no policy change"
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_exposure_observed": false,
+  "unresolved": [
+    "B3 cross-horizon rank confirmation",
+    "Blocks 4\u20135"
+  ]
+}

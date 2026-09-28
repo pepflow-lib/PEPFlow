@@ -1,0 +1,51 @@
+{
+  "current_block": "B1",
+  "completion_status": "complete",
+  "next_block": "B2",
+  "entry_exit_reason": "Dispatched after preflight; setup, sweep, notebook execution and static checks complete.",
+  "run_status": "awaiting_continuation",
+  "dispatch_utc": "2026-09-23T15:01:13.976153+00:00",
+  "deadline_utc": "2026-09-23T17:01:13.976153+00:00",
+  "access_control": "instruction_only",
+  "sources": [
+    "approved/dispatch.md",
+    "approved/input.md",
+    "approved/worker-protocol.md",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "approved/plugins/pepflow-workflows/references/output-layout.md",
+    "approved/pepflow/function.py",
+    "approved/pepflow/__init__.py",
+    "approved/pepflow/pep_runner.py",
+    "approved/pepflow/pep.py",
+    "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+  ],
+  "commands": [
+    "run_b1.py executed before and after annotation-only setup change; preserved both logs",
+    "build_b1_notebook.py executed three times; each log preserved",
+    "three static adapter check invocations; exact commands in b1-static-001/002/003.json",
+    "finalize_b1.py inspected saved notebook text and output metadata without viewing images"
+  ],
+  "incidents": [
+    {
+      "classification": "operational",
+      "evidence": "b1-static-001.json",
+      "issue": "Windows path-length error staging wide supplementary helper root",
+      "repair": "Narrow attempt-owned supplementary/helpers root and matching probe layout; generic preflight rerun by adapter passed."
+    },
+    {
+      "classification": "source diagnostics",
+      "evidence": "b1-static-002.json",
+      "issue": "Notebook import ordering and symbolic Parameter versus Number annotation",
+      "repair": "Separate import cell; Any annotation for supported symbolic parameter; checks passed in b1-static-003.json."
+    }
+  ],
+  "prohibited_content_observed": false,
+  "observability_limit": "No exhaustive OS read trace; declaration limited to tool-visible activity.",
+  "unresolved_work": "B2-B5 not started.",
+  "usage": null
+}

@@ -1,0 +1,25 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "incomplete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "A second horizon requires its own coherent certificate before cross-horizon rank confirmation",
+    "operational_status":  "awaiting_same_session_continuation",
+    "requested_horizon":  6,
+    "preserve_selected_horizon":  4,
+    "selected_certificate":  "state/pgm_b2.json",
+    "trial_evidence":  "supplementary/b3-n4-canonical.json",
+    "recipe":  "canonical",
+    "checks":  "Saved certificate identity/hash/source/metadata replayed; partial-sum coverage, piece signs and increments verified at selected horizon",
+    "new_sources":  [
+                        "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+                        "supplementary/helpers/partial_sums.py",
+                        "supplementary/run_b3.py",
+                        "supplementary/b3-n4-canonical.json"
+                    ],
+    "command":  "Pinned Python -I -B supplementary/run_b3.py",
+    "access_control":  "instruction_only",
+    "access_status":  "no_observed_prohibited_exposure",
+    "audit_limit":  "No exhaustive filesystem read tracing",
+    "original_deadline_utc":  "2026-09-23T18:17:47.370960+00:00",
+    "usage_tokens":  null
+}

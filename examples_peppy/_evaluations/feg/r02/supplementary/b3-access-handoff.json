@@ -1,0 +1,32 @@
+{
+  "current_block": "B3",
+  "completion_status": "complete",
+  "next_block": "B4",
+  "entry_exit_reason": "Rank two confirmed at N6 and N8 with fixed exclusions and complete coverage; selected N6 partial sums saved.",
+  "operational_status": "awaiting_same_session_continuation",
+  "sources": [
+    "Own N6/N8 certificates and generated replay/grouping source",
+    "approved/pepflow/utils.py",
+    "Previously consulted B3 workflow"
+  ],
+  "commands": [
+    "Python -I -B supplementary/b3_trial8.py",
+    "Python -I -B supplementary/b3_finalize.py",
+    "Python -I -B supplementary/b3_notebook.py",
+    "Python -I -B supplementary/execute_notebook.py",
+    "Approved static adapter b3-static-001/002.json",
+    "Own notebook output/source inspection"
+  ],
+  "incidents": [
+    {
+      "classification": "Static dict invariance diagnostic",
+      "repair": "Annotate parameter dictionary using framework numeric type alias; execute and recheck."
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_exposure_observed": false,
+  "unresolved": [
+    "B4 basis reconstruction",
+    "B5 exact theorem and proof"
+  ]
+}

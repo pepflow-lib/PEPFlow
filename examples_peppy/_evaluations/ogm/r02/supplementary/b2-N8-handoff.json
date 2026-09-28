@@ -1,0 +1,60 @@
+﻿{
+    "current_block":  "B2",
+    "completion_status":  "complete_additional_horizon",
+    "next_block":  "B3",
+    "entry_exit_reason":  "Acquired and verified complete N=8 dense and sparse certificate under existing recipe",
+    "operational_status":  "awaiting_same_session_continuation",
+    "selected_horizon":  6,
+    "additional_horizon":  8,
+    "additional_certificate":  "supplementary/horizon_N8/ogm_b2.json",
+    "certificate_id":  "2eef6b79b372b79a03d28a9bf6df7a491b4eb4d5dd01883d0257262495cfd162",
+    "numerical_checks":  {
+                             "tolerances":  {
+                                                "identity_atol":  1E-05,
+                                                "identity_rtol":  0.0,
+                                                "reconstruction_atol":  0.0001,
+                                                "reconstruction_rtol":  1E-05,
+                                                "dual_tol":  1E-06,
+                                                "psd_tol":  1E-06,
+                                                "dense_opt_atol":  1E-05
+                                            },
+                             "residuals":  {
+                                               "identity_gram_max_abs":  2.1350088363902842E-10,
+                                               "identity_func_max_abs":  9.0624130422156668E-10,
+                                               "identity_offset_abs":  1.4484146174109647E-10,
+                                               "S_reconstruction_max_abs":  1.1102230246251565E-16,
+                                               "dense_relaxed_gap":  1.0871693337244359E-09,
+                                               "minimum_scalar_inequality_dual":  0.009036079552000174,
+                                               "minimum_S_eigenvalue":  4.5813704626615532E-11,
+                                               "minimum_matrix_inequality_eigenvalue":  0.0
+                                           },
+                             "passed":  true
+                         },
+    "static_evidence":  "supplementary/b2-N8-static-001.json",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "consulted_approved_files":  [
+                                     "settings.json",
+                                     "allowlist.json"
+                                 ],
+    "own_sources":  [
+                        "supplementary/b2_dense.py",
+                        "supplementary/b2_selected.py",
+                        "supplementary/helpers/certificate_tools.py",
+                        "ogm_setup.py",
+                        "state/ogm_b1.json",
+                        "supplementary/horizon_N8/ogm_dense.json",
+                        "supplementary/horizon_N8/ogm_b2.json",
+                        "supplementary/b2-N8-static-001.json"
+                    ],
+    "source_hashes":  "All exact approved framework files and own setup/capture helper are recorded and checked in certificate provenance",
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+
+                  ],
+    "unresolved_work":  "B3 must compare verified rank constructions at N=6 and N=8; B4/B5 unstarted",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

@@ -1,0 +1,143 @@
+{
+  "access_control": "instruction_only",
+  "direct_reads": [
+    "supplementary/approved/preflight-only.md",
+    "supplementary/approved/allowlist.json",
+    "supplementary/approved/settings.json",
+    "supplementary/approved/clean-room.md",
+    "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+    "supplementary/preflight-001.json"
+  ],
+  "executed_command_source": "supplementary/approved/settings.json:preflight_command",
+  "command_evidence": "supplementary/preflight-001.json",
+  "console_evidence": "supplementary/preflight-001-console.txt",
+  "adapter_reads": "Approved framework staging manifest, executed commands and import origins recorded in preflight-001.json",
+  "prohibited_sources_observed": false,
+  "visibility_limit": "No exhaustive OS read tracing. Declaration covers observed tools and approved dependency/runtime imports; no claim of OS-enforced isolation or training-source independence.",
+  "mathematical_generation_started": false,
+  "status": "completed B1-B5",
+  "B1_reads": [
+    "supplementary/approved/dispatch.md",
+    "supplementary/approved/input.md",
+    "supplementary/approved/worker-protocol.md",
+    "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+    "supplementary/approved/pepflow/operator.py",
+    "supplementary/approved/pepflow/pep_runner.py",
+    "supplementary/approved/pepflow/pep.py",
+    "supplementary/approved/pepflow/solver.py",
+    "supplementary/approved/pepflow/pep_result.py",
+    "supplementary/approved/pepflow/vector.py",
+    "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+  ],
+  "own_generated_reads": "Own setup, notebook, B1 state, sweep cache, static evidence and generated scripts.",
+  "B1_commands": [
+    "sweep.py; CLARABEL defaults N=1..7",
+    "build_b1.py; fresh private kernel (three executions)",
+    "adapter check b1-static-001/002/003.json",
+    "adapter preflight preflight-002.json",
+    "finish_b1.py inspection"
+  ],
+  "incidents": [
+    {
+      "kind": "operational",
+      "evidence": "b1-static-001.json",
+      "reason": "Broad helper root stages long approved paths; Windows path length failure",
+      "repair": "Moved own runtime helper to supplementary/helpers; preflight-002 passed; frozen sources unchanged"
+    },
+    {
+      "kind": "source_diagnostics",
+      "evidence": "b1-static-002.json",
+      "repair": "Separate bootstrap and import cells; reference runtime root explicitly"
+    },
+    {
+      "kind": "source_diagnostics",
+      "evidence": "b2-static-001.json",
+      "repair": "Explicit SymPy parameter values, checked nonmissing dual values, and named max_abs function; fresh coherent solve and replay"
+    },
+    {
+      "kind": "operational",
+      "evidence": "b2-selected-003-console.txt",
+      "repair": "Avoided shadowing objective by loop variable; fresh complete solve retained in b2-selected-004-console.txt"
+    },
+    {
+      "kind": "source_diagnostics",
+      "evidence": "b3-static-001.json",
+      "repair": "Added explicit integer type guard and reran grouping, notebook and b3-static-002.json"
+    },
+    {
+      "kind": "source_diagnostics",
+      "evidence": "b4-static-001.json",
+      "repair": "Typed parameter dictionary and distinct replay import alias; b4-static-002 passed"
+    },
+    {
+      "kind": "operational",
+      "reason": "Final audit command used a mistyped nonexistent working directory; process creation failed before any command ran",
+      "repair": "Repeated read-only audit in actual attempt directory; no content exposure"
+    }
+  ],
+  "B2_reads": [
+    "Own B1 state, setup, B2 generated sources, dense/selected states, notebook outputs",
+    "approved pep-full-proof/references/workflow.md",
+    "approved pepflow/pep_result.py",
+    "approved pepflow/lyapunov_utils.py",
+    "approved pepflow/utils.py",
+    "approved pepflow/expression_manager.py",
+    "approved pepflow/ipython_utils.py",
+    "Approved framework files hashed from exact allowlist; no target reference retrieval"
+  ],
+  "B2_commands": [
+    "b2_dense.py",
+    "b2_selected.py and recorded retries",
+    "update_b2_notebook.py fresh kernel and retry",
+    "adapter b2-static-001.json and b2-static-002.json",
+    "finish_b2.py"
+  ],
+  "B3_initial_reads": [
+    "approved lyap-define/references/workflow.md",
+    "Own B2 selected and dense certificates, generated partial_sums.py, rank_N6.json"
+  ],
+  "B3_initial_commands": [
+    "b3_initial.py: saved certificate replay, partial sums, rank and full-coordinate coverage; no solve"
+  ],
+  "B2_N8": [
+    "Read only own B2 state/helpers and approved framework imports; no new external references",
+    "b2_N8.py: dense and selected CLARABEL solves, full certificate checks",
+    "notebook_N8.py: fresh kernel replay",
+    "adapter b2-N8-static.json"
+  ],
+  "B3_completion": [
+    "Own saved N=6 and N=8 certificates and generated helpers; no additional approved/external source reads",
+    "complete_b3.py: source/hash and mathematical replay, rank comparison, B3 state",
+    "notebook_b3.py: fresh-kernel visible construction and comparison",
+    "adapter b3-static-001.json"
+  ],
+  "B4_reads": [
+    "approved lyap-vectors/references/workflow.md",
+    "approved pepflow/lyapunov_utils.py",
+    "Own B3 state, rank evidence, generated b4_math.py and notebook"
+  ],
+  "B4_commands": [
+    "run_b4.py: saved-certificate replay, candidate search and all-index reconstruction",
+    "notebook_b4.py: fresh kernel execution",
+    "adapter b4-static-001.json"
+  ],
+  "B5_reads": [
+    "approved lyap-closed-form/references/workflow.md",
+    "approved pepflow/expression_manager.py",
+    "Own B4 state and generated final symbolic sources/notebook/output evidence"
+  ],
+  "B5_commands": [
+    "run_b5.py exact coefficient elimination and symbolic identities",
+    "notebook_b5.py source update",
+    "adapter b5-static-001.json",
+    "execute_final.py: pinned python -I -B -m nbconvert --execute with private kernel",
+    "finalize_b5.py source/output audit and state save"
+  ],
+  "integrity_exceptions": "Operational/source-check repairs documented; no known prohibited mathematical source exposure."
+}

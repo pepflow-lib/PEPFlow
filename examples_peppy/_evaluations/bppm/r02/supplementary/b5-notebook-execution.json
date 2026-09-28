@@ -1,0 +1,312 @@
+[
+  {
+    "cell": 4,
+    "execution_count": 1,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 5,
+    "execution_count": 2,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 7,
+    "execution_count": 3,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 9,
+    "execution_count": 4,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Built four exact Bregman proximal steps.\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 11,
+    "execution_count": 5,
+    "output_types": [
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "N=1: PEP=1.0000000006; conjecture=1.0000000000; status=optimal\nN=2: PEP=0.4999999958; conjecture=0.5000000000; status=optimal\nN=3: PEP=0.3333333333; conjecture=0.3333333333; status=optimal\nN=4: PEP=0.2499999995; conjecture=0.2500000000; status=optimal\nN=5: PEP=0.1999999999; conjecture=0.2000000000; status=optimal\nN=6: PEP=0.1666666661; conjecture=0.1666666667; status=optimal\nN=7: PEP=0.1428571412; conjecture=0.1428571429; status=optimal\nMaximum absolute discrepancy: 4.241e-09 (tolerance 1e-5)\n"
+    ],
+    "has_plot": true
+  },
+  {
+    "cell": 14,
+    "execution_count": 6,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Dense optimum: 0.24999999952352878\nSelected optimum: 0.24999999998930553\nGap: 4.657767505023003e-10\nBasis vectors: ['x_0', 'x_star', 'grad_f(x_0)', 'x_1', 'grad_f(x_1)', 'grad_h(x_0)', 'x_2', 'grad_f(x_2)', 'x_3', 'grad_f(x_3)', 'x_4', 'grad_f(x_4)', 'grad_h(x_star)']\nDense active f {'f:x_star,x_1': 0.25, 'f:x_star,x_2': 0.25, 'f:x_star,x_3': 0.25, 'f:x_star,x_4': 0.25, 'f:x_1,x_2': 0.13709, 'f:x_1,x_3': 0.0731308, 'f:x_1,x_4': 0.0397792, 'f:x_2,x_3': 0.2545141, 'f:x_2,x_4': 0.1325759, 'f:x_3,x_4': 0.5776448}\nDense active h {'h:x_1,x_0': 0.25, 'h:x_1,x_2': 0.0639592, 'h:x_1,x_3': 0.0333515, 'h:x_1,x_4': 0.0397792, 'h:x_2,x_1': 0.38709, 'h:x_2,x_3': 0.1219381, 'h:x_2,x_4': 0.1325759, 'h:x_3,x_2': 0.5776448, 'h:x_3,x_4': 0.5776448, 'h:x_4,x_3': 1.0, 'h:x_star,x_4': 0.25}\nDense S eigenvalues: [6.73444585e-11 1.48067933e-10 1.81493172e-10 2.12551060e-10\n 2.65038681e-10 2.89441110e-10 2.89441189e-10 2.89441326e-10\n 3.13843010e-10 3.66331960e-10 3.97390490e-10 4.30815845e-10\n 5.11542621e-10]\nDropped constraints: 45\ninitial_condition 0.2500000001939169\nf:x_star,x_1 0.2500000001760963\nf:x_star,x_2 0.250000000282091\nf:x_star,x_3 0.2500000002545696\nf:x_star,x_4 0.2500000001727983\nf:x_1,x_2 0.25000000017609625\nf:x_2,x_3 0.5000000002367986\nf:x_3,x_4 0.7500000002699794\nh:x_1,x_0 0.250000000193917\nh:x_1,x_2 0.25000000013372914\nh:x_2,x_1 0.5000000001062573\nh:x_2,x_3 0.500000000332877\nh:x_3,x_2 0.750000000305405\nh:x_3,x_4 0.7500000002230197\nh:x_4,x_3 1.0000000001955478\nh:x_star,x_4 0.2500000001939167\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 16,
+    "execution_count": 7,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "Candidate lambda discrepancy: 3.328769482280336e-10\nCandidate lambda for f\n",
+      "Candidate lambda for h\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 18,
+    "execution_count": 8,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "All numerical diagonal coefficients: [9.19249767e-11 1.59475714e-10 1.74155231e-10 1.85651418e-10\n 1.91197122e-10 1.91197146e-10 1.91197148e-10 1.91197148e-10\n 1.91197173e-10 1.96742851e-10 2.08239028e-10 2.22918550e-10\n 2.90469323e-10]\nS reconstruction discrepancy: 4.652890945610781e-25\n",
+      "Saved numerical S (all entries retained):\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 20,
+    "execution_count": 9,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "Numerical certificate checks: {'passed': True, 'residuals': {'identity_gram_max_abs': 1.9119716428583832e-10, 'identity_func_max_abs': 8.855551847375409e-10, 'identity_offset_abs': 2.046113556364304e-10, 'S_reconstruction_max_abs': 4.652890945610781e-25, 'dense_relaxed_gap': 4.657767505023003e-10, 'minimum_scalar_inequality_dual': 0.25000000013372914, 'minimum_S_eigenvalue': 9.192497669950171e-11, 'minimum_matrix_inequality_eigenvalue': 0.0, 'conjectured_rate_error': 1.0694473084882361e-11}, 'tolerances': {'identity_atol': 1e-05, 'identity_rtol': 0, 'reconstruction_atol': 0.0001, 'reconstruction_rtol': 1e-05, 'dual_tol': 1e-06, 'psd_tol': 1e-06, 'dense_opt_atol': 1e-05}}\n",
+      "Function residual: [ 8.85555185e-10  0.00000000e+00 -5.55111512e-17 -1.11022302e-16\n  2.21388796e-10 -2.21388685e-10  1.11022302e-16 -2.21388796e-10\n  0.00000000e+00 -4.42777592e-10 -2.21388630e-10 -1.66533454e-16]\nConstant residual: 2.04611355636430e-10\n",
+      "Fixed-N exact candidate identity: all coordinates zero.\nNumerical certificate verified: True; analytic full-PEP verified: False; Lyapunov proof verified: False.\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 23,
+    "execution_count": 10,
+    "output_types": [
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "Saved certificate replayed:",
+      " True\nInitial normalization dual: 0.2500000001939169\nAdditional scalar/matrix dual families: none (inventory checked).\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 24,
+    "execution_count": 11,
+    "output_types": [
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "rank V_0: 0",
+      "\n\nrank V_1: 4\nrank V_2: 4\nrank V_3: 4\nrank V_4: 4\nInterior rank is constant at this N: True boundary exclusions: (1, 1)\nCoverage residual: {'gram': 5.551115123125783e-17, 'function': 0.0, 'offset': 0.0}\nSingular-value separation: smallest retained 0.12500000009250334 largest discarded 1.6613694617679035e-10\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 25,
+    "execution_count": 12,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Confirming horizons: [4, 6]\nCommon interior rank: 4 ; fixed exclusions: (1, 1)\nRank convention: unscaled setup Gram coordinates; absolute tolerance 1e-4.\nBoth horizon certificates and all-coordinate coverage were recomputed in the saved comparison run.\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 28,
+    "execution_count": 13,
+    "output_types": [
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "Replayed rank profile:",
+      " [0, 4, 4, 4, 4] ; interior 1..N-1; endpoints 0,N retained.\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 30,
+    "execution_count": 14,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Nonzero unique candidate counts: {1: 28, 2: 30, 3: 30, 4: 30}\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 31,
+    "execution_count": 15,
+    "output_types": [
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "V_1 column-space candidates:\n   q_k = grad h(x_0)-grad h(x_k)\n   p_k = x_star-x_k\n   r_k = x_k-x_0\n   t = grad h(x_0)\n   grad h(x_1)\n   x_0-x_star\n   x_0-x_1\n   grad h(x_1)-grad f(x_1)\nV_2 column-space candidates:\n   q_k = grad h(x_0)-grad h(x_k)\n   p_k = x_star-x_k\n   r_k = x_k-x_0\n   t = grad h(x_0)\n   grad h(x_2)\n   x_0-x_star\n   x_0-x_2\nV_3 column-space candidates:\n   q_k = grad h(x_0)-grad h(x_k)\n   p_k = x_star-x_k\n   r_k = x_k-x_0\n   t = grad h(x_0)\n   grad h(x_3)\n   x_0-x_star\n   x_0-x_3\n",
+      "V_4 column-space candidates:\n   q_k = grad h(x_0)-grad h(x_k)\n   p_k = x_star-x_k\n   r_k = x_k-x_0\n   t = grad h(x_0)\n   grad h(x_4)\n   x_0-x_star\n   x_0-x_4\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 33,
+    "execution_count": 16,
+    "output_types": [
+      "stream",
+      "stream"
+    ],
+    "text": [
+      "k=1: rank 4; sparse basis: ['q_k = grad h(x_0)-grad h(x_k)', 'p_k = x_star-x_k', 'r_k = x_k-x_0', 't = grad h(x_0)']\n  zero coefficients: 12/16\nk=2: rank 4; sparse basis: ['q_k = grad h(x_0)-grad h(x_k)', 'p_k = x_star-x_k', 'r_k = x_k-x_0', 't = grad h(x_0)']\n  zero coefficients: 12/16\nk=3: rank 4; sparse basis: ['q_k = grad h(x_0)-grad h(x_k)', 'p_k = x_star-x_k', 'r_k = x_k-x_0', 't = grad h(x_0)']\n  zero coefficients: 12/16\n",
+      "k=4: rank 4; sparse basis: ['q_k = grad h(x_0)-grad h(x_k)', 'p_k = x_star-x_k', 'r_k = x_k-x_0', 't = grad h(x_0)']\n  zero coefficients: 12/16\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 35,
+    "execution_count": 17,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "k=0: rank 0 basis []\nk=1: rank 4 basis ['q_k', 'p_k', 'r_k', 't']\nk=2: rank 4 basis ['q_k', 'p_k', 'r_k', 't']\nk=3: rank 4 basis ['q_k', 'p_k', 'r_k', 't']\nk=4: rank 4 basis ['q_k', 'p_k', 'r_k', 't']\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 37,
+    "execution_count": 18,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream"
+    ],
+    "text": [
+      "k=0: quadratic reconstruction residual 0.000e+00\nFunction coefficients [f(x_k)-f_star, h(x_k)-h(x_0)]: [0. 0.] ; offset: 0.0\nk=1: quadratic reconstruction residual 9.722e-17\n",
+      "Function coefficients [f(x_k)-f_star, h(x_k)-h(x_0)]: [ 0.25 -0.25] ; offset: 0.0\nk=2: quadratic reconstruction residual 3.004e-10\n",
+      "Function coefficients [f(x_k)-f_star, h(x_k)-h(x_0)]: [ 0.5  -0.25] ; offset: 0.0\nk=3: quadratic reconstruction residual 3.950e-10\n",
+      "Function coefficients [f(x_k)-f_star, h(x_k)-h(x_0)]: [ 0.75 -0.25] ; offset: 0.0\nk=4: quadratic reconstruction residual 4.360e-10\n",
+      "Function coefficients [f(x_k)-f_star, h(x_k)-h(x_0)]: [ 1.   -0.25] ; offset: 0.0\nAll-index full-component reconstruction: {0: {'gram': 0.0, 'function': 0.0, 'offset': 0.0}, 1: {'gram': 5.551115123125783e-17, 'function': 5.551115123125783e-17, 'offset': 0.0}, 2: {'gram': 1.1069439809219261e-10, 'function': 2.2138879618438523e-10, 'offset': 0.0}, 3: {'gram': 1.759650203325691e-10, 'function': 2.2138879618438523e-10, 'offset': 0.0}, 4: {'gram': 1.759650203325691e-10, 'function': 2.2138935129589754e-10, 'offset': 0.0}}\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 38,
+    "execution_count": 19,
+    "output_types": [
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "display_data"
+    ],
+    "text": [
+      "k=0: candidate coefficient residual 0.000e+00\nk=1: candidate coefficient residual 9.696e-11\n",
+      "k=2: candidate coefficient residual 1.011e-10\n",
+      "k=3: candidate coefficient residual 8.495e-11\n",
+      "k=4: candidate coefficient residual 7.952e-11\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 41,
+    "execution_count": 20,
+    "output_types": [],
+    "text": [],
+    "has_plot": false
+  },
+  {
+    "cell": 45,
+    "execution_count": 21,
+    "output_types": [
+      "display_data",
+      "stream",
+      "display_data",
+      "stream"
+    ],
+    "text": [
+      "Four-vector formula function residual: Matrix([[0, 0, 0, 0, 0, 0, 0]]) ; offset: 0\n",
+      "Step function residual: Matrix([[0, 0, 0, 0, 0, 0, 0]]) ; offset: 0\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 48,
+    "execution_count": 22,
+    "output_types": [
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "display_data",
+      "stream"
+    ],
+    "text": [
+      "Initial V0 function residual: Matrix([[0, 0, 0, 0, 0, 0]]) ; offset: 0\n",
+      "Base first step function residual: Matrix([[0, 0, 0, 0, 0, 0]]) ; offset: 0\n",
+      "Initial normalization function residual: Matrix([[0, 0, 0, 0, 0, 0]]) ; offset: 0\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 51,
+    "execution_count": 23,
+    "output_types": [
+      "display_data",
+      "stream",
+      "display_data",
+      "stream",
+      "execute_result"
+    ],
+    "text": [
+      "Boundary function residual: Matrix([[0, 0, 0, 0, 0]]) ; offset: 0\n",
+      "Terminal residual sign identity function residual: Matrix([[0, 0, 0, 0, 0]]) ; offset: 0\n"
+    ],
+    "has_plot": false
+  },
+  {
+    "cell": 53,
+    "execution_count": 24,
+    "output_types": [
+      "stream"
+    ],
+    "text": [
+      "Exact proof checks: {'step': True, 'base': True, 'boundary': True, 'signs': True, 'domain': True, 'normalization': True}\nAll step, initial, first-step and terminal identities are zero in every scalar component.\nLyapunov: V_k = k/N*(f(x_k)-f_star) + (D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N).\nTheorem: 0 <= f(x_N)-f_star <= R/(alpha*N), for N>=1, alpha>0, R>=0.\nf_{N} - f_{star} \\leq \\frac{R}{N \\alpha}\n"
+    ],
+    "has_plot": false
+  }
+]

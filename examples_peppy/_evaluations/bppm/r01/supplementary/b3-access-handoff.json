@@ -1,0 +1,44 @@
+{
+  "current_block": "B3",
+  "completion_status": "complete",
+  "next_block": "B4",
+  "entry_exit_reason": "Both complete saved certificates revalidated; same grouping gives confirmed cross-horizon ranks and full-coordinate coverage; notebook execution and static checks passed.",
+  "run_status": "awaiting_continuation",
+  "sources": [
+    "approved lyap-define workflow",
+    "own selected N4 and supplementary N6 certificates",
+    "own saved grouping/revalidation sources",
+    "allowlisted framework sources checked against recorded hashes"
+  ],
+  "commands": [
+    "run_b3_selected.py",
+    "run_b3_N6.py",
+    "prepare_b3_assess.py",
+    "save_b3.py",
+    "update_b3_notebook.py",
+    "static adapter checks b3-static-001/002/003.json",
+    "finalize_b3.py"
+  ],
+  "incidents": [
+    {
+      "classification": "source lint",
+      "issue": "Unused generic PSDConstraint import",
+      "repair": "Removed unused import; static checks passed."
+    }
+  ],
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "observability_limit": "No exhaustive OS read trace.",
+  "rank_evidence": "supplementary/rank_search.json",
+  "grouping_residuals": {
+    "coverage": 5.551115123125783e-17,
+    "S pieces": 0.0,
+    "omitted": 0.0,
+    "increment_0": 0.0,
+    "increment_1": 5.551115123125783e-17,
+    "increment_2": 0.0,
+    "increment_3": 0.0
+  },
+  "unresolved_work": "B4 basis and all-index reconstruction; B5 exact Lyapunov theorem and proof.",
+  "deadline_utc": "2026-09-23T17:01:13.976153+00:00"
+}

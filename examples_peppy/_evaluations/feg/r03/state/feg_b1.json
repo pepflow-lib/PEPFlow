@@ -1,0 +1,99 @@
+{
+  "algo_name": "feg",
+  "problem_type": "monotone_operator",
+  "obj_tag": "A",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "||A(x_N)||^2",
+  "initial_condition": "||x_0-x_star||^2 <= R^2",
+  "conjectured_rate": "4*L**2*R**2/N**2",
+  "setup_file": "feg_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 1.9999999956242245,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 2,
+      "opt_value": 0.9999999961052993,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 3,
+      "opt_value": 0.44444445082796696,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 4,
+      "opt_value": 0.25000000704304937,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 5,
+      "opt_value": 0.16000000444443294,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 6,
+      "opt_value": 0.1111111198799224,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    },
+    {
+      "N": 7,
+      "opt_value": 0.08163265853119377,
+      "status": "optimal",
+      "attempts": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ]
+    }
+  ],
+  "N_verify": 4,
+  "analytic_status": "unproved",
+  "first_horizon_value": "2*L**2*R**2"
+}

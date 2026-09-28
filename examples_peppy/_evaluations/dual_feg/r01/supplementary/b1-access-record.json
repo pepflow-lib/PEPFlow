@@ -1,0 +1,58 @@
+{
+  "current_block": "B1",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive filesystem-read tracing. Tool outputs and adapter manifests retained.",
+  "approved_direct_reads": [
+    "dispatch.md",
+    "input.md",
+    "worker-protocol.md",
+    "settings.json",
+    "clean-room.md",
+    "plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+    "plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "plugins/pepflow-workflows/references/output-layout.md",
+    "pepflow/operator.py",
+    "pepflow/pep.py",
+    "pepflow/solver.py",
+    "pepflow/vector.py",
+    "pepflow/pep_runner.py",
+    "pepflow/__init__.py",
+    "plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+    "plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+    "plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+    "plugins/pepflow-workflows/skills/pep-implement/references/workflow.md"
+  ],
+  "generated_sources_and_execution": [
+    "dual_feg_setup.py",
+    "supplementary/runtime.py",
+    "supplementary/helpers/runtime.py",
+    "supplementary/run_b1.py",
+    "supplementary/build_b1_notebook.py",
+    "supplementary/review_b1.py",
+    "dual_feg_example_lyap.ipynb"
+  ],
+  "commands": "Actual tool logs plus supplementary run scripts, adapter args and evidence JSON preserve commands.",
+  "incidents": [
+    {
+      "evidence": "b1-static-001.json",
+      "classification": "operational_error",
+      "reason": "Windows path failure copying broad supplementary helper root",
+      "repair": "Narrow generated helper directory supplementary/helpers; preflight-002 passed"
+    },
+    {
+      "evidence": "tool output for b1-static-002 invocation",
+      "classification": "operational_error",
+      "reason": "PowerShell JSON array handling produced incorrect argv before adapter ran",
+      "repair": "Build argv from frozen settings as in prior successful invocation"
+    },
+    {
+      "evidence": "b1-static-003.json",
+      "classification": "source_diagnostics",
+      "reason": "Ruff E402 and unused bootstrap import",
+      "repair": "Separate bootstrap and imports notebook cells; assert runtime root"
+    }
+  ]
+}

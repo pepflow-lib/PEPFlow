@@ -1,0 +1,23 @@
+[
+  {
+    "stage": "historical",
+    "incident": "Pinned python -m jupyter selected Python313 jupyter-nbconvert launcher; symbolic matrix display then raised TypeError: Cannot convert expression to float.",
+    "evidence_ref": "validation/supplementary/b5-final-execution.json",
+    "resolution": "Fresh pinned isolated Python replay; no launcher dispatch; display calls omitted in validation only."
+  },
+  {
+    "stage": "posthoc inspection",
+    "incident": "PowerShell and first Python inspection could not read long generic skill paths (FileNotFoundError).",
+    "before": "Path(__file__).resolve().parent",
+    "after": "Windows extended path prefix \\\\?\\ on owned review path",
+    "resolution": "All own skill files readable with extended paths; no mathematical change."
+  },
+  {
+    "stage": "posthoc N6 replay",
+    "incident": "NameError: name 'REPO_ROOT' is not defined at b3_certificate_check.py line 39",
+    "evidence_ref": "validation/rank6-output-failed-001.txt",
+    "before": "REPO_ROOT absent from standalone replay namespace",
+    "after": "REPO_ROOT=root/'supplementary/approved'",
+    "resolution": "Added required validation-local generic framework path; N6 certificate/grouping replay passed."
+  }
+]

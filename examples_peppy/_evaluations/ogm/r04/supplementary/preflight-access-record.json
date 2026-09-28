@@ -1,0 +1,23 @@
+﻿{
+    "phase":  "preflight_only",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/preflight-001.json"
+                        ],
+    "executed_adapter":  "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+    "invocation":  "Exact preflight_command array from approved/settings.json, invoked through PowerShell call operator from attempt root; console preserved in preflight-001-console.txt",
+    "adapter_consulted_sources":  null,
+    "command_evidence":  "supplementary/preflight-001.json",
+    "prohibited_material_observed":  false,
+    "boundary_deviations":  [
+
+                            ],
+    "observability":  "Instruction-only access restrictions; no exhaustive operating-system read tracing. Adapter evidence records staging, commands, resolution roots and import origins.",
+    "mathematical_generation_started":  false,
+    "status":  "passed_awaiting_case_dispatch"
+}

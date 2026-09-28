@@ -1,0 +1,20 @@
+﻿{
+    "access_control":  "instruction_only",
+    "phase":  "preflight_only",
+    "consulted_files":  [
+                            "supplementary/approved/preflight-only.md",
+                            "supplementary/approved/allowlist.json",
+                            "supplementary/approved/settings.json",
+                            "supplementary/approved/clean-room.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py (executed)",
+                            "supplementary/preflight-001.json"
+                        ],
+    "command_record":  "Exact invocation frozen in approved/settings.json preflight_command; executed with PowerShell call operator from attempt root; adapter subcommands preserved in preflight-001.json",
+    "output_record":  "supplementary/preflight-001-output.txt",
+    "framework_reads":  "Approved framework staged files and hashes recorded by adapter in preflight-001.json",
+    "prohibited_source_observed":  false,
+    "limitations":  "Instruction-only restriction; no exhaustive OS-level read trace; no claim of OS enforcement",
+    "mathematical_generation_started":  false,
+    "status":  "passed"
+}

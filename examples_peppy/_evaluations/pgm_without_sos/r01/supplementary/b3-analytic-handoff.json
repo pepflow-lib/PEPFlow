@@ -1,0 +1,85 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Revised analytic PSD allocation reconstructed and checked at both saved horizons; rank and coverage gates passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "rank_search":  {
+                        "status":  "confirmed",
+                        "boundary_exclusions":  {
+                                                    "left":  1,
+                                                    "right":  1
+                                                },
+                        "rank":  4,
+                        "confirmed_horizons":  [
+                                                   4,
+                                                   6
+                                               ],
+                        "selected_certificate_id":  "349761e857f8eb526ef0714a2f07033de69c4cb3540250106a6f37886b4f3fd7",
+                        "recipe_id":  "forward_destination_analytic_psd_v2",
+                        "rank_convention":  {
+                                                "tolerance":  0.0001,
+                                                "scaling":  "absolute_unscaled",
+                                                "coordinate_order":  "original_framework_basis_earlier_iterates_first"
+                                            },
+                        "evidence_path":  "supplementary/rank_search.json"
+                    },
+    "coverage":  {
+                     "constraint_assignment":  {
+                                                   "f:x_star,x_0":  0,
+                                                   "f:x_star,x_1":  0,
+                                                   "f:x_star,x_2":  1,
+                                                   "f:x_star,x_3":  2,
+                                                   "f:x_star,x_4":  3,
+                                                   "f:x_0,x_1":  0,
+                                                   "f:x_1,x_2":  1,
+                                                   "f:x_2,x_3":  2,
+                                                   "f:x_3,x_4":  3,
+                                                   "g:x_star,x_1":  0,
+                                                   "g:x_star,x_2":  1,
+                                                   "g:x_star,x_3":  2,
+                                                   "g:x_star,x_4":  3,
+                                                   "g:x_1,x_2":  1,
+                                                   "g:x_2,x_3":  2,
+                                                   "g:x_3,x_4":  3
+                                               },
+                     "S_assignment":  {
+                                          "initial_smooth_square":  0,
+                                          "step_0_square_0":  0,
+                                          "step_0_square_1":  0,
+                                          "step_0_square_2":  0,
+                                          "step_1_square_0":  1,
+                                          "step_1_square_1":  1,
+                                          "step_1_square_2":  1,
+                                          "step_2_square_0":  2,
+                                          "step_2_square_1":  2,
+                                          "step_2_square_2":  2,
+                                          "step_3_square_0":  3,
+                                          "step_3_square_1":  3
+                                      },
+                     "normalization_constraint":  "initial_condition",
+                     "boundary_constraints":  [
+
+                                              ],
+                     "boundary_S":  [
+
+                                    ],
+                     "omitted_constraints":  [
+
+                                             ],
+                     "checked":  true,
+                     "coverage_max_abs":  3.1354783714132584E-06,
+                     "boundary_max_abs":  3.1391472976871615E-06,
+                     "increment_max_abs":  5.5511151231257827E-17
+                 },
+    "invalidated_dependency":  "Earlier B4 coefficient reconstruction must be redone for the revised allocation",
+    "evidence":  [
+                     "supplementary/b3-analytic-confirmation.txt",
+                     "supplementary/b3-analytic-notebook-001.txt",
+                     "supplementary/b3-analytic-static-001.json"
+                 ],
+    "preserved_previous":  "supplementary/ldl-discovery",
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00"
+}

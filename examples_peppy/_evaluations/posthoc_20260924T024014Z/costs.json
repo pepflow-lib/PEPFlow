@@ -1,0 +1,58 @@
+{
+  "verification": [
+    {
+      "attempt_id": "pgm_without_sos_r02",
+      "session_id": "01a0d14a-cd83-7920-a67c-c9096ad890f9",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "dispatch_at": "2026-09-24T02:42:07.228219+00:00",
+      "stopped_at": "2026-09-24T02:50:20.962175+00:00",
+      "wall_seconds": 493.733956,
+      "token_components_observed": {
+        "input_tokens": 1738844,
+        "cached_input_tokens": 1646464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9820,
+        "reasoning_output_tokens": 982,
+        "total_tokens": 1748664
+      },
+      "tokens_total": 1748664,
+      "usage_status": "complete",
+      "host_evidence": "posthoc_20260924T024014Z\\host\\ph_pgm_without_sos_r02.json"
+    },
+    {
+      "attempt_id": "feg_r03",
+      "session_id": "01a0d14a-9309-7821-b450-4134dbcc2397",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "dispatch_at": "2026-09-24T02:41:31.334160+00:00",
+      "stopped_at": "2026-09-24T02:48:12.182329+00:00",
+      "wall_seconds": 400.848169,
+      "token_components_observed": {
+        "input_tokens": 1389545,
+        "cached_input_tokens": 1300480,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 8270,
+        "reasoning_output_tokens": 637,
+        "total_tokens": 1397815
+      },
+      "tokens_total": 1397815,
+      "usage_status": "complete",
+      "host_evidence": "posthoc_20260924T024014Z\\host\\ph_feg_r03.json"
+    }
+  ],
+  "controller": {
+    "started_at": "2026-09-24T02:38:12.460Z",
+    "observed_at": "2026-09-24T02:51:30.424379+00:00",
+    "token_components_observed_delta": {
+      "input_tokens": 3964435,
+      "cached_input_tokens": 3915392,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 13742,
+      "reasoning_output_tokens": 3044,
+      "total_tokens": 3978177
+    },
+    "usage_status": "partial",
+    "scope": "Current post hoc controller turn through latest collection; includes preparation, orchestration and reporting; final response is outside snapshot."
+  }
+}

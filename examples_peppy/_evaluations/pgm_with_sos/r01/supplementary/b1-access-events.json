@@ -1,0 +1,67 @@
+{
+    "block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "access_control":  "instruction_only",
+    "sources":  [
+                    "approved/dispatch.md",
+                    "approved/input.md",
+                    "approved/worker-protocol.md",
+                    "approved/settings.json",
+                    "approved/clean-room.md",
+                    "approved/plugins/pepflow-workflows/optional/with-clean-room/references/tool-recovery.md",
+                    "approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                    "approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                    "approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                    "approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                    "approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                    "approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                    "approved/plugins/pepflow-workflows/references/output-layout.md",
+                    "approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py",
+                    "approved/pepflow/__init__.py",
+                    "approved/pepflow/pep_runner.py",
+                    "approved/pepflow/function.py",
+                    "approved/pepflow/pep.py",
+                    "approved/pepflow/solver.py",
+                    "approved/pepflow/pep_result.py",
+                    "approved/pepflow/parameter.py"
+                ],
+    "source_path_base":  "supplementary",
+    "framework_transitive_sources":  "Exact approved framework source manifests in preflight-001.json and b1-static-001/002/003.json; installed dependency imports allowed",
+    "own_files_consulted":  [
+                                "pgm_setup.py",
+                                "pgm_example_lyap.ipynb",
+                                "state/pgm_b1.json",
+                                "supplementary/runtime.py",
+                                "supplementary/helpers/runtime.py",
+                                "supplementary/run_b1.py",
+                                "supplementary/build_b1_notebook.py",
+                                "supplementary/_sweep_tmp.json",
+                                "supplementary/b1-static-001.json",
+                                "supplementary/b1-static-002.json",
+                                "supplementary/b1-static-003.json"
+                            ],
+    "executed_commands":  [
+                              "Pinned Python -I -B supplementary/run_b1.py; sweep resumed for N=7 after logged status guard at N=6",
+                              "Pinned Python -I -B supplementary/build_b1_notebook.py; three fresh-kernel executions reflecting runtime/style repairs",
+                              "Frozen check_static.py options-first check -- pgm_setup.py pgm_example_lyap.ipynb supplementary/helpers/runtime.py; exact commands in static evidence"
+                          ],
+    "incidents":  [
+                      "CLARABEL optimal_inaccurate N=6,7 preserved; no fallback or option change. First sweep driver stopped at N=6 due to conservative status guard; resumed N=7 without recomputing earlier samples.",
+                      "Static 001 hit WinError 206 while staging broad supplementary helper root. Moved generated helper to supplementary/helpers and narrowed root and probe path; static 002/003 repeat generic fresh-kernel preflight.",
+                      "Static 002 found notebook import-position and unused-import lint diagnostics. Added explicit runtime assertion and targeted E402 explanations for required path bootstrap; static 003 passed."
+                  ],
+    "checks":  {
+                   "maximum_rate_residual":  4.31910757159315E-09,
+                   "static":  "supplementary/b1-static-003.json",
+                   "notebook":  "supplementary/b1-notebook-final-output.txt",
+                   "tolerance":  1E-05,
+                   "visual_review":  "Not performed under evaluation-ancillary-v1"
+               },
+    "supplied_assistance":  "Fixed PGM SOS aid: read but unverified and not imposed",
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem read audit; instruction-only restriction",
+    "handoff_status":  "awaiting_same_session_continuation",
+    "entry_exit_reason":  "B1 numerical model and notebook checks complete; mandatory request boundary",
+    "deadline_utc":  "2026-09-23T16:12:00.406449+00:00"
+}

@@ -1,0 +1,40 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial dispatch; setup, seven-horizon numerical sweep, notebook execution and static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "access_control":  "instruction_only",
+    "additional_consulted_files":  [
+                                       "supplementary/approved/dispatch.md",
+                                       "supplementary/approved/input.md",
+                                       "supplementary/approved/worker-protocol.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                                       "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                                       "supplementary/approved/pepflow/function.py",
+                                       "supplementary/approved/pepflow/pep_runner.py",
+                                       "supplementary/approved/pepflow/pep.py",
+                                       "supplementary/approved/pepflow/solver.py",
+                                       "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                                   ],
+    "commands":  "Actual exec tool logs; run_b1.py, build_b1_notebook.py and immutable preflight/static JSON record generated execution and analyzer subprocesses. Reads restricted to listed approved paths and own generated files.",
+    "incidents":  [
+                      "PowerShell default encoding caused SyntaxError in own notebook builder; converted to UTF-8 and reran successfully.",
+                      "Broad supplementary helper root caused WinError 206 during adapter staging. Narrowed to own supplementary/helpers, reran generic preflight successfully, then original source checks.",
+                      "Ruff diagnosed imports after path setup and unused runtime in notebook. Split bootstrap/import cells and removed unused import; notebook reexecuted and static checks rerun."
+                  ],
+    "prohibited_material_observed":  false,
+    "audit_limit":  "No exhaustive OS read tracing; instruction-only boundaries. Staging uses approved framework and own source.",
+    "notebook_execution":  "supplementary/b1-notebook-retry3.log",
+    "static_evidence":  "supplementary/b1-static-003.json",
+    "notebook":  "pgm_example_lyap.ipynb",
+    "state":  "state/pgm_b1.json",
+    "numerical_max_residual":  4.31910757159315E-09,
+    "unresolved_work":  "B2-B5; SOS candidate not yet verified",
+    "presentation_policy":  "evaluation-ancillary-v1"
+}

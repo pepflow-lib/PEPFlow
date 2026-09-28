@@ -1,0 +1,20 @@
+{
+  "phase": "B2_revisit_N6",
+  "new_external_sources": [],
+  "own_generated_sources": [
+    "supplementary/prepare_b2_N6.py",
+    "supplementary/run_b2_N6.py",
+    "supplementary/b2_core.py",
+    "supplementary/update_b2_confirmation.py",
+    "supplementary/inspect_b2_confirmation.py"
+  ],
+  "evidence": [
+    "supplementary/b2_N6.console.txt",
+    "supplementary/b2_N6_notebook.console.txt",
+    "supplementary/b2-static-003.json"
+  ],
+  "notes": "Duplicate context-name warning expected from creating a fresh builder for each solve; no older builder reused. Numerical checks passed.",
+  "access_control": "instruction_only",
+  "prohibited_content_observed": false,
+  "audit_limit": "No exhaustive OS read tracing."
+}

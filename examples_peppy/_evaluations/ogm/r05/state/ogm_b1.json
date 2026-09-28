@@ -1,0 +1,127 @@
+{
+  "algo_name": "ogm",
+  "problem_type": "smooth_convex",
+  "obj_tag": "f",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "f(x_N) - f(x_star)",
+  "initial_condition": "||x_0-x_star||^2 <= R^2; z_0=x_0; grad f(x_star)=0",
+  "conjectured_rate": "L*R**2/(2*theta_N**2)",
+  "setup_file": "ogm_setup.py",
+  "notebook_file": "ogm_example_lyap.ipynb",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 0.12499999967511367,
+      "theta_N": 2.0,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.125,
+      "absolute_error": 3.2488632617511115e-10,
+      "scaled_value": 0.4999999987004547
+    },
+    {
+      "N": 2,
+      "opt_value": 0.06189418309675962,
+      "theta_N": 2.8422356793243053,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.06189418239776468,
+      "absolute_error": 6.98994938319597e-10,
+      "scaled_value": 0.5000000056466933
+    },
+    {
+      "N": 3,
+      "opt_value": 0.03769239858737249,
+      "theta_N": 3.6421524705465673,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.03769239720788239,
+      "absolute_error": 1.3794901054797748e-09,
+      "scaled_value": 0.5000000182993151
+    },
+    {
+      "N": 4,
+      "opt_value": 0.025583945166769366,
+      "theta_N": 4.420804104823752,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.025583942049932206,
+      "absolute_error": 3.1168371598944145e-09,
+      "scaled_value": 0.5000000609139349
+    },
+    {
+      "N": 5,
+      "opt_value": 0.018588139751366063,
+      "theta_N": 5.1864127202260875,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.01858813666365106,
+      "absolute_error": 3.0877150038188805e-09,
+      "scaled_value": 0.5000000830560658
+    },
+    {
+      "N": 6,
+      "opt_value": 0.014155967322699733,
+      "theta_N": 5.943130256071122,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.014155965863218723,
+      "absolute_error": 1.459481010004926e-09,
+      "scaled_value": 0.5000000515500328
+    },
+    {
+      "N": 7,
+      "opt_value": 0.011160419511615859,
+      "theta_N": 6.693369391494984,
+      "solver_calls": [
+        {
+          "solver": "CLARABEL",
+          "options": {},
+          "status": "optimal"
+        }
+      ],
+      "candidate": 0.01116041688775744,
+      "absolute_error": 2.623858418732139e-09,
+      "scaled_value": 0.5000001175519896
+    }
+  ],
+  "N_verify": 4,
+  "rate_status": "numerical_conjecture_only",
+  "theta_definition": "theta_-1=0; theta_k=(1+sqrt(1+4*theta_(k-1)^2))/2 for k<N; theta_N=(1+sqrt(1+8*theta_(N-1)^2))/2",
+  "numerical_certificate_verified": false,
+  "analytic_full_pep_verified": false,
+  "lyapunov_proof_verified": false,
+  "attempt_id": "ogm_r05",
+  "access_control": "instruction_only",
+  "presentation_policy": "evaluation-ancillary-v1"
+}

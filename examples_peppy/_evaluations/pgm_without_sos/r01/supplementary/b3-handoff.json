@@ -1,0 +1,96 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Coherent saved certificates replayed, rank recipe confirmed across two horizons, all coordinate coverage and sign checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate_id":  "349761e857f8eb526ef0714a2f07033de69c4cb3540250106a6f37886b4f3fd7",
+    "rank_search":  {
+                        "status":  "confirmed",
+                        "boundary_exclusions":  {
+                                                    "left":  1,
+                                                    "right":  1
+                                                },
+                        "rank":  4,
+                        "confirmed_horizons":  [
+                                                   4,
+                                                   6
+                                               ],
+                        "selected_certificate_id":  "349761e857f8eb526ef0714a2f07033de69c4cb3540250106a6f37886b4f3fd7",
+                        "recipe_id":  "forward_destination_reverse_ldl_latest_v1",
+                        "rank_convention":  {
+                                                "tolerance":  0.0001,
+                                                "scaling":  "absolute_unscaled",
+                                                "coordinate_order":  "original_framework_basis_earlier_iterates_first"
+                                            },
+                        "evidence_path":  "supplementary/rank_search.json"
+                    },
+    "coverage":  {
+                     "constraint_assignment":  {
+                                                   "f:x_star,x_0":  0,
+                                                   "f:x_star,x_1":  0,
+                                                   "f:x_star,x_2":  1,
+                                                   "f:x_star,x_3":  2,
+                                                   "f:x_star,x_4":  3,
+                                                   "f:x_0,x_1":  0,
+                                                   "f:x_1,x_2":  1,
+                                                   "f:x_2,x_3":  2,
+                                                   "f:x_3,x_4":  3,
+                                                   "g:x_star,x_1":  0,
+                                                   "g:x_star,x_2":  1,
+                                                   "g:x_star,x_3":  2,
+                                                   "g:x_star,x_4":  3,
+                                                   "g:x_1,x_2":  1,
+                                                   "g:x_2,x_3":  2,
+                                                   "g:x_3,x_4":  3
+                                               },
+                     "S_assignment":  {
+                                          "ldl_0":  3,
+                                          "ldl_1":  3,
+                                          "ldl_2":  2,
+                                          "ldl_3":  2,
+                                          "ldl_4":  1,
+                                          "ldl_5":  1,
+                                          "ldl_6":  0,
+                                          "ldl_7":  0,
+                                          "ldl_8":  0,
+                                          "ldl_9":  0,
+                                          "ldl_10":  0,
+                                          "ldl_11":  0
+                                      },
+                     "normalization_constraint":  "initial_condition",
+                     "boundary_constraints":  [
+
+                                              ],
+                     "boundary_S":  [
+
+                                    ],
+                     "omitted_constraints":  [
+
+                                             ],
+                     "checked":  true,
+                     "coverage_max_abs":  5.5511151231257827E-17,
+                     "boundary_max_abs":  1.619709921740764E-08,
+                     "increment_max_abs":  5.5511151231257827E-17
+                 },
+    "evidence":  [
+                     "supplementary/rank_search.json",
+                     "supplementary/b3-notebook-execution-002.txt",
+                     "supplementary/b3-static-002.json"
+                 ],
+    "incidents":  [
+                      "Patch wrapper rejected malformed newline escaping before any mutation; corrected raw wrapper string.",
+                      "Static notebook imported names already defined in visible earlier cells; removed duplicate imports. Exploratory ExpressionManager parameter typing repaired via existing JSON parameters."
+                  ],
+    "commands":  [
+                     "run_b3.py",
+                     "update_b3.py",
+                     "execute_notebook.py",
+                     "static adapter exact command evidence in b3-static-001/002.json"
+                 ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "exhaustive_read_audit":  false,
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00",
+    "unresolved_work":  "B4 basis reconstruction; B5 arbitrary-horizon analytic proof"
+}

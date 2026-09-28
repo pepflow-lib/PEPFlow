@@ -1,0 +1,65 @@
+Dense bound: 0.06249999907262903 Selected bound: 0.062499998838795916
+Basis: ['x_0', 'x_star', 'grad_f(x_star)', 'grad_f(x_0)', 'grad_g(x_1)', 'grad_f(x_1)', 'grad_g(x_2)', 'grad_f(x_2)', 'grad_g(x_3)', 'grad_f(x_3)', 'grad_g(x_4)', 'grad_f(x_4)']
+f Smooth Convex Function dense nonzero count at 1e-6: 30 largest: [('f:x_3,x_4', 0.508207), ('f:x_star,x_4', 0.360413), ('f:x_2,x_4', 0.301089), ('f:x_star,x_3', 0.27071), ('f:x_2,x_3', 0.17229), ('f:x_1,x_2', 0.166409)]
+g Convex Function dense nonzero count at 1e-6: 16 largest: [('g:x_star,x_4', 0.483639), ('g:x_3,x_4', 0.45842), ('g:x_star,x_3', 0.244495), ('g:x_2,x_3', 0.192287), ('g:x_2,x_4', 0.186413), ('g:x_star,x_2', 0.154128)]
+Dense S eigenvalues: [3.89014634e-11 1.64509903e-09 1.64513667e-09 1.01834397e-02
+ 1.09664953e-01 1.51109610e-01 2.49855574e-01 2.93764308e-01
+ 3.49255150e-01 4.16598174e-01 5.78794409e-01 2.54235277e+00]
+Relaxation: retain star-to-iterate and consecutive forward pairs for both owners.
+Dropped constraints: 34
+initial_condition 0.062500002 1/16
+f:x_star,x_0 0.125000052 1/8
+f:x_star,x_1 0.160715657 9/56
+f:x_star,x_2 0.214287428 3/14
+f:x_star,x_3 0.299998863 3/10
+f:x_star,x_4 0.199998016 1/5
+f:x_0,x_1 0.125000052 1/8
+f:x_1,x_2 0.285715707 2/7
+f:x_2,x_3 0.500003131 1/2
+f:x_3,x_4 0.800001991 4/5
+g:x_star,x_1 0.142854657 1/7
+g:x_star,x_2 0.190480137 4/21
+g:x_star,x_3 0.266668348 4/15
+g:x_star,x_4 0.399996871 2/5
+g:x_1,x_2 0.142854657 1/7
+g:x_2,x_3 0.333334791 1/3
+g:x_3,x_4 0.600003136 3/5
+Candidate lambda max error: 3.9466171285473806e-06
+Candidate f multipliers, numerically supported only:
+<IPython.core.display.Math object>
+Candidate g multipliers, numerically supported only:
+<IPython.core.display.Math object>
+Reverse-LDL diagonal: [5.00000003e-01 5.00000006e-01 4.60000801e-01 3.64349775e-01
+ 3.12651159e-01 1.88932236e-01 1.77078041e-01 5.28175405e-02
+ 6.25000522e-02 2.80998145e-08 2.58684346e-09 2.56757805e-09]
+<IPython.core.display.Math object>
+Full D retained, including tiny pivots; off-diagonal maximum: 0.0
+Numerical certificate verified: True
+{
+  "identity_gram_max_abs": 5.288635973599298e-09,
+  "identity_func_max_abs": 1.619709921740764e-08,
+  "identity_offset_abs": 3.165652122383289e-09,
+  "S_reconstruction_max_abs": 1.1102230246251565e-16,
+  "dense_relaxed_gap": 2.33833112595061e-10,
+  "conjecture_gap": 1.161204084276779e-09,
+  "minimum_scalar_inequality_dual": 0.06250000200444804,
+  "minimum_S_eigenvalue": 2.198704447512869e-09,
+  "minimum_matrix_inequality_eigenvalue": 0.0
+}
+<IPython.core.display.Math object>
+Candidate S Gram error: 3.135478371496525e-06
+Candidate S scalar/offset: 0.0 0.0
+Candidate S eigenvalues: [-8.10718491e-17 -2.77441792e-17  1.18883881e-17  4.83182201e-02
+  6.75461927e-02  1.22422056e-01  2.38287209e-01  3.08839952e-01
+  5.44686829e-01  5.58272591e-01  7.72894667e-01  2.25063705e+00]
+Global S positivity and arbitrary-horizon identities remain unresolved; numerical continuation is permitted.
+rank V_0: 0
+
+rank V_1: 4
+rank V_2: 4
+rank V_3: 4
+rank V_4: 1
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage residuals: {'coverage': [5.551115123125783e-17, 0.0, 0.0], 'pieces': [1.1102230246251565e-16, 0.0, 0.0]}
+Every interpolation contribution and S piece is assigned; no terminal leftovers. Normalization remains a boundary term.
+Increments are nonpositive interpolation residuals minus PSD pieces, hence the intended direction is nonincreasing.

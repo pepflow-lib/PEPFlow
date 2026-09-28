@@ -1,0 +1,542 @@
+{
+  "attempt_id": "bppm_r04",
+  "mathematical_verdict": "PASS",
+  "eligible": true,
+  "access_status": "recovered",
+  "access_reason": "Available own-host tool calls, consulted-source records and static/preflight reports show attempt-owned files, approved generic sources and pinned dependencies. Recorded path-length staging, import/type diagnostics and audit-parser errors were repaired in the same attempt; no concrete prohibited exposure was identified. Final static checks passed. Instruction-only isolation and nonexhaustive source tracing limit this conclusion; they are not evidence of contamination.",
+  "final_reason": "The explicit potential V_k=(D_h(x_star,x_k)-D_h(x_star,x_0))/(alpha*N)+(k/N)(f(x_k)-f(x_star)) has the submitted exact nonpositive-residual increment. With V_0=0 and the exact terminal identity it proves f(x_N)-f(x_star)<=R/(alpha*N) for every integer N>=1, alpha>0 and R>=0 under the supplied assumptions. All seven exact symbolic identities and numerical B2-B4 checks replayed successfully.",
+  "final_evidence_refs": [
+    "bppm/r04/bppm_example_lyap.ipynb#83198826",
+    "bppm/r04/bppm_example_lyap.ipynb#36310e94",
+    "bppm/r04/bppm_example_lyap.ipynb#b7276a21",
+    "bppm/r04/bppm_example_lyap.ipynb#a8b4a071",
+    "supplementary/evaluation/bppm_r04/validation/replay_summary.json",
+    "supplementary/evaluation/bppm_r04/own-generation-host-access-calls.json",
+    "bppm/r04/supplementary/b1-consulted-sources.json",
+    "bppm/r04/supplementary/b5-consulted-sources.json"
+  ],
+  "submitted_theorem": "For exact Bregman proximal point iterates with alpha>0, closed proper convex differentiable f and h as supplied, x_star minimizing f, well-defined updates/evaluations, and D_h(x_star,x_0)<=R, every integer N>=1 satisfies 0<=f(x_N)-f(x_star)<=R/(alpha*N).",
+  "target_scope_comparison": "Matches the last-iterate objective gap, supplied algorithm and assumptions, exact finite-horizon coefficient 1/(alpha*N), radius R rather than R^2, arbitrary positive alpha, nonnegative R and all N>=1. No stronger structural assumption is introduced.",
+  "verification_method": "Inspected notebook source and saved outputs, setup, state, sweep/solver/static/execution logs, source records and own-host access calls. Verified all 162 frozen-file hashes in a validation copy. Freshly replayed all 24 code cells in a pinned Python -I -B process using only copied approved package/helper roots; omitted only plotting. Recomputed numerical certificate checks, rank profiles, sparse-basis reconstruction and seven exact symbolic identities. No solver re-solves, browser, rendering, exports or proof repairs. Saved static and original clean-Jupyter-kernel outcomes were inspected, not independently rerun.",
+  "workflow_complete": true,
+  "notebook_path": "bppm/r04/bppm_example_lyap.ipynb",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Setup implements exact Bregman proximal updates, initial divergence <= R, and last-iterate objective gap. All seven required saved sweep solves are optimal and support the supplied candidate rate; notebook contains the setup and saved numerical evidence.",
+      "required_checks": [
+        "Algorithm, scope, metric and normalization",
+        "Required N=1..7 sweep and conjecture comparison",
+        "Visible notebook evidence and saved execution"
+      ],
+      "passed_checks": [
+        "Algorithm, scope, metric and normalization",
+        "Required N=1..7 sweep and conjecture comparison",
+        "Visible notebook evidence and saved execution"
+      ],
+      "checks": [
+        {
+          "name": "Algorithm, scope, metric and normalization",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Both functions convex; grad h(x_next)=grad h(x)-alpha grad f(x_next); x_star stationary for f; initial D_h(x_star,x_0)<=R; metric f(x_N)-f(x_star).",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#08dc8c63"
+        },
+        {
+          "name": "Required N=1..7 sweep and conjecture comparison",
+          "status": "PASS",
+          "tolerance_domain": "alpha=R=1; comparison 1e-5; saved solves inspected, not re-solved",
+          "observed_result": {
+            "required_horizons": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "successful_horizons": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "statuses": [
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal",
+              "optimal"
+            ],
+            "values": [
+              1.0000000005971532,
+              0.49999999575895004,
+              0.3333333332789397,
+              0.2499999995235287,
+              0.19999999989769174,
+              0.16666666606928843,
+              0.14285714120863235
+            ],
+            "max_absolute_error": 4.241049955666654e-09
+          },
+          "evidence_ref": "bppm/r04/state/bppm_b1.json"
+        },
+        {
+          "name": "Visible notebook evidence and saved execution",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Readable problem, theorem, definitions, setup, printed sweep and embedded plot; all 24 saved code cells executed without errors. Plot presence inspected without rendering.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r04/bppm_setup.py",
+        "bppm/r04/supplementary/b1_sweep-002.console.txt",
+        "bppm/r04/bppm_example_lyap.ipynb"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B2",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Replayed the complete saved N=4 and N=6 certificates with their own coordinate inventories, source hashes, multipliers and S. Full scalar identities, dual signs, PSD, eigendecomposition reconstruction and dense/relaxed agreement pass. Initial formula search is documented; global analytic lambda/S verification is explicitly not claimed.",
+      "required_checks": [
+        "Coherent full-certificate identity, signs, PSD, S reconstruction and bound preservation",
+        "Additional N=6 certificate under the same recipe",
+        "Initial closed-form search",
+        "Certificate provenance and inventory"
+      ],
+      "passed_checks": [
+        "Coherent full-certificate identity, signs, PSD, S reconstruction and bound preservation",
+        "Additional N=6 certificate under the same recipe",
+        "Initial closed-form search",
+        "Certificate provenance and inventory"
+      ],
+      "checks": [
+        {
+          "name": "Coherent full-certificate identity, signs, PSD, S reconstruction and bound preservation",
+          "status": "PASS",
+          "tolerance_domain": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0.0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05
+          },
+          "observed_result": {
+            "tolerances": {
+              "identity_atol": 1e-05,
+              "identity_rtol": 0.0,
+              "reconstruction_atol": 0.0001,
+              "reconstruction_rtol": 1e-05,
+              "dual_tol": 1e-06,
+              "psd_tol": 1e-06,
+              "dense_opt_atol": 1e-05
+            },
+            "residuals": {
+              "identity_gram_max_abs": 1.9119710294695349e-10,
+              "identity_func_max_abs": 8.855547406483311e-10,
+              "identity_offset_abs": 2.0461143890315725e-10,
+              "S_reconstruction_max_abs": 4.1359030627651384e-25,
+              "dense_relaxed_gap": 4.657765839688466e-10,
+              "minimum_scalar_inequality_dual": 0.0,
+              "minimum_S_eigenvalue": 9.192492405114347e-11,
+              "minimum_matrix_inequality_eigenvalue": 0.0
+            },
+            "passed": true
+          },
+          "evidence_ref": "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+        },
+        {
+          "name": "Additional N=6 certificate under the same recipe",
+          "status": "PASS",
+          "tolerance_domain": {
+            "identity_atol": 1e-05,
+            "identity_rtol": 0.0,
+            "reconstruction_atol": 0.0001,
+            "reconstruction_rtol": 1e-05,
+            "dual_tol": 1e-06,
+            "psd_tol": 1e-06,
+            "dense_opt_atol": 1e-05
+          },
+          "observed_result": {
+            "tolerances": {
+              "identity_atol": 1e-05,
+              "identity_rtol": 0.0,
+              "reconstruction_atol": 0.0001,
+              "reconstruction_rtol": 1e-05,
+              "dual_tol": 1e-06,
+              "psd_tol": 1e-06,
+              "dense_opt_atol": 1e-05
+            },
+            "residuals": {
+              "identity_gram_max_abs": 5.104187512907829e-10,
+              "identity_func_max_abs": 3.5669680542582682e-09,
+              "identity_offset_abs": 7.105981914001802e-10,
+              "S_reconstruction_max_abs": 1.34416849539867e-24,
+              "dense_relaxed_gap": 4.145392085153077e-10,
+              "minimum_scalar_inequality_dual": 0.0,
+              "minimum_S_eigenvalue": 2.9284622690354593e-10,
+              "minimum_matrix_inequality_eigenvalue": 0.0
+            },
+            "passed": true
+          },
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#32563a03"
+        },
+        {
+          "name": "Initial closed-form search",
+          "status": "PASS",
+          "tolerance_domain": "Candidate formula diagnostics only; all-horizon full-PEP proof not required",
+          "observed_result": {
+            "completed": true,
+            "references_reviewed": [
+              "own approved input and generic function/solver API; target-specific references prohibited"
+            ],
+            "attempts": [
+              "Dense multipliers suggest star-to-iterate f terms and forward pairs; selected consecutive-only f/h relaxation.",
+              "Rational inspection yields f star weights 1/N, consecutive f weights (k-1)/N; h forward weights k/(alpha*N), reverse weights (k-1)/(alpha*N), terminal weight 1/(alpha*N).",
+              "Compared every active numerical multiplier and S=0 to the selected sample."
+            ],
+            "candidate_lambda_max_error": 3.3287683720573114e-10,
+            "candidate_S_max_error": 1.9119710294695356e-10,
+            "unresolved_components": [
+              "All-horizon analytic identity and parameter-domain proof are deferred; candidates verified numerically only."
+            ]
+          },
+          "evidence_ref": "bppm/r04/state/bppm_b2.json"
+        },
+        {
+          "name": "Certificate provenance and inventory",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": {
+            "selected_certificate_id": "bc4e1f2518171d8a27919eee23dcbe08f0cc0dcad1354f765a2e67ae25e2ed9e",
+            "confirmation_certificate_id": "ff764a5991f815eb5a619c1d6fdefb787ffefe16c4acd961ddccf793aed35c3a",
+            "snapshot_file_hashes_verified": 162,
+            "inventory_and_metadata_checks": "replayed"
+          },
+          "evidence_ref": "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#c039912f",
+        "bppm/r04/bppm_example_lyap.ipynb#ee1fb963",
+        "supplementary/evaluation/bppm_r04/validation/replay.log",
+        "bppm/r04/state/bppm_dense.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B3",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The submitted grouping assigns every active interpolation term and the entire numerical S, with one terminal h residual and one terminal PSD block. Full-coordinate coverage and increments replay successfully. A single fixed recipe has rank 4 at N=4 and N=6 with fixed one-index exclusions at each end, leaving three and five interior indices.",
+      "required_checks": [
+        "Coverage, decomposition signs and all-component increment identities",
+        "Constant interior rank at two horizons",
+        "Visible construction and rank evidence"
+      ],
+      "passed_checks": [
+        "Coverage, decomposition signs and all-component increment identities",
+        "Constant interior rank at two horizons",
+        "Visible construction and rank evidence"
+      ],
+      "checks": [
+        {
+          "name": "Coverage, decomposition signs and all-component increment identities",
+          "status": "PASS",
+          "tolerance_domain": "identity atol=1e-5, rtol=0; PSD and dual tol=1e-6",
+          "observed_result": "Replay of cell 552381d0 passed all Gram/function/constant checks for both horizons; no omitted terms; terminal h residual and full S retained.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#552381d0"
+        },
+        {
+          "name": "Constant interior rank at two horizons",
+          "status": "PASS",
+          "tolerance_domain": "Absolute unscaled Gram singular values; rank tol=1e-4; exclusions left=right=1",
+          "observed_result": {
+            "profiles": {
+              "6": [
+                0,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ],
+              "4": [
+                0,
+                4,
+                4,
+                4,
+                4
+              ]
+            },
+            "summary": {
+              "status": "confirmed",
+              "boundary_exclusions": {
+                "left": 1,
+                "right": 1
+              },
+              "rank": 4,
+              "confirmed_horizons": [
+                4,
+                6
+              ],
+              "selected_certificate_id": "bc4e1f2518171d8a27919eee23dcbe08f0cc0dcad1354f765a2e67ae25e2ed9e",
+              "recipe_id": "consecutive_residuals_terminal_h_and_S",
+              "rank_convention": {
+                "tolerance": 0.0001,
+                "scaling": "absolute singular values, unscaled Gram coordinates",
+                "coordinate_order": "setup basis order"
+              },
+              "unresolved_samples": []
+            },
+            "singular_values": "Full singular values retained in replay_summary.json; no value lies in the ambiguity band (1e-5,1e-3)."
+          },
+          "evidence_ref": "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+        },
+        {
+          "name": "Visible construction and rank evidence",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "Actual partial-sum assignments, construction loops, rank printing and cross-horizon assessment appear in executed notebook cells.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#bfb3f708"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#552381d0",
+        "bppm/r04/bppm_example_lyap.ipynb#bfb3f708",
+        "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B4",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "Replayed candidate filtering, the actual sparsity search, independence tests and symmetric coefficient extraction for all nonzero indices. The assembled quadratic, function and constant expression reconstructs V_k for every k=0..4, including both endpoints.",
+      "required_checks": [
+        "Actual basis search and independence",
+        "Quadratic and complete potential reconstruction at every index",
+        "All terms and endpoint structure explicit"
+      ],
+      "passed_checks": [
+        "Actual basis search and independence",
+        "Quadratic and complete potential reconstruction at every index",
+        "All terms and endpoint structure explicit"
+      ],
+      "checks": [
+        {
+          "name": "Actual basis search and independence",
+          "status": "PASS",
+          "tolerance_domain": "zero_tol=1e-6; indep_tol=1e-7; span_tol=1e-5; column filter atol=rtol=1e-4",
+          "observed_result": "Replayed candidate generation, column-space filtering and find_basis_with_sparsest_coefficients for k=1,2,3,4. Template [x_0-x_star,grad h(x_0),x_k-x_star,grad h(x_k)] has four independent columns; k=0 has empty basis.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#cc033a59"
+        },
+        {
+          "name": "Quadratic and complete potential reconstruction at every index",
+          "status": "PASS",
+          "tolerance_domain": "atol=1e-4, rtol=1e-5; actual maximum residual 2.213889072066877e-10",
+          "observed_result": {
+            "required_indices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "passed_indices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "quadratic_residuals": {
+              "0": 0.0,
+              "1": 1.3877787807814457e-16,
+              "2": 1.1069442584776823e-10,
+              "3": 1.759649925769935e-10,
+              "4": 1.759649925769935e-10
+            },
+            "all_components": {
+              "0": {
+                "gram": 0.0,
+                "function": 0.0,
+                "offset": 0.0
+              },
+              "1": {
+                "gram": 1.3877787807814457e-16,
+                "function": 5.551115123125783e-17,
+                "offset": 0.0
+              },
+              "2": {
+                "gram": 1.1069442584776823e-10,
+                "function": 2.2138885169553646e-10,
+                "offset": 0.0
+              },
+              "3": {
+                "gram": 1.759649925769935e-10,
+                "function": 2.2138885169553646e-10,
+                "offset": 0.0
+              },
+              "4": {
+                "gram": 1.759649925769935e-10,
+                "function": 2.213889072066877e-10,
+                "offset": 0.0
+              }
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+        },
+        {
+          "name": "All terms and endpoint structure explicit",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "C01=C10=-1/(2 alpha N), C23=C32=1/(2 alpha N); function part (h(x0)-h(xk))/(alpha N)+(k/N)(f(xk)-fstar); zero constant; V0=0; terminal same template. Exact identification additionally verified in B5.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#4c2bc892"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#07ce1939",
+        "bppm/r04/bppm_example_lyap.ipynb#f3a7f8e0",
+        "supplementary/evaluation/bppm_r04/validation/replay.log"
+      ],
+      "failure_code": null
+    },
+    {
+      "block_id": "B5",
+      "reached": true,
+      "gate_verdict": "PASS",
+      "mathematical_checks_passed": true,
+      "delivery_checks_passed": true,
+      "reason": "The submitted all-horizon proof establishes the exact target. Its generic step, coefficient structure, initial, first-step and terminal identities replay exactly in all scalar components. Convex residuals are nonpositive and every coefficient is nonnegative; V0=0 gives VN<=0, and the terminal identity gives metric<=R/(alpha N). N=1 and R=0 are covered. Required saved static and clean-kernel execution evidence is present.",
+      "required_checks": [
+        "Generic exact identities for submitted expressions",
+        "Analytic signs, denominator domain and decrease",
+        "Base, endpoint, normalization and exceptional horizon",
+        "Self-contained proof and required delivery"
+      ],
+      "passed_checks": [
+        "Generic exact identities for submitted expressions",
+        "Analytic signs, denominator domain and decrease",
+        "Base, endpoint, normalization and exceptional horizon",
+        "Self-contained proof and required delivery"
+      ],
+      "checks": [
+        {
+          "name": "Generic exact identities for submitted expressions",
+          "status": "PASS",
+          "tolerance_domain": "Exact symbolic zero, arbitrary symbolic k,N,alpha,R on the stated domain",
+          "observed_result": {
+            "Step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Coefficient structure": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Initial zero": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Base first step": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Initial normalization": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Boundary": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            },
+            "Metric domination": {
+              "gram_zero": true,
+              "function_zero": true,
+              "offset_zero": true
+            }
+          },
+          "evidence_ref": "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+        },
+        {
+          "name": "Analytic signs, denominator domain and decrease",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "r_q(i,j)<=0 by convexity. Weights 1/N,k/N,(k+1)/(alpha N),k/(alpha N) are nonnegative for N>=1, alpha>0, 0<=k<N. Thus V_(k+1)<=V_k. No strong convexity assumption or positive R is needed.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#83198826"
+        },
+        {
+          "name": "Base, endpoint, normalization and exceptional horizon",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": "V0=0; separate first step verified. metric-R/(alpha N)=VN+(D0-R)/(alpha N)-DN/(alpha N)<=0. The same base and terminal apply for N=1 and R=0.",
+          "evidence_ref": "bppm/r04/bppm_example_lyap.ipynb#c8da1ff4"
+        },
+        {
+          "name": "Self-contained proof and required delivery",
+          "status": "PASS",
+          "tolerance_domain": null,
+          "observed_result": {
+            "saved_code_cells": 24,
+            "saved_error_outputs": 0,
+            "source_ruff_returncode": 0,
+            "source_ty_returncode": 0,
+            "clean_kernel_evidence": "supplementary/b5_nbconvert.console.txt plus saved executed notebook",
+            "checklist": "all 12 items present with matching notebook hash",
+            "review_replay": "24 code cells in fresh isolated Python process; plotting portion omitted; not a new Jupyter kernel execution"
+          },
+          "evidence_ref": "bppm/r04/supplementary/b5-static-002.json"
+        }
+      ],
+      "evidence_refs": [
+        "bppm/r04/bppm_example_lyap.ipynb#04fed141",
+        "bppm/r04/bppm_example_lyap.ipynb#36310e94",
+        "bppm/r04/bppm_example_lyap.ipynb#b7276a21",
+        "bppm/r04/bppm_example_lyap.ipynb#a8b4a071",
+        "bppm/r04/supplementary/b5_nbconvert.console.txt",
+        "bppm/r04/supplementary/bppm_example_lyap_checklist.md",
+        "supplementary/evaluation/bppm_r04/validation/replay_summary.json"
+      ],
+      "failure_code": null
+    }
+  ],
+  "review_started_at": "2026-09-24T00:16:28.665152+00:00",
+  "review_stopped_at": "2026-09-24T00:22:03.799524+00:00",
+  "limitations": [
+    "Generation access controls were instruction-only; available logs do not establish exhaustive OS read isolation.",
+    "Fresh review replay was an isolated Python process, not a new Jupyter kernel; final clean-kernel and static outcomes were assessed from submitted logs and outputs.",
+    "B1 solver sweep and dense/relaxed solver runs were inspected, not re-solved. The saved numerical certificates were freshly reverified.",
+    "Long Windows validation-copy paths initially failed; copying and hash checks were retried with extended path syntax entirely inside the review directory.",
+    "Rendering omitted under the evaluation presentation override. A global analytic lambda/S proof remains unclaimed and is unnecessary for the submitted local proof."
+  ],
+  "instructions": "Completed independent frozen-submission review; exactly B1-B5; all evidence paths are campaign-relative; originals were not modified."
+}

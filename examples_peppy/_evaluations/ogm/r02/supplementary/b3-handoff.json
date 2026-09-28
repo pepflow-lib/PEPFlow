@@ -1,0 +1,44 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Rechecked both coherent certificates, confirmed same-recipe ranks at N=6 and N=8, verified full-coordinate coverage and sign convention, saved selected N=6 state and notebook",
+    "operational_status":  "awaiting_same_session_continuation",
+    "state":  "state/ogm_b3.json",
+    "rank_evidence":  "supplementary/rank_search.json",
+    "notebook_sha256":  "fdd3691e770f2ca36f425be408f79b0b9a1d3c6e1b0016eed2e77626110daffb",
+    "static_evidence":  "supplementary/b3-static-002.json",
+    "fresh_kernel_evidence":  "supplementary/b3-notebook-002-output.txt",
+    "selected_certificate_id":  "1416bc430c0f3d99372063e712922b1bdcc6a38d5fe289bf3f78185aed0df3df",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "consulted_approved_files":  [
+                                     "settings.json"
+                                 ],
+    "own_sources":  [
+                        "supplementary/b2_notebook_cells.py",
+                        "supplementary/b3_notebook_cells.py",
+                        "supplementary/b3_trial.py",
+                        "supplementary/complete_b3.py",
+                        "state/ogm_b2.json",
+                        "state/ogm_dense.json",
+                        "supplementary/horizon_N8/ogm_b2.json",
+                        "supplementary/horizon_N8/ogm_dense.json",
+                        "supplementary/b3-rank-N6.json",
+                        "supplementary/b3-rank-N8.json",
+                        "supplementary/rank_search.json",
+                        "ogm_example_lyap.ipynb",
+                        "supplementary/ogm_example_lyap_checklist.md",
+                        "supplementary/b3-static-001.json"
+                    ],
+    "hash_import_inventory":  "Both certificate provenance source inventories rechecked",
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+                      "Moved thread-limit environment initialization before NumPy import in the B3 completion script; repeated checks and execution under corrected ordering. Prior B3 trial computations already set limits before imports."
+                  ],
+    "unresolved_work":  "B4 basis reconstruction at every index and B5 exact theorem remain unstarted",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

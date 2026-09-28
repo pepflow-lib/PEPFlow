@@ -1,0 +1,44 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Actual candidate scan and sparse-basis search, all-index independence and full-expression reconstruction, candidate coefficient fitting, notebook execution and static checks completed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "state":  "state/ogm_b4.json",
+    "notebook_sha256":  "cf442899f79a86901248bd6798218af6a56d0a2921f1f7985d819c4cef007e9d",
+    "static_evidence":  "supplementary/b4-static-002.json",
+    "fresh_kernel_evidence":  "supplementary/b4-notebook-output.txt",
+    "certificate_id":  "1416bc430c0f3d99372063e712922b1bdcc6a38d5fe289bf3f78185aed0df3df",
+    "access_control":  "instruction_only",
+    "access_status":  "no_prohibited_source_observed",
+    "consulted_approved_files":  [
+                                     "plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                                     "pepflow/lyapunov_utils.py",
+                                     "settings.json"
+                                 ],
+    "own_sources":  [
+                        "state/ogm_b3.json",
+                        "state/ogm_b2.json",
+                        "state/ogm_dense.json",
+                        "ogm_setup.py",
+                        "supplementary/b4_notebook_cells.py",
+                        "supplementary/b4_explore.py",
+                        "supplementary/complete_b4.py",
+                        "supplementary/helpers/notebook_runtime.py",
+                        "supplementary/b4-exploration.json",
+                        "supplementary/b4-static-001.json",
+                        "ogm_example_lyap.ipynb",
+                        "supplementary/ogm_example_lyap_checklist.md"
+                    ],
+    "hash_import_inventory":  "Selected certificate sources rechecked in execution; approved generic imported sources as prior inventories",
+    "external_resources":  [
+
+                           ],
+    "incidents":  [
+                      "Sparse search warned about 5984 subsets at k=1; completed successfully.",
+                      "First static pass reported heterogeneous metadata dictionary inference issues in state writer. Added explicit JSON dictionary annotation; runtime mathematics unchanged."
+                  ],
+    "unresolved_work":  "B5 arbitrary-horizon exact step/base/terminal identities, signs, normalization, and final theorem",
+    "deadline_utc":  "2026-09-23T18:18:16.664646+00:00",
+    "tokens":  null
+}

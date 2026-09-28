@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Scripts\\python.exe",
+    "-I",
+    "-B",
+    "-m",
+    "nbconvert",
+    "--to",
+    "notebook",
+    "--execute",
+    "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r01\\dual_feg_example_lyap.ipynb",
+    "--inplace",
+    "--ExecutePreprocessor.kernel_name=dual-feg-attempt",
+    "--ExecutePreprocessor.timeout=120"
+  ],
+  "cwd": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r01",
+  "runtime_root": "C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r01\\supplementary\\.runtime",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "[NbConvertApp] Converting notebook C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r01\\dual_feg_example_lyap.ipynb to notebook\nC:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\.venv\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n[NbConvertApp] WARNING | No handler found for comm target 'dash'\n[NbConvertApp] Writing 150326 bytes to C:\\Users\\Jack\\Documents\\GitHub\\PEPFlow\\examples_peppy\\_evaluations\\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\\dual_feg\\r01\\dual_feg_example_lyap.ipynb\n"
+}

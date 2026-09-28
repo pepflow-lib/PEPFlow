@@ -1,0 +1,49 @@
+﻿{
+    "current_block":  "B1",
+    "completion_status":  "complete",
+    "next_block":  "B2",
+    "entry_exit_reason":  "Initial case dispatch; setup, numerical sweep, notebook, and required checks complete",
+    "operational_status":  "awaiting_same_session_continuation",
+    "dispatch_utc":  "2026-09-23T20:53:27.110234+00:00",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00",
+    "access_control":  "instruction_only",
+    "consulted_files":  [
+                            "supplementary/approved/dispatch.md",
+                            "supplementary/approved/input.md",
+                            "supplementary/approved/worker-protocol.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/SKILL.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/pep-full-proof/SKILL.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/SKILL.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/SKILL.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/lyap-closed-form/SKILL.md",
+                            "supplementary/approved/plugins/pepflow-workflows/skills/pep-implement/references/workflow.md",
+                            "supplementary/approved/plugins/pepflow-workflows/references/output-layout.md",
+                            "supplementary/approved/pepflow/operator.py",
+                            "supplementary/approved/pepflow/pep_runner.py",
+                            "supplementary/approved/pepflow/pep.py",
+                            "supplementary/approved/pepflow/__init__.py",
+                            "supplementary/approved/plugins/pepflow-workflows/optional/with-clean-room/scripts/check_static.py"
+                        ],
+    "prior_sources":  "supplementary/preflight-access-001.json",
+    "own_generated_sources":  "feg_setup.py; supplementary/run_b1.py; supplementary/build_b1_notebook.py; supplementary/helpers/runtime.py; feg_example_lyap.ipynb; own evidence files",
+    "commands_and_transitive_sources":  "Actual tool transcript; run_b1.py and build_b1_notebook.py invoked with pinned Python -I -B; adapter argv, transitive source hashes and commands in b1-static-001/002/003.json",
+    "incidents":  [
+                      "Half-step display tags corrected from k+1 to 2*k+1 numerator; successful sweep rerun and earlier results retained.",
+                      "Static 001 hit Windows path length while staging broad helper root. Narrowed own helper root to supplementary/helpers and probe path to supplementary/helpers/runtime.py, leaving approved adapter unchanged.",
+                      "Static 002 found notebook import ordering and unused runtime import; split bootstrap/import cells and used runtime.APPROVED; static 003 passed."
+                  ],
+    "checks":  {
+                   "delimiter_check":  "passed",
+                   "static":  "supplementary/b1-static-003.json",
+                   "sweep":  "7 optimal CLARABEL solves, default options",
+                   "notebook":  "supplementary/b1-notebook-003-output.txt",
+                   "max_rate_discrepancy_N_ge_2":  8.7687975214301161E-09
+               },
+    "presentation_policy":  "evaluation-ancillary-v1; embedded plot present; no rendering or image inspection",
+    "integrity_exceptions":  [
+
+                             ],
+    "prohibited_sources_observed":  false,
+    "audit_limit":  "No exhaustive filesystem audit; instruction-only restrictions",
+    "remaining_obligations":  "B2-B5; no analytic proof yet"
+}

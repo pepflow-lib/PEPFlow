@@ -1,0 +1,92 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Candidate scan, actual sparse basis search, all-index independence and full-component reconstruction, notebook execution and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00",
+    "certificate_id":  "6cb778e9759046df488896509df7ad60e689562fe8730b41e4cbe8b103e34c4c",
+    "reconstruction":  {
+                           "certificate_id":  "6cb778e9759046df488896509df7ad60e689562fe8730b41e4cbe8b103e34c4c",
+                           "required_indices":  [
+                                                    0,
+                                                    1,
+                                                    2,
+                                                    3,
+                                                    4,
+                                                    5,
+                                                    6
+                                                ],
+                           "quadratic_residuals":  {
+                                                       "0":  0.0,
+                                                       "1":  1.962615573354719E-17,
+                                                       "2":  1.893036934482662E-08,
+                                                       "3":  2.5779629781206097E-08,
+                                                       "4":  3.6666253657442678E-08,
+                                                       "5":  4.97561411309818E-08,
+                                                       "6":  5.5128118460203886E-08
+                                                   },
+                           "component_residuals":  {
+                                                       "0":  {
+                                                                 "gram":  0.0,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "1":  {
+                                                                 "gram":  1.3877787807814457E-17,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "2":  {
+                                                                 "gram":  1.0952467932590082E-08,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "3":  {
+                                                                 "gram":  1.5489513477406902E-08,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "4":  {
+                                                                 "gram":  2.3334075449632508E-08,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "5":  {
+                                                                 "gram":  3.1022639013222886E-08,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "6":  {
+                                                                 "gram":  3.1022639013222886E-08,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             }
+                                                   },
+                           "tolerances":  {
+                                              "indep_tol":  1E-07,
+                                              "span_tol":  1E-05,
+                                              "component_atol":  0.0001,
+                                              "component_rtol":  1E-05
+                                          },
+                           "passed":  true
+                       },
+    "static_evidence":  "supplementary/b4-static-002.json",
+    "notebook_evidence":  "supplementary/b4-notebook-002-output.txt",
+    "consulted_sources":  [
+                              "supplementary/approved/plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                              "supplementary/approved/pepflow/lyapunov_utils.py",
+                              "state/feg_b3.json",
+                              "supplementary/rank_search.json",
+                              "own generated B4 source, evidence and notebook"
+                          ],
+    "incidents":  [
+                      "Type checker could not infer the keys of an unpacked tolerance dictionary; passed the same three named arguments explicitly and reran notebook/static checks."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "remaining_obligations":  "B5 exact coefficient derivation, universal step/base/boundary identities and theorem; three coefficient functions are explicit analytic unknowns"
+}

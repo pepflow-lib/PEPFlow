@@ -1,0 +1,79 @@
+{
+  "algo_name": "dual_feg",
+  "problem_type": "monotone_operator",
+  "obj_tag": "A",
+  "params_json": "{\"L\": 1, \"R\": 1}",
+  "performance_metric": "||A(x_N)||^2",
+  "initial_condition": "||x_0-x_star||^2 <= R^2; A(x_star)=0; z_0=0",
+  "conjectured_rate": "4*L**2*R**2/N**2",
+  "setup_file": "dual_feg_setup.py",
+  "sweep_results": [
+    {
+      "N": 1,
+      "opt_value": 1.999999986304664,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 2,
+      "opt_value": 1.0000000100763524,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 3,
+      "opt_value": 0.4444444526843615,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 4,
+      "opt_value": 0.2500000041381937,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 5,
+      "opt_value": 0.16000000283244123,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 6,
+      "opt_value": 0.11111111529546581,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    },
+    {
+      "N": 7,
+      "opt_value": 0.0816326557937193,
+      "solver_status": "optimal",
+      "solver_options": {
+        "solver": "CLARABEL"
+      },
+      "solver_failures": []
+    }
+  ],
+  "N_verify": 6,
+  "rate_status": "Numerical conjecture; N=2..7 matches 4/N^2, N=1 equals 2 rather than 4.",
+  "metric_selection": "Terminal squared residual is a natural root-finding accuracy measure, selected here because the supplied metric was unknown.",
+  "presentation_policy": "evaluation-ancillary-v1"
+}

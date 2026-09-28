@@ -1,0 +1,83 @@
+﻿{
+    "current_block":  "B4",
+    "completion_status":  "complete",
+    "next_block":  "B5",
+    "entry_exit_reason":  "Consistent basis and all-index full-expression reconstruction passed; unknown coefficient functions recorded",
+    "operational_status":  "awaiting_same_session_continuation",
+    "certificate_id":  "349761e857f8eb526ef0714a2f07033de69c4cb3540250106a6f37886b4f3fd7",
+    "reconstruction":  {
+                           "certificate_id":  "349761e857f8eb526ef0714a2f07033de69c4cb3540250106a6f37886b4f3fd7",
+                           "required_indices":  [
+                                                    0,
+                                                    1,
+                                                    2,
+                                                    3,
+                                                    4
+                                                ],
+                           "quadratic_residuals":  {
+                                                       "0":  0.0,
+                                                       "1":  3.8158209696815451E-09,
+                                                       "2":  5.6644798280793467E-09,
+                                                       "3":  6.7841547280692965E-09,
+                                                       "4":  2.2564463725528557E-08
+                                                   },
+                           "component_residuals":  {
+                                                       "0":  {
+                                                                 "gram":  0.0,
+                                                                 "function":  0.0,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "1":  {
+                                                                 "gram":  1.4050423168682213E-09,
+                                                                 "function":  1.9428902930940239E-16,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "2":  {
+                                                                 "gram":  1.6381470763215944E-09,
+                                                                 "function":  3.2394197324592255E-09,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "3":  {
+                                                                 "gram":  1.621727988010413E-09,
+                                                                 "function":  3.2394200655261329E-09,
+                                                                 "offset":  0.0
+                                                             },
+                                                       "4":  {
+                                                                 "gram":  5.2886359874770861E-09,
+                                                                 "function":  4.859129765222292E-09,
+                                                                 "offset":  0.0
+                                                             }
+                                                   },
+                           "tolerances":  {
+                                              "indep_tol":  1E-07,
+                                              "span_tol":  1E-05,
+                                              "component_atol":  0.0001,
+                                              "component_rtol":  1E-05
+                                          },
+                           "passed":  true
+                       },
+    "evidence":  [
+                     "supplementary/b4-notebook-execution-001.txt",
+                     "supplementary/b4-state-replay.txt",
+                     "supplementary/b4-static-002.json"
+                 ],
+    "consulted_approved_additions":  [
+                                         "plugins/pepflow-workflows/skills/lyap-vectors/references/workflow.md",
+                                         "pepflow/lyapunov_utils.py",
+                                         "pepflow/function.py"
+                                     ],
+    "commands":  [
+                     "explore_b4.py",
+                     "update_b4.py",
+                     "execute_notebook.py",
+                     "save_b4.py",
+                     "static checks b4-static-001/002.json"
+                 ],
+    "incidents":  [
+                      "Unused exploratory import and heterogeneous exec namespace typing repaired; static checks then passed."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "deadline_utc":  "2026-09-23T16:11:38.823035+00:00",
+    "unresolved_work":  "B5 closed forms and arbitrary-horizon proof"
+}

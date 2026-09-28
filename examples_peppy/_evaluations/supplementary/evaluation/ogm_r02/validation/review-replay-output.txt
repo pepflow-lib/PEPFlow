@@ -1,0 +1,269 @@
+
+CELL b1-imports
+Framework: C:\Users\Jack\Documents\GitHub\PEPFlow\examples_peppy\_evaluations\20260923T140754Z_paper5_pgm_sos_6x5_isolation1\supplementary\evaluation\ogm_r02\validation\supplementary\approved\pepflow\__init__.py
+
+CELL b1-functions
+
+CELL b1-setup
+
+CELL b1-setup-check
+Context and metric constructed: f(x_6)-f(x_star)
+
+CELL b1-evidence
+N=1: PEP=0.1249999997, candidate=0.1250000000, status=optimal
+N=2: PEP=0.0618941831, candidate=0.0618941824, status=optimal
+N=3: PEP=0.0376923986, candidate=0.0376923972, status=optimal
+N=4: PEP=0.0255839452, candidate=0.0255839420, status=optimal
+N=5: PEP=0.0185881398, candidate=0.0185881367, status=optimal
+N=6: PEP=0.0141559673, candidate=0.0141559659, status=optimal
+N=7: PEP=0.0111604195, candidate=0.0111604169, status=optimal
+Maximum absolute discrepancy: 3.1168371598944145e-09
+
+CELL b2-load-summary
+Dense bound: 0.014155967322699733
+Dense active interpolation multipliers: {'initial_condition': 0.014155968094706525, 'f:x_star,z_0': 0.056623869613380166, 'f:x_star,x_1': 0.09161934390604497, 'f:x_star,x_2': 0.12420598633934471, 'f:x_star,x_3': 0.1557038160926967, 'f:x_star,x_4': 0.1865688198769534, 'f:x_star,x_5': 0.21700805234635728, 'f:x_star,x_6': 0.16827013856085296, 'f:z_0,x_1': 0.0566238722534572, 'f:x_1,x_2': 0.1482432174224839, 'f:x_2,x_3': 0.27244920341378354, 'f:x_3,x_4': 0.4281530162880737, 'f:x_4,x_5': 0.6147218317338565, 'f:x_5,x_6': 0.8317812377634222, 'f:x_6,x_5': 5.136461303419693e-05}
+Basis: ['z_0', 'x_star', 'g_0', 'g_1', 'g_2', 'g_3', 'g_4', 'g_5', 'g_6']
+Dense S eigenvalues: [8.39261630e-12 6.82329946e-10 7.43271399e-10 1.62309677e-09
+ 2.20567649e-09 3.39794720e-09 7.70640628e-09 3.37973225e-08
+ 2.88022664e+00]
+Selected bound: 0.014155965831591857 solver: {'api': 'CVXPrimalSolver.build_problem', 'cvxpy_version': '1.7.1', 'effective_name': 'CLARABEL', 'settings': {'solver': 'CLARABEL'}, 'fallback_reason': None}
+Dropped constraints: 43 ; retained star row and forward chain
+All active selected multipliers:
+initial_condition 0.014155965968572517
+f:x_star,z_0 0.05662386392517136
+f:x_star,x_1 0.09161933615492351
+f:x_star,x_2 0.1242059786635415
+f:x_star,x_3 0.1557038093066053
+f:x_star,x_4 0.18656881696392244
+f:x_star,x_5 0.21701669802294762
+f:x_star,x_6 0.16826149773150467
+f:z_0,x_1 0.05662386392772485
+f:x_1,x_2 0.14824319995501414
+f:x_2,x_3 0.27244917849856076
+f:x_3,x_4 0.42815298769867305
+f:x_4,x_5 0.6147218045678934
+f:x_5,x_6 0.8317385025094233
+
+CELL b2-candidates
+<IPython.core.display.Math object>
+<IPython.core.display.Math object>
+Candidate lambda max error: 1.244633118790972e-09
+Candidate S max error: 1.2502545665427078e-09
+Formula status: numerical candidates only; analytic all-horizon identities unresolved.
+
+CELL b2-certificate-check
+Reverse LDL diagonal (all factors retained): [5.00000000e-01 1.34512146e-09 1.24288412e-09 9.12945830e-10
+ 1.12320054e-09 3.86411180e-10 2.58603486e-10 8.74089406e-11
+ 3.16908559e-11]
+<IPython.core.display.Math object>
+S reconstruction max error: 5.551115123125783e-17
+<IPython.core.display.Math object>
+Identity Gram/function/offset maxima: 2.169349144764965e-10 7.686165037767978e-10 1.3698065945422222e-10
+Numerical certificate verified; analytic full PEP and Lyapunov proof remain unverified.
+
+CELL b3-decomposition
+
+CELL b3-partial-sums
+rank V_0: 0
+
+rank V_1: 3
+rank V_2: 3
+rank V_3: 3
+rank V_4: 3
+rank V_5: 3
+rank V_6: 2
+Interior rank is constant at this N: True boundary exclusions: (1, 1)
+Full-coordinate coverage and step checks passed; only terminal S is left for the boundary argument.
+
+CELL b3-cross-horizon
+Confirmed horizon 6 interior rank 3 retained indices [1, 2, 3, 4, 5]
+Confirmed horizon 8 interior rank 3 retained indices [1, 2, 3, 4, 5, 6, 7]
+Fixed exclusions: left=1, right=1; absolute rank threshold 1e-4 on unscaled coordinates.
+Smallest retained singular value exceeds 0.009; discarded singular values are below 7e-9.
+This is finite-sample rank evidence; basis reconstruction and universal proof remain pending.
+
+CELL b4-sanity
+Rebuilt selected certificate and all partial sums; interior k=1,...,N-1, exceptions k=0,N.
+
+CELL b4-candidate-build
+Unique nonzero candidate vectors: 392
+
+CELL b4-candidate-filter
+V_1 column-space candidates:
+  d_0
+  z_1-x_star
+  z_2-x_star
+  g_0
+  g_1
+  x_1-x_star
+  x_2-x_star
+  (z_0)-(x_1)
+  (z_0)-(z_1)
+  (z_0)-(x_2)
+  (z_0)-(z_2)
+  (z_0)-(y_2)
+  (x_star)-(x_0)
+  (x_star)-(x_1)
+  (x_star)-(z_1)
+  (x_star)-(x_2)
+  (x_star)-(z_2)
+  (x_star)-(y_1)
+  (x_star)-(y_2)
+  (g_0)-(g_1)
+  (x_1)-(z_1)
+  (x_1)-(x_2)
+  (x_1)-(z_2)
+  (x_1)-(y_1)
+  (z_1)-(x_2)
+  (z_1)-(z_2)
+  (z_1)-(y_1)
+  (z_1)-(y_2)
+  (x_2)-(z_2)
+  (x_2)-(y_1)
+  (x_2)-(y_2)
+  (z_2)-(y_1)
+  (z_2)-(y_2)
+  (y_1)-(y_2)
+V_2 column-space candidates:
+  d_0
+  z_2-x_star
+  z_3-x_star
+  g_2
+  (z_0)-(z_2)
+  (z_0)-(z_3)
+  (x_star)-(x_0)
+  (x_star)-(z_2)
+  (x_star)-(z_3)
+  (z_2)-(z_3)
+  (y_1)-(y_2)
+V_3 column-space candidates:
+  d_0
+  z_3-x_star
+  z_4-x_star
+  g_3
+  (z_0)-(z_3)
+  (z_0)-(z_4)
+  (x_star)-(x_0)
+  (x_star)-(z_3)
+  (x_star)-(z_4)
+  (z_3)-(z_4)
+V_4 column-space candidates:
+  d_0
+  z_4-x_star
+  z_5-x_star
+  g_4
+  (z_0)-(z_4)
+  (z_0)-(z_5)
+  (x_star)-(x_0)
+  (x_star)-(z_4)
+  (x_star)-(z_5)
+  (z_4)-(z_5)
+V_5 column-space candidates:
+  d_0
+  z_5-x_star
+  z_6-x_star
+  g_5
+  (z_0)-(z_5)
+  (z_0)-(z_6)
+  (x_star)-(x_0)
+  (x_star)-(z_5)
+  (x_star)-(z_6)
+  (z_5)-(z_6)
+V_6 column-space candidates:
+  d_0
+  q_N
+  (x_star)-(x_0)
+
+CELL b4-search
+k=1, rank=3
+  sparse basis: ['d_0', 'z_2-x_star', 'g_1']
+  zero coefficients: 6/9
+k=2, rank=3
+  sparse basis: ['d_0', 'z_3-x_star', 'g_2']
+  zero coefficients: 6/9
+k=3, rank=3
+  sparse basis: ['d_0', 'z_4-x_star', 'g_3']
+  zero coefficients: 6/9
+k=4, rank=3
+  sparse basis: ['d_0', 'z_5-x_star', 'g_4']
+  zero coefficients: 6/9
+k=5, rank=3
+  sparse basis: ['d_0', 'z_6-x_star', 'g_5']
+  zero coefficients: 6/9
+k=6, rank=2
+  sparse basis: ['d_0', 'q_N']
+  zero coefficients: 2/4
+
+CELL b4-basis
+k=0: rank 0 basis []
+k=1: rank 3 basis ['d_0', 'z_2-x_star', 'g_1']
+k=2: rank 3 basis ['d_0', 'z_3-x_star', 'g_2']
+k=3: rank 3 basis ['d_0', 'z_4-x_star', 'g_3']
+k=4: rank 3 basis ['d_0', 'z_5-x_star', 'g_4']
+k=5: rank 3 basis ['d_0', 'z_6-x_star', 'g_5']
+k=6: rank 2 basis ['d_0', 'q_N']
+
+CELL b4-extract
+k=0: quadratic reconstruction residual 0.000e+00; function coefficient 0; offset 0.000e+00
+k=1: quadratic reconstruction residual 1.032e-16; function coefficient 0.148243200081; offset 0.000e+00
+<IPython.core.display.Math object>
+k=2: quadratic reconstruction residual 1.908e-10; function coefficient 0.272449178681; offset 0.000e+00
+<IPython.core.display.Math object>
+k=3: quadratic reconstruction residual 6.474e-10; function coefficient 0.428152987928; offset 0.000e+00
+<IPython.core.display.Math object>
+k=4: quadratic reconstruction residual 1.701e-09; function coefficient 0.614721804838; offset 0.000e+00
+<IPython.core.display.Math object>
+k=5: quadratic reconstruction residual 2.298e-09; function coefficient 0.831738502814; offset 0.000e+00
+<IPython.core.display.Math object>
+k=6: quadratic reconstruction residual 3.695e-09; function coefficient 1.0000000005; offset 0.000e+00
+<IPython.core.display.Math object>
+Complete Gram/function/offset reconstruction passed at every index.
+
+CELL b4-fit
+k=0: candidate matrix/function coefficient errors 0.000e+00, 0.000e+00
+k=1: candidate matrix/function coefficient errors 1.184e-10, 9.874e-10
+<IPython.core.display.Math object>
+k=2: candidate matrix/function coefficient errors 1.105e-10, 1.427e-09
+<IPython.core.display.Math object>
+k=3: candidate matrix/function coefficient errors 1.516e-09, 1.307e-09
+<IPython.core.display.Math object>
+k=4: candidate matrix/function coefficient errors 9.856e-10, 1.240e-09
+<IPython.core.display.Math object>
+k=5: candidate matrix/function coefficient errors 2.022e-09, 8.652e-10
+<IPython.core.display.Math object>
+k=6: candidate matrix/function coefficient errors 4.401e-12, 5.048e-10
+<IPython.core.display.Math object>
+Coefficient formulas are numerical candidates, not an arbitrary-horizon proof.
+
+CELL b5-load
+Selected B4 basis and full-expression reconstruction are rechecked by the preceding executed cells.
+Known coefficients are candidates entering this block; no unknown coefficient is silently set to zero.
+
+CELL b5-symbolic-tools
+
+CELL b5-step
+<IPython.core.display.Math object>
+interior_step function-value residual: Matrix([[0, 0, 0]]) constant residual: 0
+
+CELL b5-base
+<IPython.core.display.Math object>
+base function-value residual: Matrix([[0, 0]]) constant residual: 0
+
+CELL b5-terminal
+<IPython.core.display.Math object>
+terminal_transition function-value residual: Matrix([[0, 0, 0]]) constant residual: 0
+
+CELL b5-boundary
+<IPython.core.display.Math object>
+boundary_normalization function-value residual: Matrix([[0, 0]]) constant residual: 0
+
+CELL b5-small
+<IPython.core.display.Math object>
+N_equals_1 function-value residual: Matrix([[0, 0, 0]]) constant residual: 0
+
+CELL b5-signs
+Exact recurrences checked; local multipliers and normalization coefficient are positive for the stated domain.
+By the recurrence theta_0=1 and all later theta values exceed 1. Thus all denominators are nonzero.
+Interpolation residuals are nonpositive, so U_N <= ... <= U_0 <= L||x_0-x_star||^2/2.
+Boundary: gap - L*R^2/(2*T^2) = V_N - tau*||q_N||^2 + tau*(||d_0||^2-R^2) <= 0.
+B5_EXACT_RESULTS={"N_equals_1": {"constant": "0", "exact_zero": true, "function_components": 3, "gram_shape": [4, 4]}, "base": {"constant": "0", "exact_zero": true, "function_components": 2, "gram_shape": [3, 3]}, "boundary_normalization": {"constant": "0", "exact_zero": true, "function_components": 2, "gram_shape": [5, 5]}, "interior_step": {"constant": "0", "exact_zero": true, "function_components": 3, "gram_shape": [5, 5]}, "recurrences_and_signs": {"exact_zero": true, "positive_multipliers": true}, "terminal_transition": {"constant": "0", "exact_zero": true, "function_components": 3, "gram_shape": [5, 5]}}

@@ -1,0 +1,36 @@
+﻿{
+    "current_block":  "B3",
+    "completion_status":  "complete",
+    "next_block":  "B4",
+    "entry_exit_reason":  "Rank constancy, full coverage, notebook execution, and static checks passed",
+    "operational_status":  "awaiting_same_session_continuation",
+    "original_deadline_utc":  "2026-09-23T22:53:27.110234+00:00",
+    "rank_evidence":  "supplementary/rank_search.json",
+    "selected_certificate_id":  "6cb778e9759046df488896509df7ad60e689562fe8730b41e4cbe8b103e34c4c",
+    "static_evidence":  "supplementary/b3-static-003.json",
+    "notebook_evidence":  "supplementary/b3-notebook-003-output.txt",
+    "source_records":  [
+                           "supplementary/b3-handoff-001.json",
+                           "supplementary/b2-handoff-N4.json"
+                       ],
+    "own_sources_consulted":  [
+                                  "state/feg_b2.json",
+                                  "supplementary/b2-certificate-N4.json",
+                                  "supplementary/b3_certificate_check.py",
+                                  "supplementary/b3_decomposition.py",
+                                  "supplementary/b3_grouping.py",
+                                  "supplementary/finalize_b3.py",
+                                  "supplementary/build_b3_notebook.py",
+                                  "feg_example_lyap.ipynb"
+                              ],
+    "incidents":  [
+                      "Notebook import ordering and duplicate function imports caused static diagnostics; reordered loading and reused visible earlier functions. Required checks rerun without suppression.",
+                      "A later notebook docstring was treated as an expression before imports; removed that redundant cell docstring and reran unchanged static checks successfully."
+                  ],
+    "access_control":  "instruction_only",
+    "prohibited_sources_observed":  false,
+    "integrity_exceptions":  [
+
+                             ],
+    "remaining_obligations":  "B4 basis reconstruction at all indices; B5 exact arbitrary-horizon proof"
+}
