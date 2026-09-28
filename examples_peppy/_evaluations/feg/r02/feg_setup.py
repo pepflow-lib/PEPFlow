@@ -1,6 +1,8 @@
-﻿"""FEG setup with exact recurrence coefficients."""
-import pepflow as pf
+"""FEG setup with exact recurrence coefficients."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")
@@ -28,6 +30,8 @@ def make_ctx_feg(ctx_name: str, N, **kwargs) -> pf.PEPContext:
 def get_pep_setup(N, params):
     ctx = make_ctx_feg(f"ctx_{N}", N)
     pb = pf.PEPBuilder(ctx)
-    pb.add_initial_constraint(((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition"))
+    pb.add_initial_constraint(
+        ((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition")
+    )
     pb.set_performance_metric(A(ctx[f"x_{N}"]) ** 2)
     return ctx, pb, A

@@ -1,3 +1,8 @@
+# Notebook/proof state is executed below into the shared runtime namespace.
+# These names are supplied by the notebook cells or serialized proof source.
+# ty: ignore[unresolved-reference]
+# ruff: noqa: F821
+
 # CELL
 b4 = json.loads((notebook_dir / "state/pgm_b4.json").read_text())
 assert b4["certificate_id"] == certificate["certificate_id"]

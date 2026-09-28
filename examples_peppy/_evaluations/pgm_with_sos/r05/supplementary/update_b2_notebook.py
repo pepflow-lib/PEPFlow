@@ -1,28 +1,40 @@
 """Insert visible certificate construction/checks and execute the B2 notebook."""
-from pathlib import Path
-import hashlib
-import json
-import os
 
-import nbformat as nbf
-from nbclient import NotebookClient
+import hashlib
+import os
+from pathlib import Path
+
+# optional notebook-generation dependency
+import nbformat as nbf  # ty: ignore[unresolved-import]
+
+# optional notebook-generation dependency
+from nbclient import NotebookClient  # ty: ignore[unresolved-import]
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME = ROOT / 'supplementary' / '.runtime'
-for variable in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS'):
-    os.environ[variable] = '1'
-for variable in ('TEMP', 'TMP', 'IPYTHONDIR', 'MPLCONFIGDIR', 'JUPYTER_RUNTIME_DIR', 'JUPYTER_CONFIG_DIR'):
+RUNTIME = ROOT / "supplementary" / ".runtime"
+for variable in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ[variable] = "1"
+for variable in (
+    "TEMP",
+    "TMP",
+    "IPYTHONDIR",
+    "MPLCONFIGDIR",
+    "JUPYTER_RUNTIME_DIR",
+    "JUPYTER_CONFIG_DIR",
+):
     folder = RUNTIME / variable.lower()
     folder.mkdir(parents=True, exist_ok=True)
     os.environ[variable] = str(folder)
-os.environ['JUPYTER_PATH'] = str(RUNTIME / 'jupyter')
-notebook = ROOT / 'pgm_example_lyap.ipynb'
+os.environ["JUPYTER_PATH"] = str(RUNTIME / "jupyter")
+notebook = ROOT / "pgm_example_lyap.ipynb"
 nb = nbf.read(notebook, as_version=4)
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
-cells = [md(r"""## Full-PEP certificate
+cells = [
+    md(r"""## Full-PEP certificate
 
 At $N=4$, both interpolation families enter the primal PEP. The dense certificate is preserved in `state/pgm_dense.json`. We tested a sparse pattern retaining only $(x_\star,x_i)$ and $(x_i,x_{i+1})$ inequalities, retaining the initial constraint. Each selected multiplier and the PSD slack come from the same CLARABEL solve. The following checks reconstruct the context without solving again.
-"""), code("""import hashlib
+"""),
+    code("""import hashlib
 import sympy as sp
 
 b1 = json.loads((notebook_dir / 'state' / 'pgm_b1.json').read_text())
@@ -66,13 +78,15 @@ for sample_name, sample in [('dense', dense), ('sparse', selected)]:
         print(sample_name, owner_name, 'active multipliers:', len(active))
     eig = np.linalg.eigvalsh(np.asarray(sample['S_matrix']))
     print(sample_name, 'S rank at 1e-4:', np.sum(np.abs(eig) > 1e-4), 'eigenvalues:', eig)
-"""), md(r"""### Initial multiplier formula search
+"""),
+    md(r"""### Initial multiplier formula search
 
 Rationalizing the sparse entries suggests consecutive multipliers
 $$\lambda^f_{i,i+1}=\frac{i+1}{2N-i}\quad(0\leq i<N),\qquad
 \lambda^g_{i,i+1}=\frac{i}{2N-i}\quad(1\leq i<N).$$
 Conservation of function-value coefficients then gives the minimizer multipliers as consecutive differences, with a final coefficient closing the sum to one. We compare every active coefficient, including the initial multiplier $L/(4N)$. These are candidates, not an all-horizon proof.
-"""), code("""def candidate_multiplier(name, horizon):
+"""),
+    code("""def candidate_multiplier(name, horizon):
     horizon = sp.S(horizon)
     if name == 'initial_condition':
         return sp.S(1)/(4*horizon)
@@ -104,12 +118,14 @@ for owner_name, indices in [('f', ['star', *range(N_int+1)]), ('g', ['star', *ra
     candidate_matrix = sp.Matrix([[0 if a == b else candidate_multiplier(f'{owner_name}:{a},{b}', N)
                                   for b in labels] for a in labels])
     pf.pprint_labeled_matrix(np.asarray(candidate_matrix, dtype=object), labels, labels)
-"""), md(r"""### Supplied SOS candidate and normalization
+"""),
+    md(r"""### Supplied SOS candidate and normalization
 
 The three square families below are the **supplied assistance**. They are tested against this attempt's selected certificate. Here $a_i=\nabla f(x_i)$ and $s_i=L(x_{i-1}-x_i)-a_{i-1}\in\partial g(x_i)$. The certificate is normalized as
 $$h(x_N)-h(x_\star)-\mathrm{opt}-\sum_c d_c R_c+S=0,$$
 where every $R_c\leq0$. The candidate uses normalization factor 1. All its coefficients are nonnegative for $L>0$, $N\geq1$, $1\leq i\leq N$: denominators are positive and numerators are sums of nonnegative terms. Numerical agreement here does not establish the complete identity for arbitrary $N$.
-"""), code("""S_candidate = pf.Scalar.zero()
+"""),
+    code("""S_candidate = pf.Scalar.zero()
 square_vectors, square_coefficients, pieces = [], [], []
 for ii in range(1, N_int+1):
     i = sp.S(ii)
@@ -138,7 +154,11 @@ print('Supplied SOS reconstruction residual:', max_abs(S_reconstructed - S_array
 assert np.allclose(S_reconstructed, S_array, atol=1e-4, rtol=1e-5)
 assert max_abs(candidate_eval.func_coords) == 0 and max_abs(candidate_eval.offset) == 0
 pf.pprint_labeled_matrix(S_reconstructed, selected['basis_vectors'], selected['basis_vectors'])
-"""), md("### Complete fixed-horizon certificate verification\nThe saved multipliers and slack are checked in all coordinates, with no active interpolation family omitted. The supplied SOS is also checked as a decomposition of this same slack within the frozen tolerances."), code("""weighted = pf.Scalar.zero()
+"""),
+    md(
+        "### Complete fixed-horizon certificate verification\nThe saved multipliers and slack are checked in all coordinates, with no active interpolation family omitted. The supplied SOS is also checked as a decomposition of this same slack within the frozen tolerances."
+    ),
+    code("""weighted = pf.Scalar.zero()
 exact_weighted = pf.Scalar.zero()
 inequality_duals = []
 for c, *_ in entries:
@@ -187,7 +207,11 @@ print('Residuals:', residuals)
 print('Exact candidate identity at N=4:', exact_fixed_horizon)
 print('Analytic full-PEP proof for arbitrary N:', False)
 pf.pprint_labeled_matrix(np.asarray(checked.inner_prod_coords), selected['basis_vectors'], selected['basis_vectors'])
-"""), md("### Block 2 conclusion\nThe complete selected numerical certificate and supplied direct SOS decomposition pass the frozen checks. Rationalized multipliers and the supplied SOS also satisfy the exact fixed-horizon identity. This does not yet prove their arbitrary-horizon validity. Global lambda and S formulas are candidates; numerical Lyapunov discovery may proceed. No local Lyapunov theorem is claimed yet."), code("""source_paths = [notebook_dir / 'pgm_setup.py', notebook_dir / 'supplementary' / 'helpers' / 'certificates.py']
+"""),
+    md(
+        "### Block 2 conclusion\nThe complete selected numerical certificate and supplied direct SOS decomposition pass the frozen checks. Rationalized multipliers and the supplied SOS also satisfy the exact fixed-horizon identity. This does not yet prove their arbitrary-horizon validity. Global lambda and S formulas are candidates; numerical Lyapunov discovery may proceed. No local Lyapunov theorem is claimed yet."
+    ),
+    code("""source_paths = [notebook_dir / 'pgm_setup.py', notebook_dir / 'supplementary' / 'helpers' / 'certificates.py']
 approved_list = json.loads((repo_root / 'allowlist.json').read_text())['exact_read_files']
 source_paths.extend(Path(p) for p in approved_list if Path(p).parent == repo_root / 'pepflow')
 source_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths}
@@ -219,13 +243,27 @@ selected['lambda_col_names'] = lambda_labels
 selected['lambda_matrix'] = [[selected['named_dual_values'].get(f'f:{a},{b}') or 0.0
                               for b in lambda_labels] for a in lambda_labels]
 print('Ready to serialize coherent B2 certificate.')
-""")]
+"""),
+]
 nb.cells = nb.cells[:9] + cells + nb.cells[-3:]
 # Save exact executed source for replay without hidden proof logic.
-lambda_source = next(c.source for c in cells if c.cell_type == 'code' and c.source.startswith('def candidate_multiplier'))
-sos_source = next(c.source for c in cells if c.cell_type == 'code' and c.source.startswith('S_candidate ='))
-check_source = next(c.source for c in cells if c.cell_type == 'code' and c.source.startswith('weighted ='))
-serialize = code("""selected['lamb_code'] = LAMB_SOURCE
+lambda_source = next(
+    c.source
+    for c in cells
+    if c.cell_type == "code" and c.source.startswith("def candidate_multiplier")
+)
+sos_source = next(
+    c.source
+    for c in cells
+    if c.cell_type == "code" and c.source.startswith("S_candidate =")
+)
+check_source = next(
+    c.source
+    for c in cells
+    if c.cell_type == "code" and c.source.startswith("weighted =")
+)
+serialize = code(
+    """selected['lamb_code'] = LAMB_SOURCE
 selected['S_code'] = SOS_SOURCE
 selected['certificate_check_code'] = CHECK_SOURCE
 certificate_keys = ('N_verify', 'params_json', 'relaxed_constraints', 'S_matrix', 'S_row_names',
@@ -237,25 +275,39 @@ selected['certificate_id'] = hashlib.sha256(json.dumps({key: selected[key] for k
 for filename in ('pgm_relaxed.json', 'pgm_b2.json'):
     (notebook_dir / 'state' / filename).write_text(json.dumps(selected, indent=2, allow_nan=False))
 print('Saved certificate ID:', selected['certificate_id'])
-""".replace('LAMB_SOURCE', repr(lambda_source)).replace('SOS_SOURCE', repr(sos_source)).replace('CHECK_SOURCE', repr(check_source)))
+""".replace("LAMB_SOURCE", repr(lambda_source))
+    .replace("SOS_SOURCE", repr(sos_source))
+    .replace("CHECK_SOURCE", repr(check_source))
+)
 nb.cells.insert(-3, serialize)
 nbf.write(nb, notebook)
-NotebookClient(nb, timeout=120, kernel_name='attempt-pgm', resources={'metadata': {'path': str(ROOT)}}).execute()
+NotebookClient(
+    nb,
+    timeout=120,
+    kernel_name="attempt-pgm",
+    resources={"metadata": {"path": str(ROOT)}},
+).execute()
 nbf.write(nb, notebook)
-print('B2 notebook executed and state saved.')
+print("B2 notebook executed and state saved.")
 for cell in nb.cells:
-    if cell.cell_type == 'markdown':
-        assert '\\(' not in cell.source and '\\[' not in cell.source
-        assert not any(ord(c) < 32 and c not in '\n\t' for c in cell.source)
-checklist = ROOT / 'supplementary' / 'pgm_example_lyap_checklist.md'
-lines = checklist.read_text(encoding='utf-8').splitlines()
+    if cell.cell_type == "markdown":
+        assert "\\(" not in cell.source and "\\[" not in cell.source
+        assert not any(ord(c) < 32 and c not in "\n\t" for c in cell.source)
+checklist = ROOT / "supplementary" / "pgm_example_lyap_checklist.md"
+lines = checklist.read_text(encoding="utf-8").splitlines()
 for index, line in enumerate(lines):
-    if line.startswith('Last reviewed block:'):
-        lines[index] = 'Last reviewed block: B2'
-    elif line.startswith('SHA-256:'):
-        lines[index] = 'SHA-256: ' + hashlib.sha256(notebook.read_bytes()).hexdigest()
-    elif line.startswith('| 7 |'):
-        lines[index] = line.replace('| pending |  | Pending owning block. |', '| verified | 9,10 | Dense and sparse saved solve evidence, complete group summaries and preserved optimum printed. |')
-    elif line.startswith('| 8 |'):
-        lines[index] = line.replace('| pending |  | Pending owning block. |', '| verified | 11-20 | Visible candidates, supplied SOS, full-coordinate numerical checks and exact N=4 candidate check executed; global analytic status remains false. |')
-checklist.write_text('\n'.join(lines), encoding='utf-8')
+    if line.startswith("Last reviewed block:"):
+        lines[index] = "Last reviewed block: B2"
+    elif line.startswith("SHA-256:"):
+        lines[index] = "SHA-256: " + hashlib.sha256(notebook.read_bytes()).hexdigest()
+    elif line.startswith("| 7 |"):
+        lines[index] = line.replace(
+            "| pending |  | Pending owning block. |",
+            "| verified | 9,10 | Dense and sparse saved solve evidence, complete group summaries and preserved optimum printed. |",
+        )
+    elif line.startswith("| 8 |"):
+        lines[index] = line.replace(
+            "| pending |  | Pending owning block. |",
+            "| verified | 11-20 | Visible candidates, supplied SOS, full-coordinate numerical checks and exact N=4 candidate check executed; global analytic status remains false. |",
+        )
+checklist.write_text("\n".join(lines), encoding="utf-8")

@@ -14,7 +14,7 @@ The 23 common Python source files are stored once. [shared-files.json](shared-fi
 
 ## Historical hash differences
 
-Run `python examples_peppy/_evaluations/supplementary/tools/audit_archive.py --check` from the repository root to verify [archive-audit.json](archive-audit.json). Its categories distinguish current byte matches, newline reconstruction, documented publication correspondence and unresolved differences.
+Run `python examples_peppy/_evaluations/supplementary/tools/audit_archive.py --check` from the repository root to verify [archive-audit.json](archive-audit.json). Its categories distinguish archived byte matches, newline reconstruction, documented publication correspondence and unresolved differences. Maintained sources are first validated and reversed through [source-edits.json](source-edits.json); the audit identifies their physical current hashes separately from the archived comparison view.
 
 One primary notebook matches its historical hash after newline reconstruction; the other 29 have documented pre-publication hashes matching their historical pins after newline reconstruction. The 4,559 mapped validation records retain 854 unexplained historical differences. Six of nine evaluation-protocol hashes have not been recovered at their exact recorded version. Shared storage does not resolve these discrepancies or imply that the corresponding proofs failed.
 

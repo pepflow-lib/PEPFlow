@@ -1,4 +1,5 @@
 """Proximal gradient: composite convex objective gap after N steps."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

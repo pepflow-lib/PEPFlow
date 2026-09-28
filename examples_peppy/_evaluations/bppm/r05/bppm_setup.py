@@ -1,4 +1,5 @@
 """Bregman proximal point method; radius is D_h(x_star,x_0) <= R."""
+
 import pepflow as pf
 
 f = pf.ConvexFunction(is_basis=True, tags=["f"])

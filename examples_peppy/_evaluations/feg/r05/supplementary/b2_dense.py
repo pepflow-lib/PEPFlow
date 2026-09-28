@@ -1,13 +1,18 @@
-﻿import importlib.util
-from pathlib import Path
+import importlib.util
 import json
+from pathlib import Path
 
-spec = importlib.util.spec_from_file_location('runtime', Path(__file__).parent / 'helpers/runtime.py')
+spec = importlib.util.spec_from_file_location(
+    "runtime", Path(__file__).parent / "helpers/runtime.py"
+)
 assert spec is not None and spec.loader is not None
 runtime = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runtime)
-from certificates import acquire, summarize
+from certificates import (  # ty: ignore[unresolved-import]  # local helper resolved by the notebook runtime path  # noqa: E402 - imports follow runtime or notebook setup
+    acquire,
+    summarize,
+)
 
 *_, data = acquire(6)
-(runtime.ROOT / 'state/feg_dense.json').write_text(json.dumps(data, indent=2))
+(runtime.ROOT / "state/feg_dense.json").write_text(json.dumps(data, indent=2))
 summarize(data)

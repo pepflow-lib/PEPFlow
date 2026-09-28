@@ -1,16 +1,18 @@
 """Shared storage preserves submitted bytes and rejects new drift or escape."""
+
 import hashlib
 import json
-from pathlib import Path
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
-import shared_storage as storage
-import audit_archive as audit
+# These sibling tools become importable after the test path setup above.
+import audit_archive as audit  # noqa: E402
+import shared_storage as storage  # noqa: E402
 
 
 class SharedStorageTests(unittest.TestCase):
@@ -24,10 +26,15 @@ class SharedStorageTests(unittest.TestCase):
         entry = {
             "path": logical.relative_to(campaign).as_posix(),
             "canonical": source.relative_to(campaign).as_posix(),
-            "source_newline": "LF", "bytes": len(target),
+            "source_newline": "LF",
+            "bytes": len(target),
             "sha256": hashlib.sha256(target).hexdigest(),
         }
-        manifest = {"schema_version": 1, "campaign_id": storage.CAMPAIGN_ID, "files": [entry]}
+        manifest = {
+            "schema_version": 1,
+            "campaign_id": storage.CAMPAIGN_ID,
+            "files": [entry],
+        }
         manifest_path = campaign / "supplementary/tools/shared-files.json"
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
         return campaign, source, logical, target, manifest, manifest_path
@@ -48,9 +55,13 @@ class SharedStorageTests(unittest.TestCase):
             campaign, source, logical, target, manifest, path = self.fixture(directory)
             shared = storage.load_shared_files(campaign)
             source.write_bytes(b"changed\r\n")
-            with self.assertRaisesRegex(ValueError, "Shared canonical integrity mismatch"):
+            with self.assertRaisesRegex(
+                ValueError, "Shared canonical integrity mismatch"
+            ):
                 shared.read_bytes(logical)
-            with self.assertRaisesRegex(ValueError, "Shared canonical integrity mismatch"):
+            with self.assertRaisesRegex(
+                ValueError, "Shared canonical integrity mismatch"
+            ):
                 storage.load_shared_files(campaign)
 
     def test_present_copy_must_match_instead_of_being_silently_replaced(self):
@@ -61,7 +72,9 @@ class SharedStorageTests(unittest.TestCase):
             shared = storage.load_shared_files(campaign)
             self.assertEqual(shared.read_bytes(logical), target)
             logical.write_bytes(source.read_bytes())
-            with self.assertRaisesRegex(ValueError, "Present shared file integrity mismatch"):
+            with self.assertRaisesRegex(
+                ValueError, "Present shared file integrity mismatch"
+            ):
                 shared.read_bytes(logical)
             self.assertEqual(logical.read_bytes(), source.read_bytes())
 
@@ -84,19 +97,34 @@ class SharedStorageTests(unittest.TestCase):
             ("canonical", "supplementary/tools/other.py"),
         )
         for field, value in cases:
-            with self.subTest(field=field, value=value), tempfile.TemporaryDirectory() as directory:
-                campaign, source, logical, target, manifest, path = self.fixture(directory)
+            with (
+                self.subTest(field=field, value=value),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                campaign, source, logical, target, manifest, path = self.fixture(
+                    directory
+                )
                 manifest["files"][0][field] = value
                 path.write_text(json.dumps(manifest), encoding="utf-8")
                 with self.assertRaises(ValueError):
                     storage.load_shared_files(campaign)
 
     def test_invalid_size_hash_conversion_and_duplicate_are_rejected(self):
-        cases = (("bytes", 0), ("bytes", True), ("sha256", "0" * 64),
-                 ("sha256", "invalid"), ("source_newline", "CRLF"))
+        cases = (
+            ("bytes", 0),
+            ("bytes", True),
+            ("sha256", "0" * 64),
+            ("sha256", "invalid"),
+            ("source_newline", "CRLF"),
+        )
         for field, value in cases:
-            with self.subTest(field=field, value=value), tempfile.TemporaryDirectory() as directory:
-                campaign, source, logical, target, manifest, path = self.fixture(directory)
+            with (
+                self.subTest(field=field, value=value),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                campaign, source, logical, target, manifest, path = self.fixture(
+                    directory
+                )
                 manifest["files"][0][field] = value
                 path.write_text(json.dumps(manifest), encoding="utf-8")
                 with self.assertRaises(ValueError):
@@ -123,7 +151,9 @@ class SharedStorageTests(unittest.TestCase):
             shared = storage.load_shared_files(campaign)
             audit.fingerprints.cache_clear()
             expected = hashlib.sha256(target).hexdigest()
-            self.assertEqual(audit.comparison(logical, expected, shared=shared)["category"], "exact")
+            self.assertEqual(
+                audit.comparison(logical, expected, shared=shared)["category"], "exact"
+            )
             original = hashlib.sha256(b"unrecovered historical code").hexdigest()
             result = audit.comparison(logical, original, shared=shared)
             self.assertEqual(result["category"], "different")

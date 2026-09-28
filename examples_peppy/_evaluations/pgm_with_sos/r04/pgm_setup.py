@@ -1,4 +1,5 @@
 """Proximal gradient with step 1/L and squared-radius initial condition."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")
@@ -22,7 +23,7 @@ def get_pep_setup(N, params):
     ctx = make_ctx_pgm(f"ctx_{N}", N)
     pb = pf.PEPBuilder(ctx)
     pb.add_initial_constraint(
-        ((ctx["x_0"] - ctx["x_star"]) ** 2).le(R ** 2, name="initial_condition")
+        ((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition")
     )
     pb.set_performance_metric(h(ctx[f"x_{N}"]) - h(ctx["x_star"]))
     return ctx, pb, f

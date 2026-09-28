@@ -1,24 +1,45 @@
 import sys
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parent/"helpers"))
-from runtime import configure, NOTEBOOK_DIR
-configure()
-import inspect
-import nbformat as nbf
-from nbclient import NotebookClient
-from jupyter_client import KernelManager
-from jupyter_client.kernelspec import KernelSpecManager
-from grouping import replay
-from transport_grouping import construct,transport_pieces
 
-path=NOTEBOOK_DIR/"pgm_example_lyap.ipynb"
-nb=nbf.read(path,as_version=4)
-nb.cells=nb.cells[:18]
-nb.cells[17].source=nb.cells[17].source.split("## Lyapunov partial sums")[0]
+sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
+# local helper resolved by the notebook runtime path
+from runtime import NOTEBOOK_DIR, configure  # ty: ignore[unresolved-import]
+
+configure()
+import inspect  # noqa: E402 - imports follow runtime or notebook setup
+
+import nbformat as nbf  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+from grouping import (  # ty: ignore[unresolved-import]  # local helper resolved by the notebook runtime path  # noqa: E402 - imports follow runtime or notebook setup
+    replay,
+)
+from jupyter_client import (  # noqa: E402 - imports follow runtime or notebook setup
+    KernelManager,
+)
+from jupyter_client.kernelspec import (  # noqa: E402 - imports follow runtime or notebook setup
+    KernelSpecManager,
+)
+from nbclient import (  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+    NotebookClient,
+)
+from transport_grouping import (  # ty: ignore[unresolved-import]  # local helper resolved by the notebook runtime path  # noqa: E402 - imports follow runtime or notebook setup
+    construct,
+    transport_pieces,
+)
+
+path = NOTEBOOK_DIR / "pgm_example_lyap.ipynb"
+nb = nbf.read(path, as_version=4)
+nb.cells = nb.cells[:18]
+nb.cells[17].source = nb.cells[17].source.split("## Lyapunov partial sums")[0]
+
+
 def md(s):
     nb.cells.append(nbf.v4.new_markdown_cell(s))
+
+
 def code(s):
     nb.cells.append(nbf.v4.new_code_cell(s))
+
+
 md(r"""## Lyapunov partial sums
 
 Write $I^f_{a,b}\leq0$ and $I^g_{a,b}\leq0$ for the normalized interpolation residuals attached to the named directed pairs. Let $Q_i$ denote the PSD numerical slack pieces obtained by transporting the supplied factor coordinates to the saved slack matrix (with the nullspace remainder included at the final step). Starting from $V_0=0$, accumulate all minimizer pairs through $x_k$, all forward pairs through $x_k$, and subtract $Q_1,\ldots,Q_k$.
@@ -35,24 +56,32 @@ The initial distance constraint stays in the boundary argument. All interpolatio
 $$V_N=h(x_N)-h(x_\star)-B-\tau(\|x_0-x_\star\|^2-R^2),$$
 with the full constant-coordinate residual retained. This fixed-sample construction is not yet the analytic theorem.
 """)
-code('''import hashlib
+code(
+    """import hashlib
 NOTEBOOK_DIR = notebook_dir
 REPO_ROOT = repo_root
-'''+inspect.getsource(replay))
-code(inspect.getsource(transport_pieces)+"\n\n"+inspect.getsource(construct)+'''
+"""
+    + inspect.getsource(replay)
+)
+code(
+    inspect.getsource(transport_pieces)
+    + "\n\n"
+    + inspect.getsource(construct)
+    + """
 certificate = b2
 ctx, pb, lyap, selected_observation = construct(certificate)
 print("Coverage maximum residual:", selected_observation["coverage_residual"])
 print("Maximum step identity residual:", max(selected_observation["step_residuals"]))
 assert selected_observation["grouping_checked"]
-''')
+"""
+)
 md(r"""### Cross-horizon confirmation
 
 Use the same original coordinate ordering, absolute singular-value tolerance $10^{-4}$, and no scaling. Exclude only $V_0$ and $V_N$ in the comparison. The retained indices are $1,\ldots,N-1$, with at least three at each horizon. Endpoint exclusions do not waive reconstruction or boundary proof requirements.
 
 The comparison below replays each horizon's own complete saved certificate and recomputes its partial sums. The selected main sample is $N=4$.
 """)
-code('''rank_samples = []
+code("""rank_samples = []
 for relative in ("supplementary/N6-selected/pgm_b2.json", "state/pgm_b2.json"):
     horizon_certificate = json.loads((notebook_dir / relative).read_text())
     _, _, _, observation = construct(horizon_certificate, verbose=False)
@@ -74,20 +103,25 @@ print("No singular values between 0.5e-4 and 2e-4 at either horizon.")
 # Restore the selected context after replaying all samples.
 ctx, pb, lyap, selected_observation = construct(certificate, verbose=False)
 pm = pf.ExpressionManager(ctx, resolve_parameters={"L": sp.S.One, "R": sp.S.One})
-''')
+""")
 md("""B3 numerical rank and coverage gates are complete. Every partial sum retains its Gram, function-value, and constant coordinates in state. The common rank is discovery evidence; the basis reconstruction and arbitrary-horizon proof remain pending.
 
 ## Special vectors (pending)
 ## Closed-form coefficients and exact identities (pending)
 """)
-nbf.write(nb,path)
-km=KernelManager(kernel_name="attempt",kernel_spec_manager=KernelSpecManager(
-    kernel_dirs=[str(NOTEBOOK_DIR/"supplementary/.runtime/kernels")]))
+nbf.write(nb, path)
+km = KernelManager(
+    kernel_name="attempt",
+    kernel_spec_manager=KernelSpecManager(
+        kernel_dirs=[str(NOTEBOOK_DIR / "supplementary/.runtime/kernels")]
+    ),
+)
 try:
-    NotebookClient(nb,km=km,timeout=180,resources={"metadata":{"path":str(NOTEBOOK_DIR)}}).execute()
+    NotebookClient(
+        nb, km=km, timeout=180, resources={"metadata": {"path": str(NOTEBOOK_DIR)}}
+    ).execute()
 finally:
     if km.has_kernel:
         km.shutdown_kernel(now=True)
-nbf.write(nb,path)
+nbf.write(nb, path)
 print("B3 notebook executed")
-

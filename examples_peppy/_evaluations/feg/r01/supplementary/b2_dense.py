@@ -1,9 +1,13 @@
 """Initial dense certificate and structural summary."""
+
 import json
 from pathlib import Path
+
 import numpy as np
+
+# local helper resolved by the notebook runtime path
+from certificate_tools import capture, source_hashes  # ty: ignore[unresolved-import]
 from feg_setup import get_pep_setup
-from certificate_tools import capture, source_hashes
 
 root = Path.cwd()
 hashes = source_hashes(root)

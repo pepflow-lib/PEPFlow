@@ -1,10 +1,14 @@
-﻿from pathlib import Path
-root=Path(__file__).resolve().parents[1]
-w=(root/'supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md').read_text()
-part=w.split('def assess_rank_pattern')[1].split('```')[0]
-(root/'supplementary/b3_assess.py').write_text('def assess_rank_pattern'+part)
-s=(root/'supplementary/run_b3.py').read_text(encoding='utf-8-sig')
-s+='''
+from pathlib import Path
+
+root = Path(__file__).resolve().parents[1]
+w = (
+    root
+    / "supplementary/approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md"
+).read_text()
+part = w.split("def assess_rank_pattern")[1].split("```")[0]
+(root / "supplementary/b3_assess.py").write_text("def assess_rank_pattern" + part)
+s = (root / "supplementary/run_b3.py").read_text(encoding="utf-8-sig")
+s += """
 source=(notebook_dir/'supplementary/b3_assess.py').read_text()
 exec(compile(source,'b3_assess.py','exec'),globals())
 rank_samples=[json.loads((notebook_dir/f'supplementary/b3_rank_N{n}.json').read_text()) for n in (4,6)]
@@ -30,5 +34,5 @@ state={**certificate,'rank_profile':ranks,'rank_search':rank_search,
  'numerical_certificate_verified':True,'analytic_full_pep_verified':False,'lyapunov_proof_verified':False}
 (notebook_dir/'state/bppm_b3.json').write_text(json.dumps(state,indent=2))
 print('B3 state saved with cross-horizon confirmation:',rank_search)
-'''
-(root/'supplementary/finalize_b3.py').write_text(s)
+"""
+(root / "supplementary/finalize_b3.py").write_text(s)

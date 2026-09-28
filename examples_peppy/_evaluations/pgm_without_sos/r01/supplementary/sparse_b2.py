@@ -1,4 +1,5 @@
 """Test an index-pattern relaxation and inspect its fractions and factors."""
+
 import json
 import sys
 from fractions import Fraction
@@ -7,12 +8,21 @@ from pathlib import Path
 
 def main():
     root = Path(__file__).resolve().parent.parent
-    sys.path[:0] = [str(root / "supplementary/approved"), str(root / "supplementary/h"), str(root)]
-    from runtime import configure
+    sys.path[:0] = [
+        str(root / "supplementary/approved"),
+        str(root / "supplementary/h"),
+        str(root),
+    ]
+    # local helper resolved by the notebook runtime path
+    from runtime import configure  # ty: ignore[unresolved-import]
+
     configure()
     import numpy as np
-    from certificate import capture, inventory
+
+    # local helper resolved by the notebook runtime path
+    from certificate import capture, inventory  # ty: ignore[unresolved-import]
     from pgm_setup import get_pep_setup
+
     params = {"L": 1, "R": 1}
     ctx, pb, obj = get_pep_setup(4, params)
     dropped = []

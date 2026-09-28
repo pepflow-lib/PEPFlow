@@ -1,4 +1,5 @@
 """OGM setup: smooth convex f, terminal function gap, radius R."""
+
 import math
 
 import pepflow as pf

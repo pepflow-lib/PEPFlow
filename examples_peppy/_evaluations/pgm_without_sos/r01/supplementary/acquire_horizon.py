@@ -1,4 +1,5 @@
 """B2-only acquisition for the horizon requested by B3."""
+
 import hashlib
 import json
 import sys
@@ -8,15 +9,32 @@ from typing import Any
 
 def main():
     root = Path(__file__).resolve().parent.parent
-    sys.path[:0] = [str(root / "supplementary/approved"), str(root / "supplementary/h"), str(root)]
-    from runtime import configure
+    sys.path[:0] = [
+        str(root / "supplementary/approved"),
+        str(root / "supplementary/h"),
+        str(root),
+    ]
+    # local helper resolved by the notebook runtime path
+    from runtime import configure  # ty: ignore[unresolved-import]
+
     configure()
     import numpy as np
     import sympy as sp
-    from certificate import capture, inventory, certificate_id
+
+    # local helper resolved by the notebook runtime path
+    from certificate import (  # ty: ignore[unresolved-import]
+        capture,
+        certificate_id,
+        inventory,
+    )
     from pgm_setup import get_pep_setup
+
     previous = json.loads((root / "state/pgm_b2.json").read_text())
-    request = json.loads((root / "supplementary/b3-recovery-request.json").read_text(encoding="utf-8-sig"))
+    request = json.loads(
+        (root / "supplementary/b3-recovery-request.json").read_text(
+            encoding="utf-8-sig"
+        )
+    )
     N = request["requested_horizon"]
     params = json.loads(previous["params_json"])
     hashes = previous["certificate_provenance"]["source_hashes"]
@@ -25,7 +43,11 @@ def main():
     ctx, pb, obj = get_pep_setup(N, params)
     dense = capture(ctx, pb, obj, params)
     (root / f"supplementary/b2_n{N}_dense.json").write_text(json.dumps(dense, indent=2))
-    print("Dense status / bound:", dense["certificate_provenance"]["solver_status"], dense["opt_value"])
+    print(
+        "Dense status / bound:",
+        dense["certificate_provenance"]["solver_status"],
+        dense["opt_value"],
+    )
     ctx, pb, obj = get_pep_setup(N, params)
     dropped = []
     for c, origin, _, _ in inventory(ctx, pb):
@@ -41,21 +63,32 @@ def main():
     selected = capture(ctx, pb, obj, params, dense["opt_value"])
     state: dict[str, Any] = {**previous, **selected, "N": N, "N_verify": N}
     state["certificate_provenance"]["source_hashes"] = hashes
-    state["normalization"] = {**previous["normalization"], "bound_value": selected["opt_value"]}
+    state["normalization"] = {
+        **previous["normalization"],
+        "bound_value": selected["opt_value"],
+    }
     state["numerical_certificate_verified"] = selected["numerical_checks"]["passed"]
     state["proof_valid"] = state["numerical_certificate_verified"]
     namespace: dict[str, Any] = {"sp": sp}
     exec(previous["lamb_code"], namespace)
     candidate = namespace["candidate_multiplier"]
-    error = max(abs(float(candidate(name, N))-value)
-                for name, value in selected["named_dual_values"].items() if value is not None)
+    error = max(
+        abs(float(candidate(name, N)) - value)
+        for name, value in selected["named_dual_values"].items()
+        if value is not None
+    )
     state["closed_form_search"] = {
         **previous["closed_form_search"],
         "reused_from_certificate": previous["certificate_id"],
         "additional_horizon_lambda_error": error,
-        "additional_horizon_formula_status": "candidate" if error < 1e-4 else "unresolved",
+        "additional_horizon_formula_status": "candidate"
+        if error < 1e-4
+        else "unresolved",
     }
-    state["formula_status"] = {"lambda": "candidate" if error < 1e-4 else "unresolved", "S": "unresolved"}
+    state["formula_status"] = {
+        "lambda": "candidate" if error < 1e-4 else "unresolved",
+        "S": "unresolved",
+    }
     state["S_code"] = None
     state["certificate_id"] = certificate_id(state)
     for path, expected in hashes.items():

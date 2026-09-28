@@ -1,11 +1,14 @@
-﻿from pathlib import Path
 import sys
+from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
-import runtime
 import json
+
 import cvxpy as cp
-import pepflow as pf
+import runtime
 from pgm_setup import get_pep_setup
+
+import pepflow as pf
 
 results = []
 for N in range(1, 8):
@@ -26,10 +29,16 @@ for N in range(1, 8):
         value = problem.solve(**options)
     if problem.status not in ("optimal", "optimal_inaccurate"):
         raise RuntimeError(problem.status)
-    row = {"N": N, "opt_value": float(value), "solver_status": problem.status,
-           "solver_options": options, "fallback_reason": failure,
-           "tau_sol": float(solver.dual_var_manager.dual_value("initial_condition"))}
+    row = {
+        "N": N,
+        "opt_value": float(value),
+        "solver_status": problem.status,
+        "solver_options": options,
+        "fallback_reason": failure,
+        "tau_sol": float(solver.dual_var_manager.dual_value("initial_condition")),
+    }
     results.append(row)
     print(json.dumps(row), flush=True)
-(runtime.ATTEMPT / "supplementary/_sweep_tmp.json").write_text(json.dumps(results, indent=2))
-
+(runtime.ATTEMPT / "supplementary/_sweep_tmp.json").write_text(
+    json.dumps(results, indent=2)
+)

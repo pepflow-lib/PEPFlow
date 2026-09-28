@@ -1,13 +1,21 @@
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
-from runtime import configure, NOTEBOOK_DIR
+# local helper resolved by the notebook runtime path
+from runtime import NOTEBOOK_DIR, configure  # ty: ignore[unresolved-import]
+
 configure()
 
-import json
-import sympy as sp
-from pgm_setup import get_pep_setup
-from runtime import solve_explicit
+import json  # noqa: E402 - imports follow runtime or notebook setup
+
+import sympy as sp  # noqa: E402 - imports follow runtime or notebook setup
+from pgm_setup import (  # noqa: E402 - imports follow runtime or notebook setup
+    get_pep_setup,
+)
+from runtime import (  # ty: ignore[unresolved-import]  # local helper resolved by the notebook runtime path  # noqa: E402 - imports follow runtime or notebook setup
+    solve_explicit,
+)
 
 results = []
 for n in range(1, 8):
@@ -17,6 +25,6 @@ for n in range(1, 8):
     results.append(row)
     print(json.dumps(row), flush=True)
     (NOTEBOOK_DIR / "supplementary" / "_sweep_tmp.json").write_text(
-        json.dumps(results, indent=2), encoding="utf-8")
+        json.dumps(results, indent=2), encoding="utf-8"
+    )
 print("Inverse values:", [1 / row["opt_value"] for row in results])
-

@@ -1,29 +1,51 @@
 import sys
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parent/"helpers"))
-from runtime import configure, NOTEBOOK_DIR
-configure()
-import inspect
-import json
-import nbformat as nbf
-from nbclient import NotebookClient
-from jupyter_client import KernelManager
-from jupyter_client.kernelspec import KernelSpecManager
-from certificates import inventory, residual, maxabs, verify, aid_terms, lambda_candidate
 
-path=NOTEBOOK_DIR/"pgm_example_lyap.ipynb"
-nb=nbf.read(path,as_version=4)
-nb.cells=nb.cells[:10]
-nb.cells[9].source=nb.cells[9].source.split("## Full-PEP")[0]
+sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
+# local helper resolved by the notebook runtime path
+from runtime import NOTEBOOK_DIR, configure  # ty: ignore[unresolved-import]
+
+configure()
+import inspect  # noqa: E402 - imports follow runtime or notebook setup
+
+import nbformat as nbf  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+from certificates import (  # ty: ignore[unresolved-import]  # local helper resolved by the notebook runtime path  # noqa: E402 - imports follow runtime or notebook setup
+    aid_terms,
+    inventory,
+    lambda_candidate,
+    maxabs,
+    residual,
+    verify,
+)
+from jupyter_client import (  # noqa: E402 - imports follow runtime or notebook setup
+    KernelManager,
+)
+from jupyter_client.kernelspec import (  # noqa: E402 - imports follow runtime or notebook setup
+    KernelSpecManager,
+)
+from nbclient import (  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+    NotebookClient,
+)
+
+path = NOTEBOOK_DIR / "pgm_example_lyap.ipynb"
+nb = nbf.read(path, as_version=4)
+nb.cells = nb.cells[:10]
+nb.cells[9].source = nb.cells[9].source.split("## Full-PEP")[0]
+
+
 def md(s):
     nb.cells.append(nbf.v4.new_markdown_cell(s))
+
+
 def code(s):
     nb.cells.append(nbf.v4.new_code_cell(s))
+
+
 md(r"""## Full-PEP certificate: dense and sparse solves
 
 At $N=4$, the dense solve includes every smooth-convex interpolation inequality of $f$ and convex interpolation inequality of $g$. Both solves use CLARABEL defaults. The sparse solve retains only pairs $(x_\star,x_j)$ and $(x_i,x_{i+1})$ for both functions, with their applicable index ranges. Small dense entries alone are not set to zero: a fresh solve under this relaxation supplies all selected duals and the slack matrix together.
 """)
-code('''import sympy as sp
+code("""import sympy as sp
 from pepflow.utils import Comparator
 
 b2 = json.loads((notebook_dir / "state/pgm_b2.json").read_text())
@@ -43,7 +65,7 @@ for owner in ("f", "g"):
     print("Selected", owner, selected)
 print("Dense S eigenvalues:", np.linalg.eigvalsh(dense["S_matrix"]))
 print("Selected solver:", b2["certificate_provenance"]["solver"])
-''')
+""")
 md(r"""### Candidate multipliers and supplied SOS
 
 Rational inspection of the selected multipliers gives forward weights
@@ -55,9 +77,13 @@ The SOS below is the supplied candidate, implemented with exact rational coeffic
 
 The formulas remain candidates for arbitrary horizons. An exact identity at this selected horizon is a fixed-sample check.
 """)
-code("\n\n".join(inspect.getsource(fn) for fn in
-    [inventory,residual,maxabs,aid_terms,lambda_candidate,verify]))
-code('''n = b2["N_verify"]
+code(
+    "\n\n".join(
+        inspect.getsource(fn)
+        for fn in [inventory, residual, maxabs, aid_terms, lambda_candidate, verify]
+    )
+)
+code("""n = b2["N_verify"]
 ctx, pb, _ = get_pep_setup(n, {"L": sp.S.One, "R": sp.S.One})
 pb.set_relaxed_constraints(b2["relaxed_constraints"])
 assert [str(v) for v in ctx.basis_vectors()] == b2["basis_vectors"]
@@ -74,14 +100,14 @@ fit_errors = [abs(float(lambda_candidate(name, n))-value)
               for name, value in b2["named_dual_values"].items() if value is not None]
 assert max(fit_errors) <= 1e-4
 print("Candidate multiplier max error:", max(fit_errors))
-''')
+""")
 md(r"""### Slack decomposition and complete certificate checks
 
 Normalize every interpolation inequality as $R\leq0$. The primal dual certificate identity is
 $$h(x_N)-h(x_\star)-B-\sum_c d_cR_c+S=0.$$
 The sum includes the initial residual $\|x_0-x_\star\|^2-R^2$ and every active interpolation group. The checks cover Gram coefficients, function coefficients, constants, multiplier signs, slack PSD, and the preserved bound. No multiplier is drawn from a different solve.
 """)
-code('''terms = aid_terms(ctx, n)
+code("""terms = aid_terms(ctx, n)
 aid = sum((c*u**2 for _, _, c, u in terms), pf.Scalar.zero())
 D = np.diag([float(pm.eval_scalar(c)) for _, _, c, _ in terms])
 E = np.array([pm.eval_vector(u).coords for _, _, _, u in terms], dtype=float)
@@ -119,7 +145,7 @@ assert all(sp.simplify(v) == 0 for v in [
     exact_residual.offset])
 print("Exact candidate identity at N =", n, ": all coordinates zero")
 print("Numerical certificate verified; analytic full-PEP and Lyapunov proof remain pending.")
-''')
+""")
 md(r"""### Initial formula search and B2 conclusion
 
 The dense certificate was inspected across both interpolation families. The consecutive/minimizer sparse recipe preserved its bound. Rational approximations and flow differences supplied multiplier candidates, compared against every active selected multiplier. The supplied three-family SOS matches the same selected slack; its exact candidate identity also vanishes in every coordinate at $N=4$.
@@ -130,14 +156,18 @@ This completes the initial formula search and numerical certificate gate. The al
 ## Special vectors (pending)
 ## Closed-form coefficients and exact identities (pending)
 """)
-nbf.write(nb,path)
-kdir=NOTEBOOK_DIR/"supplementary/.runtime/kernels"
-km=KernelManager(kernel_name="attempt",kernel_spec_manager=KernelSpecManager(kernel_dirs=[str(kdir)]))
+nbf.write(nb, path)
+kdir = NOTEBOOK_DIR / "supplementary/.runtime/kernels"
+km = KernelManager(
+    kernel_name="attempt",
+    kernel_spec_manager=KernelSpecManager(kernel_dirs=[str(kdir)]),
+)
 try:
-    NotebookClient(nb,km=km,timeout=180,resources={"metadata":{"path":str(NOTEBOOK_DIR)}}).execute()
+    NotebookClient(
+        nb, km=km, timeout=180, resources={"metadata": {"path": str(NOTEBOOK_DIR)}}
+    ).execute()
 finally:
     if km.has_kernel:
         km.shutdown_kernel(now=True)
-nbf.write(nb,path)
-print("B2 notebook executed",path)
-
+nbf.write(nb, path)
+print("B2 notebook executed", path)

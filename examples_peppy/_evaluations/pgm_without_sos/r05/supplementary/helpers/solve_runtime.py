@@ -1,5 +1,7 @@
-﻿"""Explicit solver selection using approved PEPFlow APIs."""
+"""Explicit solver selection using approved PEPFlow APIs."""
+
 import cvxpy as cp
+
 import pepflow as pf
 
 
@@ -20,8 +22,17 @@ def solve_primal(ctx, pb, params):
         failure = str(exc)
         options = {"solver": "SCS", "eps": 1e-7, "max_iters": 200000}
         problem.solve(**options)
-    result = pf.PEPResult(float(problem.value), solver.dual_var_manager,
-                          pf.PEPType.PRIMAL, problem.status, ctx)
-    metadata = {"solver": problem.solver_stats.solver_name, "options": options,
-                "status": problem.status, "fallback_reason": failure}
+    result = pf.PEPResult(
+        float(problem.value),
+        solver.dual_var_manager,
+        pf.PEPType.PRIMAL,
+        problem.status,
+        ctx,
+    )
+    metadata = {
+        "solver": problem.solver_stats.solver_name,
+        "options": options,
+        "status": problem.status,
+        "fallback_reason": failure,
+    }
     return result, metadata

@@ -1,20 +1,26 @@
 import sys
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parent/'helpers'))
-import runtime
-import json
-import hashlib
-import os
-import nbformat as nb
-from nbclient import NotebookClient
 
-root=runtime.ATTEMPT
-path=root/'pgm_example_lyap.ipynb'
-book=nb.read(path,as_version=4)
-source=(root/'supplementary/helpers/candidates.py').read_text()
-new=[nb.v4.new_markdown_cell(r'''## Dense and relaxed proof solves
-At $N=6$ the dense and relaxed PEPs use CLARABEL defaults. We retain $f$ and $g$ inequalities from the optimum to each sampled iterate and from each iterate to its successor; all other inequalities are dropped. Each chosen certificate component comes from one solve. The stored dense/relaxed data below are solver outputs, and subsequent cells recheck their full identity without resolving the optimization problem.'''),
-nb.v4.new_code_cell('''import hashlib
+sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
+import hashlib
+import json
+import os
+
+# optional notebook-generation dependency
+import nbformat as nb  # ty: ignore[unresolved-import]
+import runtime
+
+# optional notebook-generation dependency
+from nbclient import NotebookClient  # ty: ignore[unresolved-import]
+
+root = runtime.ATTEMPT
+path = root / "pgm_example_lyap.ipynb"
+book = nb.read(path, as_version=4)
+source = (root / "supplementary/helpers/candidates.py").read_text()
+new = [
+    nb.v4.new_markdown_cell(r"""## Dense and relaxed proof solves
+At $N=6$ the dense and relaxed PEPs use CLARABEL defaults. We retain $f$ and $g$ inequalities from the optimum to each sampled iterate and from each iterate to its successor; all other inequalities are dropped. Each chosen certificate component comes from one solve. The stored dense/relaxed data below are solver outputs, and subsequent cells recheck their full identity without resolving the optimization problem."""),
+    nb.v4.new_code_cell('''import hashlib
 import sympy as sp
 
 dense = json.loads((notebook_dir / "state/pgm_dense.json").read_text())
@@ -36,14 +42,14 @@ for name, value in b2["named_dual_values"].items():
         print(name, value)
 assert abs(dense["opt_value"] - b2["opt_value"]) < 1e-5
 assert b2["certificate_provenance"]["solver_status"] == "optimal"'''),
-nb.v4.new_markdown_cell(r'''## Lambda and S verification
+    nb.v4.new_markdown_cell(r"""## Lambda and S verification
 Define all interpolation residuals with sign $R\le0$. The numerical certificate is
 $$h(x_N)-h(x_\star)-\mathrm{opt}-\sum_q\lambda_qR_q+S=0.$$
 The sum includes the radius constraint. Inequality multipliers and the Gram slack must be nonnegative and positive semidefinite, respectively.
 
-The sparse fractions suggest $f$ successor multipliers $(i+1)/(2N-i)$ and $g$ successor multipliers $i/(2N-i)$. Optimum-to-iterate multipliers are their consecutive differences, with endpoint adjustments. The following executable definitions include all endpoints. They are candidates for arbitrary $N$, not yet an all-horizon proof. The supplied SOS aid has normalization factor 1 in this objective-gap certificate. Its positive coefficients use exact rational expressions; the notebook verifies reconstruction against the same selected numerical slack.'''),
-nb.v4.new_code_cell(source[source.index('def aid_pieces'):]),
-nb.v4.new_code_cell('''from pepflow.parameter import eval_parameter
+The sparse fractions suggest $f$ successor multipliers $(i+1)/(2N-i)$ and $g$ successor multipliers $i/(2N-i)$. Optimum-to-iterate multipliers are their consecutive differences, with endpoint adjustments. The following executable definitions include all endpoints. They are candidates for arbitrary $N$, not yet an all-horizon proof. The supplied SOS aid has normalization factor 1 in this objective-gap certificate. Its positive coefficients use exact rational expressions; the notebook verifies reconstruction against the same selected numerical slack."""),
+    nb.v4.new_code_cell(source[source.index("def aid_pieces") :]),
+    nb.v4.new_code_cell("""from pepflow.parameter import eval_parameter
 
 ctx_b2, pb_b2, obj_b2 = get_pep_setup(N, {"L": 1, "R": 1})
 entries = [(c, "initial", None, None) for c in pb_b2.init_conditions]
@@ -131,30 +137,56 @@ candidate_error = max(abs(value - float(multiplier_candidate(name, N)))
     for name, value in b2["named_dual_values"].items() if value is not None)
 assert candidate_error < 1e-4
 print("Candidate multiplier error:", candidate_error)
-print("Numerical certificate verified; arbitrary-horizon analytic proof remains pending.")'''),
-nb.v4.new_markdown_cell('''### Initial closed-form search status
-Sparse consecutive multipliers were rationalized and their differences identified. Both function classes have candidate formulas, including endpoints. The supplied SOS reconstructs the same selected slack within the fixed tolerance; the candidate multipliers and SOS satisfy an exact fixed-$N$ identity above. This does not establish the identity for arbitrary horizons. Global analytic verification and the Lyapunov theorem remain pending.''')]
-book.cells=book.cells[:7]+new+book.cells[-3:]
-nb.write(book,path)
-os.environ['JUPYTER_PATH']=str(runtime.RUNTIME/'jupyter')
-NotebookClient(book,timeout=180,kernel_name='pgm-attempt',resources={'metadata':{'path':str(root)}}).execute()
-nb.write(book,path)
+print("Numerical certificate verified; arbitrary-horizon analytic proof remains pending.")"""),
+    nb.v4.new_markdown_cell("""### Initial closed-form search status
+Sparse consecutive multipliers were rationalized and their differences identified. Both function classes have candidate formulas, including endpoints. The supplied SOS reconstructs the same selected slack within the fixed tolerance; the candidate multipliers and SOS satisfy an exact fixed-$N$ identity above. This does not establish the identity for arbitrary horizons. Global analytic verification and the Lyapunov theorem remain pending."""),
+]
+book.cells = book.cells[:7] + new + book.cells[-3:]
+nb.write(book, path)
+os.environ["JUPYTER_PATH"] = str(runtime.RUNTIME / "jupyter")
+NotebookClient(
+    book,
+    timeout=180,
+    kernel_name="pgm-attempt",
+    resources={"metadata": {"path": str(root)}},
+).execute()
+nb.write(book, path)
 for c in book.cells:
-    if c.cell_type=='markdown': assert not any(s in c.source for s in ('\\(', '\\)', '\\[', '\\]', '\x0c', '\r'))
+    if c.cell_type == "markdown":
+        assert not any(
+            s in c.source for s in ("\\(", "\\)", "\\[", "\\]", "\x0c", "\r")
+        )
 # The newly executed exact-mode check supersedes the earlier roundoff-only candidate check.
-for name in ('pgm_b2.json','pgm_relaxed.json'):
-    state=json.loads((root/'state'/name).read_text())
-    state['candidate_fixed_N_exact_residual']=0
-    state['closed_form_search']['attempts'][0]['exact_mode']='sympy_mode=True, all coordinates simplify exactly to zero in notebook'
-    (root/'state'/name).write_text(json.dumps(state,indent=2))
-check=root/'supplementary/pgm_example_lyap_checklist.md'
-t=check.read_text()
-t=t.replace('Last reviewed block: B1','Last reviewed block: B2')
-import re
-t=re.sub(r'SHA-256: [a-f0-9]+','SHA-256: '+hashlib.sha256(path.read_bytes()).hexdigest(),t)
-t=t.replace('| pending | 7 | Due B2. |','| verified | 7,8 | Dense and coherent relaxed solve summaries, all owners and preserved optimum inspected. |')
-t=t.replace('| pending | 8 | Due B2. |','| verified | 9,10,11,12 | Executed candidate definitions, complete numerical identity, signs, source and certificate hashes, SOS reconstruction and exact fixed-N check; global status pending. |')
-t=t.replace('| pending | 9 | Due B3. |','| pending | 13 | Due B3. |').replace('| pending | 10 | Due B4. |','| pending | 14 | Due B4. |').replace('| pending | 11 | Due B4/B5. |','| pending | 15 | Due B4/B5. |').replace('| pending | 11 | Due B5. |','| pending | 15 | Due B5. |')
-check.write_text(t)
-print('B2 notebook executed; complete numerical and exact fixed-N checks passed.')
+for name in ("pgm_b2.json", "pgm_relaxed.json"):
+    state = json.loads((root / "state" / name).read_text())
+    state["candidate_fixed_N_exact_residual"] = 0
+    state["closed_form_search"]["attempts"][0]["exact_mode"] = (
+        "sympy_mode=True, all coordinates simplify exactly to zero in notebook"
+    )
+    (root / "state" / name).write_text(json.dumps(state, indent=2))
+check = root / "supplementary/pgm_example_lyap_checklist.md"
+t = check.read_text()
+t = t.replace("Last reviewed block: B1", "Last reviewed block: B2")
+import re  # noqa: E402 - imports follow runtime or notebook setup
 
+t = re.sub(
+    r"SHA-256: [a-f0-9]+",
+    "SHA-256: " + hashlib.sha256(path.read_bytes()).hexdigest(),
+    t,
+)
+t = t.replace(
+    "| pending | 7 | Due B2. |",
+    "| verified | 7,8 | Dense and coherent relaxed solve summaries, all owners and preserved optimum inspected. |",
+)
+t = t.replace(
+    "| pending | 8 | Due B2. |",
+    "| verified | 9,10,11,12 | Executed candidate definitions, complete numerical identity, signs, source and certificate hashes, SOS reconstruction and exact fixed-N check; global status pending. |",
+)
+t = (
+    t.replace("| pending | 9 | Due B3. |", "| pending | 13 | Due B3. |")
+    .replace("| pending | 10 | Due B4. |", "| pending | 14 | Due B4. |")
+    .replace("| pending | 11 | Due B4/B5. |", "| pending | 15 | Due B4/B5. |")
+    .replace("| pending | 11 | Due B5. |", "| pending | 15 | Due B5. |")
+)
+check.write_text(t)
+print("B2 notebook executed; complete numerical and exact fixed-N checks passed.")

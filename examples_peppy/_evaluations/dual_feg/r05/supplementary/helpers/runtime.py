@@ -1,1 +1,1 @@
-﻿VALUE: int = 7
+VALUE: int = 7

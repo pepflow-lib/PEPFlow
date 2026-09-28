@@ -62,11 +62,13 @@ ruff check .;
 isort .;
 ```
 
-We use `pytest` framework to do the test. To run all unit tests, run the following command:
+Run the library, workflow plugin and supplementary tool tests from the repository root:
 
 ```bash
-pytest -s -vv pepflow
+pytest -q
 ```
+
+`pytest .` collects the same maintained suites. To run only the library tests, use `pytest -q pepflow`. Archived experiment programs are executed through the [supplementary replay tools](examples_peppy/_evaluations/supplementary/tools/README.md).
 
 We have a convenient scripts to do the above
 

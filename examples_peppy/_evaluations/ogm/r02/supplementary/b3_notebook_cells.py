@@ -1,6 +1,6 @@
 """Partial-sum construction and full-coordinate coverage checks for B3."""
 
-DECOMPOSITION = '''# The whole selected S is one PSD boundary piece; retain every matrix entry.
+DECOMPOSITION = """# The whole selected S is one PSD boundary piece; retain every matrix entry.
 S_scalar = sum((float(S_array[i,j])*basis[i]*basis[j] for i,j in np.ndindex(S_array.shape)), pf.Scalar.zero())
 S_piece_terms = {"terminal_S": S_scalar}
 S_assignment = {"terminal_S": "boundary"}
@@ -9,9 +9,9 @@ assert np.allclose(np.asarray(piece_eval.inner_prod_coords, dtype=float), S_arra
 assert np.allclose(np.asarray(piece_eval.func_coords, dtype=float), 0, atol=1e-5, rtol=0)
 assert abs(float(piece_eval.offset)) <= 1e-5
 assert np.linalg.eigvalsh(np.asarray(piece_eval.inner_prod_coords, dtype=float)).min() >= -1e-6
-'''
+"""
 
-GROUPING = '''# Residuals R_c <= 0 and nonnegative duals make these V_k nonincreasing.
+GROUPING = """# Residuals R_c <= 0 and nonnegative duals make these V_k nonincreasing.
 grouping_checked = False
 rank_tolerance = 1e-4
 rank_left, rank_right = 1, 1
@@ -90,4 +90,4 @@ for k in range(N):
     step_errors.append(errors)
 grouping_checked = True
 print("Full-coordinate coverage and step checks passed; only terminal S is left for the boundary argument.")
-'''
+"""

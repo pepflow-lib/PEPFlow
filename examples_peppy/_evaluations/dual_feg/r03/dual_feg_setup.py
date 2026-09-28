@@ -1,6 +1,8 @@
 """Dual-FEG with candidate performance metric ||A(x_N)||^2."""
-import pepflow as pf
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")

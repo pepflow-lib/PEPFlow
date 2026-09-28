@@ -1,10 +1,16 @@
-﻿def V_k_basis(k):
-    if k==0:
+# This saved notebook fragment shares its caller's execution namespace.
+# These names are supplied by the notebook cells or serialized proof source.
+# ty: ignore[unresolved-reference]
+# ruff: noqa: F821
+
+
+def V_k_basis(k):
+    if k == 0:
         return []
-    return [obj(ctx[f'x_{k}']),ctx[f'x_{k}']-ctx['x_0']]
+    return [obj(ctx[f"x_{k}"]), ctx[f"x_{k}"] - ctx["x_0"]]
 
 
 def V_k_basis_labels(k):
-    if k==0:
+    if k == 0:
         return []
-    return [f'A(x_{k})',f'x_{k}-x_0']
+    return [f"A(x_{k})", f"x_{k}-x_0"]

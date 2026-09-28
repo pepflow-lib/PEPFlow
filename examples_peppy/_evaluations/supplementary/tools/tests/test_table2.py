@@ -3,12 +3,12 @@
 import copy
 import importlib.util
 import math
-from pathlib import Path
 import unittest
-
+from pathlib import Path
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "table2.py"
 SPEC = importlib.util.spec_from_file_location("table2", MODULE_PATH)
+assert SPEC is not None and SPEC.loader is not None
 table2 = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(table2)
 
@@ -20,34 +20,78 @@ def campaign_fixture():
         for repeat in range(1, 6):
             attempt = f"{condition}_r{repeat:02d}"
             completed = repeat != 2
-            common = {"campaign_id": "test-campaign", "protocol_version": "test-protocol",
-                      "attempt_id": attempt, "condition_id": condition, "repetition": str(repeat)}
-            runs.append({**common, "started": "True", "usage_status": "complete",
-                         "evaluation_usage_status": "complete", "workflow_complete": str(completed),
-                         "run_status": "completed" if completed else "error",
-                         "attempt_wall_seconds": str(300 * repeat),
-                         "block_wall_seconds_sum": str(300 * repeat), "unallocated_seconds": "0",
-                         "generation_tokens_total": str(1_000_000 * repeat),
-                         "generation_tokens_observed": str(1_000_000 * repeat),
-                         "block_tokens_sum": str(1_000_000 * repeat), "unallocated_tokens": "0",
-                         "evaluation_wall_seconds": str(2 * repeat),
-                         "evaluation_tokens_total": str(10 * repeat),
-                         "historical_mathematical_verdict": "PASS" if completed else "NOT_EVALUATED"})
-            reviews.append({"attempt_id": attempt, "condition_id": condition, "repetition": repeat,
-                            "original_delivery_status": "COMPLETE" if completed else "incomplete",
-                            "original_generation_status": "completed" if completed else "error",
-                            "mathematical_verdict": "PASS", "original_generation_seconds": 300 * repeat,
-                            "original_generation_tokens": 1_000_000 * repeat,
-                            "original_review_seconds": 2 * repeat, "original_review_tokens": 10 * repeat})
+            common = {
+                "campaign_id": "test-campaign",
+                "protocol_version": "test-protocol",
+                "attempt_id": attempt,
+                "condition_id": condition,
+                "repetition": str(repeat),
+            }
+            runs.append(
+                {
+                    **common,
+                    "started": "True",
+                    "usage_status": "complete",
+                    "evaluation_usage_status": "complete",
+                    "workflow_complete": str(completed),
+                    "run_status": "completed" if completed else "error",
+                    "attempt_wall_seconds": str(300 * repeat),
+                    "block_wall_seconds_sum": str(300 * repeat),
+                    "unallocated_seconds": "0",
+                    "generation_tokens_total": str(1_000_000 * repeat),
+                    "generation_tokens_observed": str(1_000_000 * repeat),
+                    "block_tokens_sum": str(1_000_000 * repeat),
+                    "unallocated_tokens": "0",
+                    "evaluation_wall_seconds": str(2 * repeat),
+                    "evaluation_tokens_total": str(10 * repeat),
+                    "historical_mathematical_verdict": "PASS"
+                    if completed
+                    else "NOT_EVALUATED",
+                }
+            )
+            reviews.append(
+                {
+                    "attempt_id": attempt,
+                    "condition_id": condition,
+                    "repetition": repeat,
+                    "original_delivery_status": "COMPLETE"
+                    if completed
+                    else "incomplete",
+                    "original_generation_status": "completed" if completed else "error",
+                    "mathematical_verdict": "PASS",
+                    "original_generation_seconds": 300 * repeat,
+                    "original_generation_tokens": 1_000_000 * repeat,
+                    "original_review_seconds": 2 * repeat,
+                    "original_review_tokens": 10 * repeat,
+                }
+            )
             for block in table2.BLOCKS:
-                blocks.append({**common, "block_id": block, "reached": "True", "usage_status": "complete",
-                               "wall_seconds": str(60 * repeat), "tokens_total": str(200_000 * repeat),
-                               "tokens_observed": str(200_000 * repeat)})
+                blocks.append(
+                    {
+                        **common,
+                        "block_id": block,
+                        "reached": "True",
+                        "usage_status": "complete",
+                        "wall_seconds": str(60 * repeat),
+                        "tokens_total": str(200_000 * repeat),
+                        "tokens_observed": str(200_000 * repeat),
+                    }
+                )
                 review_blocks.append({"attempt_id": attempt, "block_id": block})
-    return runs, blocks, {"attempts": reviews, "blocks": review_blocks,
-                          "original_protocol": "test-protocol", "original_records_unchanged": True,
-                          "original_delivery_not_backfilled": True,
-                          "additional_verification_costs": [{"wall_seconds": 999, "tokens_total": 999}]}
+    return (
+        runs,
+        blocks,
+        {
+            "attempts": reviews,
+            "blocks": review_blocks,
+            "original_protocol": "test-protocol",
+            "original_records_unchanged": True,
+            "original_delivery_not_backfilled": True,
+            "additional_verification_costs": [
+                {"wall_seconds": 999, "tokens_total": 999}
+            ],
+        },
+    )
 
 
 class Table2Tests(unittest.TestCase):
@@ -64,7 +108,9 @@ class Table2Tests(unittest.TestCase):
             self.assertEqual(row["mathematical_verdict_counts"]["PASS"], 5)
             self.assertEqual(row["original_complete_delivery"], 4)
             self.assertEqual(row["block_minutes"]["B1"]["mean"], 3)
-            self.assertAlmostEqual(row["block_minutes"]["B1"]["sample_sd"], math.sqrt(2.5))
+            self.assertAlmostEqual(
+                row["block_minutes"]["B1"]["sample_sd"], math.sqrt(2.5)
+            )
             self.assertEqual(row["generation_tokens_millions"]["mean"], 3)
         self.assertEqual(result["totals"]["generation_tokens"], 90_000_000)
         self.assertEqual(result["totals"]["generation_seconds"], 27_000)

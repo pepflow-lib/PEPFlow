@@ -1,6 +1,8 @@
-﻿"""FEG setup: monotone L-Lipschitz operator and squared final residual."""
-import pepflow as pf
+"""FEG setup: monotone L-Lipschitz operator and squared final residual."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")
@@ -36,4 +38,3 @@ def get_pep_setup(N, params):
     )
     pb.set_performance_metric(A(ctx[f"x_{N}"]) ** 2)
     return ctx, pb, A
-

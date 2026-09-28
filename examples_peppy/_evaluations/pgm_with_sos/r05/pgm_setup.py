@@ -1,4 +1,5 @@
 """Proximal gradient with step 1/L; metric h(x_N)-h(x_star)."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

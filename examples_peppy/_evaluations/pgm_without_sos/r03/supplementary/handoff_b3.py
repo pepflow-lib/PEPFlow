@@ -1,5 +1,31 @@
-﻿import json
+import json
 from pathlib import Path
-root=Path.cwd()
-record={'current_block':'B3','completion_status':'incomplete_requires_additional_horizon','next_block':'B2','entry_exit_reason':'One verified constant-rank horizon; obtain second coherent complete certificate before confirming B3','run_status':'awaiting_same_session_continuation','requested_horizon':6,'selected_horizon':4,'preserve_selected_certificate':True,'recipe_id':'reverse_ldl_latest_gradient_step','evidence':'supplementary/rank_search.json','certificate_request':{'relaxation':'retain star-to-iterate and forward consecutive interpolation pairs in both f and g; adapt saved recipe to N6','closed_form_search':'reuse B2 candidate record; compare against new certificate without demanding global proof'},'unresolved_work':'Cross-horizon confirmation; then B3 notebook/state completion and B4/B5','consulted_sources':['approved lyap-define/SKILL.md','approved lyap-define/references/workflow.md','approved pepflow/lyapunov_utils.py','own generated files and recorded certificate sources'],'access_control':'instruction_only','prohibited_material_observed':False,'observability':'No exhaustive OS read trace'}
-(root/'supplementary/b3-handoff.json').write_text(json.dumps(record,indent=2))
+
+root = Path.cwd()
+record = {
+    "current_block": "B3",
+    "completion_status": "incomplete_requires_additional_horizon",
+    "next_block": "B2",
+    "entry_exit_reason": "One verified constant-rank horizon; obtain second coherent complete certificate before confirming B3",
+    "run_status": "awaiting_same_session_continuation",
+    "requested_horizon": 6,
+    "selected_horizon": 4,
+    "preserve_selected_certificate": True,
+    "recipe_id": "reverse_ldl_latest_gradient_step",
+    "evidence": "supplementary/rank_search.json",
+    "certificate_request": {
+        "relaxation": "retain star-to-iterate and forward consecutive interpolation pairs in both f and g; adapt saved recipe to N6",
+        "closed_form_search": "reuse B2 candidate record; compare against new certificate without demanding global proof",
+    },
+    "unresolved_work": "Cross-horizon confirmation; then B3 notebook/state completion and B4/B5",
+    "consulted_sources": [
+        "approved lyap-define/SKILL.md",
+        "approved lyap-define/references/workflow.md",
+        "approved pepflow/lyapunov_utils.py",
+        "own generated files and recorded certificate sources",
+    ],
+    "access_control": "instruction_only",
+    "prohibited_material_observed": False,
+    "observability": "No exhaustive OS read trace",
+}
+(root / "supplementary/b3-handoff.json").write_text(json.dumps(record, indent=2))

@@ -1,6 +1,6 @@
 """Visible candidate scan, basis search, and full-expression reconstruction."""
 
-SANITY = '''b3 = json.loads((notebook_dir / "state/ogm_b3.json").read_text())
+SANITY = """b3 = json.loads((notebook_dir / "state/ogm_b3.json").read_text())
 assert b3["certificate_id"] == b2["certificate_id"]
 assert ranks == b3["rank_profile"]
 assert b3["rank_search"]["status"] == "confirmed"
@@ -11,9 +11,9 @@ for k, Vk in enumerate(lyap):
                           (ev.func_coords,b3["lyap_func_coords"][k]),(ev.offset,b3["lyap_offsets"][k])]:
         assert np.allclose(np.asarray(actual,dtype=float), np.asarray(saved,dtype=float), atol=1e-4, rtol=1e-5)
 print("Rebuilt selected certificate and all partial sums; interior k=1,...,N-1, exceptions k=0,N.")
-'''
+"""
 
-SCAN = '''from itertools import combinations
+SCAN = """from itertools import combinations
 from pepflow.lyapunov_utils import vectors_in_column_space, find_basis_with_sparsest_coefficients, find_symmetric_coefficient_matrix
 
 candidate_pairs = [("d_0", ctx["x_0"]-ctx["x_star"]),
@@ -42,9 +42,9 @@ for label, vector in candidate_pairs:
 candidate_pairs = unique_pairs
 candidate_labels = {id(v):label for label,v in candidate_pairs}
 print("Unique nonzero candidate vectors:",len(candidate_pairs))
-'''
+"""
 
-FILTER = '''spanning_by_k = {}
+FILTER = """spanning_by_k = {}
 for k in range(1,N+1):
     in_col = vectors_in_column_space(lyap[k],[v for _,v in candidate_pairs],pep_context=ctx,
                                     resolve_parameters=params_sp,rtol=1e-4,atol=1e-4)
@@ -52,9 +52,9 @@ for k in range(1,N+1):
     print(f"V_{k} column-space candidates:")
     for v in in_col:
         print("  "+candidate_labels[id(v)])
-'''
+"""
 
-SEARCH = '''searched_basis, searched_coeff = {}, {}
+SEARCH = """searched_basis, searched_coeff = {}, {}
 for k in range(1,N+1):
     chosen, C = find_basis_with_sparsest_coefficients(lyap[k],spanning_by_k[k],pep_context=ctx,
         resolve_parameters=params_sp,zero_tol=1e-6,indep_tol=1e-7,span_tol=1e-5)
@@ -63,9 +63,9 @@ for k in range(1,N+1):
     print(f"k={k}, rank={ranks[k]}")
     print("  sparse basis:",[candidate_labels[id(v)] for v in chosen])
     print(f"  zero coefficients: {int(np.sum(np.abs(C)<1e-6))}/{C.size}")
-'''
+"""
 
-BASIS = '''def V_k_basis(k):
+BASIS = """def V_k_basis(k):
     if k == 0:
         return []
     d0 = ctx["x_0"]-ctx["x_star"]
@@ -84,9 +84,9 @@ for k in range(N+1):
     basis_rank = int(np.linalg.matrix_rank(matrix,tol=1e-7))
     assert basis_rank == len(vectors) == ranks[k]
     print(f"k={k}: rank {basis_rank} basis {V_k_basis_labels(k)}")
-'''
+"""
 
-EXTRACT = '''coeff_by_k, coefficient_residuals, alpha_by_k, component_residuals = {}, {}, {}, {}
+EXTRACT = """coeff_by_k, coefficient_residuals, alpha_by_k, component_residuals = {}, {}, {}, {}
 for k in range(N+1):
     vectors = V_k_basis(k)
     C = find_symmetric_coefficient_matrix(lyap[k],vectors,pep_context=ctx,resolve_parameters=params_sp,
@@ -122,9 +122,9 @@ for k in range(N+1):
     assert max(errors.values()) <= 1e-4
     component_residuals[str(k)] = errors
 print("Complete Gram/function/offset reconstruction passed at every index.")
-'''
+"""
 
-FIT = '''def coeff_pattern(k, horizon, L_value=1.0):
+FIT = """def coeff_pattern(k, horizon, L_value=1.0):
     ts = theta_sequence(horizon)
     tau = L_value/(2*ts[-1]**2)
     if k == 0:
@@ -148,4 +148,4 @@ for k in range(N+1):
     if candidate_C.size:
         pf.pprint_labeled_matrix(candidate_C-coeff_by_k[k],V_k_basis_labels(k),precision=10)
 print("Coefficient formulas are numerical candidates, not an arbitrary-horizon proof.")
-'''
+"""

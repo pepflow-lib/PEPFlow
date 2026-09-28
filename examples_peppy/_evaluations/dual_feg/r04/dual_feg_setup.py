@@ -1,6 +1,8 @@
 """Dual FEG: monotone L-Lipschitz operator, terminal squared residual."""
-import pepflow as pf
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")

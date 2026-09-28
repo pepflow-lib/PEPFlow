@@ -1,6 +1,8 @@
 """FEG for a monotone L-Lipschitz operator; squared residual metric."""
-import pepflow as pf
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")

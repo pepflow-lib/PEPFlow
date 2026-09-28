@@ -1,11 +1,114 @@
-﻿import sys
+# Notebook/proof state is executed below into the shared runtime namespace.
+# These names are supplied by the notebook cells or serialized proof source.
+# ty: ignore[unresolved-reference]
+# ruff: noqa: F821
+
 from pathlib import Path
-root=Path.cwd()
-exec(compile((root/'supplementary/run_b4_search.py').read_text(encoding='utf-8-sig'),'run_b4_search.py','exec'))
-for filename in ('b4_coefficients.py','b4_structure.py','b4_fit.py'):
-    source=(root/'supplementary'/filename).read_text(encoding='utf-8-sig')
-    exec(compile(source,filename,'exec'))
-state={**b3,'basis_templates':{'initial':[],'interior':['x_0-x_star','grad_h(x_0)','x_k-x_star','grad_h(x_k)'],'terminal':['x_0-x_star','grad_h(x_0)','x_N-x_star','grad_h(x_N)']},'basis_code':(root/'supplementary/b4_basis.py').read_text(encoding='utf-8-sig').split('\n\nfor k in range')[0],'structure_code':'function_coeff_by_k = '+repr(function_coeff_by_k)+'\noffset_by_k = '+repr(offset_by_k)+'\n'+(root/'supplementary/b4_structure.py').read_text(encoding='utf-8-sig'),'coeff_by_k':{str(k):C.tolist() for k,C in coeff_by_k.items()},'coeff_code':(root/'supplementary/b4_fit.py').read_text(encoding='utf-8-sig').split('\n\nformula_residuals')[0],'coefficient_formula_status':'candidate','unresolved_coefficients':[],'numerical_reconstruction':dict(certificate_id=b3['certificate_id'],required_indices=required_indices,quadratic_residuals=coefficient_residuals,component_residuals=component_residuals,tolerances=dict(**extraction_tolerances,component_atol=1e-4,component_rtol=1e-5),passed=True),'formula_residuals':formula_residuals,'expression_structure':{'quadratic_convention':'sum_ij C_ij <v_i,v_j>, symmetric C; off-diagonal terms counted twice','interior':{'index_domain':'1 <= k <= N-1','basis_labels':['x_0-x_star','grad_h(x_0)','x_k-x_star','grad_h(x_k)'],'coefficients':{'C01=C10':'-1/(2*alpha*N), candidate','C23=C32':'1/(2*alpha*N), candidate','others':'0, candidate'}},'initial':{'index_domain':'k=0','basis_labels':[],'coefficients':{},'value':'0'},'terminal':{'index_domain':'k=N','basis_labels':['x_0-x_star','grad_h(x_0)','x_N-x_star','grad_h(x_N)'],'coefficients':{'C01=C10':'-1/(2*alpha*N), candidate','C23=C32':'1/(2*alpha*N), candidate','others':'0, candidate'}},'function_terms':[{'index_domain':'1 <= k <= N','expression':'f(x_k)-f(x_star)','coefficient':'k/N, candidate'},{'index_domain':'1 <= k <= N','expression':'h(x_0)-h(x_k)','coefficient':'1/(alpha*N), candidate'}],'constant_terms':[]},'numerical_certificate_verified':True,'analytic_full_pep_verified':False,'lyapunov_proof_verified':False}
-(root/'state/bppm_b4.json').write_text(json.dumps(state,indent=2,allow_nan=False))
-(root/'supplementary/b4-search-evidence.json').write_text(json.dumps({'search_bases':{str(k):[candidate_labels[id(v)] for v in basis] for k,basis in search_basis_by_k.items()},'search_coefficients':{str(k):C.tolist() for k,C in search_coeff_by_k.items()},'candidate_count':len(candidate_pairs),'formula_residuals':formula_residuals,'component_residuals':component_residuals},indent=2))
-print('B4 state saved.')
+
+root = Path.cwd()
+exec(
+    compile(
+        (root / "supplementary/run_b4_search.py").read_text(encoding="utf-8-sig"),
+        "run_b4_search.py",
+        "exec",
+    )
+)
+for filename in ("b4_coefficients.py", "b4_structure.py", "b4_fit.py"):
+    source = (root / "supplementary" / filename).read_text(encoding="utf-8-sig")
+    exec(compile(source, filename, "exec"))
+state = {
+    **b3,
+    "basis_templates": {
+        "initial": [],
+        "interior": ["x_0-x_star", "grad_h(x_0)", "x_k-x_star", "grad_h(x_k)"],
+        "terminal": ["x_0-x_star", "grad_h(x_0)", "x_N-x_star", "grad_h(x_N)"],
+    },
+    "basis_code": (root / "supplementary/b4_basis.py")
+    .read_text(encoding="utf-8-sig")
+    .split("\n\nfor k in range")[0],
+    "structure_code": "function_coeff_by_k = "
+    + repr(function_coeff_by_k)
+    + "\noffset_by_k = "
+    + repr(offset_by_k)
+    + "\n"
+    + (root / "supplementary/b4_structure.py").read_text(encoding="utf-8-sig"),
+    "coeff_by_k": {str(k): C.tolist() for k, C in coeff_by_k.items()},
+    "coeff_code": (root / "supplementary/b4_fit.py")
+    .read_text(encoding="utf-8-sig")
+    .split("\n\nformula_residuals")[0],
+    "coefficient_formula_status": "candidate",
+    "unresolved_coefficients": [],
+    "numerical_reconstruction": dict(
+        certificate_id=b3["certificate_id"],
+        required_indices=required_indices,
+        quadratic_residuals=coefficient_residuals,
+        component_residuals=component_residuals,
+        tolerances=dict(
+            **extraction_tolerances, component_atol=1e-4, component_rtol=1e-5
+        ),
+        passed=True,
+    ),
+    "formula_residuals": formula_residuals,
+    "expression_structure": {
+        "quadratic_convention": "sum_ij C_ij <v_i,v_j>, symmetric C; off-diagonal terms counted twice",
+        "interior": {
+            "index_domain": "1 <= k <= N-1",
+            "basis_labels": ["x_0-x_star", "grad_h(x_0)", "x_k-x_star", "grad_h(x_k)"],
+            "coefficients": {
+                "C01=C10": "-1/(2*alpha*N), candidate",
+                "C23=C32": "1/(2*alpha*N), candidate",
+                "others": "0, candidate",
+            },
+        },
+        "initial": {
+            "index_domain": "k=0",
+            "basis_labels": [],
+            "coefficients": {},
+            "value": "0",
+        },
+        "terminal": {
+            "index_domain": "k=N",
+            "basis_labels": ["x_0-x_star", "grad_h(x_0)", "x_N-x_star", "grad_h(x_N)"],
+            "coefficients": {
+                "C01=C10": "-1/(2*alpha*N), candidate",
+                "C23=C32": "1/(2*alpha*N), candidate",
+                "others": "0, candidate",
+            },
+        },
+        "function_terms": [
+            {
+                "index_domain": "1 <= k <= N",
+                "expression": "f(x_k)-f(x_star)",
+                "coefficient": "k/N, candidate",
+            },
+            {
+                "index_domain": "1 <= k <= N",
+                "expression": "h(x_0)-h(x_k)",
+                "coefficient": "1/(alpha*N), candidate",
+            },
+        ],
+        "constant_terms": [],
+    },
+    "numerical_certificate_verified": True,
+    "analytic_full_pep_verified": False,
+    "lyapunov_proof_verified": False,
+}
+(root / "state/bppm_b4.json").write_text(json.dumps(state, indent=2, allow_nan=False))
+(root / "supplementary/b4-search-evidence.json").write_text(
+    json.dumps(
+        {
+            "search_bases": {
+                str(k): [candidate_labels[id(v)] for v in basis]
+                for k, basis in search_basis_by_k.items()
+            },
+            "search_coefficients": {
+                str(k): C.tolist() for k, C in search_coeff_by_k.items()
+            },
+            "candidate_count": len(candidate_pairs),
+            "formula_residuals": formula_residuals,
+            "component_residuals": component_residuals,
+        },
+        indent=2,
+    )
+)
+print("B4 state saved.")

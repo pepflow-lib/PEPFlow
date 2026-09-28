@@ -1,22 +1,30 @@
-﻿import importlib.util
-import json
+import importlib.util
 import os
 from pathlib import Path
 
-spec = importlib.util.spec_from_file_location('runtime', Path(__file__).parent / 'helpers/runtime.py')
+spec = importlib.util.spec_from_file_location(
+    "runtime", Path(__file__).parent / "helpers/runtime.py"
+)
 assert spec is not None and spec.loader is not None
 runtime = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runtime)
-import nbformat as nbf
-from nbclient import NotebookClient
+import nbformat as nbf  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+from nbclient import (  # ty: ignore[unresolved-import]  # optional notebook-generation dependency  # noqa: E402 - imports follow runtime or notebook setup
+    NotebookClient,
+)
 
 root = runtime.ROOT
-path = root / 'feg_example_lyap.ipynb'
+path = root / "feg_example_lyap.ipynb"
 nb = nbf.read(path, as_version=4)
-verify_source = (root / 'supplementary/helpers/verify_certificate.py').read_text(encoding='utf-8-sig')
-verify_source = verify_source[verify_source.index('def verify_saved'):]
-cells = [nbf.v4.new_markdown_cell('## Full-PEP certificate\nThe selected certificate is numerical and coherent at N=6, L=R=1. Analytic full-PEP and Lyapunov proofs remain unresolved.'),
-nbf.v4.new_code_cell('''import hashlib
+verify_source = (root / "supplementary/helpers/verify_certificate.py").read_text(
+    encoding="utf-8-sig"
+)
+verify_source = verify_source[verify_source.index("def verify_saved") :]
+cells = [
+    nbf.v4.new_markdown_cell(
+        "## Full-PEP certificate\nThe selected certificate is numerical and coherent at N=6, L=R=1. Analytic full-PEP and Lyapunov proofs remain unresolved."
+    ),
+    nbf.v4.new_code_cell("""import hashlib
 import numpy as np
 from pepflow.utils import Comparator
 b2 = json.loads((notebook_dir / "state/feg_b2.json").read_text())
@@ -40,13 +48,13 @@ assert abs(b2["opt_value"] - 4/b2["N"]**2) < 1e-5
 print("Dropped constraints:", len(dropped), "; objective preserved.")
 for name, value in b2["named_dual_values"].items():
     if value is not None:
-        print(name, value)'''),
-nbf.v4.new_markdown_cell(r'''### Numerical decomposition and certificate identity
+        print(name, value)"""),
+    nbf.v4.new_markdown_cell(r"""### Numerical decomposition and certificate identity
 The saved reversed-basis LDL factors obey $S=E^\top D E$, with all factor entries retained. Scalar constraints are normalized as $r_i\le0$; the checked identity is
 $$\mathrm{metric}-\mathrm{bound}-\sum_i\lambda_i r_i+S=0.$$
-We check Gram, function-value and constant coordinates, inequality signs, positive semidefiniteness, and the dense/relaxed objective gap.'''),
-nbf.v4.new_code_cell(verify_source),
-nbf.v4.new_code_cell('''ctx_cert, pb_cert, A_cert, pm_cert, residual_cert, checks = verify_saved(b2, dense["opt_value"])
+We check Gram, function-value and constant coordinates, inequality signs, positive semidefiniteness, and the dense/relaxed objective gap."""),
+    nbf.v4.new_code_cell(verify_source),
+    nbf.v4.new_code_cell("""ctx_cert, pb_cert, A_cert, pm_cert, residual_cert, checks = verify_saved(b2, dense["opt_value"])
 print(checks)
 D = np.asarray(b2["numerical_decomposition"]["D"])
 E = np.asarray(b2["numerical_decomposition"]["ell_coords"])
@@ -54,11 +62,11 @@ pf.pprint_labeled_matrix(E, [f"ell_{i}" for i in range(len(E))], b2["basis_vecto
 print("LDL diagonal:", np.diag(D))
 print("Off-diagonal LDL max:", np.max(np.abs(D-np.diag(np.diag(D)))))
 pf.pprint_labeled_matrix(np.asarray(residual_cert.inner_prod_coords), b2["basis_vectors"], b2["basis_vectors"], precision=10)
-print("Function residual:", residual_cert.func_coords, "offset:", residual_cert.offset)'''),
-nbf.v4.new_markdown_cell(r'''### Initial closed-form search
+print("Function residual:", residual_cert.func_coords, "offset:", residual_cert.offset)"""),
+    nbf.v4.new_markdown_cell(r"""### Initial closed-form search
 The coefficient candidates at $L=R=1$ are $4k(k+1)/N^2$ for consecutive monotonicity ($1\le k<N$), $2(k+1)^2/N^2$ for half-step Lipschitz ($0\le k<N$), $4/N$ for terminal monotonicity, and $4/N^2$ for the initial condition. The proposed remainder is $\|(2/N)(x_0-x_\star)-A(x_N)\|^2$.
-These plausible candidates do **not** match the selected numerical dual to the required $10^{-4}$ tolerance. They are recorded as unresolved guesses, not substituted for the saved certificate. The verified LDL decomposition supplies the numerical handoff.'''),
-nbf.v4.new_code_cell('''n = b2["N"]
+These plausible candidates do **not** match the selected numerical dual to the required $10^{-4}$ tolerance. They are recorded as unresolved guesses, not substituted for the saved certificate. The verified LDL decomposition supplies the numerical handoff."""),
+    nbf.v4.new_code_cell("""n = b2["N"]
 candidate = {"initial_condition": 4/n**2, f"A monotone:x_{n},x_star": 4/n}
 for k in range(1, n):
     candidate[f"A monotone:x_{k},x_{k+1}"] = 4*k*(k+1)/n**2
@@ -74,12 +82,21 @@ print("Lambda candidate error:", lambda_error)
 print("S candidate error:", S_error)
 print("Candidate S function/constant components:", S_guess.func_coords, S_guess.offset)
 print("Numerical certificate verified:", checks["passed"])
-print("Analytic full-PEP verified: False; Lyapunov proof verified: False")''')]
-end = next(i for i, cell in enumerate(nb.cells) if cell.source.startswith('## Lyapunov partial sums'))
+print("Analytic full-PEP verified: False; Lyapunov proof verified: False")"""),
+]
+end = next(
+    i
+    for i, cell in enumerate(nb.cells)
+    if cell.source.startswith("## Lyapunov partial sums")
+)
 nb.cells[11:end] = cells
 nbf.write(nb, path)
-os.environ['JUPYTER_PATH'] = str(runtime.RUNTIME / 'jupyter')
-NotebookClient(nb, timeout=120, kernel_name='feg-private', resources={'metadata': {'path': str(root)}}).execute()
+os.environ["JUPYTER_PATH"] = str(runtime.RUNTIME / "jupyter")
+NotebookClient(
+    nb,
+    timeout=120,
+    kernel_name="feg-private",
+    resources={"metadata": {"path": str(root)}},
+).execute()
 nbf.write(nb, path)
-print('B2 notebook executed.')
-
+print("B2 notebook executed.")

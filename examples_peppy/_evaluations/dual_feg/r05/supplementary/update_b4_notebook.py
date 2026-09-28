@@ -1,16 +1,22 @@
-﻿"""Add actual basis scan, sparse search, reconstruction and candidate formulas."""
+"""Add actual basis scan, sparse search, reconstruction and candidate formulas."""
+
 import json
 from pathlib import Path
-import nbformat
-ROOT=Path(__file__).resolve().parents[1]
-p=ROOT/"dual_feg_example_lyap.ipynb"
-nb=nbformat.read(p,as_version=4)
-s=json.loads((ROOT/"state/dual_feg_b4.json").read_text())
-md=nbformat.v4.new_markdown_cell
-code=nbformat.v4.new_code_cell
-cells=[
-md("## Identify the vectors composing the Lyapunov function\nWe start from the verified partial sums. Interior indices are $1\\leq k\\leq N-1$; both endpoints remain required reconstruction cases."),
-code("""from pepflow.lyapunov_utils import vectors_in_column_space, find_basis_with_sparsest_coefficients, find_symmetric_coefficient_matrix
+
+# optional notebook-generation dependency
+import nbformat  # ty: ignore[unresolved-import]
+
+ROOT = Path(__file__).resolve().parents[1]
+p = ROOT / "dual_feg_example_lyap.ipynb"
+nb = nbformat.read(p, as_version=4)
+s = json.loads((ROOT / "state/dual_feg_b4.json").read_text())
+md = nbformat.v4.new_markdown_cell
+code = nbformat.v4.new_code_cell
+cells = [
+    md(
+        "## Identify the vectors composing the Lyapunov function\nWe start from the verified partial sums. Interior indices are $1\\leq k\\leq N-1$; both endpoints remain required reconstruction cases."
+    ),
+    code("""from pepflow.lyapunov_utils import vectors_in_column_space, find_basis_with_sparsest_coefficients, find_symmetric_coefficient_matrix
 b3 = json.loads((NOTEBOOK_DIR/"state/dual_feg_b3.json").read_text())
 certificate = b3
 observation = group(certificate)
@@ -29,8 +35,10 @@ for k,V in enumerate(lyap):
     assert np.allclose(evaluated.func_coords,b3["lyap_func_coords"][k],atol=1e-4,rtol=1e-5)
     assert abs(float(evaluated.offset)-b3["lyap_offsets"][k]) <= 1e-4
 print("Rebuilt every selected partial sum; interior rank four, endpoints zero and two.")"""),
-md("### Candidate-vector scan\nCandidates include all tagged iterates, auxiliary vectors and operator outputs, plus current-to-terminal and initial-to-terminal gaps. Duplicate coordinate vectors and zero vectors are removed."),
-code("""candidate_pairs_by_k = {}
+    md(
+        "### Candidate-vector scan\nCandidates include all tagged iterates, auxiliary vectors and operator outputs, plus current-to-terminal and initial-to-terminal gaps. Duplicate coordinate vectors and zero vectors are removed."
+    ),
+    code("""candidate_pairs_by_k = {}
 for k in range(1,N_int+1):
     pairs=[("A_N",obj(ctx[f"x_{N_int}"])),(f"z_{k}",ctx[f"z_{k}"]),
            (f"x_{k}-x_N",ctx[f"x_{k}"]-ctx[f"x_{N_int}"]),
@@ -52,7 +60,7 @@ for k in range(1,N_int+1):
         unique.append((label,vector))
         seen.append(coordinates)
     candidate_pairs_by_k[k] = unique"""),
-code("""filtered_by_k = {}
+    code("""filtered_by_k = {}
 labels_by_k = {}
 for k,pairs in candidate_pairs_by_k.items():
     labels_by_k[k] = {id(v):label for label,v in pairs}
@@ -62,8 +70,8 @@ for k,pairs in candidate_pairs_by_k.items():
     print(f"V_{k} column-space candidates:")
     for v in inside:
         print("   "+labels_by_k[k][id(v)])"""),
-md("### Selected basis pattern"),
-code("""sparse_bases = {}
+    md("### Selected basis pattern"),
+    code("""sparse_bases = {}
 sparse_coefficients = {}
 for k,inside in filtered_by_k.items():
     chosen,C = find_basis_with_sparsest_coefficients(lyap[k],inside,pep_context=ctx,
@@ -74,18 +82,25 @@ for k,inside in filtered_by_k.items():
     print(f"k={k}, rank {b3['rank_profile'][k]}")
     print("  sparse basis:", [labels_by_k[k][id(v)] for v in chosen])
     print(f"  zero coefficients: {np.count_nonzero(np.abs(C)<1e-6)}/{C.size}")"""),
-md(r"""The sparse search differs at $k=N-1$. We adopt the following consistent independent template to expose the auxiliary recurrence; its reconstruction is checked below:
+    md(r"""The sparse search differs at $k=N-1$. We adopt the following consistent independent template to expose the auxiliary recurrence; its reconstruction is checked below:
 $$\mathcal B_k=(A(x_N),z_k,x_k-x_N,x_0-x_N),\qquad 1\leq k<N.$$
 At $k=0$ the basis is empty. At $k=N$ use $(A(x_N),x_0-x_N)$."""),
-code(s["basis_code"]+"""
+    code(
+        s["basis_code"]
+        + """
 for k in range(N_int+1):
     vectors = V_k_basis(k)
     rank = int(np.linalg.matrix_rank(np.column_stack([pm.eval_vector(v).coords for v in vectors]).astype(float),tol=1e-7)) if vectors else 0
     assert rank == len(vectors) == b3["rank_profile"][k]
     print(f"k={k}: rank {rank} basis {V_k_basis_labels(k)}")
-"""),
-md("### Coefficient matrices\nUse the displayed basis order and the convention $V_k=\\sum_{i,j}C_{ij}\\langle v_i,v_j\\rangle$. The off-diagonal entries contribute twice. Function and constant terms are verified absent."),
-code(s["structure_code"]+"""
+"""
+    ),
+    md(
+        "### Coefficient matrices\nUse the displayed basis order and the convention $V_k=\\sum_{i,j}C_{ij}\\langle v_i,v_j\\rangle$. The off-diagonal entries contribute twice. Function and constant terms are verified absent."
+    ),
+    code(
+        s["structure_code"]
+        + """
 coeff_by_k = {}
 for k in range(N_int+1):
     vectors = V_k_basis(k)
@@ -103,8 +118,11 @@ for k in range(N_int+1):
     print(f"k={k}: reconstruction residual {error:.3e}; function terms absent, offset zero.")
     if C.size:
         pf.pprint_labeled_matrix(C,row_labels=V_k_basis_labels(k),column_labels=V_k_basis_labels(k))
-"""),
-code(s["coeff_code"]+"""
+"""
+    ),
+    code(
+        s["coeff_code"]
+        + """
 for k,C in coeff_by_k.items():
     candidate = coeff_pattern(k,N_int)
     error = float(np.max(np.abs(candidate-C),initial=0))
@@ -122,15 +140,17 @@ for k in range(9):
     assert error <= 1e-4
     print(f"N=8, k={k}: candidate expression error {error:.3e}")
 ctx.set_as_current()
-"""),
-md(r"""### Block 4 conclusion
+"""
+    ),
+    md(r"""### Block 4 conclusion
 For $L=1$ the numerical data suggest, with $a=A(x_N)$ and $t=N-k$,
 $$V_k=-4\langle a,z_k\rangle-2\|z_k\|^2+\frac4t\langle a+z_k,x_k-x_N\rangle-\frac4N\langle a,x_0-x_N\rangle,\quad 0\leq k<N,$$
 $$V_N=2\|a\|^2-\frac4N\langle a,x_0-x_N\rangle.$$
 The formula gives $V_0=0$. All selected numerical partial sums reconstruct, including endpoints, and the candidate fits both tested horizons. These are candidate formulas, not an analytic proof. Block 5 must handle general $L$, exact step and terminal identities, signs, and the final normalization."""),
 ]
-index=next(i for i,c in enumerate(nb.cells) if c.source.startswith("## Special vectors"))
-nb.cells[index:index+1]=cells
-nbformat.write(nb,p)
-print("B4 cells",index,index+len(cells)-1)
-
+index = next(
+    i for i, c in enumerate(nb.cells) if c.source.startswith("## Special vectors")
+)
+nb.cells[index : index + 1] = cells
+nbformat.write(nb, p)
+print("B4 cells", index, index + len(cells) - 1)

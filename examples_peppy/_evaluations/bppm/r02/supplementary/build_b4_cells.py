@@ -1,9 +1,15 @@
-﻿from pathlib import Path
 import json
-root=Path.cwd()
-cells=[
-{"kind":"markdown","source":"## Identify the vectors composing the Lyapunov function\nWe replay the selected B3 partial sums and seek an interpretable rank-four basis. The confirmed interior is k=1,2,3; k=0 and k=4 remain mandatory reconstruction cases."},
-{"kind":"code","source":'''from itertools import combinations
+from pathlib import Path
+
+root = Path.cwd()
+cells = [
+    {
+        "kind": "markdown",
+        "source": "## Identify the vectors composing the Lyapunov function\nWe replay the selected B3 partial sums and seek an interpretable rank-four basis. The confirmed interior is k=1,2,3; k=0 and k=4 remain mandatory reconstruction cases.",
+    },
+    {
+        "kind": "code",
+        "source": """from itertools import combinations
 from pepflow.lyapunov_utils import vectors_in_column_space, find_basis_with_sparsest_coefficients, find_symmetric_coefficient_matrix
 b3 = json.loads((notebook_dir / "state/bppm_b3.json").read_text())
 assert b3["rank_search"]["status"] == "confirmed"
@@ -17,9 +23,15 @@ for k, value in enumerate(lyap):
     ev = pm.eval_scalar(value)
     for actual, saved in ((ev.inner_prod_coords,b3["lyap_inner_prod_coords"][k]),(ev.func_coords,b3["lyap_func_coords"][k]),(ev.offset,b3["lyap_offsets"][k])):
         assert np.allclose(np.asarray(actual,dtype=float),np.asarray(saved,dtype=float),atol=1e-4,rtol=1e-5)
-print("Replayed rank profile:", observation["rank_profile"], "; interior 1..N-1; endpoints 0,N retained.")'''},
-{"kind":"markdown","source":"### Candidate-vector scan\nCandidates include tagged iterates, gradients, basis vectors, pairwise differences of current and initial points/gradients, and the accumulated kernel-gradient difference. Duplicate coordinates and zero vectors are removed before filtering."},
-{"kind":"code","source":'''candidate_pairs = {}
+print("Replayed rank profile:", observation["rank_profile"], "; interior 1..N-1; endpoints 0,N retained.")""",
+    },
+    {
+        "kind": "markdown",
+        "source": "### Candidate-vector scan\nCandidates include tagged iterates, gradients, basis vectors, pairwise differences of current and initial points/gradients, and the accumulated kernel-gradient difference. Duplicate coordinates and zero vectors are removed before filtering.",
+    },
+    {
+        "kind": "code",
+        "source": """candidate_pairs = {}
 for k in range(1,N_int+1):
     x0,xs,xk=ctx["x_0"],ctx["x_star"],ctx[f"x_{k}"]
     h0,hk=h.grad(x0),h.grad(xk)
@@ -36,16 +48,25 @@ for k in range(1,N_int+1):
         unique.append((label,vector))
         coords.append(v)
     candidate_pairs[k]=unique
-print("Nonzero unique candidate counts:", {k:len(v) for k,v in candidate_pairs.items()})'''},
-{"kind":"code","source":'''in_column = {}
+print("Nonzero unique candidate counts:", {k:len(v) for k,v in candidate_pairs.items()})""",
+    },
+    {
+        "kind": "code",
+        "source": """in_column = {}
 for k,pairs in candidate_pairs.items():
     candidates=[v for _,v in pairs]
     in_column[k]=vectors_in_column_space(lyap[k],candidates,pep_context=ctx,resolve_parameters=cast(dict[str,pf.NUMERICAL_TYPE],params_sp),rtol=1e-4,atol=1e-4)
     print(f"V_{k} column-space candidates:")
     for vector in in_column[k]:
-        print("   "+next(label for label,v in pairs if v is vector))'''},
-{"kind":"markdown","source":"### Selected basis pattern\nThe sparse search is run at every nonzero index, including the terminal index. We then use the same four interpretable vectors at each index so the coefficient pattern has a consistent meaning."},
-{"kind":"code","source":'''search_results = {}
+        print("   "+next(label for label,v in pairs if v is vector))""",
+    },
+    {
+        "kind": "markdown",
+        "source": "### Selected basis pattern\nThe sparse search is run at every nonzero index, including the terminal index. We then use the same four interpretable vectors at each index so the coefficient pattern has a consistent meaning.",
+    },
+    {
+        "kind": "code",
+        "source": """search_results = {}
 for k,vectors in in_column.items():
     sparse_basis,sparse_C=find_basis_with_sparsest_coefficients(lyap[k],vectors,pep_context=ctx,
         resolve_parameters=cast(dict[str,pf.NUMERICAL_TYPE],params_sp),zero_tol=1e-6,indep_tol=1e-7,span_tol=1e-5)
@@ -53,11 +74,17 @@ for k,vectors in in_column.items():
     labels=[next(label for label,v in candidate_pairs[k] if v is vector) for vector in sparse_basis]
     search_results[k]={"labels":labels,"coefficients":sparse_C.tolist()}
     print(f"k={k}: rank {len(sparse_basis)}; sparse basis: {labels}")
-    print(f"  zero coefficients: {np.sum(np.abs(sparse_C)<1e-6)}/{sparse_C.size}")'''},
-{"kind":"markdown","source":r'''For $1\le k\le N$, use the ordered basis
+    print(f"  zero coefficients: {np.sum(np.abs(sparse_C)<1e-6)}/{sparse_C.size}")""",
+    },
+    {
+        "kind": "markdown",
+        "source": r"""For $1\le k\le N$, use the ordered basis
 $$[q_k,p_k,r_k,t]=[\nabla h(x_0)-\nabla h(x_k),\ x_\star-x_k,\ x_k-x_0,\ \nabla h(x_0)].$$
-The kernel-gradient difference is generated by the Bregman recurrence and the two point differences isolate current and initial terms. This consistent choice makes the candidate coefficient matrix sparse; its own reconstruction is checked independently of the search choice. At $k=0$, the partial sum is exactly zero and uses an empty basis.'''},
-{"kind":"code","source":'''def V_k_basis(k):
+The kernel-gradient difference is generated by the Bregman recurrence and the two point differences isolate current and initial terms. This consistent choice makes the candidate coefficient matrix sparse; its own reconstruction is checked independently of the search choice. At $k=0$, the partial sum is exactly zero and uses an empty basis.""",
+    },
+    {
+        "kind": "code",
+        "source": """def V_k_basis(k):
     if k==0:
         return []
     x0,xs,xk=ctx["x_0"],ctx["x_star"],ctx[f"x_{k}"]
@@ -71,10 +98,16 @@ for k in range(N_int+1):
     matrix=np.column_stack([pm.eval_vector(v).coords for v in basis]).astype(float) if basis else np.zeros((len(ctx.basis_vectors()),0))
     basis_rank=int(np.linalg.matrix_rank(matrix,tol=1e-7)) if basis else 0
     assert basis_rank==len(basis)==observation["rank_profile"][k]
-    print(f"k={k}: rank {basis_rank} basis {V_k_basis_labels(k)}")'''},
-{"kind":"markdown","source":r'''### Coefficient matrices
-Use the symmetric convention $\sum_{i,j}C_{ij}\langle v_i,v_j\rangle$, so off-diagonal coefficients count twice. Alongside this quadratic expression, fit the meaningful function terms $f(x_k)-f(x_\star)$ and $h(x_k)-h(x_0)$ at each sampled index. The scalar offset is zero. Every component and both endpoints are checked.'''},
-{"kind":"code","source":'''coeff_by_k, function_coefficients, coefficient_residuals, component_residuals = {},{},{},{}
+    print(f"k={k}: rank {basis_rank} basis {V_k_basis_labels(k)}")""",
+    },
+    {
+        "kind": "markdown",
+        "source": r"""### Coefficient matrices
+Use the symmetric convention $\sum_{i,j}C_{ij}\langle v_i,v_j\rangle$, so off-diagonal coefficients count twice. Alongside this quadratic expression, fit the meaningful function terms $f(x_k)-f(x_\star)$ and $h(x_k)-h(x_0)$ at each sampled index. The scalar offset is zero. Every component and both endpoints are checked.""",
+    },
+    {
+        "kind": "code",
+        "source": """coeff_by_k, function_coefficients, coefficient_residuals, component_residuals = {},{},{},{}
 for k in range(N_int+1):
     basis=V_k_basis(k)
     target=pm.eval_scalar(lyap[k])
@@ -114,8 +147,11 @@ for k in range(N_int+1):
     errors={"gram":max_abs(delta.inner_prod_coords),"function":max_abs(delta.func_coords),"offset":max_abs(delta.offset)}
     assert max(errors.values())<=1e-4
     component_residuals[k]=errors
-print("All-index full-component reconstruction:",component_residuals)'''},
-{"kind":"code","source":'''def coeff_pattern(k,N,alpha):
+print("All-index full-component reconstruction:",component_residuals)""",
+    },
+    {
+        "kind": "code",
+        "source": """def coeff_pattern(k,N,alpha):
     if k==0:
         return sp.zeros(0,0)
     c=1/(2*alpha*N)
@@ -131,15 +167,16 @@ for k,C in coeff_by_k.items():
     coefficient_fit_errors[k]=error
     print(f"k={k}: candidate coefficient residual {error:.3e}")
     if k:
-        pf.pprint_labeled_matrix(pf.MatrixWithNames(np.asarray(coeff_pattern(k,N_int,sp.Integer(1)),dtype=object),V_k_basis_labels(k),V_k_basis_labels(k)))'''},
-{"kind":"markdown","source":r'''### Block 4 conclusion
+        pf.pprint_labeled_matrix(pf.MatrixWithNames(np.asarray(coeff_pattern(k,N_int,sp.Integer(1)),dtype=object),V_k_basis_labels(k),V_k_basis_labels(k)))""",
+    },
+    {
+        "kind": "markdown",
+        "source": r"""### Block 4 conclusion
 The numerical structure matches the candidate
 $$V_k=\frac{\langle q_k,p_k\rangle+\langle r_k,t\rangle+h(x_0)-h(x_k)}{\alpha N}
 +\frac{k}{N}(f(x_k)-f(x_\star)),\qquad V_0=0.$$
-All indices, including $0$ and $N$, reconstruct the selected numerical partial sums within the original tolerances. The nonquadratic terms and zero offsets have been checked separately. This candidate is sampled evidence; Block 5 must derive and verify its exact step, initial and terminal identities for arbitrary horizons and parameters.'''}
+All indices, including $0$ and $N$, reconstruct the selected numerical partial sums within the original tolerances. The nonquadratic terms and zero offsets have been checked separately. This candidate is sampled evidence; Block 5 must derive and verify its exact step, initial and terminal identities for arbitrary horizons and parameters.""",
+    },
 ]
-(root/"supplementary/b4_cells.json").write_text(json.dumps(cells,indent=2))
+(root / "supplementary/b4_cells.json").write_text(json.dumps(cells, indent=2))
 print("Created executable B4 cell sources.")
-
-
-

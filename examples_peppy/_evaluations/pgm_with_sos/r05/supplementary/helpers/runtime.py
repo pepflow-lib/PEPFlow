@@ -1,1 +1,1 @@
-﻿"""Attempt-local namespace reserved for workflow helpers."""
+"""Attempt-local namespace reserved for workflow helpers."""

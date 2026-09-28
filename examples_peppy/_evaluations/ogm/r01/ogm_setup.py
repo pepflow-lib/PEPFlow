@@ -1,4 +1,5 @@
 """OGM setup: smooth convex objective gap with initial squared radius R**2."""
+
 import math
 
 import pepflow as pf

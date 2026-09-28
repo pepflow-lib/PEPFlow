@@ -1,6 +1,8 @@
-﻿"""Dual FEG setup; terminal squared operator residual, initial radius R."""
-import pepflow as pf
+"""Dual FEG setup; terminal squared operator residual, initial radius R."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 A = pf.LipschitzMonotoneOperator(is_basis=True, tags=["A"], L=L)

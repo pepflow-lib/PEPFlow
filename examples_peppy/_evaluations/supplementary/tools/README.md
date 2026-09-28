@@ -23,7 +23,7 @@ uv pip install --python .runtime/replay-env/Scripts/python.exe -r examples_peppy
 python examples_peppy/_evaluations/supplementary/tools/replay.py --python .runtime/replay-env/Scripts/python.exe --r01 --proof-only --use-imported-sources --timeout 600
 ```
 
-The runner prepares disposable copies under `.runtime/peppy-replay/`. It restores each trial's common Python sources from the single [framework snapshot](framework/) using [shared-files.json](shared-files.json), and reconstructs omitted workflow files. The published notebooks and recorded outputs are preserved. Original source pins remain active; `--use-imported-sources` allows only differences already disclosed in the audit with matching current hashes.
+The runner prepares disposable copies under `.runtime/peppy-replay/`. It first reverses the declared source-maintenance edits using [source-edits.json](source-edits.json), checking both current and archived hashes before the existing publication and historical checks. It restores each trial's common Python sources from the single [framework snapshot](framework/) using [shared-files.json](shared-files.json), and reconstructs omitted workflow files. The published notebooks and recorded outputs are preserved. Original source pins remain active; `--use-imported-sources` allows only differences already disclosed in the audit with matching current hashes.
 
 - `--proof-only` executes the inspected symbolic proof units for `r01` of each condition. The report identifies the exact cells, scripts and excluded scope. It does not establish the original numerical-certificate linkage or every sign argument in Markdown.
 - `--trial pgm_without_sos/r02` selects one trial in full-notebook mode. Repeat `--trial` for several, or use `--all` for all 30. Proof-only plans cover `r01` only.
@@ -43,10 +43,14 @@ python examples_peppy/_evaluations/supplementary/restore-artifacts.py --scope bp
 python examples_peppy/_evaluations/posthoc_20260924T024014Z/restore-artifacts.py --case feg_r03 --out .runtime/review-feg
 ```
 
-These commands reconstruct files with the hashes in their maps, including declared line endings for shared sources. They do not execute the reconstructed proofs.
+These commands reconstruct files with the hashes in their maps, including archived source bytes and declared line endings for shared sources. They do not execute the reconstructed proofs.
 
 ## Tool tests
 
 ```sh
 python -m unittest discover -s examples_peppy/_evaluations/supplementary/tools/tests -v
 ```
+
+## Static checks
+
+Run `ty check`, `ruff check .`, `ruff format --check .` and `isort --check-only .` from the repository root. isort uses the Black-compatible formatting profile; explicit import-group boundaries preserve recorded runtime initialization order. Notebook fragments that receive variables through `exec()` use documented diagnostic-specific exceptions. The frozen `framework/` snapshot is excluded from formatting and static checks so its historical bytes remain exact; the maintained `pepflow` package is checked normally. Changes to a source listed in `source-edits.json` intentionally fail archive and replay checks until its current hash and lossless reverse edits are updated together.

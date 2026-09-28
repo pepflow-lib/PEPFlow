@@ -1,14 +1,14 @@
 """Exact, visible PEPFlow symbolic proof of the OGM Lyapunov identities."""
 
-LOAD = '''b4 = json.loads((notebook_dir / "state/ogm_b4.json").read_text())
+LOAD = """b4 = json.loads((notebook_dir / "state/ogm_b4.json").read_text())
 assert b4["certificate_id"] == b2["certificate_id"] == b3["certificate_id"]
 assert b4["numerical_reconstruction"]["certificate_id"] == b4["certificate_id"]
 assert b4["numerical_reconstruction"]["required_indices"] == list(range(N+1))
 print("Selected B4 basis and full-expression reconstruction are rechecked by the preceding executed cells.")
 print("Known coefficients are candidates entering this block; no unknown coefficient is silently set to zero.")
-'''
+"""
 
-HELPERS = '''from typing import Any
+HELPERS = """from typing import Any
 
 proof_results: dict[str,dict[str,Any]] = {}
 L_exact, T_exact, a_exact, b_exact = sp.symbols("L T a b", positive=True)
@@ -29,9 +29,9 @@ def exact_check(name, expression, manager, context):
 
 def interpolation(F, u, v, ell):
     return F(v)-F(u)+F.grad(v)*(u-v)+(sp.Rational(1,2)/ell)*(F.grad(u)-F.grad(v))**2
-'''
+"""
 
-STEP = '''ctx_step = pf.PEPContext("ogm_exact_step").set_as_current()
+STEP = """ctx_step = pf.PEPContext("ogm_exact_step").set_as_current()
 ell_step, b_step, a2_step = pf.Parameter("ell_step"),pf.Parameter("b_step"),pf.Parameter("a2_step")
 F_step = pf.SmoothConvexFunction(is_basis=True,tags=["F_{step}"],L=ell_step)
 s_step = F_step.set_stationary_point("x_{star,step}")
@@ -51,9 +51,9 @@ diff_step = LHS_step-RHS_step
 step_parameters: dict[str,Any] = {"ell_step":L_exact,"b_step":b_exact,"a2_step":b_exact**2-b_exact}
 pm_step = pf.ExpressionManager(ctx_step,resolve_parameters=step_parameters)
 step_verified = exact_check("interior_step",diff_step,pm_step,ctx_step)
-'''
+"""
 
-BASE = '''ctx_base = pf.PEPContext("ogm_exact_base").set_as_current()
+BASE = """ctx_base = pf.PEPContext("ogm_exact_base").set_as_current()
 ell_base = pf.Parameter("ell_base")
 F_base = pf.SmoothConvexFunction(is_basis=True,tags=["F_{base}"],L=ell_base)
 s_base = F_base.set_stationary_point("x_{star,base}")
@@ -68,9 +68,9 @@ diff_base = LHS_base-RHS_base
 base_parameters: dict[str,Any] = {"ell_base":L_exact}
 pm_base = pf.ExpressionManager(ctx_base,resolve_parameters=base_parameters)
 base_verified = exact_check("base",diff_base,pm_base,ctx_base)
-'''
+"""
 
-TERMINAL = '''ctx_terminal = pf.PEPContext("ogm_exact_terminal").set_as_current()
+TERMINAL = """ctx_terminal = pf.PEPContext("ogm_exact_terminal").set_as_current()
 ell_terminal,T_terminal,a2_terminal = pf.Parameter("ell_terminal"),pf.Parameter("T_terminal"),pf.Parameter("a2_terminal")
 F_terminal = pf.SmoothConvexFunction(is_basis=True,tags=["F_{terminal}"],L=ell_terminal)
 s_terminal = F_terminal.set_stationary_point("x_{star,terminal}")
@@ -90,9 +90,9 @@ diff_terminal = LHS_terminal-RHS_terminal
 terminal_parameters: dict[str,Any] = {"ell_terminal":L_exact,"T_terminal":T_exact,"a2_terminal":(T_exact**2-T_exact)/2}
 pm_terminal = pf.ExpressionManager(ctx_terminal,resolve_parameters=terminal_parameters)
 terminal_verified = exact_check("terminal_transition",diff_terminal,pm_terminal,ctx_terminal)
-'''
+"""
 
-BOUNDARY = '''ctx_boundary = pf.PEPContext("ogm_exact_boundary").set_as_current()
+BOUNDARY = """ctx_boundary = pf.PEPContext("ogm_exact_boundary").set_as_current()
 ell_boundary,T_boundary,R_boundary = pf.Parameter("ell_boundary"),pf.Parameter("T_boundary"),pf.Parameter("R_boundary")
 F_boundary = pf.SmoothConvexFunction(is_basis=True,tags=["F_{boundary}"],L=ell_boundary)
 s_boundary = F_boundary.set_stationary_point("x_{star,boundary}")
@@ -111,9 +111,9 @@ R_exact = sp.symbols("R",nonnegative=True)
 boundary_parameters: dict[str,Any] = {"ell_boundary":L_exact,"T_boundary":T_exact,"R_boundary":R_exact}
 pm_boundary = pf.ExpressionManager(ctx_boundary,resolve_parameters=boundary_parameters)
 boundary_verified = exact_check("boundary_normalization",diff_boundary,pm_boundary,ctx_boundary)
-'''
+"""
 
-SMALL = '''ctx_small = pf.PEPContext("ogm_exact_N1").set_as_current()
+SMALL = """ctx_small = pf.PEPContext("ogm_exact_N1").set_as_current()
 ell_small = pf.Parameter("ell_small")
 F_small = pf.SmoothConvexFunction(is_basis=True,tags=["F_{N=1}"],L=ell_small)
 s_small = F_small.set_stationary_point("x_{star,N=1}")
@@ -130,9 +130,9 @@ diff_small = LHS_small-RHS_small
 small_parameters: dict[str,Any] = {"ell_small":L_exact}
 pm_small = pf.ExpressionManager(ctx_small,resolve_parameters=small_parameters)
 small_verified = exact_check("N_equals_1",diff_small,pm_small,ctx_small)
-'''
+"""
 
-SIGNS = '''ordinary_root = (1+sp.sqrt(1+4*a_exact**2))/2
+SIGNS = """ordinary_root = (1+sp.sqrt(1+4*a_exact**2))/2
 terminal_root = (1+sp.sqrt(1+8*a_exact**2))/2
 assert sp.simplify(ordinary_root**2-ordinary_root-a_exact**2) == 0
 assert sp.simplify(terminal_root**2-terminal_root-2*a_exact**2) == 0
@@ -147,4 +147,4 @@ print("By the recurrence theta_0=1 and all later theta values exceed 1. Thus all
 print("Interpolation residuals are nonpositive, so U_N <= ... <= U_0 <= L||x_0-x_star||^2/2.")
 print("Boundary: gap - L*R^2/(2*T^2) = V_N - tau*||q_N||^2 + tau*(||d_0||^2-R^2) <= 0.")
 assert all(record["exact_zero"] for record in proof_results.values())
-'''
+"""

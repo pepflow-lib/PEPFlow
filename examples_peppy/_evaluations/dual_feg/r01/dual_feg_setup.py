@@ -1,6 +1,8 @@
-﻿"""Dual FEG: final squared operator residual under a radius bound."""
-import pepflow as pf
+"""Dual FEG: final squared operator residual under a radius bound."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")

@@ -1,5 +1,35 @@
-﻿import json
+import json
 from pathlib import Path
-root=Path(__file__).resolve().parents[1]
-record=dict(current_block='B3',completion_status='incomplete_requires_confirmation_sample',next_block='B2',entry_exit_reason='N=6 certificate revalidated; rank-two partial sums and full coverage verified. Need independent N=8 certificate for the same grouping recipe.',operational_status='awaiting_same_session_continuation',requested_horizon=8,recipe_id='step-mon-lip-terminal-whole-S',relaxation_recipe='Keep monotonicity (x_k,x_{k+1}) for k=1..N-1 and (x_N,x_star); keep Lipschitz (x_{k+1/2},x_{k+1}) for k=0..N-1, with x_1/2 identical to x_0; drop other interpolation constraints.',grouping_recipe='At step k accumulate consecutive monotonicity k,k+1 (k>=1) and Lipschitz half-step k to k+1. Leave the final root monotonicity and the complete S as one terminal PSD piece.',boundary_exclusions=dict(left=1,right=1),observations=['supplementary/b3-observation-N6.json'],sources=['approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md','state/feg_b2.json','Exact framework files listed in certificate hashes and own generated files'],commands=['Python -I -B supplementary/b3_extract.py','Python -I -B supplementary/b3_trial.py'],access_control='instruction_only',prohibited_exposure_observed=False,incidents=[],unresolved=['Second-horizon rank confirmation','B3 notebook final update','B4–B5'])
-(root/'supplementary/b3-return-b2.json').write_text(json.dumps(record,indent=2))
+
+root = Path(__file__).resolve().parents[1]
+record = dict(
+    current_block="B3",
+    completion_status="incomplete_requires_confirmation_sample",
+    next_block="B2",
+    entry_exit_reason="N=6 certificate revalidated; rank-two partial sums and full coverage verified. Need independent N=8 certificate for the same grouping recipe.",
+    operational_status="awaiting_same_session_continuation",
+    requested_horizon=8,
+    recipe_id="step-mon-lip-terminal-whole-S",
+    relaxation_recipe="Keep monotonicity (x_k,x_{k+1}) for k=1..N-1 and (x_N,x_star); keep Lipschitz (x_{k+1/2},x_{k+1}) for k=0..N-1, with x_1/2 identical to x_0; drop other interpolation constraints.",
+    grouping_recipe="At step k accumulate consecutive monotonicity k,k+1 (k>=1) and Lipschitz half-step k to k+1. Leave the final root monotonicity and the complete S as one terminal PSD piece.",
+    boundary_exclusions=dict(left=1, right=1),
+    observations=["supplementary/b3-observation-N6.json"],
+    sources=[
+        "approved/plugins/pepflow-workflows/skills/lyap-define/references/workflow.md",
+        "state/feg_b2.json",
+        "Exact framework files listed in certificate hashes and own generated files",
+    ],
+    commands=[
+        "Python -I -B supplementary/b3_extract.py",
+        "Python -I -B supplementary/b3_trial.py",
+    ],
+    access_control="instruction_only",
+    prohibited_exposure_observed=False,
+    incidents=[],
+    unresolved=[
+        "Second-horizon rank confirmation",
+        "B3 notebook final update",
+        "B4–B5",
+    ],
+)
+(root / "supplementary/b3-return-b2.json").write_text(json.dumps(record, indent=2))

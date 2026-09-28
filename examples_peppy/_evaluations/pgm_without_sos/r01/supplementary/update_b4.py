@@ -1,15 +1,19 @@
 """Add visible candidate search and full reconstruction to the notebook."""
+
 from pathlib import Path
 
-import nbformat as nbf
+# optional notebook-generation dependency
+import nbformat as nbf  # ty: ignore[unresolved-import]
 
 root = Path(__file__).resolve().parent.parent
 nb = nbf.read(root / "pgm_example_lyap.ipynb", as_version=4)
 nb.cells = nb.cells[:26]
 md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
 nb.cells += [
-md("## Identify the vectors composing the Lyapunov function\n\nStarting from the verified partial sums, we search for an interpretable basis. The interior domain is $1\\le k\\le N-1$; $V_0$ and $V_N$ are reconstructed separately. Rank agreement alone does not establish this basis."),
-code("""from itertools import combinations
+    md(
+        "## Identify the vectors composing the Lyapunov function\n\nStarting from the verified partial sums, we search for an interpretable basis. The interior domain is $1\\le k\\le N-1$; $V_0$ and $V_N$ are reconstructed separately. Rank agreement alone does not establish this basis."
+    ),
+    code("""from itertools import combinations
 from pepflow.lyapunov_utils import (
     vectors_in_column_space, find_basis_with_sparsest_coefficients,
     find_symmetric_coefficient_matrix)
@@ -30,8 +34,10 @@ for k in range(N_int+1):
     assert abs(float(ev.offset)-b3["lyap_offsets"][k]) < 1e-4
 print("Same-certificate partial sums replayed, including endpoints.")
 """),
-md("### Candidate-vector scan\n\nCandidates include tagged iterates, existing basis vectors, point-to-optimum differences, smooth-gradient differences, and composite gradient sums. We add pairwise differences, remove coordinate duplicates and zero vectors, and filter to each quadratic column space."),
-code("""candidates_by_k = {}
+    md(
+        "### Candidate-vector scan\n\nCandidates include tagged iterates, existing basis vectors, point-to-optimum differences, smooth-gradient differences, and composite gradient sums. We add pairwise differences, remove coordinate duplicates and zero vectors, and filter to each quadratic column space."
+    ),
+    code("""candidates_by_k = {}
 for k in range(1, N_int+1):
     labeled = [
         ("x0-star", ctx["x_0"]-ctx["x_star"]),
@@ -52,7 +58,7 @@ for k in range(1, N_int+1):
         seen.append(coords)
     candidates_by_k[k] = unique
 """),
-code("""filtered_by_k = {}
+    code("""filtered_by_k = {}
 labels_by_k = {}
 for k, labeled in candidates_by_k.items():
     found = vectors_in_column_space(lyap[k], [v for _,v in labeled],
@@ -63,8 +69,10 @@ for k, labeled in candidates_by_k.items():
     for vector in found:
         print("  ", labels[id(vector)])
 """),
-md("### Selected basis pattern\n\nThe sparse search is shown for every nonzero index. We then use a consistent basis across interior indices to make the recurrence interpretable; the chosen basis is checked independently."),
-code("""search_bases, search_coefficients = {}, {}
+    md(
+        "### Selected basis pattern\n\nThe sparse search is shown for every nonzero index. We then use a consistent basis across interior indices to make the recurrence interpretable; the chosen basis is checked independently."
+    ),
+    code("""search_bases, search_coefficients = {}, {}
 for k in range(1, N_int+1):
     basis_found, matrix_found = find_basis_with_sparsest_coefficients(
         lyap[k], filtered_by_k[k], pep_context=ctx, resolve_parameters=params_sp,
@@ -75,10 +83,10 @@ for k in range(1, N_int+1):
     print("sparse basis:", [labels_by_k[k][id(v)] for v in basis_found])
     print("zero coefficients:", int(np.sum(np.abs(matrix_found)<1e-6)), "/", matrix_found.size)
 """),
-md(r"""For $1\le k<N$, use the ordered template
+    md(r"""For $1\le k<N$, use the ordered template
 $$[\,x_0-x_\star,\ x_k-x_\star,\ \nabla f(x_k)-\nabla f(x_\star),\ \nabla f(x_k)\,].$$
 The first two vectors record distances and the last two separate the smooth-gradient difference from the affine-gradient term. At $k=0$ the basis is empty; at $k=N$ it is $[x_0-x_\star]$."""),
-code("""def V_k_basis(k):
+    code("""def V_k_basis(k):
     if k == 0:
         return []
     anchor = ctx["x_0"]-ctx["x_star"]
@@ -103,8 +111,10 @@ for k in range(N_int+1):
     assert rank == len(vectors) == b3["rank_profile"][k]
     print(f"k={k}: rank {rank} basis {V_k_basis_labels(k)}")
 """),
-md("### Coefficient matrices\n\nThe quadratic part is $\\sum_{i,j}C_{ij}\\langle v_i,v_j\\rangle$ with symmetric $C$; off-diagonal entries count twice. Function terms are represented by the two gaps $f(x_k)-f(x_\\star)$ and $g(x_k)-g(x_\\star)$. Their numerical weights are retained, and all scalar components are checked."),
-code("""coeff_by_k, coefficient_residuals, function_weights = {}, {}, {}
+    md(
+        "### Coefficient matrices\n\nThe quadratic part is $\\sum_{i,j}C_{ij}\\langle v_i,v_j\\rangle$ with symmetric $C$; off-diagonal entries count twice. Function terms are represented by the two gaps $f(x_k)-f(x_\\star)$ and $g(x_k)-g(x_\\star)$. Their numerical weights are retained, and all scalar components are checked."
+    ),
+    code("""coeff_by_k, coefficient_residuals, function_weights = {}, {}, {}
 for k in range(N_int+1):
     basis_k = V_k_basis(k)
     target = pm.eval_scalar(lyap[k])
@@ -134,7 +144,7 @@ for k in range(N_int+1):
     print("Function gap weights [f_k-f_star, g_k-g_star]:", weights)
     print("Constant offset:", target.offset)
 """),
-code("""def V_k_structure(k):
+    code("""def V_k_structure(k):
     vectors = V_k_basis(k)
     C = coeff_by_k[k]
     expression = sum((float(C[i,j])*vectors[i]*vectors[j]
@@ -162,13 +172,13 @@ for k in range(N_int+1):
     component_residuals[str(k)] = errors
     print("Complete reconstruction", k, errors)
 """),
-md(r"""### Block 4 conclusion
+    md(r"""### Block 4 conclusion
 
 Every index, including both endpoints, passes independence and full-expression reconstruction. For $1\le k<N$ the observed structure is
 $$V_k=\sum_{i,j=0}^{3}c_{ij}(k,N,L)\langle v_i,v_j\rangle
 +a_f(k,N,L)\bigl(f(x_k)-f(x_\star)\bigr)
 +a_g(k,N,L)\bigl(g(x_k)-g(x_\star)\bigr).$$
 The symmetric coefficient functions remain unresolved. At $k=0$, $V_0=0$ numerically. At $k=N$, the structure has one quadratic coefficient and two function-gap weights, with no constant term. Block 5 must derive the coefficients and establish the exact step, initial and terminal identities; this numerical reconstruction does not prove them."""),
-md("## Closed-form coefficients and symbolic identities\n\nPending Block 5."),
+    md("## Closed-form coefficients and symbolic identities\n\nPending Block 5."),
 ]
 nbf.write(nb, root / "pgm_example_lyap.ipynb")

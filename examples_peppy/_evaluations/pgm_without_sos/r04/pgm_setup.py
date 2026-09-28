@@ -1,4 +1,5 @@
-﻿"""Proximal gradient setup: h=f+g, step 1/L, squared radius R**2."""
+"""Proximal gradient setup: h=f+g, step 1/L, squared radius R**2."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

@@ -25,8 +25,26 @@ dependencies = [
 [tool.setuptools.packages.find]
 include = ["pepflow", "pepflow.*"]
 
+[tool.pytest.ini_options]
+# Maintained suites; archived trial programs run through the replay tools.
+testpaths = [
+    "pepflow",
+    "plugins/pepflow-workflows/tests",
+    "examples_peppy/_evaluations/supplementary/tools/tests",
+]
+# Resolve the checkout consistently for both pytest and python -m pytest.
+pythonpath = ["."]
+# Retain pytest defaults and exclude archives even when an IDE runs pytest .
+norecursedirs = [
+    "*.egg", ".*", "_darcs", "build", "CVS", "dist", "node_modules", "venv", "{arch}",
+    "*/examples_peppy/_evaluations/*/r[0-9][0-9]",
+    "*/examples_peppy/_evaluations/supplementary/tools/framework",
+]
+
 [tool.ruff]
 line-length = 88
+# Historical framework bytes are verified by the archive audit.
+extend-exclude = ["examples_peppy/_evaluations/supplementary/tools/framework"]
 
 [tool.ruff.format]
 # Enable reformatting of code snippets in docstrings.
@@ -35,11 +53,15 @@ docstring-code-line-length = 80
 exclude = ["generated"]
 
 [tool.isort]
+profile = "black"
+skip_gitignore = true
 line_length = 88
+extend_skip = ["examples_peppy/_evaluations/supplementary/tools/framework"]
 ensure_newline_before_comments=true
 
 [tool.ty.src]
-exclude = [""]
+# Check the maintained pepflow package once; preserve the historical snapshot.
+exclude = ["examples_peppy/_evaluations/supplementary/tools/framework"]
 
 [tool.ty.rules]
 invalid-argument-type = "ignore"

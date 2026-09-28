@@ -1,4 +1,5 @@
 """OGM with its distinct terminal theta recurrence and radius R."""
+
 import math
 
 import pepflow as pf

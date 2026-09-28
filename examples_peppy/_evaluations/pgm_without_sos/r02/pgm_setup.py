@@ -1,4 +1,5 @@
-﻿"""PGM setup: composite objective gap with squared-distance initialization."""
+"""PGM setup: composite objective gap with squared-distance initialization."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

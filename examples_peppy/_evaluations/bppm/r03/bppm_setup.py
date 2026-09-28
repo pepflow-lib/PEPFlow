@@ -1,4 +1,5 @@
-﻿"""Bregman proximal point setup; radius is R, not R squared."""
+"""Bregman proximal point setup; radius is R, not R squared."""
+
 import pepflow as pf
 
 f = pf.ConvexFunction(is_basis=True, tags=["f"])
@@ -22,4 +23,3 @@ def get_pep_setup(N, params):
     pb.add_initial_constraint(distance.le(params["R"], name="initial_condition"))
     pb.set_performance_metric(f(ctx[f"x_{N}"]) - f(xs))
     return ctx, pb, f
-

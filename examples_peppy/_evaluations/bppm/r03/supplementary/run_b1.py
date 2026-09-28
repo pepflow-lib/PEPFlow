@@ -1,9 +1,13 @@
-﻿import sys
+import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent / "helpers"))
-import runtime
 import json
+
 import bppm_setup as setup
+
+# local helper resolved by the notebook runtime path
+import runtime  # ty: ignore[unresolved-import]
 
 params = {"alpha": 1, "R": 1}
 results = []
@@ -13,5 +17,6 @@ for n in range(1, 8):
     row = {"N": n, "opt_value": float(result.opt_value), **info}
     results.append(row)
     print(row, flush=True)
-(runtime.ROOT / "supplementary" / "_sweep_tmp.json").write_text(json.dumps(results, indent=2))
-
+(runtime.ROOT / "supplementary" / "_sweep_tmp.json").write_text(
+    json.dumps(results, indent=2)
+)

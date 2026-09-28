@@ -1,4 +1,5 @@
 """Proximal gradient for a smooth convex plus closed proper convex objective."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

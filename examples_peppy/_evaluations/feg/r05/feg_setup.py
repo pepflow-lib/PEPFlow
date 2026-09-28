@@ -1,6 +1,8 @@
-﻿"""FEG setup: monotone L-Lipschitz operator, squared residual metric."""
-import pepflow as pf
+"""FEG setup: monotone L-Lipschitz operator, squared residual metric."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")

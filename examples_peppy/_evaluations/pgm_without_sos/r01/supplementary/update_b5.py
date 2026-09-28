@@ -1,7 +1,10 @@
 """Finalize the proof in the evolving notebook, preserving diagnostic cells."""
-from pathlib import Path
+
 import re
-import nbformat as nbf
+from pathlib import Path
+
+# optional notebook-generation dependency
+import nbformat as nbf  # ty: ignore[unresolved-import]
 
 root = Path(__file__).resolve().parent.parent
 nb = nbf.read(root / "pgm_example_lyap.ipynb", as_version=4)
@@ -20,9 +23,12 @@ $$V_{k}=-\frac{L}{4N}\|d_{0}\|^{2}
 The endpoints are $V_{0}=0$ and
 $$V_{N}=h(x_{N})-h(x_{\star})-\frac{L}{4N}\|d_{0}\|^{2}.$$
 """
-outline = r"""### Proof outline
+outline = (
+    r"""### Proof outline
 
-""" + formula + r"""
+"""
+    + formula
+    + r"""
 Define the nonpositive interpolation residuals
 $$I_{f}(u,v)=f(v)-f(u)+\langle\nabla f(v),u-v\rangle+\frac{\|\nabla f(u)-\nabla f(v)\|^{2}}{2L},\quad
 I_{g}(u,v)=g(v)-g(u)+\langle s_{v},u-v\rangle,$$
@@ -65,15 +71,22 @@ $1-a_{N-1}=1/(N+1)$ and $1-b_{N-1}=2/(N+1)$.
 Thus $V_{N}\le\cdots\le V_{1}\le V_{0}=0$, and
 $$h(x_{N})-h(x_{\star})\le\frac{L}{4N}\|d_{0}\|^{2}\le\frac{LR^{2}}{4N}.$$
 """
+)
 nb.cells[1] = md("## Proof Statement")
-nb.cells += [md("## Closed-form coefficient derivation"), code('''from typing import Any, cast
+nb.cells += [
+    md("## Closed-form coefficient derivation"),
+    code("""from typing import Any, cast
 
 b4 = json.loads((notebook_dir / "state/pgm_b4.json").read_text())
 assert b4["certificate_id"] == certificate["certificate_id"]
 assert b4["numerical_reconstruction"]["passed"]
 print("B4 unknowns resolved below:", [v["name"] for v in b4["unresolved_coefficients"]])
 proof_checks = {}
-'''), md(r"""The numerical structure suggests the displayed $a_{k},b_{k}$ and distance/cross coefficients. The gradient coefficient has freedom. Write its negative normalized value as $t_{k}$, retain $t_{k+1}$ independently in the difference, and form the residual quadratic below. We select $t_{k}=k/[2(2N-k)^{2}]$; exact identities and positive pivots certify this choice. This is an analytically chosen decomposition, not a formula claim for the original reverse LDL factors."""), code(r'''
+"""),
+    md(
+        r"""The numerical structure suggests the displayed $a_{k},b_{k}$ and distance/cross coefficients. The gradient coefficient has freedom. Write its negative normalized value as $t_{k}$, retain $t_{k+1}$ independently in the difference, and form the residual quadratic below. We select $t_{k}=k/[2(2N-k)^{2}]$; exact identities and positive pivots certify this choice. This is an analytically chosen decomposition, not a formula claim for the original reverse LDL factors."""
+    ),
+    code(r"""
 k_sym, N_sym = sp.symbols("k N", integer=True)
 t_prev, t_next = sp.symbols("t_k t_next", real=True)
 d_sym, p_sym, q_sym, s_sym = sp.symbols("d p q s", real=True)
@@ -118,7 +131,8 @@ chosen_t={t_function(k_sym,N_sym):gradient_weight(k_sym,N_sym),t_function(k_sym+
 assert all(sp.factor(term.subs(chosen_t))==0 for component in unknown_components[:2] for term in component)
 assert sp.factor(unknown_components[2])==0
 ctx.set_as_current()
-'''), code(r'''
+"""),
+    code(r"""
 def closed_coefficient_matrix(index, horizon, smoothness):
     index, horizon, smoothness = [cast(sp.Expr, sp.sympify(value)) for value in (index,horizon,smoothness)]
     if index == 0:
@@ -144,7 +158,17 @@ for index in range(N_int+1):
     assert err<1e-4 and ferr<1e-4
     coefficient_comparisons[str(index)]={"quadratic":err,"function":ferr}
     print("Coefficient comparison",index,coefficient_comparisons[str(index)])
-'''), md("### Closed-form conclusion\n\n"+formula+"\nThe following native symbolic checks verify this candidate for arbitrary admissible horizons."), md("## Sign and domain verification"), md(r"""Set $n=N-k-1\ge0$. The following exact positive-polynomial representations prove all three square signs. Every coefficient of $A,B,P$ is positive and $A,B$ have positive constants. Therefore all denominators and division pivots are strictly positive. At $k=0$, the third square has zero weight, which is allowed."""), code(r'''
+"""),
+    md(
+        "### Closed-form conclusion\n\n"
+        + formula
+        + "\nThe following native symbolic checks verify this candidate for arbitrary admissible horizons."
+    ),
+    md("## Sign and domain verification"),
+    md(
+        r"""Set $n=N-k-1\ge0$. The following exact positive-polynomial representations prove all three square signs. Every coefficient of $A,B,P$ is positive and $A,B$ have positive constants. Therefore all denominators and division pivots are strictly positive. At $k=0$, the third square has zero weight, which is allowed."""
+    ),
+    code(r"""
 sign_k, sign_n = sp.symbols("k n", nonnegative=True)
 sign_N=sign_k+1+sign_n
 alpha_sign,beta_sign,gamma_sign,*_=sos_coefficients(sign_k,sign_N)
@@ -165,16 +189,23 @@ assert sp.factor(1-b(N_sym-1,N_sym)-2/(N_sym+1))==0
 proof_checks["signs"]=True
 proof_checks["domain"]=True
 print("For L>0, integer N>=1, all used residual multipliers and square weights are nonnegative; denominators are nonzero.")
-''')]
+"""),
+]
 
-headings={"step":"## Symbolic Step Recursion Verification","base":"## Base Case and Boundary Symbolic Verification","terminal":"### Boundary Identity Symbolic Verification","N1":"### Exceptional horizon N=1"}
-equations={
-"step":r"$$V_{k+1}-V_{k}=(a_{k+1}-a_{k})I_f(x_{\star},x_{k+1})+(b_{k+1}-b_{k})I_g(x_{\star},x_{k+1})+a_{k}I_f(x_k,x_{k+1})+b_{k}I_g(x_k,x_{k+1})-Q_k.$$ For $1\le k\le N-2$.",
-"base":r"$$V_1=a_0I_f(x_{\star},x_0)+(a_1-a_0)I_f(x_{\star},x_1)+b_1I_g(x_{\star},x_1)+a_0I_f(x_0,x_1)-\frac{L}{4N}\|p_0\|^2-Q_0.$$ For $N\ge2$.",
-"terminal":r"$$V_N-V_{N-1}=(1-a_{N-1})I_f(x_{\star},x_N)+(1-b_{N-1})I_g(x_{\star},x_N)+a_{N-1}I_f(x_{N-1},x_N)+b_{N-1}I_g(x_{N-1},x_N)-T_N.$$ For $N\ge2$.",
-"N1":r"$$V_1=\tfrac12 I_f(x_{\star},x_0)+\tfrac12 I_f(x_{\star},x_1)+I_g(x_{\star},x_1)+\tfrac12 I_f(x_0,x_1)-\tfrac L4\|p_0\|^2-T_1.$$ For $N=1$."}
-for kind in ("step","base","terminal","N1"):
-    src=f'''# Independent native symbolic {kind} context and the actual proximal recurrence.
+headings = {
+    "step": "## Symbolic Step Recursion Verification",
+    "base": "## Base Case and Boundary Symbolic Verification",
+    "terminal": "### Boundary Identity Symbolic Verification",
+    "N1": "### Exceptional horizon N=1",
+}
+equations = {
+    "step": r"$$V_{k+1}-V_{k}=(a_{k+1}-a_{k})I_f(x_{\star},x_{k+1})+(b_{k+1}-b_{k})I_g(x_{\star},x_{k+1})+a_{k}I_f(x_k,x_{k+1})+b_{k}I_g(x_k,x_{k+1})-Q_k.$$ For $1\le k\le N-2$.",
+    "base": r"$$V_1=a_0I_f(x_{\star},x_0)+(a_1-a_0)I_f(x_{\star},x_1)+b_1I_g(x_{\star},x_1)+a_0I_f(x_0,x_1)-\frac{L}{4N}\|p_0\|^2-Q_0.$$ For $N\ge2$.",
+    "terminal": r"$$V_N-V_{N-1}=(1-a_{N-1})I_f(x_{\star},x_N)+(1-b_{N-1})I_g(x_{\star},x_N)+a_{N-1}I_f(x_{N-1},x_N)+b_{N-1}I_g(x_{N-1},x_N)-T_N.$$ For $N\ge2$.",
+    "N1": r"$$V_1=\tfrac12 I_f(x_{\star},x_0)+\tfrac12 I_f(x_{\star},x_1)+I_g(x_{\star},x_1)+\tfrac12 I_f(x_0,x_1)-\tfrac L4\|p_0\|^2-T_1.$$ For $N=1$.",
+}
+for kind in ("step", "base", "terminal", "N1"):
+    src = f"""# Independent native symbolic {kind} context and the actual proximal recurrence.
 ctx_proof=pf.PEPContext("proof_{kind}").set_as_current()
 L_proof=pf.Parameter("L")
 N_proof=pf.Parameter("N")
@@ -186,38 +217,38 @@ x_proof=pf.Vector(is_basis=True,tags=["x"])
 xn_proof=g_proof.prox(x_proof-f_proof.grad(x_proof)/L_proof,1/L_proof,tag="x_next")
 f_proof(xn_proof)
 g_proof(x_proof)
-x0_proof={"pf.Vector(is_basis=True,tags=['x_0'])" if kind in ("step","terminal") else "x_proof"}
+x0_proof={"pf.Vector(is_basis=True,tags=['x_0'])" if kind in ("step", "terminal") else "x_proof"}
 Ifstar,Igstar=interpolation(f_proof,g_proof,L_proof,star_proof,xn_proof)
 Ifstep,Igstep=interpolation(f_proof,g_proof,L_proof,x_proof,xn_proof)
-'''
-    if kind=="step":
-        src+='''LHS=potential_interior(xn_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,k_proof+1,N_proof)-potential_interior(x_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,k_proof,N_proof)
+"""
+    if kind == "step":
+        src += """LHS=potential_interior(xn_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,k_proof+1,N_proof)-potential_interior(x_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,k_proof,N_proof)
 RHS=(a(k_proof+1,N_proof)-a(k_proof,N_proof))*Ifstar+(b(k_proof+1,N_proof)-b(k_proof,N_proof))*Igstar
 RHS+=a(k_proof,N_proof)*Ifstep+b(k_proof,N_proof)*Igstep-sum(step_squares(x_proof,xn_proof,star_proof,f_proof,g_proof,L_proof,k_proof,N_proof),pf.Scalar.zero())
-'''
-    elif kind=="base":
-        src+='''k_proof=sp.S.Zero
+"""
+    elif kind == "base":
+        src += """k_proof=sp.S.Zero
 LHS=potential_interior(xn_proof,x_proof,star_proof,f_proof,g_proof,L_proof,sp.S.One,N_proof)
 Ifinitial,_=interpolation(f_proof,g_proof,L_proof,star_proof,x_proof)
 RHS=a(k_proof,N_proof)*Ifinitial+(a(k_proof+1,N_proof)-a(k_proof,N_proof))*Ifstar
 RHS+=(b(k_proof+1,N_proof)-b(k_proof,N_proof))*Igstar+a(k_proof,N_proof)*Ifstep
 RHS-=L_proof/(4*N_proof)*((f_proof.grad(x_proof)-f_proof.grad(star_proof))/L_proof)**2
 RHS-=sum(step_squares(x_proof,xn_proof,star_proof,f_proof,g_proof,L_proof,k_proof,N_proof),pf.Scalar.zero())
-'''
+"""
     else:
-        if kind=="N1":
-            src+='N_proof=sp.S.One\n'
-        src+='''k_proof=N_proof-1
+        if kind == "N1":
+            src += "N_proof=sp.S.One\n"
+        src += """k_proof=N_proof-1
 LHS=potential_terminal(xn_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,N_proof)-potential_interior(x_proof,x0_proof,star_proof,f_proof,g_proof,L_proof,k_proof,N_proof)
 RHS=(1-a(k_proof,N_proof))*Ifstar+(1-b(k_proof,N_proof))*Igstar+a(k_proof,N_proof)*Ifstep+b(k_proof,N_proof)*Igstep
 RHS-=sum(terminal_squares(x_proof,xn_proof,star_proof,f_proof,g_proof,L_proof,N_proof),pf.Scalar.zero())
-'''
-        if kind=="N1":
-            src+='''LHS=potential_terminal(xn_proof,x_proof,star_proof,f_proof,g_proof,L_proof,N_proof)
+"""
+        if kind == "N1":
+            src += """LHS=potential_terminal(xn_proof,x_proof,star_proof,f_proof,g_proof,L_proof,N_proof)
 Ifinitial,_=interpolation(f_proof,g_proof,L_proof,star_proof,x_proof)
 RHS+=a(sp.S.Zero,N_proof)*Ifinitial-L_proof/(4*N_proof)*((f_proof.grad(x_proof)-f_proof.grad(star_proof))/L_proof)**2
-'''
-    src+=f'''diff=LHS-RHS
+"""
+    src += f'''diff=LHS-RHS
 L_symbol=sp.Symbol("L",positive=True)
 # The framework accepts symbolic substitutions in sympy_mode; its annotation is narrower.
 symbolic_parameters: dict[str, Any]={{"L":L_symbol,"N":N_sym,"k":k_sym}}
@@ -227,12 +258,25 @@ pf.pprint_labeled_matrix(np.asarray(gram_residual,dtype=object),[f"v_{{i}}" for 
 print("{kind} function residual:",function_residual)
 print("{kind} constant residual:",constant_residual)
 assert all(v==0 for v in [*gram_residual,*function_residual,constant_residual])
-proof_checks[{('boundary' if kind=='terminal' else kind)!r}]=True
+proof_checks[{("boundary" if kind == "terminal" else kind)!r}]=True
 print("{kind}: exact identity passed in all scalar components.")
 '''
-    nb.cells += [md(headings[kind]),md(equations[kind]+r" The residual $\mathrm{LHS}-\mathrm{RHS}$ must be exactly zero."),code(src)]
+    nb.cells += [
+        md(headings[kind]),
+        md(
+            equations[kind]
+            + r" The residual $\mathrm{LHS}-\mathrm{RHS}$ must be exactly zero."
+        ),
+        code(src),
+    ]
 
-nb.cells += [md("## Normalization and theorem conclusion\n\n"+formula+r"The exact identities and sign lemma give $V_{N}\le0$. Therefore $h(x_{N})-h(x_{\star})\le L\|d_{0}\|^{2}/(4N)\le LR^{2}/(4N)$, including $N=1$."),code(r'''
+nb.cells += [
+    md(
+        "## Normalization and theorem conclusion\n\n"
+        + formula
+        + r"The exact identities and sign lemma give $V_{N}\le0$. Therefore $h(x_{N})-h(x_{\star})\le L\|d_{0}\|^{2}/(4N)\le LR^{2}/(4N)$, including $N=1$."
+    ),
+    code(r"""
 normalization_L,normalization_N=sp.symbols("L N",positive=True)
 normalization_R,initial_distance=sp.symbols("R D",nonnegative=True)
 terminal_gap=sp.Symbol("H",real=True)
@@ -244,8 +288,10 @@ assert all(proof_checks[name] for name in ("step","base","boundary","N1","signs"
 print("V_N <= V_0 = 0; D=||x0-star||^2 <= R^2 gives h(x_N)-h(x_star) <= L R^2/(4N).")
 print(r"\forall N\in\mathbb{N}_{\ge1},\quad h(x_N)-h(x_\star)\le\frac{LR^2}{4N}.")
 print("Numerical full certificate verified; global analytic lambda/S status remains unresolved; analytic Lyapunov proof verified.")
-''')]
-nb.cells += [code(r'''
+"""),
+]
+nb.cells += [
+    code(r"""
 final_expression_structure={
     "quadratic_convention":b4["expression_structure"]["quadratic_convention"],
     "interior":{"index_domain":"1 <= k < N", "basis_labels":b4["expression_structure"]["interior"]["basis_labels"],
@@ -283,12 +329,22 @@ assert state5["lyapunov_proof_verified"]
 (notebook_dir/"state/pgm_b5.json").write_text(json.dumps(state5,indent=2))
 print(final_formula)
 print("All exact proof gates passed; Block 5 state saved.")
-''')]
-nb.cells[2:2]=[md("### Theorem\n\nFor the stated PGM recurrence with convex $L$-smooth $f$, closed proper convex $g$, $L>0$, $R\ge0$, integer $N\ge1$, a minimizer $x_{\star}$ and $\|x_{0}-x_{\star}\|^{2}\le R^{2}$, the following potential is nonincreasing. All stated evaluations and proximal steps are well-defined.\n\n"+formula+r"Consequently, $$h(x_{N})-h(x_{\star})\le\frac{LR^{2}}{4N}.$$"),md(outline)]
+""")
+]
+nb.cells[2:2] = [
+    md(
+        "### Theorem\n\nFor the stated PGM recurrence with convex $L$-smooth $f$, closed proper convex $g$, $L>0$, $R\ge0$, integer $N\ge1$, a minimizer $x_{\star}$ and $\|x_{0}-x_{\star}\|^{2}\le R^{2}$, the following potential is nonincreasing. All stated evaluations and proximal steps are well-defined.\n\n"
+        + formula
+        + r"Consequently, $$h(x_{N})-h(x_{\star})\le\frac{LR^{2}}{4N}.$$"
+    ),
+    md(outline),
+]
 # Keep source math free of ambiguous multi-character subscripts.
 for cell in nb.cells:
-    if cell.cell_type=="markdown":
-        cell.source=re.sub(r"_([A-Za-z0-9]+)(?![A-Za-z0-9{])",r"_{\1}",cell.source)
-        cell.source=cell.source.replace("a_{0I}","a_{0}I").replace("b_{1I}","b_{1}I")
-        assert not any(ord(c)<32 and c not in "\n\t" for c in cell.source)
-nbf.write(nb,root/"pgm_example_lyap.ipynb")
+    if cell.cell_type == "markdown":
+        cell.source = re.sub(r"_([A-Za-z0-9]+)(?![A-Za-z0-9{])", r"_{\1}", cell.source)
+        cell.source = cell.source.replace("a_{0I}", "a_{0}I").replace(
+            "b_{1I}", "b_{1}I"
+        )
+        assert not any(ord(c) < 32 and c not in "\n\t" for c in cell.source)
+nbf.write(nb, root / "pgm_example_lyap.ipynb")

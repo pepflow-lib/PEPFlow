@@ -1,7 +1,9 @@
 """Add B2 acquisition, candidate discovery and complete checks to the notebook."""
+
 from pathlib import Path
 
-import nbformat as nbf
+# optional notebook-generation dependency
+import nbformat as nbf  # ty: ignore[unresolved-import]
 
 root = Path(__file__).resolve().parent.parent
 nb = nbf.read(root / "pgm_example_lyap.ipynb", as_version=4)
@@ -9,10 +11,12 @@ nb.cells = nb.cells[:10]
 md = nbf.v4.new_markdown_cell
 code = nbf.v4.new_code_cell
 nb.cells += [
-md("## Full PEP certificate\n\nWe retain every interpolation group and the initial constraint from one primal solve. All scalar residuals are oriented $r\\le0$, and the checked identity is $h(x_N)-h(x_\\star)-\\tau-\\sum_i\\lambda_i r_i+S=0$. Here $R=L=1$. This is a fixed-sample certificate; analytic validity remains separate."),
-code("sys.path.insert(0, str(notebook_dir / 'supplementary/h'))"),
-code((root / "supplementary/h/certificate.py").read_text().split("\n", 1)[1]),
-code("""import sympy as sp
+    md(
+        "## Full PEP certificate\n\nWe retain every interpolation group and the initial constraint from one primal solve. All scalar residuals are oriented $r\\le0$, and the checked identity is $h(x_N)-h(x_\\star)-\\tau-\\sum_i\\lambda_i r_i+S=0$. Here $R=L=1$. This is a fixed-sample certificate; analytic validity remains separate."
+    ),
+    code("sys.path.insert(0, str(notebook_dir / 'supplementary/h'))"),
+    code((root / "supplementary/h/certificate.py").read_text().split("\n", 1)[1]),
+    code("""import sympy as sp
 from fractions import Fraction
 from importlib.metadata import version
 
@@ -37,8 +41,10 @@ for group, value in dense["all_lambda_groups"].items():
     print(group, "entries > 1e-6:", int(np.sum(np.abs(matrix) > 1e-6)))
 print("Dense S rank at 1e-4:", np.linalg.matrix_rank(dense["S_matrix"], tol=1e-4))
 """),
-md("### Sparsity selection\n\nThresholding the first dense solve at $10^{-6}$ removed four convex-function inequalities and preserved the bound. A second, index-based hypothesis retains optimum-to-iterate and forward consecutive pairs for both functions. The following solve selects this smaller pattern."),
-code("""ctx, pb, obj = get_pep_setup(N, params)
+    md(
+        "### Sparsity selection\n\nThresholding the first dense solve at $10^{-6}$ removed four convex-function inequalities and preserved the bound. A second, index-based hypothesis retains optimum-to-iterate and forward consecutive pairs for both functions. The following solve selects this smaller pattern."
+    ),
+    code("""ctx, pb, obj = get_pep_setup(N, params)
 dropped = []
 for c, origin, _, _ in inventory(ctx, pb):
     if origin == "initial":
@@ -59,12 +65,12 @@ for name, value in selected["named_dual_values"].items():
     if value is not None:
         print(name, value, Fraction(value).limit_denominator(1000))
 """),
-md(r"""### Initial closed-form search
+    md(r"""### Initial closed-form search
 
 The consecutive coefficients suggest $a_k=(k+1)/(2N-k)$ for the smooth function and $b_k=k/(2N-k)$ for the nonsmooth function. Optimum-to-iterate coefficients are their successive differences, with terminal masses chosen to sum to one. This hypothesis came from the fractions of this attempt's sparse solve. We compare every active multiplier below.
 
 For $S$, reverse LDL gives a complete numerical decomposition. Its factors are not simple enough to infer a useful general square formula directly. We also construct the candidate remainder from the rational multiplier expressions and compare all its scalar coordinates with this same numerical $S$. PSD for arbitrary horizons and an interpretable square decomposition remain unresolved."""),
-code("""def candidate_multiplier(name, N):
+    code("""def candidate_multiplier(name, N):
     if name == "initial_condition":
         return sp.Rational(1, 4*N)
     owner, pair = name.split(":")
@@ -114,8 +120,10 @@ assert abs(float(S_guess_coords.offset)) < 1e-5
 pf.pprint_labeled_matrix(np.asarray(S_guess_coords.inner_prod_coords),
                         selected["basis_vectors"], precision=5)
 """),
-md("### Complete selected-certificate checks\n\nThe decomposition retains the full LDL matrix, including every small entry and any off-diagonal block. No multiplier is silently dropped. The residual checks include Gram coordinates, function values and constants, dual signs, PSD, reconstruction, and agreement with the dense optimum."),
-code("""checks, checked, S_numeric = verify(ctx, pb, params, selected)
+    md(
+        "### Complete selected-certificate checks\n\nThe decomposition retains the full LDL matrix, including every small entry and any off-diagonal block. No multiplier is silently dropped. The residual checks include Gram coordinates, function values and constants, dual signs, PSD, reconstruction, and agreement with the dense optimum."
+    ),
+    code("""checks, checked, S_numeric = verify(ctx, pb, params, selected)
 print(json.dumps(checks, indent=2))
 assert checks["passed"]
 D = np.asarray(selected["numerical_decomposition"]["D"])
@@ -130,7 +138,7 @@ pf.pprint_labeled_matrix(np.asarray(checked.inner_prod_coords),
 print("Function residual:", checked.func_coords)
 print("Offset residual:", checked.offset)
 """),
-code(r"""import inspect
+    code(r"""import inspect
 
 closed_form_search = {
     "completed": True, "references_reviewed": [],
@@ -165,8 +173,8 @@ for filename in ("pgm_relaxed.json", "pgm_b2.json"):
     (notebook_dir / "state" / filename).write_text(json.dumps(state, indent=2))
 print("Numerical certificate verified; analytic full PEP and Lyapunov proofs pending.")
 """),
-md("## Lyapunov partial sums\n\nPending Block 3."),
-md("## Identify the vectors composing the Lyapunov function\n\nPending Block 4."),
-md("## Closed-form coefficients and symbolic identities\n\nPending Block 5.")
+    md("## Lyapunov partial sums\n\nPending Block 3."),
+    md("## Identify the vectors composing the Lyapunov function\n\nPending Block 4."),
+    md("## Closed-form coefficients and symbolic identities\n\nPending Block 5."),
 ]
 nbf.write(nb, root / "pgm_example_lyap.ipynb")

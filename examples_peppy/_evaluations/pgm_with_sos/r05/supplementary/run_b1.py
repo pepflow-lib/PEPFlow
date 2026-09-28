@@ -1,4 +1,5 @@
 """Attempt-owned B1 sweep with explicit frozen solver policy."""
+
 import json
 import os
 import sys
@@ -9,15 +10,23 @@ APPROVED = ROOT / "supplementary" / "approved"
 RUNTIME = ROOT / "supplementary" / ".runtime"
 for variable in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
     os.environ[variable] = "1"
-for variable in ("TEMP", "TMP", "IPYTHONDIR", "MPLCONFIGDIR", "JUPYTER_RUNTIME_DIR", "JUPYTER_CONFIG_DIR"):
+for variable in (
+    "TEMP",
+    "TMP",
+    "IPYTHONDIR",
+    "MPLCONFIGDIR",
+    "JUPYTER_RUNTIME_DIR",
+    "JUPYTER_CONFIG_DIR",
+):
     folder = RUNTIME / variable.lower()
     folder.mkdir(parents=True, exist_ok=True)
     os.environ[variable] = str(folder)
 sys.path[:0] = [str(APPROVED), str(ROOT), str(ROOT / "supplementary")]
 
-import cvxpy as cp
-import pepflow as pf
-import pgm_setup as setup
+import cvxpy as cp  # noqa: E402 - imports follow runtime or notebook setup
+import pgm_setup as setup  # noqa: E402 - imports follow runtime or notebook setup
+
+import pepflow as pf  # noqa: E402 - imports follow runtime or notebook setup
 
 results = []
 for horizon in range(1, 8):
@@ -38,8 +47,13 @@ for horizon in range(1, 8):
         value = problem.solve(**options)
     if problem.status not in ("optimal", "optimal_inaccurate"):
         raise RuntimeError(f"N={horizon}: {problem.status}")
-    record = {"N": horizon, "opt_value": value, "status": problem.status,
-              "solver_options": options, "solver_failure": failure}
+    record = {
+        "N": horizon,
+        "opt_value": value,
+        "status": problem.status,
+        "solver_options": options,
+        "solver_failure": failure,
+    }
     results.append(record)
     print(json.dumps(record), flush=True)
 (ROOT / "supplementary" / "b1_sweep.json").write_text(json.dumps(results, indent=2))

@@ -1,6 +1,8 @@
-﻿"""Bregman proximal point setup; radius is R, not R squared."""
+"""Bregman proximal point setup; radius is R, not R squared."""
+
 from numbers import Number
 from typing import cast
+
 import pepflow as pf
 
 alpha = pf.Parameter("alpha")
@@ -29,4 +31,3 @@ def get_pep_setup(N, params):
     pb.add_initial_constraint(divergence.le(R, name="initial_condition"))
     pb.set_performance_metric(f(ctx[f"x_{N}"]) - f(xs))
     return ctx, pb, f
-

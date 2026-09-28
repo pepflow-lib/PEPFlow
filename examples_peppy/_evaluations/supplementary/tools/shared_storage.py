@@ -3,13 +3,17 @@
 The manifest describes storage only. It never changes a historical hash pin or
 accepts an unlisted missing file. Every logical file is checked byte for byte
 against its public SHA-256 and size, whether stored locally or reconstructed.
+Other maintained sources use the separately verified archived source view.
 """
+
 from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path, PurePosixPath
 import re
+from pathlib import Path, PurePosixPath
+
+from source_edits import SourceEdits, load_source_edits
 
 CAMPAIGN_ID = "20260923T140754Z_paper5_pgm_sos_6x5_isolation1"
 CONDITIONS = {"ogm", "bppm", "feg", "dual_feg", "pgm_with_sos", "pgm_without_sos"}
@@ -20,8 +24,12 @@ def safe_relative(base: Path, value: str) -> Path:
     if not isinstance(value, str) or not value or "\\" in value:
         raise ValueError("Shared file paths must be nonempty POSIX relative paths.")
     path = PurePosixPath(value)
-    if (path.is_absolute() or ".." in path.parts or ":" in value
-            or path.as_posix() != value):
+    if (
+        path.is_absolute()
+        or ".." in path.parts
+        or ":" in value
+        or path.as_posix() != value
+    ):
         raise ValueError(f"Invalid shared file path: {value!r}")
     result = base.joinpath(*path.parts).resolve()
     if not result.is_relative_to(base.resolve()):
@@ -39,10 +47,17 @@ def transformed_bytes(data: bytes, source_newline: str | None) -> bytes:
 
 
 class SharedFiles:
-    def __init__(self, campaign: Path, entries: dict[Path, dict], manifest_path: Path):
+    def __init__(
+        self,
+        campaign: Path,
+        entries: dict[Path, dict],
+        manifest_path: Path,
+        source_edits: SourceEdits | None = None,
+    ):
         self.campaign = campaign.resolve()
         self.entries = entries
         self.manifest_path = manifest_path.resolve()
+        self.source_edits = source_edits or load_source_edits(campaign)
 
     def contains(self, path: Path) -> bool:
         return path.resolve() in self.entries
@@ -53,16 +68,20 @@ class SharedFiles:
             raise ValueError("Requested shared file leaves its campaign.")
         entry = self.entries.get(logical)
         if entry is None:
-            return logical.read_bytes()
+            return self.source_edits.read_bytes(logical)
         canonical = safe_relative(self.campaign, entry["canonical"])
         data = transformed_bytes(canonical.read_bytes(), entry["source_newline"])
-        if (len(data) != entry["bytes"]
-                or hashlib.sha256(data).hexdigest() != entry["sha256"]):
+        if (
+            len(data) != entry["bytes"]
+            or hashlib.sha256(data).hexdigest() != entry["sha256"]
+        ):
             raise ValueError(f"Shared canonical integrity mismatch: {entry['path']}")
         if logical.exists():
-            present = logical.read_bytes()
+            present = self.source_edits.read_bytes(logical)
             if present != data:
-                raise ValueError(f"Present shared file integrity mismatch: {entry['path']}")
+                raise ValueError(
+                    f"Present shared file integrity mismatch: {entry['path']}"
+                )
         return data
 
 
@@ -70,7 +89,10 @@ def load_shared_files(campaign: Path, manifest_path: Path | None = None) -> Shar
     campaign = campaign.resolve()
     manifest_path = manifest_path or campaign / "supplementary/tools/shared-files.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
-    if manifest.get("schema_version") != 1 or manifest.get("campaign_id") != CAMPAIGN_ID:
+    if (
+        manifest.get("schema_version") != 1
+        or manifest.get("campaign_id") != CAMPAIGN_ID
+    ):
         raise ValueError("Unsupported shared files manifest schema or campaign.")
     if not isinstance(manifest.get("files"), list):
         raise ValueError("Shared files must be a list.")
@@ -81,20 +103,32 @@ def load_shared_files(campaign: Path, manifest_path: Path | None = None) -> Shar
         logical = safe_relative(campaign, entry.get("path"))
         canonical = safe_relative(campaign, entry.get("canonical"))
         parts = PurePosixPath(entry["path"]).parts
-        if (len(parts) != 6 or parts[0] not in CONDITIONS
-                or re.fullmatch(r"r0[1-5]", parts[1]) is None
-                or parts[2:5] != ("supplementary", "approved", "pepflow")
-                or not parts[5].endswith(".py")):
-            raise ValueError(f"Shared path is outside approved trial framework files: {entry['path']}")
+        if (
+            len(parts) != 6
+            or parts[0] not in CONDITIONS
+            or re.fullmatch(r"r0[1-5]", parts[1]) is None
+            or parts[2:5] != ("supplementary", "approved", "pepflow")
+            or not parts[5].endswith(".py")
+        ):
+            raise ValueError(
+                f"Shared path is outside approved trial framework files: {entry['path']}"
+            )
         expected_source = "supplementary/tools/framework/pepflow/" + parts[5]
         if entry["canonical"] != expected_source or canonical == logical:
             raise ValueError(f"Unexpected shared canonical path: {entry['canonical']}")
         if entry.get("source_newline") != "LF":
-            raise ValueError("Shared framework entries require explicit LF reconstruction.")
+            raise ValueError(
+                "Shared framework entries require explicit LF reconstruction."
+            )
         if type(entry.get("bytes")) is not int or entry["bytes"] < 0:
             raise ValueError("Shared file byte length must be a nonnegative integer.")
-        if not isinstance(entry.get("sha256"), str) or re.fullmatch(r"[0-9a-f]{64}", entry["sha256"]) is None:
-            raise ValueError("Shared file SHA-256 must contain 64 lowercase hex digits.")
+        if (
+            not isinstance(entry.get("sha256"), str)
+            or re.fullmatch(r"[0-9a-f]{64}", entry["sha256"]) is None
+        ):
+            raise ValueError(
+                "Shared file SHA-256 must contain 64 lowercase hex digits."
+            )
         if logical in entries:
             raise ValueError(f"Duplicate shared file path: {entry['path']}")
         entries[logical] = dict(entry)

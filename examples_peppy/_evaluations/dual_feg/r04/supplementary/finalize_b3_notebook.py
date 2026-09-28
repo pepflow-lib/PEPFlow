@@ -1,32 +1,56 @@
 """Finalize B3 with visible same-recipe replay at N=6 and N=8."""
+
 import hashlib
 import os
-from pathlib import Path
 import textwrap
+from pathlib import Path
 
-import nbformat
-from nbclient import NotebookClient
+# optional notebook-generation dependency
+import nbformat  # ty: ignore[unresolved-import]
+
+# optional notebook-generation dependency
+from nbclient import NotebookClient  # ty: ignore[unresolved-import]
 
 ROOT = Path(__file__).resolve().parents[1]
-runtime = ROOT / 'supplementary/.runtime'
-for key in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
-    os.environ[key] = '1'
-for key in ('TEMP', 'TMP', 'TMPDIR', 'MPLCONFIGDIR', 'IPYTHONDIR', 'JUPYTER_RUNTIME_DIR', 'JUPYTER_CONFIG_DIR', 'XDG_CACHE_HOME'):
+runtime = ROOT / "supplementary/.runtime"
+for key in (
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "NUMEXPR_NUM_THREADS",
+):
+    os.environ[key] = "1"
+for key in (
+    "TEMP",
+    "TMP",
+    "TMPDIR",
+    "MPLCONFIGDIR",
+    "IPYTHONDIR",
+    "JUPYTER_RUNTIME_DIR",
+    "JUPYTER_CONFIG_DIR",
+    "XDG_CACHE_HOME",
+):
     p = runtime / key.lower()
     p.mkdir(parents=True, exist_ok=True)
     os.environ[key] = str(p)
-os.environ['JUPYTER_PATH'] = str(runtime / 'jupyter')
-source_names = ('b3_certificate_check.py', 'b3_decomposition.py', 'b3_grouping.py')
-sources = [(ROOT / 'supplementary' / name).read_text() for name in source_names]
-intro = '''N_int = certificate['N_verify']
+os.environ["JUPYTER_PATH"] = str(runtime / "jupyter")
+source_names = ("b3_certificate_check.py", "b3_decomposition.py", "b3_grouping.py")
+sources = [(ROOT / "supplementary" / name).read_text() for name in source_names]
+intro = """N_int = certificate['N_verify']
 params_sp = {name: sp.S(value) for name, value in json.loads(certificate['params_json']).items()}
 ctx, pb, obj = get_pep_setup(N_int, params_sp)
 pb.set_relaxed_constraints(certificate['relaxed_constraints'])
-'''
+"""
 # Move function-local imports before the first executable statement.
-imports = '\n'.join(line for line in sources[0].splitlines() if line.startswith(('import ', 'from ')))
-check_without_imports = '\n'.join(line for line in sources[0].splitlines() if not line.startswith(('import ', 'from ')))
-tail = '''
+imports = "\n".join(
+    line for line in sources[0].splitlines() if line.startswith(("import ", "from "))
+)
+check_without_imports = "\n".join(
+    line
+    for line in sources[0].splitlines()
+    if not line.startswith(("import ", "from "))
+)
+tail = """
 observation = {'N': N_int, 'certificate_id': certificate['certificate_id'],
     'recipe_id': 'terminal-star-step-pairs-S-boundary', 'rank_profile': ranks,
     'singular_values': singular_values,
@@ -43,10 +67,22 @@ data = {'lyap_inner_prod_coords': [np.asarray(v.inner_prod_coords, dtype=float).
             'boundary_S': boundary_S, 'omitted_constraints': [], 'checked': grouping_checked},
         'extra_duals': extra_duals}
 return observation, data
-'''
-function_source = 'def evaluate_rank_sample(certificate):\n' + textwrap.indent(imports + '\n' + intro + '\n' + check_without_imports + '\n' + sources[1] + '\n' + sources[2] + tail, '    ')
-(ROOT / 'supplementary/b3_rank_function.py').write_text(function_source)
-comparison = '''REPO_ROOT = repo_root
+"""
+function_source = "def evaluate_rank_sample(certificate):\n" + textwrap.indent(
+    imports
+    + "\n"
+    + intro
+    + "\n"
+    + check_without_imports
+    + "\n"
+    + sources[1]
+    + "\n"
+    + sources[2]
+    + tail,
+    "    ",
+)
+(ROOT / "supplementary/b3_rank_function.py").write_text(function_source)
+comparison = """REPO_ROOT = repo_root
 main_certificate = json.loads((notebook_dir / 'state/dual_feg_b2.json').read_text())
 extra_certificate = json.loads((notebook_dir / 'supplementary/n8/dual_feg_b2.json').read_text())
 rank_samples = []
@@ -77,33 +113,47 @@ b3_state = {**main_certificate, **main_partial_sums, 'rank_profile': main_observ
     'analytic_full_pep_verified': False, 'lyapunov_proof_verified': False}
 (notebook_dir / 'supplementary/rank_search.json').write_text(json.dumps({'summary': rank_search, 'samples': rank_samples}, indent=2, allow_nan=False))
 (notebook_dir / 'state/dual_feg_b3.json').write_text(json.dumps(b3_state, indent=2, allow_nan=False))
-'''
-(ROOT / 'supplementary/b3_comparison.py').write_text(comparison)
-path = ROOT / 'dual_feg_example_lyap.ipynb'
+"""
+(ROOT / "supplementary/b3_comparison.py").write_text(comparison)
+path = ROOT / "dual_feg_example_lyap.ipynb"
 nb = nbformat.read(path, as_version=4)
-old_md = next(c.source for c in nb.cells if c.id == 'b3-00')
-old_md = old_md.replace('A second horizon remains required before B3 can be complete.', 'The same construction independently gives rank four at $N=8$. Both samples pass full-coordinate coverage; this is finite-sample structural evidence, not an arbitrary-horizon proof.')
-cells = [nbformat.v4.new_markdown_cell(old_md), nbformat.v4.new_code_cell(function_source), nbformat.v4.new_code_cell(comparison)]
+old_md = next(c.source for c in nb.cells if c.id == "b3-00")
+old_md = old_md.replace(
+    "A second horizon remains required before B3 can be complete.",
+    "The same construction independently gives rank four at $N=8$. Both samples pass full-coordinate coverage; this is finite-sample structural evidence, not an arbitrary-horizon proof.",
+)
+cells = [
+    nbformat.v4.new_markdown_cell(old_md),
+    nbformat.v4.new_code_cell(function_source),
+    nbformat.v4.new_code_cell(comparison),
+]
 for i, cell in enumerate(cells):
-    cell.id = f'b3-{i:02d}'
-nb.cells = [c for c in nb.cells if not c.id.startswith('b3-')]
-index = next(i for i, c in enumerate(nb.cells) if c.id == 'b1-14')
+    cell.id = f"b3-{i:02d}"
+nb.cells = [c for c in nb.cells if not c.id.startswith("b3-")]
+index = next(i for i, c in enumerate(nb.cells) if c.id == "b1-14")
 nb.cells[index:index] = cells
 nbformat.write(nb, path)
-NotebookClient(nb, timeout=120, kernel_name='dual-feg-owned', resources={'metadata': {'path': str(ROOT)}}).execute()
+NotebookClient(
+    nb,
+    timeout=120,
+    kernel_name="dual-feg-owned",
+    resources={"metadata": {"path": str(ROOT)}},
+).execute()
 nbformat.write(nb, path)
 for cell in cells:
-    for out in cell.get('outputs', []):
-        if out.output_type == 'stream':
+    for out in cell.get("outputs", []):
+        if out.output_type == "stream":
             print(out.text)
-checkpath = ROOT / 'supplementary/dual_feg_example_lyap_checklist.md'
+checkpath = ROOT / "supplementary/dual_feg_example_lyap_checklist.md"
 lines = checkpath.read_text().splitlines()
 for i, line in enumerate(lines):
-    if line.startswith('Last reviewed block:'):
-        lines[i] = 'Last reviewed block: B3'
-    elif line.startswith('SHA-256:'):
-        lines[i] = 'SHA-256: ' + hashlib.sha256(path.read_bytes()).hexdigest()
-    elif line.startswith('| 9.'):
-        lines[i] = '| 9. partial-sum Lyapunov construction and rank profile | verified | b3-00,b3-01,b3-02 | Both complete certificates replayed; same-recipe rank four confirmed at N=6,8 with fixed exclusions; all components and boundary coverage checked. |'
-checkpath.write_text('\n'.join(lines), encoding='utf-8')
-print('B3 complete; selected sample remains N=6.')
+    if line.startswith("Last reviewed block:"):
+        lines[i] = "Last reviewed block: B3"
+    elif line.startswith("SHA-256:"):
+        lines[i] = "SHA-256: " + hashlib.sha256(path.read_bytes()).hexdigest()
+    elif line.startswith("| 9."):
+        lines[i] = (
+            "| 9. partial-sum Lyapunov construction and rank profile | verified | b3-00,b3-01,b3-02 | Both complete certificates replayed; same-recipe rank four confirmed at N=6,8 with fixed exclusions; all components and boundary coverage checked. |"
+        )
+checkpath.write_text("\n".join(lines), encoding="utf-8")
+print("B3 complete; selected sample remains N=6.")

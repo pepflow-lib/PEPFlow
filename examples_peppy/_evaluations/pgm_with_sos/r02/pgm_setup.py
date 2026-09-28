@@ -1,4 +1,5 @@
-﻿"""PGM with step 1/L; composite objective gap and initial squared radius R**2."""
+"""PGM with step 1/L; composite objective gap and initial squared radius R**2."""
+
 import pepflow as pf
 
 L = pf.Parameter("L")

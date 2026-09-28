@@ -1,1 +1,1 @@
-﻿"""Reserved attempt-local runtime helpers."""
+"""Reserved attempt-local runtime helpers."""

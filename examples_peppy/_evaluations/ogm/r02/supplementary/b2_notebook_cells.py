@@ -1,6 +1,6 @@
 """Visible B2 notebook construction and checks, embedded verbatim into cells."""
 
-LOAD = '''import hashlib
+LOAD = """import hashlib
 import sympy as sp
 
 certificate_dir = globals().get("certificate_dir", notebook_dir / "state")
@@ -46,9 +46,9 @@ print("All active selected multipliers:")
 for name, value in b2["named_dual_values"].items():
     if value is not None:
         print(name, value)
-'''
+"""
 
-CANDIDATES = '''theta = theta_sequence(N)
+CANDIDATES = """theta = theta_sequence(N)
 
 def lamb(ri, ci):
     i, j = point_index(ri), point_index(ci)
@@ -74,9 +74,9 @@ pf.pprint_labeled_matrix(S_candidate, b2["basis_vectors"])
 print("Candidate lambda max error:", lambda_error)
 print("Candidate S max error:", float(np.max(np.abs(S_candidate - S_array))))
 print("Formula status: numerical candidates only; analytic all-horizon identities unresolved.")
-'''
+"""
 
-VERIFY = '''D = np.array(b2["numerical_decomposition"]["D"])
+VERIFY = """D = np.array(b2["numerical_decomposition"]["D"])
 E = np.array(b2["numerical_decomposition"]["ell_coords"])
 assert b2["numerical_decomposition"]["basis_labels"] == [str(v) for v in basis]
 ell = [sum((float(a)*v for a, v in zip(row, basis)), pf.Vector.zero()) for row in E]
@@ -128,4 +128,4 @@ assert np.linalg.eigvalsh(S_array).min() >= -1e-6
 pf.pprint_labeled_matrix(gram_residual, b2["basis_vectors"], precision=10)
 print("Identity Gram/function/offset maxima:", np.max(np.abs(gram_residual)), np.max(np.abs(func_residual)), abs(offset_residual))
 print("Numerical certificate verified; analytic full PEP and Lyapunov proof remain unverified.")
-'''
+"""

@@ -1,6 +1,8 @@
-﻿"""Dual FEG with the terminal squared operator residual as candidate metric."""
-import pepflow as pf
+"""Dual FEG with the terminal squared operator residual as candidate metric."""
+
 import sympy as sp
+
+import pepflow as pf
 
 L = pf.Parameter("L")
 R = pf.Parameter("R")
@@ -17,8 +19,8 @@ def make_ctx_dual_feg(ctx_name: str, N, **kwargs):
         g = A(x).add_tag(f"g_{k}")
         y = (x - z / L - g / L).add_tag(f"y_{k}")
         h = A(y).add_tag(f"h_{k}")
-        x = (y - ((t - 1) / t) * (h - g) / L).add_tag(f"x_{k+1}")
-        z = (((t - 1) / t) * z - h / t).add_tag(f"z_{k+1}")
+        x = (y - ((t - 1) / t) * (h - g) / L).add_tag(f"x_{k + 1}")
+        z = (((t - 1) / t) * z - h / t).add_tag(f"z_{k + 1}")
     A(x).add_tag(f"g_{N}")
     return ctx
 
@@ -26,6 +28,8 @@ def make_ctx_dual_feg(ctx_name: str, N, **kwargs):
 def get_pep_setup(N, params):
     ctx = make_ctx_dual_feg(f"ctx_{N}", N)
     pb = pf.PEPBuilder(ctx)
-    pb.add_initial_constraint(((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition"))
+    pb.add_initial_constraint(
+        ((ctx["x_0"] - ctx["x_star"]) ** 2).le(R**2, name="initial_condition")
+    )
     pb.set_performance_metric(A(ctx[f"x_{N}"]) ** 2)
     return ctx, pb, A

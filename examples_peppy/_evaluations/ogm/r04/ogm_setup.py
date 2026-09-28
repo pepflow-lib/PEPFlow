@@ -1,4 +1,5 @@
-﻿"""OGM setup; terminal theta recurrence retained. Radius is R, not R squared."""
+"""OGM setup; terminal theta recurrence retained. Radius is R, not R squared."""
+
 import math
 
 import pepflow as pf
