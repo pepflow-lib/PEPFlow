@@ -13,6 +13,10 @@ Python executable: `.venv/bin/python3` (use this for ALL Python calls)
 State output: `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json`
 Notebook output: `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb`
 
+## Output Layout
+
+Before creating files, read and follow [the shared output layout](../../plugins/pepflow-workflows/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
+
 ---
 
 ## Notebook Lifecycle
@@ -27,19 +31,31 @@ Use `examples_peppy/_references/gd/gd_example_lyap.ipynb` as the structural refe
 5. `make_ctx_{ALGO_NAME}` and `get_pep_setup`
 6. numerical evidence, including a plot comparing the PEP values against the discovered or conjectured rate
 7. dense and relaxed proof solves
-8. closed-form lambda and S verification
+8. lambda and S verification (closed-form when available, otherwise numerical with explicit analytic status)
 9. partial-sum Lyapunov construction and rank profile
 10. special-vector identification
 11. coefficient extraction and closed-form `V_k`
 12. symbolic step, base, and boundary identities
 
+Block 2 first reviews applicable formulas and attempts closed-form discovery for unresolved lambda and S components. If that attempt leaves formulas unresolved, a consistent verified numerical certificate may still feed Blocks 3-4; Block 5 derives the remaining analytic Lyapunov coefficients and local certificate terms. For item 8, preserve the initial search, numerical checks, and actual analytic status. A completed global full-PEP closed form is not required for this path, while the final theorem, closed-form `V_k`, and exact step/base/boundary proof remain required. An explicit request for an analytic full-PEP proof retains that separate objective.
+
 Each block owns the cells matching the work it just completed. Prefer updating or replacing that block's section in the existing notebook over rebuilding the notebook from scratch, so the notebook remains a readable record of the workflow.
 
-Keep notebook cells focused on the mathematical workflow and the human decisions being made. Expose algorithm definitions, partial-sum constructions, candidate bases, coefficient extraction, and symbolic verification code when those are part of the proof reasoning. Move presentation-only helpers, repetitive formatting functions, and raw state pretty-printers into a small local helper module such as `examples_peppy/{ALGO_NAME}/notebook_helpers.py`, then call that helper from the notebook. Helper modules may format tables or summaries, but they must not hide proof-critical construction or verification logic.
+Maintain one internal evidence checklist at the notebook's sibling `supplementary/<notebook-stem>_checklist.md`, updating the same file throughout Blocks 1-5. Keep one row for each of the twelve items above, preserving its number and wording. Record its status (`verified`, `pending`, `missing`, or `failed`), actual notebook cell IDs (or zero-based cell indices), and concise evidence or the unmet requirement. In the file header, identify the notebook path, last reviewed block, and SHA-256 of the inspected saved notebook.
+
+Mark an item `verified` only after inspecting all its required content and the applicable detailed requirements in the owning block. Cite actual rendered text, code, and required outputs, including plots and matrix/check results where required; imports and definitions need no artificial output. A heading, TODO, execution count, stored success flag, or external helper reference alone is insufficient. Later-block work remains `pending`, including item 2 until Block 5 replaces its placeholder and item 11 until its closed form is verified. Use `missing` for absent content due in the current block and `failed` for content or checks that do not meet the requirement; due work awaiting inspection remains `pending`. Do not waive any of the twelve items.
+
+Check the current block's cells at its existing notebook-update step, reusing results from the required execution and inspection. When notebook content, outputs, cell order, or proof dependencies change, mark affected entries `pending` until rechecked, then refresh the recorded notebook hash. Checklist bookkeeping alone does not require another solver run or notebook execution. Keep the checklist and its maintenance code out of the main notebook, PDF/TeX, and routine user-facing completion report. Report any unresolved omission, failure, or unverified requirement due in the current block and do not claim that block complete while it remains unresolved; expected later-block placeholders do not block earlier stages.
+
+Keep notebook cells focused on the mathematical workflow and the human decisions being made. Expose algorithm definitions, partial-sum constructions, candidate bases, coefficient extraction, and symbolic verification code when those are part of the proof reasoning. Place any newly needed presentation-only helpers, repetitive formatting functions, and raw state pretty-printers in a small supporting module such as `examples_peppy/{ALGO_NAME}/supplementary/notebook_helpers.py`, then call that helper from the notebook using an explicit path relative to the selected example directory. Helper modules may format tables or summaries, but they must not hide proof-critical construction or verification logic.
+
+When a separate verification file is created or reused for a proof condition, apply the shared output policy's [proof verification rule](../../plugins/pepflow-workflows/references/output-layout.md#proof-verification-files-during-notebook-authoring) at the relevant block's notebook update. Keep the required identities and checks in the main notebook and record their evidence under the existing checklist items. Elementary domain facts need no dedicated cells; this does not request expansion of existing examples.
+
+In every notebook Markdown cell, use `$...$` for inline math and `$$...$$` for display math. Do not use `\(...\)` or `\[...\]` as notebook Markdown math delimiters. Delimiter normalization alone is not verification: visually inspect the final rendered equations in a notebook frontend or an HTML preview with its math renderer loaded, checking for raw delimiters, malformed formulas, missing symbols, and clipping. Reinspect affected cells after any fix. If rendered inspection is unavailable, leave the corresponding supplementary checklist evidence pending and report the incomplete review.
 
 When writing notebook markdown from Python strings, use raw strings or escaped backslashes for LaTeX commands. In particular, write `r"\frac{...}{...}"` or `"\\frac{...}{...}"`; never let `\frac`, `\right`, or similar commands pass through ordinary Python string escapes where `\f` or `\r` can become control characters.
 
-When executing notebooks, avoid relying on system-level temporary directories such as `/tmp`, `C:\tmp`, or vendor-specific temp folders. If needed, configure Jupyter/Python runtime directories to use a repository-local scratch directory, for example `examples_peppy/{ALGO_NAME}/state/.runtime/`. This directory is only for tool/runtime files such as Jupyter kernel connection files. It is not part of the workflow state contract and should not be used to store certificates, basis data, dual values, or other meaningful intermediate artifacts. Workflow-level artifacts remain under `examples_peppy/{ALGO_NAME}/state/`.
+When executing notebooks, configure needed Jupyter/Python runtime files under the main notebook's sibling `supplementary/.runtime/`, for example `examples_peppy/{ALGO_NAME}/supplementary/.runtime/`. This directory is only for tool/runtime files such as kernel connection files. Keep required main-step state and certificates in the sibling `state/`, and durable additional files in `supplementary/` outside `.runtime/`.
 
 ---
 
@@ -128,7 +144,7 @@ def get_pep_setup(N, params):
 
 ## Step 3 — Numerical Sweep
 
-Run the sweep for N = 1..7:
+Run the sweep for N = 1..7 once, saving its results for Steps 4 and 5. This sweep identifies the rate; it does not reconstruct Lyapunov partial sums at each horizon or replace Block 3's adaptive rank exploration:
 
 ```bash
 cd "$(git rev-parse --show-toplevel)" && \
@@ -137,8 +153,12 @@ cd "$(git rev-parse --show-toplevel)" && \
     --sweep 1:8 \
     --params '{"L": 1, "R": 1}' \
 | .venv/bin/python3 -c "
-import sys, json
+import sys, json, os
 data = json.load(sys.stdin)
+# Cache the sweep until its results are written to Block 1 state
+os.makedirs('examples_peppy/{ALGO_NAME}/supplementary', exist_ok=True)
+with open('examples_peppy/{ALGO_NAME}/supplementary/_sweep_tmp.json', 'w') as fh:
+    json.dump(data['results'], fh)
 for r in data['results']:
     print(f'N={r[\"N\"]}: {r[\"opt_value\"]:.8f}')
 "
@@ -146,26 +166,21 @@ for r in data['results']:
 
 If the sweep fails, diagnose and fix the setup module (check the algorithm update rule, tags, and performance metric) before continuing.
 
+Use only the cache written by this invocation's successful sweep; a preexisting file is not sufficient. Rerun the sweep if the setup, package source, parameters, or solve settings change.
+
 ---
 
 ## Step 4 — Identify Rate
 
-Detect the convergence rate pattern:
+Detect the convergence rate pattern from the saved sweep; do not run the same sweep again:
 
 ```bash
 cd "$(git rev-parse --show-toplevel)" && \
-.venv/bin/python3 -m pepflow.pep_runner \
-    --module examples_peppy/{ALGO_NAME}/{ALGO_NAME}_setup.py \
-    --sweep 1:8 \
-    --params '{"L": 1, "R": 1}' \
-| .venv/bin/python3 - <<'PYEOF'
-import sys, json, fractions
-data = json.load(sys.stdin)
-opts = [r["opt_value"] for r in data["results"]]
-# Save sweep data for state file
-import os; os.makedirs("examples_peppy/{ALGO_NAME}/state", exist_ok=True)
-with open("examples_peppy/{ALGO_NAME}/state/_sweep_tmp.json", "w") as fh:
-    json.dump(data["results"], fh)
+.venv/bin/python3 - <<'PYEOF'
+import json, fractions
+with open("examples_peppy/{ALGO_NAME}/supplementary/_sweep_tmp.json") as fh:
+    results = json.load(fh)
+opts = [r["opt_value"] for r in results]
 
 inv_opts = [1/v for v in opts if v > 1e-10]
 diffs    = [inv_opts[i+1] - inv_opts[i] for i in range(len(inv_opts)-1)]
@@ -183,7 +198,7 @@ Interpret:
 - Linearly growing Δ(1/opt) → rate ~ C/N²
 - Geometric Δ(1/opt) → exponential convergence
 
-If you cannot easily infer the rate formula from the numerics, consider sweeping larger values of N (up to 15--20).
+If you cannot easily infer the rate formula from the numerics, consider a larger rate sweep. Any work at N>12 requires explicit user authorization; rate identification remains separate from Block 3's structural search.
 
 If `CONJECTURED_RATE` was given, verify it matches.
 
@@ -191,12 +206,12 @@ If `CONJECTURED_RATE` was given, verify it matches.
 
 ## Step 5 — Save State
 
-Save all extracted information to `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json`. Replace placeholders with actual values identified:
+Save all extracted information to `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json`. `N_verify` selects the initial certificate sample: normally 4, or 6 for a complex algorithm. Block 3 may request additional horizon-specific certificates under its adaptive recovery policy; changing rank diagnostics alone does not require another unchanged rate sweep. Replace placeholders with actual values identified:
 
 ```python
 import json, os
 os.makedirs("examples_peppy/{ALGO_NAME}/state", exist_ok=True)
-results = json.load(open("examples_peppy/{ALGO_NAME}/state/_sweep_tmp.json"))
+results = json.load(open("examples_peppy/{ALGO_NAME}/supplementary/_sweep_tmp.json"))
 state = {
     "algo_name": "{ALGO_NAME}",
     "problem_type": "{PROBLEM_TYPE}",
@@ -207,7 +222,7 @@ state = {
     "conjectured_rate": "{DISCOVERED_RATE}",      # formula as string, or "unknown"
     "setup_file": "examples_peppy/{ALGO_NAME}/{ALGO_NAME}_setup.py",
     "sweep_results": results,
-    "N_verify": 4,                                 # default; increase to 6 for complex algorithms
+    "N_verify": 4,                                 # initial sample; use 6 for complex algorithms
 }
 with open("examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json", "w") as fh:
     json.dump(state, fh, indent=2)
@@ -231,6 +246,8 @@ Following the early structure of `examples_peppy/_references/gd/gd_example_lyap.
 The first notebook cell should let a reader understand the problem and algorithm without reading code: include the main assumptions, performance metric, and displayed LaTeX equations for the iterate updates. The notebook should also expose the algorithm definition as readable, executable notebook code. Do expose the context builder and `get_pep_setup` interface when they show the iterate recursion, initial condition, or metric. Do not inline low-level framework plumbing, such as custom interpolation class internals, unless those details are mathematically essential for human review. The setup module may still be imported for reusable problem objects and a lightweight availability check, but the notebook reader should not need to open `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_setup.py` to see the update rule or PEP definition. The numerical evidence section should import/use `matplotlib` and plot the sweep values against the candidate rate; when the rate is still unknown, plot the most plausible numerical pattern identified in Step 4 and clearly label it as a guess.
 
 Do not add a compact final proof yet. Leave clear section headings for the later blocks so they can update the same notebook.
+
+Initialize the supplementary checklist described in Notebook Lifecycle from this saved notebook, inspect the Block 1 items, and leave later-block requirements pending.
 
 ---
 

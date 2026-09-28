@@ -476,8 +476,9 @@ class Parameter:
 
     def get_param_names(self) -> set[str]:
         """A function that collects all `name`s in a :class:`Parameter` object."""
-        names = set()
+        names: set[str] = set()
         if self.eval_expression is None:
+            assert self.name is not None
             names.add(self.name)
         elif isinstance(self.eval_expression, ParameterByDictRepresentation):
             for monomial in self.eval_expression.numerator_polynomial_dict.keys():

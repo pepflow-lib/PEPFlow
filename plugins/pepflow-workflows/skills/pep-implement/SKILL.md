@@ -16,9 +16,9 @@ Use the workflow's `$ARGUMENTS` placeholder as the user's algorithm description.
 - Use the repository root from the current workspace unless `git rev-parse --show-toplevel` proves otherwise.
 - Use `.venv/bin/python3` for Python calls when it exists; otherwise inspect the project and choose the local Python path conservatively.
 - Prefer reading existing examples under `examples_peppy/` before creating new setup modules.
-- Preserve the state-file contract: write `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json` with the fields expected by later skills.
+- Preserve the state-file contract: write `examples_peppy/{ALGO_NAME}/state/{ALGO_NAME}_b1.json` with the fields expected by later skills. `N_verify` is the initial certificate sample (normally 4, or 6 for complex algorithms); the N=1..7 rate sweep is separate from Block 3's adaptive rank exploration.
 - Initialize `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb` as described in the workflow, including the Block 1 numerical-evidence plot.
-- Avoid system-level temporary directories; use `examples_peppy/{ALGO_NAME}/state/` for workflow artifacts and `examples_peppy/{ALGO_NAME}/state/.runtime/` only for tool/runtime scratch files when needed.
+- Keep required main-step state under the notebook's sibling `state/`; place additional files in `supplementary/` and tool/runtime scratch files in `supplementary/.runtime/`, following the [output layout](../../references/output-layout.md).
 - Verify with `python -m pepflow.pep_runner` or the command specified in the workflow, then report whether the observed rates match the conjecture.
 - If an existing setup module is present, read it first and patch only what is needed.
 
