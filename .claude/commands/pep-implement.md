@@ -15,7 +15,7 @@ Notebook output: `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb`
 
 ## Output Layout
 
-Before creating files, read and follow [the shared output layout](../../plugins/pepflow-workflows/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
+Before creating files, read and follow [the shared output layout](../../plugins/peppy-workflow/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
 
 ---
 
@@ -49,7 +49,7 @@ Check the current block's cells at its existing notebook-update step, reusing re
 
 Keep notebook cells focused on the mathematical workflow and the human decisions being made. Expose algorithm definitions, partial-sum constructions, candidate bases, coefficient extraction, and symbolic verification code when those are part of the proof reasoning. Place any newly needed presentation-only helpers, repetitive formatting functions, and raw state pretty-printers in a small supporting module such as `examples_peppy/{ALGO_NAME}/supplementary/notebook_helpers.py`, then call that helper from the notebook using an explicit path relative to the selected example directory. Helper modules may format tables or summaries, but they must not hide proof-critical construction or verification logic.
 
-When a separate verification file is created or reused for a proof condition, apply the shared output policy's [proof verification rule](../../plugins/pepflow-workflows/references/output-layout.md#proof-verification-files-during-notebook-authoring) at the relevant block's notebook update. Keep the required identities and checks in the main notebook and record their evidence under the existing checklist items. Elementary domain facts need no dedicated cells; this does not request expansion of existing examples.
+When a separate verification file is created or reused for a proof condition, apply the shared output policy's [proof verification rule](../../plugins/peppy-workflow/references/output-layout.md#proof-verification-files-during-notebook-authoring) at the relevant block's notebook update. Keep the required identities and checks in the main notebook and record their evidence under the existing checklist items. Elementary domain facts need no dedicated cells; this does not request expansion of existing examples.
 
 In every notebook Markdown cell, use `$...$` for inline math and `$$...$$` for display math. Do not use `\(...\)` or `\[...\]` as notebook Markdown math delimiters. Delimiter normalization alone is not verification: visually inspect the final rendered equations in a notebook frontend or an HTML preview with its math renderer loaded, checking for raw delimiters, malformed formulas, missing symbols, and clipping. Reinspect affected cells after any fix. If rendered inspection is unavailable, leave the corresponding supplementary checklist evidence pending and report the incomplete review.
 

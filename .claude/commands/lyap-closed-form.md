@@ -16,7 +16,7 @@ Notebook: finalize the existing notebook created by Block 1
 
 ## Output Layout
 
-Before creating files, read and follow [the shared output layout](../../plugins/pepflow-workflows/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
+Before creating files, read and follow [the shared output layout](../../plugins/peppy-workflow/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
 
 ---
 
@@ -181,7 +181,7 @@ Derive any required local terminal multipliers or square coefficients jointly wi
 
 If the identity or the boundary implication fails, inspect all scalar components, terminal/small-horizon cases, and normalization before revising the formulas. Keep useful exploration results and report the exact unresolved obligation; do not mark the Lyapunov proof verified.
 
-Inventory the positivity, nonnegativity, and nonvanishing obligations actually used by the step, base, and final boundary inequalities. Once the relevant coefficient definitions exist, the agent may invoke the optional [localize-n-summation-proof](../../plugins/pepflow-workflows/optional/localize-n-summation-proof/SKILL.md) skill for a bottleneck in those obligations, a proof-critical sum/index identity lacking a generic symbolic audit, or an identified substantial simplification of a complex valid global sign proof. Briefly state the target and follow the canonical procedure within the current task/resource budget without waiting for a separate skill request. Skip concise valid arguments, unused signs, and autonomous localization disabled by the user.
+Inventory the positivity, nonnegativity, and nonvanishing obligations actually used by the step, base, and final boundary inequalities. Once the relevant coefficient definitions exist, the agent may invoke the optional [localize-n-summation-proof](../../plugins/peppy-workflow/optional/localize-n-summation-proof/SKILL.md) skill for a bottleneck in those obligations, a proof-critical sum/index identity lacking a generic symbolic audit, or an identified substantial simplification of a complex valid global sign proof. Briefly state the target and follow the canonical procedure within the current task/resource budget without waiting for a separate skill request. Skip concise valid arguments, unused signs, and autonomous localization disabled by the user.
 
 Place any resulting lemma, sign reasoning, and exact local audit in the existing notebook before the final telescoping argument, and cite the lemma where its signs are used. Preserve the selected candidate during localization; this does not restrict the surrounding coefficient-discovery workflow. If localization fails, preserve any existing valid global argument and report the precise gap. Necessary signs must be justified before proof completion, but replacing an already valid global proof is not required.
 
@@ -323,7 +323,7 @@ For symbolic step, base, and boundary identity cells, follow the package-native 
 
 The symbolic verification cells must contain the actual symbolic calculation code in the notebook itself. They must not merely assert stored booleans from `b5`, call a helper such as `_closed_form_verify.py`, or replay a concrete-N verification from earlier blocks. Helper scripts may supplement the notebook, but each symbolic verification cell must visibly construct the symbolic context, the symbolic identity, and the simplified residual. For checks of PEPFlow Scalar expressions, extract and simplify `inner_prod_coords`, `func_coords`, and `offset` and verify all applicable components exactly; a zero Gram matrix alone is insufficient.
 
-For separately created or reused files that justify coefficient signs or other proof conditions, apply the [proof verification rule](../../plugins/pepflow-workflows/references/output-layout.md#proof-verification-files-during-notebook-authoring): keep the necessary definitions/domains, actual identity construction and exact checks/results, and the sign implication in the main notebook. A verifier call alone is insufficient. Use existing cells or a short notebook appendix; elementary facts such as `1/k > 0` for `k >= 1` need no dedicated check. Supplementary exploration and redundant independent tests need not be copied.
+For separately created or reused files that justify coefficient signs or other proof conditions, apply the [proof verification rule](../../plugins/peppy-workflow/references/output-layout.md#proof-verification-files-during-notebook-authoring): keep the necessary definitions/domains, actual identity construction and exact checks/results, and the sign implication in the main notebook. A verifier call alone is insufficient. Use existing cells or a short notebook appendix; elementary facts such as `1/k > 0` for `k >= 1` need no dedicated check. Supplementary exploration and redundant independent tests need not be copied.
 
 Immediately after every symbolic verification heading, add a markdown cell with the exact LaTeX equation being verified before the code cell. This applies at least to `## Symbolic Step Recursion Verification`, `## Base Case and Boundary Symbolic Verification`, and `### Boundary Identity Symbolic Verification`. The equation cell should state the identity and say that the residual `$\mathrm{LHS}-\mathrm{RHS}$` should simplify to zero.
 
@@ -455,5 +455,11 @@ Report:
 - Separate numerical-certificate, analytic-full-PEP, and analytic-Lyapunov proof statuses; a completed Lyapunov proof may have an unresolved global full-PEP formula
 
 If the analytic Lyapunov proof is incomplete, report the exact unresolved coefficients, identities, sign/domain conditions, or boundary normalization instead of a completion claim. If `require_analytic_full_pep` is true and that proof remains unverified, report the remaining global proof obligation explicitly even when the local Lyapunov proof is complete.
+
+After successfully completing Block 5, include this optional next-step note in the user-facing completion report:
+
+> To generate a theorem-and-proof PDF and matching TeX source from this Jupyter notebook, use the optional `pdf-from-ipynb` skill.
+
+Show `/pdf-from-ipynb <notebook-path>`, replacing `<notebook-path>` with the actual completed notebook path. This is an informational handoff; PDF export is not required to complete Block 5. Invoke the skill only when the user has requested the export.
 
 This completes the 5-block PEPFlow workflow: algorithm definition → numerical proof → Lyapunov function → human-verifiable convergence theorem.

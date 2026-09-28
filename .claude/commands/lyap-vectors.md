@@ -16,7 +16,7 @@ Notebook: update `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb`
 
 ## Output Layout
 
-Before creating files, read and follow [the shared output layout](../../plugins/pepflow-workflows/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
+Before creating files, read and follow [the shared output layout](../../plugins/peppy-workflow/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
 
 ---
 
@@ -534,7 +534,7 @@ Do not defer these cells to Block 5; Block 5 should refine and verify them, not 
 
 For notebook Markdown cells added or edited in this block, use `$...$` for inline math and `$$...$$` for display math. Verify their rendered appearance, not just their source delimiters, and record any unresolved rendering issue in the supplementary checklist.
 
-If a separate file is created or reused to justify a proof condition in this block, include its relevant identity definitions, actual checks/results, and reasoning in the notebook under the [proof verification rule](../../plugins/pepflow-workflows/references/output-layout.md#proof-verification-files-during-notebook-authoring). Reuse existing cells. Preserve the numerical handoff and explicit unresolved analytic status; this adds no earlier analytic-proof prerequisite.
+If a separate file is created or reused to justify a proof condition in this block, include its relevant identity definitions, actual checks/results, and reasoning in the notebook under the [proof verification rule](../../plugins/peppy-workflow/references/output-layout.md#proof-verification-files-during-notebook-authoring). Reuse existing cells. Preserve the numerical handoff and explicit unresolved analytic status; this adds no earlier analytic-proof prerequisite.
 
 Update the notebook's sibling `supplementary/<notebook-stem>_checklist.md` with this block's actual cell references, evidence, and unresolved requirements, following Block 1's Notebook Lifecycle. Inspect every notebook requirement listed above; future-block work stays pending. Keep the record out of the notebook and routine completion report, and disclose any unresolved requirement due in this block.
 

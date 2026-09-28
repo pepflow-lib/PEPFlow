@@ -1,0 +1,6 @@
+interface:
+  display_name: "Lean from IPYNB"
+  short_description: "Formalize notebook proofs in Lean with task-token reports."
+  default_prompt: "Use $lean-from-ipynb to formalize the selected Peppy notebook proof in a sibling lean project, expose the final theorem in <notebook-stem>_lean.lean, verify it, and report token usage by task."
+policy:
+  allow_implicit_invocation: false

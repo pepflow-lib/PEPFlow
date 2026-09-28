@@ -1,0 +1,432 @@
+{
+  "scope": "Current-run setup and selected certificate only; no new SDP solves, git/history, prior examples/results, or external mathematical sources.",
+  "contamination_flag": "Parent reports existing run flag persists; no prior target result contents were read by this investigator.",
+  "files_read": [
+    "examples_peppy/ogm_conjecture4/supplementary/b2_selected_capture.json",
+    "examples_peppy/ogm_conjecture4/ogm_conjecture4_setup.py",
+    "examples_peppy/ogm_conjecture4/supplementary/b2_formula_search.json"
+  ],
+  "source_hashes": {
+    "b2_selected_capture.json": "b1ed2cb759a643f357a6df328d99588368abf7e7c8a5762c882778e13c15f297",
+    "ogm_conjecture4_setup.py": "fdb62787e4484ef8f9807042b4f721022aea81cc5b748dc719b924f65a4eebf4"
+  },
+  "commands_consulted": [
+    "Get-ChildItem -LiteralPath 'examples_peppy/ogm_conjecture4' -Force | Select-Object Name,Mode",
+    "Get-Content -LiteralPath 'examples_peppy/ogm_conjecture4/ogm_conjecture4_setup.py'",
+    "Get-Content -LiteralPath 'examples_peppy/ogm_conjecture4/supplementary/b2_selected_capture.json'",
+    "Get-ChildItem -LiteralPath 'examples_peppy/ogm_conjecture4/state' | Select-Object Name",
+    "@'\nimport json,numpy as np\nfrom pathlib import Path\np=Path('examples_peppy/ogm_conjecture4/supplementary/b2_selected_capture.json')\nd=json.loads(p.read_text());S=np.array(d['S_matrix']);a=np.array(d['lambda_matrix'])[4,[0,1,2,3,5]];t=d['tau_sol'];th=[1.]\nfor k in range(4): th.append((1+np.sqrt(1+(8 if k==3 else 4)*th[-1]**2))/2)\nH=S[2:,2:]-np.outer(a,a)/(4*t)\nprint('theta',th,'tau',t,'target',1/(2*(2*th[3]**2+1)))\nprint('a',a,'a/(4tau)',a/(4*t),'a/(4tau theta)',a[:4]/(4*t*np.array(th[:4])))\nprint('a cumulative',np.cumsum(a),'a sum',sum(a))\nprint('S eig',np.linalg.eigvalsh(S));print('Schur H',H);print('H eig',np.linalg.eigvalsh(H));print('H ones',H@np.ones(5))\n'@ | python -",
+    "python examples_peppy/ogm_conjecture4/supplementary/b2_formula_search.py",
+    "@'\nimport json\nfrom pathlib import Path\np=Path('examples_peppy/ogm_conjecture4/supplementary/b2_formula_search.json')\nd=json.loads(p.read_text())\nprint(json.dumps(d['algebra_only_N_checks'],indent=2))\n'@ | python -"
+  ],
+  "file_mutations": "Only supplementary/b2_formula_search.py was created/edited using apply_patch, and its execution creates/updates supplementary/b2_formula_search.json. No other files changed by this investigator.",
+  "N": 4,
+  "theta": [
+    1.0,
+    1.618033988749895,
+    2.193527085331054,
+    2.749791340120445,
+    4.420804104823752
+  ],
+  "target_tau": 0.031012166092575746,
+  "selected_tau": 0.031012170460230273,
+  "star_weights": [
+    0.12350699789105751,
+    0.19709875088298875,
+    0.2594878464810111,
+    0.3031369972309916,
+    0.11676942514672478
+  ],
+  "chain_weights": [
+    0.12350699789105754,
+    0.320605745069332,
+    0.5800935882533872,
+    0.8832305825224406
+  ],
+  "chain_cumulative_balance_error": 9.96360827176801e-09,
+  "star_sum_error": 1.763277368560523e-08,
+  "a_over_4tau": [
+    0.9956332953980258,
+    1.5888822674935508,
+    2.091822683079986,
+    2.443693820299773,
+    0.9413193547390438
+  ],
+  "a_over_4tau_theta": [
+    0.9956332953980258,
+    0.9819832454330165,
+    0.953634307535474,
+    0.8886833646776762
+  ],
+  "slack_reconstruction_gradient_block_error": 1.0513666603984007e-08,
+  "selected_schur_eigenvalues": [
+    1.7308423571287957e-07,
+    0.00028801302145048244,
+    0.0026108141953613616,
+    0.013645792851335754,
+    0.5612638705095897
+  ],
+  "selected_schur_max_abs": 0.3900826888840228,
+  "selected_schur_frobenius_norm": 0.561435872833434,
+  "selected_schur_times_ones": [
+    -5.534395236705958e-06,
+    -3.0216496680779414e-05,
+    -4.843146188904246e-05,
+    -6.284930348113282e-05,
+    0.0001480248483201052
+  ],
+  "constant_gradient_distances": [
+    0.0,
+    1.618033988749895,
+    3.8115610740809496,
+    6.561352414201394,
+    7.561352414201394
+  ],
+  "null_linear_singular_values": [
+    7.842149212015292,
+    6.91685654811558,
+    5.681885563827473,
+    4.272265336762926,
+    4.188897787245643e-15
+  ],
+  "closed_form_vs_linear_null_solution_max_error": 3.885780586188048e-16,
+  "closed_form": {
+    "notation": "q=theta_(N-1)^2, s_i=theta_i^2, b_-1=0, b_N=1",
+    "chain": "b_i=s_i*(2*q-s_i)/(q*(2*q-s_i+1)), i=0,...,N-1",
+    "star": "a_i=b_i-b_(i-1), i=0,...,N-1; a_y=1/(q+1)",
+    "status": "Candidate formula derived algebraically; numerical PSD checks only, no all-N PSD proof and no assertion that it is the exact selected floating-point certificate."
+  },
+  "algebra_only_N_checks": [
+    {
+      "N": 1,
+      "min_star_weight": 0.5,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 0.0,
+      "smallest_nonnull_schur_eigenvalue": 0.25,
+      "null_residual_max": 0.0,
+      "terminal_coordinate_formula_error": 0.0
+    },
+    {
+      "N": 2,
+      "min_star_weight": 0.27639320225002106,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": -9.691759820918514e-18,
+      "smallest_nonnull_schur_eigenvalue": 0.00745980014574814,
+      "null_residual_max": 1.1102230246251565e-16,
+      "terminal_coordinate_formula_error": 0.0
+    },
+    {
+      "N": 3,
+      "min_star_weight": 0.17207080632085459,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 2.740825354578757e-16,
+      "smallest_nonnull_schur_eigenvalue": 0.001145901746104513,
+      "null_residual_max": 1.3877787807814457e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    },
+    {
+      "N": 4,
+      "min_star_weight": 0.1168039757762126,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 9.447091719590233e-16,
+      "smallest_nonnull_schur_eigenvalue": 0.0002886032999453519,
+      "null_residual_max": 2.248201624865942e-15,
+      "terminal_coordinate_formula_error": 4.440892098500626e-16
+    },
+    {
+      "N": 5,
+      "min_star_weight": 0.0843438279740012,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 6.694068405491345e-16,
+      "smallest_nonnull_schur_eigenvalue": 9.622944270402383e-05,
+      "null_residual_max": 2.525757381022231e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    },
+    {
+      "N": 6,
+      "min_star_weight": 0.06373960183159377,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 7.484845354799136e-16,
+      "smallest_nonnull_schur_eigenvalue": 3.847880658249858e-05,
+      "null_residual_max": 2.0539125955565396e-15,
+      "terminal_coordinate_formula_error": 4.440892098500626e-16
+    },
+    {
+      "N": 7,
+      "min_star_weight": 0.049865581814686255,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 7.07300974274297e-16,
+      "smallest_nonnull_schur_eigenvalue": 1.7500071599105502e-05,
+      "null_residual_max": 1.4988010832439613e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    },
+    {
+      "N": 8,
+      "min_star_weight": 0.04008412218341151,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 5.143052822164565e-16,
+      "smallest_nonnull_schur_eigenvalue": 8.76344839708629e-06,
+      "null_residual_max": 1.8318679906315083e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    },
+    {
+      "N": 9,
+      "min_star_weight": 0.032930881872409,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 6.202608463991625e-16,
+      "smallest_nonnull_schur_eigenvalue": 4.729662875818136e-06,
+      "null_residual_max": 2.3037127760972e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    },
+    {
+      "N": 10,
+      "min_star_weight": 0.02754157097288401,
+      "sum_star_weight_error": 0.0,
+      "minimum_schur_eigenvalue": 3.233778798932921e-16,
+      "smallest_nonnull_schur_eigenvalue": 2.7103783186004378e-06,
+      "null_residual_max": 4.038436252074007e-15,
+      "terminal_coordinate_formula_error": 8.881784197001252e-16
+    }
+  ],
+  "excluded_historical_explorations": {
+    "note": "Before the parent relayed the inherited explicit-authorization constraint above N=12, this investigator also ran algebra-only checks at N=20 and N=30, with no SDP. They are recorded honestly here and excluded from accepted sampled evidence. This frozen script reruns only N=1,...,10.",
+    "checks": [
+      {
+        "N": 20,
+        "min_star_weight": 0.008053413704265044,
+        "minimum_schur_eigenvalue": 2.2206297715900884e-15,
+        "smallest_nonnull_schur_eigenvalue": 6.260428831697893e-08,
+        "null_residual_max": 1.5432100042289676e-14
+      },
+      {
+        "N": 30,
+        "min_star_weight": 0.003799354143835698,
+        "minimum_schur_eigenvalue": -4.093773571660928e-15,
+        "smallest_nonnull_schur_eigenvalue": 6.4418038063206684e-09,
+        "null_residual_max": 4.7455095408821535e-14
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "name": "naive a_i=4*tau*theta_i; a_y=2*tau",
+      "a": [
+        0.12404866437030299,
+        0.20071495521017832,
+        0.27210410519540085,
+        0.34110794303896674,
+        0.06202433218515149
+      ],
+      "chain": [
+        0.12404866437030299,
+        0.3247636195804813,
+        0.5968677247758821,
+        0.9379756678148489
+      ],
+      "sum_a": 1.0000000000000004,
+      "minimum_a": 0.06202433218515149,
+      "schur_eigenvalues": [
+        -0.04749950626744577,
+        -1.3357224114864292e-16,
+        -1.663693438434694e-17,
+        1.6436774795474997e-16,
+        0.5164873401748704
+      ],
+      "schur_times_ones": [
+        -0.004101404668605209,
+        -0.02401004113486796,
+        -0.06684066572333079,
+        -0.1395418054269073,
+        0.23449391695371227
+      ],
+      "remainder": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.1102230246251565e-16,
+          -0.00410140466860532
+        ],
+        [
+          0.0,
+          -5.551115123125783e-17,
+          1.6653345369377348e-16,
+          0.0,
+          -0.02401004113486807
+        ],
+        [
+          0.0,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          -0.06684066572333118
+        ],
+        [
+          1.1102230246251565e-16,
+          0.0,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          -0.13954180542690764
+        ],
+        [
+          -0.00410140466860532,
+          -0.02401004113486807,
+          -0.06684066572333118,
+          -0.13954180542690764,
+          0.4689878339074245
+        ]
+      ],
+      "max_error_to_selected_a": 0.05474509296157329
+    },
+    {
+      "name": "linear constant-gradient null conditions plus sum(a)=1",
+      "a": [
+        0.1235062475586091,
+        0.1970941538083738,
+        0.259478196935191,
+        0.3031174259216143,
+        0.11680397577621265
+      ],
+      "chain": [
+        0.1235062475586091,
+        0.3206004013669829,
+        0.5800785983021739,
+        0.8831960242237882
+      ],
+      "sum_a": 1.0000000000000009,
+      "minimum_a": 0.11680397577621265,
+      "schur_eigenvalues": [
+        -4.669042688732462e-16,
+        0.0002886032999452208,
+        0.0026110268455646715,
+        0.0136445268680319,
+        0.5612956426074435
+      ],
+      "schur_times_ones": [
+        -2.636779683484747e-16,
+        -1.1934897514720433e-15,
+        -7.494005416219807e-16,
+        -4.718447854656915e-16,
+        4.440892098500626e-16
+      ],
+      "remainder": [
+        [
+          0.0005400450328512663,
+          0.0013857119954804875,
+          0.0020841590441868507,
+          0.0032030943015045055,
+          -0.007213010374023374
+        ],
+        [
+          0.0013857119954804875,
+          0.0074482552908451405,
+          0.013132622515212522,
+          0.019839684802902657,
+          -0.041806274604442
+        ],
+        [
+          0.0020841590441868507,
+          0.013132622515212522,
+          0.03731632813575547,
+          0.06145243613257201,
+          -0.1139855458277276
+        ],
+        [
+          0.0032030943015045055,
+          0.019839684802902657,
+          0.06145243613257201,
+          0.1425175625591799,
+          -0.22701277779615955
+        ],
+        [
+          -0.007213010374023374,
+          -0.041806274604442,
+          -0.1139855458277276,
+          -0.22701277779615955,
+          0.39001760860235296
+        ]
+      ],
+      "max_error_to_selected_a": 3.45506294878728e-05
+    },
+    {
+      "name": "closed form b_i=s_i*(2*q-s_i)/(q*(2*q-s_i+1)); a_i=b_i-b_(i-1)",
+      "a": [
+        0.12350624755860903,
+        0.1970941538083736,
+        0.2594781969351906,
+        0.30311742592161417,
+        0.1168039757762126
+      ],
+      "chain": [
+        0.12350624755860903,
+        0.32060040136698265,
+        0.5800785983021732,
+        0.8831960242237874
+      ],
+      "sum_a": 1.0,
+      "minimum_a": 0.1168039757762126,
+      "schur_eigenvalues": [
+        9.447091719590233e-16,
+        0.0002886032999453519,
+        0.0026110268455648033,
+        0.013644526868031491,
+        0.5612956426074429
+      ],
+      "schur_times_ones": [
+        2.914335439641036e-16,
+        4.163336342344337e-16,
+        2.248201624865942e-15,
+        7.216449660063518e-16,
+        9.992007221626409e-16
+      ],
+      "remainder": [
+        [
+          0.0005400450328513356,
+          0.0013857119954806263,
+          0.0020841590441870173,
+          0.0032030943015046165,
+          -0.007213010374023304
+        ],
+        [
+          0.0013857119954806263,
+          0.0074482552908454736,
+          0.013132622515213133,
+          0.01983968480290299,
+          -0.04180627460444181
+        ],
+        [
+          0.0020841590441870173,
+          0.013132622515213133,
+          0.03731632813575647,
+          0.061452436132572785,
+          -0.11398554582772716
+        ],
+        [
+          0.0032030943015046165,
+          0.01983968480290299,
+          0.061452436132572785,
+          0.1425175625591797,
+          -0.22701277779615936
+        ],
+        [
+          -0.007213010374023304,
+          -0.04180627460444181,
+          -0.11398554582772716,
+          -0.22701277779615936,
+          0.39001760860235263
+        ]
+      ],
+      "max_error_to_selected_a": 3.4550629487817286e-05
+    }
+  ],
+  "derivations": [
+    "With chain b_i=lambda_(x_i,x_(i+1)) (x_N label here means y_N) and star a_i=lambda_(star,x_i), scalar function balance gives b_i=sum_(j<=i) a_j and sum_(j<=N) a_j=1.",
+    "Write d=x0-xstar and G=(g0,...,g_(N-1),g_y). The ideal reconstructed slack is tau||d||^2-<d,sum a_i g_i>+G^T B G = tau||d-sum a_i g_i/(2*tau)||^2+G^T H G, H=B-aa^T/(4*tau).",
+    "For equal gradients, the setup gives x_i=d-(theta_i^2-1)g, i<N, and y_N=d-theta_(N-1)^2*g. With sum(a)=1, 1^T B 1=theta_(N-1)^2+1/2=1/(4*target_tau).",
+    "At target_tau, PSD of H requires H*1=0, equivalently B(a)*1=a/(4*target_tau). These are linear necessary conditions; positivity still needs checking.",
+    "Let y_N=d-sum h_i*g_i, q=theta_(N-1)^2, r_i=theta_i^2-1. The null condition is (2*q-r_i)*a_i=(r_i-r_(i-1))*b_(i-1)+h_i. Hence (2*q-r_i)*b_i=sum_(j<=i)h_j.",
+    "The setup recurrence gives h_i=2*theta_i-(2*theta_i-1)*theta_i^2/q. This follows by telescoping product_(k=i+1 to N-1)(1-1/theta_k)=theta_i^2/q, using theta_k^2-theta_k=theta_(k-1)^2.",
+    "sum_(j<=i)h_j=2*theta_i^2-theta_i^4/q because sum theta_j=theta_i^2 and sum (2*theta_j-1)*theta_j^2=theta_i^4. Substitution yields the reported closed-form b_i and a_i.",
+    "Nonnegativity of these weights follows since b(s)=s*(2q-s)/(q*(2q-s+1)) is increasing for 0<=s<=q: b'(s)=[1-(2q+1)/(2q-s+1)^2]/q>=0. Also b(q)=q/(q+1). An all-N proof that H is PSD remains unresolved here."
+  ]
+}

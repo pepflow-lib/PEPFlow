@@ -16,7 +16,7 @@ Notebook: update `examples_peppy/{ALGO_NAME}/{ALGO_NAME}_example_lyap.ipynb`
 
 ## Output Layout
 
-Before creating files, read and follow [the shared output layout](../../plugins/pepflow-workflows/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
+Before creating files, read and follow [the shared output layout](../../plugins/peppy-workflow/references/output-layout.md). Resolve the example paths below from the actual output notebook directory, including when it is under `examples_peppy/`.
 
 ---
 
@@ -291,7 +291,7 @@ A clean analytic decomposition is optional for the default handoff. Set `formula
 
 After reviewing known formulas and making the initial attempts for unresolved lambda and S, fill `closed_form_search['attempts']` with brief actual methods/outcomes and candidate checks, update `unresolved_components`, and set `completed=True`. Reuse of established formulas counts when their applicability was checked. Keep this short record in the existing notebook and state; no separate search report is required.
 
-Once the candidate lambda or S coefficients and their definitions exist, the agent may invoke the optional [localize-n-summation-proof](../../plugins/pepflow-workflows/optional/localize-n-summation-proof/SKILL.md) skill for a required positivity, nonnegativity, or nonvanishing bottleneck, a proof-critical sum/index identity lacking a generic symbolic audit, or an identified substantial simplification of a complex valid global sign proof. Briefly state the target and follow the canonical procedure within the current task/resource budget without waiting for a separate skill request. Skip concise valid arguments, signs unused by the selected proof, and autonomous localization disabled by the user.
+Once the candidate lambda or S coefficients and their definitions exist, the agent may invoke the optional [localize-n-summation-proof](../../plugins/peppy-workflow/optional/localize-n-summation-proof/SKILL.md) skill for a required positivity, nonnegativity, or nonvanishing bottleneck, a proof-critical sum/index identity lacking a generic symbolic audit, or an identified substantial simplification of a complex valid global sign proof. Briefly state the target and follow the canonical procedure within the current task/resource budget without waiting for a separate skill request. Skip concise valid arguments, signs unused by the selected proof, and autonomous localization disabled by the user.
 
 Keep the result and any remaining obligation in the existing notebook. If localization fails, preserve any existing valid global argument; sampled signs alone remain unproved. Localization adds no analytic gate to numerical Blocks 3 and 4: defer unresolved localization when appropriate and continue after the existing numerical handoff checks pass. Necessary signs must still be justified before the affected theorem is reported as proved.
 
@@ -457,7 +457,7 @@ Keep the Block 1 setup and numerical-evidence cells intact unless they are wrong
 
 For notebook Markdown cells added or edited in this block, use `$...$` for inline math and `$$...$$` for display math. Verify their rendered appearance, not just their source delimiters, and record any unresolved rendering issue in the supplementary checklist.
 
-If a separate file is created or reused to justify a proof condition in this block, include its relevant identity definitions, actual checks/results, and reasoning in the notebook under the [proof verification rule](../../plugins/pepflow-workflows/references/output-layout.md#proof-verification-files-during-notebook-authoring). Reuse existing cells. Preserve the numerical handoff and explicit unresolved analytic status; this adds no earlier analytic-proof prerequisite.
+If a separate file is created or reused to justify a proof condition in this block, include its relevant identity definitions, actual checks/results, and reasoning in the notebook under the [proof verification rule](../../plugins/peppy-workflow/references/output-layout.md#proof-verification-files-during-notebook-authoring). Reuse existing cells. Preserve the numerical handoff and explicit unresolved analytic status; this adds no earlier analytic-proof prerequisite.
 
 Update the notebook's sibling `supplementary/<notebook-stem>_checklist.md` with this block's actual cell references, evidence, and unresolved requirements, following Block 1's Notebook Lifecycle. Inspect every notebook requirement listed above; future-block work stays pending. Keep the record out of the notebook and routine completion report, and disclose any unresolved requirement due in this block.
 

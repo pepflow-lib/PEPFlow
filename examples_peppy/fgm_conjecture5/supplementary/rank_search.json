@@ -1,0 +1,552 @@
+{
+  "summary": {
+    "status": "confirmed",
+    "common_rank": 4,
+    "confirming_horizons": [
+      6,
+      8
+    ],
+    "boundary_exclusions": {
+      "left": 2,
+      "right": 1
+    },
+    "minimum_retained_indices": 3,
+    "selected_N": 6,
+    "selected_certificate_id": "00ded6446b8805321decf099dcbe38c02cf193e641cdafd8dfb45027aca28d99",
+    "recipe_id": "a44c401558ac0f413dd074471be3e87f9dd415ad3bf231a085fa01af2a76135f",
+    "rank_convention": {
+      "tolerance": 0.0001,
+      "scaling": "absolute; L=R=1; unscaled original Peppy basis",
+      "coordinate_order": "original context basis: initial/stationary points, then gradients by iteration",
+      "credibility": "no singular value in [tolerance/10,10*tolerance] at retained indices"
+    },
+    "evidence_path": "supplementary/rank_search.json",
+    "conclusion": "numerical rank only; shared basis and all-horizon proof remain unverified"
+  },
+  "samples": [
+    {
+      "N": 4,
+      "certificate_id": "1d63729b02357ead27ecfdc8c1816467737ce13d20e58f6bbe92587111b6a296",
+      "recipe_id": "a44c401558ac0f413dd074471be3e87f9dd415ad3bf231a085fa01af2a76135f",
+      "recipe": {
+        "support": "forward adjacent plus star-to-iterate",
+        "decomposition": "same-certificate reverse LDL, including every PSD block",
+        "assignment": "adjacent i->i+1 in V_(i+1); star->i in V_(i+1); star->N terminal; PSD latest gradient i in V_max(1,i)",
+        "normalization": "L=R=1; radius term reserved for boundary",
+        "sign": "V_(k+1)-V_k = sum(nonnegative multiplier * residual<=0) - sum(PSD pieces)"
+      },
+      "rank_profile": [
+        0,
+        3,
+        4,
+        4,
+        3
+      ],
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "absolute; L=R=1; unscaled original Peppy basis",
+        "coordinate_order": "original context basis: initial/stationary points, then gradients by iteration",
+        "credibility": "no singular value in [tolerance/10,10*tolerance] at retained indices"
+      },
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.09524255599411122,
+          0.07968254761009443,
+          0.04010013984211897,
+          3.997667332547539e-09,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.18750336987605842,
+          0.16399982819025424,
+          0.05286356770991685,
+          0.002830869563609963,
+          3.997667343177756e-09,
+          0.0,
+          0.0
+        ],
+        [
+          0.336001560368841,
+          0.2685851511606082,
+          0.05562053308583315,
+          0.019991052009907737,
+          3.9976673391734824e-09,
+          8.369486054105374e-10,
+          0.0
+        ],
+        [
+          0.4643022147855388,
+          0.3269720609040284,
+          0.06569032839556302,
+          3.9976673436644e-09,
+          1.2256311964983457e-09,
+          8.920188405973139e-10,
+          1.3185073683010359e-10
+        ]
+      ],
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "coverage_residuals": [
+        5.551115123125783e-17,
+        5.551115123125783e-17,
+        0.0
+      ],
+      "increment_residuals": [
+        [
+          6.938893903907228e-18,
+          0.0,
+          0.0
+        ],
+        [
+          2.7755575615628914e-17,
+          0.0,
+          0.0
+        ],
+        [
+          3.469446951953614e-18,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          3.469446951953614e-18,
+          5.551115123125783e-17,
+          0.0
+        ]
+      ],
+      "piece_minimum_eigenvalues": [
+        -1.9947584317607602e-17,
+        -1.4428332408706467e-17,
+        -1.441451924231832e-17,
+        -2.4450849086911873e-19,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "certificate_path": "supplementary/b3_n4_b2_archive.json",
+      "source_hashes": {
+        "certificate_check_code": "6ad5bb8c3098952f0997f20393f0d7af31e2392ef990956cea0317cfd684860d",
+        "decomposition_code": "8fe2108eb5b1309ddaae04373cc23fb3278d355916202bac8b5018e51b9758b9",
+        "grouping_code": "492e2e41b13cb609d3f16482777a4512ecf148c6684a471417c12f0e2128629c"
+      },
+      "retained_indices": [
+        2,
+        3
+      ],
+      "eligible": false,
+      "interior_rank": 4,
+      "eligibility_note": "only two retained indices"
+    },
+    {
+      "N": 6,
+      "certificate_id": "00ded6446b8805321decf099dcbe38c02cf193e641cdafd8dfb45027aca28d99",
+      "recipe_id": "a44c401558ac0f413dd074471be3e87f9dd415ad3bf231a085fa01af2a76135f",
+      "recipe": {
+        "support": "forward adjacent plus star-to-iterate",
+        "decomposition": "same-certificate reverse LDL, including every PSD block",
+        "assignment": "adjacent i->i+1 in V_(i+1); star->i in V_(i+1); star->N terminal; PSD latest gradient i in V_max(1,i)",
+        "normalization": "L=R=1; radius term reserved for boundary",
+        "sign": "V_(k+1)-V_k = sum(nonnegative multiplier * residual<=0) - sum(PSD pieces)"
+      },
+      "rank_profile": [
+        0,
+        3,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "absolute; L=R=1; unscaled original Peppy basis",
+        "coordinate_order": "original context basis: initial/stationary points, then gradients by iteration",
+        "credibility": "no singular value in [tolerance/10,10*tolerance] at retained indices"
+      },
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.04683195926116202,
+          0.0467145976847471,
+          0.023445390983371995,
+          3.332588651165899e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.11542939186731453,
+          0.07445734287627621,
+          0.03128199260320404,
+          0.001522192147018943,
+          3.332588594456835e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.22433345033300253,
+          0.114537501380857,
+          0.033674146986798624,
+          0.00862518806781619,
+          3.3325885719396594e-10,
+          7.105283768091724e-11,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.3800861875676933,
+          0.1693429957738938,
+          0.03510041800437658,
+          0.026988621558156314,
+          3.33258885740738e-10,
+          8.538833542422063e-11,
+          7.047006742852037e-11,
+          0.0,
+          0.0
+        ],
+        [
+          0.5867819080824652,
+          0.24272396267616347,
+          0.0640108212602088,
+          0.03686395570559302,
+          3.3325882479140757e-10,
+          1.1816765423297575e-10,
+          7.664836171182067e-11,
+          5.1810113437938995e-11,
+          0.0
+        ],
+        [
+          0.47312126288473505,
+          0.37389840601288954,
+          0.042401876376372154,
+          3.3325886441954535e-10,
+          1.4764638633466515e-10,
+          1.249152964322953e-10,
+          8.069846070542657e-11,
+          7.581620572131446e-11,
+          6.421555608285565e-11
+        ]
+      ],
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "coverage_residuals": [
+        5.551115123125783e-17,
+        5.551115123125783e-17,
+        0.0
+      ],
+      "increment_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0299920638612292e-18,
+          1.3877787807814457e-17,
+          0.0
+        ],
+        [
+          1.3010426069826053e-18,
+          1.3877787807814457e-17,
+          0.0
+        ],
+        [
+          4.336808689942018e-18,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          5.204170427930421e-18,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          6.938893903907228e-18,
+          2.7755575615628914e-17,
+          0.0
+        ]
+      ],
+      "piece_minimum_eigenvalues": [
+        -1.5270879214408363e-16,
+        -3.1621397150481005e-17,
+        -8.525709007049938e-18,
+        -6.016415981901426e-18,
+        -2.819134759014208e-17,
+        -7.029336413809732e-19,
+        -6.431626195226719e-20,
+        0.0,
+        0.0
+      ],
+      "certificate_path": "state/fgm_conjecture5_test3_b2.json",
+      "source_hashes": {
+        "certificate_check_code": "6ad5bb8c3098952f0997f20393f0d7af31e2392ef990956cea0317cfd684860d",
+        "decomposition_code": "8fe2108eb5b1309ddaae04373cc23fb3278d355916202bac8b5018e51b9758b9",
+        "grouping_code": "492e2e41b13cb609d3f16482777a4512ecf148c6684a471417c12f0e2128629c"
+      },
+      "retained_indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "eligible": true,
+      "interior_rank": 4,
+      "eligibility_note": "eligible"
+    },
+    {
+      "N": 8,
+      "certificate_id": "1ab104fcb11974d116db07682efd016430fb4dadf9dc2b1641c58bb5e48fb010",
+      "recipe_id": "a44c401558ac0f413dd074471be3e87f9dd415ad3bf231a085fa01af2a76135f",
+      "recipe": {
+        "support": "forward adjacent plus star-to-iterate",
+        "decomposition": "same-certificate reverse LDL, including every PSD block",
+        "assignment": "adjacent i->i+1 in V_(i+1); star->i in V_(i+1); star->N terminal; PSD latest gradient i in V_max(1,i)",
+        "normalization": "L=R=1; radius term reserved for boundary",
+        "sign": "V_(k+1)-V_k = sum(nonnegative multiplier * residual<=0) - sum(PSD pieces)"
+      },
+      "rank_profile": [
+        0,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "rank_convention": {
+        "tolerance": 0.0001,
+        "scaling": "absolute; L=R=1; unscaled original Peppy basis",
+        "coordinate_order": "original context basis: initial/stationary points, then gradients by iteration",
+        "credibility": "no singular value in [tolerance/10,10*tolerance] at retained indices"
+      },
+      "singular_values": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.030939295696600883,
+          0.028582528591888822,
+          0.015474629540763032,
+          1.959396398080188e-09,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07738838907125248,
+          0.04421105713506922,
+          0.02072282555715862,
+          0.0010008421538967788,
+          1.959396394291745e-09,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.15372597591016895,
+          0.06690551816037595,
+          0.022379114360615678,
+          0.005344616892511882,
+          1.959396396095461e-09,
+          4.4158349392310824e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.26760234651398573,
+          0.09769052933953018,
+          0.023489867237729705,
+          0.015168953092311427,
+          1.9593963858607033e-09,
+          5.245703203182043e-10,
+          4.3820984897303214e-10,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.42414790015836157,
+          0.13777186710820702,
+          0.032368002907255014,
+          0.024698427202625065,
+          1.959396367639467e-09,
+          7.143269030567924e-10,
+          4.73975420313992e-10,
+          3.3018896272365785e-10,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.6279979443194335,
+          0.18865747434207072,
+          0.059688576862162,
+          0.025875564787837323,
+          1.9593963989135183e-09,
+          8.482849952681805e-10,
+          6.392461008798535e-10,
+          4.713141594445484e-10,
+          1.6841996653473012e-10,
+          0.0,
+          0.0
+        ],
+        [
+          0.88753129526019,
+          0.253013587892409,
+          0.10026240868214681,
+          0.026904323492856468,
+          1.959396388032589e-09,
+          9.320405707575135e-10,
+          8.17632900152233e-10,
+          5.848938944469248e-10,
+          4.708727959087211e-10,
+          4.01378632682132e-12,
+          0.0
+        ],
+        [
+          0.4975388824066034,
+          0.4178231351548489,
+          0.029213921741859,
+          1.959396380561728e-09,
+          9.936485524308794e-10,
+          9.571335779568724e-10,
+          8.689831631654551e-10,
+          7.51830219005056e-10,
+          7.111916297897045e-10,
+          4.713961764695612e-10,
+          4.1972737546057577e-10
+        ]
+      ],
+      "rank_credible": true,
+      "certificate_checked": true,
+      "grouping_checked": true,
+      "coverage_residuals": [
+        8.326672684688674e-17,
+        2.7755575615628914e-17,
+        0.0
+      ],
+      "increment_residuals": [
+        [
+          5.204170427930421e-18,
+          0.0,
+          0.0
+        ],
+        [
+          1.3877787807814457e-17,
+          0.0,
+          0.0
+        ],
+        [
+          7.589415207398531e-19,
+          1.3877787807814457e-17,
+          0.0
+        ],
+        [
+          3.3610267347050637e-18,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          6.938893903907228e-18,
+          1.3877787807814457e-17,
+          0.0
+        ],
+        [
+          3.469446951953614e-18,
+          0.0,
+          0.0
+        ],
+        [
+          5.204170427930421e-18,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          3.3409558876152446e-52,
+          5.551115123125783e-17,
+          0.0
+        ]
+      ],
+      "piece_minimum_eigenvalues": [
+        -1.5488651475320252e-16,
+        -5.771125428140646e-17,
+        -8.518656581518057e-18,
+        -5.679614659825953e-17,
+        -3.862960608639186e-18,
+        -2.810964730026568e-17,
+        -1.398605112738152e-17,
+        -5.144621234578181e-19,
+        -5.373310157874969e-20,
+        0.0,
+        0.0
+      ],
+      "certificate_path": "supplementary/b3_n8_certificate.json",
+      "source_hashes": {
+        "certificate_check_code": "6ad5bb8c3098952f0997f20393f0d7af31e2392ef990956cea0317cfd684860d",
+        "decomposition_code": "8fe2108eb5b1309ddaae04373cc23fb3278d355916202bac8b5018e51b9758b9",
+        "grouping_code": "492e2e41b13cb609d3f16482777a4512ecf148c6684a471417c12f0e2128629c"
+      },
+      "retained_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "eligible": true,
+      "interior_rank": 4,
+      "eligibility_note": "eligible"
+    }
+  ]
+}

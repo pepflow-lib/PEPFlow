@@ -1,0 +1,6 @@
+interface:
+  display_name: "PDF from IPYNB"
+  short_description: "Create a theorem-and-proof PDF with its LaTeX source."
+  default_prompt: "Use $pdf-from-ipynb to turn the final Peppy output notebook into a self-contained theorem-and-proof PDF and the exact LaTeX source used to compile it, preserving its assumptions and proof status."
+policy:
+  allow_implicit_invocation: false
